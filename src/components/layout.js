@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import Seo from "./seo";
 
+import { CssBaseline } from '@material-ui/core';
+import Navbar from "./Navbar";
+
 const Layout = ({ children, seo }) => (
   <StaticQuery
     query={graphql`
@@ -23,6 +26,8 @@ const Layout = ({ children, seo }) => (
     render={(data) => (
       <>
         <Seo seo={seo} />
+        <CssBaseline />
+        <Navbar />
         <main>{children}</main>
       </>
     )}
