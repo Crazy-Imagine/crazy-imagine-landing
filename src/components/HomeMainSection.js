@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   imageSize: {
     width:'100%',
     height:1000,
-    // borderRadius: "0% ​0% 44% 50% / 0% 20% 12% 12%"
+    borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% "
   },
   title: {
     fontSize: 44,
