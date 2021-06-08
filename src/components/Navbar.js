@@ -1,6 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 
+import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Box, CardMedia, Toolbar, Typography } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -10,45 +11,30 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import SearchIcon from '@material-ui/icons/Search';
 
 import logo from '../images/logo.jpeg';
-import { Link } from 'gatsby';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    boxShadow: 'none'
+    boxShadow: 'none',
+    backgroundColor: 'transparent'
   },
   spacing: {
     marginLeft: theme.spacing(10)
   },
-  justify: {
-    display: 'flex',
-    width: '100%',
-    height: '6em',
-    alignItems: 'center',
-    justifyContent: 'space-evenly'
-  },
-  icons: {
-    display: 'flex',
-    width: '20%',
-    justifyContent: 'inherit'
-  },
   iconSize: {
     fontSize: 20
   },
-  borderIcon: {
-    borderRadius: '50%'
-  },
-  typograpy: {
+  linkTypograpy: {
     fontSize: 14,
     fontWeight: 'bold',
     lineHeight: '29px',
-    color: 'black',
+    color: '#FFFFFF',
     textTransform: 'uppercase',
     '&:hover': {
       textDecoration: 'none',
       color: '#FFFFFF'  
      }
   },
-  img: {
+  logo: {
     width: 140,
     height: 73
   }
@@ -58,21 +44,21 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
     const classes = useStyles();
   return(
-    <AppBar color='transparent' position='static' className={classes.appBar}>
+    <AppBar color='transparent' position='fixed' className={classes.appBar}>
       <Toolbar>
-      <Box className={classes.justify} m={1} mx={15}>
+      <Box m={1} mx={15} display='flex' width='100%' height='6em' alignItems='center' justifyContent='space-evenly'>
           <CardMedia 
             image={logo}
             title='logo'
-            className={classes.img}
+            className={classes.logo}
           />
           <Link><HomeIcon className={classes.spacing, classes.iconSize} color='primary' fontSize='large' /></Link>
-          <Typography variant='h5'><Link className={classes.typograpy}>ABOUT US</Link></Typography>
-          <Typography variant='h5'><Link className={classes.typograpy}>Services</Link></Typography>
-          <Typography variant='h5'><Link className={classes.typograpy}>Team</Link></Typography>
-          <Typography variant='h5'><Link className={classes.typograpy}>Blog</Link></Typography>
-          <Typography variant='h5'><Link className={classes.typograpy}>Contact</Link></Typography>
-          <Box className={classes.icons} >
+          <Typography variant='h5'><Link className={classes.linkTypograpy}>ABOUT US</Link></Typography>
+          <Typography variant='h5'><Link className={classes.linkTypograpy}>Services</Link></Typography>
+          <Typography variant='h5'><Link className={classes.linkTypograpy}>Team</Link></Typography>
+          <Typography variant='h5'><Link className={classes.linkTypograpy}>Blog</Link></Typography>
+          <Typography variant='h5'><Link className={classes.linkTypograpy}>Contact</Link></Typography>
+          <Box display='flex' alignItems='center' justifyContent='inherit' width='20%' >
             <Link><FacebookIcon className={classes.spacing, classes.iconSize} color='primary' fontSize='large' /></Link>
             <Link><TwitterIcon color='primary' fontSize='large' className={classes.iconSize} /></Link>
             <Link><InstagramIcon color='primary' fontSize='large' className={classes.iconSize} /></Link>
