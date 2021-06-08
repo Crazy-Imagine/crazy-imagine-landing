@@ -1,6 +1,6 @@
-require("dotenv").config({
+/*require("dotenv").config({
   path: `.env`,
-});
+});*/
 
 module.exports = {
   plugins: [
@@ -38,13 +38,12 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
-          `<link rel="preconnect" href="https://fonts.gstatic.com">`,
-          `<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Roboto&display=swap" rel="stylesheet">` // you can also specify font weights and styles
+          {family: 'Roboto', weights: ['400'] },
+          {family: 'Lato', weights: ['400'] }
         ],
-        display: 'swap'
       }
     }
   ],
