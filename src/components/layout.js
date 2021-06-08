@@ -5,6 +5,8 @@ import Seo from "./seo";
 
 import { CssBaseline } from '@material-ui/core';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Copyright from "./Copyright";
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -29,6 +31,8 @@ const Layout = ({ children, seo }) => (
         <CssBaseline />
         <Navbar />
         <main>{children}</main>
+        <Footer />
+        <Copyright />
       </>
     )}
   />
