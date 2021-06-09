@@ -1,15 +1,21 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+
 import Layout from "../components/layout";
-//import ArticlesComponent from "../components/articles";
+import HomeMainSection from '../components/HomeMainSection';
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
   
   return (
+    <>
     <Layout seo={data.strapiHomepage.seo}>
-      <h1>{data.strapiHomepage.hero.title}</h1>
-      {data.allStrapiArticle 
+      <HomeMainSection 
+        title={data.strapiHomepage.hero.title} 
+        mainTitle={data.strapiHomepage.seo.metaTitle}
+        description={data.strapiHomepage.seo.metaDescription}
+        />
+      {/*data.allStrapiArticle 
         ? <div>{data.allStrapiArticle.nodes.map((el) => 
           <div>
             <strong>{el.title}</strong>
@@ -18,8 +24,9 @@ const IndexPage = () => {
           </div> )}
         </div>
         : 'loading'
-      } 
+        */} 
     </Layout>
+    </>
   );
 };
 

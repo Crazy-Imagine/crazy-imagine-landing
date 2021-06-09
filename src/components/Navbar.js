@@ -1,6 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 
+import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Box, CardMedia, Toolbar, Typography } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -23,14 +24,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     color: '#23aae1'
   },
-  borderIcon: {
-    borderRadius: '50%'
-  },
-  typograpy: {
+  linkTypograpy: {
     fontSize: 14,
     fontWeight: 'bold',
     lineHeight: '29px',
-    color: 'black',
+    color: '#FFFFFF',
     textTransform: 'uppercase',
     '&:hover': {
       textDecoration: 'none',
@@ -49,7 +47,7 @@ const Navbar = () => {
   return(
     <AppBar color='transparent' position='fixed' className={classes.container}>
       <Toolbar>
-      <Box className={classes.justify} m={1} mx={15}>
+      <Box m={1} mx={15} display='flex' width='100%' height='6em' alignItems='center' justifyContent='space-evenly'>
           <CardMedia 
             image={navbarLogo}
             title='logo'
