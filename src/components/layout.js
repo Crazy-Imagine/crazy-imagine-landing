@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Copyright from "./Copyright";
 import HumanTalent from "./HumanTalent";
+import LastestPosts from "./LastestPosts";
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -33,6 +34,7 @@ const Layout = ({ children, seo }) => (
         <Navbar />
         <main>{children}</main>
         <HumanTalent />
+        <LastestPosts />
         <Footer />
         <Copyright />
       </>

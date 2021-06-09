@@ -41,8 +41,10 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
-          {family: 'Roboto', weights: ['400'] },
-          {family: 'Lato', weights: ['400'] }
+          { family: 'Roboto', weights: ['400'] },
+          { family: 'Lato', weights: ['400'] },
+          { family: 'Poppins', weights: ['400'] },
+          { family: 'Hind', weights: ['400'] }
         ],
       }
     }
