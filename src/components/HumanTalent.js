@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import clsx from 'clsx';
 
 import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core";
 
@@ -13,6 +14,9 @@ const useStyles = makeStyles({
     color: '#000a30',
     marginTop: 16,
     fontWeight: 'bold'
+  },
+  removeMargin: {
+    marginTop: 0
   },
   content: {
     fontFamily: 'Roboto',
@@ -68,7 +72,7 @@ const HumanTalent = () => {
           />
         </Grid>
         <Grid item sm={5}>
-        <Typography variant='h2' className={classes.title}>We are proud of the human resource talent</Typography>
+        <Typography variant='h2' className={clsx(classes.title, classes.removeMargin)}>We are proud of the human resource talent</Typography>
         <Box width='45px' height='6px' my='24px' className={classes.boxLine}></Box>
         <Typography className={classes.content}>
           always looking for ways to improve and deliver gret qualy of work
