@@ -1,6 +1,19 @@
 @font-face {
-  font-family: 'gotham-book' ,'gotham-ultra';
-  src: url('../fonts/Gotham-Book-Regular.otf'), url('../fonts/Gotham-Ultra.otf');
-  font-family: 'gotham-ultra';
+  font-family: 'gotham-book';
+  src: url('../fonts/Gotham-Book-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Gotham-ultra';
   src: url('../fonts/Gotham-Ultra.otf');
+}
+
+@font-face {
+  font-family: 'Myriad-pro';
+  src: url('../fonts/Myriad-Pro-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('../fonts/Gotham-Medium.otf');
 }

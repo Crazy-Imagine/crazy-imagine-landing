@@ -13,7 +13,8 @@ const useStyles = makeStyles({
     fontSize: 40,
     color: '#000a30',
     marginTop: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textTransform: 'uppercase'
   },
   removeMargin: {
     marginTop: 0
