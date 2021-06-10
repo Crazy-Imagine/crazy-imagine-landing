@@ -13,7 +13,7 @@ import footerLogo from '../images/logo.jpeg';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'black',
+    backgroundColor: '#1D1D1D',
     color: 'white'
   },
   footerLogo: {
