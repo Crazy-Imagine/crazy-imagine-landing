@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 import PostCard from "./PostCard";
 import blockImage from '../images/gatsby-icon.png';
