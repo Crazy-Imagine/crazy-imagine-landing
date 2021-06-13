@@ -26,7 +26,7 @@ const LastestPosts = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="h2" className={classes.title}>
+        <Typography component={"div"} className={classes.title}>
           Lastest Posts
         </Typography>
         <Box

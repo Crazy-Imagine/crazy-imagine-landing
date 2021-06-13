@@ -78,7 +78,7 @@ const Navbar = () => {
             title="logo"
             className={classes.navbarLogo}
           />
-          <Link>
+          <Link to="/">
             <HomeIcon
               className={(classes.iconSpacing, classes.navbarIcons)}
               color="primary"
@@ -86,19 +86,29 @@ const Navbar = () => {
             />
           </Link>
           <Typography variant="h5">
-            <Link className={classes.linkTypograpy}>ABOUT US</Link>
+            <Link to="/" className={classes.linkTypograpy}>
+              ABOUT US
+            </Link>
           </Typography>
           <Typography variant="h5">
-            <Link className={classes.linkTypograpy}>Services</Link>
+            <Link to="/" className={classes.linkTypograpy}>
+              Services
+            </Link>
           </Typography>
           <Typography variant="h5">
-            <Link className={classes.linkTypograpy}>Team</Link>
+            <Link to="/" className={classes.linkTypograpy}>
+              Team
+            </Link>
           </Typography>
           <Typography variant="h5">
-            <Link className={classes.linkTypograpy}>Blog</Link>
+            <Link to="/" className={classes.linkTypograpy}>
+              Blog
+            </Link>
           </Typography>
           <Typography variant="h5">
-            <Link className={classes.linkTypograpy}>Contact</Link>
+            <Link to="/" className={classes.linkTypograpy}>
+              Contact
+            </Link>
           </Typography>
           <Box
             display="flex"
@@ -106,23 +116,23 @@ const Navbar = () => {
             justifyContent="inherit"
             width="20%"
           >
-            <Link>
+            <Link to="/">
               <FacebookIcon
                 className={(classes.spacing, classes.navbarIcons)}
                 color="primary"
                 fontSize="large"
               />
             </Link>
-            <Link>
+            <Link to="/">
               <TwitterIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link>
+            <Link to="/">
               <InstagramIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link>
+            <Link to="/">
               <LinkedInIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link>
+            <Link to="/">
               <SearchIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
           </Box>
