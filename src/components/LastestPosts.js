@@ -1,44 +1,45 @@
-import { Box, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
-import BlogPost from "./BlogPost";
+import { Box, makeStyles, Typography } from "@material-ui/core"
+import React from "react"
+import BlogPost from "./BlogPost"
 
 const useStyes = makeStyles({
   title: {
-    fontFamily: 'Gotham-ultra',
+    fontFamily: "Gotham-ultra",
     fontSize: 40,
-    color: '#000a30',
-    fontWeight: 'bold'
+    color: "#000a30",
+    fontWeight: "bold",
   },
   boxLine: {
-    backgroundColor:'#23aae1'
-  }
-});
+    backgroundColor: "#23aae1",
+  },
+})
 
 const LastestPosts = () => {
-  const classes = useStyes();
+  const classes = useStyes()
 
-  return(
-    <Box py='80px'>
-      <Box 
-        textAlign='center' 
-        display='flex' 
-        flexDirection='column' 
-        alignItems='center' 
-        justifyContent='center'
+  return (
+    <Box py="80px">
+      <Box
+        textAlign="center"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Typography variant='h2' className={classes.title}>Lastest Posts</Typography>
+        <Typography component={"div"} className={classes.title}>
+          Lastest Posts
+        </Typography>
         <Box
-          width='45px' 
-          height='6px' 
-          marginBottom='108px' 
-          marginTop='8px' 
+          width="45px"
+          height="6px"
+          marginBottom="108px"
+          marginTop="8px"
           className={classes.boxLine}
-        >
-        </Box>
+        ></Box>
       </Box>
       <BlogPost />
     </Box>
-  );
-};
+  )
+}
 
-export default LastestPosts;
+export default LastestPosts
