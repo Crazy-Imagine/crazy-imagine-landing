@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
-import Seo from "./seo";
+import React from "react"
+import PropTypes from "prop-types"
+import { StaticQuery, graphql } from "gatsby"
+import Seo from "./seo"
 
-import { CssBaseline } from '@material-ui/core';
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Copyright from "./Copyright";
-import HumanTalent from "./HumanTalent";
-import LastestPosts from "./LastestPosts";
-import ReferenceSection from "./ReferenceSection";
+import { CssBaseline } from "@material-ui/core"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import Copyright from "./Copyright"
+import HumanTalent from "./HumanTalent"
+import LastestPosts from "./LastestPosts"
+import ReferenceSection from "./ReferenceSection"
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -28,7 +28,7 @@ const Layout = ({ children, seo }) => (
         }
       }
     `}
-    render={(data) => (
+    render={data => (
       <>
         <Seo seo={seo} />
         <CssBaseline />
@@ -42,10 +42,10 @@ const Layout = ({ children, seo }) => (
       </>
     )}
   />
-);
+)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-export default Layout;
+export default Layout
