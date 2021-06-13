@@ -168,7 +168,10 @@ const HumanTalent = () => {
                 work for us, terms like partnership, empowerment and teamwork,
                 are core values. <br />
                 <br /> If you want to know more about our team please check our
-                page <Link className={classes.ourTeamLink}>Here</Link>
+                page{" "}
+                <Link to="/" className={classes.ourTeamLink}>
+                  Here
+                </Link>
               </Content>
             </Grid>
           </Grid>
