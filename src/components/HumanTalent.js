@@ -161,9 +161,14 @@ const HumanTalent = () => {
                 />
               </Box>
             </Grid>
-
             <Grid item className={classes.humanTalentContentResponsive}>
-              <Content title="We are proud \n of the human resource talent">
+              <Content
+                title={
+                  <>
+                    We are proud <br /> of the human resource talent
+                  </>
+                }
+              >
                 always looking for ways to improve and deliver gret qualy of
                 work for us, terms like partnership, empowerment and teamwork,
                 are core values. <br />
