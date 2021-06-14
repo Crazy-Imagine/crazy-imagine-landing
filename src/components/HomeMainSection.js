@@ -9,27 +9,37 @@ import background from "../images/fondo.jpg"
 import "../css/typography.css"
 import HomeCard from "./HomeCard"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  boxContainer: {
+    [theme.breakpoints.down("md")]: {},
+  },
   imageSize: {
     width: "100%",
     height: 1000,
     borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% ",
+    [theme.breakpoints.down("md")]: {
+      borderRadius: 0,
+    },
   },
   title: {
     fontSize: 44,
     fontFamily: "gotham-book",
     color: "white",
+    textTransform: "uppercase",
   },
   mainTitle: {
-    fontSize: 75,
-    fontFamily: "gotham-book",
+    fontSize: 76,
+    fontFamily: "Gotham-Black",
     color: "white",
     fontWeight: "bold",
+    textTransform: "uppercase",
   },
   subTitle: {
     fontSize: 16,
-    fontFamily: "gotham-book",
+    fontFamily: "gotham-Medium",
     color: "white",
+    lineHeight: "22px",
+    maxWidth: 552,
   },
   cardIcon: {
     fontSize: 64,
@@ -37,7 +47,7 @@ const useStyles = makeStyles({
   cardCenter: {
     backgroundColor: "#23aae1",
   },
-})
+}))
 
 const HomeMainSection = ({ title, mainTitle, description }) => {
   const classes = useStyles()
@@ -58,6 +68,7 @@ const HomeMainSection = ({ title, mainTitle, description }) => {
           justifyContent="center"
           mx="auto"
           textAlign="center"
+          className={classes.boxContainer}
         >
           <Typography variant="h2" color="secondary" className={classes.title}>
             {title}
