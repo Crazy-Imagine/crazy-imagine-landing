@@ -1,61 +1,85 @@
-import React from 'react';
-import { Box, Card, CardContent, makeStyles, Typography } from "@material-ui/core";
+import React from "react"
+import {
+  Box,
+  Card,
+  CardContent,
+  makeStyles,
+  Typography,
+} from "@material-ui/core"
 
-const useStyles = makeStyles((theme) => ({
-    cardContainer: (props) => ({
-      backgroundColor: props.variant === "blue" ? "#23aae1" : "white",
-      borderRadius: 10,
-      boxShadow: '0px 0px 34px 0px rgba(5,0,6,0.26)'
-    }),
-    title: (props) => ({
-      fontSize: 34,
-      color: props.variant === "light" ? "#23aae1" : "white",
-      fontWeight: 'bold',
-      fontFamily: 'Lato'
-    }),
-    description: (props) => ({
-      color: props.variant === "light" ? "#23aae1" : "white",
-      fontSize: 16
-    }),
-    cardIcon: (props) => ({
-        fontSize: 64,
-        color: props.variant === "light" ? "#23aae1" : "white"
-      }),
-    cardTranslate: (props) => ({
-      transform: `translateY(${props.translate})`,
-      zIndex: `${props.zIndex}`
-    })
-  }));
+const useStyles = makeStyles(theme => ({
+  cardContainer: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    boxShadow: "0px 0px 34px 0px rgba(5,0,6,0.26)",
+    transitionProperty: "background, translate, color",
+    transitionDuration: "300ms, 300ms, 300ms",
+    transform: "translateY(-90px)",
+    whiteSpace: "normal",
+    "&:hover": {
+      backgroundColor: "#23aae1",
+      color: "white",
+      transform: "translateY(-115px)",
+      "& $cardIcon": {
+        color: "white",
+      },
+    },
+  },
+  cardContent: {
+    color: "black",
+    "&:hover": {
+      color: "white",
+    },
+  },
+  title: {
+    fontSize: 34,
+    fontWeight: "bold",
+    fontFamily: "Lato",
+  },
+  description: {
+    fontSize: 16,
+  },
+  cardIcon: {
+    fontSize: 64,
+    color: "#23aae1",
+  },
+}))
 
-const HomeCard = ({title, description, Icon , variant = "light", translate = '-90px' }) => {
-  const classes = useStyles({
-      variant,
-      translate
-  });
+const textOverflow = text => {
+  if (text.length > 142) {
+    return text.slice(0, 142) + "..."
+  }
+  return text
+}
 
-  return(
-    <Box display='flex' className={classes.cardTranslate}>
+const HomeCard = ({ title, description, Icon }) => {
+  const classes = useStyles()
+  const content = textOverflow(description)
+
+  return (
+    <Box display="flex" className={classes.cardTranslate}>
       <Card className={classes.cardContainer}>
-        <CardContent>
-          <Box 
-            width='250px' 
-            height='300px' 
-            p='24px' 
-            display='flex' 
-            flexDirection='column' 
-            justifyContent='center' 
-            alignContent='center' 
-            textAlign='center'
-            gridGap='1em'
+        <CardContent className={classes.cardContent}>
+          <Box
+            width="250px"
+            height="300px"
+            p="10px"
+            display="flex"
+            flexDirection="column"
+            alignContent="center"
+            textAlign="center"
+            gridGap="0.5em"
           >
-            <Typography variant='h6'><Icon className={classes.cardIcon} /></Typography>
-            <Typography variant='h3' className={classes.title}>{title}</Typography>
-            <Typography className={classes.description}>{description}</Typography>
+            <Typography>
+              <Icon className={classes.cardIcon} />
+            </Typography>
+            <Typography className={classes.title}>{title}</Typography>
+            <Typography className={classes.description}>{content}</Typography>
           </Box>
         </CardContent>
       </Card>
     </Box>
-  );
-};
+  )
+}
 
-export default HomeCard;
+export default HomeCard
