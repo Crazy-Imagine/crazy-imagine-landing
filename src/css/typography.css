@@ -17,3 +17,8 @@
   font-family: 'Gotham-Medium';
   src: url('../fonts/Gotham-Medium.otf');
 }
+
+@font-face {
+  font-family: 'Gotham-Black';
+  src: url('../fonts/Gotham-Black-Regular.ttf');
+}
