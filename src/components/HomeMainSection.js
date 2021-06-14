@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, CardMedia, makeStyles, Typography } from "@material-ui/core"
+import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import CodeIcon from "@material-ui/icons/Code"
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
@@ -10,9 +10,6 @@ import "../css/typography.css"
 import HomeCard from "./HomeCard"
 
 const useStyles = makeStyles(theme => ({
-  boxContainer: {
-    [theme.breakpoints.down("md")]: {},
-  },
   imageSize: {
     width: "100%",
     height: 1000,
@@ -46,6 +43,13 @@ const useStyles = makeStyles(theme => ({
   },
   cardCenter: {
     backgroundColor: "#23aae1",
+  },
+  cardContainer: {
+    gap: 30,
+    justifyContent: "center",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 30,
+    },
   },
 }))
 
@@ -91,23 +95,29 @@ const HomeMainSection = ({ title, mainTitle, description }) => {
           </Typography>
         </Box>
       </CardMedia>
-      <Box display="flex" justifyContent="center" gridGap="30px">
-        <HomeCard
-          title="Code"
-          description="Our field of appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
-          Icon={AccountCircleIcon}
-        />
-        <HomeCard
-          title="User Experience"
-          description="Out philosophy goes hand in hand with user interface satisfaction and exellence."
-          Icon={CodeIcon}
-        />
-        <HomeCard
-          title="Quality"
-          description="We are the best so tha's why offer you 100% quality in our services"
-          Icon={ArrowUpwardIcon}
-        />
-      </Box>
+      <Grid container className={classes.cardContainer}>
+        <Grid item xs="auto">
+          <HomeCard
+            title="Code"
+            description="Our field of appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
+            Icon={AccountCircleIcon}
+          />
+        </Grid>
+        <Grid item xs="auto">
+          <HomeCard
+            title="User Experience"
+            description="Out philosophy goes hand in hand with user interface satisfaction and exellence."
+            Icon={CodeIcon}
+          />
+        </Grid>
+        <Grid item xs="auto">
+          <HomeCard
+            title="Quality"
+            description="We are the best so tha's why offer you 100% quality in our services"
+            Icon={ArrowUpwardIcon}
+          />
+        </Grid>
+      </Grid>
     </Box>
   )
 }
