@@ -10,6 +10,7 @@ import Copyright from "./Copyright"
 import HumanTalent from "./HumanTalent"
 import LastestPosts from "./LastestPosts"
 import ReferenceSection from "./ReferenceSection"
+import ContactSection from "./ContactSection"
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -37,6 +38,7 @@ const Layout = ({ children, seo }) => (
         <HumanTalent />
         <ReferenceSection />
         <LastestPosts />
+        <ContactSection />
         <Footer />
         <Copyright />
       </>
