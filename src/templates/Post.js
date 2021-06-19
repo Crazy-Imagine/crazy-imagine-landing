@@ -5,11 +5,9 @@ import {
   CssBaseline,
   Typography,
   makeStyles,
-  CardMedia,
   Grid,
 } from "@material-ui/core"
 
-import postImage from "../images/reviewImage.jpg"
 import { Hidden } from "@material-ui/core"
 
 export const query = graphql`
@@ -23,15 +21,15 @@ export const query = graphql`
   }
 `
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   postContainer: {
     backgroundColor: "#2A2A2A",
   },
   title: {
     color: "#ffffff",
-    fontFamily: "Gothm",
-    fontWeight: "bold",
-    fontSize: 83,
+    fontFamily: "Gotham",
+    fontWeight: 500,
+    fontSize: 72,
   },
   description: {
     color: "#ffffff",
@@ -42,12 +40,18 @@ const useStyles = makeStyles({
     fontFamily: "Roboto",
     fontSize: 18,
     color: "#2A2A2A",
+    textIndent: 32,
   },
   postImage: {
     width: "55%",
     height: 550,
   },
-})
+  titleContainer: {
+    [theme.breakpoints.down("md")]: {
+      marginLeft: 16,
+    },
+  },
+}))
 
 const Post = ({ data }) => {
   const classes = useStyles()
@@ -60,7 +64,12 @@ const Post = ({ data }) => {
     <CssBaseline>
       <Box>
         <Box className={classes.postContainer}>
-          <Box marginLeft="200px" paddingBottom="50px" marginBottom="20px">
+          <Box
+            marginLeft="200px"
+            paddingBottom="50px"
+            marginBottom="20px"
+            className={classes.titleContainer}
+          >
             <Box>
               <Typography variant="h4" className={classes.title}>
                 {title}
@@ -71,10 +80,14 @@ const Post = ({ data }) => {
             </Typography>
           </Box>
         </Box>
+
         <Grid container>
           <Grid item xs={12} sm={12} md={8}>
-            <Typography className={classes.content}>{content}</Typography>
+            <Box p="24px">
+              <Typography className={classes.content}>{content}</Typography>
+            </Box>
           </Grid>
+
           <Hidden smDown>
             <Grid item md={4}></Grid>
           </Hidden>

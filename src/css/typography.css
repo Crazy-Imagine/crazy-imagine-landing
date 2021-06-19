@@ -22,3 +22,8 @@
   font-family: 'Gotham-Black';
   src: url('../fonts/Gotham-Black-Regular.ttf');
 }
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Regular.otf');
+}
