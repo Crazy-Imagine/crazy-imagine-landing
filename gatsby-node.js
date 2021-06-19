@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.articles.edges
 
-  const PostTemplate = require.resolve("./src/templates/post.js")
+  const PostTemplate = require.resolve("./src/templates/Post.js")
 
   posts.map((post, index) => {
     createPage({
