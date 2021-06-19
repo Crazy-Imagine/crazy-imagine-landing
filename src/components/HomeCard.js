@@ -24,6 +24,12 @@ const useStyles = makeStyles(theme => ({
         color: "white",
       },
     },
+    [theme.breakpoints.down("md")]: {
+      transform: "translateY(0px)",
+      "&:hover": {
+        transform: "translateY(0px)",
+      },
+    },
   },
   cardContent: {
     color: "black",
