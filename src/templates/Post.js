@@ -9,6 +9,8 @@ import {
   Grid,
 } from "@material-ui/core"
 
+import RecentlyPosted from "../components/RecentlyPosted"
+
 export const query = graphql`
   query Article($id: String!) {
     article: strapiArticle(id: { eq: $id }) {
@@ -81,14 +83,16 @@ const Post = ({ data }) => {
         </Box>
 
         <Grid container>
-          <Grid item xs={12} sm={12} md={8}>
+          <Grid item xs={12} sm={12} md={8} lg={10}>
             <Box p="24px">
               <Typography className={classes.content}>{content}</Typography>
             </Box>
           </Grid>
 
           <Hidden smDown>
-            <Grid item md={4}></Grid>
+            <Grid item md={4} lg={2}>
+              <RecentlyPosted />
+            </Grid>
           </Hidden>
         </Grid>
       </Box>
