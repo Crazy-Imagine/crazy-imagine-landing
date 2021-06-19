@@ -16,16 +16,16 @@ const useStyles = makeStyles({
     width: "100%",
     height: 250,
   },
-  cardContainer: props => ({
+  cardContainer: {
     width: 360,
     height: 545,
-    backgroundColor: props.variant === "default" ? "#f4f4f4" : "white",
+    backgroundColor: "#ffffff",
     transition: "linear 300ms",
     "&:hover": {
-      height: 576,
       boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
+      backgroundColor: "#F9F9F9",
     },
-  }),
+  },
   content: {
     fontFamily: "Poppins",
     fontSize: 12,
@@ -65,6 +65,7 @@ const useStyles = makeStyles({
     fontSize: 14,
     color: "#464646",
     marginBottom: 28,
+    height: 63,
   },
   cardDivider: {
     color: "#ededed",
@@ -88,6 +89,13 @@ const useStyles = makeStyles({
   },
 })
 
+const textOverflow = text => {
+  if (text.length > 100) {
+    return text.slice(0, 100) + "..."
+  }
+  return text
+}
+
 const PostCard = ({
   image,
   author,
@@ -101,15 +109,11 @@ const PostCard = ({
   const classes = useStyles({
     variant,
   })
-
+  const content = textOverflow(description)
   return (
     <Box>
       <Card className={classes.cardContainer}>
-        <CardMedia
-          image={image}
-          title="blockImage"
-          className={classes.blockImage}
-        />
+        <CardMedia image={image} title={title} className={classes.blockImage} />
         <Box
           paddingTop="37px"
           paddingRight="33px"
@@ -141,7 +145,7 @@ const PostCard = ({
                   {title}
                 </Typography>
                 <Typography className={classes.postDescription}>
-                  {description}
+                  {content}
                 </Typography>
               </Grid>
             </Grid>

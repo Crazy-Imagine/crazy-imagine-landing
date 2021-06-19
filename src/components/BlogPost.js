@@ -1,51 +1,74 @@
 import React from "react"
+import { StaticQuery, graphql, Link } from "gatsby"
 
 import { Grid, makeStyles } from "@material-ui/core"
 
 import PostCard from "./PostCard"
-import blockImage from "../images/gatsby-icon.png"
 
 const useStyes = makeStyles({
   container: {
     width: "100%",
+  },
+  link: {
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
 })
 
 const BlogPost = () => {
   const classes = useStyes()
   return (
-    <Grid container spacing={4} justify="center" className={classes.container}>
-      <Grid item>
-        <PostCard
-          image={blockImage}
-          author="Carlos Becerra XD"
-          tags="Wordpress"
-          title="Prueba"
-          description="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"
-        />
-      </Grid>
-      <Grid item>
-        <PostCard
-          image={blockImage}
-          author="Carlos Becerra XD"
-          tags="Wordpress"
-          title="Prueba"
-          description="lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm"
-          share="Share"
-          footerNumber="264"
-          variant="principal"
-        />
-      </Grid>
-      <Grid item>
-        <PostCard
-          image={blockImage}
-          author="Carlos Becerra XD"
-          tags="Wordpress"
-          title="Prueba Prueba Prueba Prueba Prueba"
-          description="lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm lorep ipsummmm"
-        />
-      </Grid>
-    </Grid>
+    <StaticQuery
+      query={graphql`
+        query {
+          articles: allStrapiArticle(limit: 3) {
+            edges {
+              node {
+                id
+                description
+                title
+                author {
+                  name
+                }
+                image {
+                  localFile {
+                    publicURL
+                  }
+                }
+                category {
+                  name
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={data => {
+        return (
+          <Grid
+            container
+            spacing={4}
+            justify="center"
+            className={classes.container}
+          >
+            {data.articles.edges.map(el => (
+              <Grid item>
+                <Link to={`/post/${el.node.id}`} className={classes.link}>
+                  <PostCard
+                    image={el.node.image.localFile.publicURL}
+                    author={el.node.author.name}
+                    tags={el.node.category.name}
+                    title={el.node.title}
+                    description={el.node.description}
+                  />
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
+        )
+      }}
+    />
   )
 }
 

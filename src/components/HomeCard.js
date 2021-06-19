@@ -1,4 +1,5 @@
 import React from "react"
+
 import {
   Box,
   Card,
@@ -60,6 +61,7 @@ const textOverflow = text => {
 
 const HomeCard = ({ title, description, Icon }) => {
   const classes = useStyles()
+
   const content = textOverflow(description)
 
   return (
