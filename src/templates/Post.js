@@ -3,12 +3,11 @@ import { graphql } from "gatsby"
 import {
   Box,
   CssBaseline,
+  Hidden,
   Typography,
   makeStyles,
   Grid,
 } from "@material-ui/core"
-
-import { Hidden } from "@material-ui/core"
 
 export const query = graphql`
   query Article($id: String!) {
