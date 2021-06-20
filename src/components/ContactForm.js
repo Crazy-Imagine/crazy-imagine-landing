@@ -24,17 +24,24 @@ const useStyles = makeStyles(theme => ({
     height: 35,
     width: 424,
     color: "#000000",
-    fontSize: 10,
-    fontWeight: "bold",
+    fontSize: 16,
+    border: 0,
     fontFamily: "Lato",
+    outline: "none",
     padding: "6px 7px 10px 7px !important",
-    "&:placeholder": {
-      color: "#red",
+    "&::placeholder": {
+      color: "#919191 !important",
+      fontSize: 10,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 14,
+      },
+    },
+    "&:focus": {
+      border: 0,
     },
   },
   resetFormInput: {
     height: 200,
-    width: 438,
   },
   formButton: {
     backgroundColor: "#D32022",
@@ -56,31 +63,19 @@ const ContactForm = () => {
       </Typography>
       <FormControl>
         <Box marginBottom="20px">
-          <TextField
-            inputProps={{ className: classes.formInput }}
-            label="Name(required)"
-            variant="outlined"
-          />
+          <input className={classes.formInput} placeholder="Name(Required)" />
         </Box>
         <Box marginBottom="20px">
-          <TextField
-            inputProps={{ className: classes.formInput }}
-            label="Email(required)"
-            variant="outlined"
-          />
+          <input className={classes.formInput} placeholder="Email(Required)" />
         </Box>
         <Box marginBottom="20px">
-          <TextField
-            inputProps={{ className: classes.formInput }}
-            label="Subject"
-            variant="outlined"
-          />
+          <input className={classes.formInput} placeholder="Subject" />
         </Box>
         <Box marginBottom="20px">
           <textarea
             placeholder="Message"
             className={clsx(classes.formInput, classes.resetFormInput)}
-          ></textarea>
+          />
         </Box>
         <Button variant="contained" className={classes.formButton}>
           SUBMIT
