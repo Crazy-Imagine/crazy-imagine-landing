@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import ReactMarkdown from "react-markdown"
 import {
   Box,
   CssBaseline,
@@ -94,7 +95,7 @@ const Post = ({ data }) => {
       <Grid container>
         <Grid item xs={12} sm={12} md={8} lg={10}>
           <Box p="24px">
-            <Typography className={classes.content}>{content}</Typography>
+            <ReactMarkdown className={classes.content}>{content}</ReactMarkdown>
           </Box>
         </Grid>
 
