@@ -1,6 +1,8 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
+
+import { BLOG } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   recentlyPostedTitle: {
@@ -27,6 +29,12 @@ const useStyles = makeStyles({
     fontSize: 14,
     color: "#303030",
   },
+  linkContainer: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
 })
 
 const RecentlyPosted = () => {
@@ -41,6 +49,7 @@ const RecentlyPosted = () => {
                 id
                 description
                 title
+                slug
                 image {
                   localFile {
                     publicURL
@@ -59,23 +68,28 @@ const RecentlyPosted = () => {
             </Typography>
             {data.article.edges.map(el => (
               <Box key={el.node.id} marginBottom="24px">
-                <Grid container alignItems="center">
-                  <Grid item>
-                    <CardMedia
-                      title={el.node.title}
-                      image={el.node.image.localFile.publicURL}
-                      className={classes.recentlyPostedImage}
-                    />
+                <Link
+                  to={`${BLOG}/${el.node.slug}`}
+                  className={classes.linkContainer}
+                >
+                  <Grid container alignItems="center">
+                    <Grid item>
+                      <CardMedia
+                        title={el.node.title}
+                        image={el.node.image.localFile.publicURL}
+                        className={classes.recentlyPostedImage}
+                      />
+                    </Grid>
+                    <Grid item xs>
+                      <Typography variant="h5" className={classes.listTitle}>
+                        {el.node.title}
+                      </Typography>
+                      <Typography className={classes.description}>
+                        {el.node.description.slice(0, 80)}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs>
-                    <Typography variant="h5" className={classes.listTitle}>
-                      {el.node.title}
-                    </Typography>
-                    <Typography className={classes.description}>
-                      {el.node.description.slice(0, 80)}
-                    </Typography>
-                  </Grid>
-                </Grid>
+                </Link>
               </Box>
             ))}
           </Box>
