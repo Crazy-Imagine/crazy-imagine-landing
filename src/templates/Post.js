@@ -13,16 +13,8 @@ import {
 import RecentlyPosted from "../components/RecentlyPosted"
 import Navbar from "../components/Navbar"
 
-export const query = graphql`
-  query Article($id: String!) {
-    article: strapiArticle(id: { eq: $id }) {
-      title
-      id
-      description
-      content
-    }
-  }
-`
+import Footer from "../components/Footer"
+import Copyright from "../components/Copyright"
 
 const useStyles = makeStyles(theme => ({
   postContainer: {
@@ -105,8 +97,20 @@ const Post = ({ data }) => {
           </Grid>
         </Hidden>
       </Grid>
+      <Footer />
+      <Copyright />
     </CssBaseline>
   )
 }
 
+export const query = graphql`
+  query Article($id: String!) {
+    article: strapiArticle(id: { eq: $id }) {
+      title
+      id
+      description
+      content
+    }
+  }
+`
 export default Post
