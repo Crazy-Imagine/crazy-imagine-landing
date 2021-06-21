@@ -1,0 +1,1 @@
+exports.BLOG = "/blog"

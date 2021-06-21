@@ -4,6 +4,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import { Grid, makeStyles } from "@material-ui/core"
 
 import PostCard from "./PostCard"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyes = makeStyles({
   container: {
@@ -28,6 +29,7 @@ const BlogPost = () => {
                 id
                 description
                 title
+                slug
                 author {
                   name
                 }
@@ -54,7 +56,7 @@ const BlogPost = () => {
           >
             {data.articles.edges.map(el => (
               <Grid item>
-                <Link to={`/post/${el.node.id}`} className={classes.link}>
+                <Link to={`${BLOG}/${el.node.slug}`} className={classes.link}>
                   <PostCard
                     image={el.node.image.localFile.publicURL}
                     author={el.node.author.name}

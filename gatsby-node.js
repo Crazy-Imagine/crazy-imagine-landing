@@ -1,3 +1,5 @@
+const { BLOG } = require("./src/navigation/sitemap")
+
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
@@ -5,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
         articles: allStrapiArticle {
           edges {
             node {
+              slug
               id
             }
           }
@@ -25,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.map((post, index) => {
     createPage({
-      path: `/post/${post.node.id}`,
+      path: `${BLOG}/${post.node.slug}`,
       component: PostTemplate,
       context: {
         id: post.node.id,
