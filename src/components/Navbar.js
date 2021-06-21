@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "29px",
     color: props.scroll ? "#FFFFFF" : "black",
     textTransform: "uppercase",
+    textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
       color: props.scroll ? "#FFFFFF" : "black",
@@ -53,7 +54,7 @@ const Navbar = () => {
     if (window.scrollY > 40) {
       setScroll(false)
     } else {
-      setScroll(true) //ya asi xd
+      setScroll(true)
     }
   }
 
@@ -73,11 +74,13 @@ const Navbar = () => {
           alignItems="center"
           justifyContent="space-evenly"
         >
-          <CardMedia
-            image={navbarLogo}
-            title="logo"
-            className={classes.navbarLogo}
-          />
+          <Link to="/">
+            <CardMedia
+              image={navbarLogo}
+              title="logo"
+              className={classes.navbarLogo}
+            />
+          </Link>
           <Link to="/">
             <HomeIcon
               className={(classes.iconSpacing, classes.navbarIcons)}
