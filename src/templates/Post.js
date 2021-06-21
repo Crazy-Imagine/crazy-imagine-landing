@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core"
 
 import RecentlyPosted from "../components/RecentlyPosted"
+import Navbar from "../components/Navbar"
 
 export const query = graphql`
   query Article($id: String!) {
@@ -31,11 +32,17 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Gotham",
     fontWeight: 500,
     fontSize: 72,
+    margin: "auto 0px",
+    maxWidth: 585,
   },
   description: {
     color: "#ffffff",
     fontSize: 24,
     fontFamily: "Roboto",
+    maxWidth: "75%",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "85%",
+    },
   },
   content: {
     fontFamily: "Roboto",
@@ -49,7 +56,8 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     [theme.breakpoints.down("md")]: {
-      marginLeft: 16,
+      paddingLeft: 24,
+      paddingBottom: 16,
     },
   },
 }))
@@ -63,39 +71,39 @@ const Post = ({ data }) => {
 
   return (
     <CssBaseline>
-      <Box>
-        <Box className={classes.postContainer}>
-          <Box
-            marginLeft="200px"
-            paddingBottom="50px"
-            marginBottom="20px"
-            className={classes.titleContainer}
-          >
-            <Box>
-              <Typography variant="h4" className={classes.title}>
-                {title}
-              </Typography>
-            </Box>
-            <Typography className={classes.description}>
-              {description}
-            </Typography>
-          </Box>
+      <Navbar />
+      <Box className={classes.postContainer}>
+        <Box
+          height="850px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          paddingBottom="40px"
+          paddingLeft="290px"
+          marginTop="auto"
+          className={classes.titleContainer}
+        >
+          <Typography variant="h4" className={classes.title}>
+            {title}
+          </Typography>
+
+          <Typography className={classes.description}>{description}</Typography>
         </Box>
-
-        <Grid container>
-          <Grid item xs={12} sm={12} md={8} lg={10}>
-            <Box p="24px">
-              <Typography className={classes.content}>{content}</Typography>
-            </Box>
-          </Grid>
-
-          <Hidden smDown>
-            <Grid item md={4} lg={2}>
-              <RecentlyPosted />
-            </Grid>
-          </Hidden>
-        </Grid>
       </Box>
+
+      <Grid container>
+        <Grid item xs={12} sm={12} md={8} lg={10}>
+          <Box p="24px">
+            <Typography className={classes.content}>{content}</Typography>
+          </Box>
+        </Grid>
+
+        <Hidden smDown>
+          <Grid item md={4} lg={2}>
+            <RecentlyPosted />
+          </Grid>
+        </Hidden>
+      </Grid>
     </CssBaseline>
   )
 }
