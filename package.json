@@ -9,6 +9,7 @@
     "@material-ui/icons": "^4.11.2",
     "clsx": "^1.1.1",
     "gatsby": "^3.6.2",
+    "gatsby-background-image": "^1.5.3",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-google-fonts-v2": "^1.0.0",
     "gatsby-plugin-image": "^1.7.1",

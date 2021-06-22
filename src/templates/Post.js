@@ -14,6 +14,9 @@ import {
 import RecentlyPosted from "../components/RecentlyPosted"
 import Navbar from "../components/Navbar"
 
+import Footer from "../components/Footer"
+import Copyright from "../components/Copyright"
+
 const useStyles = makeStyles(theme => ({
   postContainer: {
     backgroundColor: "#2A2A2A",
@@ -114,6 +117,8 @@ const Post = ({ data }) => {
           </Grid>
         </Hidden>
       </Grid>
+      <Footer />
+      <Copyright />
     </CssBaseline>
   )
 }
