@@ -55,7 +55,7 @@ const BlogPost = () => {
             className={classes.container}
           >
             {data.articles.edges.map(el => (
-              <Grid item>
+              <Grid item key={el.node.id}>
                 <Link to={`${BLOG}/${el.node.slug}`} className={classes.link}>
                   <PostCard
                     image={el.node.image.localFile.publicURL}

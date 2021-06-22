@@ -13,6 +13,9 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    "gatsby-plugin-image",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-strapi",
       options: {
@@ -22,9 +25,7 @@ module.exports = {
         queryLimit: 1000,
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
