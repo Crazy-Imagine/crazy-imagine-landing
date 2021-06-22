@@ -10,6 +10,7 @@ import TwitterIcon from "@material-ui/icons/Twitter"
 import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
+import { HOME } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -73,14 +74,14 @@ const Navbar = () => {
           alignItems="center"
           justifyContent="space-evenly"
         >
-          <Link to="/">
+          <Link to={HOME}>
             <StaticImage
               src="../images/logo.jpeg"
               alt="logo"
               className={classes.navbarLogo}
             />
           </Link>
-          <Link to="/">
+          <Link to={`${HOME}`}>
             <HomeIcon
               className={(classes.iconSpacing, classes.navbarIcons)}
               color="primary"
@@ -88,27 +89,27 @@ const Navbar = () => {
             />
           </Link>
           <Typography variant="h5">
-            <Link to="/" className={classes.linkTypograpy}>
+            <Link to={`${HOME}#about`} className={classes.linkTypograpy}>
               ABOUT US
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to="/" className={classes.linkTypograpy}>
+            <Link to={`${HOME}#services`} className={classes.linkTypograpy}>
               Services
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to="/" className={classes.linkTypograpy}>
+            <Link to={`${HOME}#team`} className={classes.linkTypograpy}>
               Team
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to="/" className={classes.linkTypograpy}>
+            <Link to={`${HOME}#blog`} className={classes.linkTypograpy}>
               Blog
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to="/" className={classes.linkTypograpy}>
+            <Link to={`${HOME}#contact`} className={classes.linkTypograpy}>
               Contact
             </Link>
           </Typography>
@@ -118,23 +119,23 @@ const Navbar = () => {
             justifyContent="inherit"
             width="20%"
           >
-            <Link to="/">
+            <Link to={`${HOME}`}>
               <FacebookIcon
                 className={(classes.spacing, classes.navbarIcons)}
                 color="primary"
                 fontSize="large"
               />
             </Link>
-            <Link to="/">
+            <Link to={`${HOME}`}>
               <TwitterIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link to="/">
+            <Link to={`${HOME}`}>
               <InstagramIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link to="/">
+            <Link to={`${HOME}`}>
               <LinkedInIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
-            <Link to="/">
+            <Link to={`${HOME}`}>
               <SearchIcon fontSize="large" className={classes.navbarIcons} />
             </Link>
           </Box>

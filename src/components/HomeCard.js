@@ -65,7 +65,7 @@ const HomeCard = ({ title, description, Icon }) => {
   const content = textOverflow(description)
 
   return (
-    <Box display="flex" className={classes.cardTranslate}>
+    <Box display="flex" className={classes.cardTranslate} id="about">
       <Card className={classes.cardContainer}>
         <CardContent className={classes.cardContent}>
           <Box

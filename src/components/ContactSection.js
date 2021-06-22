@@ -30,7 +30,7 @@ const ContactSection = () => {
   const classes = useStyles()
   return (
     <Section width="1000px" backgroundColor="#23aae1">
-      <Grid container className={classes.gridContainer}>
+      <Grid container className={classes.gridContainer} id="contact">
         <Grid item xs={12} sm={12} md={6}>
           <Box className={classes.contactResponsive}>
             <MoreInfo />
