@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import ReactMarkdown from "react-markdown"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import {
   Box,
   CssBaseline,
@@ -13,17 +14,6 @@ import {
 import RecentlyPosted from "../components/RecentlyPosted"
 import Navbar from "../components/Navbar"
 
-export const query = graphql`
-  query Article($id: String!) {
-    article: strapiArticle(id: { eq: $id }) {
-      title
-      id
-      description
-      content
-    }
-  }
-`
-
 const useStyles = makeStyles(theme => ({
   postContainer: {
     backgroundColor: "#2A2A2A",
@@ -35,6 +25,14 @@ const useStyles = makeStyles(theme => ({
     fontSize: 72,
     margin: "auto 0px",
     maxWidth: 585,
+    marginRight: "auto",
+
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+      marginRight: 0,
+      maxWidth: "75%",
+      textAlign: "center",
+    },
   },
   description: {
     color: "#ffffff",
@@ -52,23 +50,24 @@ const useStyles = makeStyles(theme => ({
     textIndent: 32,
   },
   postImage: {
-    width: "55%",
-    height: 550,
+    width: 100,
+    height: 100,
   },
   titleContainer: {
     [theme.breakpoints.down("md")]: {
       paddingLeft: 24,
       paddingBottom: 16,
+      alignItems: "center",
     },
   },
 }))
 
 const Post = ({ data }) => {
   const classes = useStyles()
-
   const title = data.article.title
   const description = data.article.description
   const content = data.article.content
+  const image = getImage(data.article.image.localFile)
 
   return (
     <CssBaseline>
@@ -81,17 +80,27 @@ const Post = ({ data }) => {
           justifyContent="center"
           paddingBottom="40px"
           paddingLeft="290px"
-          marginTop="auto"
           className={classes.titleContainer}
         >
-          <Typography variant="h4" className={classes.title}>
-            {title}
-          </Typography>
-
+          <Box
+            display="flex"
+            marginTop="auto"
+            justifyContent={{
+              xs: "center",
+              lg: "flex-start",
+            }}
+            marginBottom="auto"
+          >
+            <Typography variant="h4" className={classes.title}>
+              {title}
+            </Typography>
+            <Hidden mdDown>
+              <GatsbyImage image={image} alt={title} />
+            </Hidden>
+          </Box>
           <Typography className={classes.description}>{description}</Typography>
         </Box>
       </Box>
-
       <Grid container>
         <Grid item xs={12} sm={12} md={8} lg={10}>
           <Box p="24px">
@@ -108,5 +117,27 @@ const Post = ({ data }) => {
     </CssBaseline>
   )
 }
+
+export const query = graphql`
+  query Article($id: String!) {
+    article: strapiArticle(id: { eq: $id }) {
+      title
+      id
+      description
+      content
+      image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(
+              width: 800
+              placeholder: BLURRED
+              layout: CONSTRAINED
+            )
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Post

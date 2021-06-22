@@ -1,6 +1,6 @@
 import React from "react"
-
-import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
+import { StaticImage } from "gatsby-plugin-image"
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import RoomIcon from "@material-ui/icons/Room"
 import PhoneIcon from "@material-ui/icons/Phone"
 import EmailIcon from "@material-ui/icons/Email"
@@ -9,7 +9,6 @@ import InstagramIcon from "@material-ui/icons/Instagram"
 import TwitterIcon from "@material-ui/icons/Twitter"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
-import footerLogo from "../images/logo.jpeg"
 import Section from "./Section"
 
 const useStyles = makeStyles({
@@ -55,9 +54,9 @@ const Footer = () => {
       <Box py={5} className={classes.root}>
         <Grid container>
           <Grid item xs={12} sm={5}>
-            <CardMedia
-              image={footerLogo}
-              title="footerImage"
+            <StaticImage
+              src="../images/logo.jpeg"
+              alt="footerImage"
               className={classes.footerLogo}
             />
             <Box className={classes.formatContactSection}>

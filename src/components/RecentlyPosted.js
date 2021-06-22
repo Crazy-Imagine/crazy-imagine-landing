@@ -1,8 +1,9 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
-import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 
 import { BLOG } from "../navigation/sitemap"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
   recentlyPostedTitle: {
@@ -13,8 +14,6 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   recentlyPostedImage: {
-    width: 72,
-    height: 76,
     borderRadius: 4,
     marginRight: 12,
   },
@@ -52,7 +51,14 @@ const RecentlyPosted = () => {
                 slug
                 image {
                   localFile {
-                    publicURL
+                    childImageSharp {
+                      gatsbyImageData(
+                        width: 72
+                        height: 76
+                        placeholder: BLURRED
+                        layout: CONSTRAINED
+                      )
+                    }
                   }
                 }
               }
@@ -74,10 +80,10 @@ const RecentlyPosted = () => {
                 >
                   <Grid container alignItems="center">
                     <Grid item>
-                      <CardMedia
-                        title={el.node.title}
-                        image={el.node.image.localFile.publicURL}
+                      <GatsbyImage
                         className={classes.recentlyPostedImage}
+                        image={getImage(el.node.image.localFile)}
+                        alt={el.node.title}
                       />
                     </Grid>
                     <Grid item xs>

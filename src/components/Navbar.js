@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 import { makeStyles } from "@material-ui/core/styles"
-import { AppBar, Box, CardMedia, Toolbar, Typography } from "@material-ui/core"
+import { AppBar, Box, Toolbar, Typography } from "@material-ui/core"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import TwitterIcon from "@material-ui/icons/Twitter"
 import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
-
-import navbarLogo from "../images/logo.jpeg"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -75,9 +74,9 @@ const Navbar = () => {
           justifyContent="space-evenly"
         >
           <Link to="/">
-            <CardMedia
-              image={navbarLogo}
-              title="logo"
+            <StaticImage
+              src="../images/logo.jpeg"
+              alt="logo"
               className={classes.navbarLogo}
             />
           </Link>
