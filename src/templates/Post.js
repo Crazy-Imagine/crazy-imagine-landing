@@ -16,6 +16,7 @@ import Navbar from "../components/Navbar"
 
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
+import Sidebar from "../components/Sidebar"
 
 const useStyles = makeStyles(theme => ({
   postContainer: {
@@ -105,15 +106,17 @@ const Post = ({ data }) => {
         </Box>
       </Box>
       <Grid container>
-        <Grid item xs={12} sm={12} md={8} lg={10}>
+        <Grid item xs>
           <Box p="24px">
             <ReactMarkdown className={classes.content}>{content}</ReactMarkdown>
           </Box>
         </Grid>
 
         <Hidden smDown>
-          <Grid item md={4} lg={2}>
-            <RecentlyPosted />
+          <Grid item>
+            <Sidebar>
+              <RecentlyPosted />
+            </Sidebar>
           </Grid>
         </Hidden>
       </Grid>
