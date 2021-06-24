@@ -1,6 +1,5 @@
 import React from "react"
-import { Grid, makeStyles, Typography } from "@material-ui/core"
-import { Box } from "@material-ui/core"
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import TeamMember from "./TeamMember"
 import image from "../images/backgroundfafa.jpg"
 
@@ -15,7 +14,7 @@ const useStyles = makeStyles(theme => ({
       justifyContent: "center",
     },
   },
-  title: {
+  ourTeamTitle: {
     fontSize: 65,
     fontFamily: "Gotham",
     textTransform: "uppercase",
@@ -34,34 +33,12 @@ const TeamMembersSection = () => {
         justifyContent="center"
         marginBottom="54px"
       >
-        <Typography className={classes.title}>Our Team Members</Typography>
+        <Typography className={classes.ourTeamTitle}>
+          Our Team Members
+        </Typography>
       </Box>
       <Box display="flex" justifyContent="center">
         <Grid container className={classes.memberGridContainer}>
-          <Grid item xs={12} sm md className={classes.memberGrid}>
-            <TeamMember
-              title="Lorem ipsum Amaet"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore"
-              image={image}
-            />
-          </Grid>
-          <Grid item xs={12} sm md className={classes.memberGrid}>
-            <TeamMember
-              title="Lorem ipsum Amaet"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore"
-              image={image}
-            />
-          </Grid>
-          <Grid item xs={12} sm md className={classes.memberGrid}>
-            <TeamMember
-              title="Lorem ipsum Amaet"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore"
-              image={image}
-            />
-          </Grid>
           <Grid item xs={12} sm md className={classes.memberGrid}>
             <TeamMember
               title="Lorem ipsum Amaet"
