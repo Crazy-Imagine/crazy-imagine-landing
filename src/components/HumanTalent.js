@@ -4,7 +4,7 @@ import clsx from "clsx"
 
 import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
 
-import ourTeamImage from "../images/favicon.png"
+import ourTeamImage from "../images/gatsby-icon.png"
 import "../css/typography.css"
 
 const useStyles = makeStyles(theme => ({
