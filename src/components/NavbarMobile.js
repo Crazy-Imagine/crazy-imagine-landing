@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 import { makeStyles } from "@material-ui/core/styles"
 import { AppBar, Box, Toolbar } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
+import useScroll from "../hooks/useScroll"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -12,33 +13,23 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: props.scroll ? "transparent" : "white",
   }),
 
-  navbarIcons: props => ({
+  navbarMobileIcons: props => ({
     fontSize: 50,
     color: props.scroll ? "white" : "#23aae1",
   }),
-  navbarLogo: {
+  navbarMobileLogo: {
     width: 140,
     height: 73,
   },
 }))
 
 const NavbarMobile = () => {
-  const [scroll, setScroll] = useState(true)
+  //vale ahora como llamo esa funcion aqui?
+  // como lo harias solo que sin pasarle parametros y sacando el valor que te retorna :3
+  const { scroll } = useScroll()
   const classes = useStyles({
     scroll,
   })
-
-  const handleScroll = () => {
-    if (window.scrollY > 40) {
-      setScroll(false)
-    } else {
-      setScroll(true)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <AppBar color="transparent" position="fixed" className={classes.container}>
@@ -55,9 +46,9 @@ const NavbarMobile = () => {
           <StaticImage
             src="../images/logo.jpeg"
             alt="logo"
-            className={classes.navbarLogo}
+            className={classes.navbarMobileLogo}
           />
-          <MenuIcon className={classes.navbarIcons} />
+          <MenuIcon className={classes.navbarMobileIcons} />
         </Box>
       </Toolbar>
     </AppBar>
