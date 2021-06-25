@@ -13,6 +13,9 @@ import {
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 
 const useStyles = makeStyles({
+  cardContainer: {
+    boxShadow: "none",
+  },
   memberImage: {
     width: 228,
     height: 285,
@@ -52,7 +55,7 @@ const TeamMember = ({ title, description, image }) => {
   const classes = useStyles()
   return (
     <Box>
-      <Card>
+      <Card className={classes.cardContainer}>
         <CardMedia
           image={image}
           title="image"
