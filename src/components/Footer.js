@@ -55,7 +55,7 @@ const Footer = () => {
         <Grid container>
           <Grid item xs={12} sm={5}>
             <StaticImage
-              src="../images/logo.jpeg"
+              src="../images/LOGO.png"
               alt="footerImage"
               className={classes.footerLogo}
             />
