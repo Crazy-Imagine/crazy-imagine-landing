@@ -76,7 +76,7 @@ const Navbar = () => {
         >
           <Link to={HOME}>
             <StaticImage
-              src="../images/logo.jpeg"
+              src="../images/LOGO.png"
               alt="logo"
               className={classes.navbarLogo}
             />
