@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 1090,
   },
   memberGrid: {
-    marginBottom: 40,
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
@@ -38,14 +37,36 @@ const TeamMembersSection = () => {
         </Typography>
       </Box>
       <Box display="flex" justifyContent="center">
-        <Grid container className={classes.memberGridContainer}>
-          <Grid item xs={12} sm md className={classes.memberGrid}>
-            <TeamMember
-              title="Lorem ipsum Amaet"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        <Grid
+          container
+          spacing={3}
+          className={classes.memberGridContainer}
+          justify="center"
+        >
+          {[...new Array(20)].map(() => (
+            <Grid
+              item
+              xs={12}
+              sm="auto"
+              md="auto"
+              className={classes.memberGrid}
+            >
+              <TeamMember
+                title="Lorem ipsum Amaet"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore"
-              image={image}
-            />
+                image={image}
+              />
+            </Grid>
+          ))}
+          <Grid item>
+            <Box width={230} />
+          </Grid>
+          <Grid item>
+            <Box width={230} />
+          </Grid>
+          <Grid item>
+            <Box width={230} />
           </Grid>
         </Grid>
       </Box>

@@ -15,6 +15,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 const useStyles = makeStyles({
   cardContainer: {
     boxShadow: "none",
+    backgroundColor: "#fafafa",
   },
   memberImage: {
     width: 228,
@@ -39,6 +40,10 @@ const useStyles = makeStyles({
   },
   readMoreIcon: {
     fontSize: 15,
+    color: "white",
+    backgroundColor: "#292929",
+    borderRadius: "50%",
+    marginLeft: 5,
   },
   link: {
     textDecoration: "none",
