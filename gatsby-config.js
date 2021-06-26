@@ -20,9 +20,15 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
-        collectionTypes: ["article", "category", "writer"],
-        singleTypes: [`homepage`, `global`],
         queryLimit: 1000,
+        collectionTypes: ["article", "category", "writer"],
+        singleTypes: ["homepage", "global"],
+      },
+    },
+    {
+      resolve: "gatsby-background-image-es5",
+      options: {
+        specialChars: "/:",
       },
     },
 
