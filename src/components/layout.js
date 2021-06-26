@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import Seo from "./seo"
 
-import { CssBaseline } from "@material-ui/core"
+import { CssBaseline, Hidden } from "@material-ui/core"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 import Copyright from "./Copyright"
@@ -11,6 +11,7 @@ import HumanTalent from "./HumanTalent"
 import LastestPosts from "./LastestPosts"
 import ReferenceSection from "./ReferenceSection"
 import ContactSection from "./ContactSection"
+import NavbarMobile from "./NavbarMobile"
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -33,7 +34,12 @@ const Layout = ({ children, seo }) => (
       <>
         <Seo seo={seo} />
         <CssBaseline />
-        <Navbar />
+        <Hidden mdDown>
+          <Navbar />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
         <main>{children}</main>
         <HumanTalent />
         <ReferenceSection />

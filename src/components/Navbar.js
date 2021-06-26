@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
@@ -10,6 +10,7 @@ import TwitterIcon from "@material-ui/icons/Twitter"
 import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
+import useScroll from "../hooks/useScroll"
 import { HOME } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
@@ -45,22 +46,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Navbar = () => {
-  const [scroll, setScroll] = useState(true)
+  const { scroll } = useScroll()
   const classes = useStyles({
     scroll,
   })
-
-  const handleScroll = () => {
-    if (window.scrollY > 40) {
-      setScroll(false)
-    } else {
-      setScroll(true)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <AppBar color="transparent" position="fixed" className={classes.container}>
