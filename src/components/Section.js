@@ -3,10 +3,14 @@ import { Box, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   sectionContainer: props => ({
+    backgroundImage: props.backgroundImage
+      ? ` url(${props.backgroundImage})`
+      : "",
     backgroundColor: props.backgroundColor ? props.backgroundColor : "",
-    backgroundImage: props.backgroundImage ? props.backgroundImage : "",
     backgroundRepeat: props.backgroundImage ? "no-repeat" : "",
+    backgroundSize: props.backgroundImage ? "60% 100%" : "",
     width: "100%",
+    position: "relative",
   }),
 }))
 
@@ -21,6 +25,7 @@ const Section = ({
     backgroundColor,
     backgroundImage,
   })
+
   return (
     <Box
       className={classes.sectionContainer}

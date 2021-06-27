@@ -9,20 +9,23 @@ import {
 } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
-  title: {
+  title: props => ({
     fontFamily: "Gotham-ultra",
     fontSize: 40,
-    color: "white",
+    color: props.variant === "dark" ? "black" : "white",
     fontWeight: "bold",
     textTransform: "uppercase",
-    marginBottom: 24,
-  },
-  formInput: {
+    marginBottom: 25,
+  }),
+
+  formInput: props => ({
     backgroundColor: "white",
     borderRadius: 4,
     height: 35,
     width: 424,
     color: "#000000",
+    boxShadow:
+      props.variant === "dark" ? "0px 9px 38px 0px rgba(15, 15, 15, 0.18)" : "",
     fontSize: 16,
     border: 0,
     fontFamily: "Lato",
@@ -38,10 +41,7 @@ const useStyles = makeStyles(theme => ({
     "&:focus": {
       border: 0,
     },
-  },
-  resetFormInput: {
-    height: 200,
-  },
+  }),
   formButton: {
     backgroundColor: "#D32022",
     height: 35,
@@ -51,10 +51,15 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 4,
     color: "white",
   },
+  resetFormInput: {
+    height: "246px !important",
+  },
 }))
 
-const ContactForm = () => {
-  const classes = useStyles()
+const ContactForm = ({ variant = "default" }) => {
+  const classes = useStyles({
+    variant,
+  })
   return (
     <Box>
       <Typography variant="h3" className={classes.title}>
@@ -70,7 +75,7 @@ const ContactForm = () => {
         <Box marginBottom="20px">
           <input className={classes.formInput} placeholder="Subject" />
         </Box>
-        <Box marginBottom="20px">
+        <Box marginBottom="16px">
           <textarea
             placeholder="Message"
             className={clsx(classes.formInput, classes.resetFormInput)}
