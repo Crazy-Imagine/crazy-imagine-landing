@@ -6,11 +6,11 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   makeStyles,
   Typography,
 } from "@material-ui/core"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
   cardContainer: {
@@ -29,6 +29,10 @@ const useStyles = makeStyles({
     color: "#292929",
     marginBottom: 22,
     textTransform: "uppercase",
+    height: 68,
+    display: "flex",
+    alignItems: "center",
+    overflow: "hidden",
   },
   description: {
     fontSize: 14,
@@ -57,13 +61,15 @@ const useStyles = makeStyles({
 })
 
 const TeamMember = ({ title, description, image }) => {
+  const imageMember = getImage(image)
+
   const classes = useStyles()
   return (
     <Box>
       <Card className={classes.cardContainer}>
-        <CardMedia
-          image={image}
-          title="image"
+        <GatsbyImage
+          image={imageMember}
+          alt={title}
           className={classes.memberImage}
         />
         <Box maxWidth="230px">
