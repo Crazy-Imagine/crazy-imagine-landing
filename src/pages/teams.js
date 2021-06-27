@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, CssBaseline } from "@material-ui/core"
+import { Box, CssBaseline, Hidden } from "@material-ui/core"
 
 import HeroSection from "../components/HeroSection"
 import Navbar from "../components/Navbar"
@@ -9,11 +9,17 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import ContactSection from "../components/ContactSection"
 import bgImage from "../images/teamContactBackground.png"
+import NavbarMobile from "../components/NavbarMobile"
 
 const teamsPage = () => {
   return (
     <CssBaseline>
-      <Navbar />
+      <Hidden mdDown>
+        <Navbar variant="secondary" />
+      </Hidden>
+      <Hidden lgUp>
+        <NavbarMobile />
+      </Hidden>
       <Box>
         <HeroSection />
         <TeamMembersSection />
