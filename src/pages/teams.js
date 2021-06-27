@@ -14,7 +14,7 @@ const teamsPage = () => {
   return (
     <CssBaseline>
       <Navbar />
-      <Box paddingTop="150px">
+      <Box>
         <HeroSection />
         <TeamMembersSection />
         <ContactSection bgImage={bgImage} showShadow variant="dark" />

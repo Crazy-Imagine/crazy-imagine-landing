@@ -25,6 +25,12 @@ module.exports = {
         queryLimit: 1000,
       },
     },
+    {
+      resolve: "gatsby-background-image-es5",
+      options: {
+        specialChars: "/:",
+      },
+    },
 
     {
       resolve: `gatsby-plugin-manifest`,
