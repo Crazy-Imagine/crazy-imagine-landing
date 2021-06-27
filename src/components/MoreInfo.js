@@ -26,10 +26,10 @@ const useStyles = makeStyles({
   },
   imageLocation: {
     backgroundColor: "white",
-    marginTop: 40,
     width: 446,
-    height: 281,
-    borderRadius: 4,
+    height: 270,
+    border: 0,
+    borderRadius: 10,
   },
 })
 
@@ -43,7 +43,7 @@ const MoreInfo = () => {
       <Box
         width="45px"
         height="6px"
-        my="24px"
+        my="14px"
         className={classes.boxLine}
       ></Box>
       <Typography className={classes.moreInfoContent}>
@@ -57,13 +57,12 @@ const MoreInfo = () => {
       <Typography className={classes.moreInfoContent}>
         <EmailIcon /> contact@crazyimagine.com
       </Typography>
-      <Box className={classes.imageLocation}>
+      <Box>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d1976.5230466520018!2d-72.20859894197719!3d7.784938006087513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e2!4m0!4m3!3m2!1d7.784993699999999!2d-72.2076548!5e0!3m2!1ses-419!2sve!4v1624006479913!5m2!1ses-419!2sve"
-          width="446"
-          height="281"
           title="location"
           loading="lazy"
+          className={classes.imageLocation}
         ></iframe>
       </Box>
     </Box>

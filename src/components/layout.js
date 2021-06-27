@@ -44,7 +44,7 @@ const Layout = ({ children, seo }) => (
         <HumanTalent />
         <ReferenceSection />
         <LastestPosts />
-        <ContactSection />
+        <ContactSection bgColor="#23aae1" />
         <Footer />
         <Copyright />
       </>

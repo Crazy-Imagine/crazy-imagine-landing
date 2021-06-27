@@ -6,8 +6,6 @@ import Section from "./Section"
 
 const useStyles = makeStyles(theme => ({
   gridContainer: {
-    display: "flex",
-    justifyContent: "space-between",
     paddingBottom: 48,
     paddingTop: 71,
   },
@@ -24,22 +22,43 @@ const useStyles = makeStyles(theme => ({
       marginTop: 20,
     },
   },
+  shadowOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "transparent",
+    boxShadow: "inset 1px 17px 34px 1px rgba(4,8,0,0.25)",
+  },
 }))
 
-const ContactSection = () => {
+const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
   const classes = useStyles()
+
   return (
-    <Section width="1000px" backgroundColor="#23aae1">
-      <Grid container className={classes.gridContainer} id="contact">
-        <Grid item xs={12} sm={12} md={6}>
+    <Section
+      width="1000px"
+      backgroundImage={bgImage ? bgImage : ""}
+      backgroundColor={bgColor ? bgColor : ""}
+    >
+      {showShadow ? <Box className={classes.shadowOverlay} /> : null}
+      <Grid
+        container
+        className={classes.gridContainer}
+        justify="space-between"
+        spacing={10}
+        id="contact"
+      >
+        <Grid item xs={12} sm={12} md="auto">
           <Box className={classes.contactResponsive}>
             <MoreInfo />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid item xs={12} sm={12} md="auto">
           <Box className={classes.formResponsive}>
             <Box className={classes.contactResponsive}>
-              <ContactForm />
+              <ContactForm variant={variant} />
             </Box>
           </Box>
         </Grid>
