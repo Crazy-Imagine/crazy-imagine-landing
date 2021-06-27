@@ -11,7 +11,8 @@ import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
 import useScroll from "../hooks/useScroll"
-import { HOME } from "../navigation/sitemap"
+import { HOME, TEAMS } from "../navigation/sitemap"
+import clsx from "clsx"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -22,10 +23,10 @@ const useStyles = makeStyles(theme => ({
   iconSpacing: {
     marginLeft: theme.spacing(10),
   },
-  navbarIcons: {
+  navbarIcons: props => ({
     fontSize: 20,
-    color: "#23aae1",
-  },
+    color: props.variant === "secondary" && props.scroll ? "white" : "#23aae1",
+  }),
   linkTypograpy: props => ({
     transition: "color 300ms ease",
     fontSize: 14,
@@ -39,16 +40,23 @@ const useStyles = makeStyles(theme => ({
       color: props.scroll ? "#FFFFFF" : "black",
     },
   }),
+  linkTypographyColor: props => ({
+    color:
+      props.scroll && props.variant === "secondary"
+        ? "#23aae1"
+        : "white" && props.variant === "secondary" && "black",
+  }),
   navbarLogo: {
     width: 140,
     height: 73,
   },
 }))
 
-const Navbar = () => {
+const Navbar = ({ variant = "primary" }) => {
   const { scroll } = useScroll()
   const classes = useStyles({
     scroll,
+    variant,
   })
 
   return (
@@ -83,12 +91,18 @@ const Navbar = () => {
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to={`${HOME}#services`} className={classes.linkTypograpy}>
+            <Link
+              to={`${HOME}#services`}
+              className={clsx(
+                classes.linkTypograpy,
+                classes.linkTypographyColor
+              )}
+            >
               Services
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to={`${HOME}#team`} className={classes.linkTypograpy}>
+            <Link to={`${TEAMS}`} className={classes.linkTypograpy}>
               Team
             </Link>
           </Typography>
