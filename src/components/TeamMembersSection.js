@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import TeamMember from "./TeamMember"
-import image from "../images/backgroundfafa.jpg"
+import { graphql, useStaticQuery } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   memberGridContainer: {
@@ -23,7 +23,30 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const TeamMembersSection = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        members: allStrapiMembers {
+          edges {
+            node {
+              id
+              name
+              cardDescription
+              avatar {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
   const classes = useStyles()
+  const members = data.members.edges
   return (
     <Box marginBottom="40px">
       <Box
@@ -43,19 +66,19 @@ const TeamMembersSection = () => {
           className={classes.memberGridContainer}
           justify="center"
         >
-          {[...new Array(20)].map(() => (
+          {members.map((el, i) => (
             <Grid
               item
               xs={12}
               sm="auto"
               md="auto"
               className={classes.memberGrid}
+              key={el.node.id}
             >
               <TeamMember
-                title="Lorem ipsum Amaet"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore"
-                image={image}
+                title={el.node.name}
+                description={el.node.cardDescription}
+                image={el.node.avatar[0].localFile}
               />
             </Grid>
           ))}
