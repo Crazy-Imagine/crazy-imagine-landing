@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, CssBaseline, Hidden } from "@material-ui/core"
+import { Box, Hidden } from "@material-ui/core"
 
 import HeroSection from "../components/HeroSection"
 import Navbar from "../components/Navbar"
@@ -10,10 +10,11 @@ import Copyright from "../components/Copyright"
 import ContactSection from "../components/ContactSection"
 import bgImage from "../images/teamContactBackground.png"
 import NavbarMobile from "../components/NavbarMobile"
+import PageWrapper from "../components/PageWrapper"
 
 const teamsPage = () => {
   return (
-    <CssBaseline>
+    <PageWrapper>
       <Hidden mdDown>
         <Navbar variant="secondary" />
       </Hidden>
@@ -27,7 +28,7 @@ const teamsPage = () => {
         <Footer />
         <Copyright />
       </Box>
-    </CssBaseline>
+    </PageWrapper>
   )
 }
 
