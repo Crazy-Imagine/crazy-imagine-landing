@@ -44,6 +44,8 @@ const HeroSection = () => {
     graphql`
       query {
         team: strapiTeampage {
+          Title
+          Author
           Image {
             localFile {
               childImageSharp {
@@ -58,10 +60,13 @@ const HeroSection = () => {
     `
   )
   const imageData = data.team.Image[0].localFile.childImageSharp.fluid
+  const title = data.team.Title
+  const author = data.team.Author
+
   const classes = useStyles()
 
   return (
-    <Box height="795px">
+    <Box height="795px" marginBottom="60px">
       <BackgroundImage
         Tag="section"
         className={classes.bgImage}
@@ -77,12 +82,13 @@ const HeroSection = () => {
           maxWidth="690px"
         >
           <Typography className={classes.title}>
-            <span className={classes.titleSpan}>Simplicity</span> <br /> is
-            about subtracting the obvious and adding the meaningful
+            <span className={classes.titleSpan}>{title.slice(0, 10)}</span>{" "}
+            <br />
+            {title.slice(10)}
           </Typography>
           <br />
           <Typography className={classes.author}>
-            <Remove className={classes.authorIcon} /> John Meada
+            <Remove className={classes.authorIcon} /> {author}
           </Typography>
         </Box>
       </BackgroundImage>
