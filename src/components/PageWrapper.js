@@ -1,11 +1,13 @@
 import React from "react"
-import { CssBaseline } from "@material-ui/core"
+import { CssBaseline, Box } from "@material-ui/core"
 import "../css/typography.css"
+
 const PageWrapper = ({ children }) => {
+  const classes = useStyles()
   return (
     <>
       <CssBaseline />
-      {children}
+      <Box className={classes.test}>{children}</Box>
     </>
   )
 }

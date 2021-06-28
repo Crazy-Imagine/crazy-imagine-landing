@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     textTransform: "uppercase",
     height: 68,
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     overflow: "hidden",
   },
   description: {
