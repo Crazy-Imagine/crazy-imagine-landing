@@ -6,7 +6,6 @@ import CodeIcon from "@material-ui/icons/Code"
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
 
 import background from "../images/fondo.jpg"
-import "../css/typography.css"
 import HomeCard from "./HomeCard"
 
 const useStyles = makeStyles(theme => ({

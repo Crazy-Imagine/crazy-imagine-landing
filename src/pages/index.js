@@ -15,16 +15,6 @@ const IndexPage = () => {
           mainTitle={data.strapiHomepage.hero.title}
           description={data.strapiHomepage.seo.metaDescription}
         />
-        {/*data.allStrapiArticle 
-        ? <div>{data.allStrapiArticle.nodes.map((el) => 
-          <div>
-            <strong>{el.title}</strong>
-            <ul>{el.description}</ul> 
-            <p>{el.author.name}</p> 
-          </div> )}
-        </div>
-        : 'loading'
-        */}
       </Layout>
     </>
   )
