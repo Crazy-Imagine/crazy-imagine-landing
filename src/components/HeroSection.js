@@ -43,8 +43,8 @@ const HeroSection = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        article: strapiArticle(id: { eq: "Article_5" }) {
-          image {
+        team: strapiTeampage {
+          Image {
             localFile {
               childImageSharp {
                 fluid {
@@ -57,7 +57,7 @@ const HeroSection = () => {
       }
     `
   )
-  const imageData = data.article.image.localFile.childImageSharp.fluid
+  const imageData = data.team.Image[0].localFile.childImageSharp.fluid
   const classes = useStyles()
 
   return (
