@@ -6,7 +6,7 @@ const PageWrapper = ({ children }) => {
   return (
     <>
       <CssBaseline />
-      <Box className={classes.test}>{children}</Box>
+      <Box>{children}</Box>
     </>
   )
 }
