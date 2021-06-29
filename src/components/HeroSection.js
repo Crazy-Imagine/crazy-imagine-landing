@@ -2,11 +2,17 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
-import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
+import { Box, Typography, makeStyles } from "@material-ui/core"
 import { Remove } from "@material-ui/icons"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  containerResponsive: {
+    [theme.breakpoints.down("md")]: {
+      margin: 0,
+      display: "flex",
+      justifyContent: "center",
+    },
+  },
   bgImage: {
     width: "100%",
     height: 800,
@@ -37,7 +43,14 @@ const useStyles = makeStyles({
   authorIcon: {
     fontSize: "2rem",
   },
-})
+  titleContainer: {
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "80%",
+      padding: 5,
+      justifyContent: "center",
+    },
+  },
+}))
 
 const HeroSection = () => {
   const data = useStaticQuery(
@@ -72,24 +85,26 @@ const HeroSection = () => {
         className={classes.bgImage}
         fluid={imageData}
       >
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="flex-end"
-          height="800px"
-          paddingBottom="152px"
-          marginLeft="230px"
-          maxWidth="690px"
-        >
-          <Typography className={classes.title}>
-            <span className={classes.titleSpan}>{title.slice(0, 10)}</span>{" "}
+        <Box marginLeft="230px" className={classes.containerResponsive}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="flex-end"
+            height="800px"
+            paddingBottom="152px"
+            maxWidth="690px"
+            className={classes.titleContainer}
+          >
+            <Typography className={classes.title}>
+              <span className={classes.titleSpan}>{title.slice(0, 10)}</span>{" "}
+              <br />
+              {title.slice(10)}
+            </Typography>
             <br />
-            {title.slice(10)}
-          </Typography>
-          <br />
-          <Typography className={classes.author}>
-            <Remove className={classes.authorIcon} /> {author}
-          </Typography>
+            <Typography className={classes.author}>
+              <Remove className={classes.authorIcon} /> {author}
+            </Typography>
+          </Box>
         </Box>
       </BackgroundImage>
     </Box>
