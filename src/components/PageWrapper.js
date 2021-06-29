@@ -3,7 +3,6 @@ import { CssBaseline, Box } from "@material-ui/core"
 import "../css/typography.css"
 
 const PageWrapper = ({ children }) => {
-  const classes = useStyles()
   return (
     <>
       <CssBaseline />
