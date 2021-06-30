@@ -17,7 +17,7 @@ const Members = ({ data }) => {
       <Navbar />
       <Box paddingTop="150px">
         <MembersCard member={member} />
-        <MembersDescription />
+        <MembersDescription member={member} />
         <MembersTechnologies />
         <MembersMoreDetails />
         <Footer />
@@ -37,6 +37,7 @@ export const query = graphql`
       techcnologies
       email
       lastName
+      portfolio: Portfolio
       avatar {
         localFile {
           childImageSharp {
