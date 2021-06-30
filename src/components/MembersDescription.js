@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import { convertToBgImage, BgImage } from "gbimage-bridge"
+import { Box, Grid, makeStyles } from "@material-ui/core"
+import { getImage } from "gatsby-plugin-image"
+import { BgImage } from "gbimage-bridge"
 import ReactMarkdown from "react-markdown"
 
 const useStyles = makeStyles({
