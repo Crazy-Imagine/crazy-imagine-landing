@@ -17,8 +17,7 @@ const Members = ({ data }) => {
       <Navbar />
       <Box paddingTop="150px">
         <MembersCard member={member} />
-        <MembersDescription />
-        <MembersTechnologies />
+        <MembersDescription member={member} />
         <MembersMoreDetails />
         <Footer />
         <Copyright />
