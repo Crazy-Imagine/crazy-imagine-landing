@@ -5,7 +5,6 @@ import MembersCard from "../components/MembersCard"
 import Navbar from "../components/Navbar"
 import PageWrapper from "../components/PageWrapper"
 import MembersDescription from "../components/MembersDescription"
-import MembersTechnologies from "../components/MembersTechnologies"
 import MembersMoreDetails from "../components/MembersMoreDetails"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
@@ -18,6 +17,7 @@ const Members = ({ data }) => {
       <Box paddingTop="150px">
         <MembersCard member={member} />
         <MembersDescription member={member} />
+
         <MembersMoreDetails />
         <Footer />
         <Copyright />
@@ -36,6 +36,12 @@ export const query = graphql`
       techcnologies
       email
       lastName
+      portfolio: Portfolio
+      skill {
+        name
+        percentage
+      }
+
       avatar {
         localFile {
           childImageSharp {

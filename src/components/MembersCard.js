@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
   memberImage: {
     borderRadius: 10,
     boxShadow: "11.143px 6.695px 35px 0px rgba(0, 0, 0, 0.54)",
+    zIndex: 999,
   },
   memberName: {
     fontSize: 63,
@@ -28,8 +29,9 @@ const useStyles = makeStyles(theme => ({
   memberSkills: {
     fontWeight: "bold",
     fontSize: 18,
-    maxHeight: 100,
-    overflow: "hidden",
+    maxHeight: 105,
+    overflowY: "clip",
+    zIndex: 999,
   },
   skillsContainer: {
     maxWidth: 306,
@@ -55,11 +57,11 @@ const MembersCard = ({ member }) => {
         <Grid
           container
           justify="space-between"
-          spacing={4}
+          spacing={6}
           className={classes.memberContainerResponsive}
         >
           <Grid item xs={12} md={6}>
-            <Box className={classes.memberContainerResponsive}>
+            <Box className={classes.memberContainerResponsive} zIndex="999">
               <GatsbyImage
                 image={image}
                 alt={member.name}
@@ -77,7 +79,7 @@ const MembersCard = ({ member }) => {
               </Typography>
               <Grid container spacing={3} className={classes.skillsContainer}>
                 <Grid item xs={6}>
-                  <Box display="flex" flexDirection="column">
+                  <Box display="flex" flexDirection="column" zIndex="999">
                     <Computer className={classes.memberIcons} />
                     <Typography className={classes.memberSkills}>
                       {member.role}
