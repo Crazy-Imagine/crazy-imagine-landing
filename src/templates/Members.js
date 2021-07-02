@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
 import MembersCard from "../components/MembersCard"
 import Navbar from "../components/Navbar"
 import PageWrapper from "../components/PageWrapper"
@@ -8,8 +8,16 @@ import MembersDescription from "../components/MembersDescription"
 import MembersMoreDetails from "../components/MembersMoreDetails"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
+import TeamMembersSection from "../components/TeamMembersSection"
+
+const useStyles = makeStyles({
+  teamSectionTitle: {
+    maxWidth: "100%",
+  },
+})
 
 const Members = ({ data }) => {
+  const classes = useStyles()
   const member = data.member
   return (
     <PageWrapper>
@@ -19,6 +27,12 @@ const Members = ({ data }) => {
         <MembersDescription member={member} />
 
         <MembersMoreDetails />
+        <TeamMembersSection
+          maxNumberOfItems={4}
+          title="team members"
+          titleClassName={classes.teamSectionTitle}
+          bgColor="rgb(236, 236, 236)"
+        />
         <Footer />
         <Copyright />
       </Box>
