@@ -42,6 +42,7 @@ const TeamMembersSection = ({
               id
               name
               cardDescription
+              slug
               avatar {
                 localFile {
                   childImageSharp {
@@ -91,6 +92,7 @@ const TeamMembersSection = ({
             >
               <TeamMember
                 title={el.node.name}
+                slug={el.node.slug}
                 description={el.node.cardDescription}
                 image={el.node.avatar[0].localFile}
                 backgroundItem={bgColor}

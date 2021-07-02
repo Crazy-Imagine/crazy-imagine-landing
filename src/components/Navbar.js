@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
   },
   navbarIcons: props => ({
     fontSize: 20,
-    color: props.variant === "secondary" && props.scroll ? "white" : "#23aae1",
+    color:
+      props.variant === "secondary" &&
+      "white" &&
+      (props.scroll ? "white" : "#23aae1"),
   }),
   linkTypograpy: props => ({
     transition: "color 300ms ease",
@@ -33,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     lineHeight: "29px",
     color:
-      (props.variant === "dark" ? "black" : "white") &&
+      (props.variant === "dark" && "black") ||
       (props.scroll ? "#FFFFFF" : "black"),
     textTransform: "uppercase",
     textDecoration: "none",
@@ -95,10 +98,7 @@ const Navbar = ({ variant = "primary" }) => {
           <Typography variant="h5">
             <Link
               to={`${HOME}#services`}
-              className={clsx(
-                classes.linkTypograpy,
-                classes.linkTypographyColor
-              )}
+              className={clsx(classes.linkTypograpy)}
             >
               Services
             </Link>
