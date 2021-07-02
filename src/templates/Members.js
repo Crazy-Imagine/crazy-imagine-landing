@@ -56,6 +56,7 @@ export const query = graphql`
       techcnologies
       email
       lastName
+      slug
       portfolio: Portfolio
       skill {
         name

@@ -55,6 +55,12 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
+  linkContainer: {
+    textDecoration: "none",
+    color: "#292929",
+    display: "flex",
+    flexDirection: "column",
+  },
   resetCardMembers: {
     padding: 0,
   },
@@ -62,6 +68,7 @@ const useStyles = makeStyles({
 
 const TeamMember = ({
   title,
+  slug,
   description,
   image,
   backgroundItem = "#fafafa",
@@ -72,26 +79,28 @@ const TeamMember = ({
   return (
     <Box>
       <Card className={classes.cardContainer}>
-        <GatsbyImage
-          image={imageMember}
-          alt={title}
-          className={classes.memberImage}
-        />
-        <Box maxWidth="230px">
-          <CardContent className={classes.resetCardMembers}>
-            <Typography variant="h4" className={classes.title}>
-              {title}
-            </Typography>
-            <Typography className={classes.description}>
-              {description}
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.resetCardMembers}>
-            <Link to="/" className={classes.link}>
-              Read More <ChevronRightIcon className={classes.readMoreIcon} />
-            </Link>
-          </CardActions>
-        </Box>
+        <Link to={slug} className={classes.linkContainer}>
+          <GatsbyImage
+            image={imageMember}
+            alt={title}
+            className={classes.memberImage}
+          />
+          <Box maxWidth="230px">
+            <CardContent className={classes.resetCardMembers}>
+              <Typography variant="h4" className={classes.title}>
+                {title}
+              </Typography>
+              <Typography className={classes.description}>
+                {description}
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.resetCardMembers}>
+              <Link to={slug} className={classes.link}>
+                Read More <ChevronRightIcon className={classes.readMoreIcon} />
+              </Link>
+            </CardActions>
+          </Box>
+        </Link>
       </Card>
     </Box>
   )

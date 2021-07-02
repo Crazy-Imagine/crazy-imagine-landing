@@ -80,16 +80,26 @@ const MembersDescription = ({ member }) => {
                     spacing={4}
                     className={classes.descriptionContainer}
                   >
-                    <Grid item xs={12} md={6}>
-                      <ReactMarkdown className={classes.description}>
-                        {member.description}
-                      </ReactMarkdown>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <ReactMarkdown className={classes.description}>
-                        {member.portfolio}
-                      </ReactMarkdown>
-                    </Grid>
+                    {member.portfolio ? (
+                      <>
+                        <Grid item xs={12} md={6}>
+                          <ReactMarkdown className={classes.description}>
+                            {member.description}
+                          </ReactMarkdown>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <ReactMarkdown className={classes.description}>
+                            {member.portfolio}
+                          </ReactMarkdown>
+                        </Grid>
+                      </>
+                    ) : (
+                      <Grid item xs={12} md="auto">
+                        <ReactMarkdown className={classes.description}>
+                          {member.description}
+                        </ReactMarkdown>
+                      </Grid>
+                    )}
                     <Grid
                       item
                       xs={12}

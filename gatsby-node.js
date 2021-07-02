@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
         members: allStrapiMembers {
           nodes {
-            name
+            slug
             id
           }
         }
@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   members.map((member, i) => {
     createPage({
-      path: `${TEAMS}/${member.id}`,
+      path: `${TEAMS}/${member.slug}`,
       component: MembersTemplate,
       context: {
         id: member.id,
