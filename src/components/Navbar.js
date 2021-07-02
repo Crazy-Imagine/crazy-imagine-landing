@@ -33,11 +33,8 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     lineHeight: "29px",
     color:
-      props.variant === "dark"
-        ? "black"
-        : "white" && props.scroll
-        ? "#FFFFFF"
-        : "black",
+      (props.variant === "dark" ? "black" : "white") &&
+      (props.scroll ? "#FFFFFF" : "black"),
     textTransform: "uppercase",
     textDecoration: "none",
     "&:hover": {
