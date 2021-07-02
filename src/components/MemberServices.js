@@ -8,6 +8,7 @@ import {
   TimelineOutlined,
   WebOutlined,
 } from "@material-ui/icons"
+import { graphql, useStaticQuery } from "gatsby"
 const useStyles = makeStyles(theme => ({
   title: {
     marginBottom: 24,
@@ -62,6 +63,19 @@ const MemberServices = () => {
     <PhoneOutlined className={classes.servicesIcons} />,
     <TimelineOutlined className={classes.servicesIcons} />,
   ]
+  const data = useStaticQuery(graphql`
+    query {
+      details: allStrapiMemberpage {
+        nodes {
+          moreDetails {
+            description
+            id
+            title
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <Box textAlign="center">
@@ -72,23 +86,29 @@ const MemberServices = () => {
         className={classes.servicesContainer}
         wrap="wrap"
       >
-        {[...new Array(6)].map((el, i) => {
+        {data.details.nodes[0].moreDetails.map((el, i) => {
           return (
-            <Grid item md={4} xs={12} className={classes.servicesItem} key={i}>
+            <Grid
+              item
+              md={4}
+              xs={12}
+              className={classes.servicesItem}
+              key={el.id}
+            >
               <Box
-                maxWidth="478px"
-                px="69px"
-                paddingTop="45px"
-                paddingBottom="51px"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
                 className={classes.itemContent}
+                height="326px"
+                px="87px"
               >
                 <Box marginBottom="26px">{icons[i]}</Box>
                 <Typography variant="h4" className={classes.title}>
-                  Title
+                  {el.title}
                 </Typography>
                 <Typography className={classes.servicesDescription}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore
+                  {el.description}
                 </Typography>
               </Box>
             </Grid>
