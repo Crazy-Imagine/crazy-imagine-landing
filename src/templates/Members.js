@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Hidden } from "@material-ui/core"
-import { Box, makeStyles } from "@material-ui/core"
+import { Box, Hidden, makeStyles } from "@material-ui/core"
 import MembersCard from "../components/MembersCard"
 import Navbar from "../components/Navbar"
 import PageWrapper from "../components/PageWrapper"
