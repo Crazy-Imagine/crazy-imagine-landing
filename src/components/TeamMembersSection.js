@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
+import clsx from "clsx"
 import TeamMember from "./TeamMember"
 import { graphql, useStaticQuery } from "gatsby"
 
@@ -7,12 +8,13 @@ const useStyles = makeStyles(theme => ({
   memberGridContainer: {
     maxWidth: 1090,
   },
-  memberGrid: {
+  memberGrid: props => ({
+    backgroundColor: props.bgColor,
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
     },
-  },
+  }),
   ourTeamTitle: {
     fontSize: 65,
     fontFamily: "Gotham",
@@ -20,9 +22,17 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 523,
     lineHeight: 1,
   },
+  memberContainer: props => ({
+    backgroundColor: props.bgColor,
+  }),
 }))
 
-const TeamMembersSection = () => {
+const TeamMembersSection = ({
+  maxNumberOfItems,
+  title = "Our Team Members",
+  titleClassName,
+  bgColor = "white",
+}) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -45,18 +55,22 @@ const TeamMembersSection = () => {
       }
     `
   )
-  const classes = useStyles()
+  const classes = useStyles({ bgColor })
   const members = data.members.edges
   return (
-    <Box marginBottom="40px">
+    <Box
+      paddingBottom="40px"
+      className={classes.memberContainer}
+      paddingTop="90px"
+    >
       <Box
         display="flex"
         textAlign="center"
         justifyContent="center"
         marginBottom="54px"
       >
-        <Typography className={classes.ourTeamTitle}>
-          Our Team Members
+        <Typography className={clsx(classes.ourTeamTitle, titleClassName)}>
+          {title}
         </Typography>
       </Box>
       <Box display="flex" justifyContent="center">
@@ -66,7 +80,7 @@ const TeamMembersSection = () => {
           className={classes.memberGridContainer}
           justify="center"
         >
-          {members.map((el, i) => (
+          {members.slice(0, maxNumberOfItems || members.length).map((el, i) => (
             <Grid
               item
               xs={12}
@@ -79,6 +93,7 @@ const TeamMembersSection = () => {
                 title={el.node.name}
                 description={el.node.cardDescription}
                 image={el.node.avatar[0].localFile}
+                backgroundItem={bgColor}
               />
             </Grid>
           ))}
