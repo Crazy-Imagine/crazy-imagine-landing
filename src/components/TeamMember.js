@@ -13,10 +13,10 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
-  cardContainer: {
+  cardContainer: props => ({
     boxShadow: "none",
-    backgroundColor: "#fafafa",
-  },
+    backgroundColor: props.backgroundItem,
+  }),
   memberImage: {
     width: 228,
     height: 285,
@@ -60,10 +60,15 @@ const useStyles = makeStyles({
   },
 })
 
-const TeamMember = ({ title, description, image }) => {
+const TeamMember = ({
+  title,
+  description,
+  image,
+  backgroundItem = "#fafafa",
+}) => {
   const imageMember = getImage(image)
 
-  const classes = useStyles()
+  const classes = useStyles({ backgroundItem })
   return (
     <Box>
       <Card className={classes.cardContainer}>

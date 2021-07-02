@@ -24,7 +24,6 @@ const MembersMoreDetails = () => {
       flexDirection="column"
       alignItems="center"
       marginTop="78px"
-      marginBottom="90px"
     >
       <Box textAlign="center" maxWidth="680px" marginBottom="62px">
         <Typography className={classes.title}>More details About</Typography>
