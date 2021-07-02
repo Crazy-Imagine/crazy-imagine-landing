@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box } from "@material-ui/core"
+import { Box, Hidden } from "@material-ui/core"
 import MembersCard from "../components/MembersCard"
 import Navbar from "../components/Navbar"
 import PageWrapper from "../components/PageWrapper"
@@ -8,12 +8,18 @@ import MembersDescription from "../components/MembersDescription"
 import MembersMoreDetails from "../components/MembersMoreDetails"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
+import NavbarMobile from "../components/NavbarMobile"
 
 const Members = ({ data }) => {
   const member = data.member
   return (
     <PageWrapper>
-      <Navbar />
+      <Hidden mdDown>
+        <Navbar variant="dark" />
+      </Hidden>
+      <Hidden lgUp>
+        <NavbarMobile />
+      </Hidden>
       <Box paddingTop="150px">
         <MembersCard member={member} />
         <MembersDescription member={member} />
