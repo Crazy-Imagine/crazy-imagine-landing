@@ -67,7 +67,8 @@ const useStyles = makeStyles({
 })
 
 const TeamMember = ({
-  title,
+  name,
+  lastName,
   slug,
   description,
   image,
@@ -82,13 +83,13 @@ const TeamMember = ({
         <Link to={slug} className={classes.linkContainer}>
           <GatsbyImage
             image={imageMember}
-            alt={title}
+            alt={name}
             className={classes.memberImage}
           />
           <Box maxWidth="230px">
             <CardContent className={classes.resetCardMembers}>
               <Typography variant="h4" className={classes.title}>
-                {title}
+                {name} {lastName || ""}
               </Typography>
               <Typography className={classes.description}>
                 {description}
