@@ -41,6 +41,7 @@ const TeamMembersSection = ({
             node {
               id
               name
+              lastName
               cardDescription
               slug
               avatar {
@@ -91,7 +92,8 @@ const TeamMembersSection = ({
               key={el.node.id}
             >
               <TeamMember
-                title={el.node.name}
+                name={el.node.name}
+                lastName={el.node.lastName}
                 slug={el.node.slug}
                 description={el.node.cardDescription}
                 image={el.node.avatar[0].localFile}
