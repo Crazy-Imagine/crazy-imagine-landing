@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Typography } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import ProjectsMainSection from "../components/ProjectsMainSection"
 import OurProjects from "../components/OurProjects"
 import ProjectsServices from "../components/ProjectsServices"
@@ -13,8 +13,7 @@ const projects = () => {
   return (
     <PageWrapper>
       <Navbar variant="dark" />
-      <Box paddingTop="150px">
-        <Typography>Projects</Typography>
+      <Box paddingTop="185px">
         <ProjectsMainSection />
         <OurProjects />
         <ProjectsServices />
