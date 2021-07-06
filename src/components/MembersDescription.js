@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       overflow: "auto",
       marginTop: 0,
+      maxHeight: "auto",
     },
   },
   description: {
