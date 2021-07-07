@@ -53,7 +53,7 @@ const ProjectsContact = () => {
             marginTop="33px"
             marginBottom="-185px"
           >
-            <Box display="flex" justifyContent="flex-end" width="42%">
+            <Box display="flex" justifyContent="flex-end" width="690px">
               <GatsbyImage
                 image={imgCbz}
                 alt="img"
