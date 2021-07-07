@@ -21,7 +21,7 @@ const ProjectCatalog = () => {
 }
 
 const query = graphql`
-  query MyQuery {
+  query {
     projects: allStrapiProjects {
       nodes {
         id
