@@ -1,4 +1,4 @@
-const { BLOG, TEAMS } = require("./src/navigation/sitemap")
+const { BLOG, TEAMS, PROJECTS } = require("./src/navigation/sitemap")
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
@@ -18,6 +18,13 @@ exports.createPages = async ({ graphql, actions }) => {
             id
           }
         }
+
+        projects: allStrapiProjects {
+          nodes {
+            slug
+            id
+          }
+        }
       }
     `
   )
@@ -30,9 +37,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.articles.edges
   const members = result.data.members.nodes
+  const projects = result.data.projects.nodes
 
   const PostTemplate = require.resolve("./src/templates/Post.js")
   const MembersTemplate = require.resolve("./src/templates/Members.js")
+  const ProjectsTemplate = require.resolve("./src/templates/Project.js")
 
   posts.map((post, index) => {
     createPage({
@@ -49,6 +58,15 @@ exports.createPages = async ({ graphql, actions }) => {
       component: MembersTemplate,
       context: {
         id: member.id,
+      },
+    })
+  })
+  projects.map((project, i) => {
+    createPage({
+      path: `${PROJECTS}/${project.slug}`,
+      component: ProjectsTemplate,
+      context: {
+        id: project.id,
       },
     })
   })
