@@ -20,6 +20,7 @@ const Section = ({
   backgroundImage = "",
   height = "",
   children,
+  
 }) => {
   const classes = useStyles({
     backgroundColor,
