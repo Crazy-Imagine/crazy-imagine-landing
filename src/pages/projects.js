@@ -18,7 +18,7 @@ const projects = () => {
         <OurProjects />
         <ProjectsServices />
         <ProjectsContact />
-        <Footer />
+        <Footer height="498px" align="flex-end" />
         <Copyright />
       </Box>
     </PageWrapper>

@@ -45,14 +45,17 @@ const useStyles = makeStyles({
       marginTop: 13,
     },
   },
+  gridContainer: {
+    height: "100%",
+  },
 })
 
-const Footer = () => {
+const Footer = ({ height = "auto", align = "center" }) => {
   const classes = useStyles()
   return (
-    <Section backgroundColor="#1D1D1D" width="1060px">
-      <Box py={5} className={classes.root}>
-        <Grid container>
+    <Section backgroundColor="#1D1D1D" width="1060px" height={height}>
+      <Box py={5} className={classes.root} height="100%">
+        <Grid container alignItems={align} className={classes.gridContainer}>
           <Grid item xs={12} sm={5}>
             <StaticImage
               src="../images/LOGO.png"
