@@ -9,13 +9,16 @@ import AboutProjects from "../components/AboutProjects"
 import GalleryProjects from "../components/GalleryProjects"
 import DescriptionProjects from "../components/DescriptionProjects"
 import MoreProjects from "../components/MoreProjects"
+import { graphql } from "gatsby"
 
-const Project = () => {
+const Project = ({ data }) => {
+  const dataProject = data.strapiProjects
+  const image = dataProject.images
   return (
     <PageWrapper>
       <Navbar />
-      <Box paddingTop="120px">
-        <HeroProjectsSection />
+      <Box>
+        <HeroProjectsSection image={image} title={dataProject.title} />
         <AboutProjects />
         <GalleryProjects />
         <DescriptionProjects />
@@ -26,5 +29,24 @@ const Project = () => {
     </PageWrapper>
   )
 }
+
+export const query = graphql`
+  query Project($id: String!) {
+    strapiProjects(id: { eq: $id }) {
+      details
+      description
+      id
+      moreAbout
+      title
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Project

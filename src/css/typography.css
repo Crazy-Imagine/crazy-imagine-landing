@@ -37,3 +37,7 @@
   font-family: 'Roboto-Black';
   src: url('../fonts/roboto-black.ttf');
 }
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/roboto-regular_[allfont.es].ttf');
+}
