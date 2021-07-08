@@ -23,7 +23,10 @@ const useStyles = makeStyles({
 
 const HeroProjectsSection = ({ image, title }) => {
   const classes = useStyles()
-  const dataImage = getImage(image[1].localFile)
+
+  const dataImage = getImage(
+    image.length > 1 ? image[1].localFile : image[0].localFile
+  )
   return (
     <Box width="100%" height="673px" className={classes.heroContainer}>
       <Box marginLeft="150px" display="flex" height="100%">
