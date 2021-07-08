@@ -19,7 +19,11 @@ const Project = ({ data }) => {
       <Navbar />
       <Box>
         <HeroProjectsSection image={image} title={dataProject.title} />
-        <AboutProjects />
+        <AboutProjects
+          aboutProject={dataProject.details}
+          images={image}
+          moreAbout={dataProject.description}
+        />
         <GalleryProjects />
         <DescriptionProjects />
         <MoreProjects />
