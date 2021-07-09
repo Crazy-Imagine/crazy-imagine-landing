@@ -24,7 +24,10 @@ const Project = ({ data }) => {
           images={image}
           moreAbout={dataProject.description}
         />
-        <GalleryProjects />
+        <GalleryProjects
+          gallery={dataProject.galleryImages}
+          id={dataProject.id}
+        />
         <DescriptionProjects />
         <MoreProjects />
         <Footer />
@@ -43,6 +46,13 @@ export const query = graphql`
       moreAbout
       title
       images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+        }
+      }
+      galleryImages {
         localFile {
           childImageSharp {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
