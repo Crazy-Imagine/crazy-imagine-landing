@@ -25,7 +25,7 @@ const Project = ({ data }) => {
           moreAbout={dataProject.description}
         />
         <GalleryProjects />
-        <DescriptionProjects />
+        <DescriptionProjects description={dataProject.moreAbout} />
         <MoreProjects />
         <Footer />
         <Copyright />
