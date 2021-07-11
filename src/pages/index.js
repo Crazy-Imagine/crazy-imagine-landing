@@ -3,9 +3,11 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import HomeMainSection from "../components/HomeMainSection"
+import { getImage } from "gatsby-plugin-image"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
+  const bgImage = getImage(data.strapiHomepage.seo.shareImage.localFile)
 
   return (
     <>
@@ -14,6 +16,7 @@ const IndexPage = () => {
           title="Crazy imagine sofware"
           mainTitle={data.strapiHomepage.hero.title}
           description={data.strapiHomepage.seo.metaDescription}
+          image={bgImage}
         />
       </Layout>
     </>
@@ -41,7 +44,9 @@ const query = graphql`
         metaDescription
         shareImage {
           localFile {
-            publicURL
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            }
           }
         }
       }
