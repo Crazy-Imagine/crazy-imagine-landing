@@ -1,17 +1,18 @@
 import React from "react"
 
-import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
+import { BgImage } from "gbimage-bridge"
+
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import CodeIcon from "@material-ui/icons/Code"
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
 
-import background from "../images/fondo.jpg"
 import HomeCard from "./HomeCard"
 
 const useStyles = makeStyles(theme => ({
   imageSize: {
     width: "100%",
-    height: 1000,
+    height: 1150,
     borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% ",
     [theme.breakpoints.down("md")]: {
       borderRadius: 0,
@@ -52,14 +53,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const HomeMainSection = ({ title, mainTitle, description }) => {
+const HomeMainSection = ({ title, mainTitle, description, image }) => {
   const classes = useStyles()
 
   return (
     <Box>
-      <CardMedia
-        image={background}
-        title="imageMainSection"
+      <BgImage
+        image={image}
+        alt="mainSectionImage"
         className={classes.imageSize}
       >
         <Box
@@ -93,12 +94,12 @@ const HomeMainSection = ({ title, mainTitle, description }) => {
             {description}
           </Typography>
         </Box>
-      </CardMedia>
+      </BgImage>
       <Grid container className={classes.cardContainer}>
         <Grid item xs="auto">
           <HomeCard
             title="Code"
-            description="Our field of appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
+            description="bof appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
             Icon={AccountCircleIcon}
           />
         </Grid>
