@@ -8,7 +8,8 @@ const useStyles = makeStyles({
   },
   heroImage: {
     width: 800,
-    height: 891,
+    height: 790,
+    filter: "brightness(75%)",
   },
   title: {
     fontFamily: "Gotham-Black",
@@ -30,7 +31,7 @@ const HeroProjectsSection = ({ image, title }) => {
   return (
     <Box width="100%" height="673px" className={classes.heroContainer}>
       <Box marginLeft="150px" display="flex" height="100%">
-        <Box display="flex" alignItems="flex-end" marginBottom="-200px">
+        <Box display="flex" alignItems="flex-end" marginBottom="-150px">
           <GatsbyImage
             image={dataImage}
             alt={title}
@@ -42,7 +43,7 @@ const HeroProjectsSection = ({ image, title }) => {
           alignItems="center"
           marginLeft="-270px"
           zIndex="999"
-          width="350px"
+          width="470px"
         >
           <Typography variant="h3" className={classes.title}>
             {title}

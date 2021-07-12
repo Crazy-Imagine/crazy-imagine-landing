@@ -28,7 +28,10 @@ const useStyles = makeStyles({
 
 const AboutProjects = ({ aboutProject, images, moreAbout }) => {
   const classes = useStyles()
-  const image = getImage(images[0].localFile)
+  const imageOne = getImage(images[0].localFile)
+  const imageTwo = getImage(
+    images[1] ? images[1].localFile : images[0].localFile
+  )
   return (
     <Box>
       <Grid container>
@@ -64,7 +67,7 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
         <Grid item md={6} xs={12}>
           <Box>
             <GatsbyImage
-              image={image}
+              image={imageOne}
               alt="About the project"
               className={classes.projectImage}
             />
@@ -73,7 +76,7 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
         <Grid item md={6} xs={12}>
           <Box>
             <GatsbyImage
-              image={image}
+              image={imageTwo}
               alt="More"
               className={classes.projectImage}
             />
