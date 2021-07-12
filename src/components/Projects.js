@@ -1,6 +1,8 @@
 import React from "react"
 import { Box, Grid, makeStyles } from "@material-ui/core"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   projectImage: {
@@ -38,15 +40,15 @@ const Projects = ({ images }) => {
       <Box maxWidth="844px" className={classes.container}>
         <Grid container justify="center" spacing={2}>
           {images.nodes.map(el => (
-            <>
-              <Grid item xs={12} md={6} key={el.id} className={classes.items}>
+            <Grid item xs={12} md={6} key={el.id} className={classes.items}>
+              <Link to={`${PROJECTS}/${el.slug}`}>
                 <GatsbyImage
                   image={getImage(el.images[0].localFile)}
                   alt="alo"
                   className={classes.projectImage}
                 />
-              </Grid>
-            </>
+              </Link>
+            </Grid>
           ))}
           <Grid item xs={6}></Grid>
         </Grid>

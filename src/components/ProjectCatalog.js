@@ -8,7 +8,6 @@ const ProjectCatalog = () => {
     <StaticQuery
       query={query}
       render={data => {
-        console.log(data.projects.nodes)
         return (
           <>
             <ProjectTabs />
@@ -25,6 +24,7 @@ const query = graphql`
     projects: allStrapiProjects {
       nodes {
         id
+        slug
         images {
           localFile {
             childImageSharp {

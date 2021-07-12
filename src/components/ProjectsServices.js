@@ -28,7 +28,7 @@ const ProjectsServices = () => {
       justifyContent="center"
       flexDirection="column"
       alignItems="center"
-      marginTop="60px"
+      marginTop={{ xs: "40px", md: "300px" }}
     >
       <Typography className={classes.title}>
         Craft your ideas <br /> and bring them to LIFE

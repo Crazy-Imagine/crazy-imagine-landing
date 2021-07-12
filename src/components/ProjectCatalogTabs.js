@@ -1,12 +1,5 @@
 import React, { useState } from "react"
-import {
-  Box,
-  Paper,
-  Tabs,
-  Tab,
-  makeStyles,
-  Typography,
-} from "@material-ui/core"
+import { Box, Paper, Tabs, Tab, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +34,7 @@ const ProjectCatalogTabs = () => {
       <Paper square className={classes.tabsContainer}>
         <Tabs
           value={value}
-          indicatorColor="secondary"
+          indicatorColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
         >
@@ -57,14 +50,14 @@ const ProjectCatalogTabs = () => {
         flexDirection="column"
         alignItems="center"
       >
-        <Box
+        {/* <Box
           width="244px"
           height="5px"
           zIndex="999"
           marginTop="12px"
           className={classes.ourPackagesContainer}
         />
-        <Box
+         <Box
           width="170px"
           height="31px"
           borderRadius="30px"
@@ -74,9 +67,9 @@ const ProjectCatalogTabs = () => {
           justifyContent="center"
           zIndex="999"
         >
-          <Typography className={classes.ourPackages}>Our packages</Typography>
-        </Box>
+       <Typography className={classes.ourPackages}>Our packages</Typography>*/}
       </Box>
+      {/*</Box>*/}
     </Box>
   )
 }
