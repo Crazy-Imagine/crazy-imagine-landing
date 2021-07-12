@@ -1,9 +1,10 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
+import { BgImage } from "gbimage-bridge"
 
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import { Remove } from "@material-ui/icons"
+import { getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   containerResponsive: {
@@ -62,9 +63,7 @@ const HeroSection = () => {
           Image {
             localFile {
               childImageSharp {
-                fluid {
-                  src
-                }
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
           }
@@ -72,7 +71,8 @@ const HeroSection = () => {
       }
     `
   )
-  const imageData = data.team.Image[0].localFile.childImageSharp.fluid
+  const imageData = data.team.Image[0].localFile
+  const bgImage = getImage(imageData)
   const title = data.team.Title
   const author = data.team.Author
 
@@ -80,11 +80,7 @@ const HeroSection = () => {
 
   return (
     <Box height="795px" marginBottom="60px">
-      <BackgroundImage
-        Tag="section"
-        className={classes.bgImage}
-        fluid={imageData}
-      >
+      <BgImage image={bgImage} alt={title} className={classes.bgImage}>
         <Box marginLeft="230px" className={classes.containerResponsive}>
           <Box
             display="flex"
@@ -106,7 +102,7 @@ const HeroSection = () => {
             </Typography>
           </Box>
         </Box>
-      </BackgroundImage>
+      </BgImage>
     </Box>
   )
 }
