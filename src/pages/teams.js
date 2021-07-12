@@ -16,7 +16,7 @@ const teamsPage = () => {
   return (
     <PageWrapper>
       <Hidden mdDown>
-        <Navbar variant="secondary" />
+        <Navbar variant="secondary" variantIcons="secondary" />
       </Hidden>
       <Hidden lgUp>
         <NavbarMobile />
