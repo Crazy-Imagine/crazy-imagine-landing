@@ -8,10 +8,10 @@ export const colors = variant => {
   }
 }
 
-export const colorsIconos = variant => {
-  if (variant === "primary") {
+export const colorsIconos = variantIcons => {
+  if (variantIcons === "primary") {
     return "#23aae1"
-  } else if (variant === "secondary") {
+  } else if (variantIcons === "secondary") {
     return "white"
   } else {
     return "black"
