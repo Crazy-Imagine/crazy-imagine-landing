@@ -12,7 +12,7 @@ import PageWrapper from "../components/PageWrapper"
 const projects = () => {
   return (
     <PageWrapper>
-      <Navbar variant="dark" />
+      <Navbar variant="dark" variantIcons="dark" />
       <Box paddingTop="185px">
         <ProjectsMainSection />
         <OurProjects />

@@ -36,7 +36,7 @@ const Layout = ({ children, seo }) => (
         <Seo seo={seo} />
         <PageWrapper>
           <Hidden mdDown>
-            <Navbar />
+            <Navbar variant="secondary" />
           </Hidden>
           <Hidden lgUp>
             <NavbarMobile />

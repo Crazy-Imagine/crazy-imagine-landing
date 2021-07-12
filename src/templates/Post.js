@@ -75,7 +75,7 @@ const Post = ({ data }) => {
 
   return (
     <CssBaseline>
-      <Navbar />
+      <Navbar variant="secondary" />
       <Box className={classes.postContainer}>
         <Box
           height="850px"
