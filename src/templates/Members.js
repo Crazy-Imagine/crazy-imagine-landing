@@ -23,7 +23,7 @@ const Members = ({ data }) => {
   return (
     <PageWrapper>
       <Hidden mdDown>
-        <Navbar variant="dark" />
+        <Navbar variant="dark" variantIcons="dark" />
       </Hidden>
       <Hidden lgUp>
         <NavbarMobile />

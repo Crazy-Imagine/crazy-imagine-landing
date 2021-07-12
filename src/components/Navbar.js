@@ -13,6 +13,7 @@ import SearchIcon from "@material-ui/icons/Search"
 import useScroll from "../hooks/useScroll"
 import { HOME, TEAMS } from "../navigation/sitemap"
 import clsx from "clsx"
+import { colors, colorsIconos } from "../helpers/navbarColors"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -25,43 +26,39 @@ const useStyles = makeStyles(theme => ({
   },
   navbarIcons: props => ({
     fontSize: 20,
-    color:
-      props.variant === "secondary" &&
-      "white" &&
-      (props.scroll ? "white" : "#23aae1"),
+    color: props.scroll ? props.iconsVariant : "#23aae1",
   }),
+
   linkTypograpy: props => ({
     transition: "color 300ms ease",
     fontSize: 14,
     fontWeight: "bold",
     lineHeight: "29px",
-    color:
-      (props.variant === "dark" && "black") ||
-      (props.scroll ? "#FFFFFF" : "black"),
+    color: props.scroll ? props.linkVariant : "black",
     textTransform: "uppercase",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
-      color: props.scroll ? "#FFFFFF" : "black",
+      color: props.scroll ? props.linkVariant : "black",
     },
   }),
-  linkTypographyColor: props => ({
-    color:
-      props.scroll && props.variant === "secondary"
-        ? "#23aae1"
-        : "white" && props.variant === "secondary" && "black",
-  }),
+
   navbarLogo: {
     width: 140,
     height: 73,
   },
 }))
 
-const Navbar = ({ variant = "primary" }) => {
+const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
   const { scroll } = useScroll()
+
+  const linkVariant = colors(variant)
+  const iconsVariant = colorsIconos(variantIcons)
+  console.log(linkVariant, iconsVariant)
   const classes = useStyles({
     scroll,
-    variant,
+    linkVariant,
+    iconsVariant,
   })
 
   return (
@@ -85,7 +82,7 @@ const Navbar = ({ variant = "primary" }) => {
           </Link>
           <Link to={`${HOME}`}>
             <HomeIcon
-              className={(classes.iconSpacing, classes.navbarIcons)}
+              className={clsx(classes.iconSpacing, classes.navbarIcons)}
               color="primary"
               fontSize="large"
             />
@@ -96,10 +93,7 @@ const Navbar = ({ variant = "primary" }) => {
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link
-              to={`${HOME}#services`}
-              className={clsx(classes.linkTypograpy)}
-            >
+            <Link to={`${HOME}#services`} className={classes.linkTypograpy}>
               Services
             </Link>
           </Typography>

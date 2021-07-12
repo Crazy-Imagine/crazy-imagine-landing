@@ -16,7 +16,7 @@ const Project = ({ data }) => {
   const image = dataProject.images
   return (
     <PageWrapper>
-      <Navbar />
+      <Navbar variant="secondary" variantIcons="secondary" />
       <Box>
         <HeroProjectsSection image={image} title={dataProject.title} />
         <AboutProjects
@@ -24,11 +24,13 @@ const Project = ({ data }) => {
           images={image}
           moreAbout={dataProject.description}
         />
+
         <GalleryProjects
           gallery={dataProject.galleryImages}
           id={dataProject.id}
         />
         <DescriptionProjects />
+
         <MoreProjects />
         <Footer />
         <Copyright />

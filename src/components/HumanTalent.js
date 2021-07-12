@@ -1,10 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import clsx from "clsx"
 
-import { Box, CardMedia, Grid, makeStyles, Typography } from "@material-ui/core"
-
-import ourTeamImage from "../images/gatsby-icon.png"
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -118,70 +117,93 @@ const HumanTalent = () => {
   const classes = useStyles()
 
   return (
-    <Box
-      marginTop="70px"
-      marginBottom="88px"
-      width="100%"
-      display="flex"
-      justifyContent="center"
-    >
-      <Box maxWidth="1050px">
-        <Grid container spacing={4}>
-          <Grid container item xs={12}>
-            <Grid item sm={12} md="auto">
-              <Content title="Our Team">
-                Wirt a wide team of full-stack, front, back end and mobile
-                developers, projct managers and artitects on different levels of
-                expertise, we are sure that we could offer you the people who
-                will fit better to you needs
-              </Content>
-            </Grid>
-            <Grid item xs>
-              <Box
-                display="flex"
-                justifyContent="flex-end"
-                className={classes.teamImgeResponsive}
-              >
-                <CardMedia
-                  image={ourTeamImage}
-                  title="Our Team"
-                  className={classes.ourTeamImage}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-          <Grid container item xs={12}>
-            <Grid item xs className={classes.humanTalentImageResponsive}>
-              <Box className={classes.humanTalentBox}>
-                <CardMedia
-                  image={ourTeamImage}
-                  title="Our Team"
-                  className={classes.humanTalentImage}
-                />
-              </Box>
-            </Grid>
-            <Grid item className={classes.humanTalentContentResponsive}>
-              <Content
-                title={
-                  <>
-                    We are proud <br /> of the human resource talent
-                  </>
-                }
-              >
-                always looking for ways to improve and deliver gret qualy of
-                work for us, terms like partnership, empowerment and teamwork,
-                are core values. <br />
-                <br /> If you want to know more about our team please check our
-                page{" "}
-                <Link to="/" className={classes.ourTeamLink}>
-                  Here
-                </Link>
-              </Content>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
-    </Box>
+    <StaticQuery
+      query={query}
+      render={data => {
+        const dataImageOne = data.homePage.teamImages[0].localFile
+        const dataImageTwo = data.homePage.teamImages[1].localFile
+        return (
+          <Box
+            marginTop="70px"
+            marginBottom="88px"
+            width="100%"
+            display="flex"
+            justifyContent="center"
+          >
+            <Box maxWidth="1050px">
+              <Grid container spacing={4}>
+                <Grid container item xs={12}>
+                  <Grid item sm={12} md="auto">
+                    <Content title="Our Team">
+                      Wirt a wide team of full-stack, front, back end and mobile
+                      developers, projct managers and artitects on different
+                      levels of expertise, we are sure that we could offer you
+                      the people who will fit better to you needs
+                    </Content>
+                  </Grid>
+                  <Grid item xs>
+                    <Box
+                      display="flex"
+                      justifyContent="flex-end"
+                      className={classes.teamImgeResponsive}
+                    >
+                      <GatsbyImage
+                        image={getImage(dataImageTwo)}
+                        alt="Our Team"
+                        className={classes.ourTeamImage}
+                      />
+                    </Box>
+                  </Grid>
+                </Grid>
+                <Grid container item xs={12}>
+                  <Grid item xs className={classes.humanTalentImageResponsive}>
+                    <Box className={classes.humanTalentBox}>
+                      <GatsbyImage
+                        image={getImage(dataImageOne)}
+                        alt="Our Team"
+                        className={classes.humanTalentImage}
+                      />
+                    </Box>
+                  </Grid>
+                  <Grid item className={classes.humanTalentContentResponsive}>
+                    <Content
+                      title={
+                        <>
+                          We are proud <br /> of the human resource talent
+                        </>
+                      }
+                    >
+                      always looking for ways to improve and deliver gret qualy
+                      of work for us, terms like partnership, empowerment and
+                      teamwork, are core values. <br />
+                      <br /> If you want to know more about our team please
+                      check our page{" "}
+                      <Link to="/" className={classes.ourTeamLink}>
+                        Here
+                      </Link>
+                    </Content>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        )
+      }}
+    />
   )
 }
+
+const query = graphql`
+  query {
+    homePage: strapiHomepage {
+      teamImages {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
+        }
+      }
+    }
+  }
+`
 export default HumanTalent
