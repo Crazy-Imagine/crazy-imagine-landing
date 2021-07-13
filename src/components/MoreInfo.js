@@ -5,7 +5,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn"
 import PhoneIcon from "@material-ui/icons/Phone"
 import EmailIcon from "@material-ui/icons/Email"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Gotham-ultra",
     fontSize: 40,
@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     lineHeight: "27px",
     fontFamily: "Roboto",
     fontWeight: "bold",
+    [theme.breakpoints.down("md")]: {
+      width: "85%",
+    },
   },
   boxLine: {
     backgroundColor: "white",
@@ -31,21 +34,27 @@ const useStyles = makeStyles({
     border: 0,
     borderRadius: 10,
   },
-})
+}))
 
 const MoreInfo = () => {
   const classes = useStyles()
   return (
     <Box>
-      <Typography variant="h3" className={classes.title}>
-        More Info
-      </Typography>
       <Box
-        width="45px"
-        height="6px"
-        my="14px"
-        className={classes.boxLine}
-      ></Box>
+        display={{ xs: "flex", md: "block" }}
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Typography variant="h3" className={classes.title}>
+          More Info
+        </Typography>
+        <Box
+          width="45px"
+          height="6px"
+          my="14px"
+          className={classes.boxLine}
+        ></Box>
+      </Box>
       <Typography className={classes.moreInfoContent}>
         <LocationOnIcon />
         Urb Ambroio Plaza #1 street House #2/123, <br /> San Cristobal,
