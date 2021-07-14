@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     color: "#000a30",
     fontWeight: "bold",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      width: "85%",
+    },
   },
   removeMargin: {
     marginTop: 0,
@@ -20,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto",
     fontSize: 18,
     color: "#1e1e1e",
+    [theme.breakpoints.down("md")]: {
+      width: "85%",
+    },
   },
   ourTeamLink: {
     color: "#23aae1",
