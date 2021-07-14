@@ -6,16 +6,19 @@ import { Grid, makeStyles } from "@material-ui/core"
 import PostCard from "./PostCard"
 import { BLOG } from "../navigation/sitemap"
 
-const useStyes = makeStyles({
+const useStyes = makeStyles(theme => ({
   container: {
     width: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
   },
   link: {
     "&:hover": {
       textDecoration: "none",
     },
   },
-})
+}))
 
 const BlogPost = () => {
   const classes = useStyes()
