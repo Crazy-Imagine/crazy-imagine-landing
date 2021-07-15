@@ -48,7 +48,6 @@ const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
         className={classes.gridContainer}
         justify="space-between"
         spacing={10}
-        id="contact"
       >
         <Grid item xs={12} sm={12} md="auto">
           <Box className={classes.contactResponsive}>

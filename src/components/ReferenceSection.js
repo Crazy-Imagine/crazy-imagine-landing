@@ -70,7 +70,9 @@ const ReferenceSection = () => {
                   customerOcupation="CEO LionMane"
                 />
               </Box>
+              <Box id="blog" />
             </BgImage>
+            <Box marginBottom="80px" id="blog" />
           </Box>
         )
       }}
