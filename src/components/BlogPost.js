@@ -56,7 +56,6 @@ const BlogPost = () => {
             spacing={4}
             justify="center"
             className={classes.container}
-            id="blog"
           >
             {data.articles.edges.map(el => (
               <Grid item key={el.node.id}>

@@ -121,7 +121,9 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
             Icon={ArrowUpwardIcon}
           />
         </Grid>
+        <Box id="about" />
       </Grid>
+      <Box marginBottom="70px" />
     </Box>
   )
 }

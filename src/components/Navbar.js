@@ -11,7 +11,7 @@ import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
 import useScroll from "../hooks/useScroll"
-import { HOME, TEAMS } from "../navigation/sitemap"
+import { HOME, PROJECTS, TEAMS } from "../navigation/sitemap"
 import clsx from "clsx"
 import { colors, colorsIconos } from "../helpers/navbarColors"
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }),
 
   linkTypograpy: props => ({
-    transition: "color 300ms ease",
+    transition: "all 300ms ease",
     fontSize: 14,
     fontWeight: "bold",
     lineHeight: "29px",
@@ -93,7 +93,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
             </Link>
           </Typography>
           <Typography variant="h5">
-            <Link to={`${HOME}#services`} className={classes.linkTypograpy}>
+            <Link to={`${PROJECTS}`} className={classes.linkTypograpy}>
               Services
             </Link>
           </Typography>

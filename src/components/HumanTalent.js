@@ -99,7 +99,7 @@ const useStyles = makeStyles(theme => ({
 const Content = ({ title, children }) => {
   const classes = useStyles()
   return (
-    <Box className={classes.humanTalentContentBox} id="team">
+    <Box className={classes.humanTalentContentBox}>
       <Typography
         variant="h2"
         className={clsx(classes.title, classes.removeMargin)}
@@ -130,7 +130,6 @@ const HumanTalent = () => {
         const dataImageTwo = data.homePage.teamImages[1].localFile
         return (
           <Box
-            marginTop="70px"
             marginBottom="88px"
             width="100%"
             display="flex"
