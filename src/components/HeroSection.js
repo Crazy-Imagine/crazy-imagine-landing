@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     [theme.breakpoints.down("md")]: {
-      maxWidth: "80%",
+      maxWidth: "95%",
       padding: 5,
       justifyContent: "center",
     },

@@ -31,7 +31,7 @@ const Project = ({ data }) => {
             gallery={dataProject.galleryImages}
             id={dataProject.id}
           />
-          <DescriptionProjects />
+          <DescriptionProjects description={dataProject.moreAbout} />
 
           <MoreProjects />
           <Footer />

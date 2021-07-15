@@ -12,6 +12,12 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     position: "relative",
   }),
+  sectionResponsive: props => ({
+    height: props.height ? props.height : "auto",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+    },
+  }),
 }))
 
 const Section = ({
@@ -20,11 +26,11 @@ const Section = ({
   backgroundImage = "",
   height = "",
   children,
-  
 }) => {
   const classes = useStyles({
     backgroundColor,
     backgroundImage,
+    height,
   })
 
   return (
@@ -34,7 +40,7 @@ const Section = ({
       justifyContent="center"
       alignItems="center"
     >
-      <Box width={width} height={height ? height : "auto"}>
+      <Box width={width} className={classes.sectionResponsive}>
         {children}
       </Box>
     </Box>
