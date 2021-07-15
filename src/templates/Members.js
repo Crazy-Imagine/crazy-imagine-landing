@@ -10,6 +10,7 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import NavbarMobile from "../components/NavbarMobile"
 import TeamMembersSection from "../components/TeamMembersSection"
+import Layout from "../components/layout"
 
 const useStyles = makeStyles({
   teamSectionTitle: {
@@ -21,28 +22,34 @@ const Members = ({ data }) => {
   const classes = useStyles()
   const member = data.member
   return (
-    <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="dark" variantIcons="dark" />
-      </Hidden>
-      <Hidden lgUp>
-        <NavbarMobile />
-      </Hidden>
-      <Box paddingTop="150px">
-        <MembersCard member={member} />
-        <MembersDescription member={member} />
+    <Layout
+      seo={{
+        metaTitle: `${member.name} ${member.lastName ? member.lastName : ""}`,
+      }}
+    >
+      <PageWrapper>
+        <Hidden mdDown>
+          <Navbar variant="dark" variantIcons="dark" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
+        <Box paddingTop="150px">
+          <MembersCard member={member} />
+          <MembersDescription member={member} />
 
-        <MembersMoreDetails />
-        <TeamMembersSection
-          maxNumberOfItems={4}
-          title="team members"
-          titleClassName={classes.teamSectionTitle}
-          bgColor="rgb(236, 236, 236)"
-        />
-        <Footer />
-        <Copyright />
-      </Box>
-    </PageWrapper>
+          <MembersMoreDetails />
+          <TeamMembersSection
+            maxNumberOfItems={4}
+            title="team members"
+            titleClassName={classes.teamSectionTitle}
+            bgColor="rgb(236, 236, 236)"
+          />
+          <Footer />
+          <Copyright />
+        </Box>
+      </PageWrapper>
+    </Layout>
   )
 }
 export const query = graphql`

@@ -2,14 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import {
-  Box,
-  CssBaseline,
-  Hidden,
-  Typography,
-  makeStyles,
-  Grid,
-} from "@material-ui/core"
+import { Box, Hidden, Typography, makeStyles, Grid } from "@material-ui/core"
 
 import RecentlyPosted from "../components/RecentlyPosted"
 import Navbar from "../components/Navbar"
@@ -17,6 +10,8 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import Sidebar from "../components/Sidebar"
+import PageWrapper from "../components/PageWrapper"
+import Layout from "../components/layout"
 
 const useStyles = makeStyles(theme => ({
   postContainer: {
@@ -74,55 +69,61 @@ const Post = ({ data }) => {
   const image = getImage(data.article.image.localFile)
 
   return (
-    <CssBaseline>
-      <Navbar variant="secondary" />
-      <Box className={classes.postContainer}>
-        <Box
-          height="850px"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          paddingBottom="40px"
-          paddingLeft="290px"
-          className={classes.titleContainer}
-        >
+    <Layout seo={{ metaTitle: title }}>
+      <PageWrapper>
+        <Navbar variant="secondary" />
+        <Box className={classes.postContainer}>
           <Box
+            height="850px"
             display="flex"
-            marginTop="auto"
-            justifyContent={{
-              xs: "center",
-              lg: "flex-start",
-            }}
-            marginBottom="auto"
+            flexDirection="column"
+            justifyContent="center"
+            paddingBottom="40px"
+            paddingLeft="290px"
+            className={classes.titleContainer}
           >
-            <Typography variant="h4" className={classes.title}>
-              {title}
+            <Box
+              display="flex"
+              marginTop="auto"
+              justifyContent={{
+                xs: "center",
+                lg: "flex-start",
+              }}
+              marginBottom="auto"
+            >
+              <Typography variant="h4" className={classes.title}>
+                {title}
+              </Typography>
+              <Hidden mdDown>
+                <GatsbyImage image={image} alt={title} />
+              </Hidden>
+            </Box>
+            <Typography className={classes.description}>
+              {description}
             </Typography>
-            <Hidden mdDown>
-              <GatsbyImage image={image} alt={title} />
-            </Hidden>
           </Box>
-          <Typography className={classes.description}>{description}</Typography>
         </Box>
-      </Box>
-      <Grid container>
-        <Grid item xs>
-          <Box p="24px">
-            <ReactMarkdown className={classes.content}>{content}</ReactMarkdown>
-          </Box>
-        </Grid>
-
-        <Hidden smDown>
-          <Grid item>
-            <Sidebar>
-              <RecentlyPosted />
-            </Sidebar>
+        <Grid container>
+          <Grid item xs>
+            <Box p="24px">
+              <ReactMarkdown className={classes.content}>
+                {content}
+              </ReactMarkdown>
+            </Box>
           </Grid>
-        </Hidden>
-      </Grid>
-      <Footer />
-      <Copyright />
-    </CssBaseline>
+
+          <Hidden smDown>
+            <Grid item>
+              <Sidebar>
+                <RecentlyPosted />
+              </Sidebar>
+            </Grid>
+          </Hidden>
+        </Grid>
+        <Footer />
+        <Copyright />
+      </PageWrapper>
+    </Layout>
   )
 }
 

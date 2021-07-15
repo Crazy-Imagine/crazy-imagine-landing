@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { Box } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
 import Navbar from "../components/Navbar"
@@ -9,33 +10,35 @@ import AboutProjects from "../components/AboutProjects"
 import GalleryProjects from "../components/GalleryProjects"
 import DescriptionProjects from "../components/DescriptionProjects"
 import MoreProjects from "../components/MoreProjects"
-import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 const Project = ({ data }) => {
   const dataProject = data.strapiProjects
   const image = dataProject.images
   return (
-    <PageWrapper>
-      <Navbar variant="secondary" variantIcons="secondary" />
-      <Box>
-        <HeroProjectsSection image={image} title={dataProject.title} />
-        <AboutProjects
-          aboutProject={dataProject.details}
-          images={image}
-          moreAbout={dataProject.description}
-        />
+    <Layout seo={{ metaTitle: dataProject.title }}>
+      <PageWrapper>
+        <Navbar variant="secondary" variantIcons="secondary" />
+        <Box>
+          <HeroProjectsSection image={image} title={dataProject.title} />
+          <AboutProjects
+            aboutProject={dataProject.details}
+            images={image}
+            moreAbout={dataProject.description}
+          />
 
-        <GalleryProjects
-          gallery={dataProject.galleryImages}
-          id={dataProject.id}
-        />
-        <DescriptionProjects />
+          <GalleryProjects
+            gallery={dataProject.galleryImages}
+            id={dataProject.id}
+          />
+          <DescriptionProjects />
 
-        <MoreProjects />
-        <Footer />
-        <Copyright />
-      </Box>
-    </PageWrapper>
+          <MoreProjects />
+          <Footer />
+          <Copyright />
+        </Box>
+      </PageWrapper>
+    </Layout>
   )
 }
 
