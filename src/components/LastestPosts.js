@@ -18,7 +18,7 @@ const LastestPosts = () => {
   const classes = useStyes()
 
   return (
-    <Box py="80px">
+    <Box>
       <Box
         textAlign="center"
         display="flex"
@@ -38,6 +38,7 @@ const LastestPosts = () => {
         ></Box>
       </Box>
       <BlogPost />
+      <Box id="contact" paddingBottom="80px"></Box>
     </Box>
   )
 }
