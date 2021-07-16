@@ -11,25 +11,28 @@ import ContactSection from "../components/ContactSection"
 import bgImage from "../images/teamContactBackground.png"
 import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
+import Layout from "../components/layout"
 
-const teamsPage = () => {
+const TeamsPage = () => {
   return (
-    <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="secondary" variantIcons="secondary" />
-      </Hidden>
-      <Hidden lgUp>
-        <NavbarMobile />
-      </Hidden>
-      <Box>
-        <HeroSection />
-        <TeamMembersSection />
-        <ContactSection bgImage={bgImage} showShadow variant="dark" />
-        <Footer />
-        <Copyright />
-      </Box>
-    </PageWrapper>
+    <Layout seo={{ metaTitle: "Teams" }}>
+      <PageWrapper>
+        <Hidden mdDown>
+          <Navbar variant="secondary" variantIcons="secondary" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
+        <Box>
+          <HeroSection />
+          <TeamMembersSection />
+          <ContactSection bgImage={bgImage} showShadow variant="dark" />
+          <Footer />
+          <Copyright />
+        </Box>
+      </PageWrapper>
+    </Layout>
   )
 }
 
-export default teamsPage
+export default TeamsPage
