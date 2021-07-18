@@ -14,6 +14,7 @@ import PageWrapper from "../components/PageWrapper"
 
 import Layout from "../components/layout"
 import HomeMainSection from "../components/HomeMainSection"
+import ProjectSection from "../components/ProjectSection"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -35,6 +36,7 @@ const IndexPage = () => {
             description={data.strapiHomepage.seo.metaDescription}
             image={bgImage}
           />
+          <ProjectSection />
           <HumanTalent />
           <ReferenceSection />
           <LastestPosts />
