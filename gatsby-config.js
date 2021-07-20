@@ -26,6 +26,7 @@ module.exports = {
           "writer",
           "members",
           "projects",
+          "reviews",
         ],
         singleTypes: [
           `homepage`,
