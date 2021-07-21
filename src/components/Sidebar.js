@@ -11,7 +11,7 @@ const Sidebar = ({ children }) => {
   const classes = useStyles()
   return (
     <Box
-      px="24px"
+      paddingRight="88px"
       paddingTop="64px"
       position="sticky"
       top="100px"
