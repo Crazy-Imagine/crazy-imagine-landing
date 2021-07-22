@@ -123,7 +123,6 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
         </Grid>
         <Box id="about" />
       </Grid>
-      <Box marginBottom="70px" />
     </Box>
   )
 }
