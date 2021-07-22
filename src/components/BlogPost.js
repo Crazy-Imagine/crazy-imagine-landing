@@ -61,7 +61,7 @@ const BlogPost = () => {
               <Grid item key={el.node.id}>
                 <Link to={`${BLOG}/${el.node.slug}`} className={classes.link}>
                   <PostCard
-                    image={el.node.image.localFile.publicURL}
+                    image={el.node.image[0].localFile.publicURL}
                     author={el.node.author.name}
                     tags={el.node.category.name}
                     title={el.node.title}

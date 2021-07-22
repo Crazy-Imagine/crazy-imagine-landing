@@ -12,6 +12,8 @@ import Copyright from "../components/Copyright"
 import Sidebar from "../components/Sidebar"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
+import PostCarousel from "../components/PostCarousel"
+import NavbarMobile from "../components/NavbarMobile"
 
 const useStyles = makeStyles(theme => ({
   postContainer: {
@@ -66,12 +68,17 @@ const Post = ({ data }) => {
   const title = data.article.title
   const description = data.article.description
   const content = data.article.content
-  const image = getImage(data.article.image.localFile)
+  const image = getImage(data.article.image[0].localFile)
 
   return (
     <Layout seo={{ metaTitle: title }}>
       <PageWrapper>
-        <Navbar variant="secondary" />
+        <Hidden mdDown>
+          <Navbar variant="secondary" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
         <Box className={classes.postContainer}>
           <Box
             height="850px"
@@ -120,6 +127,7 @@ const Post = ({ data }) => {
             </Grid>
           </Hidden>
         </Grid>
+        <PostCarousel articles={data.article} />
         <Footer />
         <Copyright />
       </PageWrapper>
