@@ -1,9 +1,9 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ReactMarkdown from "react-markdown"
-import { Box, makeStyles } from "@material-ui/core"
+import { Box, Hidden, makeStyles } from "@material-ui/core"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   content: {
     fontFamily: "Roboto",
     fontSize: 18,
@@ -18,8 +18,11 @@ const useStyles = makeStyles({
   contentImageSecondary: {
     minWidth: 780,
     height: 260,
+    [theme.breakpoints.down("md")]: {
+      minWidth: "100%",
+    },
   },
-})
+}))
 
 const PostContent = ({ data }) => {
   const classes = useStyles()
@@ -28,18 +31,24 @@ const PostContent = ({ data }) => {
       display="flex"
       gridGap="38px"
       paddingTop="38px"
-      paddingLeft={`${data.article.image[1] || "170px"}`}
+      paddingLeft={{ xs: "0px", md: `${data.article.image[1] || "170px"}` }}
     >
       {data.article.image[1] ? (
-        <GatsbyImage
-          image={getImage(data.article.image[1].localFile)}
-          alt="contentImage"
-          className={classes.contentImage}
-        />
+        <Hidden mdDown>
+          <GatsbyImage
+            image={getImage(data.article.image[1].localFile)}
+            alt="contentImage"
+            className={classes.contentImage}
+          />
+        </Hidden>
       ) : (
         ""
       )}
-      <Box paddingLeft="38px" paddingRight="64px" paddingTop="58px">
+      <Box
+        paddingLeft={{ xs: "7px", md: "38px" }}
+        paddingRight={{ xs: "7px", md: "64px" }}
+        paddingTop="58px"
+      >
         <ReactMarkdown className={classes.content}>
           {data.article.content}
         </ReactMarkdown>

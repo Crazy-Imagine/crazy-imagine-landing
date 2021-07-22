@@ -23,20 +23,25 @@ const useStyles = makeStyles(theme => ({
   imageTitle: {
     width: 958,
     height: 731,
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   title: {
     color: "#ffffff",
     fontFamily: "Gotham",
     fontWeight: 500,
     fontSize: 72,
+    filter: "drop-shadow(1px 4px 6px black)",
     margin: "auto 0px",
     maxWidth: 601,
     marginRight: "auto",
 
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
+      fontSize: 52,
       marginRight: 0,
-      maxWidth: "75%",
+      maxWidth: "100%",
       textAlign: "center",
     },
   },
@@ -56,7 +61,6 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     [theme.breakpoints.down("md")]: {
-      paddingLeft: 24,
       paddingBottom: 16,
       alignItems: "center",
     },
@@ -96,24 +100,22 @@ const Post = ({ data }) => {
               }}
               marginBottom="auto"
             >
-              <Hidden mdDown>
-                <BgImage
-                  image={getImage(data.article.image[0].localFile)}
-                  alt={title}
-                  className={classes.imageTitle}
+              <BgImage
+                image={getImage(data.article.image[0].localFile)}
+                alt={title}
+                className={classes.imageTitle}
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  height="100%"
+                  marginLeft={{ xs: "0px", md: "-260px" }}
                 >
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    height="100%"
-                    marginLeft="-260px"
-                  >
-                    <Typography variant="h4" className={classes.title}>
-                      {title}
-                    </Typography>
-                  </Box>
-                </BgImage>
-              </Hidden>
+                  <Typography variant="h4" className={classes.title}>
+                    {title}
+                  </Typography>
+                </Box>
+              </BgImage>
             </Box>
           </Box>
           <Box display="flex" justifyContent="center" paddingBottom="76px">
@@ -126,7 +128,6 @@ const Post = ({ data }) => {
           <Grid item xs>
             <PostContent data={data} />
           </Grid>
-
           <Hidden smDown>
             <Grid item>
               <Sidebar>
@@ -135,7 +136,9 @@ const Post = ({ data }) => {
             </Grid>
           </Hidden>
         </Grid>
-        <PostCarousel articles={data.article} />
+        <Hidden mdDown>
+          <PostCarousel articles={data.article} />
+        </Hidden>
         <Footer />
         <Copyright />
       </PageWrapper>

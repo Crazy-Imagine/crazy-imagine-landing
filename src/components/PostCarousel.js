@@ -10,8 +10,9 @@ import {
   useTheme,
 } from "@material-ui/core"
 
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import { ArrowBackOutlined, ArrowForwardOutlined } from "@material-ui/icons"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   bgImage: {
@@ -94,9 +95,11 @@ const PostCarousel = () => {
                           <ArrowBackOutlined />
                         )}
                       </Button>
-                      <Typography className={classes.title}>
-                        {articles[activeStep].title}
-                      </Typography>
+                      <Link to={`${BLOG}/${articles[activeStep].slug}`}>
+                        <Typography className={classes.title}>
+                          {articles[activeStep].title}
+                        </Typography>
+                      </Link>
                     </Box>
                   </Box>
                 </BgImage>
@@ -116,9 +119,11 @@ const PostCarousel = () => {
                   >
                     <Typography className={classes.steps}>Next Post</Typography>
                     <Box display="flex">
-                      <Typography className={classes.title}>
-                        {articles[activeStep + 1].title}{" "}
-                      </Typography>
+                      <Link to={`${BLOG}/${articles[activeStep + 1].slug}`}>
+                        <Typography className={classes.title}>
+                          {articles[activeStep + 1].title}{" "}
+                        </Typography>
+                      </Link>
 
                       <Button
                         size="small"
@@ -150,6 +155,7 @@ const query = graphql`
       nodes {
         id
         title
+        slug
         image {
           localFile {
             childImageSharp {
