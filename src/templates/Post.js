@@ -13,6 +13,8 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import { BgImage } from "gbimage-bridge"
 import PostContent from "../components/PostContent"
+import PostCarousel from "../components/PostCarousel"
+import NavbarMobile from "../components/NavbarMobile"
 
 const useStyles = makeStyles(theme => ({
   postContainer: {
@@ -69,7 +71,12 @@ const Post = ({ data }) => {
   return (
     <Layout seo={{ metaTitle: title }}>
       <PageWrapper>
-        <Navbar variant="secondary" />
+        <Hidden mdDown>
+          <Navbar variant="secondary" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
         <Box className={classes.postContainer}>
           <Box
             height="850px"
@@ -128,6 +135,7 @@ const Post = ({ data }) => {
             </Grid>
           </Hidden>
         </Grid>
+        <PostCarousel articles={data.article} />
         <Footer />
         <Copyright />
       </PageWrapper>
