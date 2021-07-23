@@ -1,10 +1,29 @@
 import React from "react"
-import { Box, Typography } from "@material-ui/core"
+import { Box, Grid, makeStyles } from "@material-ui/core"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const GalleryProjects = () => {
+const useStyles = makeStyles({
+  galleryImage: {
+    width: "100%",
+    height: 322,
+  },
+})
+
+const GalleryProjects = ({ gallery }) => {
+  const classes = useStyles()
   return (
     <Box>
-      <Typography>GalleryProjects</Typography>
+      <Grid container>
+        {gallery.map((el, i) => (
+          <Grid item xs={12} md key={i}>
+            <GatsbyImage
+              image={getImage(el.localFile)}
+              alt={`image${i}`}
+              className={classes.galleryImage}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   )
 }

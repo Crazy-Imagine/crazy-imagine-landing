@@ -28,6 +28,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 36,
     marginTop: -90,
     position: "relative",
+    height: 75,
+    overflow: "hidden",
     zIndex: 999,
     lineHeight: 1,
     marginLeft: 50,

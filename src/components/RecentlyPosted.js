@@ -82,7 +82,7 @@ const RecentlyPosted = () => {
                     <Grid item>
                       <GatsbyImage
                         className={classes.recentlyPostedImage}
-                        image={getImage(el.node.image.localFile)}
+                        image={getImage(el.node.image[0].localFile)}
                         alt={el.node.title}
                       />
                     </Grid>

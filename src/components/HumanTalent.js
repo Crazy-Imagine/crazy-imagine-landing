@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     color: "#000a30",
     fontWeight: "bold",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      width: "85%",
+    },
   },
   removeMargin: {
     marginTop: 0,
@@ -20,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto",
     fontSize: 18,
     color: "#1e1e1e",
+    [theme.breakpoints.down("md")]: {
+      width: "85%",
+    },
   },
   ourTeamLink: {
     color: "#23aae1",
@@ -93,7 +99,7 @@ const useStyles = makeStyles(theme => ({
 const Content = ({ title, children }) => {
   const classes = useStyles()
   return (
-    <Box className={classes.humanTalentContentBox} id="team">
+    <Box className={classes.humanTalentContentBox}>
       <Typography
         variant="h2"
         className={clsx(classes.title, classes.removeMargin)}
@@ -124,7 +130,6 @@ const HumanTalent = () => {
         const dataImageTwo = data.homePage.teamImages[1].localFile
         return (
           <Box
-            marginTop="70px"
             marginBottom="88px"
             width="100%"
             display="flex"

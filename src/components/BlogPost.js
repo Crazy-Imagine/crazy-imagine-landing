@@ -6,16 +6,19 @@ import { Grid, makeStyles } from "@material-ui/core"
 import PostCard from "./PostCard"
 import { BLOG } from "../navigation/sitemap"
 
-const useStyes = makeStyles({
+const useStyes = makeStyles(theme => ({
   container: {
     width: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
   },
   link: {
     "&:hover": {
       textDecoration: "none",
     },
   },
-})
+}))
 
 const BlogPost = () => {
   const classes = useStyes()
@@ -53,13 +56,12 @@ const BlogPost = () => {
             spacing={4}
             justify="center"
             className={classes.container}
-            id="blog"
           >
             {data.articles.edges.map(el => (
               <Grid item key={el.node.id}>
                 <Link to={`${BLOG}/${el.node.slug}`} className={classes.link}>
                   <PostCard
-                    image={el.node.image.localFile.publicURL}
+                    image={el.node.image[0].localFile.publicURL}
                     author={el.node.author.name}
                     tags={el.node.category.name}
                     title={el.node.title}

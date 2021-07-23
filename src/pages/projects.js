@@ -9,28 +9,43 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
+import Layout from "../components/layout"
+import { graphql, useStaticQuery } from "gatsby"
 
-const projects = () => {
+const Projects = () => {
+  const data = useStaticQuery(query)
   return (
-    <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="dark" variantIcons="dark" />
-      </Hidden>
-      <Hidden lgUp>
-        <NavbarMobile />
-      </Hidden>
-      <Box paddingTop="185px">
-        <ProjectsMainSection />
-        <OurProjects />
-        <ProjectsServices />
+    <Layout seo={data.projectsPage.SEO}>
+      <PageWrapper>
         <Hidden mdDown>
-          <ProjectsContact />
+          <Navbar variant="dark" variantIcons="dark" />
         </Hidden>
-        <Footer height="498px" align="flex-end" />
-        <Copyright />
-      </Box>
-    </PageWrapper>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
+        <Box paddingTop="185px">
+          <ProjectsMainSection />
+          <OurProjects />
+          <ProjectsServices />
+          <ProjectsContact />
+          <Footer height="498px" align="flex-end" />
+          <Copyright />
+        </Box>
+      </PageWrapper>
+    </Layout>
   )
 }
 
-export default projects
+const query = graphql`
+  query {
+    projectsPage: strapiProjectsPage {
+      SEO {
+        metaDescription
+        metaTitle
+        id
+      }
+    }
+  }
+`
+
+export default Projects

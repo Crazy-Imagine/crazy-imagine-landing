@@ -26,6 +26,7 @@ module.exports = {
           "writer",
           "members",
           "projects",
+          "reviews",
         ],
         singleTypes: [
           `homepage`,
@@ -66,6 +67,7 @@ module.exports = {
           { family: "Lato", weights: ["400"] },
           { family: "Poppins", weights: ["400"] },
           { family: "Hind", weights: ["400"] },
+          { family: "Open Sans", weights: ["400"] },
         ],
       },
     },

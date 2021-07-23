@@ -48,6 +48,11 @@ const useStyles = makeStyles({
   gridContainer: {
     height: "100%",
   },
+  items: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 })
 
 const Footer = ({ height = "auto", align = "center" }) => {
@@ -56,13 +61,18 @@ const Footer = ({ height = "auto", align = "center" }) => {
     <Section backgroundColor="#1D1D1D" width="1060px" height={height}>
       <Box py={5} className={classes.root} height="100%">
         <Grid container alignItems={align} className={classes.gridContainer}>
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} md={5} className={classes.items}>
             <StaticImage
               src="../images/LOGO.png"
               alt="footerImage"
               className={classes.footerLogo}
             />
-            <Box className={classes.formatContactSection}>
+            <Box
+              className={classes.formatContactSection}
+              display={{ xs: "flex", md: "block" }}
+              flexDirection="column"
+              alignItems="center"
+            >
               <Typography variant="h3" className={classes.sectionTitle}>
                 CONTACT
               </Typography>
@@ -81,7 +91,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
             </Box>
           </Grid>
           <Grid item container xs={12} sm={7} spacing={1}>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4} className={classes.items}>
               <Typography variant="h3" className={classes.sectionTitle}>
                 ABOUT US
               </Typography>
@@ -91,7 +101,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 About Crazy Imagine
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4} className={classes.items}>
               <Typography variant="h3" className={classes.sectionTitle}>
                 COMPANY
               </Typography>
@@ -106,7 +116,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 What our clients say
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4} className={classes.items}>
               <Typography variant="h3" className={classes.sectionTitle}>
                 GET STARTED
               </Typography>

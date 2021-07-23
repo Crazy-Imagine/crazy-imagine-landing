@@ -18,7 +18,7 @@ const LastestPosts = () => {
   const classes = useStyes()
 
   return (
-    <Box py="80px">
+    <Box>
       <Box
         textAlign="center"
         display="flex"
@@ -32,12 +32,13 @@ const LastestPosts = () => {
         <Box
           width="45px"
           height="6px"
-          marginBottom="108px"
+          marginBottom={{ xs: "30px", md: "108px" }}
           marginTop="8px"
           className={classes.boxLine}
         ></Box>
       </Box>
       <BlogPost />
+      <Box id="contact" paddingBottom="80px"></Box>
     </Box>
   )
 }

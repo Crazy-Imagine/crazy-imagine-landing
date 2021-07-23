@@ -16,6 +16,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     textTransform: "uppercase",
     marginBottom: 25,
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+      justifyContent: "center",
+    },
   }),
 
   formInput: props => ({

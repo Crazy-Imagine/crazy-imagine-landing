@@ -30,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     fontWeight: "bold",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 66,
+      marginBottom: 30,
+    },
   },
   subTitle: {
     fontSize: 16,
@@ -117,6 +121,7 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
             Icon={ArrowUpwardIcon}
           />
         </Grid>
+        <Box id="about" />
       </Grid>
     </Box>
   )
