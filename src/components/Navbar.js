@@ -54,7 +54,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
 
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  console.log(linkVariant, iconsVariant)
+
   const classes = useStyles({
     scroll,
     linkVariant,

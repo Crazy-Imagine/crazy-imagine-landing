@@ -7,6 +7,7 @@ import ProjectCatalog from "./ProjectCatalog"
 
 const useStyles = makeStyles(theme => ({
   bgImage: {
+    height: 2200,
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
