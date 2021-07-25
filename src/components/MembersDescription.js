@@ -76,7 +76,7 @@ const MembersDescription = ({ member }) => {
                 <Box maxWidth="925px">
                   <Grid
                     container
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                     spacing={4}
                     className={classes.descriptionContainer}

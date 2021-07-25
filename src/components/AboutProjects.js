@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import clsx from "clsx"
 
 const useStyles = makeStyles({
   projectContainer: {
@@ -16,6 +17,9 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     textTransform: "uppercase",
     lineHeight: 1,
+  },
+  aboutProjectColor: {
+    color: "white"
   },
   description: {
     fontFamily: "Roboto-Regular",
@@ -48,8 +52,9 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
               display="flex"
               flexDirection="column"
               justifyContent="center"
+              
             >
-              <Typography variant="h5" className={classes.title}>
+              <Typography variant="h5" className={clsx(classes.title, classes.aboutProjectColor)}>
                 About the project
               </Typography>
               <Box

@@ -1,7 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-import { Code, Computer, Email, RecentActors } from "@material-ui/icons"
+import { Code, Computer, RecentActors } from "@material-ui/icons"
 
 const useStyles = makeStyles(theme => ({
   memberImage: {
@@ -94,7 +94,7 @@ const MembersCard = ({ member }) => {
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                   <Box display="flex" flexDirection="column">
                     <Code className={classes.memberIcons} />
                     <Typography className={classes.memberSkills}>
@@ -102,14 +102,7 @@ const MembersCard = ({ member }) => {
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item xs={6}>
-                  <Box display="flex" flexDirection="column">
-                    <Email className={classes.memberIcons} />
-                    <Typography className={classes.memberSkills}>
-                      {member.email}
-                    </Typography>
-                  </Box>
-                </Grid>
+                
               </Grid>
             </Grid>
           </Box>

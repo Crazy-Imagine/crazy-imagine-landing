@@ -80,7 +80,7 @@ const TeamMembersSection = ({
           container
           spacing={3}
           className={classes.memberGridContainer}
-          justify="center"
+          justifyContent="center"
         >
           {members.slice(0, maxNumberOfItems || members.length).map((el, i) => (
             <Grid

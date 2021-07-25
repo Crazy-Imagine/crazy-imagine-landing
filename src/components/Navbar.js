@@ -120,7 +120,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
           >
             <Link to={`${HOME}`}>
               <FacebookIcon
-                className={(classes.spacing, classes.navbarIcons)}
+                className={clsx(classes.spacing, classes.navbarIcons)}
                 color="primary"
                 fontSize="large"
               />

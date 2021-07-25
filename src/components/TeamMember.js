@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { TEAMS } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   cardContainer: props => ({
@@ -60,6 +61,9 @@ const useStyles = makeStyles({
     color: "#292929",
     display: "flex",
     flexDirection: "column",
+    "&:hover": {
+      textDecoration: "none"
+    }
   },
   resetCardMembers: {
     padding: 0,
@@ -80,7 +84,7 @@ const TeamMember = ({
   return (
     <Box>
       <Card className={classes.cardContainer}>
-        <Link to={slug} className={classes.linkContainer}>
+        <Link to={`${TEAMS}/${slug}`} className={classes.linkContainer}>
           <GatsbyImage
             image={imageMember}
             alt={name}
@@ -96,7 +100,7 @@ const TeamMember = ({
               </Typography>
             </CardContent>
             <CardActions className={classes.resetCardMembers}>
-              <Link to={slug} className={classes.link}>
+              <Link to={`${TEAMS}/${slug}`} className={classes.link}>
                 Read More <ChevronRightIcon className={classes.readMoreIcon} />
               </Link>
             </CardActions>
