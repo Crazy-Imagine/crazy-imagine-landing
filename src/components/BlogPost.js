@@ -54,7 +54,7 @@ const BlogPost = () => {
           <Grid
             container
             spacing={4}
-            justify="center"
+            justifyContent="center"
             className={classes.container}
           >
             {data.articles.edges.map(el => (

@@ -55,16 +55,16 @@ const CustomerReview = () => {
               enableMouseEvents
             >
               {reviews.map((review, index) => (
-                <Box key={review.id}>
+                <Box key={index}>
                   {Math.abs(activeReview - index) <= 2 ? (
-                    <Box>
+                    <Box >
                       <Typography className={classes.review}>
                         {review.review}
                       </Typography>
                       <Grid
                         container
                         spacing={0}
-                        justify="center"
+                        justifyContent="center"
                         alignItems="center"
                       >
                         <Grid item>
