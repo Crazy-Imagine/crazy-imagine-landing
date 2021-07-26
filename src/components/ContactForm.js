@@ -2,7 +2,6 @@ import React from "react"
 import clsx from "clsx"
 import {
   Box,
-  Button,
   makeStyles,
   Typography,
 } from "@material-ui/core"
