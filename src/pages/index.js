@@ -22,7 +22,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Layout seo={{ metaTitle: "Home" }}>
+      <Layout seo={data.strapiHomepage.seo}>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />
@@ -66,6 +66,7 @@ const query = graphql`
         title
       }
       seo {
+        id
         metaTitle
         metaDescription
         shareImage {

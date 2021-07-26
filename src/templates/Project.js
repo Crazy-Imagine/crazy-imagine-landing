@@ -17,7 +17,7 @@ const Project = ({ data }) => {
   const dataProject = data.strapiProjects
   const image = dataProject.images
   return (
-    <Layout seo={{ metaTitle: dataProject.title }}>
+    <Layout seo={dataProject.seo}>
       <PageWrapper>
       <Hidden mdDown>
         <Navbar variant="secondary" variantIcons="secondary" />
@@ -56,6 +56,18 @@ export const query = graphql`
       id
       moreAbout
       title
+      seo {
+        metaTitle
+        metaDescription
+        id
+        shareImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+          }
+        }
+      }
+    }
       images {
         localFile {
           childImageSharp {

@@ -43,6 +43,13 @@ const query = graphql`
         metaDescription
         metaTitle
         id
+        shareImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
       }
     }
   }
