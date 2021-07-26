@@ -2,11 +2,10 @@ import React from "react"
 import clsx from "clsx"
 import {
   Box,
-  Button,
   makeStyles,
-  FormControl,
   Typography,
 } from "@material-ui/core"
+import { useForm, ValidationError } from '@formspree/react';
 
 const useStyles = makeStyles(theme => ({
   title: props => ({
@@ -50,9 +49,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#D32022",
     height: 35,
     fontFamily: "Lato",
+    width: 424,
     fontSize: 16,
     fontWeight: "bold",
     borderRadius: 4,
+    border: "0px",
     color: "white",
   },
   resetFormInput: {
@@ -64,31 +65,52 @@ const ContactForm = ({ variant = "default" }) => {
   const classes = useStyles({
     variant,
   })
+  const [state, handleSubmit] = useForm("mknkvdow");
+  if (state.succeeded) {
+   console.log("xd")
+  }
   return (
     <Box>
       <Typography variant="h3" className={classes.title}>
         contact
       </Typography>
-      <FormControl>
+      <form  onSubmit={handleSubmit} action="https://formspree.io/f/mknkvdow">
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Name(Required)" />
+          <input className={classes.formInput} placeholder="Name(Required)"   id="message" 
+          name="message" />
         </Box>
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Email(Required)" />
+          <input className={classes.formInput} placeholder="Email(Required)" id="email"
+        type="email" 
+        name="email" />
+              <ValidationError 
+        prefix="Email" 
+        field="email"
+        errors={state.errors}
+      />
         </Box>
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Subject" />
+          <input className={classes.formInput} placeholder="Subject" 
+          id="subject" 
+          name="subject"/>
         </Box>
         <Box marginBottom="16px">
           <textarea
             placeholder="Message"
             className={clsx(classes.formInput, classes.resetFormInput)}
+            id="message" 
+          name="message"
           />
+            <ValidationError 
+        prefix="Message" 
+        field="message"
+        errors={state.errors}
+      />
         </Box>
-        <Button variant="contained" className={classes.formButton}>
+        <button  className={classes.formButton}  disabled={state.submitting}>
           SUBMIT
-        </Button>
-      </FormControl>
+        </button>
+      </form>
     </Box>
   )
 }

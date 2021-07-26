@@ -55,9 +55,9 @@ const CustomerReview = () => {
               enableMouseEvents
             >
               {reviews.map((review, index) => (
-                <Box key={review.id}>
+                <Box key={index}>
                   {Math.abs(activeReview - index) <= 2 ? (
-                    <Box>
+                    <Box >
                       <Typography className={classes.review}>
                         {review.review}
                       </Typography>
