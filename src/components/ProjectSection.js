@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   imageItem: {
     width: "100%",
     height: 208,
-    filter: "saturate(0.5)",
+    
   },
   title: {
     fontSize: 46,
@@ -34,6 +34,7 @@ const useStyles = makeStyles({
     lineHeight: 1,
     height: 80,
     overflow: "hidden",
+    filter: "drop-shadow(2px 4px 6px black)"
   },
   itemDescription: {
     fontSize: 13,
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
     color: "white",
     height: 60,
     overflow: "hidden",
+    filter: "drop-shadow(2px 4px 6px black)"
   },
   item: {
     marginLeft: -40,

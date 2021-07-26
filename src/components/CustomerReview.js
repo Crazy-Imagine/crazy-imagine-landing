@@ -108,6 +108,7 @@ const query = graphql`
         name
         ocupation
         review
+        id
         avatar {
           localFile {
             childImageSharp {
