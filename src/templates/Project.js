@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box } from "@material-ui/core"
+import { Box, Hidden } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
@@ -11,6 +11,7 @@ import GalleryProjects from "../components/GalleryProjects"
 import DescriptionProjects from "../components/DescriptionProjects"
 import MoreProjects from "../components/MoreProjects"
 import Layout from "../components/layout"
+import NavbarMobile from "../components/NavbarMobile"
 
 const Project = ({ data }) => {
   const dataProject = data.strapiProjects
@@ -18,7 +19,12 @@ const Project = ({ data }) => {
   return (
     <Layout seo={{ metaTitle: dataProject.title }}>
       <PageWrapper>
+      <Hidden mdDown>
         <Navbar variant="secondary" variantIcons="secondary" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
         <Box>
           <HeroProjectsSection image={image} title={dataProject.title} />
           <AboutProjects

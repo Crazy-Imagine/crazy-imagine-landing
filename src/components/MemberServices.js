@@ -82,7 +82,7 @@ const MemberServices = () => {
       <Grid
         container
         spacing={6}
-        justify="center"
+        justifyContent="center"
         className={classes.servicesContainer}
         wrap="wrap"
       >

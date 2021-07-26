@@ -12,7 +12,8 @@ import HomeCard from "./HomeCard"
 const useStyles = makeStyles(theme => ({
   imageSize: {
     width: "100%",
-    height: 1150,
+    height: 800,
+    overflow: "hidden",
     borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% ",
     [theme.breakpoints.down("md")]: {
       borderRadius: 0,
@@ -40,6 +41,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "gotham-Medium",
     color: "white",
     lineHeight: "22px",
+    height: 65,
+    overflow: "hidden",
     maxWidth: 552,
   },
   cardIcon: {
@@ -62,13 +65,14 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
 
   return (
     <Box>
+      
       <BgImage
         image={image}
         alt="mainSectionImage"
         className={classes.imageSize}
       >
         <Box
-          height="100vh"
+          height="100%"
           width="70%"
           display="flex"
           flexDirection="column"
@@ -99,6 +103,7 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
           </Typography>
         </Box>
       </BgImage>
+      
       <Grid container className={classes.cardContainer}>
         <Grid item xs="auto">
           <HomeCard

@@ -11,7 +11,7 @@ const ProjectCatalog = () => {
         return (
           <>
             <ProjectTabs />
-            <Projects images={data.projects} />
+            <Projects projects={data.projects} />
           </>
         )
       }}

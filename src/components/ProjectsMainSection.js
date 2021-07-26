@@ -8,15 +8,16 @@ const useStyles = makeStyles({
     fontSize: 63,
     fontWeight: "bold",
     fontFamily: "Gotham",
-
-    maxWidth: 424,
+    maxWidth: 550,
   },
   boxImageBg: {
     backgroundColor: "#353fa3",
   },
   image: {
-    marginRight: -340,
-    marginTop: -120,
+    marginRight: -400,
+    marginTop: -170,
+    height: 4507,
+    width: 1000
   },
   seeMoreContainer: {
     backgroundColor: "#23aae1",
@@ -54,8 +55,8 @@ const ProjectsMainSection = () => {
   const image = getImage(project.image.localFile)
   const classes = useStyles()
   return (
-    <Box marginLeft="233px">
-      <Box display="flex" justifyContent="flex-end">
+    <Box marginLeft="233px" marginBottom="-140px">
+      <Box display="flex">
         <Box>
           <Typography className={classes.title}>{project.mainTitle}</Typography>
           <Box
@@ -70,7 +71,7 @@ const ProjectsMainSection = () => {
             <Typography className={classes.seeMore}>See more</Typography>
           </Box>
         </Box>
-        <Box display="flex">
+        <Box display="flex" height="590px" width="100%" justifyContent="flex-end" zIndex="999">
           <GatsbyImage
             image={image}
             alt={project.mainTitle}

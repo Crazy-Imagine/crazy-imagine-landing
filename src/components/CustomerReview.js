@@ -64,7 +64,7 @@ const CustomerReview = () => {
                       <Grid
                         container
                         spacing={0}
-                        justify="center"
+                        justifyContent="center"
                         alignItems="center"
                       >
                         <Grid item>
@@ -108,6 +108,7 @@ const query = graphql`
         name
         ocupation
         review
+        id
         avatar {
           localFile {
             childImageSharp {

@@ -33,20 +33,23 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Projects = ({ images }) => {
+const Projects = ({ projects }) => {
+  
   const classes = useStyles()
   return (
     <Box marginTop="55px">
       <Box maxWidth="844px" className={classes.container}>
-        <Grid container justify="center" spacing={2}>
-          {images.nodes.map(el => (
-            <Grid item xs={12} md={6} key={el.id} className={classes.items}>
-              <Link to={`${PROJECTS}/${el.slug}`}>
+        <Grid container  spacing={2} justifyContent="center">
+          {projects.nodes.map(el => (
+            <Grid item xs={12} md={6}  className={classes.items} key={el.id}>
+              <Link to={`${PROJECTS}/${el.slug}`} >
+              <Box>
                 <GatsbyImage
                   image={getImage(el.images[0].localFile)}
                   alt="alo"
                   className={classes.projectImage}
                 />
+                </Box>
               </Link>
             </Grid>
           ))}
