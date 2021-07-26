@@ -12,9 +12,10 @@ const useStyles = makeStyles({
     height: 537,
   },
   imageItem: {
-    width: "100%",
+    width: "116%",
     height: 208,
-    
+    position: "absolute !important",
+    filter: "brightness(0.6)"
   },
   title: {
     fontSize: 46,
@@ -34,7 +35,6 @@ const useStyles = makeStyles({
     lineHeight: 1,
     height: 80,
     overflow: "hidden",
-    filter: "drop-shadow(2px 4px 6px black)"
   },
   itemDescription: {
     fontSize: 13,
@@ -42,21 +42,27 @@ const useStyles = makeStyles({
     color: "white",
     height: 60,
     overflow: "hidden",
-    filter: "drop-shadow(2px 4px 6px black)"
   },
   item: {
-    marginLeft: -40,
-    width: 300,
+    maxWidth: 300,
+    position: "relative",
 
     "&:nth-child(6)": {
-      width: 598,
-      marginRight: -22,
-      marginLeft: -58,
+      maxWidth: 617,
+      marginLeft: -42,
+      marginRight: 23,
+      marginTop: -16
+    },
+    "&:nth-child(7)": {
+      maxWidth: 300,
+      marginTop: -16
     },
     "&:nth-child(8)": {
-      width: 595,
-      marginLeft: -52,
+      maxWidth: 600,
+      marginLeft: -20,
+      marginTop: -16
     },
+    
   },
   itemFindOut: {
     fontSize: 14,
@@ -124,8 +130,10 @@ const ProjectSection = () => {
                             image={getImage(el.images[0].localFile)}
                             alt={el.title}
                             className={classes.imageItem}
+
                           >
-                            <Box maxWidth="100%" p="40px" paddingTop="20px">
+                          </BgImage>
+                            <Box maxWidth="100%" p="40px" paddingTop="20px" position="relative" zIndex="999">
                               <Typography className={classes.itemTitle}>
                                 {el.title}
                               </Typography>
@@ -136,7 +144,6 @@ const ProjectSection = () => {
                                 Find Out More <ArrowRightAlt />{" "}
                               </Typography>
                             </Box>
-                          </BgImage>
                         </Link>
                       </Grid>
                     ))}
