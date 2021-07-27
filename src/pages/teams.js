@@ -45,6 +45,7 @@ query {
       metaTitle
       shareImage {
         localFile {
+          publicURL
           childImageSharp {
             gatsbyImageData
           }

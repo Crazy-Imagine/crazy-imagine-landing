@@ -159,6 +159,7 @@ export const query = graphql`
         metaTitle
         shareImage {
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData
             }
