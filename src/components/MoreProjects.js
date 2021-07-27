@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   itemContainer: {
+
     [theme.breakpoints.down("md")]: {
       display: "block",
     },
@@ -62,9 +63,16 @@ const useStyles = makeStyles(theme => ({
   },
   items: {
     margin: -7,
+    "&:hover": {
+      transform: "scale(0.95)"
+    },
+    transition: "transform 300ms"
   },
   resetLink: {
     textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    }
   },
 }))
 

@@ -6,16 +6,25 @@ import { BgImage } from "gbimage-bridge"
 import { PROJECTS } from "../navigation/sitemap"
 import { ArrowRightAlt } from "@material-ui/icons"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   bgImage: {
     width: "100%",
     height: 537,
+    [theme.breakpoints.down("md")]: {
+      height: "auto"
+    }
   },
   imageItem: {
     width: "116%",
     height: 208,
     position: "absolute !important",
-    filter: "brightness(0.6)"
+    filter: "brightness(0.6)",
+    [theme.breakpoints.down("ms")]: {
+      width: "100%"
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   title: {
     fontSize: 46,
@@ -46,11 +55,16 @@ const useStyles = makeStyles({
   item: {
     maxWidth: 300,
     position: "relative",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100% !important",
+      margin: "0 !important"
+    },
 
     "&:nth-child(6)": {
-      maxWidth: 617,
-      marginLeft: -42,
-      marginRight: 23,
+      maxWidth: 600,
+      marginLeft: 20,
+      marginRight: -22,
+      overflow: "hidden",
       marginTop: -16
     },
     "&:nth-child(7)": {
@@ -62,7 +76,7 @@ const useStyles = makeStyles({
       marginLeft: -20,
       marginTop: -16
     },
-    
+
   },
   itemFindOut: {
     fontSize: 14,
@@ -76,7 +90,7 @@ const useStyles = makeStyles({
       textDecoration: "none",
     },
   },
-})
+}))
 
 const ProjectSection = () => {
   const classes = useStyles()
@@ -95,29 +109,31 @@ const ProjectSection = () => {
             >
               <Box
                 display="flex"
-                marginLeft="252px"
+                marginLeft={{ xs: "0px", md: "252px" }}
                 paddingTop="90px"
-                alignItems="flex-end"
+                alignItems={{ xs: "center", md: "flex-end" }}
+                justifyContent={{ xs: "center", md: "initial" }}
                 marginBottom="40px"
               >
                 <Typography className={classes.title}>
                   Our Lastest Projects
                 </Typography>
                 <Box
-                  width="318px"
+                  width={{ xs: "0px", md: "318px" }}
                   height="5px"
                   className={classes.boxLine}
                   marginLeft="-70px"
                   marginBottom="5px"
                 />
               </Box>
-              <Box paddingLeft="113px">
-                <Box maxWidth="1550px">
+              <Box paddingLeft={{ xs: "0px", md: "113px" }}>
+                <Box maxWidth={{ xs: "100%", md: "1550px" }}>
                   <Grid container>
                     {data.projects.nodes.map(el => (
                       <Grid
                         item
                         xs={12}
+                        sm={3}
                         md="auto"
                         className={classes.item}
                         key={el.id}
@@ -133,17 +149,17 @@ const ProjectSection = () => {
 
                           >
                           </BgImage>
-                            <Box maxWidth="100%" p="40px" paddingTop="20px" position="relative" zIndex="999">
-                              <Typography className={classes.itemTitle}>
-                                {el.title}
-                              </Typography>
-                              <Typography className={classes.itemDescription}>
-                                {el.description}
-                              </Typography>
-                              <Typography className={classes.itemFindOut}>
-                                Find Out More <ArrowRightAlt />{" "}
-                              </Typography>
-                            </Box>
+                          <Box maxWidth="100%" p="40px" paddingTop="20px" position="relative" zIndex="999">
+                            <Typography className={classes.itemTitle}>
+                              {el.title}
+                            </Typography>
+                            <Typography className={classes.itemDescription}>
+                              {el.description}
+                            </Typography>
+                            <Typography className={classes.itemFindOut}>
+                              Find Out More <ArrowRightAlt />{" "}
+                            </Typography>
+                          </Box>
                         </Link>
                       </Grid>
                     ))}
