@@ -12,10 +12,12 @@ import bgImage from "../images/teamContactBackground.png"
 import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
+import { graphql, useStaticQuery } from "gatsby"
 
 const TeamsPage = () => {
+  const data = useStaticQuery(query)
   return (
-    <Layout seo={{ metaTitle: "Teams" }}>
+    <Layout seo={data.memberPage.SEO}>
       <PageWrapper>
         <Hidden mdDown>
           <Navbar variant="secondary" variantIcons="secondary" />
@@ -34,5 +36,22 @@ const TeamsPage = () => {
     </Layout>
   )
 }
+const query = graphql`
+query {
+  memberPage: strapiMemberpage {
+    SEO {
+      id
+      metaDescription
+      metaTitle
+      shareImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+}`
 
 export default TeamsPage

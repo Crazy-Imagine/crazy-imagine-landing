@@ -73,7 +73,7 @@ const Post = ({ data }) => {
   const description = data.article.description
 
   return (
-    <Layout seo={{ metaTitle: title }}>
+    <Layout seo={data.article.seo}>
       <PageWrapper>
         <Hidden mdDown>
           <Navbar variant="secondary" />
@@ -153,6 +153,18 @@ export const query = graphql`
       id
       description
       content
+      seo {
+        id
+        metaDescription
+        metaTitle
+        shareImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
       image {
         localFile {
           childImageSharp {
