@@ -22,11 +22,7 @@ const Members = ({ data }) => {
   const classes = useStyles()
   const member = data.member
   return (
-    <Layout
-      seo={{
-        metaTitle: `${member.name} ${member.lastName ? member.lastName : ""}`,
-      }}
-    >
+    <Layout seo={member.seo} >
       <PageWrapper>
         <Hidden mdDown>
           <Navbar variant="dark" variantIcons="dark" />
@@ -64,6 +60,18 @@ export const query = graphql`
       email
       lastName
       slug
+      seo {
+        id
+        metaDescription
+        metaTitle
+        shareImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
       portfolio: Portfolio
       skill {
         name
