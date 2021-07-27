@@ -19,8 +19,8 @@ const Project = ({ data }) => {
   return (
     <Layout seo={dataProject.seo}>
       <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="secondary" variantIcons="secondary" />
+        <Hidden mdDown>
+          <Navbar variant="secondary" variantIcons="secondary" />
         </Hidden>
         <Hidden lgUp>
           <NavbarMobile />
@@ -62,6 +62,7 @@ export const query = graphql`
         id
         shareImage {
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData
           }

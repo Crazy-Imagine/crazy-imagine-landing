@@ -71,6 +71,7 @@ const query = graphql`
         metaDescription
         shareImage {
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
             }

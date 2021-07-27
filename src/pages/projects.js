@@ -45,6 +45,7 @@ const query = graphql`
         id
         shareImage {
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData
             }
