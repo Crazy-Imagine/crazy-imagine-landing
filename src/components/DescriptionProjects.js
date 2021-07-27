@@ -8,28 +8,22 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
     display: "flex",
     flexDirection: "column",
-    flexWrap: "wrap",
-    gridColumnGap: "30px",
     justifyContent: "center",
-    width: "464px",
+    textAlign: "center",
     height: "287px",
-    [theme.breakpoints.down("md")]: {
-      flexWrap: "nowrap",
-      width: "auto",
-      height: "auto",
-      textAlign: "center",
-      justifyContent: "center",
-    },
+    alignItems: "center",
     "& h3": {
       fontSize: 40,
       fontFamily: "Roboto",
       margin: 0,
       width: 300,
-      [theme.breakpoints.down("md")]: {
-        textAlign: "center",
-        width: "auto",
-        justifyContent: "center",
-      },
+    },
+    [theme.breakpoints.down("md")]: {
+      textAlign: "initial",
+      height: "auto",
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center"
     },
   },
   contentContainer: {

@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 72,
     filter: "drop-shadow(1px 4px 6px black)",
     margin: "auto 0px",
-    maxWidth: 601,
+    maxWidth: 808,
     marginRight: "auto",
 
     [theme.breakpoints.down("md")]: {
@@ -109,7 +109,7 @@ const Post = ({ data }) => {
                   display="flex"
                   alignItems="center"
                   height="100%"
-                  marginLeft={{ xs: "0px", md: "-260px" }}
+                  marginLeft={{ xs: "0px", md: "-300px" }}
                 >
                   <Typography variant="h4" className={classes.title}>
                     {title}
