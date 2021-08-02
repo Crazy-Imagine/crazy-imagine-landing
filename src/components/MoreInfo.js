@@ -33,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     height: 270,
     border: 0,
     borderRadius: 10,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
 }))
 
