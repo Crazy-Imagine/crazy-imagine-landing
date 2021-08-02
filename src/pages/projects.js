@@ -23,11 +23,13 @@ const Projects = () => {
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box paddingTop="185px">
+        <Box paddingTop="185px" overflow="hidden">
           <ProjectsMainSection />
           <OurProjects />
           <ProjectsServices />
-          <ProjectsContact />
+          <Hidden mdDown>
+            <ProjectsContact />
+          </Hidden>
           <Footer height="498px" align="flex-end" />
           <Copyright />
         </Box>
