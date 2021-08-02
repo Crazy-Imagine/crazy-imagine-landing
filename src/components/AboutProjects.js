@@ -39,20 +39,19 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
   return (
     <Box>
       <Grid container>
-        <Grid item md={6} xs={12} className={classes.projectContainer}>
+        <Grid item xs={12} md={6} className={classes.projectContainer}>
           <Box
             display="flex"
-            justifyContent="flex-end"
+            justifyContent={{ md: "center", lg: "flex-end" }}
             alignItems="center"
             height="100%"
-            paddingRight="60px"
+            paddingRight={{ md: "0px", lg: "60px" }}
           >
             <Box
               width="420px"
               display="flex"
               flexDirection="column"
               justifyContent="center"
-              
             >
               <Typography variant="h5" className={clsx(classes.title, classes.aboutProjectColor)}>
                 About the project
@@ -69,7 +68,7 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item xs={12} md={6} >
           <Box>
             <GatsbyImage
               image={imageOne}
@@ -78,7 +77,7 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
             />
           </Box>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item xs={12} md={6} >
           <Box>
             <GatsbyImage
               image={imageTwo}
@@ -87,14 +86,14 @@ const AboutProjects = ({ aboutProject, images, moreAbout }) => {
             />
           </Box>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item xs={12} md={6} >
           <Box
-            width="420px"
+            width={{ md: "100%", lg: "420px" }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
             height="100%"
-            paddingLeft="60px"
+            paddingLeft={{ md: "0px", lg: "60px" }}
           >
             <Typography variant="h5" className={classes.title}>
               More than game

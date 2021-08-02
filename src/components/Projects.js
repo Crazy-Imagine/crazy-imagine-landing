@@ -6,8 +6,11 @@ import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   projectImage: {
-    width: "469px !important",
-    height: "420px !important",
+    width: "469px",
+    height: "420px",
+    [theme.breakpoints.down("md")]: {
+      width: 300,
+    }
   },
   items: {
     [theme.breakpoints.up("md")]: {
@@ -24,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
+      marginBottom: 0,
+      marginTop: "0px !important"
+
     },
   },
   container: {
@@ -34,21 +40,21 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Projects = ({ projects }) => {
-  
+
   const classes = useStyles()
   return (
     <Box marginTop="55px">
       <Box maxWidth="844px" className={classes.container}>
-        <Grid container  spacing={2} justifyContent="center">
+        <Grid container spacing={2} justifyContent="center">
           {projects.nodes.map(el => (
-            <Grid item xs={12} md={6}  className={classes.items} key={el.id}>
+            <Grid item xs={12} md={6} className={classes.items} key={el.id}>
               <Link to={`${PROJECTS}/${el.slug}`} >
-              <Box>
-                <GatsbyImage
-                  image={getImage(el.images[0].localFile)}
-                  alt="alo"
-                  className={classes.projectImage}
-                />
+                <Box>
+                  <GatsbyImage
+                    image={getImage(el.images[0].localFile)}
+                    alt="alo"
+                    className={classes.projectImage}
+                  />
                 </Box>
               </Link>
             </Grid>
