@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
-import { Hidden } from "@material-ui/core"
+import { Box, Hidden } from "@material-ui/core"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
@@ -30,19 +30,21 @@ const IndexPage = () => {
           <Hidden lgUp>
             <NavbarMobile />
           </Hidden>
-          <HomeMainSection
-            title="Crazy imagine sofware"
-            mainTitle={data.strapiHomepage.hero.title}
-            description={data.strapiHomepage.seo.metaDescription}
-            image={bgImage}
-          />
-          <ProjectSection />
-          <HumanTalent />
-          <ReferenceSection />
-          <LastestPosts />
-          <ContactSection bgColor="#23aae1" />
-          <Footer />
-          <Copyright />
+          <Box overflow="hidden">
+            <HomeMainSection
+              title="Crazy imagine sofware"
+              mainTitle={data.strapiHomepage.hero.title}
+              description={data.strapiHomepage.seo.metaDescription}
+              image={bgImage}
+            />
+            <ProjectSection />
+            <HumanTalent />
+            <ReferenceSection />
+            <LastestPosts />
+            <ContactSection bgColor="#23aae1" />
+            <Footer />
+            <Copyright />
+          </Box>
         </PageWrapper>
       </Layout>
     </>

@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     textTransform: "uppercase",
     [theme.breakpoints.down("md")]: {
-      fontSize: 66,
+      fontSize: 42,
       marginBottom: 30,
     },
   },
@@ -65,7 +65,7 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
 
   return (
     <Box>
-      
+
       <BgImage
         image={image}
         alt="mainSectionImage"
@@ -103,7 +103,7 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
           </Typography>
         </Box>
       </BgImage>
-      
+
       <Grid container className={classes.cardContainer}>
         <Grid item xs="auto">
           <HomeCard

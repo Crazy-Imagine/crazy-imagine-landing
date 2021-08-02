@@ -7,6 +7,16 @@ import { PROJECTS } from "../navigation/sitemap"
 import { ArrowRightAlt } from "@material-ui/icons"
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: 1250
+    }
+  },
+  gridContainer: {
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center"
+    }
+  },
   bgImage: {
     width: "100%",
     height: 537,
@@ -15,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   imageItem: {
-    width: "116%",
+    width: "100%",
     height: 208,
     position: "absolute !important",
     filter: "brightness(0.6)",
@@ -55,26 +65,25 @@ const useStyles = makeStyles(theme => ({
   item: {
     maxWidth: 300,
     position: "relative",
-    [theme.breakpoints.down("md")]: {
-      maxWidth: "100% !important",
-      margin: "0 !important"
+    margin: -20,
+    marginBottom: 0,
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "300px !important",
+      margin: "-20px !important",
+      marginBottom: "0px !important"
     },
-
     "&:nth-child(6)": {
       maxWidth: 600,
-      marginLeft: 20,
-      marginRight: -22,
+      marginLeft: -40,
+      marginRight: -41,
       overflow: "hidden",
-      marginTop: -16
     },
     "&:nth-child(7)": {
       maxWidth: 300,
-      marginTop: -16
+      marginRight: -40
     },
     "&:nth-child(8)": {
       maxWidth: 600,
-      marginLeft: -20,
-      marginTop: -16
     },
 
   },
@@ -126,15 +135,15 @@ const ProjectSection = () => {
                   marginBottom="5px"
                 />
               </Box>
-              <Box paddingLeft={{ xs: "0px", md: "113px" }}>
-                <Box maxWidth={{ xs: "100%", md: "1550px" }}>
-                  <Grid container>
+              <Box paddingLeft={{ md: "10px", lg: "113px" }}>
+                <Box maxWidth={{ md: "100%", lg: "1550px" }} className={classes.container}>
+                  <Grid container className={classes.gridContainer}  >
                     {data.projects.nodes.map(el => (
                       <Grid
                         item
                         xs={12}
-                        sm={3}
-                        md="auto"
+                        md={4}
+                        lg="auto"
                         className={classes.item}
                         key={el.id}
                       >
@@ -163,6 +172,24 @@ const ProjectSection = () => {
                         </Link>
                       </Grid>
                     ))}
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      className={classes.item}
+                    ></Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      className={classes.item}
+                    ></Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      className={classes.item}
+                    ></Grid>
                   </Grid>
                 </Box>
               </Box>

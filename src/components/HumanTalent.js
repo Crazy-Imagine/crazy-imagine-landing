@@ -33,10 +33,16 @@ const useStyles = makeStyles(theme => ({
   ourTeamImage: {
     width: 562,
     height: 302,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   humanTalentImage: {
     width: 562,
     height: 355,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   boxLine: {
     backgroundColor: "#23aae1",

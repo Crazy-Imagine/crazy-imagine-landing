@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
     "&:focus": {
       border: 0,
     },
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   }),
   formButton: {
     backgroundColor: "#D32022",
@@ -55,6 +58,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 4,
     border: "0px",
     color: "white",
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   resetFormInput: {
     height: "246px !important",
@@ -67,47 +73,47 @@ const ContactForm = ({ variant = "default" }) => {
   })
   const [state, handleSubmit] = useForm("mknkvdow");
   if (state.succeeded) {
-   console.log("xd")
+    console.log("xd")
   }
   return (
-    <Box>
+    <Box width="100%">
       <Typography variant="h3" className={classes.title}>
         contact
       </Typography>
-      <form  onSubmit={handleSubmit} action="https://formspree.io/f/mknkvdow">
+      <form onSubmit={handleSubmit} action="https://formspree.io/f/mknkvdow">
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Name(Required)"   id="message" 
-          name="message" />
+          <input className={classes.formInput} placeholder="Name(Required)" id="message"
+            name="message" />
         </Box>
         <Box marginBottom="20px">
           <input className={classes.formInput} placeholder="Email(Required)" id="email"
-        type="email" 
-        name="email" />
-              <ValidationError 
-        prefix="Email" 
-        field="email"
-        errors={state.errors}
-      />
+            type="email"
+            name="email" />
+          <ValidationError
+            prefix="Email"
+            field="email"
+            errors={state.errors}
+          />
         </Box>
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Subject" 
-          id="subject" 
-          name="subject"/>
+          <input className={classes.formInput} placeholder="Subject"
+            id="subject"
+            name="subject" />
         </Box>
         <Box marginBottom="16px">
           <textarea
             placeholder="Message"
             className={clsx(classes.formInput, classes.resetFormInput)}
-            id="message" 
-          name="message"
+            id="message"
+            name="message"
           />
-            <ValidationError 
-        prefix="Message" 
-        field="message"
-        errors={state.errors}
-      />
+          <ValidationError
+            prefix="Message"
+            field="message"
+            errors={state.errors}
+          />
         </Box>
-        <button  className={classes.formButton}  disabled={state.submitting}>
+        <button className={classes.formButton} disabled={state.submitting}>
           SUBMIT
         </button>
       </form>
