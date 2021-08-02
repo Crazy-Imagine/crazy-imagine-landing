@@ -6,6 +6,11 @@ const useStyles = makeStyles(theme => ({
   heroContainer: {
     backgroundColor: "#304fd5",
   },
+  imageContainer: {
+    [theme.breakpoints.down("lg")]: {
+      marginLeft: 10
+    },
+  },
   heroImage: {
     width: 800,
     height: 641,
@@ -25,8 +30,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: 75,
       textAlign: "center",
-      display: "flex",
-      justifyContent: "center"
     }
   },
 }))
@@ -39,7 +42,7 @@ const HeroProjectsSection = ({ image, title }) => {
   )
   return (
     <Box width="100%" height="673px" className={classes.heroContainer}>
-      <Box marginLeft={{ xs: "0px", md: "150px" }} display="flex" height="100%">
+      <Box marginLeft="150px" display="flex" height="100%" className={classes.imageContainer}>
         <Box display="flex" alignItems="flex-end" marginBottom={{ xs: "0px", md: "-90px" }}>
           <GatsbyImage
             image={dataImage}
@@ -50,9 +53,10 @@ const HeroProjectsSection = ({ image, title }) => {
         <Box
           display="flex"
           alignItems="center"
-          marginLeft={{ xs: "0px", md: "-270px" }}
+          justifyContent={{ md: "center" }}
+          marginLeft={{ md: "0px", lg: "-270px" }}
           zIndex="999"
-          width={{ xs: "100%", md: "470px" }}
+          width={{ md: "100%", lg: "700px" }}
         >
           <Typography variant="h3" className={classes.title}>
             {title}

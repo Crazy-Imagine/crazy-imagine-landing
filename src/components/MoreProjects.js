@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "gotham-Black",
     fontSize: 36,
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center"
+    }
   },
   projectTitle: {
     color: "white",
@@ -66,7 +69,10 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       transform: "scale(0.95)"
     },
-    transition: "transform 300ms"
+    transition: "transform 300ms",
+    [theme.breakpoints.down("md")]: {
+      margin: -10
+    }
   },
   resetLink: {
     textDecoration: "none",

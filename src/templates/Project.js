@@ -25,7 +25,7 @@ const Project = ({ data }) => {
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box>
+        <Box overflow="hidden">
           <HeroProjectsSection image={image} title={dataProject.title} />
           <AboutProjects
             aboutProject={dataProject.details}

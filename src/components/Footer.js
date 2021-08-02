@@ -90,7 +90,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item container xs={12} sm={7} spacing={1}>
+          <Grid item container xs={12} md={7} spacing={1}>
             <Grid item xs={12} md={4} className={classes.items}>
               <Typography variant="h3" className={classes.sectionTitle}>
                 ABOUT US

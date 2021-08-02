@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   bgImage: {
     width: 1124,
     height: 342,
-    zIndex: 999,
+    zIndex: 888,
   },
   title: {
     color: "white",
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     width: 255,
     height: 245,
     marginBottom: -125,
-    zIndex: 9999,
+    zIndex: 999,
   },
 })
 
@@ -85,7 +85,7 @@ const ProjectsContact = () => {
                   marginTop="24px"
                   className={classes.buyNowBox}
                 >
-                  Buy Now
+                  Contact Us
                 </Box>
               </Box>
             </BgImage>
