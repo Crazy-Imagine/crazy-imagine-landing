@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
+      color: "black"
     },
   }),
 
