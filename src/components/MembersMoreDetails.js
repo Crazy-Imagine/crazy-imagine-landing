@@ -25,7 +25,7 @@ const MembersMoreDetails = () => {
       alignItems="center"
       marginTop="78px"
     >
-      <Box textAlign="center" maxWidth="680px" marginBottom="62px">
+      <Box textAlign="center" maxWidth={{ xs:"90%", lg:"680px"}} marginBottom="62px">
         <Typography className={classes.title}>More details About</Typography>
         <Typography className={classes.description}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

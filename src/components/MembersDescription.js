@@ -9,19 +9,16 @@ import MembersTechnologies from "./MembersTechnologies"
 const useStyles = makeStyles(theme => ({
   bgImage: {
     width: "100%",
-    height: 1380,
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
   },
 
   wrapper: {
-    maxHeight: 1080,
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       overflow: "auto",
       marginTop: 0,
-      maxHeight: "auto",
     },
   },
   description: {
@@ -29,9 +26,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
     "& h2": {
       fontSize: 42,
+      color: "white"
     },
     "& h3": {
       fontSize: 28,
+      color: "white"
     },
     "& ul": {
       padding: 0,
@@ -50,7 +49,7 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       margin: 0,
       paddingBottom: 40,
-      paddingTop: 180,
+      paddingTop: 295,
     },
   },
 }))
@@ -65,15 +64,17 @@ const MembersDescription = ({ member }) => {
         const bgImage = getImage(dataImage)
 
         return (
-          <Box className={classes.wrapper} marginTop="-170px">
+          <Box className={classes.wrapper} marginTop="-150px">
             <BgImage Tag="section" className={classes.bgImage} image={bgImage}>
               <Box
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
                 height="100%"
+                paddingTop={{xs:"0px", md:"250px"}}
+                paddingBottom={{xs:"30px", md:"50px"}}                
               >
-                <Box maxWidth="925px">
+                <Box maxWidth="925px" paddingBottom="15px">
                   <Grid
                     container
                     justifyContent="center"

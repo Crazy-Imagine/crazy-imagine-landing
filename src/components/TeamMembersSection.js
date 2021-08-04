@@ -21,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     textTransform: "uppercase",
     maxWidth: 523,
     lineHeight: 1,
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50
+    }
   },
   memberContainer: props => ({
     backgroundColor: props.bgColor,

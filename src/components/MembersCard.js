@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     lineHeight: 1,
     fontFamily: "Gotham-Bold",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50
+    }
   },
   memberLastName: {
     marginBottom: 35,
@@ -21,6 +24,9 @@ const useStyles = makeStyles(theme => ({
     color: "#23aae1",
     lineHeight: 1,
     fontFamily: "gotham-book",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50
+    }
   },
   memberIcons: {
     color: "#23aae1",
@@ -35,15 +41,19 @@ const useStyles = makeStyles(theme => ({
   },
   skillsContainer: {
     maxWidth: 306,
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%"
+    }
   },
   itemContainer: {
     maxWidth: "100%",
+    padding: 0
   },
   memberContainerResponsive: {
+    margin: 0,
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
-      marginBottom: 40,
     },
   },
 }))
@@ -56,11 +66,11 @@ const MembersCard = ({ member }) => {
       <Box maxWidth="960px">
         <Grid
           container
-          justify="space-between"
-          spacing={6}
+          justifyContent="space-between"
+
           className={classes.memberContainerResponsive}
         >
-          <Grid item xs={12} md={6}>
+          <Grid item xs={11} md={6}>
             <Box className={classes.memberContainerResponsive} zIndex="999">
               <GatsbyImage
                 image={image}
@@ -69,7 +79,7 @@ const MembersCard = ({ member }) => {
               />
             </Box>
           </Grid>
-          <Box width="408px">
+          <Box width={{md: "100%", lg:"408px"}} padding={{xs: "0px 50px 0px 50px"}}>
             <Grid item xs={12} md={6} className={classes.itemContainer}>
               <Typography variant="h4" className={classes.memberName}>
                 {member.name}

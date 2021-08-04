@@ -30,7 +30,7 @@ const Members = ({ data }) => {
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box paddingTop="150px">
+        <Box paddingTop="150px" overflow="hidden">
           <MembersCard member={member} />
           <MembersDescription member={member} />
 
