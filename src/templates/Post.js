@@ -36,10 +36,9 @@ const useStyles = makeStyles(theme => ({
     margin: "auto 0px",
     maxWidth: 808,
     marginRight: "auto",
-
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
-      fontSize: 52,
+      fontSize: 38,
       marginRight: 0,
       maxWidth: "100%",
       textAlign: "center",
