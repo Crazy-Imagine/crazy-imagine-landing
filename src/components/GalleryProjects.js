@@ -63,7 +63,7 @@ const GalleryProjects = ({ gallery }) => {
             <Hidden mdDown>
             <GatsbyImage
               image={getImage(
-                gallery[activeStep + 1].localFile
+                gallery[activeStep + 1]
                   ? gallery[activeStep + 1].localFile
                   : ""
               )}
@@ -77,7 +77,7 @@ const GalleryProjects = ({ gallery }) => {
             />
             <GatsbyImage
               image={getImage(
-                gallery[activeStep + 2].localFile
+                gallery[activeStep + 2]
                   ? gallery[activeStep + 2].localFile
                   : ""
               )}
