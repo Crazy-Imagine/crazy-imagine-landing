@@ -16,8 +16,9 @@ const useStyles = makeStyles(theme => ({
   },
 
   contentImageSecondary: {
-    minWidth: 780,
+    minWidth: 490,
     height: 260,
+    marginTop: 50,
     [theme.breakpoints.down("md")]: {
       minWidth: "100%",
     },
