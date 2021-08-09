@@ -61,30 +61,22 @@ const GalleryProjects = ({ gallery }) => {
               className={classes.galleryImage}
             />{" "}
             <Hidden mdDown>
-            <GatsbyImage
-              image={getImage(
-                gallery[activeStep + 1]
-                  ? gallery[activeStep + 1].localFile
-                  : ""
-              )}
-              alt={`image`}
-              className={classes.galleryImage}
-            />
-            <GatsbyImage
-              image={getImage(gallery[activeStep].localFile)}
-              alt={`image`}
-              className={classes.galleryImage}
-            />
-            <GatsbyImage
-              image={getImage(
-                gallery[activeStep + 2]
-                  ? gallery[activeStep + 2].localFile
-                  : ""
-              )}
-              alt={`image`}
-              className={classes.galleryImage}
-            />
-            </Hidden>            
+              <GatsbyImage
+                image={getImage(gallery[activeStep + 1].localFile)}
+                alt={`image`}
+                className={classes.galleryImage}
+              />
+              <GatsbyImage
+                image={getImage(gallery[activeStep].localFile)}
+                alt={`image`}
+                className={classes.galleryImage}
+              />
+              <GatsbyImage
+                image={getImage(gallery[activeStep + 2].localFile)}
+                alt={`image`}
+                className={classes.galleryImage}
+              />
+            </Hidden>
             <Button
               variant="contained"
               startIcon={<ArrowForwardOutlined />}
