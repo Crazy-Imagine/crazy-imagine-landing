@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Gotham",
     textTransform: "uppercase",
     lineHeight: 1,
+    [theme.breakpoints.down("md")]: {
+      fontSize: 40
+    }
   },
   titleSpan: {
     color: "#23aae1",
@@ -34,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Gotham",
     textTransform: "uppercase",
     lineHeight: 1,
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50
+    }
   },
   author: {
     color: "white",
@@ -46,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   titleContainer: {
     [theme.breakpoints.down("md")]: {
-      maxWidth: "95%",
+      maxWidth: "100%",
       padding: 5,
       justifyContent: "center",
     },
