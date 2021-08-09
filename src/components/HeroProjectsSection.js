@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
   imageContainer: {
     [theme.breakpoints.down("lg")]: {
-      marginLeft: 10
+      marginLeft: 10,
     },
   },
   heroImage: {
@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     height: 641,
     filter: "brightness(75%)",
     [theme.breakpoints.down("md")]: {
-      width: "0px"
-    }
+      width: "0px",
+    },
   },
   title: {
     fontFamily: "Gotham-Black",
@@ -28,9 +28,9 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     lineHeight: 0.9,
     [theme.breakpoints.down("md")]: {
-      fontSize: 75,
+      fontSize: 50,
       textAlign: "center",
-    }
+    },
   },
 }))
 
@@ -42,8 +42,17 @@ const HeroProjectsSection = ({ image, title }) => {
   )
   return (
     <Box width="100%" height="673px" className={classes.heroContainer}>
-      <Box marginLeft="150px" display="flex" height="100%" className={classes.imageContainer}>
-        <Box display="flex" alignItems="flex-end" marginBottom={{ xs: "0px", md: "-90px" }}>
+      <Box
+        marginLeft="150px"
+        display="flex"
+        height="100%"
+        className={classes.imageContainer}
+      >
+        <Box
+          display="flex"
+          alignItems="flex-end"
+          marginBottom={{ xs: "0px", md: "-90px" }}
+        >
           <GatsbyImage
             image={dataImage}
             alt={title}
@@ -53,10 +62,10 @@ const HeroProjectsSection = ({ image, title }) => {
         <Box
           display="flex"
           alignItems="center"
-          justifyContent={{ md: "center" }}
+          justifyContent={{ xs: "center", md: "center" }}
           marginLeft={{ md: "0px", lg: "-270px" }}
           zIndex="999"
-          width={{ md: "100%", lg: "700px" }}
+          width={{ xs: "100%", md: "100%", lg: "700px" }}
         >
           <Typography variant="h3" className={classes.title}>
             {title}
