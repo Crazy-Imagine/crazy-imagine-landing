@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   cardContainer: {
     gap: 30,
     justifyContent: "center",
+    marginBottom: 30,
     [theme.breakpoints.down("md")]: {
       marginTop: 30,
     },
@@ -65,7 +66,6 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
 
   return (
     <Box>
-
       <BgImage
         image={image}
         alt="mainSectionImage"
@@ -105,28 +105,28 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
       </BgImage>
 
       <Grid container className={classes.cardContainer}>
-        <Grid item xs="auto">
-          <HomeCard
-            title="Code"
-            description="bof appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
-            Icon={AccountCircleIcon}
-          />
-        </Grid>
-        <Grid item xs="auto">
-          <HomeCard
-            title="User Experience"
-            description="Out philosophy goes hand in hand with user interface satisfaction and exellence."
-            Icon={CodeIcon}
-          />
-        </Grid>
-        <Grid item xs="auto">
-          <HomeCard
-            title="Quality"
-            description="We are the best so tha's why offer you 100% quality in our services"
-            Icon={ArrowUpwardIcon}
-          />
-        </Grid>
-        <Box id="about" />
+          <Grid item xs="auto">
+            <HomeCard
+              title="Code"
+              description="bof appliance involves using cutting-edge technologies such as PHP7, HTML5, JavaScript, CSS3, WordPress, and Angular: amongst others."
+              Icon={AccountCircleIcon}
+            />
+          </Grid>
+          <Grid item xs="auto">
+            <HomeCard
+              title="User Experience"
+              description="Out philosophy goes hand in hand with user interface satisfaction and exellence."
+              Icon={CodeIcon}
+            />
+          </Grid>
+          <Grid item xs="auto">
+            <HomeCard
+              title="Quality"
+              description="We are the best so tha's why offer you 100% quality in our services"
+              Icon={ArrowUpwardIcon}
+            />
+          </Grid>
+          <Box id="about" />
       </Grid>
     </Box>
   )

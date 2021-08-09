@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      position: "relative"
     },
   },
   formResponsive: {
@@ -49,12 +50,12 @@ const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
         justify="space-between"
         spacing={10}
       >
-        <Grid item xs={12} sm={12} md="auto">
+        <Grid item xs={12} sm={12} md={12} lg={6}>
           <Box className={classes.contactResponsive}>
             <MoreInfo />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md="auto">
+        <Grid item xs={12} sm={12} md={12} lg={6}>
           <Box className={classes.formResponsive}>
             <Box className={classes.contactResponsive}>
               <ContactForm variant={variant} />

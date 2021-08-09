@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   servicesItem: {
     display: "flex",
     justifyContent: "center",
+    zIndex: 999,
     transitionProperty: "background-color, color",
     transitionDuration: "300ms",
     "&:hover": {

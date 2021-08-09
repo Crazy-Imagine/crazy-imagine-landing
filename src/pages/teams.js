@@ -25,7 +25,7 @@ const TeamsPage = () => {
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box>
+        <Box overflow= "hidden">
           <HeroSection />
           <TeamMembersSection />
           <ContactSection bgImage={bgImage} showShadow variant="dark" />

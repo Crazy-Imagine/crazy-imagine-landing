@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     fontWeight: "bold",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      color: "black"
+    }
   },
   moreInfoContent: {
     color: "white",
@@ -22,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     [theme.breakpoints.down("md")]: {
       width: "85%",
+      color: "black"
     },
   },
   boxLine: {
