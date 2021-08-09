@@ -1,11 +1,7 @@
 import React from "react"
 import clsx from "clsx"
-import {
-  Box,
-  makeStyles,
-  Typography,
-} from "@material-ui/core"
-import { useForm, ValidationError } from '@formspree/react';
+import { Box, makeStyles, Typography } from "@material-ui/core"
+import { useForm, ValidationError } from "@formspree/react"
 
 const useStyles = makeStyles(theme => ({
   title: props => ({
@@ -18,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
+      color: "black"
     },
   }),
 
@@ -45,11 +42,13 @@ const useStyles = makeStyles(theme => ({
       border: 0,
     },
     [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   }),
   formButton: {
-    backgroundColor: "#D32022",
+    //backgroundColor: "#D32022",
+    background: "#E36417",
+    color: "#fff",
     height: 35,
     fontFamily: "Lato",
     width: 424,
@@ -57,10 +56,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     borderRadius: 4,
     border: "0px",
-    color: "white",
     [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   resetFormInput: {
     height: "246px !important",
@@ -71,7 +69,7 @@ const ContactForm = ({ variant = "default" }) => {
   const classes = useStyles({
     variant,
   })
-  const [state, handleSubmit] = useForm("mknkvdow");
+  const [state, handleSubmit] = useForm("mknkvdow")
   if (state.succeeded) {
     console.log("xd")
   }
@@ -82,23 +80,30 @@ const ContactForm = ({ variant = "default" }) => {
       </Typography>
       <form onSubmit={handleSubmit} action="https://formspree.io/f/mknkvdow">
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Name(Required)" id="message"
-            name="message" />
-        </Box>
-        <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Email(Required)" id="email"
-            type="email"
-            name="email" />
-          <ValidationError
-            prefix="Email"
-            field="email"
-            errors={state.errors}
+          <input
+            className={classes.formInput}
+            placeholder="Name(Required)"
+            id="message"
+            name="message"
           />
         </Box>
         <Box marginBottom="20px">
-          <input className={classes.formInput} placeholder="Subject"
+          <input
+            className={classes.formInput}
+            placeholder="Email(Required)"
+            id="email"
+            type="email"
+            name="email"
+          />
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
+        </Box>
+        <Box marginBottom="20px">
+          <input
+            className={classes.formInput}
+            placeholder="Subject"
             id="subject"
-            name="subject" />
+            name="subject"
+          />
         </Box>
         <Box marginBottom="16px">
           <textarea
