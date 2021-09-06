@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import clsx from "clsx"
-import { Box, makeStyles, Typography } from "@material-ui/core"
+import { Box, Fade, makeStyles, Typography, Snackbar } from "@material-ui/core"
 import { useForm, ValidationError } from "@formspree/react"
+import DoneAllIcon from "@material-ui/icons/DoneAll"
 
 const useStyles = makeStyles(theme => ({
   title: props => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
-      color: "black"
+      color: "black",
     },
   }),
 
@@ -59,9 +60,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   resetFormInput: {
     height: "246px !important",
+  },
+  snackColor: {
+    fontSize: "bold",
   },
 }))
 
@@ -70,9 +77,22 @@ const ContactForm = ({ variant = "default" }) => {
     variant,
   })
   const [state, handleSubmit] = useForm("mknkvdow")
-  if (state.succeeded) {
-    console.log("xd")
+  const [openState, setOpenState] = useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+  })
+
+  const { vertical, horizontal, open } = openState
+
+  const handleClick = newState => () => {
+    setOpenState({ open: true, ...newState })
   }
+
+  const handleClose = () => {
+    setOpenState({ ...state, open: false })
+  }
+
   return (
     <Box width="100%">
       <Typography variant="h3" className={classes.title}>
@@ -118,9 +138,21 @@ const ContactForm = ({ variant = "default" }) => {
             errors={state.errors}
           />
         </Box>
-        <button className={classes.formButton} disabled={state.submitting}>
+        <button
+          className={classes.formButton}
+          disabled={state.submitting}
+          onClick={handleClick({ vertical: "bottom", horizontal: "left" })}
+        >
           SUBMIT
         </button>
+        <Snackbar
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical, horizontal }}
+          open={open}
+          onClose={handleClose}
+          message="Sent Successfully"
+          key={vertical + horizontal}
+        />
       </form>
     </Box>
   )
