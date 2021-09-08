@@ -1,7 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import clsx from "clsx"
-import { Box, makeStyles, Typography } from "@material-ui/core"
+import {
+  Box,
+  makeStyles,
+  Typography,
+  Snackbar,
+} from "@material-ui/core"
 import { useForm, ValidationError } from "@formspree/react"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
 
 const useStyles = makeStyles(theme => ({
   title: props => ({
@@ -14,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       display: "flex",
       justifyContent: "center",
-      color: "black"
+      color: "black",
     },
   }),
 
@@ -59,9 +66,18 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   resetFormInput: {
     height: "246px !important",
+  },
+  snackColor: {
+    fontSize: "bold",
+    backgroundColor: "white !important",
+    display: "flex",
+    justifyContent: "space-around",
   },
 }))
 
@@ -70,9 +86,20 @@ const ContactForm = ({ variant = "default" }) => {
     variant,
   })
   const [state, handleSubmit] = useForm("mknkvdow")
-  if (state.succeeded) {
-    console.log("xd")
+  const [openState, setOpenState] = useState({
+    open: false,
+  })
+
+  const { open } = openState
+
+  const handleClick = newState => () => {
+    setOpenState({ open: true, ...newState })
   }
+
+  const handleClose = () => {
+    setOpenState({ ...state, open: false })
+  }
+
   return (
     <Box width="100%">
       <Typography variant="h3" className={classes.title}>
@@ -118,9 +145,35 @@ const ContactForm = ({ variant = "default" }) => {
             errors={state.errors}
           />
         </Box>
-        <button className={classes.formButton} disabled={state.submitting}>
+        <button
+          className={classes.formButton}
+          disabled={state.submitting}
+          onClick={handleClick({ vertical: "bottom", horizontal: "left" })}
+        >
           SUBMIT
         </button>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="Sent successfully ✔️"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
       </form>
     </Box>
   )
