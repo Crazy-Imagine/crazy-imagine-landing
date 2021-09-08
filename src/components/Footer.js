@@ -77,16 +77,16 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 CONTACT
               </Typography>
               <Typography className={classes.sectionLink}>
-                <RoomIcon /> Urb Ambroio Plaza #1 street
+                <RoomIcon /> Urb Ambrosio Plaza #1 street
               </Typography>
               <Typography className={classes.sectionLink}>
                 House #2/123, San Cristobal, Venezuela.
               </Typography>
               <Typography className={classes.sectionLink}>
-                <PhoneIcon /> +58 414 70079236
+                <PhoneIcon /> +58 414 7079236
               </Typography>
               <Typography className={classes.sectionLink}>
-                <EmailIcon /> contact@crazyimagine.com
+                <EmailIcon /> support@crazyimagine.com
               </Typography>
             </Box>
           </Grid>
@@ -96,7 +96,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 ABOUT US
               </Typography>
               <Typography className={classes.sectionLink}>Projects</Typography>
-              <Typography className={classes.sectionLink}>Out Team</Typography>
+              <Typography className={classes.sectionLink}>Our Team</Typography>
               <Typography className={classes.sectionLink}>
                 About Crazy Imagine
               </Typography>
@@ -109,7 +109,7 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 What else we povide
               </Typography>
               <Typography className={classes.sectionLink}>
-                Our Tecnologies
+                Our Technologies
               </Typography>
               <Typography className={classes.sectionLink}>Our Stats</Typography>
               <Typography className={classes.sectionLink}>

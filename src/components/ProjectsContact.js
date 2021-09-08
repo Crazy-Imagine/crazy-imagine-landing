@@ -1,8 +1,11 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
+
 import { Box, makeStyles, Typography } from "@material-ui/core"
+
+import { HOME } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   bgImage: {
@@ -12,7 +15,7 @@ const useStyles = makeStyles({
   },
   title: {
     color: "white",
-    fontSize: 40,
+    fontSize: 38,
     lineHeight: 1.2,
   },
   titleBig: {
@@ -31,6 +34,11 @@ const useStyles = makeStyles({
     height: 245,
     marginBottom: -125,
     zIndex: 999,
+  },
+  resetStyleLinks: {
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
 })
 
@@ -71,22 +79,27 @@ const ProjectsContact = () => {
                 <Typography className={classes.title}>
                   If you have <br /> any question{" "}
                   <span className={classes.titleBig}>
-                    FELL FREE TO CONTACT US
+                    FEEL FREE TO CONTACT US
                   </span>
                 </Typography>
-                <Box
-                  width="208px"
-                  height="50px"
-                  boxShadow="3.178px 6.237px 16px 0px rgba(15, 15, 15, 0.39)"
-                  borderRadius="17px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  marginTop="24px"
-                  className={classes.buyNowBox}
+                <Link
+                  to={`${HOME}#contact`}
+                  className={classes.resetStyleLinks}
                 >
-                  Contact Us
-                </Box>
+                  <Box
+                    width="208px"
+                    height="50px"
+                    boxShadow="3.178px 6.237px 16px 0px rgba(15, 15, 15, 0.39)"
+                    borderRadius="17px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    marginTop="24px"
+                    className={classes.buyNowBox}
+                  >
+                    Contact Us
+                  </Box>
+                </Link>
               </Box>
             </BgImage>
           </Box>
