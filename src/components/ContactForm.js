@@ -88,11 +88,9 @@ const ContactForm = ({ variant = "default" }) => {
   const [state, handleSubmit] = useForm("mknkvdow")
   const [openState, setOpenState] = useState({
     open: false,
-    vertical: "top",
-    horizontal: "center",
   })
 
-  const { vertical, horizontal, open } = openState
+  const { open } = openState
 
   const handleClick = newState => () => {
     setOpenState({ open: true, ...newState })
