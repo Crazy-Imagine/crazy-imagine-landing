@@ -1,8 +1,14 @@
 import React, { useState } from "react"
 import clsx from "clsx"
-import { Box, Fade, makeStyles, Typography, Snackbar } from "@material-ui/core"
+import {
+  Box,
+  makeStyles,
+  Typography,
+  Snackbar,
+} from "@material-ui/core"
 import { useForm, ValidationError } from "@formspree/react"
-import DoneAllIcon from "@material-ui/icons/DoneAll"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
 
 const useStyles = makeStyles(theme => ({
   title: props => ({
@@ -69,6 +75,9 @@ const useStyles = makeStyles(theme => ({
   },
   snackColor: {
     fontSize: "bold",
+    backgroundColor: "white !important",
+    display: "flex",
+    justifyContent: "space-around",
   },
 }))
 
@@ -146,12 +155,26 @@ const ContactForm = ({ variant = "default" }) => {
           SUBMIT
         </button>
         <Snackbar
-          autoHideDuration={6000}
-          anchorOrigin={{ vertical, horizontal }}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
           open={open}
+          autoHideDuration={6000}
           onClose={handleClose}
-          message="Sent Successfully"
-          key={vertical + horizontal}
+          message="Sent successfully ✔️"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
         />
       </form>
     </Box>
