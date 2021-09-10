@@ -64,14 +64,14 @@ const MoreInfo = () => {
       </Box>
       <Typography className={classes.moreInfoContent}>
         <LocationOnIcon />
-        Urb Ambroio Plaza #1 street House #2/123, <br /> San Cristobal,
+        Urb Ambrosio Plaza #1 street House #2/123, <br /> San Cristobal,
         Venezuela.
       </Typography>
       <Typography className={classes.moreInfoContent}>
-        <PhoneIcon /> +58 414 70079236
+        <PhoneIcon /> +58 414 7079236
       </Typography>
       <Typography className={classes.moreInfoContent}>
-        <EmailIcon /> contact@crazyimagine.com
+        <EmailIcon />  support@crazyimagine.com
       </Typography>
       <Box>
         <iframe
