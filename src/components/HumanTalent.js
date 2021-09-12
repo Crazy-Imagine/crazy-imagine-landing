@@ -5,6 +5,8 @@ import clsx from "clsx"
 
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 
+import { TEAMS } from "../navigation/sitemap"
+
 const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Gotham-ultra",
@@ -34,15 +36,15 @@ const useStyles = makeStyles(theme => ({
     width: 562,
     height: 302,
     [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   humanTalentImage: {
     width: 562,
     height: 355,
     [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   boxLine: {
     backgroundColor: "#23aae1",
@@ -146,10 +148,10 @@ const HumanTalent = () => {
                 <Grid container item xs={12}>
                   <Grid item sm={12} md="auto">
                     <Content title="Our Team">
-                      Wirt a wide team of full-stack, front, back end and mobile
-                      developers, projct managers and artitects on different
+                      With a wide team of full-stack, front, back end and mobile
+                      developers, project managers and architects on different
                       levels of expertise, we are sure that we could offer you
-                      the people who will fit better to you needs
+                      the people who will fit better to you needs.
                     </Content>
                   </Grid>
                   <Grid item xs>
@@ -184,12 +186,12 @@ const HumanTalent = () => {
                         </>
                       }
                     >
-                      always looking for ways to improve and deliver gret qualy
-                      of work for us, terms like partnership, empowerment and
+                      Always looking for ways to improve and deliver great qualy
+                      of work, for us, terms like partnership, empowerment and
                       teamwork, are core values. <br />
                       <br /> If you want to know more about our team please
                       check our page{" "}
-                      <Link to="/" className={classes.ourTeamLink}>
+                      <Link to={TEAMS} className={classes.ourTeamLink}>
                         Here
                       </Link>
                     </Content>
