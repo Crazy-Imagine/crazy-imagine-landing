@@ -22,15 +22,20 @@ import {
 const useStyles = makeStyles(theme => ({
   cardContainer: {
     transition: "linear 300ms",
-    minHeight: 688,
-    maxHeight: 688,
+    minHeight: 835,
+    maxHeight: 835,
     "&:hover": {
       boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
     },
   },
+  pricipalTitle: {
+    fontSize: 45,
+    fontFamily: "Gotham",
+    marginBottom: 30,
+    textAlign: "center",
+  },
   title: {
     fontSize: 40,
-    fontWeight: 700,
     marginBottom: 15,
     fontFamily: "Gotham",
     textAlign: "center",
@@ -40,6 +45,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "poppins",
     marginBottom: 30,
     textAlign: "center",
+    minHeight: 126,
+    display: "flex",
+    alignItems: "center",
   },
   productPrice: {
     fontSize: 40,
@@ -56,10 +64,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Gotham",
     padding: "17px 25px 22px 27px",
     margin: "30px 0px",
-    backgroundColor: "#E36417",
+    backgroundColor: "#23aae1",
+    color: "white",
     // zIndex: 9999,
     "&:hover": {
-      backgroundColor: "#e6712b",
+      backgroundColor: "#1893c5",
     },
   },
   paragraphs: {
@@ -90,13 +99,14 @@ const ProductsSection = () => {
       query={query}
       render={data => {
         const products = data.products.nodes
-        const services = data.services.nodes
         return (
           <Box
-            marginTop={{ md: "40px", lg: "230px" }}
+            marginTop={{ md: "40px", lg: "300px" }}
             px={{ md: "20px", lg: "40px" }}
           >
-            {/* <Typography variant="h2">Products</Typography> */}
+            <Typography variant="h2" className={classes.pricipalTitle}>
+              Products
+            </Typography>
             <Grid container spacing={4}>
               {products &&
                 products.map(item => (
@@ -245,14 +255,6 @@ const query = graphql`
     products: allStrapiProducts {
       nodes {
         description
-        id
-        price
-        title
-        subTitle
-      }
-    }
-    services: allStrapiServices {
-      nodes {
         id
         price
         title
