@@ -169,7 +169,6 @@ const ProductsSection = () => {
                                     updates occasionally.
                                   </DialogContentText>
                                   <TextField
-                                    autoFocus
                                     margin="dense"
                                     id="email"
                                     type="email"
@@ -184,7 +183,6 @@ const ProductsSection = () => {
                                     errors={state.errors}
                                   />
                                   <TextField
-                                    autoFocus
                                     margin="dense"
                                     id="message"
                                     type="text"
@@ -199,7 +197,6 @@ const ProductsSection = () => {
                                   />
                                   <Box className={classes.inputHidden}>
                                     <TextField
-                                      autoFocus
                                       margin="dense"
                                       id="plan"
                                       type="text"
