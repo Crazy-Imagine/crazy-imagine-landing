@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    // zIndex: 9999
   },
   cardContainer: {
     transition: "linear 300ms",
@@ -37,9 +38,9 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
     },
   },
-  gridItem: {
-    zIndex: 9999,
-  },
+  gridItem: (props) => ({
+    zIndex: props.variant ? "0" : 9999,
+  }),
   pricipalTitle: {
     fontSize: 45,
     fontFamily: "Gotham",
@@ -95,6 +96,9 @@ const useStyles = makeStyles(theme => ({
   boxLine: {
     backgroundColor: "black",
   },
+  dialog: {
+    zIndex: 999999
+  }
 }))
 
 const ServiceContent = ({
@@ -104,10 +108,12 @@ const ServiceContent = ({
   handleClose,
   handleClickOpen,
   handleSubmit,
-  classes,
   open,
   state,
 }) => {
+  const classes = useStyles({
+    variant: open
+  })
   return (
     <Grid
       item
@@ -141,14 +147,14 @@ const ServiceContent = ({
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
-                className={classes.dialog}
-              >
+                >
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <form
                   onSubmit={handleSubmit}
                   action="https://formspree.io/f/xzbyobpo"
+                  className={classes.dialog}
                 >
-                  <DialogContent>
+                  <DialogContent className={classes.dialog}>
                     <DialogContentText>
                       To subscribe to this website, please enter your email
                       address here. We will send updates occasionally.
@@ -190,6 +196,7 @@ const ServiceContent = ({
                         value={title}
                         fullWidth
                         disabled
+                        className={classes.dialog}
                       />
                       <ValidationError
                         prefix="Plan"
