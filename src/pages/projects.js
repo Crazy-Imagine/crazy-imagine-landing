@@ -11,6 +11,7 @@ import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
+import ServicesSection from "../components/ServicesSection"
 import ProductsSection from "../components/ProductsSection"
 
 const Projects = () => {
@@ -28,6 +29,7 @@ const Projects = () => {
           <ProjectsMainSection />
           <OurProjects />
           <ProductsSection />
+          <ServicesSection />
           <ProjectsServices />
           <Hidden mdDown>
             <ProjectsContact />

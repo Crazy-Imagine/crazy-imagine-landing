@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     backgroundColor: props.scroll ? "transparent" : "white",
+    zIndex: 999999
   }),
   iconSpacing: {
     marginLeft: theme.spacing(10),

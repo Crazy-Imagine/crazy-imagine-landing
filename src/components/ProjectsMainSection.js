@@ -28,10 +28,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#353fa3",
   },
   image: {
-    marginRight: -400,
+    marginRight: -605,
     marginTop: -170,
-    height: 4507,
-    width: 1000,
+    height: 700,
+    width: 900,
     [theme.breakpoints.down("lg")]: {
       marginRight: "0px",
       marginLeft: -500,
