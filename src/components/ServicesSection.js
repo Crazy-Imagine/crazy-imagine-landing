@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
     },
   },
-  gridItem: (props) => ({
+  gridItem: props => ({
     zIndex: props.variant ? "0" : 9999,
   }),
   pricipalTitle: {
@@ -96,9 +96,6 @@ const useStyles = makeStyles(theme => ({
   boxLine: {
     backgroundColor: "black",
   },
-  dialog: {
-    zIndex: 999999
-  }
 }))
 
 const ServiceContent = ({
@@ -112,7 +109,7 @@ const ServiceContent = ({
   state,
 }) => {
   const classes = useStyles({
-    variant: open
+    variant: open,
   })
   return (
     <Grid
@@ -147,14 +144,13 @@ const ServiceContent = ({
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
-                >
+              >
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <form
                   onSubmit={handleSubmit}
                   action="https://formspree.io/f/xzbyobpo"
-                  className={classes.dialog}
                 >
-                  <DialogContent className={classes.dialog}>
+                  <DialogContent>
                     <DialogContentText>
                       To subscribe to this website, please enter your email
                       address here. We will send updates occasionally.
@@ -263,20 +259,17 @@ const ServicesSection = () => {
         }
 
         return (
-          <Box
-            marginTop={{ md: "40px", lg: "230px" }}
-            px={{ md: "20px", lg: "40px" }}
-          >
+          <Box marginTop="40px" px={{ md: "20px", lg: "40px" }}>
             <Typography variant="h4" className={classes.pricipalTitle}>
               Services
             </Typography>
             <Box width="100%" display="flex" justifyContent="center">
-            <Box
-              height="34px"
-              width="1px"
-              className={classes.boxLine}
-              marginBottom="30px"
-            />
+              <Box
+                height="34px"
+                width="1px"
+                className={classes.boxLine}
+                marginBottom="30px"
+              />
             </Box>
             <Grid container spacing={4} className={classes.container}>
               <Grid item md={1}>

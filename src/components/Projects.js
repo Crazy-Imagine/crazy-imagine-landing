@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
   projectImage: {
     width: "469px",
     height: "420px",
+    zIndex: 9999,
     [theme.breakpoints.down("md")]: {
       width: 300,
     }

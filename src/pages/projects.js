@@ -12,6 +12,7 @@ import NavbarMobile from "../components/NavbarMobile"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
 import ServicesSection from "../components/ServicesSection"
+import ProductsSection from "../components/ProductsSection"
 
 const Projects = () => {
   const data = useStaticQuery(query)
@@ -27,6 +28,7 @@ const Projects = () => {
         <Box paddingTop="185px" overflow="hidden">
           <ProjectsMainSection />
           <OurProjects />
+          <ProductsSection />
           <ServicesSection />
           <ProjectsServices />
           <Hidden mdDown>
