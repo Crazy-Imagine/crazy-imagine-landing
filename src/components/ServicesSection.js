@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // zIndex: 9999
   },
   cardContainer: {
     transition: "linear 300ms",
@@ -38,9 +37,6 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
     },
   },
-  gridItem: props => ({
-    zIndex: props.variant ? "0" : 9999,
-  }),
   pricipalTitle: {
     fontSize: 45,
     fontFamily: "Gotham",
@@ -120,7 +116,6 @@ const ServiceContent = ({
       lg={3}
       justifyContent="center"
       alignItems="center"
-      className={classes.gridItem}
     >
       <Card className={classes.cardContainer}>
         <Box p="15px">

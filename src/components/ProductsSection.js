@@ -20,9 +20,6 @@ import {
 } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
-  gridContainer: (props) => ({
-    zIndex: props.variant ? "0" : 9999
-  }),
   cardContainer: {
     transition: "linear 300ms",
     minHeight: 835,
@@ -70,7 +67,6 @@ const useStyles = makeStyles(theme => ({
     margin: "30px 0px",
     backgroundColor: "#23aae1",
     color: "white",
-    zIndex: 9999,
     "&:hover": {
       backgroundColor: "#1893c5",
     },
@@ -135,7 +131,6 @@ const ProductsSection = () => {
                     lg={3}
                     justifyContent="center"
                     alignItems="center"
-                    className={classes.gridContainer}
                   >
                     <Card className={classes.cardContainer}>
                       <Box p="15px">
