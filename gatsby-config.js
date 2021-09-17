@@ -27,8 +27,8 @@ module.exports = {
           "members",
           "projects",
           "reviews",
-          "products",
-          "services"
+          // "products",
+          // "services"
         ],
         singleTypes: [
           `homepage`,
