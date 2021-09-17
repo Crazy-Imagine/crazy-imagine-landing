@@ -285,17 +285,17 @@ const ServicesSection = () => {
   )
 }
 
-const query = graphql`
-  query {
-    services: allStrapiServices {
-      nodes {
-        id
-        price
-        title
-        subTitle
-      }
-    }
-  }
-`
+// const query = graphql`
+//   query {
+//     services: allStrapiServices {
+//       nodes {
+//         id
+//         price
+//         title
+//         subTitle
+//       }
+//     }
+//   }
+// `
 
 export default ServicesSection

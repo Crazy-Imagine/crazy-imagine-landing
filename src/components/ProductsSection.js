@@ -156,7 +156,7 @@ const ProductsSection = () => {
                             >
                               Contratar Ahora
                             </Button>
-                            <ProductsServicesDialog 
+                            <ProductsServicesDialog
                               title={item.title}
                               open={open}
                               state={state}
@@ -184,18 +184,18 @@ const ProductsSection = () => {
   )
 }
 
-const query = graphql`
-  query {
-    products: allStrapiProducts {
-      nodes {
-        description
-        id
-        price
-        title
-        subTitle
-      }
-    }
-  }
-`
+// const query = graphql`
+//   query {
+//     products: allStrapiProducts {
+//       nodes {
+//         description
+//         id
+//         price
+//         title
+//         subTitle
+//       }
+//     }
+//   }
+// `
 
 export default ProductsSection
