@@ -47,7 +47,7 @@ const OurProjects = () => {
           <Box>
             <BgImage
               image={bgImage}
-              tag={project.title}
+              tag={project?.title}
               className={classes.bgImage}
             >
               <BgImage
@@ -64,10 +64,10 @@ const OurProjects = () => {
                 >
                   <Box textAlign="center" maxWidth="922px">
                     <Typography className={classes.title}>
-                      {project.title}
+                      {project?.title}
                     </Typography>
                     <Typography className={classes.description}>
-                      {project.description}
+                      {project?.description}
                     </Typography>
                   </Box>
                 </Box>
