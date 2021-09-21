@@ -17,7 +17,7 @@ const Project = ({ data }) => {
   const dataProject = data.strapiProjects
   const image = dataProject.images
   return (
-    <Layout seo={dataProject.seo}>
+    <Layout seo={dataProject?.seo}>
       <PageWrapper>
         <Hidden mdDown>
           <Navbar variant="secondary" variantIcons="secondary" />
@@ -26,18 +26,18 @@ const Project = ({ data }) => {
           <NavbarMobile />
         </Hidden>
         <Box overflow="hidden">
-          <HeroProjectsSection image={image} title={dataProject.title} />
+          <HeroProjectsSection image={image} title={dataProject?.title} />
           <AboutProjects
-            aboutProject={dataProject.details}
+            aboutProject={dataProject?.details}
             images={image}
-            moreAbout={dataProject.description}
+            moreAbout={dataProject?.description}
           />
 
           <GalleryProjects
-            gallery={dataProject.galleryImages}
+            gallery={dataProject?.galleryImages}
             id={dataProject.id}
           />
-          <DescriptionProjects description={dataProject.moreAbout} />
+          <DescriptionProjects description={dataProject?.moreAbout} />
 
           <MoreProjects />
           <Footer />
