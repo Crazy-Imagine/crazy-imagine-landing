@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "poppins",
     marginBottom: 30,
     textAlign: "center",
-    minHeight: 126,
+    minHeight: 156,
     display: "flex",
     alignItems: "center",
   },
@@ -184,18 +184,18 @@ const ProductsSection = () => {
   )
 }
 
-// const query = graphql`
-//   query {
-//     products: allStrapiProducts {
-//       nodes {
-//         description
-//         id
-//         price
-//         title
-//         subTitle
-//       }
-//     }
-//   }
-// `
+const query = graphql`
+  query {
+    products: allStrapiProducts {
+      nodes {
+        description
+        id
+        price
+        title
+        subTitle
+      }
+    }
+  }
+`
 
 export default ProductsSection
