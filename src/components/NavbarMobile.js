@@ -15,7 +15,6 @@ import {
   styled,
   Toolbar,
   Typography,
-  useTheme,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 import {
@@ -90,7 +89,6 @@ const NavbarMobile = ({
   variant = "secondary",
   variantIcons = "secondary",
 }) => {
-  const theme = useTheme()
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
@@ -152,7 +150,7 @@ const NavbarMobile = ({
         >
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? <Close /> : <Close />}
+              <Close />
             </IconButton>
           </DrawerHeader>
 
