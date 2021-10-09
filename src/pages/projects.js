@@ -23,7 +23,7 @@ const Projects = () => {
           <Navbar variant="dark" variantIcons="dark" />
         </Hidden>
         <Hidden lgUp>
-          <NavbarMobile />
+          <NavbarMobile variantIcons="primary" />
         </Hidden>
         <Box paddingTop="185px" overflow="hidden">
           <ProjectsMainSection />
