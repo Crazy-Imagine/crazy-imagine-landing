@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 24,
     fontSize: 40,
     fontFamily: "Poppins",
-
     fontWeight: " bold",
   },
   servicesDescription: {
@@ -34,7 +33,6 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "#23aae1",
       color: "white",
-      border: 0,
     },
     border: "1px solid rgb(230, 230, 230)",
   },
@@ -105,7 +103,7 @@ const MemberServices = () => {
                 px="87px"
               >
                 <Box marginBottom="26px">{icons[i]}</Box>
-                <Typography variant="h4" className={classes.title}>
+                <Typography  className={classes.title}>
                   {el.title}
                 </Typography>
                 <Typography className={classes.servicesDescription}>

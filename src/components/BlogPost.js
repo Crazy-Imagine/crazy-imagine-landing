@@ -62,7 +62,7 @@ const BlogPost = () => {
                 <Link to={`${BLOG}/${el.node.slug}`} className={classes.link}>
                   <PostCard
                     image={el.node.image[0].localFile.publicURL}
-                    author={el.node.author.name}
+                    author="Blas Hernandez"
                     tags={el.node.category.name}
                     title={el.node.title}
                     description={el.node.description}

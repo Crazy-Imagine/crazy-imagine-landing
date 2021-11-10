@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     fontFamily: "Poppins",
     fontSize: 12,
     fontWeight: 500,
-    marginBottom: 24,
+    marginBottom: 20,
   },
   colorPostBy: {
     color: "#989898",
@@ -64,12 +64,12 @@ const useStyles = makeStyles({
     fontFamily: "Hind",
     fontSize: 14,
     color: "#464646",
-    marginBottom: 28,
+    marginBottom: 20,
     height: 63,
   },
   cardDivider: {
     color: "#ededed",
-    marginBottom: 28,
+    marginBottom: 10,
   },
   footerNumber: {
     fontFamily: "Poppins",
@@ -89,9 +89,9 @@ const useStyles = makeStyles({
   },
 })
 
-const textOverflow = text => {
-  if (text.length > 100) {
-    return text.slice(0, 100) + "..."
+const textOverflow = (text, length) => {
+  if (text.length > length) {
+    return text.slice(0, length) + "..."
   }
   return text
 }
@@ -109,7 +109,7 @@ const PostCard = ({
   const classes = useStyles({
     variant,
   })
-  const content = textOverflow(description)
+  const content = textOverflow(description, 100)
   return (
     <Box>
       <Card className={classes.cardContainer}>
@@ -142,7 +142,7 @@ const PostCard = ({
               </Grid>
               <Grid item xs>
                 <Typography variant="h3" className={classes.title}>
-                  {title}
+                  {textOverflow(title, 35)}
                 </Typography>
                 <Typography className={classes.postDescription}>
                   {content}

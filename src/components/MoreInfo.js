@@ -1,8 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-
 import LocationOnIcon from "@material-ui/icons/LocationOn"
-import PhoneIcon from "@material-ui/icons/Phone"
 import EmailIcon from "@material-ui/icons/Email"
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white",
   },
   imageLocation: {
+    marginTop: 29,
     backgroundColor: "white",
     width: 446,
     height: 270,
@@ -66,9 +65,6 @@ const MoreInfo = () => {
         <LocationOnIcon />
         Urb Ambrosio Plaza #1 street House #2/123, <br /> San Cristobal,
         Venezuela.
-      </Typography>
-      <Typography className={classes.moreInfoContent}>
-        <PhoneIcon /> +58 414 7079236
       </Typography>
       <Typography className={classes.moreInfoContent}>
         <EmailIcon />  support@crazyimagine.com

@@ -110,7 +110,7 @@ const ProjectSection = () => {
         const dataImage = data.homePage.projectsImage.localFile
         const image = getImage(dataImage)
         return (
-          <Box marginBottom="169px">
+          <Box marginBottom="169px" id="projects">
             <BgImage
               image={image}
               alt="project section"

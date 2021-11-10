@@ -19,6 +19,7 @@ const useStyes = makeStyles({
   },
   referenceImage: {
     height: 568,
+    filter: "brightness(85%)",
   },
 })
 
@@ -32,7 +33,7 @@ const ReferenceSection = () => {
         const dataImage = data.homePage.clientsImage.localFile
         const bgImage = getImage(dataImage)
         return (
-          <Box>
+          <Box id="clients">
             <BgImage
               image={bgImage}
               alt="imageSection"

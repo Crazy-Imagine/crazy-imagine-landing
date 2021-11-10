@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     padding: "6px 7px 10px 7px !important",
     "&::placeholder": {
       color: "#919191 !important",
-      fontSize: 10,
+      fontSize: 15,
       [theme.breakpoints.down("sm")]: {
         fontSize: 14,
       },

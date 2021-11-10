@@ -1,7 +1,8 @@
 import React from "react"
 import { Box, Typography, makeStyles, Hidden } from "@material-ui/core"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -50,6 +51,14 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     letterSpacing: 1,
   },
+  resetLink: {
+    color: "#ffffff",
+    textDecoration: "none",
+    "&:hover": {
+      color: "#ffffff",
+      textDecoration: "none"
+    }
+  }
 }))
 
 const ProjectsMainSection = () => {
@@ -87,7 +96,9 @@ const ProjectsMainSection = () => {
               className={classes.seeMoreContainer}
               marginTop="28px"
             >
+              <Link to={`${PROJECTS}#all`} className={classes.resetLink}>
               <Typography className={classes.seeMore}>See more</Typography>
+              </Link>
             </Box>
           </Box>
         </Box>
@@ -108,6 +119,7 @@ const ProjectsMainSection = () => {
           </Hidden>
         </Box>
       </Box>
+      <Box id="all" />
     </Box>
   )
 }

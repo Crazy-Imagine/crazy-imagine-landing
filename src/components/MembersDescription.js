@@ -64,7 +64,7 @@ const MembersDescription = ({ member }) => {
         const bgImage = getImage(dataImage)
 
         return (
-          <Box className={classes.wrapper} marginTop="-150px">
+          <Box className={classes.wrapper} marginTop="-120px">
             <BgImage Tag="section" className={classes.bgImage} image={bgImage}>
               <Box
                 display="flex"
