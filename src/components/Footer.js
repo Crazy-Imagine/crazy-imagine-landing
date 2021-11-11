@@ -1,8 +1,8 @@
 import React from "react"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import RoomIcon from "@material-ui/icons/Room"
-import PhoneIcon from "@material-ui/icons/Phone"
 import EmailIcon from "@material-ui/icons/Email"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
@@ -10,6 +10,7 @@ import TwitterIcon from "@material-ui/icons/Twitter"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 import Section from "./Section"
+import { HOME, PROJECTS, TEAMS } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   root: {
@@ -53,6 +54,13 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
   },
+  resetLink: {
+    color: "#ffffff",
+    "&:hover": {
+      color: "#ffffff",
+      textDecoration: "none",
+    },
+  },
 })
 
 const Footer = ({ height = "auto", align = "center" }) => {
@@ -83,9 +91,6 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 House #2/123, San Cristobal, Venezuela.
               </Typography>
               <Typography className={classes.sectionLink}>
-                <PhoneIcon /> +58 414 7079236
-              </Typography>
-              <Typography className={classes.sectionLink}>
                 <EmailIcon /> support@crazyimagine.com
               </Typography>
             </Box>
@@ -95,10 +100,21 @@ const Footer = ({ height = "auto", align = "center" }) => {
               <Typography variant="h3" className={classes.sectionTitle}>
                 ABOUT US
               </Typography>
-              <Typography className={classes.sectionLink}>Projects</Typography>
-              <Typography className={classes.sectionLink}>Our Team</Typography>
               <Typography className={classes.sectionLink}>
-                About Crazy Imagine
+                <Link to={`${PROJECTS}`} className={classes.resetLink}>
+                  Projects
+                </Link>
+              </Typography>
+
+              <Typography className={classes.sectionLink}>
+                <Link to={`${TEAMS}`} className={classes.resetLink}>
+                  Our Team
+                </Link>
+              </Typography>
+              <Typography className={classes.sectionLink}>
+                <Link to={`${HOME}#about`} className={classes.resetLink}>
+                  About Crazy Imagine
+                </Link>
               </Typography>
             </Grid>
             <Grid item xs={12} md={4} className={classes.items}>
@@ -106,14 +122,24 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 COMPANY
               </Typography>
               <Typography className={classes.sectionLink}>
-                What else we povide
+                <Link to={`${PROJECTS}`} className={classes.resetLink}>
+                  What else we povide
+                </Link>
               </Typography>
               <Typography className={classes.sectionLink}>
-                Our Technologies
+                <Link to={`${PROJECTS}#all`} className={classes.resetLink}>
+                  Our Technologies
+                </Link>
               </Typography>
-              <Typography className={classes.sectionLink}>Our Stats</Typography>
               <Typography className={classes.sectionLink}>
-                What our clients say
+                <Link to={`${HOME}#stats`} className={classes.resetLink}>
+                Our Stats
+                </Link>
+                </Typography>
+              <Typography className={classes.sectionLink}>
+                <Link to={`${HOME}#clients`} className={classes.resetLink}>
+                  What our clients say
+                </Link>
               </Typography>
             </Grid>
             <Grid item xs={12} md={4} className={classes.items}>
@@ -121,18 +147,24 @@ const Footer = ({ height = "auto", align = "center" }) => {
                 GET STARTED
               </Typography>
               <Typography className={classes.sectionLink}>
-                Contact Us
+                <Link to={`${HOME}#contact`} className={classes.resetLink}>
+                  Contact Us
+                </Link>
               </Typography>
               <Typography className={classes.sectionLink}>
-                Our References
+                <Link to={`${HOME}#projects`} className={classes.resetLink}>
+                  Our References
+                </Link>
               </Typography>
               <Typography className={classes.sectionLink}>
-                Last Posts
+                <Link to={`${HOME}#blog`} className={classes.resetLink}>
+                  Last Posts
+                </Link>
               </Typography>
               <Typography>
                 <FacebookIcon className={classes.footerIcons} />{" "}
-                <InstagramIcon className={classes.footerIcons} />{" "}
                 <TwitterIcon className={classes.footerIcons} />{" "}
+                <InstagramIcon className={classes.footerIcons} />{" "}
                 <LinkedInIcon className={classes.footerIcons} />
               </Typography>
             </Grid>

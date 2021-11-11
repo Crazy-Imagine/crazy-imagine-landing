@@ -142,6 +142,7 @@ const HumanTalent = () => {
             width="100%"
             display="flex"
             justifyContent="center"
+            id="stats"
           >
             <Box maxWidth="1050px">
               <Grid container spacing={4}>

@@ -24,12 +24,13 @@ const ProjectsServices = () => {
   const classes = useStyles()
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      flexDirection="column"
-      alignItems="center"
-      marginTop={{ xs: "40px"}}
+    display="flex"
+    justifyContent="center"
+    flexDirection="column"
+    alignItems="center"
+    marginTop={{ xs: "40px", md:"250px" }}
     >
+    <Box id="services" />
       <Typography className={classes.title}>
         Craft your ideas <br /> and bring them to LIFE
       </Typography>
