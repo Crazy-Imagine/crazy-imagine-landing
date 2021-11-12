@@ -14,7 +14,7 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
 
-const TeamsPage = () => {
+const TeamPage = () => {
   const data = useStaticQuery(query)
   return (
     <Layout seo={data.memberPage.SEO}>
@@ -55,4 +55,4 @@ query {
   }
 }`
 
-export default TeamsPage
+export default TeamPage

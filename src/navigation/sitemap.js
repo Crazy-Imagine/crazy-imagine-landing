@@ -1,4 +1,4 @@
 exports.BLOG = "/blog"
 exports.HOME = "/"
-exports.TEAMS = "/teams"
+exports.TEAMS = "/team"
 exports.PROJECTS = "/projects"

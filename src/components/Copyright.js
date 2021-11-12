@@ -27,7 +27,7 @@ const Copyright = () => {
       alignItems='center' 
       justifyContent='center'
     >
-      <Typography className={classes.copyright}> <CopyrightIcon className={classes.copyright} /> All rights reserved Crazy imagine 2021</Typography>
+      <Typography className={classes.copyright}> <CopyrightIcon className={classes.copyright} /> All rights reserved Crazy Imagine 2021</Typography>
     </Box>
   );
 };

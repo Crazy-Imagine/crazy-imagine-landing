@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(10),
   },
   navbarIcons: props => ({
-    fontSize: 20,
+    fontSize: 25,
     color: props.scroll ? props.iconsVariant : "#23aae1",
   }),
 

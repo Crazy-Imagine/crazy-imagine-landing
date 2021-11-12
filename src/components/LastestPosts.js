@@ -27,7 +27,7 @@ const LastestPosts = () => {
         justifyContent="center"
       >
         <Typography component={"div"} className={classes.title}>
-          Lastest Posts
+          Latest Posts
         </Typography>
         <Box
           width="45px"
