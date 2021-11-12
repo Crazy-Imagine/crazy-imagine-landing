@@ -22,7 +22,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Layout seo={data.strapiHomepage.seo}>
+      <Layout seo={data.strapiHomepage.Seo}>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />
