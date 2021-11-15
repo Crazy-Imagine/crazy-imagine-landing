@@ -42,9 +42,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: 34,
     fontWeight: "bold",
     fontFamily: "Lato",
+    lineHeight: 1.3,
   },
   description: {
-    fontSize: 16,
+    fontSize: 20,
+    maxHeight: 157,
+    overflow: "hidden"
   },
   cardIcon: {
     fontSize: 64,

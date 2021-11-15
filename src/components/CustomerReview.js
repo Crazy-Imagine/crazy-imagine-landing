@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     color: "white",
     fontFamily: "Myriad-pro",
     marginBottom: 24,
-    fontSize: 16,
+    fontSize: 20,
   },
   customerName: {
     color: "white",

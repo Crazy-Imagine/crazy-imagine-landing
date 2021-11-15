@@ -18,11 +18,11 @@ import ProjectSection from "../components/ProjectSection"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-  const bgImage = getImage(data.strapiHomepage.seo.shareImage.localFile)
+  const bgImage = getImage(data.strapiHomepage.nodes[0].seo.shareImage.localFile)
 
   return (
     <>
-      <Layout seo={data.strapiHomepage.Seo}>
+      <Layout seo={data.strapiHomepage.nodes[0].seo}>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />
@@ -33,8 +33,8 @@ const IndexPage = () => {
           <Box overflow="hidden">
             <HomeMainSection
               title="Crazy imagine sofware"
-              mainTitle={data.strapiHomepage.hero.title}
-              description={data.strapiHomepage.seo.metaDescription}
+              mainTitle={data.strapiHomepage.nodes[0].hero.title}
+              description={data.strapiHomepage.nodes[0].seo.metaDescription}
               image={bgImage}
             />
             <ProjectSection />
@@ -63,21 +63,24 @@ const query = graphql`
         title
       }
     }
-    strapiHomepage {
-      hero {
-        title
-      }
-      seo {
-        id
-        metaTitle
-        metaDescription
-        shareImage {
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+    allStrapiHomepage {
+      nodes {
+        seo {
+          id
+          metaDescription
+          metaTitle
+          shareImage {
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              }
             }
           }
+        }
+        hero {
+          id
+          title
         }
       }
     }

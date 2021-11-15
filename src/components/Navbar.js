@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
   linkTypograpy: props => ({
     transition: "all 300ms ease",
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "bold",
     lineHeight: "29px",
     color: props.scroll ? props.linkVariant : "black",

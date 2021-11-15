@@ -56,7 +56,7 @@ const ReferenceSection = () => {
                 <Box
                   width="45px"
                   height="6px"
-                  marginBottom={{ xs: "30px", md: "108px" }}
+                  marginBottom={{ xs: "30px", md: "95px" }}
                   marginTop="8px"
                   className={classes.boxLine}
                 ></Box>

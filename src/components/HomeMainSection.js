@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subTitle: {
-    fontSize: 16,
+    fontSize: 23,
     fontFamily: "gotham-Medium",
     color: "white",
     lineHeight: "22px",
