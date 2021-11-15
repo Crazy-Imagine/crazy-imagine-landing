@@ -18,11 +18,13 @@ import ProjectSection from "../components/ProjectSection"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-  const bgImage = getImage(data.strapiHomepage.nodes[0].seo.shareImage.localFile)
+  const bgImage = getImage(
+    data.allStrapiHomepage.nodes[0].seo.shareImage.localFile
+  )
 
   return (
     <>
-      <Layout seo={data.strapiHomepage.nodes[0].seo}>
+      <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />
@@ -33,8 +35,8 @@ const IndexPage = () => {
           <Box overflow="hidden">
             <HomeMainSection
               title="Crazy imagine sofware"
-              mainTitle={data.strapiHomepage.nodes[0].hero.title}
-              description={data.strapiHomepage.nodes[0].seo.metaDescription}
+              mainTitle={data.allStrapiHomepage.nodes[0].hero.title}
+              description={data.allStrapiHomepage.nodes[0].seo.metaDescription}
               image={bgImage}
             />
             <ProjectSection />
