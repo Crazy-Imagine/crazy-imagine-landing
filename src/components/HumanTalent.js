@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     fontFamily: "Roboto",
-    fontSize: 18,
+    fontSize: 20,
     color: "#1e1e1e",
     [theme.breakpoints.down("md")]: {
       width: "85%",

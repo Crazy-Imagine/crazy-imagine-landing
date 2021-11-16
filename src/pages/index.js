@@ -24,7 +24,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
+      <Layout>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />
@@ -35,7 +35,7 @@ const IndexPage = () => {
           <Box overflow="hidden">
             <HomeMainSection
               title="Crazy imagine sofware"
-              mainTitle={data.allStrapiHomepage.nodes[0].hero.title}
+              mainTitle="IDEAS BEYOND YOUR IMAGINATION"
               description={data.allStrapiHomepage.nodes[0].seo.metaDescription}
               image={bgImage}
             />

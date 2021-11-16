@@ -18,8 +18,8 @@ const useStyes = makeStyles({
     backgroundColor: "#23aae1",
   },
   referenceImage: {
-    height: 568,
-    filter: "brightness(85%)",
+    height: 630,
+    filter: "brightness(90%)",
   },
 })
 
@@ -56,7 +56,7 @@ const ReferenceSection = () => {
                 <Box
                   width="45px"
                   height="6px"
-                  marginBottom={{ xs: "30px", md: "95px" }}
+                  marginBottom={{ xs: "30px", md: "75px" }}
                   marginTop="8px"
                   className={classes.boxLine}
                 ></Box>

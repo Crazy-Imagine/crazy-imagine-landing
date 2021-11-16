@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   },
   formatContactSection: {
     "& $sectionLink": {
-      marginBottom: 8,
+      marginBottom: 20,
     },
     "& $sectionTitle": {
       lineHeight: "inherit",
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
   },
 })
 
-const Footer = ({ height = "auto", align = "center" }) => {
+const Footer = ({ height = "400px", align = "center" }) => {
   const classes = useStyles()
   return (
     <Section backgroundColor="#1D1D1D" width="1060px" height={height}>
@@ -80,10 +80,12 @@ const Footer = ({ height = "auto", align = "center" }) => {
               display={{ xs: "flex", md: "block" }}
               flexDirection="column"
               alignItems="center"
+              marginTop="20px"
             >
               <Typography variant="h3" className={classes.sectionTitle}>
                 CONTACT
               </Typography>
+              <Box marginBottom="15px" />
               <Typography className={classes.sectionLink}>
                 <RoomIcon /> Urb Ambrosio Plaza #1 street
               </Typography>
