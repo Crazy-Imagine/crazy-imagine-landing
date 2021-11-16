@@ -62,7 +62,7 @@ const useStyles = makeStyles({
   },
   postDescription: {
     fontFamily: "Hind",
-    fontSize: 14,
+    fontSize: 18,
     color: "#464646",
     marginBottom: 20,
     height: 63,
@@ -109,7 +109,7 @@ const PostCard = ({
   const classes = useStyles({
     variant,
   })
-  const content = textOverflow(description, 100)
+  const content = textOverflow(description, 75)
   return (
     <Box>
       <Card className={classes.cardContainer}>

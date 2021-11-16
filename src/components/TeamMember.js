@@ -36,11 +36,11 @@ const useStyles = makeStyles({
     overflow: "hidden",
   },
   description: {
-    fontSize: 14,
+    fontSize: 18,
     fontFamily: "Roboto",
     color: "#292929",
     marginBottom: 12,
-    maxHeight: 63,
+    maxHeight: 59,
     overflow: "hidden",
   },
   readMoreIcon: {
@@ -51,10 +51,13 @@ const useStyles = makeStyles({
     marginLeft: 5,
   },
   link: {
-    textDecoration: "none",
     color: "#292929",
     display: "flex",
     alignItems: "center",
+    "&:hover": {
+      textDecoration: "none",
+      color: "#292929",
+    },
   },
   linkContainer: {
     textDecoration: "none",
@@ -62,8 +65,8 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     "&:hover": {
-      textDecoration: "none"
-    }
+      textDecoration: "none",
+    },
   },
   resetCardMembers: {
     padding: 0,

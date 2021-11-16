@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: " bold",
   },
   servicesDescription: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: "Poppins",
     fontWeight: "bold",
   },
@@ -97,15 +97,14 @@ const MemberServices = () => {
               <Box
                 display="flex"
                 flexDirection="column"
-                justifyContent="center"
+                justifyContent=""
                 className={classes.itemContent}
-                height="326px"
-                px="87px"
+                height="auto"
+                px="80px"
+                py="10px"
               >
                 <Box marginBottom="26px">{icons[i]}</Box>
-                <Typography  className={classes.title}>
-                  {el.title}
-                </Typography>
+                <Typography className={classes.title}>{el.title}</Typography>
                 <Typography className={classes.servicesDescription}>
                   {el.description}
                 </Typography>

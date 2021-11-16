@@ -11,6 +11,7 @@ const useStyles = makeStyles({
   },
   description: {
     fontWeight: "bold",
+    fontSize: 20,
     maxWidth: 650,
     textAlign: "center",
     marginTop: 10,
