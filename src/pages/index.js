@@ -24,7 +24,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Layout>
+      <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
         <PageWrapper>
           <Hidden mdDown>
             <Navbar variant="secondary" />

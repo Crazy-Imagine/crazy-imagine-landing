@@ -3,6 +3,13 @@
 });*/
 
 module.exports = {
+  siteMetadata: {
+    title: "Crazy Imagine",
+    titleTemplate: "%s | Software Agency",
+    description:
+      "We are a growing startup with more than 5 years in the market, with experience on mobile and web development, using the most popular Javascript technologies like React js, Angular js, Vue js, Node js and PHP frameworks like Laravel, Code Igniter, Prestashop, and Wordpress.",
+    url: "https://crazyimagine.com/",
+  },
   plugins: [
     "gatsby-plugin-material-ui",
     "gatsby-plugin-react-helmet",
