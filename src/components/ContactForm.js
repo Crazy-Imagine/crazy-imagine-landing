@@ -1,11 +1,6 @@
 import React, { useState } from "react"
 import clsx from "clsx"
-import {
-  Box,
-  makeStyles,
-  Typography,
-  Snackbar,
-} from "@material-ui/core"
+import { Box, makeStyles, Typography, Snackbar } from "@material-ui/core"
 import { useForm, ValidationError } from "@formspree/react"
 import IconButton from "@material-ui/core/IconButton"
 import CloseIcon from "@material-ui/icons/Close"
@@ -85,14 +80,22 @@ const ContactForm = ({ variant = "default" }) => {
   const classes = useStyles({
     variant,
   })
-  const [state, handleSubmit] = useForm("mknkvdow")
+  const [state, handleSubmit] = useForm("myyogzrz")
   const [openState, setOpenState] = useState({
     open: false,
   })
 
   const { open } = openState
 
-  const handleClick = newState => () => {
+  const handleClick = newState => {
+    window.onbeforeunload = () => {
+      for (const form of document.getElementsByTagName("form")) {
+        setTimeout(() => {
+          form.reset()
+        }, 300)
+      }
+    }
+    window.onbeforeunload()
     setOpenState({ open: true, ...newState })
   }
 
@@ -105,13 +108,14 @@ const ContactForm = ({ variant = "default" }) => {
       <Typography variant="h3" className={classes.title}>
         contact
       </Typography>
-      <form onSubmit={handleSubmit} action="https://formspree.io/f/mknkvdow">
+      <form onSubmit={handleSubmit}>
         <Box marginBottom="20px">
           <input
             className={classes.formInput}
             placeholder="Name(Required)"
             id="message"
             name="message"
+            required
           />
         </Box>
         <Box marginBottom="20px">
@@ -121,6 +125,7 @@ const ContactForm = ({ variant = "default" }) => {
             id="email"
             type="email"
             name="email"
+            required
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
         </Box>
@@ -130,6 +135,7 @@ const ContactForm = ({ variant = "default" }) => {
             placeholder="Subject"
             id="subject"
             name="subject"
+            required
           />
         </Box>
         <Box marginBottom="16px">
@@ -148,7 +154,9 @@ const ContactForm = ({ variant = "default" }) => {
         <button
           className={classes.formButton}
           disabled={state.submitting}
-          onClick={handleClick({ vertical: "bottom", horizontal: "left" })}
+          onClick={() =>
+            handleClick({ vertical: "bottom", horizontal: "left" })
+          }
         >
           SUBMIT
         </button>
