@@ -30,7 +30,8 @@
     "react-helmet": "^6.1.0",
     "react-markdown": "^6.0.2",
     "react-swipeable-views": "^0.14.0",
-    "sharp": "^0.28.3"
+    "sharp": "^0.28.3",
+    "sweetalert2": "^11.3.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"
