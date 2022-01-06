@@ -1,7 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ReactMarkdown from "react-markdown"
-import { Box, Hidden, makeStyles } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -34,17 +34,6 @@ const PostContent = ({ data }) => {
       paddingTop="38px"
       paddingLeft={{ xs: "0px", md: `${data.article.image[1] || "170px"}` }}
     >
-      {data.article.image[1] ? (
-        <Hidden mdDown>
-          <GatsbyImage
-            image={getImage(data.article.image[1].localFile)}
-            alt="contentImage"
-            className={classes.contentImage}
-          />
-        </Hidden>
-      ) : (
-        ""
-      )}
       <Box
         paddingLeft={{ xs: "7px", md: "38px" }}
         paddingRight={{ xs: "7px", md: "64px" }}

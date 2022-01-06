@@ -42,6 +42,11 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "flex-end",
   },
+  resetLink: {
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
 })
 
 const PostCarousel = () => {
@@ -61,85 +66,103 @@ const PostCarousel = () => {
       query={query}
       render={data => {
         const articles = data.articles.nodes
+        const articlesSort = articles.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at)
+        })
+        const sortRandom = Math.floor(
+          Math.random() * (articlesSort.length - 1) + 0
+        )
         const maxSteps = articles.length
         return (
           <Box>
             <Grid container>
               <Grid item md={6}>
-                <BgImage
-                  image={getImage(articles[activeStep].image[0].localFile)}
-                  alt={articles[activeStep].title}
-                  className={classes.bgImage}
+                <Link
+                  to={`${BLOG}/${articlesSort[sortRandom]?.slug}`}
+                  className={classes.resetLink}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="flex-end"
-                    justifyContent="center"
-                    marginRight="122px"
-                    height="100%"
+                  <BgImage
+                    image={getImage(
+                      articlesSort[sortRandom].image[0].localFile
+                    )}
+                    alt={articlesSort[sortRandom].title}
+                    className={classes.bgImage}
                   >
-                    <Typography className={classes.steps}>
-                      Previus Post
-                    </Typography>
-                    <Box display="flex">
-                      <Button
-                        size="small"
-                        onClick={handleBack}
-                        disabled={activeStep === 0}
-                        className={classes.icon}
-                      >
-                        {theme.direction === "rtl" ? (
-                          <ArrowForwardOutlined />
-                        ) : (
-                          <ArrowBackOutlined />
-                        )}
-                      </Button>
-                      <Link to={`${BLOG}/${articles[activeStep].slug}`}>
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="flex-end"
+                      justifyContent="center"
+                      marginRight="122px"
+                      height="100%"
+                    >
+                      <Typography className={classes.steps}>
+                        Previus Post
+                      </Typography>
+                      <Box display="flex">
+                        <Button
+                          size="small"
+                          onClick={handleBack}
+                          disabled={activeStep === 0}
+                          className={classes.icon}
+                        >
+                          {theme.direction === "rtl" ? (
+                            <ArrowForwardOutlined />
+                          ) : (
+                            <ArrowBackOutlined />
+                          )}
+                        </Button>
+
                         <Typography className={classes.title}>
-                          {articles[activeStep].title}
+                          {articlesSort[sortRandom].title}
                         </Typography>
-                      </Link>
+                      </Box>
                     </Box>
-                  </Box>
-                </BgImage>
+                  </BgImage>
+                </Link>
               </Grid>
               <Grid item md={6}>
-                <BgImage
-                  image={getImage(articles[activeStep + 1].image[0].localFile)}
-                  alt={articles[activeStep + 1].title}
-                  className={classes.bgImage}
+                <Link
+                  to={`${BLOG}/${articlesSort[sortRandom + 1].slug}`}
+                  className={classes.resetLink}
                 >
-                  <Box
-                    marginLeft="122px"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    height="100%"
+                  <BgImage
+                    image={getImage(
+                      articlesSort[sortRandom + 1].image[0].localFile
+                    )}
+                    alt={articlesSort[sortRandom + 1].title}
+                    className={classes.bgImage}
                   >
-                    <Typography className={classes.steps}>Next Post</Typography>
-                    <Box display="flex">
-                      <Link to={`${BLOG}/${articles[activeStep + 1].slug}`}>
+                    <Box
+                      marginLeft="122px"
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                      height="100%"
+                    >
+                      <Typography className={classes.steps}>
+                        Next Post
+                      </Typography>
+                      <Box display="flex">
                         <Typography className={classes.title}>
-                          {articles[activeStep + 1].title}{" "}
+                          {articlesSort[sortRandom + 1].title}{" "}
                         </Typography>
-                      </Link>
-
-                      <Button
-                        size="small"
-                        onClick={handleNext}
-                        disabled={activeStep === maxSteps - 2}
-                        className={classes.icon}
-                      >
-                        {theme.direction === "rtl" ? (
-                          <ArrowBackOutlined />
-                        ) : (
-                          <ArrowForwardOutlined />
-                        )}
-                      </Button>
+                        <Button
+                          size="small"
+                          onClick={handleNext}
+                          disabled={activeStep === maxSteps - 2}
+                          className={classes.icon}
+                        >
+                          {theme.direction === "rtl" ? (
+                            <ArrowBackOutlined />
+                          ) : (
+                            <ArrowForwardOutlined />
+                          )}
+                        </Button>
+                      </Box>
                     </Box>
-                  </Box>
-                </BgImage>
+                  </BgImage>
+                </Link>
               </Grid>
             </Grid>
           </Box>
@@ -156,6 +179,7 @@ const query = graphql`
         id
         title
         slug
+        created_at
         image {
           localFile {
             childImageSharp {
