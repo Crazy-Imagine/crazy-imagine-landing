@@ -13,6 +13,7 @@ import {
 import { graphql, Link, StaticQuery } from "gatsby"
 import { ArrowBackOutlined, ArrowForwardOutlined } from "@material-ui/icons"
 import { BLOG } from "../navigation/sitemap"
+import { getRandomNumbers } from "../helpers/getRandomNumbers"
 
 const useStyles = makeStyles({
   bgImage: {
@@ -69,9 +70,7 @@ const PostCarousel = () => {
         const articlesSort = articles.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         })
-        const sortRandom = Math.floor(
-          Math.random() * (articlesSort.length - 1) + 0
-        )
+        const sortRandom = getRandomNumbers(0, articlesSort.length)
         const maxSteps = articles.length
         return (
           <Box>
