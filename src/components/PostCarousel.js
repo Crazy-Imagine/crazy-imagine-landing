@@ -70,7 +70,7 @@ const PostCarousel = () => {
         const articlesSort = articles.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         })
-        const sortRandom = getRandomNumbers(0, articlesSort.length)
+        const sortRandom = getRandomNumbers(0, articlesSort.length - 1)
         const maxSteps = articles.length
         return (
           <Box>
