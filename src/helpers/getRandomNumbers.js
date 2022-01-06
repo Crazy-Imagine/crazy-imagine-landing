@@ -7,7 +7,6 @@ export const getRandomNumbers = (min, max) => {
   let randomNum = "0." + byteArray[0].toString()
 
   // Get number in range
-  randomNum = Math.floor(randomNum * (max - 0)) + min
-
+  randomNum = (Math.floor(randomNum * (max - min)) + min)
   return randomNum
 }
