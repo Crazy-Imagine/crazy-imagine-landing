@@ -42,13 +42,14 @@ const RecentlyPosted = () => {
     <StaticQuery
       query={graphql`
         query {
-          article: allStrapiArticle(limit: 4) {
+          article: allStrapiArticle {
             edges {
               node {
                 id
                 description
                 title
                 slug
+                created_at
                 image {
                   localFile {
                     childImageSharp {
@@ -67,12 +68,16 @@ const RecentlyPosted = () => {
         }
       `}
       render={data => {
+        const articles = data.article.edges
+        const articlesSort = articles.sort((a, b) => {
+          return new Date(b.node.created_at) - new Date(a.node.created_at)
+        })
         return (
           <Box>
             <Typography variant="h4" className={classes.recentlyPostedTitle}>
               Recently Posted
             </Typography>
-            {data.article.edges.map(el => (
+            {articlesSort.slice(0, 4).map((el) => (
               <Box key={el.node.id} marginBottom="24px">
                 <Link
                   to={`${BLOG}/${el.node.slug}`}

@@ -64,12 +64,19 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
   },
+  author: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 20,
+  },
 }))
 
 const Post = ({ data }) => {
   const classes = useStyles()
   const title = data.article.title
   const description = data.article.description
+  const author = data.article.author.name
 
   return (
     <Layout seo={data.article.seo}>
@@ -117,10 +124,27 @@ const Post = ({ data }) => {
               </BgImage>
             </Box>
           </Box>
-          <Box display="flex" justifyContent="center" paddingBottom="76px">
+          <Box
+            display="flex"
+            justifyContent="center"
+            paddingBottom="76px"
+            flexDirection="column"
+            alignItems="center"
+            gap="10px"
+          >
             <Typography className={classes.description}>
               {description}
             </Typography>
+            <Box
+              width="100%"
+              display="flex"
+              justifyContent="right"
+              marginRight="10%"
+            >
+              <Typography className={classes.author}>
+                Article by: {author}
+              </Typography>
+            </Box>
           </Box>
         </Box>
         <Grid container>
@@ -152,6 +176,9 @@ export const query = graphql`
       id
       description
       content
+      author {
+        name
+      }
       seo {
         id
         metaDescription
