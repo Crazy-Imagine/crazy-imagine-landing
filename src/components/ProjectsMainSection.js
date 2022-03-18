@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     height: 700,
     width: 900,
     [theme.breakpoints.down("lg")]: {
-      marginRight: "0px",
+      marginRight: -112,
       marginLeft: -500,
     },
   },
