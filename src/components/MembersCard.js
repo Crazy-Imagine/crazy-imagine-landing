@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 1,
     fontFamily: "Gotham-Bold",
     [theme.breakpoints.down("md")]: {
-      fontSize: 50
-    }
+      fontSize: 50,
+    },
   },
   memberLastName: {
     marginBottom: 35,
@@ -25,8 +25,8 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 1,
     fontFamily: "gotham-book",
     [theme.breakpoints.down("md")]: {
-      fontSize: 50
-    }
+      fontSize: 50,
+    },
   },
   memberIcons: {
     color: "#23aae1",
@@ -42,12 +42,12 @@ const useStyles = makeStyles(theme => ({
   skillsContainer: {
     maxWidth: 306,
     [theme.breakpoints.down("md")]: {
-      maxWidth: "100%"
-    }
+      maxWidth: "100%",
+    },
   },
   itemContainer: {
     maxWidth: "100%",
-    padding: 0
+    padding: 0,
   },
   memberContainerResponsive: {
     margin: 0,
@@ -67,7 +67,6 @@ const MembersCard = ({ member }) => {
         <Grid
           container
           justifyContent="space-between"
-
           className={classes.memberContainerResponsive}
         >
           <Grid item xs={11} md={6}>
@@ -79,7 +78,10 @@ const MembersCard = ({ member }) => {
               />
             </Box>
           </Grid>
-          <Box width={{md: "100%", lg:"408px"}} padding={{xs: "0px 50px 0px 50px"}}>
+          <Box
+            width={{ md: "100%", lg: "408px" }}
+            padding={{ xs: "0px 50px 0px 50px" }}
+          >
             <Grid item xs={12} md={6} className={classes.itemContainer}>
               <Typography variant="h4" className={classes.memberName}>
                 {member.name}
@@ -112,7 +114,6 @@ const MembersCard = ({ member }) => {
                     </Typography>
                   </Box>
                 </Grid>
-                
               </Grid>
             </Grid>
           </Box>

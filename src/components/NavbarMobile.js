@@ -26,9 +26,10 @@ import {
   ImportContacts,
   Close,
 } from "@material-ui/icons"
+import WorkIcon from "@material-ui/icons/Work"
 
 import useScroll from "../hooks/useScroll"
-import { HOME, PROJECTS, TEAMS } from "../navigation/sitemap"
+import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 
 const useStyles = makeStyles(theme => ({
@@ -83,6 +84,7 @@ const icons = [
   <People />,
   <ImportContacts />,
   <Drafts />,
+  <WorkIcon />,
 ]
 
 const NavbarMobile = ({
@@ -174,6 +176,9 @@ const NavbarMobile = ({
               </Link>,
               <Link className={classes.resetLink} to={`${HOME}#contact`}>
                 <Typography>Contact</Typography>
+              </Link>,
+              <Link className={classes.resetLink} to={`${WORK_WITH_US}`}>
+                <Typography>Work With Us</Typography>
               </Link>,
             ].map((text, index) => (
               <ListItem button key={index} alignItems="center">

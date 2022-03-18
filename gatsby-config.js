@@ -31,6 +31,7 @@ module.exports = {
           "article",
           "category",
           "writer",
+          "curriculums",
           "members",
           "projects",
           "reviews",

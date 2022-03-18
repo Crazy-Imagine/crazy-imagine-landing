@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   itemContainer: {
-
     [theme.breakpoints.down("md")]: {
       display: "block",
     },
@@ -23,8 +22,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 36,
     textTransform: "uppercase",
     [theme.breakpoints.down("md")]: {
-      textAlign: "center"
-    }
+      textAlign: "center",
+    },
   },
   projectTitle: {
     color: "white",
@@ -67,18 +66,18 @@ const useStyles = makeStyles(theme => ({
   items: {
     margin: -7,
     "&:hover": {
-      transform: "scale(0.95)"
+      transform: "scale(0.95)",
     },
     transition: "transform 300ms",
     [theme.breakpoints.down("md")]: {
-      margin: -10
-    }
+      margin: -10,
+    },
   },
   resetLink: {
     textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
-    }
+    },
   },
 }))
 

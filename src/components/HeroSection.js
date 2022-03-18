@@ -1,17 +1,27 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import { BgImage } from "gbimage-bridge"
-
+import ceo from "../images/IMG_6762.jpg"
+import team from "../images/IMG_6935.jpg"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import { Remove } from "@material-ui/icons"
-import { getImage } from "gatsby-plugin-image"
+import background from "../images/MainTeam.jpg"
 
 const useStyles = makeStyles(theme => ({
   containerResponsive: {
-    [theme.breakpoints.down("md")]: {
-      margin: 0,
-      display: "flex",
-      justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "40px 200px",
+    backgroundColor: "#043565",
+    backgroundImage: `url(${background})`,
+    objectFit: "cover",
+    objectPosition: "50% 50%",
+    paddingTop: "65px",
+    height: "1000px",
+    [theme.breakpoints.between("450", "900")]: {
+      height: "850px",
+    },
+    [theme.breakpoints.between("0", "450")]: {
+      height: "700px",
     },
   },
   bgImage: {
@@ -21,6 +31,32 @@ const useStyles = makeStyles(theme => ({
   bgBox: {
     backgroundColor: "black",
   },
+  ceoPic: {
+    width: "240px",
+    height: "240px",
+    objectFit: "contain",
+    [theme.breakpoints.between("450", "900")]: {
+      width: "180px",
+      height: "180px",
+    },
+    [theme.breakpoints.between("0", "450")]: {
+      width: "120px",
+      height: "120px",
+    },
+  },
+  teamPic: {
+    width: "720px",
+    height: "240px",
+    objectFit: "contain",
+    [theme.breakpoints.between("450", "900")]: {
+      width: "400px",
+      height: "180px",
+    },
+    [theme.breakpoints.between("200", "450")]: {
+      width: "300px",
+      height: "120px",
+    },
+  },
   title: {
     color: "white",
     fontSize: 49,
@@ -28,8 +64,8 @@ const useStyles = makeStyles(theme => ({
     textTransform: "uppercase",
     lineHeight: 1,
     [theme.breakpoints.down("md")]: {
-      fontSize: 40
-    }
+      fontSize: 40,
+    },
   },
   titleSpan: {
     color: "#23aae1",
@@ -38,8 +74,14 @@ const useStyles = makeStyles(theme => ({
     textTransform: "uppercase",
     lineHeight: 1,
     [theme.breakpoints.down("md")]: {
-      fontSize: 50
-    }
+      fontSize: 50,
+    },
+  },
+  ceoContainer: {
+    objectFit: "contain",
+  },
+  teamContainer: {
+    objectFit: "contain",
   },
   author: {
     color: "white",
@@ -60,55 +102,40 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const HeroSection = () => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        team: strapiTeampage {
-          Title
-          Author
-          Image {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-  const imageData = data.team.Image[0].localFile
-  const bgImage = getImage(imageData)
-  const title = data.team.Title
-  const author = data.team.Author
-
   const classes = useStyles()
 
   return (
-    <Box height="795px" marginBottom="60px">
-      <BgImage image={bgImage} alt={title} className={classes.bgImage}>
-        <Box marginLeft="230px" className={classes.containerResponsive}>
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-            height="800px"
-            paddingBottom="152px"
-            maxWidth="690px"
-            className={classes.titleContainer}
-          >
-            <Typography className={classes.title}>
-              <span className={classes.titleSpan}>{title.slice(0, 10)}</span>{" "}
-              <br />
-              {title.slice(10)}
-            </Typography>
-            <br />
-            <Typography className={classes.author}>
-              <Remove className={classes.authorIcon} /> {author}
-            </Typography>
-          </Box>
+    <Box className={classes.containerResponsive}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Box className={classes.ceoContainer}>
+          <img className={classes.ceoPic} src={ceo} alt="The boss" />
         </Box>
-      </BgImage>
+        <Typography
+          style={{
+            textAlign: "center",
+            color: "#FBF5F3",
+            paddingTop: "25px",
+            paddingBottom: "35px",
+            fontFamily: "Gotham-ultra",
+            fontSize: 25,
+          }}
+        >
+          CEO<br></br>Blas Hernández
+        </Typography>
+      </Box>
+      <Box className={classes.teamContainer}>
+        <img className={classes.teamPic} src={team} alt="The team" />
+      </Box>
+      <Typography
+        style={{ color: "#FBF5F3", fontFamily: "Gotham-ultra", fontSize: 25 }}
+      >
+        Our Crazy Team
+      </Typography>
     </Box>
   )
 }

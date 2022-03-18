@@ -1,7 +1,5 @@
 import React from "react"
-
 import { BgImage } from "gbimage-bridge"
-
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import CodeIcon from "@material-ui/icons/Code"
