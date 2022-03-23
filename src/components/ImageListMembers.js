@@ -104,7 +104,12 @@ export default function ImageListMembers() {
   const [hover, setHover] = useState({ hover: false, position: -1 })
   const [image, setImage] = useState({ img: {}, position: -1 })
 
-  const handleHover = (hover, position, img) => {
+  const handleHoverImage = (hoverStatus, position, img) => {
+    setHover({ hover, position })
+    setImage({ img, position })
+  }
+
+  const handleHoverBar = (hoverStatus, position, img) => {
     setHover({ hover, position })
     setImage({ img, position })
   }
@@ -136,14 +141,14 @@ export default function ImageListMembers() {
           <ImageListItem key={item.id} style={{ width: "max-content" }}>
             <GatsbyImage
               onMouseEnter={() =>
-                handleHover(
+                handleHoverImage(
                   true,
                   index,
                   getImage(item.avatarHover[0].localFile)
                 )
               }
               onMouseLeave={() => {
-                handleHover(false, -1, getImage(item.avatar[0].localFile))
+                handleHoverImage(false, -1, getImage(item.avatar[0].localFile))
               }}
               className={classes.image}
               image={
@@ -160,14 +165,14 @@ export default function ImageListMembers() {
                   : classes.descriptionDisappears
               }`}
               onMouseEnter={() =>
-                handleHover(
+                handleHoverBar(
                   true,
                   index,
                   getImage(item.avatarHover[0].localFile)
                 )
               }
               onMouseLeave={() =>
-                handleHover(false, -1, getImage(item.avatar[0].localFile))
+                handleHoverBar(false, -1, getImage(item.avatar[0].localFile))
               }
               style={{
                 transform:

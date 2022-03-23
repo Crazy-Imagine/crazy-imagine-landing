@@ -1,9 +1,8 @@
 import * as React from "react"
 import { useEffect, useState, useRef } from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import { Box, Typography } from "@material-ui/core"
+import { Box, Typography, Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
-import { Input } from "@material-ui/core"
 import Link from "@material-ui/core/Link"
 import Button from "@material-ui/core/Button"
 import Card from "@material-ui/core/Card"
@@ -13,8 +12,9 @@ import Alert from "@material-ui/lab/Alert"
 import * as yup from "yup"
 import { StaticImage } from "gatsby-plugin-image"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm as formHook } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import axios from "axios"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
@@ -164,12 +164,12 @@ const WorkForm = () => {
   const [disableButton, setDisableButton] = useState(true)
   const [showAttach, setShowAttach] = useState(false)
   const [showLink, setShowLink] = useState(false)
-  const [isVisible, setVisible] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
 
   const domref = useRef()
+  const isVisible = useIntersection(domref, "0px")
 
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
@@ -178,17 +178,6 @@ const WorkForm = () => {
       setDisableButton(true)
     }
   }
-
-  useEffect(() => {
-    const domRefCurrent = domref.current
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!isVisible && entry.isIntersecting) setVisible(entry.isIntersecting)
-      })
-    })
-    observer.observe(domRefCurrent)
-    return () => observer.unobserve(domRefCurrent) // clean up
-  }, [isVisible])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -217,7 +206,7 @@ const WorkForm = () => {
     zip: yup
       .string()
       .required()
-      .matches(/^[0-9]+$/, "Must be only digits")
+      .matches(/^[\d]+$/, "Must be only digits")
       .min(4, "Must be at least 4 digits")
       .typeError("Must be at least 4 digits"),
     website: yup.string(),
@@ -256,7 +245,11 @@ const WorkForm = () => {
     formState: { errors },
     reset,
     getValues,
-  } = formHook({ resolver: yupResolver(schema), mode: "onChange" })
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: { website: "" },
+  })
 
   const onSubmitHandler = async data => {
     setDisableButton(true)
@@ -400,7 +393,7 @@ const WorkForm = () => {
                   required
                   className={classes.formInput}
                   {...register("name")}
-                  error={errors.name && true}
+                  error={errors.name}
                   helperText={errors.name?.message}
                   type="text"
                   id="outlined-basic"
@@ -411,7 +404,7 @@ const WorkForm = () => {
                 <TextField
                   required
                   className={classes.formInput}
-                  error={errors.email && true}
+                  error={errors.email}
                   {...register("email")}
                   helperText={errors.email?.message}
                   type="text"
@@ -423,7 +416,7 @@ const WorkForm = () => {
                 <TextField
                   required
                   className={classes.formInput}
-                  error={errors.phone && true}
+                  error={errors.phone}
                   {...register("phone")}
                   helperText={errors.phone?.message}
                   type="text"
@@ -435,7 +428,7 @@ const WorkForm = () => {
                 <TextField
                   required
                   className={classes.formInput}
-                  error={errors.address && true}
+                  error={errors.address}
                   helperText={errors.address?.message}
                   {...register("address")}
                   type="text"
@@ -450,7 +443,7 @@ const WorkForm = () => {
                     className={classes.addressForm}
                     helperText={errors.city?.message}
                     {...register("city")}
-                    error={errors.city && true}
+                    error={errors.city}
                     type="text"
                     id="outlined-basic"
                     label="City"
@@ -462,7 +455,7 @@ const WorkForm = () => {
                     className={classes.addressForm}
                     helperText={errors.state?.message}
                     {...register("state")}
-                    error={errors.state && true}
+                    error={errors.state}
                     type="text"
                     id="outlined-basic"
                     label="State/Province"
@@ -474,7 +467,7 @@ const WorkForm = () => {
                     className={classes.addressForm}
                     helperText={errors.zip?.message}
                     {...register("zip")}
-                    error={errors.zip && true}
+                    error={errors.zip}
                     type="number"
                     id="outlined-basic"
                     label="ZIP Code"
@@ -512,7 +505,7 @@ const WorkForm = () => {
                       required
                       className={classes.formInputAppears}
                       helperText={errors.website?.message}
-                      error={errors.website && true}
+                      error={errors.website}
                       {...register("website")}
                       onSelect={disableChangeButton}
                       type="text"

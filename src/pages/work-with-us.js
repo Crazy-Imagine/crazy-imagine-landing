@@ -4,6 +4,7 @@ import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
 import WorkMainSection from "../components/WorkMainSection"
 import WorkInfo from "../components/WorkInfo"
+import WorkBenefits from "../components/WorkBenefits"
 import WorkForm from "../components/WorkForm"
 import WorkSelection from "../components/WorkSelection"
 import Navbar from "../components/Navbar"
@@ -21,6 +22,7 @@ const WorkWithUsPage = () => {
       </Hidden>
       <WorkMainSection />
       <WorkInfo />
+      <WorkBenefits />
       <WorkSelection />
       <WorkForm />
       <Footer height="400px" align="flex-end" />

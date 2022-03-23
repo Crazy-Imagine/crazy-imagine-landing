@@ -1,23 +1,24 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useRef } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Typography } from "@material-ui/core"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 350,
   },
   cardAnimation: {
-    animation: `$animateCards 2s ease 0s 1 alternate backwards`,
+    animation: `$animateCards 4s ease 1s 1 alternate backwards`,
   },
   title: {
     fontSize: 14,
     fontFamily: "Roboto",
   },
   shakeTitle: {
-    animation: `$shakeIt 0.5s;`,
+    animation: `$shakeIt 2.5s ease 0.5s;`,
   },
   containerResponsive: {
     display: "flex",
@@ -61,9 +62,24 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     textTransform: "uppercase",
     marginTop: 50,
+    textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: 28,
     },
+  },
+  boxCard: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gridGap: "15px",
+  },
+  boxLineCenter: {
+    width: "45px",
+    height: "6px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "#000a30",
   },
   pos: {
     marginBottom: 12,
@@ -77,6 +93,9 @@ const useStyles = makeStyles(theme => ({
   },
   bgBox: {
     backgroundColor: "#000a30",
+  },
+  marginBox: {
+    marginBottom: "50px",
   },
   center: {
     width: "20%",
@@ -127,71 +146,34 @@ const useStyles = makeStyles(theme => ({
 
 const WorkSelection = () => {
   const classes = useStyles()
-  const [isVisible, setVisible] = useState(false)
-  const [isShaking, setShaking] = useState(false)
-  const selectionRef = useRef()
-  const selectionRef2 = useRef()
-  useEffect(() => {
-    const selectionRefCurrent = selectionRef.current
-    const selectionRef2Current = selectionRef2.current
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!isVisible && entry.isIntersecting) setVisible(entry.isIntersecting)
-      })
-    })
-    const observer2 = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!isShaking && entry.isIntersecting) setShaking(entry.isIntersecting)
-      })
-    })
-    observer.observe(selectionRef.current)
-    observer2.observe(selectionRef2.current)
-    return () => {
-      observer.unobserve(selectionRefCurrent)
-      observer2.unobserve(selectionRef2Current)
-    } // clean up
-  }, [isVisible, isShaking])
+  const titleref = useRef()
+  const contentref = useRef()
+
+  const isVisible = useIntersection(titleref, "10px")
+  const isShaking = useIntersection(contentref, "0px")
+
   return (
     <Box>
-      <Box mb={10}>
-        <Typography
-          align="center"
-          className={`${classes.selecTitle}  ${
-            isShaking ? classes.shakeTitle : ""
-          }`}
-          ref={selectionRef2}
-        >
+      <Box
+        ref={titleref}
+        className={`${classes.marginBox} ${
+          isVisible ? classes.shakeTitle : ""
+        }`}
+      >
+        <Typography className={classes.selecTitle}>
           Selection process
         </Typography>
-        <Box
-          width="45px"
-          height="6px"
-          marginLeft="auto"
-          marginRight="auto"
-          style={{ backgroundColor: "#000a30" }}
-        ></Box>
+        <Box className={classes.boxLineCenter}></Box>
       </Box>
       <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        gridGap="15px"
+        ref={contentref}
+        className={`${classes.boxCard} ${
+          isShaking ? classes.cardAnimation : ""
+        }`}
       >
-        <Card
-          className={`${classes.root}  ${
-            isVisible ? classes.cardAnimation : ""
-          }`}
-          ref={selectionRef}
-        >
+        <Card className={classes.root}>
           <CardContent>
-            <Typography
-              className={classes.title}
-              color="infoRefSecondary"
-              gutterBottom
-            >
-              Step 1
-            </Typography>
+            <Typography className={classes.title}>Step 1</Typography>
             <Typography
               variant="h5"
               component="h2"
@@ -199,9 +181,7 @@ const WorkSelection = () => {
             >
               Curriculum Review
             </Typography>
-            <Typography className={classes.pos} color="infoRefSecondary">
-              keywords
-            </Typography>
+            <Typography className={classes.pos}>keywords</Typography>
             <Typography
               className={classes.bodyCard}
               variant="body2"
@@ -219,16 +199,10 @@ const WorkSelection = () => {
             className={`${classes.root}  ${
               isVisible ? classes.cardAnimation : ""
             }`}
-            ref={selectionRef}
+            ref={contentref}
           >
             <CardContent>
-              <Typography
-                className={classes.title}
-                color="infoRefSecondary"
-                gutterBottom
-              >
-                Step 2
-              </Typography>
+              <Typography className={classes.title}>Step 2</Typography>
               <Typography
                 variant="h5"
                 component="h2"
@@ -236,13 +210,11 @@ const WorkSelection = () => {
               >
                 Interview
               </Typography>
-              <Typography className={classes.pos} color="infoRefSecondary">
-                dialogue
-              </Typography>
+              <Typography className={classes.pos}>dialogue</Typography>
               <Typography
                 variant="body2"
-                className={classes.bodyCard}
                 component="p"
+                className={classes.bodyCard}
               >
                 We'll schedule an interview to meet you, talk, ask things about
                 your experience and preview jobs, studies. Additionally if you
@@ -261,16 +233,10 @@ const WorkSelection = () => {
             className={`${classes.root}  ${
               isVisible ? classes.cardAnimation : ""
             }`}
-            ref={selectionRef}
+            ref={contentref}
           >
             <CardContent>
-              <Typography
-                className={classes.title}
-                color="infoRefSecondary"
-                gutterBottom
-              >
-                Step 3
-              </Typography>
+              <Typography className={classes.title}>Step 3</Typography>
               <Typography
                 variant="h5"
                 component="h2"
@@ -278,9 +244,7 @@ const WorkSelection = () => {
               >
                 Test
               </Typography>
-              <Typography className={classes.pos} color="infoRefSecondary">
-                capacities
-              </Typography>
+              <Typography className={classes.pos}>capacities</Typography>
               <Typography
                 variant="body2"
                 component="p"
@@ -299,16 +263,10 @@ const WorkSelection = () => {
           className={`${classes.root}  ${
             isVisible ? classes.cardAnimation : ""
           }`}
-          ref={selectionRef}
+          ref={contentref}
         >
           <CardContent>
-            <Typography
-              className={classes.title}
-              color="infoRefSecondary"
-              gutterBottom
-            >
-              Step 4
-            </Typography>
+            <Typography className={classes.title}>Step 4</Typography>
             <Typography
               variant="h5"
               component="h2"
@@ -316,9 +274,7 @@ const WorkSelection = () => {
             >
               Client Assignment
             </Typography>
-            <Typography className={classes.pos} color="infoRefSecondary">
-              work
-            </Typography>
+            <Typography className={classes.pos}>work</Typography>
             <Typography
               variant="body2"
               component="p"

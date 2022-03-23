@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 
 export default function useMembers() {
-  const dataMembers = useStaticQuery(graphql`
+  return useStaticQuery(graphql`
     query {
       allStrapiMembers {
         nodes {
@@ -26,5 +26,4 @@ export default function useMembers() {
       }
     }
   `)
-  return dataMembers
 }
