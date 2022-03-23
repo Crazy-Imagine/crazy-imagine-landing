@@ -105,12 +105,12 @@ export default function ImageListMembers() {
   const [image, setImage] = useState({ img: {}, position: -1 })
 
   const handleHoverImage = (hoverStatus, position, img) => {
-    setHover({ hover, position })
+    setHover({ hoverStatus, position })
     setImage({ img, position })
   }
 
   const handleHoverBar = (hoverStatus, position, img) => {
-    setHover({ hover, position })
+    setHover({ hoverStatus, position })
     setImage({ img, position })
   }
 

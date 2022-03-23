@@ -16,9 +16,14 @@ const WorkInfo = () => {
                 development areas. Our products and services have highlights on
                 turnaround time, design, mobile responsive, web, and app
                 development."
-        orientation="left"
+        boxClass="containerResponsive"
+        titleClass="titleLeft"
+        animation="animationLeft"
+        paragraphClass="paragraphLeft"
+        lineClass="boxLineLeft"
         image={image}
         alt="Team mates"
+        md={6}
       ></AnimatedTitle>
       <AnimatedTitle
         title="KNOW OUR VALUES"
@@ -26,9 +31,14 @@ const WorkInfo = () => {
           We take care of our employees, promoting a relaxed and fun work environment, choosing social activities to integrate all of them.
           We evaluate you, and we choose you a challenge that you can reach results and improve your skills.
           Our principal challenge is that you grow with us"
-        orientation="right"
+        boxClass="containerReverse"
+        titleClass="titleRight"
+        animation="animationRight"
+        paragraphClass="paragraphRight"
+        lineClass="boxLineRight"
         image={secondImage}
         alt="Boss with the team"
+        md={6}
       ></AnimatedTitle>
     </Box>
   )

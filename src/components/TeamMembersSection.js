@@ -4,10 +4,10 @@ import { makeStyles } from "@material-ui/core/styles"
 import { AnimatedTitle } from "./AnimatedTitle"
 import firstImage from "../images/IMG_6895.jpg"
 import secondImage from "../images/IMG_7617.jpg"
-import thirdImage from "../images/IMG_6931.jpg"
+import thirdImage from "../images/IMG_7478.jpg"
 import fourthImage from "../images/IMG_6931.jpg"
 import fifthImage from "../images/IMG_7496.jpg"
-import sixthImage from "../images/IMG_7496.jpg"
+import sixthImage from "../images/IMG_7601.jpg"
 
 const useStyles = makeStyles({
   marginBox: {
@@ -23,8 +23,14 @@ const TeamMembersSection = () => {
       <AnimatedTitle
         title="Meet The Team"
         content=""
-        orientation="center"
         image=""
+        boxClass=""
+        titleClass="mainTitle"
+        animation="shakeTitle"
+        paragraphClass="hideParagraph"
+        lineClass="boxLineCenter"
+        md={12}
+        alt=""
       ></AnimatedTitle>
       <AnimatedTitle
         title="Efficient"
@@ -35,8 +41,14 @@ const TeamMembersSection = () => {
             clarify doubts, and they go forward. At Crazy Imagine we encourage
             communication between team members and the client to make sure that
             the expectations are clear."
-        orientation="left"
+        boxClass="containerResponsive"
+        titleClass="titleLeft"
+        animation="animationLeft"
+        paragraphClass="paragraphLeft"
+        lineClass="boxLineLeft"
         image={firstImage}
+        md={6}
+        alt="An efficient team"
       ></AnimatedTitle>
       <AnimatedTitle
         title="Qualified"
@@ -44,8 +56,14 @@ const TeamMembersSection = () => {
             developers, back-end developers, virtual assistants, and project
             managers. All of them with proven experience in previous jobs and
             qualities that make them great professionals."
-        orientation="right"
+        boxClass="containerReverse"
+        titleClass="titleRight"
+        animation="animationRight"
+        paragraphClass="paragraphRight"
+        lineClass="boxLineRight"
         image={secondImage}
+        md={6}
+        alt="A qualified team"
       ></AnimatedTitle>
       <AnimatedTitle
         title="Experience"
@@ -56,15 +74,27 @@ const TeamMembersSection = () => {
             members to improve and be better every day. Most experimented
             members help their less experienced teammates. This allows us to
             offer great opportunities for every client and budget."
-        orientation="left"
+        boxClass="containerResponsive"
+        titleClass="titleLeft"
+        animation="animationLeft"
+        paragraphClass="paragraphLeft"
+        lineClass="boxLineLeft"
         image={thirdImage}
+        md={6}
+        alt="An experience team"
       ></AnimatedTitle>
       <AnimatedTitle
         title="Reliable"
         content="Our team has only one purpose, fulfill clients’ needs, and they
             reach this goal under any circumstance."
-        orientation="right"
+        boxClass="containerReverse"
+        titleClass="titleRight"
+        animation="animationRight"
+        paragraphClass="paragraphRight"
+        lineClass="boxLineRight"
         image={fourthImage}
+        md={6}
+        alt="A reliable team"
       ></AnimatedTitle>
       <AnimatedTitle
         title="Friendly"
@@ -73,8 +103,14 @@ const TeamMembersSection = () => {
             find strategies to do a better job when they cooperate in teams with
             their mates. They feel comfortable meeting new people, new job
             mates, and new challenges."
-        orientation="left"
+        boxClass="containerResponsive"
+        titleClass="titleLeft"
+        animation="animationLeft"
+        paragraphClass="paragraphLeft"
+        lineClass="boxLineLeft"
+        alt="A friendly team"
         image={fifthImage}
+        md={6}
       ></AnimatedTitle>
       <AnimatedTitle
         title="Updated"
@@ -82,8 +118,14 @@ const TeamMembersSection = () => {
             HMTL, PHP, WordPress, MongoDB, Python... Our developers are
             constantly learning how to use new tools, strategies and techniques
             to perform better at their job."
-        orientation="right"
+        boxClass="containerReverse"
+        titleClass="titleRight"
+        animation="animationRight"
+        paragraphClass="paragraphRight"
+        lineClass="boxLineRight"
+        alt="An updated team"
         image={sixthImage}
+        md={6}
       ></AnimatedTitle>
     </Box>
   )

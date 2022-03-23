@@ -1,5 +1,5 @@
 {
-  ;[
+  [
     {
       test: /\.js?$/,
       exclude: /(node_modules|bower_components)/,

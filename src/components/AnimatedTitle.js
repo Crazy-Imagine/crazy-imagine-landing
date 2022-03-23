@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: "uppercase",
     fontWeight: "bold",
     fontFamily: "Gotham-ultra",
+    marginTop: 20,
     textAlign: "center",
     color: "#3399FF",
     [theme.breakpoints.down("xs")]: {
@@ -178,71 +179,34 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const AnimatedTitle = ({ title, content, image, orientation, alt }) => {
+export const AnimatedTitle = ({
+  title,
+  content,
+  image,
+  boxClass,
+  titleClass,
+  animation,
+  paragraphClass,
+  lineClass,
+  alt,
+  md,
+}) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const mdGrid = orientation === "center" ? 12 : 6
 
   return (
-    <Grid
-      container
-      className={`${
-        orientation === "left"
-          ? classes.containerResponsive
-          : orientation === "right"
-          ? classes.containerReverse
-          : ""
-      }`}
-    >
-      <Grid item xs={12} sm={12} md={mdGrid}>
-        <Box
-          ref={ref}
-          className={`${
-            isVisible
-              ? orientation === "left"
-                ? classes.animationLeft
-                : orientation === "right"
-                ? classes.animationRight
-                : classes.shakeTitle
-              : ""
-          } `}
-        >
-          <Typography
-            variant="h5"
-            className={`${
-              orientation === "left"
-                ? classes.titleLeft
-                : orientation === "right"
-                ? classes.titleRight
-                : classes.mainTitle
-            }`}
-          >
+    <Grid container className={classes[boxClass]}>
+      <Grid item xs={12} sm={12} md={md}>
+        <Box ref={ref} className={`${isVisible && classes[animation]} `}>
+          <Typography variant="h5" className={classes[titleClass]}>
             {title}
           </Typography>
-          <Box
-            className={`${
-              orientation === "left"
-                ? classes.boxLineLeft
-                : orientation === "right"
-                ? classes.boxLineRight
-                : classes.boxLineCenter
-            }`}
-          ></Box>
+          <Box className={classes[lineClass]}></Box>
         </Box>
-        <Typography
-          className={`${
-            orientation === "left"
-              ? classes.paragraphLeft
-              : orientation === "right"
-              ? classes.paragraphRight
-              : classes.hideParagraph
-          }`}
-        >
-          {content}
-        </Typography>
+        <Typography className={classes[paragraphClass]}>{content}</Typography>
       </Grid>
-      {orientation !== "center" && (
+      {titleClass !== "mainTitle" && (
         <Grid item xs={12} sm={12} md={4}>
           <Box className={classes.displayImage}>
             <img className={classes.img} src={image} alt={alt} />
