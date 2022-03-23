@@ -143,6 +143,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Gotham-ultra",
     fontWeight: "bold",
     textTransform: "uppercase",
+    marginLeft: "35px",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "50px",
     },
@@ -154,6 +155,7 @@ const useStyles = makeStyles(theme => ({
     width: "45px",
     height: "6px",
     backgroundColor: "#000a30",
+    marginLeft: "35px",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "50px",
     },
@@ -165,8 +167,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "auto",
     marginRight: "auto",
     justifyContent: "center",
-    width: "60%",
-    height: "60%",
+    width: "80%",
+    height: "80%",
   },
   animationLeft: {
     animation: `$myEffectLeft 3000ms`,

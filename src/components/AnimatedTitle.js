@@ -101,6 +101,7 @@ const useStyles = makeStyles(theme => ({
     alignContent: "center",
     justifyContent: "center",
     marginTop: "40px",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
@@ -111,6 +112,7 @@ const useStyles = makeStyles(theme => ({
     alignContent: "center",
     justifyContent: "center",
     marginTop: "40px",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
