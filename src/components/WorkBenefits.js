@@ -169,6 +169,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     width: "80%",
     height: "80%",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   animationLeft: {
     animation: `$myEffectLeft 3000ms`,
@@ -228,9 +231,8 @@ const WorkBenefits = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
-          <Box>
+          <Box ref={benefitsref}>
             <Card
-              ref={benefitsref}
               className={`${classes.firstCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -243,7 +245,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.secondCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -256,7 +257,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.thirdCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -270,7 +270,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.fourthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -283,7 +282,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.fifthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -296,7 +294,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.sixthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
