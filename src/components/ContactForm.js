@@ -79,7 +79,7 @@ const ContactForm = ({ variant = "default" }) => {
   const classes = useStyles({
     variant,
   })
-  const [state, handleSubmit] = useForm("myyogzrz")
+  const [state, handleSubmit] = useForm("xpzbazvn")
 
   const handleClick = newState => {
     window.onbeforeunload = () => {
@@ -115,7 +115,7 @@ const ContactForm = ({ variant = "default" }) => {
         <Box marginBottom="20px">
           <input
             className={classes.formInput}
-            placeholder="Name(Required)"
+            placeholder="Name (Required)"
             id="message"
             name="message"
             required
@@ -124,7 +124,7 @@ const ContactForm = ({ variant = "default" }) => {
         <Box marginBottom="20px">
           <input
             className={classes.formInput}
-            placeholder="Email(Required)"
+            placeholder="Email (Required)"
             id="email"
             type="email"
             name="email"

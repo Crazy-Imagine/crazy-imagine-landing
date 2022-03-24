@@ -134,8 +134,8 @@ const HumanTalent = () => {
     <StaticQuery
       query={query}
       render={data => {
-        const dataImageOne = data.homePage.teamImages[0].localFile
-        const dataImageTwo = data.homePage.teamImages[1].localFile
+        const dataImageOne = data.homePage.teamImages[1].localFile
+        const dataImageTwo = data.homePage.teamImages[0].localFile
         return (
           <Box
             marginBottom="88px"

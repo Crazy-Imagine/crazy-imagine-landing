@@ -10,7 +10,7 @@ import TwitterIcon from "@material-ui/icons/Twitter"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 import Section from "./Section"
-import { HOME, PROJECTS, TEAMS } from "../navigation/sitemap"
+import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   root: {
@@ -56,6 +56,7 @@ const useStyles = makeStyles({
   },
   resetLink: {
     color: "#ffffff",
+    textDecoration: "none",
     "&:hover": {
       color: "#ffffff",
       textDecoration: "none",
@@ -87,7 +88,7 @@ const Footer = ({ height = "400px", align = "center" }) => {
               </Typography>
               <Box marginBottom="15px" />
               <Typography className={classes.sectionLink}>
-                <RoomIcon /> Urb Ambrosio Plaza #1 street
+                <RoomIcon /> Urb Ambrosio Plaza #1 Street
               </Typography>
               <Typography className={classes.sectionLink}>
                 House #2/123, San Cristobal, Venezuela.
@@ -135,9 +136,9 @@ const Footer = ({ height = "400px", align = "center" }) => {
               </Typography>
               <Typography className={classes.sectionLink}>
                 <Link to={`${HOME}#stats`} className={classes.resetLink}>
-                Our Stats
+                  Our Stats
                 </Link>
-                </Typography>
+              </Typography>
               <Typography className={classes.sectionLink}>
                 <Link to={`${HOME}#clients`} className={classes.resetLink}>
                   What our clients say
@@ -151,6 +152,11 @@ const Footer = ({ height = "400px", align = "center" }) => {
               <Typography className={classes.sectionLink}>
                 <Link to={`${HOME}#contact`} className={classes.resetLink}>
                   Contact Us
+                </Link>
+              </Typography>
+              <Typography className={classes.sectionLink}>
+                <Link to={`${WORK_WITH_US}`} className={classes.resetLink}>
+                  Work With Us
                 </Link>
               </Typography>
               <Typography className={classes.sectionLink}>

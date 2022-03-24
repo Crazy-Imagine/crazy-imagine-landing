@@ -11,7 +11,7 @@ import HomeIcon from "@material-ui/icons/Home"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import SearchIcon from "@material-ui/icons/Search"
 import useScroll from "../hooks/useScroll"
-import { HOME, PROJECTS, TEAMS } from "../navigation/sitemap"
+import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
 import clsx from "clsx"
 import { colors, colorsIconos } from "../helpers/navbarColors"
 
@@ -111,6 +111,11 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
           <Typography variant="h5">
             <Link to={`${HOME}#contact`} className={classes.linkTypograpy}>
               Contact
+            </Link>
+          </Typography>
+          <Typography variant="h5">
+            <Link to={`${WORK_WITH_US}`} className={classes.linkTypograpy}>
+              Work With Us
             </Link>
           </Typography>
           <Box

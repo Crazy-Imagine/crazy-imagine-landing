@@ -11,8 +11,8 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     textTransform: "uppercase",
     [theme.breakpoints.down("md")]: {
-      color: "black"
-    }
+      color: "black",
+    },
   },
   moreInfoContent: {
     color: "white",
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     [theme.breakpoints.down("md")]: {
       width: "85%",
-      color: "black"
+      color: "black",
     },
   },
   boxLine: {
@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     borderRadius: 10,
     [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
 }))
 
@@ -63,11 +63,11 @@ const MoreInfo = () => {
       </Box>
       <Typography className={classes.moreInfoContent}>
         <LocationOnIcon />
-        Urb Ambrosio Plaza #1 street House #2/123, <br /> San Cristobal,
+        Urb Ambrosio Plaza #1 Street House #2/123, <br /> San Cristobal,
         Venezuela.
       </Typography>
       <Typography className={classes.moreInfoContent}>
-        <EmailIcon />  support@crazyimagine.com
+        <EmailIcon /> support@crazyimagine.com
       </Typography>
       <Box>
         <iframe

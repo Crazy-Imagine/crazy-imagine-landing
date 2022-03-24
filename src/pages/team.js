@@ -1,10 +1,9 @@
 import React from "react"
-
 import { Box, Hidden } from "@material-ui/core"
-
 import HeroSection from "../components/HeroSection"
 import Navbar from "../components/Navbar"
 import TeamMembersSection from "../components/TeamMembersSection"
+import ImageListMembers from "../components/ImageListMembers"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import ContactSection from "../components/ContactSection"
@@ -13,6 +12,7 @@ import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
+import { WorkButton } from "../components/WorkButton"
 
 const TeamPage = () => {
   const data = useStaticQuery(query)
@@ -25,9 +25,11 @@ const TeamPage = () => {
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box overflow= "hidden">
+        <Box overflow="hidden">
           <HeroSection />
           <TeamMembersSection />
+          <ImageListMembers />
+          <WorkButton />
           <ContactSection bgImage={bgImage} showShadow variant="dark" />
           <Footer />
           <Copyright />
@@ -37,22 +39,23 @@ const TeamPage = () => {
   )
 }
 const query = graphql`
-query {
-  memberPage: strapiMemberpage {
-    SEO {
-      id
-      metaDescription
-      metaTitle
-      shareImage {
-        localFile {
-          publicURL
-          childImageSharp {
-            gatsbyImageData
+  query {
+    memberPage: strapiMemberpage {
+      SEO {
+        id
+        metaDescription
+        metaTitle
+        shareImage {
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
     }
   }
-}`
+`
 
 export default TeamPage
