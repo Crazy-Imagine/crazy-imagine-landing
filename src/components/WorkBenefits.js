@@ -252,7 +252,7 @@ const WorkBenefits = () => {
               <CardContent>
                 <Typography className={classes.benefits}>
                   <DevicesIcon className={classes.icon} />
-                  We bring you hardware since day one
+                  We bring you hardware since day one.
                 </Typography>
               </CardContent>
             </Card>
