@@ -222,7 +222,7 @@ const WorkForm = () => {
         })
         .test(
           "type",
-          "Only the following formats are accepted: .jpeg, .jpg, .png, .bmp, .pdf and .doc",
+          "Only the following formats are accepted: .pdf",
           function (value) {
             return value && value[0] && value[0].type === "application/pdf"
           }
