@@ -246,9 +246,9 @@ const WorkForm = () => {
     reset,
     getValues,
   } = useForm({
+    defaultValues: { website: "" },
     resolver: yupResolver(schema),
     mode: "onChange",
-    defaultValues: { website: "" },
   })
 
   const onSubmitHandler = async data => {
@@ -257,9 +257,9 @@ const WorkForm = () => {
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
-
+      const domain = process.env.GATSBY_ROOT_URL || "http://localhost:1337"
       axios
-        .post("http://localhost:1337/upload", formData)
+        .post(`${domain}/upload`, formData)
         .then(async response => {
           //after success
           const file = response.data[0].id
@@ -275,10 +275,7 @@ const WorkForm = () => {
             curriculum: file,
           }
 
-          const res = await axios.post(
-            "http://localhost:1337/curriculums",
-            sendData
-          )
+          const res = await axios.post(`${domain}/curriculums`, sendData)
 
           if (res.statusText === "OK") {
             setShowAttach(false)
@@ -309,10 +306,9 @@ const WorkForm = () => {
           website: data.website,
         }
 
-        const res = await axios.post(
-          "http://localhost:1337/curriculums",
-          sendData
-        )
+        const domain = process.env.GATSBY_ROOT_URL || "http://localhost:1337"
+
+        const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.statusText === "OK") {
           setShowAttach(false)
@@ -512,6 +508,7 @@ const WorkForm = () => {
                       id="outlined-basic"
                       label="Paste your resume"
                       name="website"
+                      value=""
                       variant="outlined"
                     />
                   </>
@@ -521,7 +518,6 @@ const WorkForm = () => {
                     <Input
                       type="file"
                       name="curriculum"
-                      accept="application/pdf"
                       {...register("curriculum", {
                         minLength: {
                           value: 1,
@@ -537,7 +533,6 @@ const WorkForm = () => {
                           errors.curriculum !== undefined ? "inherit" : "none",
                         backgroundColor: "transparent",
                         color: "red",
-                        padding: "0px 10px",
                         fontSize: "0.845rem",
                         marginTop: 5,
                       }}
