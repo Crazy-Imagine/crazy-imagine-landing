@@ -224,15 +224,7 @@ const WorkForm = () => {
           "type",
           "Only the following formats are accepted: .jpeg, .jpg, .png, .bmp, .pdf and .doc",
           function (value) {
-            return (
-              value &&
-              value[0] &&
-              (value[0].type === "image/jpeg" ||
-                value[0].type === "image/bmp" ||
-                value[0].type === "image/png" ||
-                value[0].type === "application/pdf" ||
-                value[0].type === "application/msword")
-            )
+            return value && value[0] && value[0].type === "application/pdf"
           }
         ),
       otherwise: yup.mixed(),
