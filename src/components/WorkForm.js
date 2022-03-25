@@ -306,8 +306,7 @@ const WorkForm = () => {
           website: data.website,
         }
 
-        const domain = process.env.GATSBY_ROOT_URL || "http://localhost:1337"
-
+        const domain = process.env.API_URL || "http://localhost:1337"
         const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.statusText === "OK") {
