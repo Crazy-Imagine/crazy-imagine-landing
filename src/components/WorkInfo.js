@@ -11,7 +11,7 @@ const WorkInfo = () => {
         title="YOUR DREAM JOB, HERE!"
         content="We are a fresh and comfortable startup with more than 5 years on
                 the market. We work with the most recent development
-                technologies, offering the best of our efforts to bring to the
+                technologies, offering the best of our efforts to bring to the 
                 client the best quality products. Covering most of the
                 development areas. Our products and services have highlights on
                 turnaround time, design, mobile responsive, web, and app
