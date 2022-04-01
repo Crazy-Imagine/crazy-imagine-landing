@@ -173,7 +173,7 @@ const WorkForm = () => {
   const isVisible = useIntersection(domref, "0px")
 
   const data = useStaticQuery(query)
-  const image = data.strapiTeampage
+  const image = data.strapiTeampage?.WorkFormImage?.localFile
 
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
@@ -246,6 +246,7 @@ const WorkForm = () => {
     resolver: yupResolver(schema),
     mode: "onChange",
   })
+  const domain = process.env.API_URL || "http://localhost:1337"
 
   const onSubmitHandler = async data => {
     setDisableButton(true)
@@ -253,7 +254,6 @@ const WorkForm = () => {
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
-      const domain = process.env.API_URL || "http://localhost:1337"
       axios
         .post(`${domain}/upload`, formData)
         .then(async response => {
@@ -302,7 +302,6 @@ const WorkForm = () => {
           website: data.website,
         }
 
-        const domain = process.env.API_URL || "http://localhost:1337"
         const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.statusText === "OK") {

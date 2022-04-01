@@ -224,8 +224,8 @@ const WorkBenefits = () => {
   const bounceCards = useIntersection(benefitsref, "0px")
 
   const data = useStaticQuery(query)
-  const image = data.strapiTeampage
-  console.log(image)
+  const image = data.strapiTeampage?.BenefitsImage?.localFile
+  console.log({image})
 
   return (
     <Box className={classes.marginBox}>
