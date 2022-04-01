@@ -7,9 +7,9 @@ import CardTravelIcon from "@material-ui/icons/CardTravel"
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
 import TranslateIcon from "@material-ui/icons/Translate"
 import BookIcon from "@material-ui/icons/Book"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 import { useIntersection } from "../hooks/useIntersection"
-import benefitsImage from "../images/IMG_7497.jpg"
 
 const useStyles = makeStyles(theme => ({
   firstCard: {
@@ -138,6 +138,21 @@ const useStyles = makeStyles(theme => ({
   marginBox: {
     marginTop: "50px",
   },
+  resizeImage: {
+    width: "80%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  },
+  boxImage: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: "35px",
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+    },
+  },
   titleBenefits: {
     color: "#000a30",
     fontSize: 44,
@@ -208,6 +223,10 @@ const WorkBenefits = () => {
   const visibleTitle = useIntersection(titleref, "0px")
   const bounceCards = useIntersection(benefitsref, "0px")
 
+  const data = useStaticQuery(query)
+  const image = data.strapiTeampage.BenefitsImage.localFile
+  console.log(image)
+
   return (
     <Box className={classes.marginBox}>
       <Grid container className={classes.benefitsResponsive}>
@@ -223,11 +242,11 @@ const WorkBenefits = () => {
             </Typography>
             <Box className={classes.boxLine}></Box>
           </Box>
-          <Box>
-            <StaticImage
-              src={benefitsImage}
-              alt="Team having a good time"
-              className={classes.displayImage}
+          <Box className={classes.boxImage}>
+            <GatsbyImage
+              image={getImage(image)}
+              alt="Team mates hanging out"
+              className={classes.resizeImage}
             />
           </Box>
         </Grid>
@@ -312,5 +331,19 @@ const WorkBenefits = () => {
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    strapiTeampage {
+      BenefitsImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default WorkBenefits

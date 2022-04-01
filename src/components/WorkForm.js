@@ -10,12 +10,12 @@ import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import Alert from "@material-ui/lab/Alert"
 import * as yup from "yup"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import axios from "axios"
+import { graphql, useStaticQuery } from "gatsby"
 import { useIntersection } from "../hooks/useIntersection"
-import workFormImage from "../images/IMG_7599.jpg"
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
@@ -171,6 +171,9 @@ const WorkForm = () => {
 
   const domref = useRef()
   const isVisible = useIntersection(domref, "0px")
+
+  const data = useStaticQuery(query)
+  const image = data.strapiTeampage.WorkFormImage[0].localFile
 
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
@@ -328,9 +331,8 @@ const WorkForm = () => {
           alignItems: "center",
         }}
       >
-        <StaticImage
-          style={{ borderRadius: "2%" }}
-          src={workFormImage}
+        <GatsbyImage
+          image={getImage(image)}
           alt="Team mates around the office"
         />
       </Box>
@@ -560,5 +562,19 @@ const WorkForm = () => {
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    strapiTeampage {
+      WorkFormImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default WorkForm
