@@ -183,7 +183,7 @@ const ProductsSection = () => {
     />
   )
 }
-
+const query = []
 // const query = graphql`
 //   query {
 //     products: allStrapiProducts {
