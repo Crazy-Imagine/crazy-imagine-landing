@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import axios from "axios"
 import { useIntersection } from "../hooks/useIntersection"
+import workFormImage from "../images/IMG_7599.jpg"
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
@@ -329,7 +330,7 @@ const WorkForm = () => {
       >
         <StaticImage
           style={{ borderRadius: "2%" }}
-          src="../images/IMG_7599.jpg"
+          src={workFormImage}
           alt="Team mates around the office"
         />
       </Box>

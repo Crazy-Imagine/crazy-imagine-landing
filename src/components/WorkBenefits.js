@@ -9,6 +9,7 @@ import TranslateIcon from "@material-ui/icons/Translate"
 import BookIcon from "@material-ui/icons/Book"
 import { StaticImage } from "gatsby-plugin-image"
 import { useIntersection } from "../hooks/useIntersection"
+import benefitsImage from "../images/IMG_7497.jpg"
 
 const useStyles = makeStyles(theme => ({
   firstCard: {
@@ -224,7 +225,7 @@ const WorkBenefits = () => {
           </Box>
           <Box>
             <StaticImage
-              src="../images/IMG_7497.jpg"
+              src={benefitsImage}
               alt="Team having a good time"
               className={classes.displayImage}
             />
