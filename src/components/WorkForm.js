@@ -253,7 +253,7 @@ const WorkForm = () => {
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
-      const domain = process.env.GATSBY_ROOT_URL || "http://localhost:1337"
+      const domain = process.env.API_URL || "http://localhost:1337"
       axios
         .post(`${domain}/upload`, formData)
         .then(async response => {
