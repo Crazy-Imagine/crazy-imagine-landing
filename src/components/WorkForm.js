@@ -173,7 +173,7 @@ const WorkForm = () => {
   const isVisible = useIntersection(domref, "0px")
 
   const data = useStaticQuery(query)
-  const image = data.strapiTeampage.WorkFormImage[0].localFile
+  const image = data.strapiTeampage
 
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
@@ -569,7 +569,7 @@ const query = graphql`
       WorkFormImage {
         localFile {
           childImageSharp {
-            gatsbyImageData(quality: 100)
+            gatsbyImageData(layout: FIXED)
           }
         }
       }

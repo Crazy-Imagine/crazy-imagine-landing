@@ -224,7 +224,7 @@ const WorkBenefits = () => {
   const bounceCards = useIntersection(benefitsref, "0px")
 
   const data = useStaticQuery(query)
-  const image = data.strapiTeampage.BenefitsImage.localFile
+  const image = data.strapiTeampage
   console.log(image)
 
   return (
@@ -338,7 +338,7 @@ const query = graphql`
       BenefitsImage {
         localFile {
           childImageSharp {
-            gatsbyImageData(quality: 100)
+            gatsbyImageData(layout: FIXED)
           }
         }
       }
