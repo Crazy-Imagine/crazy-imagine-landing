@@ -1,8 +1,8 @@
 import React from "react"
-import ceo from "../images/IMG_6762.jpg"
-import team from "../images/IMG_6935.jpg"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import background from "../images/MainTeam.jpg"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   containerResponsive: {
@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "black",
   },
   ceoPic: {
-    width: "240px",
-    height: "240px",
+    width: "100% !important",
+    height: "100% !important",
     objectFit: "contain",
     [theme.breakpoints.between("450", "900")]: {
       width: "180px",
@@ -45,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   teamPic: {
-    width: "720px",
-    height: "240px",
+    width: "100% !important",
+    height: "100% !important",
     objectFit: "contain",
     [theme.breakpoints.between("450", "900")]: {
       width: "400px",
@@ -79,8 +79,12 @@ const useStyles = makeStyles(theme => ({
   },
   ceoContainer: {
     objectFit: "contain",
+    width: "240px",
+    height: "240px",
   },
   teamContainer: {
+    width: "720px",
+    height: "240px",
     objectFit: "contain",
   },
   author: {
@@ -103,6 +107,10 @@ const useStyles = makeStyles(theme => ({
 
 const HeroSection = () => {
   const classes = useStyles()
+  const heroSection = useStaticQuery(query)
+  const heroImages = heroSection.allStrapiTeampage.nodes[0].heroSectionImages
+  const imageOne = heroImages[1].localFile
+  const imageTwo = heroImages[0].localFile
 
   return (
     <Box className={classes.containerResponsive}>
@@ -113,7 +121,11 @@ const HeroSection = () => {
         alignItems="center"
       >
         <Box className={classes.ceoContainer}>
-          <img className={classes.ceoPic} src={ceo} alt="The boss" />
+          <GatsbyImage
+            className={classes.ceoPic}
+            image={getImage(imageOne)}
+            alt="The boss"
+          />
         </Box>
         <Typography
           style={{
@@ -129,7 +141,11 @@ const HeroSection = () => {
         </Typography>
       </Box>
       <Box className={classes.teamContainer}>
-        <img className={classes.teamPic} src={team} alt="The team" />
+        <GatsbyImage
+          className={classes.teamPic}
+          image={getImage(imageTwo)}
+          alt="The team"
+        />
       </Box>
       <Typography
         style={{ color: "#FBF5F3", fontFamily: "Gotham-ultra", fontSize: 25 }}
@@ -139,5 +155,21 @@ const HeroSection = () => {
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    allStrapiTeampage {
+      nodes {
+        heroSectionImages {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FIXED)
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default HeroSection
