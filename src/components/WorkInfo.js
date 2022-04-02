@@ -1,10 +1,15 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
 import { Box } from "@material-ui/core"
 import { AnimatedTitle } from "./AnimatedTitle"
-import image from "../images/IMG_6778.jpg"
-import secondImage from "../images/IMG_7492.jpg"
 
 const WorkInfo = () => {
+  const WorkWithUsPage = useStaticQuery(query)
+  console.log({WorkWithUsPage})
+  const images = WorkWithUsPage.allStrapiWorkWithUs.nodes[0].images
+  const imageOne = images[0].localFile
+  const imageTwo = images[1].localFile
   return (
     <Box paddingTop="35px">
       <AnimatedTitle
@@ -21,7 +26,7 @@ const WorkInfo = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        image={image}
+        image={getImage(imageOne)}
         alt="Team mates"
         md={6}
       ></AnimatedTitle>
@@ -36,12 +41,28 @@ const WorkInfo = () => {
         animation="animationRight"
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
-        image={secondImage}
+        image={getImage(imageTwo)}
         alt="Boss with the team"
         md={6}
       ></AnimatedTitle>
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    allStrapiWorkWithUs {
+      nodes {
+        images {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FIXED)
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default WorkInfo

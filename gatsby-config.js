@@ -42,6 +42,7 @@ module.exports = {
           `teampage`,
           `memberpage`,
           "projects-page",
+          "work-with-us",
         ],
         queryLimit: 1000,
       },

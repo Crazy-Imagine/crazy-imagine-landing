@@ -2,12 +2,8 @@ import React from "react"
 import { Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { AnimatedTitle } from "./AnimatedTitle"
-import firstImage from "../images/IMG_6895.jpg"
-import secondImage from "../images/IMG_7617.jpg"
-import thirdImage from "../images/IMG_7478.jpg"
-import fourthImage from "../images/IMG_6931.jpg"
-import fifthImage from "../images/IMG_7496.jpg"
-import sixthImage from "../images/IMG_7601.jpg"
+import { graphql, useStaticQuery } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
   marginBox: {
@@ -18,6 +14,16 @@ const useStyles = makeStyles({
 
 const TeamMembersSection = () => {
   const classes = useStyles()
+  const teamMemberSection = useStaticQuery(query)
+  const memberSection = teamMemberSection.allStrapiTeampage.nodes[0]
+
+  const imageOne = memberSection.gallery[0].localFile
+  const imageTwo = memberSection.gallery[1].localFile
+  const imageThree = memberSection.gallery[2].localFile
+  const imageFour = memberSection.gallery[3].localFile
+  const imageFive = memberSection.gallery[4].localFile
+  const imageSix = memberSection.gallery[5].localFile
+
   return (
     <Box className={classes.marginBox}>
       <AnimatedTitle
@@ -46,7 +52,7 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        image={firstImage}
+        image={getImage(imageOne)}
         md={6}
         alt="An efficient team"
       ></AnimatedTitle>
@@ -61,7 +67,7 @@ const TeamMembersSection = () => {
         animation="animationRight"
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
-        image={secondImage}
+        image={getImage(imageTwo)}
         md={6}
         alt="A qualified team"
       ></AnimatedTitle>
@@ -79,7 +85,7 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        image={thirdImage}
+        image={getImage(imageThree)}
         md={6}
         alt="An experience team"
       ></AnimatedTitle>
@@ -92,7 +98,7 @@ const TeamMembersSection = () => {
         animation="animationRight"
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
-        image={fourthImage}
+        image={getImage(imageFour)}
         md={6}
         alt="A reliable team"
       ></AnimatedTitle>
@@ -109,7 +115,7 @@ const TeamMembersSection = () => {
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
         alt="A friendly team"
-        image={fifthImage}
+        image={getImage(imageFive)}
         md={6}
       ></AnimatedTitle>
       <AnimatedTitle
@@ -124,11 +130,27 @@ const TeamMembersSection = () => {
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
         alt="An updated team"
-        image={sixthImage}
+        image={getImage(imageSix)}
         md={6}
       ></AnimatedTitle>
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    allStrapiTeampage {
+      nodes {
+        gallery {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FIXED)
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default TeamMembersSection

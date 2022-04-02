@@ -1,5 +1,10 @@
 import * as React from "react"
 import { useEffect, useState, useRef } from "react"
+import { useForm } from "react-hook-form"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import axios from "axios"
+import * as yup from "yup"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Typography, Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
@@ -9,12 +14,7 @@ import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import Alert from "@material-ui/lab/Alert"
-import * as yup from "yup"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import axios from "axios"
-import { graphql, useStaticQuery } from "gatsby"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -31,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
+  },
+  formImage: {
+    width: "100% !impotant",
+    height: "100% !important",
   },
   title: {
     marginTop: 25,
@@ -328,11 +332,14 @@ const WorkForm = () => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          width: "42%",
+          height: "582px",
         }}
       >
         <GatsbyImage
           image={getImage(image)}
           alt="Team mates around the office"
+          className={classes.formImage}
         />
       </Box>
       <Box>

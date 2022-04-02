@@ -1,4 +1,6 @@
 import React, { useRef } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Box, Typography, Grid, Card, CardContent } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined"
@@ -7,8 +9,6 @@ import CardTravelIcon from "@material-ui/icons/CardTravel"
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
 import TranslateIcon from "@material-ui/icons/Translate"
 import BookIcon from "@material-ui/icons/Book"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { graphql, useStaticQuery } from "gatsby"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -139,7 +139,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: "50px",
   },
   resizeImage: {
-    width: "80%",
+    width: "80% !important",
+    height: '100% !important',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
@@ -149,6 +150,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "center",
     marginLeft: "35px",
+    height: '300px',
     [theme.breakpoints.down("sm")]: {
       margin: 0,
     },
@@ -225,7 +227,6 @@ const WorkBenefits = () => {
 
   const data = useStaticQuery(query)
   const image = data.strapiTeampage?.BenefitsImage?.localFile
-  console.log({image})
 
   return (
     <Box className={classes.marginBox}>

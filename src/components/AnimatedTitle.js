@@ -3,6 +3,7 @@ import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { useIntersection } from "../hooks/useIntersection"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   mainTitle: {
@@ -89,11 +90,13 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    width: '560px',
+    height: '300px'
   },
   img: {
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
+    width: "100% !important",
+    height: "100% !important",
+    objectFit: "contain !important",
   },
   containerResponsive: {
     display: "flex",
@@ -211,7 +214,7 @@ export const AnimatedTitle = ({
       {titleClass !== "mainTitle" && (
         <Grid item xs={12} sm={12} md={4}>
           <Box className={classes.displayImage}>
-            <img className={classes.img} src={image} alt={alt} />
+            <GatsbyImage className={classes.img} image={image} alt={alt} />
           </Box>
         </Grid>
       )}
