@@ -1,5 +1,10 @@
 import * as React from "react"
 import { useEffect, useState, useRef } from "react"
+import { useForm } from "react-hook-form"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import axios from "axios"
+import * as yup from "yup"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Typography, Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
@@ -9,11 +14,7 @@ import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import Alert from "@material-ui/lab/Alert"
-import * as yup from "yup"
-import { StaticImage } from "gatsby-plugin-image"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import axios from "axios"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -30,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
+  },
+  formImage: {
+    width: "100% !impotant",
+    height: "100% !important",
   },
   title: {
     marginTop: 25,
@@ -171,6 +176,9 @@ const WorkForm = () => {
   const domref = useRef()
   const isVisible = useIntersection(domref, "0px")
 
+  const data = useStaticQuery(query)
+  const image = data.strapiTeampage?.WorkFormImage?.localFile
+
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
       setDisableButton(false)
@@ -222,17 +230,9 @@ const WorkForm = () => {
         })
         .test(
           "type",
-          "Only the following formats are accepted: .jpeg, .jpg, .png, .bmp, .pdf and .doc",
+          "Only the following formats are accepted: .pdf",
           function (value) {
-            return (
-              value &&
-              value[0] &&
-              (value[0].type === "image/jpeg" ||
-                value[0].type === "image/bmp" ||
-                value[0].type === "image/png" ||
-                value[0].type === "application/pdf" ||
-                value[0].type === "application/msword")
-            )
+            return value && value[0] && value[0].type === "application/pdf"
           }
         ),
       otherwise: yup.mixed(),
@@ -246,10 +246,11 @@ const WorkForm = () => {
     reset,
     getValues,
   } = useForm({
+    defaultValues: { website: "" },
     resolver: yupResolver(schema),
     mode: "onChange",
-    defaultValues: { website: "" },
   })
+  const domain = process.env.API_URL || "http://localhost:1337"
 
   const onSubmitHandler = async data => {
     setDisableButton(true)
@@ -257,9 +258,8 @@ const WorkForm = () => {
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
-
       axios
-        .post("http://localhost:1337/upload", formData)
+        .post(`${domain}/upload`, formData)
         .then(async response => {
           //after success
           const file = response.data[0].id
@@ -275,10 +275,7 @@ const WorkForm = () => {
             curriculum: file,
           }
 
-          const res = await axios.post(
-            "http://localhost:1337/curriculums",
-            sendData
-          )
+          const res = await axios.post(`${domain}/curriculums`, sendData)
 
           if (res.statusText === "OK") {
             setShowAttach(false)
@@ -309,10 +306,7 @@ const WorkForm = () => {
           website: data.website,
         }
 
-        const res = await axios.post(
-          "http://localhost:1337/curriculums",
-          sendData
-        )
+        const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.statusText === "OK") {
           setShowAttach(false)
@@ -338,12 +332,14 @@ const WorkForm = () => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          width: "42%",
+          height: "582px",
         }}
       >
-        <StaticImage
-          style={{ borderRadius: "2%" }}
-          src="../images/IMG_7599.jpg"
+        <GatsbyImage
+          image={getImage(image)}
           alt="Team mates around the office"
+          className={classes.formImage}
         />
       </Box>
       <Box>
@@ -512,6 +508,7 @@ const WorkForm = () => {
                       id="outlined-basic"
                       label="Paste your resume"
                       name="website"
+                      value=""
                       variant="outlined"
                     />
                   </>
@@ -521,7 +518,6 @@ const WorkForm = () => {
                     <Input
                       type="file"
                       name="curriculum"
-                      accept="application/pdf"
                       {...register("curriculum", {
                         minLength: {
                           value: 1,
@@ -537,7 +533,6 @@ const WorkForm = () => {
                           errors.curriculum !== undefined ? "inherit" : "none",
                         backgroundColor: "transparent",
                         color: "red",
-                        padding: "0px 10px",
                         fontSize: "0.845rem",
                         marginTop: 5,
                       }}
@@ -573,5 +568,19 @@ const WorkForm = () => {
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    strapiTeampage {
+      WorkFormImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default WorkForm

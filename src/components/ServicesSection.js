@@ -284,7 +284,7 @@ const ServicesSection = () => {
     />
   )
 }
-
+const query = []
 // const query = graphql`
 //   query {
 //     services: allStrapiServices {

@@ -1,9 +1,9 @@
 import React from "react"
+import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Typography } from "@material-ui/core"
-import { Link } from "gatsby"
-import { WORK_WITH_US } from "../navigation/sitemap"
 import Button from "@material-ui/core/Button"
+import { WORK_WITH_US } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   workAdvice: {

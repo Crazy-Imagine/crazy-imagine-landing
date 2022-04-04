@@ -76,7 +76,7 @@ const MoreInfo = () => {
           loading="lazy"
           className={classes.imageLocation}
         ></iframe>
-      </Box>
+      </Box> 
     </Box>
   )
 }

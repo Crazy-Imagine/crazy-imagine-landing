@@ -1,4 +1,6 @@
 import React, { useRef } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Box, Typography, Grid, Card, CardContent } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined"
@@ -7,7 +9,6 @@ import CardTravelIcon from "@material-ui/icons/CardTravel"
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
 import TranslateIcon from "@material-ui/icons/Translate"
 import BookIcon from "@material-ui/icons/Book"
-import { StaticImage } from "gatsby-plugin-image"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -137,6 +138,23 @@ const useStyles = makeStyles(theme => ({
   marginBox: {
     marginTop: "50px",
   },
+  resizeImage: {
+    width: "80% !important",
+    height: '100% !important',
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  },
+  boxImage: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: "35px",
+    height: '300px',
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+    },
+  },
   titleBenefits: {
     color: "#000a30",
     fontSize: 44,
@@ -169,6 +187,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     width: "80%",
     height: "80%",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   animationLeft: {
     animation: `$myEffectLeft 3000ms`,
@@ -204,6 +225,9 @@ const WorkBenefits = () => {
   const visibleTitle = useIntersection(titleref, "0px")
   const bounceCards = useIntersection(benefitsref, "0px")
 
+  const data = useStaticQuery(query)
+  const image = data.strapiTeampage?.BenefitsImage?.localFile
+
   return (
     <Box className={classes.marginBox}>
       <Grid container className={classes.benefitsResponsive}>
@@ -219,18 +243,17 @@ const WorkBenefits = () => {
             </Typography>
             <Box className={classes.boxLine}></Box>
           </Box>
-          <Box>
-            <StaticImage
-              src="../images/IMG_7497.jpg"
-              alt="Team having a good time"
-              className={classes.displayImage}
+          <Box className={classes.boxImage}>
+            <GatsbyImage
+              image={getImage(image)}
+              alt="Team mates hanging out"
+              className={classes.resizeImage}
             />
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
-          <Box>
+          <Box ref={benefitsref}>
             <Card
-              ref={benefitsref}
               className={`${classes.firstCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -243,7 +266,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.secondCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -251,12 +273,11 @@ const WorkBenefits = () => {
               <CardContent>
                 <Typography className={classes.benefits}>
                   <DevicesIcon className={classes.icon} />
-                  We bring you hardware since day one
+                  We bring you hardware since day one.
                 </Typography>
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.thirdCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -270,7 +291,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.fourthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -283,7 +303,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.fifthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -296,7 +315,6 @@ const WorkBenefits = () => {
               </CardContent>
             </Card>
             <Card
-              ref={benefitsref}
               className={`${classes.sixthCard}  ${
                 bounceCards ? classes.animationBounce : ""
               }`}
@@ -314,5 +332,19 @@ const WorkBenefits = () => {
     </Box>
   )
 }
+
+const query = graphql`
+  query {
+    strapiTeampage {
+      BenefitsImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default WorkBenefits
