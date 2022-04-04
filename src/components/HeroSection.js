@@ -84,7 +84,7 @@ const useStyles = makeStyles(theme => ({
   },
   teamContainer: {
     width: "720px",
-    height: "240px",
+    height: "240px",  
     objectFit: "contain",
   },
   author: {
