@@ -41,17 +41,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto",
     fontWeight: "bold",
     backgroundColor: "rgba(103, 183, 255, 0.9)",
-    height: "10%",
-    "&:hover *": {
-      transform: "translateY(0px)",
-    },
   },
-  descriptionAppears: {
-    animation: `$descAppears 1.5s ease`,
-  },
-  descriptionDisappears: {
-    animation: `$descDisappears 2s ease`,
-  },
+
   shakeTitle: {
     animation: `$shakeIt 3000ms`,
   },
@@ -70,14 +61,7 @@ const useStyles = makeStyles(theme => ({
       } /* Chrome */,
     },
   },
-  "@keyframes descAppears": {
-    "0%": { transform: "translateY(42px)" },
-    "100%": { transform: "translateY(0px)" },
-  },
-  "@keyframes descDisappears": {
-    "0%": { transform: "translateY(0px)" },
-    "100%": { transform: "translateY(42px)" },
-  },
+
   "@keyframes shakeIt": {
     "0%": { transform: "translate(1px, 1px) rotate(0deg)" },
     "10%": { transform: "translate(-1px, -2px) rotate(-1deg)" },
@@ -159,11 +143,7 @@ export default function ImageListMembers() {
               alt={item.name}
             />
             <ImageListItemBar
-              className={`${classes.itemBar} ${
-                hover.hover === true && hover.position === index
-                  ? classes.descriptionAppears
-                  : classes.descriptionDisappears
-              }`}
+              className={classes.itemBar}
               onMouseEnter={() =>
                 handleHoverBar(
                   true,
@@ -174,12 +154,6 @@ export default function ImageListMembers() {
               onMouseLeave={() =>
                 handleHoverBar(false, -1, getImage(item.avatar[0].localFile))
               }
-              style={{
-                transform:
-                  hover.hover === true && hover.position === index
-                    ? "translateY(0px)"
-                    : "translateY(42px)",
-              }}
               title={item.role}
               actionIcon={
                 <IconButton

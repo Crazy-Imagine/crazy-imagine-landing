@@ -36,6 +36,18 @@ const useStyles = makeStyles(theme => ({
     width: "100% !impotant",
     height: "100% !important",
   },
+  containerImage: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "42%",
+    height: "592px",
+    [theme.breakpoints.down("sm")]: {
+      height: "300px",
+      width: "100%",
+    },
+  },
   title: {
     marginTop: 25,
     marginBottom: 14,
@@ -326,20 +338,12 @@ const WorkForm = () => {
 
   return (
     <Box className={classes.formContainer}>
-      <Box
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "42%",
-          height: "582px",
-        }}
-      >
+      <Box className={classes.containerImage}>
         <GatsbyImage
           image={getImage(image)}
           alt="Team mates around the office"
           className={classes.formImage}
+          imgStyle={{ objectFit: "contain", height: "400px !important" }}
         />
       </Box>
       <Box>

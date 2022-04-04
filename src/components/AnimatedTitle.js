@@ -88,15 +88,16 @@ const useStyles = makeStyles(theme => ({
   displayImage: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
-    width: '560px',
-    height: '300px'
+    marginLeft: "35px",
+    height: "300px",
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+    },
   },
   img: {
     width: "100% !important",
     height: "100% !important",
-    objectFit: "contain !important",
   },
   containerResponsive: {
     display: "flex",
@@ -203,7 +204,7 @@ export const AnimatedTitle = ({
   return (
     <Grid container className={classes[boxClass]}>
       <Grid item xs={12} sm={12} md={md}>
-        <Box ref={ref} className={`${isVisible && classes[animation]} `}>
+        <Box ref={ref} className={`${isVisible && classes[animation]}`}>
           <Typography variant="h5" className={classes[titleClass]}>
             {title}
           </Typography>
@@ -214,7 +215,12 @@ export const AnimatedTitle = ({
       {titleClass !== "mainTitle" && (
         <Grid item xs={12} sm={12} md={4}>
           <Box className={classes.displayImage}>
-            <GatsbyImage className={classes.img} image={image} alt={alt} />
+            <GatsbyImage
+              className={classes.img}
+              image={image}
+              alt={alt}
+              imgStyle={{ objectFit: "contain" }}
+            />
           </Box>
         </Grid>
       )}
