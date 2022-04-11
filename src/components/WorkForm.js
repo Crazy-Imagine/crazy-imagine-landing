@@ -139,14 +139,13 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formButton: {
-    background: "#E36417",
+    background: "#3399ff",
     color: "#fff",
     height: 35,
     fontFamily: "Lato",
     width: 150,
     fontSize: 18,
     fontWeight: "bold",
-
     borderRadius: 4,
     border: "0px",
     cursor: "pointer",
