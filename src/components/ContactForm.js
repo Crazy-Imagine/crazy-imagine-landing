@@ -79,7 +79,7 @@ const ContactForm = ({ variant = "default" }) => {
   const classes = useStyles({
     variant,
   })
-  const [state, handleSubmit] = useForm("xpzbazvn")
+  const [state, handleSubmit] = useForm("myyogzrz")
 
   const handleClick = newState => {
     window.onbeforeunload = () => {
