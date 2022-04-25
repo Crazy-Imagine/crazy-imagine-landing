@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white",
     borderRadius: 4,
     height: 35,
-    width: 424,
+    width: 424, 
     color: "#000000",
     boxShadow:
       props.variant === "dark" ? "0px 9px 38px 0px rgba(15, 15, 15, 0.18)" : "",
