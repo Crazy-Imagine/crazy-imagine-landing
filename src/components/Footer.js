@@ -41,7 +41,7 @@ const useStyles = makeStyles({
       marginBottom: 20,
     },
     "& $sectionTitle": {
-      lineHeight: "inherit",
+      lineHeight: "inherit ",
       marginBottom: 4,
       marginTop: 13,
     },
