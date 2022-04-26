@@ -64,44 +64,6 @@ const HomeMainSection = ({ title, mainTitle, description, image }) => {
 
   return (
     <Box>
-      <BgImage
-        image={image}
-        alt="mainSectionImage"
-        className={classes.imageSize}
-      >
-        <Box
-          height="100%"
-          width="70%"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          mx="auto"
-          textAlign="center"
-          className={classes.boxContainer}
-        >
-          <Typography variant="h2" color="secondary" className={classes.title}>
-            {title}
-          </Typography>
-
-          <Typography
-            variant="h1"
-            color="secondary"
-            className={classes.mainTitle}
-          >
-            {mainTitle}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            color="secondary"
-            className={classes.subTitle}
-          >
-            {description}
-          </Typography>
-        </Box>
-      </BgImage>
-
       <Grid container className={classes.cardContainer}>
         <Grid item xs="auto">
           <HomeCard

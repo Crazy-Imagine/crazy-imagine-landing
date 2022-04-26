@@ -15,6 +15,7 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
+import { SectionHeader } from "../components/SectionHeader.js"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -32,13 +33,15 @@ const IndexPage = () => {
           <Hidden lgUp>
             <NavbarMobile />
           </Hidden>
+
           <Box overflow="hidden">
-            <HomeMainSection
+            {/*  <HomeMainSection
               title="Crazy imagine sofware"
               mainTitle="IDEAS BEYOND YOUR IMAGINATION"
               description={data.allStrapiHomepage.nodes[0].seo.metaDescription}
               image={bgImage}
-            />
+            /> */}
+            <SectionHeader />
             <ProjectSection />
             <HumanTalent />
             <ReferenceSection />
