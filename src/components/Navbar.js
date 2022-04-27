@@ -61,7 +61,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: "14px",
     fontWeight: 700,
     textDecoration: "none",
-    lineHeight: "14px",
     letterSpacing: "0.05em",
     textAlign: "center",
     color: "#1E2F97",
@@ -74,10 +73,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
   },
 
-  navbarLogo: {
-    width: 140,
-    height: 73,
-  },
+  navbarLogo: {},
 }))
 
 const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
@@ -97,11 +93,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
       <Toolbar>
         <Box class={classes.barContainer}>
           <Link to={HOME}>
-            <StaticImage
-              src="../images/LOGO.png"
-              alt="logo"
-              className={classes.navbarLogo}
-            />
+            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
           </Link>
           <Box className={classes.linkContainer}>
             <Typography variant="h5">

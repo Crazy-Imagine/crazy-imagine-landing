@@ -36,7 +36,9 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "25%",
+    justifyContent: "center",
+    gap: 50,
+    width: "35%",
     height: "100%",
   },
   formatContactSection: {
@@ -52,7 +54,7 @@ const useStyles = makeStyles({
   linkContainer: {
     display: "flex",
     flexDirection: "row",
-    width: "70%",
+    width: "60%",
     height: "50%",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -65,12 +67,17 @@ const useStyles = makeStyles({
     width: "25%",
     gap: 28,
     padding: 44,
-    borderLeft: "1px solid #233B7E",
+    borderLeft: "1.5px solid #233B7E",
+  },
+  iconsContainer: {
+    width: "58%",
+    display: "flex",
+    gap: 21,
   },
   info: {
     display: "flex",
     flexDirection: "row",
-    gap: 12,
+    gap: 4,
   },
   linkTypography: {
     color: "#FFFFFF",
@@ -84,11 +91,7 @@ const useStyles = makeStyles({
     fontWeight: "400",
     fontSize: "14px",
   },
-  footerLogo: {
-    marginTop: 32,
-    width: 147,
-    height: 78,
-  },
+  footerLogo: {},
 })
 
 const Footer = ({ height = "192px", align = "center" }) => {
@@ -98,9 +101,8 @@ const Footer = ({ height = "192px", align = "center" }) => {
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
           <StaticImage
-            src="../images/LOGO.png"
+            src="../images/crazy-imagine-icon.svg"
             alt="footerImage"
-            className={classes.footerLogo}
           />
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
