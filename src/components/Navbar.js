@@ -24,14 +24,14 @@ const useStyles = makeStyles(theme => ({
   }),
 
   linkTypography: props => ({
-    fontSize: "16px",
+    fontSize: 16,
     fontWeight: "700",
-    lineHeight: "16px",
+    fontFamily: "Nexa",
     letterSpacing: "0.1em",
+    lineHeight: "16px",
     textAlign: "right",
     transition: "all 300ms ease",
     color: props.scroll ? props.linkVariant : "black",
-    textTransform: "uppercase",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
@@ -63,6 +63,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     letterSpacing: "0.05em",
     textAlign: "center",
+    lineHeight: "14px",
     color: "#1E2F97",
   },
 
@@ -96,24 +97,24 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
             <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
           </Link>
           <Box className={classes.linkContainer}>
-            <Typography variant="h5">
+            <Typography>
               <Link to={`${HOME}#about`} className={classes.linkTypography}>
-                About
+                ABOUT
               </Link>
             </Typography>
-            <Typography variant="h5">
+            <Typography>
               <Link to={`${PROJECTS}`} className={classes.linkTypography}>
-                Services
+                SERVICES
               </Link>
             </Typography>
-            <Typography variant="h5">
+            <Typography>
               <Link to={`${HOME}#blog`} className={classes.linkTypography}>
-                Blog
+                BLOG
               </Link>
             </Typography>
-            <Typography variant="h5">
+            <Typography>
               <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>
-                Work With Us
+                WORK WITH US
               </Link>
             </Typography>
           </Box>

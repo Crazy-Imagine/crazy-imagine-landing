@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
 import Button from "@material-ui/core/Button"
 
 const useStyles = makeStyles(theme => ({
@@ -8,13 +8,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#27AAE1",
     borderRadius: "14px",
     display: "flex",
-    flexDirection: "column",
-    gap: 42,
+    flexDirection: "row",
     height: "530px",
-    justifyContent: "center",
-    alignItems: "flex-start",
+    justifyContent: "space-between",
     transform: "rotate(180deg)",
-    width: "92%",
     marginBottom: 50,
   },
   backgroundOut: {
@@ -33,33 +30,66 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#FFFFFF",
     borderRadius: "100px",
     color: "#1E2F97",
-    fontSize: 14,
-    textAlign: "center",
+    padding: "14px 20px 12px 20px",
+    "& > span": {
+      fontSize: "12px",
+      lineHeight: "10px",
+      fontFamily: "Nexa",
+      fontStyle: "normal",
+      fontWeight: 700,
+      textAlign: "center",
+      letterSpacing: "0.05em",
+    },
   },
   buttonRight: {
     border: "2px solid #FFFFFF",
     boxSizing: "border-box",
     color: "#FFFFFF",
     borderRadius: "100px",
-    fontSize: 12,
-    textAlign: "center",
+    padding: "14px 20px 12px 20px",
+
+    "& > span": {
+      fontSize: "12px",
+      lineHeight: "10px",
+      fontFamily: "Nexa",
+      fontStyle: "normal",
+      fontWeight: 700,
+      textAlign: "center",
+      letterSpacing: "0.05em",
+    },
   },
   buttonContainer: {
     display: "flex",
     flexDirection: "row",
-    gap: 12,
+    gap: "12px",
+  },
+  textContainer: {
+    backgroundColor: "#27AAE1",
+    display: "flex",
+    flexDirection: "column",
+    padding: 100,
+    gap: 42,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    width: "92%",
+
+    marginBottom: 50,
   },
   title: {
     fontStyle: "normal",
     fontWeight: 700,
-    width: "64%",
+    fontFamily: "Nexa",
     fontSize: "90px",
+    width: "65%",
+    lineHeight: "81px",
     color: "#FFFFFF",
   },
   desc: {
     fontStyle: "normal",
     fontWeight: 700,
+    fontFamily: "Nexa",
     fontSize: "20px",
+    lineHeight: "20px",
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
@@ -72,18 +102,20 @@ export const SectionHeader = () => {
   return (
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
-        <Typography className={classes.title}>
-          Ideas Beyond Your Imagination
-        </Typography>
-        <Typography className={classes.desc}>
-          TEAM WORK IS THE HEART OF EVERYTHING WE DO
-        </Typography>
-        {/* <GatsbyImage></GatsbyImage>
-        <StaticImage></StaticImage> */}
-        <Box className={classes.buttonContainer}>
-          <Button className={classes.buttonLeft}>Capabilities</Button>
-          <Button className={classes.buttonRight}>Get Started</Button>
+        <Box className={classes.textContainer}>
+          <Typography className={classes.title}>
+            Ideas Beyond Your Imagination
+          </Typography>
+          <Typography className={classes.desc}>
+            TEAMWORK IS THE HEART OF EVERYTHING WE DO
+          </Typography>
+
+          <Box className={classes.buttonContainer}>
+            <Button className={classes.buttonLeft}>Capabilities</Button>
+            <Button className={classes.buttonRight}>Get Started</Button>
+          </Box>
         </Box>
+        <StaticImage src="../images/Frame587.svg" alt="Header Image" />
       </Box>
     </Box>
   )
