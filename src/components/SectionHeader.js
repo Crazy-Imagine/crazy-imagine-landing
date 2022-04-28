@@ -7,10 +7,13 @@ const useStyles = makeStyles(theme => ({
   backgroundIn: {
     backgroundColor: "#27AAE1",
     borderRadius: "14px",
+    width: "92%",
+    position: "relative",
     display: "flex",
     flexDirection: "row",
-    height: "530px",
     justifyContent: "space-between",
+    borderRadius: "14px",
+    height: "530px",
     transform: "rotate(180deg)",
     marginBottom: 50,
   },
@@ -67,20 +70,25 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
-    padding: 100,
-    gap: 42,
+    padding: "100px 0px 100px 100px",
+    borderRadius: "14px",
+    gap: "42px",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    width: "92%",
-
-    marginBottom: 50,
+  },
+  imgContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
   },
   title: {
     fontStyle: "normal",
     fontWeight: 700,
     fontFamily: "Nexa",
     fontSize: "90px",
-    width: "65%",
     lineHeight: "81px",
     color: "#FFFFFF",
   },
@@ -96,26 +104,26 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SectionHeader = () => {
+export const SectionHeader = ({ title, desc, btn }) => {
   const classes = useStyles()
 
   return (
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title}>
-            Ideas Beyond Your Imagination
-          </Typography>
-          <Typography className={classes.desc}>
-            TEAMWORK IS THE HEART OF EVERYTHING WE DO
-          </Typography>
+          <Typography className={classes.title}>{title}</Typography>
+          <Typography className={classes.desc}>{desc}</Typography>
 
-          <Box className={classes.buttonContainer}>
-            <Button className={classes.buttonLeft}>Capabilities</Button>
-            <Button className={classes.buttonRight}>Get Started</Button>
-          </Box>
+          {btn && (
+            <Box className={classes.buttonContainer}>
+              <Button className={classes.buttonLeft}>Capabilities</Button>
+              <Button className={classes.buttonRight}>Get Started</Button>
+            </Box>
+          )}
         </Box>
-        <StaticImage src="../images/Frame587.svg" alt="Header Image" />
+        <Box className={classes.imgContainer}>
+          <StaticImage src="../images/Frame587.svg" alt="Header Image" />
+        </Box>
       </Box>
     </Box>
   )

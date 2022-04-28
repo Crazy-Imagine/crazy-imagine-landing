@@ -4,19 +4,22 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 const useStyles = makeStyles({
   container: {
     display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    backgroundColor: "#071A4E",
+  },
+  copyContainer: {
+    display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "100%",
+    width: "92%",
     height: "78px",
-    padding: "0px 50px",
-    backgroundColor: "#071A4E",
   },
   copyright: {
     color: "white",
     fontFamily: "Roboto",
     fontWeight: 400,
     fontSize: 12,
-    letterSpacing: "0em",
     textAlign: "left",
     fontStyle: "normal",
   },
@@ -37,15 +40,17 @@ const Copyright = () => {
 
   return (
     <Box className={classes.container}>
-      <Typography className={classes.copyright}>
-        {" "}
-        ©2022 Crazy Imagine, All Rights Reserved
-      </Typography>
-      <Typography className={classes.copyright}>
-        {" "}
-        Terms & Conditions <span className={classes.barText}>|</span> Privacy
-        Policy
-      </Typography>
+      <Box className={classes.copyContainer}>
+        <Typography className={classes.copyright}>
+          {" "}
+          ©2022 Crazy Imagine, All Rights Reserved
+        </Typography>
+        <Typography className={classes.copyright}>
+          {" "}
+          Terms & Conditions <span className={classes.barText}>|</span> Privacy
+          Policy
+        </Typography>
+      </Box>
     </Box>
   )
 }

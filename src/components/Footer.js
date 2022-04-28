@@ -16,6 +16,10 @@ const useStyles = makeStyles({
   root: {
     color: "white",
   },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+  },
   contactIcon: {
     fontSize: "22px",
     color: "#249DCF",
@@ -37,8 +41,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 50,
-    width: "35%",
+    gap: "50px",
     height: "100%",
   },
   formatContactSection: {
@@ -54,31 +57,29 @@ const useStyles = makeStyles({
   linkContainer: {
     display: "flex",
     flexDirection: "row",
-    width: "60%",
+
     height: "50%",
     justifyContent: "center",
     alignItems: "flex-start",
-    gap: 50,
+    gap: "50px",
   },
   infoContainer: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    width: "25%",
-    gap: 28,
-    padding: 44,
+    gap: "28px",
+    padding: "44px 0px 44px 44px",
     borderLeft: "1.5px solid #233B7E",
   },
   iconsContainer: {
-    width: "50%",
     display: "flex",
-    gap: 21,
+    gap: "21px",
   },
   info: {
     display: "flex",
     flexDirection: "row",
     lineHeight: "20px",
-    gap: 4,
+    gap: "4px",
   },
   linkTypography: {
     color: "#FFFFFF",
@@ -101,7 +102,7 @@ const useStyles = makeStyles({
 const Footer = ({ height = "192px", align = "center" }) => {
   const classes = useStyles()
   return (
-    <Section backgroundColor="#193174" width="100%" height={height}>
+    <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
           <StaticImage

@@ -33,20 +33,23 @@ const IndexPage = () => {
           <Hidden lgUp>
             <NavbarMobile />
           </Hidden>
-
           <Box overflow="hidden">
-            {/*  <HomeMainSection
+            <SectionHeader
+              title="Ideas Beyond Your Imagination"
+              desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
+              btn={true}
+            />
+            <HomeMainSection
               title="Crazy imagine sofware"
               mainTitle="IDEAS BEYOND YOUR IMAGINATION"
               description={data.allStrapiHomepage.nodes[0].seo.metaDescription}
               image={bgImage}
-            /> */}
-            <SectionHeader />
+            />
             <ProjectSection />
             <HumanTalent />
             <ReferenceSection />
             <LastestPosts />
-            <ContactSection bgColor="#23aae1" />
+            <ContactSection bgColor="#FFFFFF" />
             <Footer />
             <Copyright />
           </Box>

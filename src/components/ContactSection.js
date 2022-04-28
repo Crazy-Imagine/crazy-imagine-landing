@@ -1,36 +1,53 @@
 import React from "react"
-import { Box, Grid, makeStyles } from "@material-ui/core"
-import MoreInfo from "./MoreInfo"
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
+import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
+import { text } from "@fortawesome/fontawesome-svg-core"
 
 const useStyles = makeStyles(theme => ({
-  gridContainer: {
-    paddingBottom: 48,
-    paddingTop: 71,
+  title: {
+    fontFamily: "Nexa",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "40px",
+    lineHeight: "50px",
+    /* or 125% */
+    color: "#193174",
   },
+
+  subtitle: {
+    fontFamily: "Nexa",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "20px",
+    lineHeight: "20px",
+    /* identical to box height */
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    color: "#797EF6",
+  },
+
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "19px",
+  },
+
   contactResponsive: {
-    [theme.breakpoints.down("md")]: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      position: "relative"
-    },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
   },
   formResponsive: {
     [theme.breakpoints.down("md")]: {
       marginTop: 20,
     },
   },
-  shadowOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "transparent",
-    boxShadow: "inset 1px 17px 34px 1px rgba(4,8,0,0.25)",
+  img: {
+    alignSelf: "flex-end",
   },
 }))
 
@@ -39,11 +56,10 @@ const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
 
   return (
     <Section
-      width="1000px"
+      width="92%"
       backgroundImage={bgImage ? bgImage : ""}
       backgroundColor={bgColor ? bgColor : ""}
     >
-      {showShadow ? <Box className={classes.shadowOverlay} /> : null}
       <Grid
         container
         className={classes.gridContainer}
@@ -51,15 +67,20 @@ const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
         spacing={10}
       >
         <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Box className={classes.contactResponsive}>
-            <MoreInfo />
+          <Box className={classes.textContainer}>
+            <Typography className={classes.subtitle}>REACH OUT</Typography>
+            <Typography className={classes.title}>
+              Imagine What We Can Create
+            </Typography>
           </Box>
+          <StaticImage
+            src="../images/Rectangle161.svg"
+            className={classes.img}
+          />
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Box className={classes.formResponsive}>
-            <Box className={classes.contactResponsive}>
-              <ContactForm variant={variant} />
-            </Box>
+          <Box>
+            <ContactForm variant={variant} />
           </Box>
         </Grid>
       </Grid>

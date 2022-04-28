@@ -12,11 +12,15 @@ const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
+    width: "100%",
     backgroundColor: props.scroll ? "transparent" : "white",
     zIndex: 999999,
   }),
   iconSpacing: {
     marginLeft: theme.spacing(10),
+  },
+  root: {
+    justifyContent: "center",
   },
   navbarIcons: props => ({
     fontSize: 25,
@@ -27,6 +31,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
     fontWeight: "700",
     fontFamily: "Nexa",
+    width: "100%",
     letterSpacing: "0.1em",
     lineHeight: "16px",
     textAlign: "right",
@@ -42,11 +47,10 @@ const useStyles = makeStyles(theme => ({
   barContainer: {
     margin: 1,
     display: "flex",
-    width: "100%",
+    width: "94%",
     height: "6em",
-    alignItems: "center",
     justifyContent: "space-between",
-    padding: "0px 50px",
+    alignItems: "center",
     gap: "50px",
   },
 
@@ -91,7 +95,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
 
   return (
     <AppBar color="transparent" position="fixed" className={classes.container}>
-      <Toolbar>
+      <Toolbar className={classes.root}>
         <Box class={classes.barContainer}>
           <Link to={HOME}>
             <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
