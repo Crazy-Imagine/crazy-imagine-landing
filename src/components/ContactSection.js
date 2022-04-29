@@ -1,9 +1,8 @@
 import React from "react"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Box, makeStyles, Typography } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
-import { text } from "@fortawesome/fontawesome-svg-core"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -12,7 +11,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "40px",
     lineHeight: "50px",
-    /* or 125% */
     color: "#193174",
   },
 
@@ -22,68 +20,49 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "20px",
     lineHeight: "20px",
-    /* identical to box height */
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
   },
-
   textContainer: {
     display: "flex",
     flexDirection: "column",
+    height: "auto",
     gap: "19px",
   },
-
-  contactResponsive: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-  },
-  formResponsive: {
-    [theme.breakpoints.down("md")]: {
-      marginTop: 20,
-    },
-  },
   img: {
-    alignSelf: "flex-end",
+    marginTop: "auto",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+    height: "514px",
   },
 }))
 
-const ContactSection = ({ bgColor, bgImage, showShadow, variant }) => {
+const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
 
   return (
     <Section
-      width="92%"
+      width="76%"
       backgroundImage={bgImage ? bgImage : ""}
       backgroundColor={bgColor ? bgColor : ""}
     >
-      <Grid
-        container
-        className={classes.gridContainer}
-        justifyContent="space-between"
-        spacing={10}
-      >
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Box className={classes.textContainer}>
-            <Typography className={classes.subtitle}>REACH OUT</Typography>
-            <Typography className={classes.title}>
-              Imagine What We Can Create
-            </Typography>
+      <Box className={classes.container}>
+        <Box className={classes.textContainer}>
+          <Typography className={classes.subtitle}>REACH OUT</Typography>
+          <Typography className={classes.title}>
+            Imagine What <br></br> We Can Create
+          </Typography>
+          <Box className={classes.img}>
+            <StaticImage src="../images/Rectangle161.svg" />
           </Box>
-          <StaticImage
-            src="../images/Rectangle161.svg"
-            className={classes.img}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Box>
-            <ContactForm variant={variant} />
-          </Box>
-        </Grid>
-      </Grid>
+        </Box>
+        <Box>
+          <ContactForm />
+        </Box>
+      </Box>
     </Section>
   )
 }

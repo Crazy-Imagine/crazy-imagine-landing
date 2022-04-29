@@ -1,71 +1,58 @@
 import React from "react"
 import clsx from "clsx"
 import Swal from "sweetalert2"
-import { Box, makeStyles, Typography } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
+import TextField from "@material-ui/core/TextField"
 import { useForm, ValidationError } from "@formspree/react"
 
 const useStyles = makeStyles(theme => ({
-  title: props => ({
-    fontFamily: "Gotham-ultra",
-    fontSize: 40,
-    color: props.variant === "dark" ? "black" : "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    marginBottom: 25,
-    [theme.breakpoints.down("md")]: {
-      display: "flex",
-      justifyContent: "center",
-      color: "black",
-    },
-  }),
+  root: {
+    color: "red",
+  },
+  formContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  inputContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "21px",
+  },
 
-  formInput: props => ({
-    backgroundColor: "white",
-    borderRadius: 4,
-    height: 35,
-    width: 424,
-    color: "#000000",
-    boxShadow:
-      props.variant === "dark" ? "0px 9px 38px 0px rgba(15, 15, 15, 0.18)" : "",
-    fontSize: 16,
-    border: 0,
-    fontFamily: "Lato",
-    outline: "none",
-    padding: "6px 7px 10px 7px !important",
-    "&::placeholder": {
-      color: "#919191 !important",
-      fontSize: 15,
-      [theme.breakpoints.down("sm")]: {
-        fontSize: 14,
-      },
-    },
-    "&:focus": {
-      border: 0,
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-    },
-  }),
   formButton: {
-    //backgroundColor: "#D32022",
-    background: "#E36417",
-    color: "#fff",
-    height: 35,
-    fontFamily: "Lato",
-    width: 424,
-    fontSize: 16,
-    fontWeight: "bold",
-    borderRadius: 4,
-    border: "0px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    backgroundColor: "#797EF6",
+    padding: "14px 20px 12px 20px",
+    marginTop: "66px",
+    borderRadius: "100px",
+    alignSelf: "flex-start",
+    "& > span": {
+      fontFamily: "Nexa",
+      fontStyle: "normal",
+      fontWeight: 400,
+      fontSize: "14px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
     },
-    "&:hover": {
-      cursor: "pointer",
-    },
+  },
+  divider: {
+    display: "flex",
+    gap: "20px",
   },
   resetFormInput: {
     height: "246px !important",
+  },
+  input: {
+    width: "520px",
+  },
+  shortInput: {
+    width: "250px",
   },
   snackColor: {
     fontSize: "bold",
@@ -75,10 +62,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ContactForm = ({ variant = "default" }) => {
-  const classes = useStyles({
-    variant,
-  })
+const ContactForm = () => {
+  const classes = useStyles({})
   const [state, handleSubmit] = useForm("myyogzrz")
 
   const handleClick = newState => {
@@ -107,60 +92,52 @@ const ContactForm = ({ variant = "default" }) => {
   }
 
   return (
-    <Box width="100%">
-      <Typography variant="h3" className={classes.title}>
-        contact
-      </Typography>
+    <Box className={classes.formContainer}>
       <form onSubmit={handleSubmit}>
-        <Box marginBottom="20px">
-          <input
-            className={classes.formInput}
-            placeholder="Name (Required)"
-            id="message"
-            name="message"
-            required
-          />
-        </Box>
-        <Box marginBottom="20px">
-          <input
-            className={classes.formInput}
-            placeholder="Email (Required)"
+        <Box className={classes.inputContainer}>
+          <Box className={classes.divider}>
+            <TextField
+              id="message"
+              name="message"
+              required
+              label="Name"
+              className={classes.shortInput}
+            />
+            <TextField
+              id="subject"
+              name="subject"
+              required
+              label="Company"
+              className={classes.shortInput}
+            />
+          </Box>
+          <TextField
             id="email"
             type="email"
             name="email"
+            className={classes.input}
             required
+            label="Email"
           />
-          <ValidationError prefix="Email" field="email" errors={state.errors} />
-        </Box>
-        <Box marginBottom="20px">
-          <input
-            className={classes.formInput}
-            placeholder="Subject"
-            id="subject"
-            name="subject"
+          <TextField
+            id="about"
+            label="Comments/Questions/Schemes"
+            className={classes.input}
             required
-          />
-        </Box>
-        <Box marginBottom="16px">
-          <textarea
-            placeholder="Message"
-            className={clsx(classes.formInput, classes.resetFormInput)}
-            id="message"
-            name="message"
           />
           <ValidationError
             prefix="Message"
             field="message"
             errors={state.errors}
           />
+          <Button
+            className={classes.formButton}
+            disabled={state.submitting}
+            onClick={() => handleClick()}
+          >
+            CONTACT US!
+          </Button>
         </Box>
-        <button
-          className={classes.formButton}
-          disabled={state.submitting}
-          onClick={() => handleClick()}
-        >
-          SUBMIT
-        </button>
       </form>
     </Box>
   )

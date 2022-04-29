@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button"
 const useStyles = makeStyles(theme => ({
   backgroundIn: {
     backgroundColor: "#27AAE1",
-    borderRadius: "14px",
     width: "92%",
     position: "relative",
     display: "flex",

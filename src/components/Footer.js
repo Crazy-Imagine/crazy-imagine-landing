@@ -73,6 +73,8 @@ const useStyles = makeStyles({
   },
   iconsContainer: {
     display: "flex",
+    alignSelf: "flex-start",
+    /* marginRight: "auto", */
     gap: "21px",
   },
   info: {
@@ -85,7 +87,7 @@ const useStyles = makeStyles({
     color: "#FFFFFF",
     fontStyle: "normal",
     fontFamily: "Nexa",
-    fontWeight: 700,
+    fontWeight: "700",
     lineHeight: "16px",
     fontSize: "14px",
   },
