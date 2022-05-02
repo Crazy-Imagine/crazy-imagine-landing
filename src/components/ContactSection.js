@@ -6,7 +6,7 @@ import Section from "./Section"
 
 const useStyles = makeStyles(theme => ({
   title: {
-    fontFamily: "Nexa",
+    fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "40px",
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   subtitle: {
-    fontFamily: "Nexa",
+    fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "20px",
@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     height: "auto",
+    marginTop: "83px",
     gap: "19px",
   },
   img: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     justifyContent: "space-between",
+    gap: "150px",
     height: "514px",
   },
 }))
@@ -59,9 +61,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             <StaticImage src="../images/Rectangle161.svg" />
           </Box>
         </Box>
-        <Box>
-          <ContactForm />
-        </Box>
+        <ContactForm />
       </Box>
     </Section>
   )

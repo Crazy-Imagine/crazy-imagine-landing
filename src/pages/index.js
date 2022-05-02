@@ -14,6 +14,7 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
+import HomeDescription from "../components/HomeDescription"
 import { SectionHeader } from "../components/SectionHeader.js"
 
 const IndexPage = () => {
@@ -31,11 +32,12 @@ const IndexPage = () => {
           </Hidden>
           <Box overflow="hidden">
             <SectionHeader
-              title="Ideas Beyond Your Imagination"
+              title={`Ideas Beyond\nYour Imagination`}
               desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
               btn={true}
             />
             <HomeMainSection />
+            <HomeDescription />
             <ProjectSection />
             <HumanTalent />
             <ReferenceSection />

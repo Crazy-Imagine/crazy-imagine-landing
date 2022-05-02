@@ -1,11 +1,5 @@
 import React from "react"
-import {
-  Box,
-  Card,
-  CardContent,
-  makeStyles,
-  Typography,
-} from "@material-ui/core"
+import { Card, CardContent, makeStyles, Typography } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
@@ -13,9 +7,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
+    width: "150px",
     fontSize: "28px",
     lineHeight: "28px",
     textAlign: "center",
+    whiteSpace: "pre-line",
     color: "#193174",
   },
   cardContainer: {

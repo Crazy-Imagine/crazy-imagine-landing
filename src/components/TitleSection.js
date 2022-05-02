@@ -1,21 +1,26 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
+import Image from "../images/Rectangle114.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
+    width: "90%",
+    justifyContent: "center",
+    alignItems: "center",
     gap: "59px",
-    width: "77%",
-    marginTop: "44px",
+    marginTop: "144px",
+    marginBottom: "52px",
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "center",
     gap: "20px",
+    width: "39%",
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -34,14 +39,15 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
   },
+  img: {},
 }))
 
 export const TitleSection = ({ title, desc }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
-      <Box>
-        <StaticImage src="../images/Rectangle114.svg" />
+      <Box className={classes.img}>
+        <img src={Image} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title}>{title}</Typography>

@@ -40,11 +40,12 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    marginTop: "108px",
   },
   inputContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: "21px",
+    gap: "15px",
   },
   formCheck: {
     background: "#E8E8E8",
@@ -54,12 +55,12 @@ const useStyles = makeStyles(theme => ({
   },
   formButton: {
     backgroundColor: "#797EF6",
-    padding: "14px 20px 12px 20px",
-    marginTop: "66px",
+    marginTop: "23px",
     borderRadius: "100px",
     alignSelf: "flex-start",
+    padding: "14px 20px 12px 20px",
     "& > span": {
-      fontFamily: "Nexa",
+      fontFamily: "Nexa Bold",
       fontStyle: "normal",
       fontWeight: 400,
       fontSize: "14px",
@@ -74,9 +75,6 @@ const useStyles = makeStyles(theme => ({
   divider: {
     display: "flex",
     gap: "20px",
-  },
-  resetFormInput: {
-    height: "246px !important",
   },
   input: {
     width: "520px",

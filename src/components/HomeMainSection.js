@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    background: "#E5E5E5",
+    background: "#FFF",
   },
   button: {
     background: "#797EF6",
@@ -59,13 +59,13 @@ const HomeMainSection = () => {
         className={classes.cardContainer}
       >
         <Grid item xs="auto">
-          <HomeCard title="Full-stack Development" icon={faCode} />
+          <HomeCard title={`Full-stack\nDevelopment`} icon={faCode} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard title="User Experience" icon={faThumbsUp} />
+          <HomeCard title={`User\nExperience`} icon={faThumbsUp} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard title="Quality Support" icon={faCircleCheck} />
+          <HomeCard title={`Quality\nSupport`} icon={faCircleCheck} />
         </Grid>
       </Grid>
       <Button className={classes.button}>GET STARTED</Button>

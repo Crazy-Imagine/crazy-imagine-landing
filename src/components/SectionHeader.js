@@ -90,6 +90,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "90px",
     lineHeight: "81px",
     color: "#FFFFFF",
+    whiteSpace: "pre-line",
   },
   desc: {
     fontStyle: "normal",
