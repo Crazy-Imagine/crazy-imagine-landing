@@ -4,11 +4,36 @@ import Swal from "sweetalert2"
 import { Box, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
 import { useForm, ValidationError } from "@formspree/react"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    color: "red",
+    "& .MuiFormLabel-root": {
+      fontFamily: "Hero New",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "140%",
+      color: "#193173",
+    },
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px #D6D6D6 solid !important",
+    },
+    "& .MuiSvgIcon-root": {
+      background: "#E8E8E8",
+      color: "#797EF6",
+      borderRadius: "2px",
+    },
+    "& .MuiTypography-body1": {
+      fontFamily: "Hero New",
+      fontStyle: "italic",
+      fontWeight: "400",
+      fontSize: "13px",
+      lineHeight: "140%",
+      color: "#193173",
+    },
   },
   formContainer: {
     display: "flex",
@@ -21,7 +46,12 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     gap: "21px",
   },
-
+  formCheck: {
+    background: "#E8E8E8",
+    border: "1px solid #797EF6",
+    boxSizing: "border-box",
+    borderRadius: "2px",
+  },
   formButton: {
     backgroundColor: "#797EF6",
     padding: "14px 20px 12px 20px",
@@ -101,28 +131,30 @@ const ContactForm = () => {
               name="message"
               required
               label="Name"
-              className={classes.shortInput}
+              className={`${classes.shortInput} ${classes.root} `}
             />
+
             <TextField
               id="subject"
               name="subject"
               required
               label="Company"
-              className={classes.shortInput}
+              className={`${classes.shortInput} ${classes.root} `}
             />
           </Box>
+
           <TextField
             id="email"
             type="email"
             name="email"
-            className={classes.input}
+            className={`${classes.input} ${classes.root}`}
             required
-            label="Email"
+            label="Email Address"
           />
           <TextField
             id="about"
             label="Comments/Questions/Schemes"
-            className={classes.input}
+            className={`${classes.input} ${classes.root}`}
             required
           />
           <ValidationError
@@ -130,12 +162,19 @@ const ContactForm = () => {
             field="message"
             errors={state.errors}
           />
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Keep me up-to-date on news and exciting projects."
+            className={classes.root}
+            labelPlacement="end"
+          />
           <Button
             className={classes.formButton}
             disabled={state.submitting}
             onClick={() => handleClick()}
           >
-            CONTACT US!
+            CONTACT US
           </Button>
         </Box>
       </form>

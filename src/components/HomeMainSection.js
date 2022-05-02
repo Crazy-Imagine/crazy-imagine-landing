@@ -1,93 +1,75 @@
 import React from "react"
-import { BgImage } from "gbimage-bridge"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle"
-import CodeIcon from "@material-ui/icons/Code"
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
-
+import { Box, Grid, makeStyles } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
+import { faCode } from "@fortawesome/free-solid-svg-icons"
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
+import TitleSection from "./TitleSection"
 
 const useStyles = makeStyles(theme => ({
-  imageSize: {
-    width: "100%",
-    height: 800,
-    overflow: "hidden",
-    borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% ",
-    [theme.breakpoints.down("md")]: {
-      borderRadius: 0,
+  container: {
+    height: "837px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    background: "#E5E5E5",
+  },
+  button: {
+    background: "#797EF6",
+    borderRadius: "100px",
+    marginBottom: "87px",
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
     },
-  },
-  title: {
-    fontSize: 44,
-    fontFamily: "gotham-book",
-    color: "white",
-    textTransform: "uppercase",
-  },
-  mainTitle: {
-    fontSize: 76,
-    fontFamily: "Gotham-Black",
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    [theme.breakpoints.down("md")]: {
-      fontSize: 42,
-      marginBottom: 30,
-    },
-  },
-  subTitle: {
-    fontSize: 23,
-    fontFamily: "gotham-Medium",
-    color: "white",
-    lineHeight: "22px",
-    height: 65,
-    overflow: "hidden",
-    maxWidth: 552,
-  },
-  cardIcon: {
-    fontSize: 64,
-  },
-  cardCenter: {
-    backgroundColor: "#23aae1",
   },
   cardContainer: {
-    gap: 30,
-    justifyContent: "center",
-    marginBottom: 30,
-    [theme.breakpoints.down("md")]: {
-      marginTop: 30,
-    },
+    marginTop: "auto",
+    marginBottom: "48px",
   },
 }))
 
-const HomeMainSection = ({ title, mainTitle, description, image }) => {
+const HomeMainSection = () => {
   const classes = useStyles()
 
   return (
-    <Box>
-      <Grid container className={classes.cardContainer}>
+    <Box className={classes.container}>
+      <TitleSection
+        style={{ marginTop: "144px" }}
+        title="Why Should You Choose Us"
+        desc="We will help you to strategize your web presence, designing and
+          executing sitemaps and wireframes to provide a sleek, elegant, and
+          seamless end-user experience"
+      />
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={3}
+        className={classes.cardContainer}
+      >
         <Grid item xs="auto">
-          <HomeCard
-            title="Code"
-            description="Our background involves using cutting-edge technologies such as: PHP7, HTML5, Javascript, CSS3, Wordpress and Angular, among others."
-            Icon={AccountCircleIcon}
-          />
+          <HomeCard title="Full-stack Development" icon={faCode} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard
-            title="User Experience"
-            description="Our philosophy goes hand in hand with user interface satisfaction and excellence."
-            Icon={CodeIcon}
-          />
+          <HomeCard title="User Experience" icon={faThumbsUp} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard
-            title="Quality"
-            description="We are the best so tha's why offer you 100% quality in our services"
-            Icon={ArrowUpwardIcon}
-          />
+          <HomeCard title="Quality Support" icon={faCircleCheck} />
         </Grid>
-        <Box id="about" />
       </Grid>
+      <Button className={classes.button}>GET STARTED</Button>
     </Box>
   )
 }

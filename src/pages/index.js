@@ -11,7 +11,6 @@ import ReferenceSection from "../components/ReferenceSection"
 import ContactSection from "../components/ContactSection"
 import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
-
 import Layout from "../components/layout"
 import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
@@ -19,9 +18,6 @@ import { SectionHeader } from "../components/SectionHeader.js"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-  const bgImage = getImage(
-    data.allStrapiHomepage.nodes[0].seo.shareImage.localFile
-  )
 
   return (
     <>
@@ -39,12 +35,7 @@ const IndexPage = () => {
               desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
               btn={true}
             />
-            <HomeMainSection
-              title="Crazy imagine sofware"
-              mainTitle="IDEAS BEYOND YOUR IMAGINATION"
-              description={data.allStrapiHomepage.nodes[0].seo.metaDescription}
-              image={bgImage}
-            />
+            <HomeMainSection />
             <ProjectSection />
             <HumanTalent />
             <ReferenceSection />

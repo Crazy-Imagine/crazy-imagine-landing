@@ -57,7 +57,6 @@ const useStyles = makeStyles({
   linkContainer: {
     display: "flex",
     flexDirection: "row",
-
     height: "50%",
     justifyContent: "center",
     alignItems: "flex-start",

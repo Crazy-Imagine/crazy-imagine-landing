@@ -1,5 +1,4 @@
 import React from "react"
-
 import {
   Box,
   Card,
@@ -7,89 +6,52 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "28px",
+    lineHeight: "28px",
+    textAlign: "center",
+    color: "#193174",
+  },
   cardContainer: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    boxShadow: "0px 0px 34px 0px rgba(5,0,6,0.26)",
-    transitionProperty: "background, translate, color",
-    transitionDuration: "300ms, 300ms, 300ms",
-    transform: "translateY(-90px)",
-    whiteSpace: "normal",
-    "&:hover": {
-      backgroundColor: "#23aae1",
-      color: "white",
-      transform: "translateY(-115px)",
-      "& $cardIcon": {
-        color: "white",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      transform: "translateY(0px)",
-      "&:hover": {
-        transform: "translateY(0px)",
-      },
-    },
+    backgroundColor: "#FFFFFF",
+    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+    borderRadius: "14px",
   },
   cardContent: {
-    color: "black",
-    "&:hover": {
-      color: "white",
-    },
-  },
-  title: {
-    fontSize: 34,
-    fontWeight: "bold",
-    fontFamily: "Lato",
-    lineHeight: 1.3,
-  },
-  description: {
-    fontSize: 20,
-    maxHeight: 157,
-    overflow: "hidden"
+    width: "314px",
+    height: "185px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "27px",
+    alignItems: "center",
   },
   cardIcon: {
-    fontSize: 64,
-    color: "#23aae1",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "27px",
+    lineHeight: "27px",
+    textAlign: "center",
+    color: "#27AAE1",
   },
 }))
 
-const textOverflow = text => {
-  if (text.length > 142) {
-    return text.slice(0, 142) + "..."
-  }
-  return text
-}
-
-const HomeCard = ({ title, description, Icon }) => {
+const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
 
-  const content = textOverflow(description)
-
   return (
-    <Box display="flex" className={classes.cardTranslate}>
-      <Card className={classes.cardContainer}>
-        <CardContent className={classes.cardContent}>
-          <Box
-            width="250px"
-            height="300px"
-            p="10px"
-            display="flex"
-            flexDirection="column"
-            alignContent="center"
-            textAlign="center"
-            gridGap="0.5em"
-          >
-            <Typography>
-              <Icon className={classes.cardIcon} />
-            </Typography>
-            <Typography className={classes.title}>{title}</Typography>
-            <Typography className={classes.description}>{content}</Typography>
-          </Box>
-        </CardContent>
-      </Card>
-    </Box>
+    <Card className={classes.cardContainer}>
+      <CardContent className={classes.cardContent}>
+        <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
+        <Typography className={classes.title}>{title}</Typography>
+      </CardContent>
+    </Card>
   )
 }
 

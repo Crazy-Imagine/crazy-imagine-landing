@@ -112,7 +112,6 @@ export const SectionHeader = ({ title, desc, btn }) => {
         <Box className={classes.textContainer}>
           <Typography className={classes.title}>{title}</Typography>
           <Typography className={classes.desc}>{desc}</Typography>
-
           {btn && (
             <Box className={classes.buttonContainer}>
               <Button className={classes.buttonLeft}>Capabilities</Button>
