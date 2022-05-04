@@ -8,11 +8,14 @@ import CustomerReview from "./CustomerReview"
 
 const useStyes = makeStyles({
   title: {
-    fontFamily: "Gotham-ultra",
-    fontSize: 40,
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#FFFFFF",
+    whiteSpace: "pre-line",
   },
   boxLine: {
     backgroundColor: "#23aae1",
@@ -20,6 +23,18 @@ const useStyes = makeStyles({
   referenceImage: {
     height: 630,
     filter: "brightness(90%)",
+  },
+  referenceContainer: {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "660px",
+    margin: "auto",
+    paddingTop: "47px",
+    paddingBottom: "45",
+    background: "#193174",
   },
 })
 
@@ -30,41 +45,13 @@ const ReferenceSection = () => {
     <StaticQuery
       query={query}
       render={data => {
-        const dataImage = data.homePage.clientsImage.localFile
-        const bgImage = getImage(dataImage)
         return (
-          <Box id="clients">
-            <BgImage
-              image={bgImage}
-              alt="imageSection"
-              className={classes.referenceImage}
-            >
-              <Box
-                textAlign="center"
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                maxWidth="840px"
-                m="auto"
-                paddingTop="47px"
-                paddingBottom="45"
-              >
-                <Typography variant="h3" className={classes.title}>
-                  What our clients say
-                </Typography>
-                <Box
-                  width="45px"
-                  height="6px"
-                  marginBottom={{ xs: "30px", md: "75px" }}
-                  marginTop="8px"
-                  className={classes.boxLine}
-                ></Box>
-                <CustomerReview />
-              </Box>
-              <Box id="blog" />
-            </BgImage>
-            <Box marginBottom="80px" id="blog" />
+          <Box className={classes.referenceContainer}>
+            <Typography className={classes.title}>
+              {`People Who Work
+                  With Us Say`}
+            </Typography>
+            <CustomerReview />
           </Box>
         )
       }}

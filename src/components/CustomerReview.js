@@ -4,32 +4,48 @@ import SwipeableViews from "react-swipeable-views"
 import { autoPlay } from "react-swipeable-views-utils"
 import { graphql, StaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 const useStyles = makeStyles({
   review: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "130%",
+    textAlign: "center",
+    letterSpacing: "0.02em",
     color: "white",
-    fontFamily: "Myriad-pro",
-    marginBottom: 24,
-    fontSize: 23,
   },
+
   customerName: {
-    color: "white",
-    fontFamily: "Gotham-ultra",
-    fontSize: 30,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "22px",
+    lineHeight: "22px",
+    textAlign: "center",
+    color: "#27AAE1",
   },
   customerOcupation: {
-    color: "#23aae1",
-    textAlign: "initial",
-    fontFamily: "Gotham-Medium",
-    fontSize: 20,
+    color: "#193174",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "22px",
+    lineHeight: "22px",
+    textAlign: "center",
   },
   customerAvatar: {
     width: 100,
     height: 100,
     marginRight: 24,
     borderRadius: "50%",
+  },
+  container: {
+    color: "#FFFFFF",
   },
 })
 
@@ -47,7 +63,7 @@ const CustomerReview = () => {
           setActiveReview(review)
         }
         return (
-          <Box>
+          <Box className={classes.container}>
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={activeReview}
@@ -57,7 +73,7 @@ const CustomerReview = () => {
               {reviews.map((review, index) => (
                 <Box key={index}>
                   {Math.abs(activeReview - index) <= 2 ? (
-                    <Box >
+                    <Box>
                       <Typography className={classes.review}>
                         {review.review}
                       </Typography>
