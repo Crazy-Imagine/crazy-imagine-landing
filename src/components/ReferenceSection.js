@@ -15,14 +15,8 @@ const useStyes = makeStyles({
     lineHeight: "40px",
     textAlign: "center",
     color: "#FFFFFF",
+    marginTop: "78px",
     whiteSpace: "pre-line",
-  },
-  boxLine: {
-    backgroundColor: "#23aae1",
-  },
-  referenceImage: {
-    height: 630,
-    filter: "brightness(90%)",
   },
   referenceContainer: {
     textAlign: "center",
@@ -30,10 +24,7 @@ const useStyes = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "660px",
-    margin: "auto",
-    paddingTop: "47px",
-    paddingBottom: "45",
+    gap: "50px",
     background: "#193174",
   },
 })
