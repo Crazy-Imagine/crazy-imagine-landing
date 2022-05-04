@@ -16,6 +16,7 @@ import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
 import HomeDescription from "../components/HomeDescription"
 import { SectionHeader } from "../components/SectionHeader.js"
+import CapabilitiesSection from "../components/CapabilitiesSection"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -38,6 +39,7 @@ const IndexPage = () => {
             />
             <HomeMainSection />
             <HomeDescription />
+            <CapabilitiesSection />
             <ProjectSection />
             <HumanTalent />
             <ReferenceSection />
