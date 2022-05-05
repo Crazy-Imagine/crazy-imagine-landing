@@ -40,9 +40,9 @@ const IndexPage = () => {
             <HomeMainSection />
             <HomeDescription />
             <CapabilitiesSection />
+            <ReferenceSection />
             <ProjectSection />
             <HumanTalent />
-            <ReferenceSection />
             <LastestPosts />
             <ContactSection bgColor="#FFFFFF" />
             <Footer />
