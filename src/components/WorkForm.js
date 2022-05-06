@@ -8,14 +8,11 @@ import * as yup from "yup"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Typography, Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
-import Link from "@material-ui/core/Link"
 import Button from "@material-ui/core/Button"
-import Card from "@material-ui/core/Card"
-import CardActions from "@material-ui/core/CardActions"
-import CardContent from "@material-ui/core/CardContent"
 import Alert from "@material-ui/lab/Alert"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useIntersection } from "../hooks/useIntersection"
+import WorkInfo from "../components/WorkInfo"
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
@@ -38,15 +35,10 @@ const useStyles = makeStyles(theme => ({
   },
   containerImage: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     width: "42%",
-    height: "592px",
-    [theme.breakpoints.down("sm")]: {
-      height: "300px",
-      width: "100%",
-    },
   },
   title: {
     marginTop: 25,
@@ -110,7 +102,7 @@ const useStyles = makeStyles(theme => ({
   },
   formInput: {
     height: 1,
-    width: 519,
+    width: "520px",
     marginLeft: 40,
     marginRight: 40,
     marginTop: 35,
@@ -126,6 +118,11 @@ const useStyles = makeStyles(theme => ({
       marginRight: 5,
     },
   },
+  shortInput: {
+    height: 1,
+    width: "260px",
+  },
+
   addressForm: {
     height: 1,
     width: 170,
@@ -137,6 +134,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       width: 300,
     },
+  },
+  shortContainer: {
+    display: "flex",
+    flexDirection: "row",
   },
   formButton: {
     background: "#3399ff",
@@ -178,8 +179,6 @@ const WorkForm = () => {
   const classes = useStyles()
 
   const [disableButton, setDisableButton] = useState(true)
-  const [showAttach, setShowAttach] = useState(false)
-  const [showLink, setShowLink] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
@@ -219,15 +218,7 @@ const WorkForm = () => {
       .string()
       .matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, "Invalid number")
       .required("Phone is required"),
-    address: yup.string().required().typeError("Introduce your address"),
-    city: yup.string().required().typeError("Introduce your city"),
-    state: yup.string().required().typeError("Introduce your state"),
-    zip: yup
-      .string()
-      .required()
-      .matches(/^[\d]+$/, "Must be only digits")
-      .min(4, "Must be at least 4 digits")
-      .typeError("Must be at least 4 digits"),
+    linkedin: yup.string(),
     website: yup.string(),
     curriculum: yup.mixed().when("website", {
       is: "",
@@ -278,8 +269,6 @@ const WorkForm = () => {
             name: data.name,
             email: data.email,
             phone: data.phone,
-            address: data.address,
-            city: data.city,
             state: data.state,
             zip: data.zip,
             website: data.website,
@@ -289,8 +278,6 @@ const WorkForm = () => {
           const res = await axios.post(`${domain}/curriculums`, sendData)
 
           if (res.statusText === "OK") {
-            setShowAttach(false)
-            setShowLink(false)
             setAlertMessage("Form has been send succesfully")
             setFormStatus("well")
             setShowMessage(true)
@@ -310,18 +297,12 @@ const WorkForm = () => {
           name: data.name,
           email: data.email,
           phone: data.phone,
-          address: data.address,
-          city: data.city,
-          state: data.state,
-          zip: data.zip,
           website: data.website,
         }
 
         const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.statusText === "OK") {
-          setShowAttach(false)
-          setShowLink(false)
           setAlertMessage("Form has been send succesfully")
           setFormStatus("well")
           setShowMessage(true)
@@ -338,235 +319,143 @@ const WorkForm = () => {
   return (
     <Box className={classes.formContainer}>
       <Box className={classes.containerImage}>
-        <GatsbyImage
-          image={getImage(image)}
-          alt="Team mates around the office"
-          className={classes.formImage}
-          imgStyle={{ objectFit: "contain", height: "400px !important" }}
-        />
+        <WorkInfo />
       </Box>
       <Box>
-        <Card
-          className={`${classes.root}  ${
-            isVisible ? classes.formAnimation : ""
-          }`}
-          ref={domref}
+        <Box
+          style={{
+            width: "fit-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+          alignSelf="center"
+        ></Box>
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <CardContent>
-            <Box
-              style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-              alignSelf="center"
-            >
-              <Box>
-                <Typography
-                  variant="h3"
-                  align="center"
-                  className={classes.title}
-                >
-                  Send us your info
-                </Typography>
-                <Box
-                  width="45px"
-                  height="6px"
-                  marginTop="15px"
-                  className={classes.boxLine}
-                ></Box>
-              </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Box className={classes.shortContainer}>
+              <TextField
+                required
+                className={classes.shortInput}
+                {...register("firstName")}
+                error={errors.name}
+                helperText={errors.name?.message}
+                type="text"
+                id="outlined-basic"
+                label="First Name"
+                name="firstName"
+              />
+              <TextField
+                required
+                className={classes.shortInput}
+                {...register("lastName")}
+                error={errors.name}
+                helperText={errors.name?.message}
+                type="text"
+                id="outlined-basic"
+                label="Last Name"
+                name="lastname"
+              />
             </Box>
-            <form
-              noValidate
-              autoComplete="off"
-              onSubmit={handleSubmit(onSubmitHandler)}
+            <TextField
+              required
+              className={classes.formInput}
+              error={errors.email}
+              {...register("email")}
+              helperText={errors.email?.message}
+              type="text"
+              id="outlined-basic"
+              label="Email"
+              name="email"
+            />
+            <TextField
+              required
+              className={classes.formInput}
+              error={errors.phone}
+              {...register("phone")}
+              helperText={errors.phone?.message}
+              type="text"
+              id="outlined-basic"
+              label="Phone"
+              name="phone"
+            />
+            <TextField
+              required
+              className={classes.formInput}
+              helperText={errors.linkedin?.message}
+              error={errors.linkedin}
+              {...register("linkedin")}
+              onSelect={disableChangeButton}
+              type="text"
+              id="outlined-basic"
+              label="LinkedIn Profile"
+              name="linkedin"
+              value=""
+            />
+            <TextField
+              required
+              className={classes.formInput}
+              helperText={errors.website?.message}
+              error={errors.website}
+              {...register("website")}
+              onSelect={disableChangeButton}
+              type="text"
+              id="outlined-basic"
+              label="Website"
+              name="website"
+              value=""
+            />
+
+            <Input
+              type="file"
+              name="curriculum"
+              {...register("curriculum", {
+                minLength: {
+                  value: 1,
+                  message: "Load a file",
+                },
+              })}
+              onChange={disableChangeButton}
+            ></Input>
+            <Alert
+              severity="error"
+              style={{
+                display: errors.curriculum !== undefined ? "inherit" : "none",
+                backgroundColor: "transparent",
+                color: "red",
+                fontSize: "0.845rem",
+                marginTop: 5,
+              }}
             >
-              <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <TextField
-                  required
-                  className={classes.formInput}
-                  {...register("name")}
-                  error={errors.name}
-                  helperText={errors.name?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Name"
-                  name="name"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.email}
-                  {...register("email")}
-                  helperText={errors.email?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Email"
-                  name="email"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.phone}
-                  {...register("phone")}
-                  helperText={errors.phone?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Phone"
-                  name="phone"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.address}
-                  helperText={errors.address?.message}
-                  {...register("address")}
-                  type="text"
-                  id="outlined-basic"
-                  label="Address"
-                  name="address"
-                  variant="outlined"
-                />
-                <Box className={classes.addressResponsive}>
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.city?.message}
-                    {...register("city")}
-                    error={errors.city}
-                    type="text"
-                    id="outlined-basic"
-                    label="City"
-                    name="city"
-                    variant="outlined"
-                  />
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.state?.message}
-                    {...register("state")}
-                    error={errors.state}
-                    type="text"
-                    id="outlined-basic"
-                    label="State/Province"
-                    name="state"
-                    variant="outlined"
-                  />
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.zip?.message}
-                    {...register("zip")}
-                    error={errors.zip}
-                    type="number"
-                    id="outlined-basic"
-                    label="ZIP Code"
-                    name="zip"
-                    variant="outlined"
-                  />
-                </Box>
-                <Box mt={2.5} mb={2}>
-                  <label>
-                    Resume*<br></br>
-                    <Link
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        setShowAttach(true)
-                        setShowLink(false)
-                      }}
-                    >
-                      Attach your resume
-                    </Link>{" "}
-                    or{" "}
-                    <Link
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        setShowLink(true)
-                        setShowAttach(false)
-                      }}
-                    >
-                      Paste your resume
-                    </Link>
-                  </label>
-                </Box>
-                {showLink && (
-                  <>
-                    <TextField
-                      required
-                      className={classes.formInputAppears}
-                      helperText={errors.website?.message}
-                      error={errors.website}
-                      {...register("website")}
-                      onSelect={disableChangeButton}
-                      type="text"
-                      id="outlined-basic"
-                      label="Paste your resume"
-                      name="website"
-                      value=""
-                      variant="outlined"
-                    />
-                  </>
-                )}
-                {showAttach && (
-                  <>
-                    <Input
-                      type="file"
-                      name="curriculum"
-                      {...register("curriculum", {
-                        minLength: {
-                          value: 1,
-                          message: "Load a file",
-                        },
-                      })}
-                      onChange={disableChangeButton}
-                    ></Input>
-                    <Alert
-                      severity="error"
-                      style={{
-                        display:
-                          errors.curriculum !== undefined ? "inherit" : "none",
-                        backgroundColor: "transparent",
-                        color: "red",
-                        fontSize: "0.845rem",
-                        marginTop: 5,
-                      }}
-                    >
-                      {errors.curriculum?.message}
-                    </Alert>
-                  </>
-                )}
-                <Alert
-                  severity={formStatus === "well" ? "success" : "error"}
-                  className={classes.successfullAlert}
-                  style={{
-                    visibility: showMessage === true ? "visible" : "hidden",
-                    color: formStatus === "well" ? "#4caf50" : "red",
-                  }}
-                >
-                  {alertMessage}
-                </Alert>
-                <CardActions className={classes.actionPadding}>
-                  <Button
-                    className={classes.formButton}
-                    type="submit"
-                    disabled={disableButton}
-                  >
-                    SUBMIT
-                  </Button>
-                </CardActions>
-              </Box>
-            </form>
-          </CardContent>
-        </Card>
+              {errors.curriculum?.message}
+            </Alert>
+            <Alert
+              severity={formStatus === "well" ? "success" : "error"}
+              className={classes.successfullAlert}
+              style={{
+                visibility: showMessage === true ? "visible" : "hidden",
+                color: formStatus === "well" ? "#4caf50" : "red",
+              }}
+            >
+              {alertMessage}
+            </Alert>
+            <Button
+              className={classes.formButton}
+              type="submit"
+              disabled={disableButton}
+            >
+              SUBMIT
+            </Button>
+          </Box>
+        </form>
       </Box>
     </Box>
   )

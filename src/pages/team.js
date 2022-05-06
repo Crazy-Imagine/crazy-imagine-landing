@@ -12,7 +12,6 @@ import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
-import { WorkButton } from "../components/WorkButton"
 
 const TeamPage = () => {
   const data = useStaticQuery(query)
@@ -29,7 +28,6 @@ const TeamPage = () => {
           <HeroSection />
           <TeamMembersSection />
           <ImageListMembers />
-          <WorkButton />
           <ContactSection bgImage={bgImage} showShadow variant="dark" />
           <Footer />
           <Copyright />

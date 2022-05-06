@@ -2,11 +2,8 @@ import * as React from "react"
 import { Hidden } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
-import WorkMainSection from "../components/WorkMainSection"
-import WorkInfo from "../components/WorkInfo"
-import WorkBenefits from "../components/WorkBenefits"
+import SectionHeader from "../components/SectionHeader"
 import WorkForm from "../components/WorkForm"
-import WorkSelection from "../components/WorkSelection"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
@@ -20,16 +17,18 @@ const WorkWithUsPage = () => {
       <Hidden lgUp>
         <NavbarMobile variantIcons="primary" />
       </Hidden>
-      <WorkMainSection />
-      <WorkInfo />
-      <WorkBenefits />
-      <WorkSelection />
+      <SectionHeader
+        title={`Work With Us
+      At Crazy Imagine`}
+        desc=""
+        btn={false}
+      />
+
       <WorkForm />
       <Footer height="400px" align="flex-end" />
       <Copyright />
     </PageWrapper>
   )
 }
-
 
 export default WorkWithUsPage

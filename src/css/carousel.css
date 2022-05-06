@@ -1,6 +1,7 @@
 .swiper {
-  width: 100%;
+  width: 78%;
   height: 100%;
+  margin-left: auto;
 }
 .swiper-slide {
   /* Center slide text vertically */

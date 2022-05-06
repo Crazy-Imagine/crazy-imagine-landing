@@ -82,6 +82,7 @@ const CustomerReview = () => {
             pagination={{
               clickable: true,
             }}
+            centeredSlides={true}
             modules={[Pagination]}
             loop={true}
             className="mySwiper"

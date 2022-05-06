@@ -1,18 +1,53 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
-import { Box } from "@material-ui/core"
-import { AnimatedTitle } from "./AnimatedTitle"
+/* import { getImage } from "gatsby-plugin-image" */
+import { Box, Typography } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
+
+const useStyles = makeStyles(theme => ({
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "40px",
+    lineHeight: "50px",
+
+    color: "#193174",
+  },
+  desc: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "130%",
+    /* or 26px */
+    letterSpacing: "0.02em",
+    color: "#193174",
+  },
+}))
 
 const WorkInfo = () => {
-  const WorkWithUsPage = useStaticQuery(query)
+  const classes = useStyles()
+  /*   const WorkWithUsPage = useStaticQuery(query)
   console.log({WorkWithUsPage})
   const images = WorkWithUsPage.allStrapiWorkWithUs.nodes[0].images
   const imageOne = images[0].localFile
-  const imageTwo = images[1].localFile
+  const imageTwo = images[1].localFile */
   return (
     <Box paddingTop="35px">
-      <AnimatedTitle
+      <Typography className={classes.title}>{`Interested
+      In Working
+      With Us`}</Typography>
+      <Typography>
+        {`Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit,
+        sed do eiusmod tempor 
+        incididunt ut labore et dolore 
+        magna aliqua. Ut enim ad
+        minim veniam, quis nostrud
+        exercitation ullamco.`}
+      </Typography>
+      {/* <AnimatedTitle
         title="YOUR DREAM JOB, HERE!"
         content="We are a fresh and comfortable startup with more than 5 years on
                 the market. We work with the most recent development
@@ -29,22 +64,7 @@ const WorkInfo = () => {
         image={getImage(imageOne)}
         alt="Team mates"
         md={6}
-      ></AnimatedTitle>
-      <AnimatedTitle
-        title="KNOW OUR VALUES"
-        content="We mainly focuse on responsability, efficiency, respect, kindness, we care about your physical and mental health.
-          We take care of our employees, promoting a relaxed and fun work environment, choosing social activities to integrate all of them.
-          We evaluate you, and we choose you a challenge that you can reach results and improve your skills.
-          Our principal challenge is that you grow with us"
-        boxClass="containerReverse"
-        titleClass="titleRight"
-        animation="animationRight"
-        paragraphClass="paragraphRight"
-        lineClass="boxLineRight"
-        image={getImage(imageTwo)}
-        alt="Boss with the team"
-        md={6}
-      ></AnimatedTitle>
+      ></AnimatedTitle> */}
     </Box>
   )
 }
