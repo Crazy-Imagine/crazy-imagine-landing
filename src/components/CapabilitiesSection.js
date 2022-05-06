@@ -1,7 +1,8 @@
 import React from "react"
-import { Box, makeStyles, Typography } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
 import Capabilities from "./Capabilities"
 import CapabilitiesCard from "./CapabilitiesCard"
+import { graphql, useStaticQuery } from "gatsby"
 import {
   faBagShopping,
   faChartSimple,
@@ -48,6 +49,13 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
+
+  const capabilitiesSection = useStaticQuery(query)
+  const images =
+    capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
+  const fullstackImage = images[1].localFile.publicURL
+  const qualitysupportImage = images[2].localFile.publicURL
+
   return (
     <>
       <Box className={classes.container}>
@@ -58,6 +66,7 @@ const CapabilitiesSection = () => {
       ranging from PHP7 to Javascript to
       CSS3, our full stack developres have
       the skills and experience to elevate your digital presence`}
+          img={fullstackImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
@@ -132,6 +141,7 @@ const CapabilitiesSection = () => {
           QA systems to ensure your project is 
           launch ready.
           `}
+          img={qualitysupportImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
@@ -166,4 +176,18 @@ const CapabilitiesSection = () => {
     </>
   )
 }
+
+const query = graphql`
+  query {
+    allStrapiHomepage {
+      nodes {
+        CapabilitiesImages {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`
 export default CapabilitiesSection

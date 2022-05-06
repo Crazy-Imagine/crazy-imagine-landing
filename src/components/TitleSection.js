@@ -1,7 +1,5 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
-import Image from "../images/Rectangle114.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,12 +40,12 @@ const useStyles = makeStyles(theme => ({
   img: {},
 }))
 
-export const TitleSection = ({ title, desc }) => {
+export const TitleSection = ({ title, desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
       <Box className={classes.img}>
-        <img src={Image} alt="" />
+        <img src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title}>{title}</Typography>

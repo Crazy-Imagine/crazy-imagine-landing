@@ -84,7 +84,6 @@ const CustomerReview = () => {
             }}
             centeredSlides={true}
             modules={[Pagination]}
-            loop={true}
             className="mySwiper"
           >
             {reviews.map((review, index) => (

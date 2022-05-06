@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -47,12 +47,13 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img }) => {
   const classes = useStyles()
+  console.log("img necesarias: ", img)
   return (
     <Box className={classes.container}>
       <Typography className={classes.subtitle}>CAPABILITIES</Typography>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      <StaticImage src="../images/Rectangle161.svg" className={classes.img} />
+      <img className={classes.img} src={img} />
     </Box>
   )
 }

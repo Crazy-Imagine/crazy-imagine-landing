@@ -1,8 +1,37 @@
 .swiper {
-  width: 78%;
+  width: 100%;
   height: 100%;
-  margin-left: auto;
 }
+
+.swiper
+  .swiper-initialized
+  .swiper-horizontal
+  .swiper-pointer-events
+  .mySwiper
+  .swiper-backface-hidden {
+  order: 1;
+}
+
+.swiper-pagination
+  .swiper-pagination-clickable
+  .swiper-pagination-bullets
+  .swiper-pagination-horizontal {
+  order: 2;
+  position: static;
+  margin-top: auto;
+  padding: 20px 0;
+}
+
+.swiper
+  .swiper-initialized
+  .swiper-horizontal
+  .swiper-pointer-events
+  .mySwiper
+  .swiper-backface-hidden {
+  display: "flex";
+  flex-direction: column;
+}
+
 .swiper-slide {
   /* Center slide text vertically */
   display: -webkit-box;

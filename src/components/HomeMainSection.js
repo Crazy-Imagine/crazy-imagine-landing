@@ -6,6 +6,7 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
 import TitleSection from "./TitleSection"
+import { graphql, useStaticQuery } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -41,6 +42,11 @@ const useStyles = makeStyles(theme => ({
 
 const HomeMainSection = () => {
   const classes = useStyles()
+  const capabilitiesSection = useStaticQuery(query)
+  const images =
+    capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
+  const mainImage = images[0].localFile.publicURL
+  console.log(mainImage)
 
   return (
     <Box className={classes.container}>
@@ -49,6 +55,7 @@ const HomeMainSection = () => {
         desc="We will help you to strategize your web presence, designing and
           executing sitemaps and wireframes to provide a sleek, elegant, and
           seamless end-user experience"
+        img={mainImage}
       />
       <Grid
         container
@@ -72,5 +79,17 @@ const HomeMainSection = () => {
     </Box>
   )
 }
-
+const query = graphql`
+  query {
+    allStrapiHomepage {
+      nodes {
+        CapabilitiesImages {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`
 export default HomeMainSection

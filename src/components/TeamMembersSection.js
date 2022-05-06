@@ -52,7 +52,7 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        image={getImage(imageOne)}
+        /* image={getImage(imageOne)} */
         md={6}
         alt="An efficient team"
       ></AnimatedTitle>
@@ -67,7 +67,7 @@ const TeamMembersSection = () => {
         animation="animationRight"
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
-        image={getImage(imageTwo)}
+        /*   image={getImage(imageTwo)} */
         md={6}
         alt="A qualified team"
       ></AnimatedTitle>
@@ -85,7 +85,7 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        image={getImage(imageThree)}
+        /* image={getImage(imageThree)} */
         md={6}
         alt="An experience team"
       ></AnimatedTitle>
