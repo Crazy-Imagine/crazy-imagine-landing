@@ -80,20 +80,22 @@ const BlogPost = () => {
       `}
       render={data => {
         const articles = data.articles.edges
-        const articlesSort = articles.sort((a, b) => {
-          return new Date(b.node.created_at) - new Date(a.node.created_at)
-        })
+        const articlesSort = articles
+          .sort((a, b) => {
+            return new Date(b.node.created_at) - new Date(a.node.created_at)
+          })
+          .slice(0, 4)
 
         return (
           <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
-            centeredSlides={true}
+            spaceBetween={50}
+            slidesPerView={3}
             pagination={{
               clickable: true,
             }}
             modules={[Pagination]}
-            className="mySwiper"
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={swiper => console.log(swiper)}
           >
             {articlesSort.map(({ node }, index) => (
               <SwiperSlide key={index}>

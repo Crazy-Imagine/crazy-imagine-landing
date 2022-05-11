@@ -77,56 +77,108 @@ const CustomerReview = () => {
       render={data => {
         const reviews = data.reviews.nodes
         return (
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={60}
-            centeredSlides={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
-            {reviews.map((review, index) => (
-              <SwiperSlide key={index}>
-                <Box className={classes.containerInfo}>
-                  <Box className={classes.iconsContainer}>
-                    <FontAwesomeIcon
-                      size="1x"
-                      icon={faStar}
-                      className={classes.icon}
-                    />
-                    <FontAwesomeIcon
-                      size="1x"
-                      icon={faStar}
-                      className={classes.icon}
-                    />
-                    <FontAwesomeIcon
-                      size="1x"
-                      icon={faStar}
-                      className={classes.icon}
-                    />
-                    <FontAwesomeIcon
-                      size="1x"
-                      icon={faStar}
-                      className={classes.icon}
-                    />
-                  </Box>
-                  <Typography className={classes.review}>
-                    {review.review}
-                  </Typography>
-                  <Box>
-                    <Typography className={classes.customerName}>
-                      {review.name}
+          <>
+            {/* <Swiper
+              slidesPerView={4}
+              spaceBetween={60}
+              centeredSlides={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
+            >
+              {reviews.map((review, index) => (
+                <SwiperSlide key={index}>
+                  <Box className={classes.containerInfo}>
+                    <Box className={classes.iconsContainer}>
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                    </Box>
+                    <Typography className={classes.review}>
+                      {review.review}
                     </Typography>
-                    <Typography className={classes.customerOcupation}>
-                      {review.ocupation}
-                    </Typography>
+                    <Box>
+                      <Typography className={classes.customerName}>
+                        {review.name}
+                      </Typography>
+                      <Typography className={classes.customerOcupation}>
+                        {review.ocupation}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper> */}
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={3}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={swiper => console.log(swiper)}
+            >
+              {reviews.map((review, index) => (
+                <SwiperSlide key={index}>
+                  <Box className={classes.containerInfo}>
+                    <Box className={classes.iconsContainer}>
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                      <FontAwesomeIcon
+                        size="1x"
+                        icon={faStar}
+                        className={classes.icon}
+                      />
+                    </Box>
+                    <Typography className={classes.review}>
+                      {review.review}
+                    </Typography>
+                    <Box>
+                      <Typography className={classes.customerName}>
+                        {review.name}
+                      </Typography>
+                      <Typography className={classes.customerOcupation}>
+                        {review.ocupation}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </SwiperSlide>
+              ))}
+              ...
+            </Swiper>
+          </>
         )
       }}
     />

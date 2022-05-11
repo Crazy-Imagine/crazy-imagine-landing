@@ -1,10 +1,15 @@
 import React from "react"
-import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
-import { PROJECTS } from "../navigation/sitemap"
-import { ArrowRightAlt } from "@material-ui/icons"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/pagination"
+
+import "../css/carousel.css"
+
+// import required modules
+import { Pagination } from "swiper"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#E5E5E5",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
   },
   title: {
@@ -30,8 +36,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
     marginTop: "40px",
+    alignSelf: "center",
     "& > span": {
-      fontfamily: "Nexa Bold",
+      fontFamily: "Nexa Bold",
       fontStyle: "normal",
       fontWeight: "400",
       fontSize: "14px",
@@ -79,6 +86,13 @@ const useStyles = makeStyles(theme => ({
   img: {
     height: "500px",
   },
+  swiperWidth: {
+    width: "100%",
+    backgroundColor: "#E5E5E5",
+  },
+  swiperSlideColor: {
+    backgroundColor: "#E5E5E5 !important",
+  },
 }))
 
 const ProjectSection = () => {
@@ -93,17 +107,31 @@ const ProjectSection = () => {
         return (
           <Box className={classes.container}>
             <Typography className={classes.title}>Previous Projects</Typography>
-            <Box className={classes.carouselContainer}>
-              <img
-                src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
-                className={classes.img}
-              ></img>
-              <Box className={classes.textContainer}>
-                <Typography className={classes.titleCarousel}>title</Typography>
-                <Link className={classes.link}>VIEW PROJECT →</Link>
-              </Box>
-            </Box>
-            <Button className={classes.button}>ALL PROJECTS</Button>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              {data.projects.nodes.map((el, index) => (
+                <SwiperSlide key={index}>
+                  <Box className={classes.carouselContainer}>
+                    <img
+                      src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
+                      className={classes.img}
+                    ></img>
+                    <Box className={classes.textContainer}>
+                      <Typography className={classes.titleCarousel}>
+                        {el.title}
+                      </Typography>
+                      <Link className={classes.link}>VIEW PROJECT →</Link>
+                    </Box>
+                  </Box>
+                </SwiperSlide>
+              ))}
+              <Button className={classes.button}>ALL PROJECTS</Button>
+            </Swiper>
           </Box>
         )
       }}

@@ -47,13 +47,12 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img }) => {
   const classes = useStyles()
-  console.log("img necesarias: ", img)
   return (
     <Box className={classes.container}>
       <Typography className={classes.subtitle}>CAPABILITIES</Typography>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      <img className={classes.img} src={img} />
+      {/* <img className={classes.img} src={img} /> */}
     </Box>
   )
 }

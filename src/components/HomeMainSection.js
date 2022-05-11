@@ -42,11 +42,11 @@ const useStyles = makeStyles(theme => ({
 
 const HomeMainSection = () => {
   const classes = useStyles()
-  const capabilitiesSection = useStaticQuery(query)
+ /*  const capabilitiesSection = useStaticQuery(query)
   const images =
     capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
   const mainImage = images[0].localFile.publicURL
-  console.log(mainImage)
+  console.log(mainImage) */
 
   return (
     <Box className={classes.container}>
@@ -55,7 +55,7 @@ const HomeMainSection = () => {
         desc="We will help you to strategize your web presence, designing and
           executing sitemaps and wireframes to provide a sleek, elegant, and
           seamless end-user experience"
-        img={mainImage}
+        /* img={mainImage} */
       />
       <Grid
         container
@@ -79,7 +79,7 @@ const HomeMainSection = () => {
     </Box>
   )
 }
-const query = graphql`
+/* const query = graphql`
   query {
     allStrapiHomepage {
       nodes {
@@ -91,5 +91,5 @@ const query = graphql`
       }
     }
   }
-`
+` */
 export default HomeMainSection
