@@ -1,16 +1,42 @@
-import { Box, makeStyles, Typography } from "@material-ui/core"
 import React from "react"
+import { Box, Typography } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
+import Link from "@material-ui/core/Link"
 import BlogPost from "./BlogPost"
 
 const useStyes = makeStyles({
   title: {
-    fontFamily: "Gotham-ultra",
-    fontSize: 40,
-    color: "#000a30",
-    fontWeight: "bold",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#FFFFFF",
+    marginTop: "78px",
   },
-  boxLine: {
-    backgroundColor: "#23aae1",
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "23px",
+    justifyContent: "center",
+    backgroundColor: "#193174",
+  },
+  link: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterspacing: "0.1em",
+    color: "#888DFF",
+    marginBottom: "31px",
+  },
+  containerPost: {
+    display: "flex",
+    flexDirection: "row",
+    gap: "21px",
   },
 })
 
@@ -18,27 +44,12 @@ const LastestPosts = () => {
   const classes = useStyes()
 
   return (
-    <Box>
-      <Box
-        textAlign="center"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Typography component={"div"} className={classes.title}>
-          Latest Posts
-        </Typography>
-        <Box
-          width="45px"
-          height="6px"
-          marginBottom={{ xs: "30px", md: "108px" }}
-          marginTop="8px"
-          className={classes.boxLine}
-        ></Box>
-      </Box>
+    <Box className={classes.container}>
+      <Typography
+        className={classes.title}
+      >{`The Latest in Tech Talk`}</Typography>
+      <Link className={classes.link}>ALL BLOGS →</Link>
       <BlogPost />
-      <Box id="contact" paddingBottom="80px"></Box>
     </Box>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
@@ -8,96 +8,76 @@ import { ArrowRightAlt } from "@material-ui/icons"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    [theme.breakpoints.down("lg")]: {
-      maxWidth: 1250
-    }
-  },
-  gridContainer: {
-    [theme.breakpoints.down("md")]: {
-      justifyContent: "center"
-    }
-  },
-  bgImage: {
-    width: "100%",
-    height: 537,
-    [theme.breakpoints.down("md")]: {
-      height: "auto"
-    }
-  },
-  imageItem: {
-    width: "100%",
-    height: 208,
-    position: "absolute !important",
-    filter: "brightness(0.6)",
-    [theme.breakpoints.down("ms")]: {
-      width: "100%"
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "100%"
-    }
+    height: "1012px",
+    backgroundColor: "#E5E5E5",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   title: {
-    fontSize: 46,
-    fontFamily: "Gotham",
-    color: "white",
-    width: 280,
-    lineHeight: 1,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "40px",
+    lineHeight: "40px",
+    marginTop: "84px",
+    textAlign: "center",
+    color: "#193173",
+    marginBottom: "47px",
   },
-  boxLine: {
-    backgroundColor: "white",
+  button: {
+    background: "#797EF6",
+    borderRadius: "100px",
+    padding: "14px 20px 12px 20px",
+    marginTop: "40px",
+    "& > span": {
+      fontfamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "14px",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
   },
-  itemTitle: {
-    fontSize: 40,
-    fontFamily: "Open Sans",
-    color: "white",
-    fontWeight: "bold",
-    lineHeight: 1,
-    height: 80,
+  carouselContainer: {
+    background: "#FFFFFF",
+    boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
+    borderRadius: "14px",
+    height: "650px",
     overflow: "hidden",
+    width: "980px",
+    height: "650px",
+    display: "flex",
+    flexDirection: "column",
   },
-  itemDescription: {
-    fontSize: 13,
-    fontFamily: "Open Sans",
-    color: "white",
-    height: 60,
-    overflow: "hidden",
+  titleCarousel: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "28px",
+    lineHeight: "28px",
+    color: "#193174",
   },
-  item: {
-    maxWidth: 300,
-    position: "relative",
-    margin: -20,
-    marginBottom: 0,
-    [theme.breakpoints.down("lg")]: {
-      maxWidth: "300px !important",
-      margin: "-20px !important",
-      marginBottom: "0px !important"
-    },
-    "&:nth-child(6)": {
-      maxWidth: 600,
-      marginLeft: -40,
-      marginRight: -41,
-      overflow: "hidden",
-    },
-    "&:nth-child(7)": {
-      maxWidth: 300,
-      marginRight: -40
-    },
-    "&:nth-child(8)": {
-      maxWidth: 600,
-    },
-
+  link: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterSpacing: "0.1em",
+    color: "#888DFF",
   },
-  itemFindOut: {
-    fontSize: 14,
-    fontFamily: "Open Sans",
-    fontWeight: "bold",
-    color: "white",
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "25.71px",
+    padding: "40px 0 54px 54px",
   },
-  resetLink: {
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
+  img: {
+    height: "500px",
   },
 }))
 
@@ -108,92 +88,22 @@ const ProjectSection = () => {
       query={query}
       render={data => {
         const dataImage = data.homePage.projectsImage.localFile
+        console.log(dataImage)
         const image = getImage(dataImage)
         return (
-          <Box marginBottom="169px" id="projects">
-            <BgImage
-              image={image}
-              alt="project section"
-              className={classes.bgImage}
-            >
-              <Box
-                display="flex"
-                marginLeft={{ xs: "0px", md: "252px" }}
-                paddingTop="90px"
-                alignItems={{ xs: "center", md: "flex-end" }}
-                justifyContent={{ xs: "center", md: "initial" }}
-                marginBottom="40px"
-              >
-                <Typography className={classes.title}>
-                  Our Lastest Projects
-                </Typography>
-                <Box
-                  width={{ xs: "0px", md: "318px" }}
-                  height="5px"
-                  className={classes.boxLine}
-                  marginLeft="-70px"
-                  marginBottom="5px"
-                />
+          <Box className={classes.container}>
+            <Typography className={classes.title}>Previous Projects</Typography>
+            <Box className={classes.carouselContainer}>
+              <img
+                src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
+                className={classes.img}
+              ></img>
+              <Box className={classes.textContainer}>
+                <Typography className={classes.titleCarousel}>title</Typography>
+                <Link className={classes.link}>VIEW PROJECT →</Link>
               </Box>
-              <Box paddingLeft={{ md: "10px", lg: "113px" }}>
-                <Box maxWidth={{ md: "100%", lg: "1550px" }} className={classes.container}>
-                  <Grid container className={classes.gridContainer}  >
-                    {data.projects.nodes.map(el => (
-                      <Grid
-                        item
-                        xs={12}
-                        md={4}
-                        lg="auto"
-                        className={classes.item}
-                        key={el.id}
-                      >
-                        <Link
-                          to={`${PROJECTS}/${el.slug}`}
-                          className={classes.resetLink}
-                        >
-                          <BgImage
-                            image={getImage(el.images[0].localFile)}
-                            alt={el.title}
-                            className={classes.imageItem}
-
-                          >
-                          </BgImage>
-                          <Box maxWidth="100%" p="40px" paddingTop="20px" position="relative" zIndex="999">
-                            <Typography className={classes.itemTitle}>
-                              {el.title}
-                            </Typography>
-                            <Typography className={classes.itemDescription}>
-                              {el.description}
-                            </Typography>
-                            <Typography className={classes.itemFindOut}>
-                              Find Out More <ArrowRightAlt />{" "}
-                            </Typography>
-                          </Box>
-                        </Link>
-                      </Grid>
-                    ))}
-                    <Grid
-                      item
-                      xs={12}
-                      md={4}
-                      className={classes.item}
-                    ></Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      md={4}
-                      className={classes.item}
-                    ></Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      md={4}
-                      className={classes.item}
-                    ></Grid>
-                  </Grid>
-                </Box>
-              </Box>
-            </BgImage>
+            </Box>
+            <Button className={classes.button}>ALL PROJECTS</Button>
           </Box>
         )
       }}

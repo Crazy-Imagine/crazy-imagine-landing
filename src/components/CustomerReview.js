@@ -64,6 +64,7 @@ const useStyles = makeStyles({
     gap: "20px",
     backgroundColor: "#FFFFFF",
     justifyContent: "space-between",
+    width: "max-content",
   },
 })
 
@@ -78,11 +79,11 @@ const CustomerReview = () => {
         return (
           <Swiper
             slidesPerView={4}
-            spaceBetween={20}
+            spaceBetween={60}
+            centeredSlides={true}
             pagination={{
               clickable: true,
             }}
-            centeredSlides={true}
             modules={[Pagination]}
             className="mySwiper"
           >

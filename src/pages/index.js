@@ -42,7 +42,6 @@ const IndexPage = () => {
             <CapabilitiesSection />
             <ReferenceSection />
             <ProjectSection />
-            <HumanTalent />
             <LastestPosts />
             <ContactSection bgColor="#FFFFFF" />
             <Footer />
