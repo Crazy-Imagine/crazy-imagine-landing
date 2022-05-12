@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "45px",
-    height: "732px",
+    height: "667px",
   },
   cardContainerCenter: {
     display: "flex",
@@ -66,6 +66,7 @@ const CapabilitiesSection = () => {
       ranging from PHP7 to Javascript to
       CSS3, our full stack developres have
       the skills and experience to elevate your digital presence`}
+          cls="container"
           // img={fullstackImage}
         />
         <Box className={classes.cardContainer}>
@@ -103,6 +104,8 @@ const CapabilitiesSection = () => {
           from partial web development to
           full scale project management
           and everything in between.`}
+          cls="classContainer"
+          bgImg={true}
         />
         <Box className={classes.cardContainerCenter}>
           <CapabilitiesCard
@@ -141,6 +144,7 @@ const CapabilitiesSection = () => {
           QA systems to ensure your project is 
           launch ready.
           `}
+          cls="container"
           // img={qualitysupportImage}
         />
         <Box className={classes.cardContainer}>

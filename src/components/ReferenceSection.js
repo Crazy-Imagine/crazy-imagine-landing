@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-
 import CustomerReview from "./CustomerReview"
+import bgImage from "../images/background.svg"
 
 const useStyes = makeStyles({
   title: {
@@ -20,6 +20,10 @@ const useStyes = makeStyles({
     textAlign: "center",
     background: "#193174",
     paddingTop: "78px",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
   },
 })
 

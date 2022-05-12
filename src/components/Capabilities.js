@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import bgImage from "../images/outlet.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -9,6 +10,14 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "flex-start",
+    gap: "22px",
+  },
+  classContainer: {
+    width: "32%",
+    height: "100%",
+    flexDirection: "column",
+    justifyContent: "flex-start",
     alignItems: "flex-start",
     gap: "22px",
   },
@@ -40,19 +49,25 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
   },
+  bgImg: {
+    position: "absolute",
+    left: "1389px",
+    top: "2855px",
+  },
   img: {
     marginTop: "auto",
   },
 }))
 
-const Capabilities = ({ title, desc, img }) => {
+const Capabilities = ({ title, desc, img, cls, bgImg }) => {
   const classes = useStyles()
   return (
-    <Box className={classes.container}>
+    <Box className={classes[cls]}>
       <Typography className={classes.subtitle}>CAPABILITIES</Typography>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      {/* <img className={classes.img} src={img} /> */}
+      {/* <img className={classes.img} src={image} /> */}
+      {bgImg && <img src=""></img>}
     </Box>
   )
 }

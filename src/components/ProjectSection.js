@@ -3,13 +3,9 @@ import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { Pagination } from "swiper"
 import "swiper/css"
 import "swiper/css/pagination"
-
-import "../css/carousel.css"
-
-// import required modules
-import { Pagination } from "swiper"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -35,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     background: "#797EF6",
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
-    marginTop: "40px",
     alignSelf: "center",
     "& > span": {
       fontFamily: "Nexa Bold",
@@ -56,7 +51,6 @@ const useStyles = makeStyles(theme => ({
     height: "650px",
     overflow: "hidden",
     width: "980px",
-    height: "650px",
     display: "flex",
     flexDirection: "column",
   },
@@ -86,13 +80,6 @@ const useStyles = makeStyles(theme => ({
   img: {
     height: "500px",
   },
-  swiperWidth: {
-    width: "100%",
-    backgroundColor: "#E5E5E5",
-  },
-  swiperSlideColor: {
-    backgroundColor: "#E5E5E5 !important",
-  },
 }))
 
 const ProjectSection = () => {
@@ -103,16 +90,19 @@ const ProjectSection = () => {
       render={data => {
         const dataImage = data.homePage.projectsImage.localFile
         console.log(dataImage)
-        const image = getImage(dataImage)
+        // const image = getImage(dataImage)
         return (
           <Box className={classes.container}>
-            <Typography className={classes.title}>Previous Projects</Typography>
             <Swiper
+              slidesPerView={"auto"}
+              centeredSlides={true}
+              spaceBetween={10}
               pagination={{
-                dynamicBullets: true,
+                clickable: true,
               }}
+              loop={true}
               modules={[Pagination]}
-              className="mySwiper"
+              className={classes.container}
             >
               {data.projects.nodes.map((el, index) => (
                 <SwiperSlide key={index}>
@@ -133,6 +123,24 @@ const ProjectSection = () => {
               <Button className={classes.button}>ALL PROJECTS</Button>
             </Swiper>
           </Box>
+          // <Box >
+          //   <Typography className={classes.title}>Previous Projects</Typography>
+          //   {data.projects.nodes.map((el, index) => (
+          //     <Box className={classes.carouselContainer}>
+          //       <img
+          //         src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
+          //         className={classes.img}
+          //       ></img>
+          //       <Box className={classes.textContainer}>
+          //         <Typography className={classes.titleCarousel}>
+          //           {/* {el.title} */}hola
+          //         </Typography>
+          //         <Link className={classes.link}>VIEW PROJECT →</Link>
+          //       </Box>
+          //     </Box>
+          //   ))}
+          //
+          // </Box>
         )
       }}
     />

@@ -96,6 +96,7 @@ const BlogPost = () => {
             modules={[Pagination]}
             onSlideChange={() => console.log("slide change")}
             onSwiper={swiper => console.log(swiper)}
+            style={{ width: "80%" }}
           >
             {articlesSort.map(({ node }, index) => (
               <SwiperSlide key={index}>
@@ -108,7 +109,7 @@ const BlogPost = () => {
                     <Typography className={classes.title}>
                       {node.title}
                     </Typography>
-                    <Link className={classes.link}>READ MORE →</Link>
+                    <Link className={classes.link}>VIEW PROJECT →</Link>
                   </Box>
                 </Box>
               </SwiperSlide>

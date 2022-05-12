@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
+import bgImage from "../images/background.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -10,6 +11,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     background: "#193174",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
   },
   textContainer: {
     display: "flex",

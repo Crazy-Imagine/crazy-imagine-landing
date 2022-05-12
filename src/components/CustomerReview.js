@@ -65,6 +65,8 @@ const useStyles = makeStyles({
     backgroundColor: "#FFFFFF",
     justifyContent: "space-between",
     width: "max-content",
+    height: "inherit",
+    boxSizing: "border-box",
   },
 })
 
@@ -133,12 +135,20 @@ const CustomerReview = () => {
               pagination={{
                 clickable: true,
               }}
+              style={{
+                width: "80%",
+                height: "400px",
+                boxSizing: "content-box",
+              }}
               modules={[Pagination]}
               onSlideChange={() => console.log("slide change")}
               onSwiper={swiper => console.log(swiper)}
             >
               {reviews.map((review, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide
+                  key={index}
+                  style={{ height: "inherit", transform: "scale(1)" }}
+                >
                   <Box className={classes.containerInfo}>
                     <Box className={classes.iconsContainer}>
                       <FontAwesomeIcon

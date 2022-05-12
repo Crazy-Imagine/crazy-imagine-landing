@@ -2,6 +2,7 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import Button from "@material-ui/core/Button"
+import bgImage from "../images/headerBackground.svg"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: {
@@ -13,8 +14,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     borderRadius: "14px",
     height: "530px",
-    transform: "rotate(180deg)",
-    marginBottom: 50,
   },
   backgroundOut: {
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
@@ -24,9 +23,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     height: "688px",
     mixBlendMode: "normal",
-    opacity: 0.9,
     width: "100%",
-    transform: "rotate(180deg)",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
   },
   buttonLeft: {
     backgroundColor: "#FFFFFF",
