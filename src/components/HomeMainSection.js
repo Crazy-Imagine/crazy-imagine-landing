@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     background: "#797EF6",
     borderRadius: "100px",
     marginBottom: "87px",
+    marginTop: "48px",
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
@@ -34,15 +35,12 @@ const useStyles = makeStyles(theme => ({
       color: "#FFFFFF",
     },
   },
-  cardContainer: {
-    marginTop: "auto",
-    marginBottom: "48px",
-  },
+  cardContainer: {},
 }))
 
 const HomeMainSection = () => {
   const classes = useStyles()
- /*  const capabilitiesSection = useStaticQuery(query)
+  /*  const capabilitiesSection = useStaticQuery(query)
   const images =
     capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
   const mainImage = images[0].localFile.publicURL

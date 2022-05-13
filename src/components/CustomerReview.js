@@ -80,55 +80,6 @@ const CustomerReview = () => {
         const reviews = data.reviews.nodes
         return (
           <>
-            {/* <Swiper
-              slidesPerView={4}
-              spaceBetween={60}
-              centeredSlides={true}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Pagination]}
-            >
-              {reviews.map((review, index) => (
-                <SwiperSlide key={index}>
-                  <Box className={classes.containerInfo}>
-                    <Box className={classes.iconsContainer}>
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                    </Box>
-                    <Typography className={classes.review}>
-                      {review.review}
-                    </Typography>
-                    <Box>
-                      <Typography className={classes.customerName}>
-                        {review.name}
-                      </Typography>
-                      <Typography className={classes.customerOcupation}>
-                        {review.ocupation}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </SwiperSlide>
-              ))}
-            </Swiper> */}
             <Swiper
               spaceBetween={50}
               slidesPerView={3}
@@ -137,8 +88,10 @@ const CustomerReview = () => {
               }}
               style={{
                 width: "80%",
-                height: "400px",
                 boxSizing: "content-box",
+              }}
+              pagination={{
+                clickable: true,
               }}
               modules={[Pagination]}
               onSlideChange={() => console.log("slide change")}
@@ -147,7 +100,7 @@ const CustomerReview = () => {
               {reviews.map((review, index) => (
                 <SwiperSlide
                   key={index}
-                  style={{ height: "inherit", transform: "scale(1)" }}
+                  style={{ height: "400px", transform: "scale(1)" }}
                 >
                   <Box className={classes.containerInfo}>
                     <Box className={classes.iconsContainer}>
@@ -186,7 +139,6 @@ const CustomerReview = () => {
                   </Box>
                 </SwiperSlide>
               ))}
-              ...
             </Swiper>
           </>
         )

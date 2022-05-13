@@ -1,6 +1,5 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
 
@@ -70,7 +69,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
-    padding: "100px 0px 100px 100px",
+    padding: "100px 0px 0px 100px",
     borderRadius: "14px",
     gap: "42px",
     justifyContent: "flex-start",
@@ -105,7 +104,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn }) => {
+export const SectionHeader = ({ title, desc, btn, img }) => {
   const classes = useStyles()
 
   return (
@@ -122,7 +121,7 @@ export const SectionHeader = ({ title, desc, btn }) => {
           )}
         </Box>
         <Box className={classes.imgContainer}>
-          <StaticImage src="../images/Frame587.svg" alt="Header Image" />
+          <img src={img} alt="Header image" />
         </Box>
       </Box>
     </Box>

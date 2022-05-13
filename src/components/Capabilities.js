@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
-import bgImage from "../images/outlet.svg"
+import cntImage from "../images/outlet.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -49,10 +49,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
   },
-  bgImg: {
-    position: "absolute",
-    left: "1389px",
-    top: "2855px",
+  cntImg: {
+    order: 2,
+    marginLeft: "auto",
   },
   img: {
     marginTop: "auto",
@@ -63,11 +62,14 @@ const Capabilities = ({ title, desc, img, cls, bgImg }) => {
   const classes = useStyles()
   return (
     <Box className={classes[cls]}>
+      <Box></Box>
       <Typography className={classes.subtitle}>CAPABILITIES</Typography>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      {/* <img className={classes.img} src={image} /> */}
-      {bgImg && <img src=""></img>}
+      {img && <img className={classes.img} src={img} />}
+      {/* <Box className={classes.cntImg}>
+        {bgImg && <img src={cntImage}></img>}
+      </Box> */}
     </Box>
   )
 }

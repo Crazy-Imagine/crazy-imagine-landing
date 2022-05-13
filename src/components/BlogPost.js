@@ -41,7 +41,8 @@ const useStyes = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "19px",
-    padding: "26px 0px 32px 37px",
+    padding: "26px 25px 32px 37px",
+    height: "100%",
   },
   img: {
     width: "fit-contain",
@@ -97,10 +98,10 @@ const BlogPost = () => {
             modules={[Pagination]}
             onSlideChange={() => console.log("slide change")}
             onSwiper={swiper => console.log(swiper)}
-            style={{ width: "80%", height: "400px", boxSizing: "content-box" }}
+            style={{ width: "80%", boxSizing: "content-box" }}
           >
             {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} style={{ height: "inherit" }}>
+              <SwiperSlide key={index} style={{ height: "440px" }}>
                 <Box className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}

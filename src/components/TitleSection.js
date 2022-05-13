@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
+import mainImage from "../images/Group619.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -9,8 +10,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "59px",
-    marginTop: "144px",
-    marginBottom: "52px",
+    height: "100%",
   },
   textContainer: {
     display: "flex",
@@ -45,7 +45,7 @@ export const TitleSection = ({ title, desc, img }) => {
   return (
     <Box className={classes.container}>
       <Box className={classes.img}>
-        <img src={img} alt="" />
+        <img src={mainImage} alt="Title Image" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title}>{title}</Typography>

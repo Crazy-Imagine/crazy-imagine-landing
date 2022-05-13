@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import "swiper/css"
@@ -77,9 +77,6 @@ const useStyles = makeStyles(theme => ({
     gap: "25.71px",
     padding: "40px 0 54px 54px",
   },
-  img: {
-    height: "500px",
-  },
 }))
 
 const ProjectSection = () => {
@@ -88,11 +85,10 @@ const ProjectSection = () => {
     <StaticQuery
       query={query}
       render={data => {
-        const dataImage = data.homePage.projectsImage.localFile
-        console.log(dataImage)
-        // const image = getImage(dataImage)
         return (
           <Box className={classes.container}>
+            <Typography className={classes.title}>Previous Projects</Typography>
+
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
@@ -106,11 +102,16 @@ const ProjectSection = () => {
             >
               {data.projects.nodes.map((el, index) => (
                 <SwiperSlide key={index}>
+                  {console.log(data.projects.nodes[index].images[0].localFile)}
                   <Box className={classes.carouselContainer}>
-                    <img
-                      src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
-                      className={classes.img}
-                    ></img>
+                    <GatsbyImage
+                      alt="About the project"
+                      image={getImage(
+                        data.projects.nodes[index].images[0].localFile
+                      )}
+                      style={{ objectFit: "contain" }}
+                      imgStyle={{ objectFit: "contain" }}
+                    />
                     <Box className={classes.textContainer}>
                       <Typography className={classes.titleCarousel}>
                         {el.title}
@@ -123,24 +124,6 @@ const ProjectSection = () => {
               <Button className={classes.button}>ALL PROJECTS</Button>
             </Swiper>
           </Box>
-          // <Box >
-          //   <Typography className={classes.title}>Previous Projects</Typography>
-          //   {data.projects.nodes.map((el, index) => (
-          //     <Box className={classes.carouselContainer}>
-          //       <img
-          //         src="/static/f601305e743f005a24b1a4892d9a831c/0c0be/bg_Projectshome_736214fe83.jpg"
-          //         className={classes.img}
-          //       ></img>
-          //       <Box className={classes.textContainer}>
-          //         <Typography className={classes.titleCarousel}>
-          //           {/* {el.title} */}hola
-          //         </Typography>
-          //         <Link className={classes.link}>VIEW PROJECT →</Link>
-          //       </Box>
-          //     </Box>
-          //   ))}
-          //
-          // </Box>
         )
       }}
     />
@@ -167,7 +150,7 @@ const query = graphql`
         images {
           localFile {
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+              gatsbyImageData(quality: 100)
             }
           }
         }
@@ -175,5 +158,4 @@ const query = graphql`
     }
   }
 `
-
 export default ProjectSection

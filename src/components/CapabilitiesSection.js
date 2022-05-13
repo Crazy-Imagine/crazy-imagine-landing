@@ -2,7 +2,6 @@ import React from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import Capabilities from "./Capabilities"
 import CapabilitiesCard from "./CapabilitiesCard"
-import { graphql, useStaticQuery } from "gatsby"
 import {
   faBagShopping,
   faChartSimple,
@@ -11,24 +10,26 @@ import {
   faMobile,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
+import fullstackImage from "../images/laptop.svg"
+import qualityImage from "../images/quality.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    marginTop: "144px",
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "45px",
+    marginTop: "137px",
     height: "732px",
   },
   reverseContainer: {
     display: "flex",
     flexDirection: "row-reverse",
-    marginTop: "144px",
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "45px",
+    marginTop: "137px",
     height: "667px",
   },
   cardContainerCenter: {
@@ -67,7 +68,7 @@ const CapabilitiesSection = () => {
       CSS3, our full stack developres have
       the skills and experience to elevate your digital presence`}
           cls="container"
-          // img={fullstackImage}
+          img={fullstackImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
@@ -145,7 +146,7 @@ const CapabilitiesSection = () => {
           launch ready.
           `}
           cls="container"
-          // img={qualitysupportImage}
+          img={qualityImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard

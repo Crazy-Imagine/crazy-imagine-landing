@@ -1,8 +1,8 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
+import contactImage from "../images/satelite.svg"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -58,7 +58,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             Imagine What <br></br> We Can Create
           </Typography>
           <Box className={classes.img}>
-            <StaticImage src="../images/Rectangle161.svg" />
+            <img src={contactImage} />
           </Box>
         </Box>
         <ContactForm />
