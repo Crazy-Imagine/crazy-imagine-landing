@@ -3,6 +3,7 @@ import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import Link from "@material-ui/core/Link"
 import BlogPost from "./BlogPost"
+import bgImage from "../images/background.svg"
 
 const useStyes = makeStyles({
   title: {
@@ -22,6 +23,10 @@ const useStyes = makeStyles({
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -31,7 +36,7 @@ const useStyes = makeStyles({
     lineHeight: "15px",
     letterspacing: "0.1em",
     color: "#888DFF",
-    marginBottom: "31px",
+    marginBottom: "auto",
   },
   containerPost: {
     display: "flex",

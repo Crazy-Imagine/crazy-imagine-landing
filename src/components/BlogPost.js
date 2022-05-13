@@ -15,6 +15,7 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
+    height: "inherit",
     width: "max-content",
   },
   title: {
@@ -32,7 +33,7 @@ const useStyes = makeStyles(theme => ({
     fontWeight: "400",
     fontSize: "15px",
     lineHeight: "15px",
-    letterspacing: "0.1em",
+    letterSpacing: "0.1em",
     color: "#888DFF",
     marginTop: "auto",
   },
@@ -96,10 +97,10 @@ const BlogPost = () => {
             modules={[Pagination]}
             onSlideChange={() => console.log("slide change")}
             onSwiper={swiper => console.log(swiper)}
-            style={{ width: "80%" }}
+            style={{ width: "80%", height: "400px", boxSizing: "content-box" }}
           >
             {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} style={{ height: "inherit" }}>
                 <Box className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}
