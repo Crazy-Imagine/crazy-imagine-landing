@@ -27,7 +27,6 @@ import {
   Close,
 } from "@material-ui/icons"
 import WorkIcon from "@material-ui/icons/Work"
-
 import useScroll from "../hooks/useScroll"
 import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
@@ -36,12 +35,11 @@ const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
-    backgroundColor: props.scroll ? "transparent" : "white",
+    backgroundColor: props.scroll ? "transparent" : "blue",
   }),
-
   navbarMobileIcons: props => ({
     fontSize: 50,
-    color: props.scroll ? props.iconsVariant : "#23aae1",
+    color: props.scroll ? props.iconsVariant : "#23AAE1",
   }),
   navbarMobileLogo: {
     width: 140,
@@ -51,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     color: "black",
     lineHeight: 2.5,
     "&:hover": {
-      color: "black",
+      color: "white",
       textDecoration: "none",
     },
   },
@@ -128,7 +126,7 @@ const NavbarMobile = ({
           >
             <Link to={HOME}>
               <StaticImage
-                src="../images/LOGO.png"
+                src="crazy-imagine-icon.svg"
                 alt="logo"
                 className={classes.navbarLogo}
               />

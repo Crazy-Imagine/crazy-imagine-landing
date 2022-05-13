@@ -7,19 +7,20 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     width: "32%",
-    height: "100%",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "22px",
+    height: "100%",
   },
   classContainer: {
     width: "32%",
-    height: "100%",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    alignSelf: "center",
     gap: "22px",
+    height: "100%",
   },
   subtitle: {
     fontFamily: "Nexa Bold",
@@ -53,16 +54,13 @@ const useStyles = makeStyles(theme => ({
     order: 2,
     marginLeft: "auto",
   },
-  img: {
-    marginTop: "auto",
-  },
+  img: {},
 }))
 
 const Capabilities = ({ title, desc, img, cls, bgImg }) => {
   const classes = useStyles()
   return (
     <Box className={classes[cls]}>
-      <Box></Box>
       <Typography className={classes.subtitle}>CAPABILITIES</Typography>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>

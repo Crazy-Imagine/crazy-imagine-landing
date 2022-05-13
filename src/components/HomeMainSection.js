@@ -49,7 +49,6 @@ const HomeMainSection = () => {
   return (
     <Box className={classes.container}>
       <TitleSection
-        title="Why Should You Choose Us"
         desc="We will help you to strategize your web presence, designing and
           executing sitemaps and wireframes to provide a sleek, elegant, and
           seamless end-user experience"

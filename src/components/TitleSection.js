@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "20px",
     width: "39%",
+    whiteSpace: "pre-line",
+  },
+  titleContainer: {
+    alignSelf: "flex-start",
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -27,6 +31,16 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    alignSelf: "flex-start",
+  },
+  blueTitle: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "58px",
+    lineHeight: "58px",
+    color: "#27AAE1",
+    alignSelf: "flex-start",
   },
   desc: {
     fontFamily: "Hero New",
@@ -40,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   img: {},
 }))
 
-export const TitleSection = ({ title, desc, img }) => {
+export const TitleSection = ({ desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
@@ -48,7 +62,11 @@ export const TitleSection = ({ title, desc, img }) => {
         <img src={mainImage} alt="Title Image" />
       </Box>
       <Box className={classes.textContainer}>
-        <Typography className={classes.title}>{title}</Typography>
+        <Box className={classes.titleContainer}>
+          <Typography className={classes.title}>{`Why 
+        Should You`}</Typography>
+          <Typography className={classes.blueTitle}>Choose Us</Typography>
+        </Box>
         <Typography className={classes.desc}>{desc}</Typography>
       </Box>
     </Box>

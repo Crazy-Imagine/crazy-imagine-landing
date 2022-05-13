@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     gap: "45px",
     marginTop: "137px",
-    height: "732px",
   },
   reverseContainer: {
     display: "flex",
@@ -30,7 +29,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     gap: "45px",
     marginTop: "137px",
-    height: "667px",
   },
   cardContainerCenter: {
     display: "flex",

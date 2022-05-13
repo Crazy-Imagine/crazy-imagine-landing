@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "50px",
     color: "#193174",
   },
-
   subtitle: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",

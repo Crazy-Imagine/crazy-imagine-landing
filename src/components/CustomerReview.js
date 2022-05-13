@@ -3,6 +3,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
+import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
@@ -72,6 +73,12 @@ const useStyles = makeStyles({
 
 const CustomerReview = () => {
   const classes = useStyles()
+  SwiperCore.use([Keyboard, Mousewheel])
+  const mySwiperConfig = {
+    mousewheel: {
+      forceToAxis: true,
+    },
+  }
 
   return (
     <StaticQuery
@@ -90,12 +97,9 @@ const CustomerReview = () => {
                 width: "80%",
                 boxSizing: "content-box",
               }}
-              pagination={{
-                clickable: true,
-              }}
+              mousewheel
+              keyboard={{ enabled: true }}
               modules={[Pagination]}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={swiper => console.log(swiper)}
             >
               {reviews.map((review, index) => (
                 <SwiperSlide

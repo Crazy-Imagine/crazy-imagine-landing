@@ -3,6 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import { makeStyles, Box, Typography } from "@material-ui/core"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
+import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
@@ -45,7 +46,8 @@ const useStyes = makeStyles(theme => ({
     height: "100%",
   },
   img: {
-    width: "fit-contain",
+    objectFit: "contain",
+    backgroundColor: "#27AAE1",
     height: "210px",
   },
 }))
@@ -88,6 +90,8 @@ const BlogPost = () => {
           })
           .slice(0, 4)
 
+        SwiperCore.use([Keyboard, Mousewheel])
+
         return (
           <Swiper
             spaceBetween={50}
@@ -95,9 +99,9 @@ const BlogPost = () => {
             pagination={{
               clickable: true,
             }}
+            keyboard={{ enabled: true }}
+            mousewheel
             modules={[Pagination]}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={swiper => console.log(swiper)}
             style={{ width: "80%", boxSizing: "content-box" }}
           >
             {articlesSort.map(({ node }, index) => (

@@ -4,6 +4,7 @@ import { graphql, Link, StaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
+import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 
@@ -81,6 +82,12 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = () => {
   const classes = useStyles()
+  SwiperCore.use([Keyboard, Mousewheel])
+  const mySwiperConfig = {
+    mousewheel: {
+      forceToAxis: true,
+    },
+  }
   return (
     <StaticQuery
       query={query}
@@ -88,7 +95,6 @@ const ProjectSection = () => {
         return (
           <Box className={classes.container}>
             <Typography className={classes.title}>Previous Projects</Typography>
-
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
@@ -98,6 +104,8 @@ const ProjectSection = () => {
               }}
               loop={true}
               modules={[Pagination]}
+              keyboard={{ enabled: true }}
+              mousewheel
               className={classes.container}
             >
               {data.projects.nodes.map((el, index) => (
@@ -109,8 +117,14 @@ const ProjectSection = () => {
                       image={getImage(
                         data.projects.nodes[index].images[0].localFile
                       )}
-                      style={{ objectFit: "contain" }}
-                      imgStyle={{ objectFit: "contain" }}
+                      style={{
+                        objectFit: "contain",
+                        backgroundColor: "#27AAE1",
+                      }}
+                      imgStyle={{
+                        objectFit: "contain",
+                        backgroundColor: "#27AAE1",
+                      }}
                     />
                     <Box className={classes.textContainer}>
                       <Typography className={classes.titleCarousel}>
