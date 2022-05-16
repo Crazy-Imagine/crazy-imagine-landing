@@ -5,7 +5,6 @@ import { Box, Hidden, Typography, makeStyles, Grid } from "@material-ui/core"
 
 import RecentlyPosted from "../components/RecentlyPosted"
 import Navbar from "../components/Navbar"
-
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import Sidebar from "../components/Sidebar"
@@ -53,7 +52,6 @@ const useStyles = makeStyles(theme => ({
       maxWidth: "85%",
     },
   },
-
   postImage: {
     width: 100,
     height: 100,

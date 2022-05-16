@@ -11,6 +11,7 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
 import fullstackImage from "../images/laptop.svg"
+import bgImage from "../images/Group1.svg"
 import qualityImage from "../images/quality.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -27,8 +28,12 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row-reverse",
     justifyContent: "center",
     alignItems: "flex-start",
-    gap: "45px",
     marginTop: "137px",
+    gap: "45px",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   cardContainerCenter: {
     display: "flex",

@@ -16,7 +16,7 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    height: "inherit",
+    height: "inherIT",
     width: "max-content",
   },
   title: {
@@ -46,7 +46,6 @@ const useStyes = makeStyles(theme => ({
     height: "100%",
   },
   img: {
-    objectFit: "contain",
     backgroundColor: "#27AAE1",
     height: "210px",
   },
@@ -100,12 +99,14 @@ const BlogPost = () => {
               clickable: true,
             }}
             keyboard={{ enabled: true }}
+            grabCursor={true}
             mousewheel
             modules={[Pagination]}
+            className="mySwiper"
             style={{ width: "80%", boxSizing: "content-box" }}
           >
             {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} style={{ height: "440px" }}>
+              <SwiperSlide key={index} style={{ height: "450px" }}>
                 <Box className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}

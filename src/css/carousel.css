@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+:root {
+  --swiper-theme-color: #FFFFFF;
+  --swiper-pagination-bullet-inactive-color: #B2B6FF;
+  }
+
 .swiper-pagination {
   position: static;
   padding: 20px 0;

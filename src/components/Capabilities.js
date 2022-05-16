@@ -50,14 +50,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
   },
-  cntImg: {
-    order: 2,
-    marginLeft: "auto",
-  },
-  img: {},
 }))
 
-const Capabilities = ({ title, desc, img, cls, bgImg }) => {
+const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
   return (
     <Box className={classes[cls]}>
@@ -65,9 +60,6 @@ const Capabilities = ({ title, desc, img, cls, bgImg }) => {
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
       {img && <img className={classes.img} src={img} />}
-      {/* <Box className={classes.cntImg}>
-        {bgImg && <img src={cntImage}></img>}
-      </Box> */}
     </Box>
   )
 }

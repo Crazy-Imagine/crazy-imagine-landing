@@ -93,6 +93,7 @@ const CustomerReview = () => {
               pagination={{
                 clickable: true,
               }}
+              grabCursor={true}
               style={{
                 width: "80%",
                 boxSizing: "content-box",
@@ -104,7 +105,7 @@ const CustomerReview = () => {
               {reviews.map((review, index) => (
                 <SwiperSlide
                   key={index}
-                  style={{ height: "400px", transform: "scale(1)" }}
+                  style={{ height: "450px", transform: "scale(1)" }}
                 >
                   <Box className={classes.containerInfo}>
                     <Box className={classes.iconsContainer}>

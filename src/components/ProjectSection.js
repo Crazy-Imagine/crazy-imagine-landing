@@ -7,11 +7,12 @@ import { Pagination } from "swiper"
 import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
+import "../css/swiper-bullet.css"
 
 const useStyles = makeStyles(theme => ({
   container: {
     height: "1012px",
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "rgb(229, 229, 229)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -102,11 +103,13 @@ const ProjectSection = () => {
               pagination={{
                 clickable: true,
               }}
+              grabCursor={true}
+              style={{ backgroundColor: "#E5E5E5" }}
               loop={true}
               modules={[Pagination]}
               keyboard={{ enabled: true }}
               mousewheel
-              className={classes.container}
+              className={`${classes.container} purpleBullet`}
             >
               {data.projects.nodes.map((el, index) => (
                 <SwiperSlide key={index}>
