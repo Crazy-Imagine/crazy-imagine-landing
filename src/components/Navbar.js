@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/core/styles"
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core"
-import { HOME, PROJECTS, WORK_WITH_US } from "../navigation/sitemap"
+import { CONTACT, HOME, PROJECTS, WORK_WITH_US } from "../navigation/sitemap"
 import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
@@ -123,7 +123,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
             </Typography>
           </Box>
           <Button href="#contained-buttons" className={classes.contactButton}>
-            <Link to={`${HOME}#contact`} className={classes.contactTypography}>
+            <Link to={`${CONTACT}`} className={classes.contactTypography}>
               Contact Us
             </Link>
           </Button>

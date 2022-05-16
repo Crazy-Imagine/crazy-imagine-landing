@@ -3,9 +3,10 @@ import { Box, Typography, makeStyles } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
+import headerImage from '../images/Frame587.svg'
 
 const useStyles = makeStyles(theme => ({
-  backgroundIn: {
+  backgroundIn: props => ({
     backgroundColor: "#27AAE1",
     width: "92%",
     position: "relative",
@@ -13,22 +14,22 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: "14px",
-    height: "530px",
-  },
-  backgroundOut: {
+    height: props.little ? "332px" : "530px",
+  }),
+  backgroundOut: props => ({
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "688px",
+    height: props.little ? "490px" : "688px",
     mixBlendMode: "normal",
     width: "100%",
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-  },
+  }),
   buttonLeft: {
     backgroundColor: "#FFFFFF",
     borderRadius: "100px",
@@ -66,24 +67,24 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     gap: "12px",
   },
-  textContainer: {
+  textContainer: props => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
     padding: "100px 0px 100px 100px",
     borderRadius: "14px",
     gap: "42px",
-    justifyContent: "flex-start",
+    justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
-  },
-  imgContainer: {
+  }),
+  imgContainer: props => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
     position: "absolute",
     bottom: 0,
-    right: 0,
-  },
+    right: props.little ? 100 : 0,
+  }),
   title: {
     fontStyle: "normal",
     fontWeight: 700,
@@ -93,7 +94,8 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     whiteSpace: "pre-line",
   },
-  desc: {
+  desc: props => ({
+    display: props.btn ? "inherit" : "none",
     fontStyle: "normal",
     fontWeight: 700,
     fontFamily: "Nexa",
@@ -102,11 +104,11 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
-  },
+  }),
 }))
 
-export const SectionHeader = ({ title, desc, btn }) => {
-  const classes = useStyles()
+export const SectionHeader = ({ title, desc, btn, little, img }) => {
+  const classes = useStyles({ little, btn })
 
   return (
     <Box className={classes.backgroundOut}>
@@ -122,7 +124,7 @@ export const SectionHeader = ({ title, desc, btn }) => {
           )}
         </Box>
         <Box className={classes.imgContainer}>
-          <StaticImage src="../images/Frame587.svg" alt="Header Image" />
+          <img src={img} alt="Header Image" />
         </Box>
       </Box>
     </Box>

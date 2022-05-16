@@ -36,6 +36,7 @@ const IndexPage = () => {
               title={`Ideas Beyond\nYour Imagination`}
               desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
               btn={true}
+              cls="textContainer"
             />
             <HomeMainSection />
             <HomeDescription />

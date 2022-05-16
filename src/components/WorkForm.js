@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -11,7 +11,6 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Alert from "@material-ui/lab/Alert"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useIntersection } from "../hooks/useIntersection"
 import WorkInfo from "../components/WorkInfo"
 
 const useStyles = makeStyles(theme => ({
@@ -183,8 +182,7 @@ const WorkForm = () => {
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
 
-  const domref = useRef()
-  const isVisible = useIntersection(domref, "0px")
+
 
   const data = useStaticQuery(query)
   const image = data.strapiTeampage?.WorkFormImage?.localFile
