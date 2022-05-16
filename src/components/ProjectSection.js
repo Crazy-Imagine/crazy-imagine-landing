@@ -12,7 +12,7 @@ import "../css/swiper-bullet.css"
 const useStyles = makeStyles(theme => ({
   container: {
     height: "1012px",
-    backgroundColor: "rgb(229, 229, 229)",
+    backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   carouselContainer: {
-    background: "#FFFFFF",
+    backgroundColor: "#FFFFFF",
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     height: "650px",
@@ -104,7 +104,7 @@ const ProjectSection = () => {
                 clickable: true,
               }}
               grabCursor={true}
-              style={{ backgroundColor: "#E5E5E5" }}
+              style={{ backgroundColor: "#FFFFFF" }}
               loop={true}
               modules={[Pagination]}
               keyboard={{ enabled: true }}
@@ -112,7 +112,7 @@ const ProjectSection = () => {
               className={`${classes.container} purpleBullet`}
             >
               {data.projects.nodes.map((el, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={index} style={{ backgroundColor: "#FFFFFF" }}>
                   {console.log(data.projects.nodes[index].images[0].localFile)}
                   <Box className={classes.carouselContainer}>
                     <GatsbyImage
