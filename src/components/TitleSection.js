@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
     gap: "20px",
-    width: "39%",
+    width: "41%",
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    width: "526px",
   },
   desc: {
     fontFamily: "Hero New",

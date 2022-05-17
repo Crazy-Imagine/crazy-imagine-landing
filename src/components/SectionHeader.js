@@ -1,9 +1,7 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
-import headerImage from '../images/Frame587.svg'
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -85,15 +83,15 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     right: props.little ? 100 : 0,
   }),
-  title: {
+  title: props => ({
     fontStyle: "normal",
     fontWeight: 700,
-    fontFamily: "Nexa",
-    fontSize: "90px",
+    fontFamily: "Nexa Bold",
+    fontSize: props.little ? "70px" : "90px",
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
-  },
+  }),
   desc: props => ({
     display: props.btn ? "inherit" : "none",
     fontStyle: "normal",
