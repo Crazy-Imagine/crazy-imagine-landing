@@ -21,7 +21,7 @@ const Imagen = () => {
     const classes = useStyles()
     return (
         <Box className={classes.container}>
-            <StaticImage className={classes.img} src="../images/crazy1`.png" />
+            <StaticImage className={classes.img} src="../images/crazy1.png" />
         </Box>
     );
 }
