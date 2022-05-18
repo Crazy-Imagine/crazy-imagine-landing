@@ -13,6 +13,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     color: "#193174",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "25px",
+      lineHeight: "30px",
+    },
   },
 
   subtitle: {
@@ -24,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -43,6 +51,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: "auto",
       flexDirection: "column",
+      marginBottom: "20px",
+      gap: "0px",
+      marginTop: "-30px",
     },
   },
 }))
