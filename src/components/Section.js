@@ -11,10 +11,16 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: props.backgroundImage ? "60% 100%" : "",
     width: "100%",
     position: "relative",
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+    },
   }),
   sectionResponsive: props => ({
     height: props.height ? props.height : "auto",
     [theme.breakpoints.down("md")]: {
+      height: "auto",
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "auto",
     },
   }),

@@ -29,7 +29,7 @@ import {
 import WorkIcon from "@material-ui/icons/Work"
 
 import useScroll from "../hooks/useScroll"
-import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
+import { ABOUT, CONTACT, HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 
 const useStyles = makeStyles(theme => ({
@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
   resetLink: {
     color: "black",
     lineHeight: 2.5,
+    textDecoration: "none",
     "&:hover": {
       color: "black",
       textDecoration: "none",
@@ -162,7 +163,7 @@ const NavbarMobile = ({
               <Link className={classes.resetLink} to={`${HOME}`}>
                 <Typography>Home</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#about`}>
+              <Link className={classes.resetLink} to={`${ABOUT}`}>
                 <Typography>About Us</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${PROJECTS}`}>
@@ -174,7 +175,7 @@ const NavbarMobile = ({
               <Link className={classes.resetLink} to={`${HOME}#blog`}>
                 <Typography>Blog</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#contact`}>
+              <Link className={classes.resetLink} to={`${CONTACT}`}>
                 <Typography>Contact</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${WORK_WITH_US}`}>

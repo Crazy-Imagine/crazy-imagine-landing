@@ -11,6 +11,13 @@ const useStyles = makeStyles(theme => ({
         gap: "59px",
         marginTop: "34px",
         marginBottom: "52px",
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column",
+            height: "auto",
+            marginTop: "17px",
+            marginBottom: "17px"
+
+        },
     },
     textContainer: {
         display: "flex",
@@ -19,6 +26,15 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         gap: "20px",
         width: "41%",
+        [theme.breakpoints.down('sm')]: {
+            width: "79%",
+            gap: "10px"
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "86%",
+            gap: "10px",
+            marginBottom: "17px"
+        },
     },
     title: {
         fontFamily: "Nexa Bold",
@@ -27,6 +43,12 @@ const useStyles = makeStyles(theme => ({
         fontSize: "58px",
         lineHeight: "58px",
         color: "#193174",
+        [theme.breakpoints.down('sm')]: {
+            width: "auto",
+            fontWeight: "auto",
+            fontSize: "28px",
+            lineHeight: "28px",
+        },
     },
     desc: {
         fontFamily: "Hero New",
@@ -36,8 +58,29 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "130%",
         letterSpacing: "0.02em",
         color: "#193174",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "10px",
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "15px",
+        },
     },
-    img: {},
+    img: {
+        [theme.breakpoints.down('xs')]: {
+            width: "80%",
+            marginTop: "-27px",
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "80%",
+        },
+    },
+    imgn: {
+        [theme.breakpoints.down('sm')]: {
+
+            justifyContent: "center",
+            textAlign: "center"
+        },
+    },
 }))
 
 export const SubTitleSection = ({ title, desc, img }) => {
@@ -49,8 +92,8 @@ export const SubTitleSection = ({ title, desc, img }) => {
                 <Typography className={classes.title}>{title}</Typography>
                 <Typography className={classes.desc}>{desc}</Typography>
             </Box>
-            <Box className={classes.img}>
-                <img src={img} alt="" />
+            <Box className={classes.imgn}>
+                <img className={classes.img} src={img} alt="" />
             </Box>
 
         </Box>

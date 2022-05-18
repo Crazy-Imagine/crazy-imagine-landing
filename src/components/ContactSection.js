@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     gap: "150px",
     height: "514px",
+    [theme.breakpoints.down('sm')]: {
+      height: "auto",
+      flexDirection: "column",
+    },
   },
 }))
 

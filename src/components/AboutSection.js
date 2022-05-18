@@ -12,6 +12,11 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         background: "#FFF",
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column",
+            height: "auto"
+        },
+
     },
 }))
 const AboutSection = ({ bgColor, bgImage }) => {

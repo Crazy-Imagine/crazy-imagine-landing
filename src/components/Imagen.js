@@ -8,12 +8,21 @@ const useStyles = makeStyles(theme => ({
         marginTop: "auto",
         width: "100%",
         height: "100%",
+
     },
     container: {
         display: "flex",
         gap: "150px",
         height: "830px",
         width: "100%",
+        [theme.breakpoints.down('xs')]: {
+            height: "230px",
+
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: "430px",
+
+        },
     },
 }))
 

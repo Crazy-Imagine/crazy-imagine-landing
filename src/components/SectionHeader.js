@@ -13,6 +13,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     borderRadius: "14px",
     height: props.little ? "332px" : "530px",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "column",
+      height: "auto",
+      width: "92%",
+    },
+
   }),
   backgroundOut: props => ({
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
@@ -27,6 +33,14 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "column",
+      height: "638px",
+    },
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: "column",
+      height: "538px",
+    },
   }),
   buttonLeft: {
     backgroundColor: "#FFFFFF",
@@ -74,6 +88,12 @@ const useStyles = makeStyles(theme => ({
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
+    [theme.breakpoints.down('xs')]: {
+      padding: "10%"
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: "10%"
+    },
   }),
   imgContainer: props => ({
     display: "flex",
@@ -82,6 +102,9 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     bottom: 0,
     right: props.little ? 100 : 0,
+    [theme.breakpoints.down('md')]: {
+      visibility: "hidden"
+    },
   }),
   title: props => ({
     fontStyle: "normal",
@@ -91,6 +114,11 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down('xs')]: {
+      fontWeight: "400px",
+      lineHeight: "51px",
+      fontSize: "23px"
+    },
   }),
   desc: props => ({
     display: props.btn ? "inherit" : "none",

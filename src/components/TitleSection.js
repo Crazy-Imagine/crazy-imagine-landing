@@ -11,6 +11,13 @@ const useStyles = makeStyles(theme => ({
     gap: "59px",
     marginTop: "144px",
     marginBottom: "52px",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "17px",
+      marginBottom: "17px"
+
+    },
   },
   textContainer: {
     display: "flex",
@@ -19,6 +26,16 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "20px",
     width: "41%",
+    [theme.breakpoints.down('sm')]: {
+      width: "79%",
+      gap: "10px",
+      marginBottom: "17px"
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: "86%",
+      gap: "10px"
+    },
+
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -28,6 +45,12 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     width: "526px",
+    [theme.breakpoints.down('sm')]: {
+      width: "auto",
+      fontWeight: "auto",
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -37,16 +60,36 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "130%",
     letterSpacing: "0.02em",
     color: "#193174",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "10px",
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "15px",
+    },
   },
-  img: {},
+  img: {
+    [theme.breakpoints.down('xs')]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: "80%",
+    },
+  },
+  imgn: {
+    [theme.breakpoints.down('sm')]: {
+      marginTop: "17px",
+      justifyContent: "center",
+      textAlign: "center"
+    },
+  },
 }))
 
 export const TitleSection = ({ title, desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
-      <Box className={classes.img}>
-        <img src={img} alt="" />
+      <Box className={classes.imgn}>
+        <img className={classes.img} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title}>{title}</Typography>

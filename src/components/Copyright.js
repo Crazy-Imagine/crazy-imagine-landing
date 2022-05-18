@@ -1,12 +1,16 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#071A4E",
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: "column",
+      height: "auto"
+    },
   },
   copyContainer: {
     display: "flex",
@@ -14,6 +18,12 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     width: "92%",
     height: "78px",
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "5px",
+      marginBottom: "5px"
+    },
   },
   copyright: {
     color: "white",
@@ -22,6 +32,9 @@ const useStyles = makeStyles({
     fontSize: 12,
     textAlign: "left",
     fontStyle: "normal",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "9px",
+    },
   },
   barText: {
     color: "#27AAE1",
@@ -33,7 +46,7 @@ const useStyles = makeStyles({
     fontWeight: 700,
     fontSize: 12,
   },
-})
+}))
 
 const Copyright = () => {
   const classes = useStyles()
