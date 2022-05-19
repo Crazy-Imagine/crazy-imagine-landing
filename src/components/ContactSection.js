@@ -50,8 +50,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     [theme.breakpoints.down("md")]: {
       width: "70%",
-      height: "70%",
-      marginTop: "inherit",
     },
   },
   container: {
