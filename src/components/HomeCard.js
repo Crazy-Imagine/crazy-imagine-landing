@@ -13,6 +13,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     whiteSpace: "pre-line",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      width: "105px",
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
   },
   cardContainer: {
     backgroundColor: "#FFFFFF",
@@ -27,6 +32,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "27px",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "220px",
+      height: "130px",
+      gap: "20px",
+    },
   },
   cardIcon: {
     fontStyle: "normal",
@@ -35,6 +45,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "27px",
     textAlign: "center",
     color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
   },
 }))
 

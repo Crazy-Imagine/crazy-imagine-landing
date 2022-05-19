@@ -20,8 +20,8 @@ const WorkWithUsPage = () => {
       <SectionHeader
         title={`Work With Us
       At Crazy Imagine`}
-        desc=""
         btn={false}
+        little={true}
       />
       <WorkForm />
       <Footer height="400px" align="flex-end" />

@@ -11,15 +11,21 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     gap: "59px",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "41px",
+    },
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
     gap: "20px",
     width: "39%",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
+    },
   },
   titleContainer: {
     alignSelf: "flex-start",
@@ -32,6 +38,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
+    },
   },
   blueTitle: {
     fontFamily: "Nexa Bold",
@@ -41,6 +51,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#27AAE1",
     alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -50,16 +64,29 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "130%",
     letterSpacing: "0.02em",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+    },
   },
-  img: {},
+  img: {
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+      alignItems: "center",
+    },
+  },
+  imgContainer: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }))
 
 export const TitleSection = ({ desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
-      <Box className={classes.img}>
-        <img src={mainImage} alt="Title Image" />
+      <Box className={classes.imgContainer}>
+        <img src={mainImage} className={classes.img} alt="Title Image" />
       </Box>
       <Box className={classes.textContainer}>
         <Box className={classes.titleContainer}>

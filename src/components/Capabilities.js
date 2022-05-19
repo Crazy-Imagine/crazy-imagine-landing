@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     gap: "22px",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "15px",
+    },
   },
   classContainer: {
     display: "flex",
@@ -21,6 +24,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     gap: "22px",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "15px",
+    },
   },
   subtitle: {
     fontFamily: "Nexa Bold",
@@ -32,6 +38,10 @@ const useStyles = makeStyles(theme => ({
     textTransform: "uppercase",
     color: "#797EF6",
     marginBottom: "6px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "14px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -40,6 +50,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -49,6 +63,9 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "130%",
     letterSpacing: "0.02em",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+    },
   },
 }))
 

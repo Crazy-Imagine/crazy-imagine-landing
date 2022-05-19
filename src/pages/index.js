@@ -36,6 +36,7 @@ const IndexPage = () => {
               desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
               btn={true}
               img={headerImage}
+              cls="textContainer"
             />
             <HomeMainSection />
             <HomeDescription />

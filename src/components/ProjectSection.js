@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      height: "708px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -28,6 +31,13 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: "#193173",
     marginBottom: "47px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "28px",
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginTop: "55px",
+      marginBottom: "33px",
+    },
   },
   button: {
     background: "#797EF6",
@@ -45,6 +55,13 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
+    [theme.breakpoints.down("md")]: {
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
   },
   carouselContainer: {
     backgroundColor: "#FFFFFF",
@@ -55,6 +72,10 @@ const useStyles = makeStyles(theme => ({
     width: "980px",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      height: "455px",
+      width: "686px",
+    },
   },
   titleCarousel: {
     fontFamily: "Nexa Bold",
@@ -63,6 +84,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "28px",
     lineHeight: "28px",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -72,12 +97,20 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "15px",
     letterSpacing: "0.1em",
     color: "#888DFF",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: "25.71px",
-    padding: "40px 0 54px 54px",
+    gap: "26px",
+    padding: "28px 0 38px 28px",
+    [theme.breakpoints.down("md")]: {
+      gap: "18px",
+      padding: "20px 0 27px 20px",
+    },
   },
 }))
 

@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
     gap: "45px",
     backgroundColor: "rgb(255, 255, 255)",
     height: "772px",
+    [theme.breakpoints.down("md")]: {
+      gap: "32px",
+      height: "540px",
+    },
   },
   reverseContainer: {
     display: "flex",
@@ -35,6 +39,10 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      gap: "32px",
+      height: "540px",
+    },
   },
   cardContainerCenter: {
     display: "flex",
@@ -42,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     alignItems: "center",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
+    },
   },
   cardContainer: {
     display: "flex",
@@ -49,6 +60,9 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     alignItems: "flex-start",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
+    },
   },
 }))
 

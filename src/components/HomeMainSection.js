@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
+    [theme.breakpoints.down("md")]: {
+      height: "586px",
+    },
   },
   button: {
     background: "#797EF6",
@@ -33,6 +36,13 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
       color: "#FFFFFF",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "61px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+      },
     },
   },
   cardContainer: {},

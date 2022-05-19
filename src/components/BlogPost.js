@@ -16,8 +16,11 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    height: "inherIT",
+    height: "inherit",
     width: "max-content",
+    [theme.breakpoints.down("md")]: {
+      gap: "18px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -27,6 +30,10 @@ const useStyes = makeStyles(theme => ({
     lineHeight: "28px",
     color: "#193174",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
   },
   link: {
     fontFamily: "Nexa",
@@ -37,6 +44,10 @@ const useStyes = makeStyles(theme => ({
     letterSpacing: "0.1em",
     color: "#888DFF",
     marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -44,10 +55,23 @@ const useStyes = makeStyles(theme => ({
     gap: "19px",
     padding: "26px 25px 32px 37px",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+    },
   },
   img: {
     backgroundColor: "#27AAE1",
     height: "210px",
+    [theme.breakpoints.down("md")]: {
+      height: "147px",
+    },
+  },
+  carousel: {
+    height: "450px",
+    [theme.breakpoints.down("md")]: {
+      height: "315px",
+    },
   },
 }))
 
@@ -106,7 +130,7 @@ const BlogPost = () => {
             style={{ width: "80%", boxSizing: "content-box" }}
           >
             {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} style={{ height: "450px" }}>
+              <SwiperSlide key={index} className={classes.carousel}>
                 <Box className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}

@@ -4,30 +4,36 @@ import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
 
 const useStyles = makeStyles(theme => ({
-  backgroundIn: {
+  backgroundIn: props => ({
     backgroundColor: "#27AAE1",
     width: "92%",
     position: "relative",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: props.little ? "flex-start" : "space-between",
     borderRadius: "14px",
-    height: "530px",
-  },
-  backgroundOut: {
+    height: props.little ? "332px" : "530px",
+    [theme.breakpoints.down("md")]: {
+      height: props.little ? "232px" : "371px",
+    },
+  }),
+  backgroundOut: props => ({
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "688px",
+    height: props.little ? "490px" : "688px",
     mixBlendMode: "normal",
     width: "100%",
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-  },
+    [theme.breakpoints.down("md")]: {
+      height: props.little ? "343px" : "482px",
+    },
+  }),
   buttonLeft: {
     backgroundColor: "#FFFFFF",
     borderRadius: "100px",
@@ -41,6 +47,10 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 700,
       textAlign: "center",
       letterSpacing: "0.05em",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "9px",
+      lineHeight: "7px",
     },
   },
   buttonRight: {
@@ -59,40 +69,56 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "9px",
+      lineHeight: "7px",
+    },
   },
   buttonContainer: {
     display: "flex",
     flexDirection: "row",
     gap: "12px",
   },
-  textContainer: {
+  textContainer: props => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
     padding: "100px 0px 0px 100px",
     borderRadius: "14px",
     gap: "42px",
-    justifyContent: "flex-start",
+    justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
-  },
-  imgContainer: {
+    [theme.breakpoints.down("md")]: {
+      padding: "70px 0px 0px 70px",
+    },
+  }),
+  imgContainer: props => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
     position: "absolute",
     bottom: 0,
-    right: 0,
-  },
-  title: {
+    right: props.little ? 100 : 0,
+    [theme.breakpoints.down("md")]: {
+      alignItems: "self-end",
+    },
+    [theme.breakpoints.down("sm")]: {},
+  }),
+  title: props => ({
     fontStyle: "normal",
     fontWeight: 700,
     fontFamily: "Nexa Bold",
-    fontSize: "90px",
+    fontSize: props.little ? "70px" : "90px",
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
-  },
-  desc: {
+    [theme.breakpoints.down("md")]: {
+      fontSize: props.little ? "49px" : "63px",
+      lineHeight: "57px",
+    },
+  }),
+  desc: props => ({
+    display: props.btn ? "inherit" : "none",
     fontStyle: "normal",
     fontWeight: 700,
     fontFamily: "Nexa",
@@ -101,11 +127,21 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "14px",
+    },
+  }),
+  img: {
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+    },
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn, img }) => {
-  const classes = useStyles()
+export const SectionHeader = ({ title, desc, btn, little, img }) => {
+  const classes = useStyles({ little, btn })
 
   return (
     <Box className={classes.backgroundOut}>
@@ -121,7 +157,7 @@ export const SectionHeader = ({ title, desc, btn, img }) => {
           )}
         </Box>
         <Box className={classes.imgContainer}>
-          <img src={img} alt="Header image" />
+          <img className={classes.img} src={img} alt="Header Image" />
         </Box>
       </Box>
     </Box>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import bgImage from "../images/background.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      height: "329px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -31,6 +34,10 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     textAlign: "center",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "17px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -40,6 +47,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "39px",
     color: "#FFFFFF",
     textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "21px",
+      lineHeight: "27px",
+    },
   },
 }))
 

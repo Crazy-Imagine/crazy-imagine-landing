@@ -4,7 +4,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import CustomerReview from "./CustomerReview"
 import bgImage from "../images/background.svg"
 
-const useStyes = makeStyles({
+const useStyes = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -15,6 +15,11 @@ const useStyes = makeStyles({
     marginBottom: "50px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginBottom: "35px",
+    },
   },
   referenceContainer: {
     textAlign: "center",
@@ -24,8 +29,11 @@ const useStyes = makeStyles({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "55px",
+    },
   },
-})
+}))
 
 const ReferenceSection = () => {
   const classes = useStyes()

@@ -10,7 +10,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   review: {
     fontFamily: "Hero New",
     fontStyle: "normal",
@@ -21,6 +21,9 @@ const useStyles = makeStyles({
     letterSpacing: "0.02em",
     color: "#193174",
     marginBottom: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+    },
   },
   customerName: {
     fontFamily: "Nexa Bold",
@@ -31,6 +34,10 @@ const useStyles = makeStyles({
     textAlign: "center",
     alignSelf: "flex-end",
     color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   customerOcupation: {
     color: "#193174",
@@ -41,12 +48,19 @@ const useStyles = makeStyles({
     lineHeight: "22px",
     textAlign: "center",
     alignSelf: "flex-end",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   iconsContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     gap: "2px",
+    [theme.breakpoints.down("md")]: {
+      gap: "1px",
+    },
   },
   icon: {
     fontStyle: "normal",
@@ -55,6 +69,10 @@ const useStyles = makeStyles({
     lineHeight: "18px",
     textAlign: "center",
     color: "#FFD337",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "13px",
+      lineHeight: "13px",
+    },
   },
   containerInfo: {
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
@@ -68,8 +86,20 @@ const useStyles = makeStyles({
     width: "max-content",
     height: "inherit",
     boxSizing: "border-box",
+    [theme.breakpoints.down("md")]: {
+      padding: "22px 35px 18px 35px",
+      gap: "14px",
+      height: "inherit",
+    },
   },
-})
+  swiperSlide: {
+    height: "450px",
+    transform: "scale(1)",
+    [theme.breakpoints.down("md")]: {
+      height: "315px",
+    },
+  },
+}))
 
 const CustomerReview = () => {
   const classes = useStyles()
@@ -103,10 +133,7 @@ const CustomerReview = () => {
               modules={[Pagination]}
             >
               {reviews.map((review, index) => (
-                <SwiperSlide
-                  key={index}
-                  style={{ height: "450px", transform: "scale(1)" }}
-                >
+                <SwiperSlide key={index} className={classes.swiperSlide}>
                   <Box className={classes.containerInfo}>
                     <Box className={classes.iconsContainer}>
                       <FontAwesomeIcon

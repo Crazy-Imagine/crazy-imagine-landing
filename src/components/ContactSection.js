@@ -12,6 +12,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     color: "#193174",
+    whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "35px",
+    },
   },
   subtitle: {
     fontFamily: "Nexa Bold",
@@ -22,6 +27,10 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "14px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -29,15 +38,31 @@ const useStyles = makeStyles(theme => ({
     height: "auto",
     marginTop: "83px",
     gap: "19px",
+    [theme.breakpoints.down("md")]: {
+      gap: "13px",
+      marginTop: "58px",
+    },
+  },
+  imgContainer: {
+    marginTop: "auto",
   },
   img: {
     marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+      marginTop: "inherit",
+    },
   },
   container: {
     display: "flex",
     justifyContent: "space-between",
     gap: "150px",
     height: "514px",
+    [theme.breakpoints.down("md")]: {
+      gap: "105px",
+      height: "360px",
+    },
   },
 }))
 
@@ -53,12 +78,9 @@ const ContactSection = ({ bgColor, bgImage }) => {
       <Box className={classes.container}>
         <Box className={classes.textContainer}>
           <Typography className={classes.subtitle}>REACH OUT</Typography>
-          <Typography className={classes.title}>
-            Imagine What <br></br> We Can Create
-          </Typography>
-          <Box className={classes.img}>
-            <img src={contactImage} />
-          </Box>
+          <Typography className={classes.title}>{`Imagine What 
+          We Can Create`}</Typography>
+          <img src={contactImage} className={classes.img} />
         </Box>
         <ContactForm />
       </Box>
