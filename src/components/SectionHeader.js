@@ -6,17 +6,21 @@ import bgImage from "../images/headerBackground.svg"
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
     backgroundColor: "#27AAE1",
-    width: "92%",
+    width: "93.2%",
     position: "relative",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: "14px",
     height: props.little ? "332px" : "530px",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column",
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: "center",
       height: "auto",
-      width: "92%",
+      width: "93.2%",
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: "93.2%",
+      justifyContent: "center"
     },
 
   }),
@@ -88,24 +92,37 @@ const useStyles = makeStyles(theme => ({
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
-    [theme.breakpoints.down('xs')]: {
-      padding: "10%"
+
+    [theme.breakpoints.down('md')]: {
+      padding: "50px 0px 50px 50px",
+      width: "auto",
+      height: "auto",
     },
-    [theme.breakpoints.down('sm')]: {
-      padding: "10%"
+    [theme.breakpoints.down('xs')]: {
+      padding: "10px 0px 10px 10px",
     },
   }),
   imgContainer: props => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    position: "absolute",
-    bottom: 0,
-    right: props.little ? 100 : 0,
-    [theme.breakpoints.down('md')]: {
+    marginRight: props.little ? "100px" : "0px",
+    [theme.breakpoints.down('sm')]: {
+      visibility: "hidden",
+      width: "0px"
+    },
+    [theme.breakpoints.down('xs')]: {
       visibility: "hidden"
     },
   }),
+  img: {
+    [theme.breakpoints.down('sm')]: {
+      width: "auto"
+    },
+    [theme.breakpoints.down('xs')]: {
+      visibility: "hidden"
+    },
+  },
   title: props => ({
     fontStyle: "normal",
     fontWeight: 700,
@@ -114,10 +131,20 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down('md')]: {
+      lineHeight: "71px",
+      fontWeight: 600,
+      fontSize: "58px"
+    },
+    [theme.breakpoints.down('sm')]: {
+      lineHeight: "81px",
+      fontSize: props.little ? "70px" : "90px",
+      fontWeight: 700,
+    },
     [theme.breakpoints.down('xs')]: {
-      fontWeight: "400px",
-      lineHeight: "51px",
-      fontSize: "23px"
+      lineHeight: "41px",
+      fontSize: "33px",
+      fontWeight: 100,
     },
   }),
   desc: props => ({
@@ -150,7 +177,7 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
           )}
         </Box>
         <Box className={classes.imgContainer}>
-          <img src={img} alt="Header Image" />
+          <img className={classes.img} src={img} alt="Header Image" />
         </Box>
       </Box>
     </Box>

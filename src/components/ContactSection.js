@@ -48,12 +48,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     gap: "150px",
     height: "514px",
+    width: "110%",
     [theme.breakpoints.down('sm')]: {
       height: "auto",
       flexDirection: "column",
       marginBottom: "20px",
       gap: "0px",
       marginTop: "-30px",
+      width: "100%",
     },
   },
 }))
@@ -73,7 +75,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
           <Typography className={classes.title}>
             {`Imagine What`}
           </Typography>
-          <Typography className={classes.title} style={{ marginTop: '-15px' }}>
+          <Typography className={classes.title} style={{ marginTop: '-17px' }}>
             {`We Can Create`}
           </Typography>
           <Box className={classes.img}>
