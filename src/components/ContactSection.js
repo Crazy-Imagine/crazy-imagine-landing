@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "28px",
       lineHeight: "35px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "17px",
+      lineHeight: "21px",
+    },
   },
   subtitle: {
     fontFamily: "Nexa Bold",
@@ -31,6 +35,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -41,6 +49,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       marginTop: "58px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "8px",
+      marginTop: "36px",
     },
   },
   imgContainer: {
@@ -60,6 +72,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "105px",
       height: "360px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "61px",
+      height: "300px",
     },
   },
 }))

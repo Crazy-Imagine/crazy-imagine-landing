@@ -16,6 +16,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: props.little ? "232px" : "371px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: props.little ? "162px" : "230px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      borderRadius: "4px",
+      height: props.little ? "70px" : "105px",
+    },
   }),
   backgroundOut: props => ({
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
@@ -33,6 +40,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: props.little ? "343px" : "482px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: props.little ? "162px" : "260px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: props.little ? "81px" : "130px",
+    },
   }),
   buttonLeft: {
     backgroundColor: "#FFFFFF",
@@ -49,8 +62,25 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "9px",
-      lineHeight: "7px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "7px",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "6px 9px 6px 10px",
+      "& > span": {
+        fontSize: "6px",
+        lineHeight: "5px",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "3px 3px 3px 3px",
+      "& > span": {
+        fontSize: "4px",
+        lineHeight: "inherit",
+      },
     },
   },
   buttonRight: {
@@ -59,7 +89,6 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
-
     "& > span": {
       fontSize: "12px",
       lineHeight: "10px",
@@ -72,12 +101,37 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "9px",
       lineHeight: "7px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "7px",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "6px",
+      lineHeight: "4px",
+      padding: "6px 9px 6px 10px",
+      "& > span": {
+        fontSize: "6px",
+        lineHeight: "5px",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "4px 3px 3px 3px",
+      border: "1px solid #FFFFFF",
+      "& > span": {
+        fontSize: "4px",
+        lineHeight: "inherit",
+      },
     },
   },
   buttonContainer: {
     display: "flex",
     flexDirection: "row",
     gap: "12px",
+    [theme.breakpoints.down("xs")]: {
+      gap: "3px",
+    },
   },
   textContainer: props => ({
     backgroundColor: "#27AAE1",
@@ -90,6 +144,20 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
       padding: "70px 0px 0px 70px",
+      gap: "29px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "49px 0px 0px 49px",
+      gap: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "0px 0px 0px 15px",
+      justifyContent: "center",
+      gap: "10px",
+      "& > span": {
+        fontSize: "6px",
+        lineHeight: "5px",
+      },
     },
   }),
   imgContainer: props => ({
@@ -116,6 +184,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: props.little ? "49px" : "63px",
       lineHeight: "57px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: props.little ? "34px" : "44px",
+      lineHeight: "40px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: props.little ? "15px" : "18px",
+      lineHeight: "20px",
+    },
   }),
   desc: props => ({
     display: props.btn ? "inherit" : "none",
@@ -131,11 +207,27 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+      lineHeight: "inherit",
+    },
   }),
   img: {
     [theme.breakpoints.down("md")]: {
       width: "70%",
       height: "70%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "40%",
+      height: "40%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "22%",
+      height: "22%",
     },
   },
 }))

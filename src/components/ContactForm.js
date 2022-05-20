@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         fontSize: "10px",
       },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "6px",
+      },
     },
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
@@ -39,6 +42,9 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         fontSize: "9px",
       },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "6px",
+      },
     },
   },
   formContainer: {
@@ -50,6 +56,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "76px",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "47px",
+    },
   },
   inputContainer: {
     display: "flex",
@@ -57,6 +66,9 @@ const useStyles = makeStyles(theme => ({
     gap: "15px",
     [theme.breakpoints.down("md")]: {
       gap: "11px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "3px",
     },
   },
   formCheck: {
@@ -89,6 +101,14 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "10px",
       },
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
+      padding: "6px 9px 5px 9px",
+      "& > span": {
+        fontSize: "6px",
+        lineHeight: "6px",
+      },
+    },
   },
   divider: {
     display: "flex",
@@ -96,17 +116,26 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
   },
   input: {
     width: "520px",
     [theme.breakpoints.down("md")]: {
       width: "364px",
     },
+    [theme.breakpoints.down("sm")]: {
+      width: "226px",
+    },
   },
   shortInput: {
     width: "250px",
     [theme.breakpoints.down("md")]: {
       width: "175px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "108px",
     },
   },
   snackColor: {

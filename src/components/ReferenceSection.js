@@ -20,6 +20,16 @@ const useStyes = makeStyles(theme => ({
       lineHeight: "28px",
       marginBottom: "35px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "17px",
+      lineHeight: "17px",
+      marginBottom: "22px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "13px",
+      lineHeight: "13px",
+      marginBottom: "15px",
+    },
   },
   referenceContainer: {
     textAlign: "center",
@@ -31,6 +41,12 @@ const useStyes = makeStyles(theme => ({
     backgroundSize: "cover",
     [theme.breakpoints.down("md")]: {
       paddingTop: "55px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "34px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "17px",
     },
   },
 }))

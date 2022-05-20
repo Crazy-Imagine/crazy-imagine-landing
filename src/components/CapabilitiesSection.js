@@ -27,6 +27,15 @@ const useStyles = makeStyles(theme => ({
       gap: "32px",
       height: "540px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "20px",
+      height: "335px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignSelf: "center",
+      height: "auto",
+    },
   },
   reverseContainer: {
     display: "flex",
@@ -43,6 +52,16 @@ const useStyles = makeStyles(theme => ({
       gap: "32px",
       height: "540px",
     },
+    [theme.breakpoints.down("sm")]: {
+      background: "transparent",
+      gap: "20px",
+      height: "335px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignSelf: "center",
+      height: "auto",
+    },
   },
   cardContainerCenter: {
     display: "flex",
@@ -53,6 +72,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
   },
   cardContainer: {
     display: "flex",
@@ -62,6 +84,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-start",
     [theme.breakpoints.down("md")]: {
       gap: "14px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
     },
   },
 }))

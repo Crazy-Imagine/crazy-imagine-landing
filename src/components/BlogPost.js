@@ -21,6 +21,9 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "13px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -33,6 +36,10 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   link: {
@@ -48,6 +55,10 @@ const useStyes = makeStyles(theme => ({
       fontSize: "11px",
       lineHeight: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+      lineHeight: "7px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -59,6 +70,10 @@ const useStyes = makeStyles(theme => ({
       gap: "13px",
       padding: "18px 18px 16px 26px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "8px",
+      padding: "11px 11px 10px 16px",
+    },
   },
   img: {
     backgroundColor: "#27AAE1",
@@ -66,11 +81,17 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "147px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: "91px",
+    },
   },
   carousel: {
     height: "450px",
     [theme.breakpoints.down("md")]: {
       height: "315px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "195px",
     },
   },
 }))

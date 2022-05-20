@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     justifyContent: "center",
@@ -14,26 +14,46 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     width: "92%",
     height: "78px",
+    [theme.breakpoints.down("md")]: {
+      height: "55px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "34px",
+    },
   },
   copyright: {
     color: "white",
     fontFamily: "Roboto",
     fontWeight: 400,
-    fontSize: 12,
+    fontSize: "12px",
     textAlign: "left",
     fontStyle: "normal",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+    },
   },
   barText: {
     color: "#27AAE1",
     fontSize: "15px",
     height: "17px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      height: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+      height: "7px",
+    },
   },
   text: {
     textAlign: "right",
     fontWeight: 700,
-    fontSize: 12,
+    fontSize: "12px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+    },
   },
-})
+}))
 
 const Copyright = () => {
   const classes = useStyles()

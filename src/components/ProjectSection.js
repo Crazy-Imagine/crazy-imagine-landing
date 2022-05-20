@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: "439px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -37,6 +40,13 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "28px",
       marginTop: "55px",
       marginBottom: "33px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontWeight: "17px",
+      fontSize: "17px",
+      lineHeight: "17px",
+      marginTop: "34px",
+      marginBottom: "20px",
     },
   },
   button: {
@@ -57,6 +67,15 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("md")]: {
       padding: "10px 14px 8px 14px",
+      marginTop: "15px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "6px 9px 5px 9px",
+      marginTop: "15px",
       "& > span": {
         fontSize: "10px",
         lineHeight: "10px",
@@ -76,6 +95,10 @@ const useStyles = makeStyles(theme => ({
       height: "455px",
       width: "686px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: "282px",
+      width: "425px",
+    },
   },
   titleCarousel: {
     fontFamily: "Nexa Bold",
@@ -87,6 +110,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
     },
   },
   link: {
@@ -101,6 +128,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "11px",
       lineHeight: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+      lineHeight: "7px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -110,6 +141,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       padding: "20px 0 27px 20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "11px",
+      padding: "12px 0 17px 12px",
     },
   },
 }))

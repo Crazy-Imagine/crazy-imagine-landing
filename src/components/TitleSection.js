@@ -14,6 +14,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "41px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "25px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column ",
+      gap: "10px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -25,6 +32,12 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
       gap: "14px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "5px",
     },
   },
   titleContainer: {
@@ -42,6 +55,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "41px",
       lineHeight: "41px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   blueTitle: {
     fontFamily: "Nexa Bold",
@@ -55,6 +76,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "41px",
       lineHeight: "41px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -67,6 +96,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+    },
   },
   img: {
     [theme.breakpoints.down("md")]: {
@@ -74,10 +109,25 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
       alignItems: "center",
     },
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+      height: "45%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "22%",
+      height: "22%",
+    },
   },
   imgContainer: {
     display: "flex",
     justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "35%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "inherit",
+      marginTop: "10px",
+    },
   },
 }))
 

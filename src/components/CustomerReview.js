@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+    },
   },
   customerName: {
     fontFamily: "Nexa Bold",
@@ -38,6 +41,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "15px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
   },
   customerOcupation: {
     color: "#193174",
@@ -51,6 +58,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
     },
   },
   iconsContainer: {
@@ -73,6 +84,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "13px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "8px",
+      lineHeight: "8px",
+    },
   },
   containerInfo: {
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
@@ -91,12 +106,26 @@ const useStyles = makeStyles(theme => ({
       gap: "14px",
       height: "inherit",
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: "14px 22px 11px 22px",
+      gap: "9px",
+      height: "inherit",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "inherit",
+    },
   },
   swiperSlide: {
     height: "450px",
     transform: "scale(1)",
     [theme.breakpoints.down("md")]: {
       height: "315px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "195px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "200px",
     },
   },
 }))
@@ -119,7 +148,17 @@ const CustomerReview = () => {
           <>
             <Swiper
               spaceBetween={50}
-              slidesPerView={3}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                400: {
+                  slidesPerView: 2,
+                },
+                700: {
+                  slidesPerView: 3,
+                },
+              }}
               pagination={{
                 clickable: true,
               }}

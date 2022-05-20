@@ -20,6 +20,11 @@ const useStyes = makeStyles(theme => ({
       lineWeight: "28px",
       marginTop: "55px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "17px",
+      lineWeight: "17px",
+      marginTop: "34px",
+    },
   },
   container: {
     display: "flex",
@@ -35,6 +40,9 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "16px",
     },
+    [theme.breakpoints.down("sm")]: {
+      gap: "10px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -49,6 +57,10 @@ const useStyes = makeStyles(theme => ({
       fontSize: "11px",
       lineHeight: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+      lineHeight: "7px",
+    },
   },
   containerPost: {
     display: "flex",
@@ -56,6 +68,9 @@ const useStyes = makeStyles(theme => ({
     gap: "21px",
     [theme.breakpoints.down("md")]: {
       gap: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
     },
   },
 }))

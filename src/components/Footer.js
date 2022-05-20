@@ -11,8 +11,9 @@ import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import Section from "./Section"
 import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
+import icon from "../images/crazy-imagine-icon.svg"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     color: "white",
   },
@@ -23,6 +24,12 @@ const useStyles = makeStyles({
   contactIcon: {
     fontSize: "22px",
     color: "#249DCF",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+    },
   },
   infoIcon: {
     color: "#27AAE1",
@@ -35,6 +42,22 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      height: "134px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "83px",
+    },
+  },
+  logo: {
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "35%",
+      height: "35%",
+    },
   },
   logoContainer: {
     display: "flex",
@@ -43,15 +66,36 @@ const useStyles = makeStyles({
     justifyContent: "center",
     gap: "50px",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "35px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "25%",
+      gap: "22px",
+    },
   },
   formatContactSection: {
     "& $sectionLink": {
-      marginBottom: 20,
+      marginBottom: "20px",
+      [theme.breakpoints.down("md")]: {
+        marginBottom: "14px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginBottom: "9px",
+      },
     },
     "& $sectionTitle": {
       lineHeight: "inherit ",
       marginBottom: 4,
-      marginTop: 13,
+      marginTop: "13px",
+      [theme.breakpoints.down("md")]: {
+        marginBottom: "3px",
+        marginTop: "9px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginBottom: "2px",
+        marginTop: "7px",
+      },
     },
   },
   linkContainer: {
@@ -61,6 +105,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "50px",
+    [theme.breakpoints.down("md")]: {
+      gap: "38px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "24px",
+    },
   },
   infoContainer: {
     display: "flex",
@@ -69,18 +119,32 @@ const useStyles = makeStyles({
     gap: "28px",
     padding: "44px 0px 44px 44px",
     borderLeft: "1.5px solid #233B7E",
+    [theme.breakpoints.down("md")]: {
+      gap: "20px",
+      padding: "31px 0 31px 31px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "12px",
+      padding: "19px 0 19px 19px",
+    },
   },
   iconsContainer: {
     display: "flex",
     alignSelf: "flex-start",
-    /* marginRight: "auto", */
     gap: "21px",
+    [theme.breakpoints.down("md")]: {
+      gap: "15px",
+    },
   },
   info: {
     display: "flex",
     flexDirection: "row",
     lineHeight: "20px",
     gap: "4px",
+    [theme.breakpoints.down("md")]: {
+      lineHeight: "14px",
+      gap: "3px",
+    },
   },
   linkTypography: {
     color: "#FFFFFF",
@@ -89,6 +153,14 @@ const useStyles = makeStyles({
     fontWeight: "700",
     lineHeight: "16px",
     fontSize: "14px",
+    [theme.breakpoints.down("md")]: {
+      lineHeight: "11px",
+      fontSize: "10px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      lineHeight: "7px",
+      fontSize: "6px",
+    },
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -96,9 +168,20 @@ const useStyles = makeStyles({
     fontFamily: "Hero New",
     fontWeight: "400",
     fontSize: "14px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "10px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "6px",
+    },
   },
-  footerLogo: {},
-})
+  footerLogo: {
+    alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+    },
+  },
+}))
 
 const Footer = ({ height = "192px", align = "center" }) => {
   const classes = useStyles()
@@ -106,10 +189,8 @@ const Footer = ({ height = "192px", align = "center" }) => {
     <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <StaticImage
-            src="../images/crazy-imagine-icon.svg"
-            alt="footerImage"
-          />
+          <img className={classes.footerLogo} src={icon} alt="Footer Icon" />
+
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
             <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>

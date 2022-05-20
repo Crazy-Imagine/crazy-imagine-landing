@@ -1,7 +1,5 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
-import cntImage from "../images/outlet.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -14,6 +12,18 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "15px",
+      height: "auto",
+      alignSelf: "flex-end",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+      height: "auto",
+      alignSelf: "flex-end",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "5px",
+      height: "auto",
+      alignSelf: "center",
     },
   },
   classContainer: {
@@ -26,6 +36,14 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "5px",
+      height: "auto",
+      alignSelf: "center",
     },
   },
   subtitle: {
@@ -42,6 +60,13 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "14px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "25px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -54,6 +79,26 @@ const useStyles = makeStyles(theme => ({
       fontSize: "41px",
       lineHeight: "41px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      lineHeight: "25px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "18px",
+      lineHeight: "18px",
+    },
+  },
+  img: {
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "35%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -65,6 +110,9 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
     },
   },
 }))

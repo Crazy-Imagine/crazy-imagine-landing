@@ -15,8 +15,18 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       width: "105px",
-      fontSize: "20px",
-      lineHeight: "20px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "65px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "33px",
+      fontSize: "6px",
+      lineHeight: "6px",
     },
   },
   cardContainer: {
@@ -37,6 +47,16 @@ const useStyles = makeStyles(theme => ({
       height: "130px",
       gap: "20px",
     },
+    [theme.breakpoints.down("sm")]: {
+      width: "154px",
+      height: "91px",
+      gap: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "78px",
+      height: "46px",
+      gap: "6px",
+    },
   },
   cardIcon: {
     fontStyle: "normal",
@@ -48,6 +68,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "6px",
+      lineHeight: "6px",
     },
   },
 }))

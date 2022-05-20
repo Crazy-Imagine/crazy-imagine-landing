@@ -20,6 +20,12 @@ const useStyles = makeStyles(theme => ({
       width: "175px",
       gap: "15px",
     },
+    [theme.breakpoints.down("xs")]: {
+      gap: "8px",
+      width: "125px",
+      marginTop: "25px",
+      marginBottom: "15px",
+    },
   },
   icon: {
     fontStyle: "normal",
@@ -31,6 +37,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "19px",
       lineHeight: "19px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   title: {
@@ -45,6 +55,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "15px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -57,6 +71,9 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
     },
   },
   link: {
@@ -71,6 +88,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "6px",
+      lineHeight: "6px",
     },
   },
 }))
