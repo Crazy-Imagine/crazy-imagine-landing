@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: "14px",
+    overflow: "hidden",
     height: props.little ? "332px" : "530px",
     [theme.breakpoints.down('xs')]: {
       justifyContent: "center",
@@ -116,12 +117,23 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   img: {
+    animation: `$myEffect 3000ms ${theme.transitions.easing.easeInOut}`,
     [theme.breakpoints.down('sm')]: {
       width: "auto"
     },
     [theme.breakpoints.down('xs')]: {
       visibility: "hidden"
     },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)"
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)"
+    }
   },
   title: props => ({
     fontStyle: "normal",
