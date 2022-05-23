@@ -10,6 +10,7 @@ import Copyright from '../components/Copyright'
 import headerImage from '../images/astronaut.svg'
 
 const Contact = () => {
+
     return (
         <PageWrapper>
             <Hidden mdDown>

@@ -7,6 +7,7 @@ import headerImage from '../images/satelite.svg'
 
 const useStyles = makeStyles(theme => ({
   title: {
+    animation: `$myEffect 5000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -18,8 +19,22 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "30px",
     },
   },
-
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 1,
+      transform: "scale(1)"
+    },
+    "50%": {
+      opacity: 1,
+      transform: "scale(1.1)"
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)"
+    }
+  },
   subtitle: {
+    animation: `$myEffect 5000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -41,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     gap: "19px",
   },
   img: {
+    animation: `$myEffecto 5000ms`,
     marginTop: "auto",
   },
   container: {
@@ -58,6 +74,18 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
   },
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+    }
+  },
+
 }))
 
 const ContactSection = ({ bgColor, bgImage }) => {

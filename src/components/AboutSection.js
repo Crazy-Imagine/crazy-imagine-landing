@@ -23,7 +23,7 @@ const AboutSection = ({ bgColor, bgImage }) => {
     const classes = useStyles()
     return (
         <>
-            <Box className={classes.container}>
+            <Box className={classes.container} style={{ overflow: 'hidden' }}>
                 <TitleSection
                     title={`Working together…`}
                     desc="At CrazyImagine, our biggest strength is the quality of our team. We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, 

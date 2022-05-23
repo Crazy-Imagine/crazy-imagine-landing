@@ -2,6 +2,8 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
+import 'animate.css'
+
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -18,6 +20,7 @@ const useStyles = makeStyles(theme => ({
       justifyContent: "center",
       height: "auto",
       width: "93.2%",
+      flexDirection: "column",
     },
     [theme.breakpoints.down('sm')]: {
       width: "93.2%",
@@ -101,6 +104,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       padding: "10px 0px 10px 10px",
+      width: "100%",
     },
   }),
   imgContainer: props => ({
@@ -113,11 +117,12 @@ const useStyles = makeStyles(theme => ({
       width: "0px"
     },
     [theme.breakpoints.down('xs')]: {
-      visibility: "hidden"
+      visibility: "hidden",
+      width: "0%",
     },
   }),
   img: {
-    animation: `$myEffect 3000ms ${theme.transitions.easing.easeInOut}`,
+    animation: `$myEffect 3000ms`,
     [theme.breakpoints.down('sm')]: {
       width: "auto"
     },
@@ -155,7 +160,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       lineHeight: "41px",
-      fontSize: "33px",
+      fontSize: "23px",
       fontWeight: 100,
     },
   }),
