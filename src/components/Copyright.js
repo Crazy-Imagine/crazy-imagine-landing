@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       height: "34px",
     },
+    [theme.breakpoints.down("xs")]: {
+      height: "20px",
+    },
   },
   copyright: {
     color: "white",
@@ -30,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
     },
   },
   barText: {
@@ -44,6 +50,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: "7px",
       height: "7px",
     },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+    },
   },
   text: {
     textAlign: "right",
@@ -51,6 +60,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: "12px",
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
     },
   },
 }))

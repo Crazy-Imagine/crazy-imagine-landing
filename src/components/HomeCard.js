@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     width: "150px",
     fontSize: "28px",
     lineHeight: "28px",

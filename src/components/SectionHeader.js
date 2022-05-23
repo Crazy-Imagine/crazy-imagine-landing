@@ -17,11 +17,11 @@ const useStyles = makeStyles(theme => ({
       height: props.little ? "232px" : "371px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: props.little ? "162px" : "230px",
+      height: props.little ? "130px" : "230px",
     },
     [theme.breakpoints.down("xs")]: {
       borderRadius: "4px",
-      height: props.little ? "70px" : "105px",
+      height: props.little ? "60px" : "105px",
     },
   }),
   backgroundOut: props => ({
@@ -137,17 +137,17 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
-    padding: "100px 0px 0px 100px",
+    padding: props.little ? "0px 0px 0px 100px" : "100px 0px 0px 100px",
     borderRadius: "14px",
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
-      padding: "70px 0px 0px 70px",
+      padding: props.little ? "0px 0px 0px 70px" : "70px 0px 0px 70px",
       gap: "29px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "49px 0px 0px 49px",
+      padding: props.little ? "0px 0px 0px 49px" : "49px 0px 0px 49px",
       gap: "20px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -170,7 +170,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       alignItems: "self-end",
     },
-    [theme.breakpoints.down("sm")]: {},
   }),
   title: props => ({
     fontStyle: "normal",

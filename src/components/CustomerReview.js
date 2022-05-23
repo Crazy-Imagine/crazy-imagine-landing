@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "9px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+    },
   },
   customerName: {
     fontFamily: "Nexa Bold",
@@ -119,13 +122,13 @@ const useStyles = makeStyles(theme => ({
     height: "450px",
     transform: "scale(1)",
     [theme.breakpoints.down("md")]: {
-      height: "315px",
+      height: "300px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "195px",
+      height: "200px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "200px",
+      width: "225px",
     },
   },
 }))

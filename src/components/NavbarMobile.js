@@ -28,7 +28,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useScroll from "../hooks/useScroll"
-import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
+import {
+  CONTACT,
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+} from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 
 const useStyles = makeStyles(theme => ({
@@ -172,7 +178,7 @@ const NavbarMobile = ({
               <Link className={classes.resetLink} to={`${HOME}`}>
                 <Typography className={classes.textLink}>Home</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#about`}>
+              <Link className={classes.resetLink} to={`${ABOUT}`}>
                 <Typography className={classes.textLink}>About</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${PROJECTS}`}>
@@ -186,7 +192,7 @@ const NavbarMobile = ({
                   Work With Us
                 </Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#contact`}>
+              <Link className={classes.resetLink} to={`${CONTACT}`}>
                 <Typography className={classes.textLink}>Contact Us</Typography>
               </Link>,
             ].map((text, index) => (

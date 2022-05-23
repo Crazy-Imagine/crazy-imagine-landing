@@ -35,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     color: "#27AAE1",
     marginTop: 3,
     alingSelf: "center",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "9px",
+    },
   },
   footerContainer: {
     display: "flex",
@@ -47,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       height: "83px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "60px",
     },
   },
   logo: {
@@ -111,6 +117,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "24px",
     },
+    [theme.breakpoints.between(0, 500)]: {
+      gap: "3px",
+    },
   },
   infoContainer: {
     display: "flex",
@@ -127,6 +136,14 @@ const useStyles = makeStyles(theme => ({
       gap: "12px",
       padding: "19px 0 19px 19px",
     },
+    [theme.breakpoints.between(0, 450)]: {
+      width: "25%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "25%",
+      gap: "4px",
+      padding: "8px 0 4px 4px",
+    },
   },
   iconsContainer: {
     display: "flex",
@@ -134,6 +151,9 @@ const useStyles = makeStyles(theme => ({
     gap: "21px",
     [theme.breakpoints.down("md")]: {
       gap: "15px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "3px",
     },
   },
   info: {
@@ -143,6 +163,10 @@ const useStyles = makeStyles(theme => ({
     gap: "4px",
     [theme.breakpoints.down("md")]: {
       lineHeight: "14px",
+      gap: "3px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      lineHeight: "7px",
       gap: "3px",
     },
   },
@@ -161,6 +185,10 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "7px",
       fontSize: "6px",
     },
+    [theme.breakpoints.down("xs")]: {
+      lineHeight: "5px",
+      fontSize: "5px",
+    },
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -174,11 +202,17 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "6px",
     },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+    },
   },
   footerLogo: {
     alignSelf: "flex-start",
     [theme.breakpoints.down("md")]: {
       width: "70%",
+    },
+    [theme.breakpoints.between(0, 450)]: {
+      width: "85%",
     },
   },
 }))
@@ -190,7 +224,6 @@ const Footer = ({ height = "192px", align = "center" }) => {
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
           <img className={classes.footerLogo} src={icon} alt="Footer Icon" />
-
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
             <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>

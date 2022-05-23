@@ -66,12 +66,14 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "25px",
+      fontSize: "7px",
+      lineHeight: "7px",
     },
   },
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
@@ -84,8 +86,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "25px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "18px",
-      lineHeight: "18px",
+      fontSize: "15px",
+      lineHeight: "15px",
     },
   },
   img: {
@@ -113,6 +115,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "7px",
     },
   },
 }))

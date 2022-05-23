@@ -59,6 +59,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "47px",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "24px",
+      marginBottom: "20px",
+    },
   },
   inputContainer: {
     display: "flex",
@@ -128,6 +132,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "226px",
     },
+    [theme.breakpoints.down("xs")]: {
+      width: "189px",
+    },
   },
   shortInput: {
     width: "250px",
@@ -136,6 +143,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "108px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "90px",
     },
   },
   snackColor: {
@@ -187,7 +197,6 @@ const ContactForm = () => {
               label="Name"
               className={`${classes.shortInput} ${classes.root} `}
             />
-
             <TextField
               id="subject"
               name="subject"
@@ -196,7 +205,6 @@ const ContactForm = () => {
               className={`${classes.shortInput} ${classes.root} `}
             />
           </Box>
-
           <TextField
             id="email"
             type="email"

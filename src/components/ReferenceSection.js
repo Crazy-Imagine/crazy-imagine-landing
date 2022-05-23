@@ -8,7 +8,7 @@ const useStyes = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "40px",
     lineHeight: "40px",
     textAlign: "center",

@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: props.backgroundImage ? "60% 100%" : "",
     width: "100%",
     position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   }),
   sectionResponsive: props => ({
     height: props.height ? props.height : "auto",
@@ -34,12 +37,7 @@ const Section = ({
   })
 
   return (
-    <Box
-      className={classes.sectionContainer}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Box className={classes.sectionContainer}>
       <Box width={width} className={classes.sectionResponsive}>
         {children}
       </Box>

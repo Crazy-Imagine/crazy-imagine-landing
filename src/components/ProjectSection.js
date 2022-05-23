@@ -23,11 +23,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       height: "439px",
     },
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "40px",
     lineHeight: "40px",
     marginTop: "84px",
@@ -47,6 +50,13 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "17px",
       marginTop: "34px",
       marginBottom: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "10px",
+      fontSize: "10px",
+      lineHeight: "10px",
+      marginTop: "25px",
+      marginBottom: "12px",
     },
   },
   button: {
@@ -81,6 +91,13 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "10px",
       },
     },
+    [theme.breakpoints.down("xs")]: {
+      padding: "3px 3px 3px 3px",
+      "& > span": {
+        fontSize: "4px",
+        lineHeight: "inherit",
+      },
+    },
   },
   carouselContainer: {
     backgroundColor: "#FFFFFF",
@@ -99,11 +116,16 @@ const useStyles = makeStyles(theme => ({
       height: "282px",
       width: "425px",
     },
+    [theme.breakpoints.down("xs")]: {
+      height: "180px",
+      width: "250px",
+      borderRadius: "8px",
+    },
   },
   titleCarousel: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "28px",
     lineHeight: "28px",
     color: "#193174",
@@ -114,6 +136,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       lineHeight: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "7px",
+      lineHeight: "7px",
     },
   },
   link: {

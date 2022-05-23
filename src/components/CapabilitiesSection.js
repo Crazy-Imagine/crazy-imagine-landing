@@ -94,12 +94,6 @@ const useStyles = makeStyles(theme => ({
 const CapabilitiesSection = () => {
   const classes = useStyles()
 
-  // const capabilitiesSection = useStaticQuery(query)
-  // const images =
-  //   capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
-  // const fullstackImage = images[1].localFile.publicURL
-  // const qualitysupportImage = images[2].localFile.publicURL
-
   return (
     <>
       <Box className={classes.container}>

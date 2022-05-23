@@ -22,24 +22,34 @@ const useStyes = makeStyles(theme => ({
       gap: "18px",
     },
     [theme.breakpoints.down("sm")]: {
+      height: "auto",
       gap: "13px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "inherit",
+      borderRadius: "7px",
+      gap: "7px",
     },
   },
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "28px",
-    lineHeight: "28px",
+    fontSize: "20px",
+    lineHeight: "20px",
     color: "#193174",
     textTransform: "uppercase",
     [theme.breakpoints.down("md")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
+      fontSize: "16px",
+      lineHeight: "16px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "10px",
       lineHeight: "10px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "6px",
+      lineHeight: "6px",
     },
   },
   link: {
@@ -58,6 +68,10 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
       lineHeight: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "4px",
+      lineHeight: "4px",
     },
   },
   textContainer: {
@@ -81,8 +95,15 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "147px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "91px",
+  },
+  slider: {
+    width: "80%",
+    boxSizing: "content-box",
+    [theme.breakpoints.between(0, 301)]: {
+      width: "75%",
+    },
+    [theme.breakpoints.between(419, 600)]: {
+      width: "50%",
     },
   },
   carousel: {
@@ -90,8 +111,9 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "315px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "195px",
+    [theme.breakpoints.down("xs")]: {
+      height: "200px",
+      width: "200px",
     },
   },
 }))
@@ -138,8 +160,18 @@ const BlogPost = () => {
 
         return (
           <Swiper
-            spaceBetween={50}
-            slidesPerView={3}
+            spaceBetween={30}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              600: {
+                slidesPerView: 2,
+              },
+              700: {
+                slidesPerView: 3,
+              },
+            }}
             pagination={{
               clickable: true,
             }}
@@ -147,8 +179,7 @@ const BlogPost = () => {
             grabCursor={true}
             mousewheel
             modules={[Pagination]}
-            className="mySwiper"
-            style={{ width: "80%", boxSizing: "content-box" }}
+            className={`mySwiper ${classes.slider}`}
           >
             {articlesSort.map(({ node }, index) => (
               <SwiperSlide key={index} className={classes.carousel}>

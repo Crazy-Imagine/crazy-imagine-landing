@@ -9,7 +9,7 @@ const useStyes = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "40px",
     lineHeight: "40px",
     textAlign: "center",
@@ -24,6 +24,12 @@ const useStyes = makeStyles(theme => ({
       fontSize: "17px",
       lineWeight: "17px",
       marginTop: "34px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "13px",
+      lineHeight: "13px",
+      marginTop: "25px",
+      marginBottom: "15px",
     },
   },
   container: {
@@ -60,6 +66,10 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
       lineHeight: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "4px",
+      lineHeight: "4px",
     },
   },
   containerPost: {
