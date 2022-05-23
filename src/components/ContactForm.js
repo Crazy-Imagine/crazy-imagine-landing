@@ -99,6 +99,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
+      marginBottom: "16px",
       padding: "10px 14px 8px 14px",
       "& > span": {
         fontSize: "10px",
