@@ -17,11 +17,8 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "6px",
       },
     },
     "& .MuiInput-underline:before": {
@@ -39,12 +36,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("md")]: {
-        fontSize: "9px",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "10px",
       },
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "6px",
-      },
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px",
     },
   },
   formContainer: {
@@ -54,14 +54,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     marginTop: "108px",
     [theme.breakpoints.down("md")]: {
-      marginTop: "76px",
+      width: "auto",
     },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "47px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "24px",
-      marginBottom: "20px",
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+      marginTop: "30px",
     },
   },
   inputContainer: {
@@ -69,10 +66,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     gap: "15px",
     [theme.breakpoints.down("md")]: {
-      gap: "11px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "3px",
+      width: "auto",
     },
   },
   formCheck: {
@@ -80,6 +74,9 @@ const useStyles = makeStyles(theme => ({
     border: "1px solid #797EF6",
     boxSizing: "border-box",
     borderRadius: "2px",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
   },
   formButton: {
     backgroundColor: "#797EF6",
@@ -93,60 +90,40 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 400,
       fontSize: "14px",
       lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
       textAlign: "center",
       letterSpacing: "0.05em",
       color: "#FFFFFF",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "10px",
+      },
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "16px",
-      marginBottom: "16px",
-      padding: "10px 14px 8px 14px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "10px",
-      padding: "6px 9px 5px 9px",
-      "& > span": {
-        fontSize: "6px",
-        lineHeight: "6px",
-      },
+      width: "auto",
     },
   },
   divider: {
     display: "flex",
     gap: "20px",
     [theme.breakpoints.down("md")]: {
-      gap: "14px",
+      width: "auto",
     },
-    [theme.breakpoints.down("sm")]: {
-      gap: "9px",
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+      flexDirection: "column",
     },
   },
   input: {
     width: "520px",
     [theme.breakpoints.down("md")]: {
-      width: "364px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "226px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "189px",
+      width: "auto",
     },
   },
   shortInput: {
     width: "250px",
     [theme.breakpoints.down("md")]: {
-      width: "175px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "108px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "90px",
+      width: "auto",
     },
   },
   snackColor: {
@@ -154,6 +131,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white !important",
     display: "flex",
     justifyContent: "space-around",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
   },
 }))
 
@@ -198,6 +178,7 @@ const ContactForm = () => {
               label="Name"
               className={`${classes.shortInput} ${classes.root} `}
             />
+
             <TextField
               id="subject"
               name="subject"
@@ -206,6 +187,7 @@ const ContactForm = () => {
               className={`${classes.shortInput} ${classes.root} `}
             />
           </Box>
+
           <TextField
             id="email"
             type="email"

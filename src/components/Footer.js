@@ -10,12 +10,19 @@ import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import Section from "./Section"
-import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
-import icon from "../images/crazy-imagine-icon.svg"
+import {
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  CONTACT,
+} from "../navigation/sitemap"
+//import { Autocomplete } from "@material-ui/lab"
 
 const useStyles = makeStyles(theme => ({
   root: {
     color: "white",
+    background: "red",
   },
   container: {
     display: "flex",
@@ -24,11 +31,8 @@ const useStyles = makeStyles(theme => ({
   contactIcon: {
     fontSize: "22px",
     color: "#249DCF",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "15px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
     },
   },
   infoIcon: {
@@ -36,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: 3,
     alingSelf: "center",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "9px",
+      fontSize: "14px",
     },
   },
   footerContainer: {
@@ -46,23 +50,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
-      height: "134px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "83px",
+      width: "100%",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "60px",
-    },
-  },
-  logo: {
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-      height: "70%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "35%",
-      height: "35%",
+      width: "100%",
+      height: "auto",
+      flexDirection: "column",
     },
   },
   logoContainer: {
@@ -72,36 +65,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
     height: "100%",
-    [theme.breakpoints.down("md")]: {
-      gap: "35px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "25%",
-      gap: "22px",
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+      gap: "0px",
+      marginBottom: "-45px",
+      marginTop: "15px",
     },
   },
   formatContactSection: {
     "& $sectionLink": {
-      marginBottom: "20px",
-      [theme.breakpoints.down("md")]: {
-        marginBottom: "14px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        marginBottom: "9px",
-      },
+      marginBottom: 20,
     },
     "& $sectionTitle": {
       lineHeight: "inherit ",
       marginBottom: 4,
-      marginTop: "13px",
-      [theme.breakpoints.down("md")]: {
-        marginBottom: "3px",
-        marginTop: "9px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        marginBottom: "2px",
-        marginTop: "7px",
-      },
+      marginTop: 13,
     },
   },
   linkContainer: {
@@ -112,13 +90,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     gap: "50px",
     [theme.breakpoints.down("md")]: {
-      gap: "38px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "24px",
-    },
-    [theme.breakpoints.between(0, 500)]: {
-      gap: "3px",
+      visibility: "hidden",
+      width: "0%",
     },
   },
   infoContainer: {
@@ -129,31 +102,22 @@ const useStyles = makeStyles(theme => ({
     padding: "44px 0px 44px 44px",
     borderLeft: "1.5px solid #233B7E",
     [theme.breakpoints.down("md")]: {
-      gap: "20px",
-      padding: "31px 0 31px 31px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "12px",
-      padding: "19px 0 19px 19px",
-    },
-    [theme.breakpoints.between(0, 450)]: {
-      width: "25%",
+      width: "auto",
+      borderLeft: "0px solid #233B7E",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "25%",
-      gap: "4px",
-      padding: "8px 0 4px 4px",
+      //visibility: "hidden"
+      padding: "4px 0px 4px 4px",
+      marginBottom: "15px",
     },
   },
   iconsContainer: {
     display: "flex",
-    alignSelf: "flex-start",
+    alignSelf: "center",
+    /* marginRight: "auto", */
     gap: "21px",
-    [theme.breakpoints.down("md")]: {
-      gap: "15px",
-    },
     [theme.breakpoints.down("xs")]: {
-      gap: "3px",
+      marginTop: "15px",
     },
   },
   info: {
@@ -161,13 +125,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     lineHeight: "20px",
     gap: "4px",
-    [theme.breakpoints.down("md")]: {
-      lineHeight: "14px",
-      gap: "3px",
-    },
     [theme.breakpoints.down("xs")]: {
-      lineHeight: "7px",
-      gap: "3px",
+      lineHeight: "8px",
     },
   },
   linkTypography: {
@@ -177,18 +136,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     lineHeight: "16px",
     fontSize: "14px",
-    [theme.breakpoints.down("md")]: {
-      lineHeight: "11px",
-      fontSize: "10px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      lineHeight: "7px",
-      fontSize: "6px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      lineHeight: "5px",
-      fontSize: "5px",
-    },
+    textDecoration: "none",
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -196,25 +144,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Hero New",
     fontWeight: "400",
     fontSize: "14px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "6px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
-    },
   },
-  footerLogo: {
-    alignSelf: "flex-start",
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-    },
-    [theme.breakpoints.between(0, 450)]: {
-      width: "85%",
-    },
-  },
+  footerLogo: {},
 }))
 
 const Footer = ({ height = "192px", align = "center" }) => {
@@ -223,7 +157,10 @@ const Footer = ({ height = "192px", align = "center" }) => {
     <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <img className={classes.footerLogo} src={icon} alt="Footer Icon" />
+          <StaticImage
+            src="../images/crazy-imagine-icon.svg"
+            alt="footerImage"
+          />
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
             <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
@@ -233,19 +170,29 @@ const Footer = ({ height = "192px", align = "center" }) => {
         </Box>
         <Box className={classes.linkContainer}>
           <Typography>
-            <Link className={classes.linkTypography}>ABOUT</Link>
+            <Link to={`${ABOUT}`} className={classes.linkTypography}>
+              ABOUT
+            </Link>
           </Typography>
           <Typography>
-            <Link className={classes.linkTypography}>SERVICES</Link>
+            <Link to={`${PROJECTS}`} className={classes.linkTypography}>
+              SERVICES
+            </Link>
           </Typography>
           <Typography>
-            <Link className={classes.linkTypography}>BLOG</Link>
+            <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+              BLOG
+            </Link>
           </Typography>
           <Typography>
-            <Link className={classes.linkTypography}>WORK WITH US</Link>
+            <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>
+              WORK WITH US
+            </Link>
           </Typography>
           <Typography>
-            <Link className={classes.linkTypography}>CONTACT</Link>
+            <Link to={`${CONTACT}`} className={classes.linkTypography}>
+              CONTACT
+            </Link>
           </Typography>
         </Box>
         <Box className={classes.infoContainer}>

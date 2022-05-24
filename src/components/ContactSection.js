@@ -1,31 +1,40 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
+import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
-import contactImage from "../images/satelite.svg"
+import Section from "./Section"
+import headerImage from "../images/satelite.svg"
 
 const useStyles = makeStyles(theme => ({
   title: {
+    animation: `$myEffect 5000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: 700,
     fontSize: "40px",
     lineHeight: "50px",
     color: "#193174",
-    whiteSpace: "pre-line",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "35px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "17px",
-      lineHeight: "21px",
-    },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
+      fontSize: "25px",
+      lineHeight: "30px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+    "50%": {
+      opacity: 1,
+      transform: "scale(1.1)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
     },
   },
   subtitle: {
+    animation: `$myEffect 5000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -34,83 +43,46 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      lineHeight: "14px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
     },
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    height: "300px",
+    height: "auto",
     marginTop: "83px",
     gap: "19px",
-    [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      height: "270px",
-      marginTop: "58px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "8px",
-      height: "270px",
-      marginTop: "36px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "200px",
-      alignItems: "center",
-      gap: "0px",
-    },
-  },
-  imgContainer: {
-    marginTop: "auto",
   },
   img: {
+    animation: `$myEffecto 5000ms`,
     marginTop: "auto",
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "45%",
-    },
   },
   container: {
     display: "flex",
-    width: "80%",
-    margin: "auto",
+    justifyContent: "space-between",
     gap: "150px",
     height: "514px",
-    alignItems: "center",
-    [theme.breakpoints.down("md")]: {
-      gap: "105px",
-      height: "360px",
-    },
+    width: "110%",
     [theme.breakpoints.down("sm")]: {
-      gap: "61px",
-      height: "300px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      gap: "0px",
       height: "auto",
+      flexDirection: "column",
+      marginBottom: "20px",
+      gap: "0px",
+      marginTop: "-30px",
+      width: "100%",
     },
   },
-  text: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "19px",
-    [theme.breakpoints.down("md")]: {
-      gap: "14px",
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
     },
-    [theme.breakpoints.down("sm")]: {
-      gap: "10px",
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
     },
   },
 }))
@@ -119,17 +91,25 @@ const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
 
   return (
-    <Box className={classes.container}>
-      <Box className={classes.textContainer}>
-        <Box className={classes.text}>
+    <Section
+      width="76%"
+      backgroundImage={bgImage ? bgImage : ""}
+      backgroundColor={bgColor ? bgColor : ""}
+    >
+      <Box className={classes.container}>
+        <Box className={classes.textContainer}>
           <Typography className={classes.subtitle}>REACH OUT</Typography>
-          <Typography className={classes.title}>{`Imagine What 
-          We Can Create`}</Typography>
+          <Typography className={classes.title}>{`Imagine What`}</Typography>
+          <Typography className={classes.title} style={{ marginTop: "-17px" }}>
+            {`We Can Create`}
+          </Typography>
+          <Box className={classes.img}>
+            <StaticImage src="../images/satelite.svg" />
+          </Box>
         </Box>
-        <img src={contactImage} className={classes.img} />
+        <ContactForm />
       </Box>
-      <ContactForm />
-    </Box>
+    </Section>
   )
 }
 

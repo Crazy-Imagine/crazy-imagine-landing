@@ -122,11 +122,13 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
               </Link>
             </Typography>
           </Box>
-          <Button href="#contained-buttons" className={classes.contactButton}>
-            <Link to={`${CONTACT}`} className={classes.contactTypography}>
-              Contact Us
-            </Link>
-          </Button>
+          <Link to={`${CONTACT}`} style={{ textDecoration: "none" }}>
+            <Button className={classes.contactButton}>
+              <Link to={`${CONTACT}`} className={classes.contactTypography}>
+                Contact Us
+              </Link>
+            </Button>
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

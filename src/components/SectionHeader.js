@@ -2,26 +2,27 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
+import "animate.css"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
     backgroundColor: "#27AAE1",
-    width: "92%",
+    width: "93.2%",
     position: "relative",
     display: "flex",
     flexDirection: "row",
-    justifyContent: props.little ? "flex-start" : "space-between",
+    justifyContent: "space-between",
     borderRadius: "14px",
+    overflow: "hidden",
     height: props.little ? "332px" : "530px",
-    [theme.breakpoints.down("md")]: {
-      height: props.little ? "232px" : "371px",
-    },
     [theme.breakpoints.down("sm")]: {
-      height: props.little ? "130px" : "230px",
+      height: "auto",
     },
     [theme.breakpoints.down("xs")]: {
-      borderRadius: "4px",
-      height: props.little ? "60px" : "105px",
+      justifyContent: "center",
+      height: "auto",
+      width: "93.2%",
+      flexDirection: "column",
     },
   }),
   backgroundOut: props => ({
@@ -37,14 +38,11 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    [theme.breakpoints.down("md")]: {
-      height: props.little ? "343px" : "482px",
-    },
     [theme.breakpoints.down("sm")]: {
-      height: props.little ? "162px" : "260px",
+      flexDirection: "column",
     },
     [theme.breakpoints.down("xs")]: {
-      height: props.little ? "81px" : "130px",
+      flexDirection: "column",
     },
   }),
   buttonLeft: {
@@ -61,24 +59,17 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
-    [theme.breakpoints.down("md")]: {
-      padding: "10px 14px 8px 14px",
-      "& > span": {
-        fontSize: "8px",
-        lineHeight: "7px",
-      },
-    },
     [theme.breakpoints.down("sm")]: {
-      padding: "6px 9px 6px 10px",
+      padding: "3px 3px 3px 3px",
       "& > span": {
-        fontSize: "6px",
-        lineHeight: "5px",
+        fontSize: "10px",
+        lineHeight: "inherit",
       },
     },
     [theme.breakpoints.down("xs")]: {
       padding: "3px 3px 3px 3px",
       "& > span": {
-        fontSize: "4px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
     },
@@ -98,29 +89,19 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "9px",
-      lineHeight: "7px",
-      padding: "10px 14px 8px 14px",
-      "& > span": {
-        fontSize: "8px",
-        lineHeight: "7px",
-      },
-    },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "6px",
-      lineHeight: "4px",
-      padding: "6px 9px 6px 10px",
+      padding: "4px 3px 3px 3px",
+      border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "6px",
-        lineHeight: "5px",
+        fontSize: "10px",
+        lineHeight: "inherit",
       },
     },
     [theme.breakpoints.down("xs")]: {
       padding: "4px 3px 3px 3px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "4px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
     },
@@ -129,48 +110,75 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     gap: "12px",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       gap: "3px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "15px",
+      flexDirection: "column",
+      marginBototm: "5px",
     },
   },
   textContainer: props => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     flexDirection: "column",
-    padding: props.little ? "0px 0px 0px 100px" : "100px 0px 0px 100px",
+    padding: "100px 0px 100px 100px",
     borderRadius: "14px",
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
-      padding: props.little ? "0px 0px 0px 70px" : "70px 0px 0px 70px",
-      gap: "29px",
+      padding: "50px 0px 50px 50px",
+      width: "auto",
+      height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: props.little ? "0px 0px 0px 49px" : "49px 0px 0px 49px",
-      gap: "20px",
+      padding: "50px 0px 50px 50px",
+      width: "100%",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "0px 0px 0px 15px",
-      justifyContent: "center",
-      gap: "10px",
-      "& > span": {
-        fontSize: "6px",
-        lineHeight: "5px",
-      },
+      padding: "10px 0px 10px 10px",
+      width: "100%",
     },
   }),
   imgContainer: props => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    position: "absolute",
-    bottom: 0,
-    right: props.little ? 100 : 0,
-    [theme.breakpoints.down("md")]: {
-      alignItems: "self-end",
+    marginRight: props.little ? "100px" : "0px",
+    [theme.breakpoints.down("sm")]: {
+      visibility: "hidden",
+      display: "none",
+      width: "0px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      visibility: "hidden",
+      width: "0%",
     },
   }),
+  img: {
+    animation: `$myEffect 3000ms`,
+
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      visibility: "hidden",
+      display: "none",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
   title: props => ({
     fontStyle: "normal",
     fontWeight: 700,
@@ -180,16 +188,19 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
-      fontSize: props.little ? "49px" : "63px",
-      lineHeight: "57px",
+      lineHeight: "71px",
+      fontWeight: 600,
+      fontSize: "58px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: props.little ? "34px" : "44px",
-      lineHeight: "40px",
+      lineHeight: props.little ? "41px" : "50px",
+      fontSize: props.little ? "61px" : "40px",
+      fontWeight: props.little ? 700 : 500,
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: props.little ? "15px" : "18px",
-      lineHeight: "20px",
+      lineHeight: props.little ? "41px" : "30px",
+      fontSize: props.little ? "23px" : "20px",
+      fontWeight: 100,
     },
   }),
   desc: props => ({
@@ -202,33 +213,15 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      lineHeight: "14px",
-    },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
+      fontSize: "15px",
+      lineHeight: "inherit",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
+      fontSize: "10px",
       lineHeight: "inherit",
     },
   }),
-  img: {
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-      height: "70%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "40%",
-      height: "40%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "22%",
-      height: "22%",
-    },
-  },
 }))
 
 export const SectionHeader = ({ title, desc, btn, little, img }) => {

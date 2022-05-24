@@ -9,8 +9,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "59px",
-    marginTop: "34px",
+    marginTop: "144px",
     marginBottom: "52px",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       height: "auto",
@@ -28,34 +29,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "79%",
       gap: "10px",
+      marginBottom: "17px",
     },
     [theme.breakpoints.down("xs")]: {
       width: "86%",
       gap: "4px",
-      marginBottom: "17px",
     },
   },
   title: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  },
-  title2: {
     animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -63,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    width: "526px",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       fontWeight: "auto",
@@ -91,21 +73,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc: {
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "13px",
-    },
-  },
-  desc2: {
     animation: `$myEffectos 8000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
@@ -133,19 +100,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
+    animation: `$myEffect 3000ms`,
     [theme.breakpoints.down("xs")]: {
       width: "80%",
-      marginTop: "-27px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "80%",
-    },
-  },
-  img2: {
-    animation: `$myEffect 5000ms`,
-    [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      marginTop: "-27px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
@@ -154,7 +111,7 @@ const useStyles = makeStyles(theme => ({
   "@keyframes myEffect": {
     "0%": {
       opacity: 0,
-      transform: "translateX(200%)",
+      transform: "translateX(-200%)",
     },
     "100%": {
       opacity: 1,
@@ -163,33 +120,26 @@ const useStyles = makeStyles(theme => ({
   },
   imgn: {
     [theme.breakpoints.down("sm")]: {
+      marginTop: "17px",
       justifyContent: "center",
       textAlign: "center",
     },
   },
 }))
 
-export const SubTitleSection = ({ title, desc, img, setY }) => {
+export const AboutTitle = ({ title, desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
-      <Box className={classes.textContainer}>
-        <Typography className={setY < -160 ? classes.title2 : classes.title}>
-          {title}
-        </Typography>
-        <Typography className={setY < -160 ? classes.desc2 : classes.desc}>
-          {desc}
-        </Typography>
-      </Box>
       <Box className={classes.imgn}>
-        <img
-          className={setY < -160 ? classes.img2 : classes.img}
-          src={img}
-          alt=""
-        />
+        <img className={classes.img} src={img} alt="" />
+      </Box>
+      <Box className={classes.textContainer}>
+        <Typography className={classes.title}>{title}</Typography>
+        <Typography className={classes.desc}>{desc}</Typography>
       </Box>
     </Box>
   )
 }
 
-export default SubTitleSection
+export default AboutTitle

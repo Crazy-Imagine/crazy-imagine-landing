@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#071A4E",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      height: "auto",
+    },
   },
   copyContainer: {
     display: "flex",
@@ -22,6 +26,10 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       height: "20px",
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "5px",
+      marginBottom: "5px",
     },
   },
   copyright: {
