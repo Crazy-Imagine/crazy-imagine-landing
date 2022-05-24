@@ -43,7 +43,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Imagen = ({ setY }) => {
-
     useEffect(() => {
         //console.log(setY)
     }, [setY]);
