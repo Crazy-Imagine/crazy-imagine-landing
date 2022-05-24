@@ -12,14 +12,13 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         background: "#FFF",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             flexDirection: "column",
-            height: "auto"
         },
 
     },
 }))
-const AboutSection = ({ bgColor, bgImage }) => {
+const AboutSection = ({ bgColor, bgImage, setY }) => {
     const classes = useStyles()
     return (
         <>
@@ -35,6 +34,7 @@ const AboutSection = ({ bgColor, bgImage }) => {
                     desc="Collaboration with our internal team as well as with our clients sets our work apart from the pack. 
                 Our commitment to communication as well as accountability drives us towards innovation and unrivaled quality."
                     img={aboutImage1}
+                    setY={setY}
                 />
             </Box>
 

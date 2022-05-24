@@ -43,11 +43,9 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     [theme.breakpoints.down('sm')]: {
       flexDirection: "column",
-      height: "638px",
     },
     [theme.breakpoints.down('xs')]: {
       flexDirection: "column",
-      height: "538px",
     },
   }),
   buttonLeft: {

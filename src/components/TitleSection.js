@@ -34,12 +34,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       width: "86%",
-      gap: "10px"
+      gap: "4px",
     },
 
   },
   title: {
-    animation: `$myEffecto 5000ms`,
+    animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -53,22 +53,29 @@ const useStyles = makeStyles(theme => ({
       fontSize: "28px",
       lineHeight: "28px",
     },
+    [theme.breakpoints.down('xs')]: {
+      width: "auto",
+      fontWeight: "auto",
+      fontSize: "22px",
+      lineHeight: "22px",
+    },
   },
   "@keyframes myEffecto": {
-    "0%": { transform: "translate(1px, 1px) rotate(0deg)" },
-    "10%": { transform: "translate(-1px, -2px) rotate(-1deg)" },
-    "20%": { transform: "translate(-3px, 0px) rotate(1deg)" },
-    "30%": { transform: "translate(3px, 2px) rotate(0deg)" },
-    "40%": { transform: "translate(1px, -1px) rotate(1deg)" },
-    "50%": { transform: "translate(-1px, 2px) rotate(-1deg)" },
-    "60%": { transform: "translate(-3px, 1px) rotate(0deg)" },
-    "70%": { transform: "translate(3px, 1px) rotate(-1deg)" },
-    "80%": { transform: "translate(-1px, -1px) rotate(1deg)" },
-    "90%": { transform: "translate(1px, 2px) rotate(0deg)" },
-    "100%": { transform: "translate(1px, -2px) rotate(-1deg)" },
+    "0%": {
+      opacity: 0,
+      transform: "scale(0)"
+    },
+    "50%": {
+      opacity: 0.5,
+      transform: "scale(0.5)"
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)"
+    }
   },
   desc: {
-    animation: `$myEffectos 5000ms`,
+    animation: `$myEffectos 8000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -77,10 +84,10 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
     [theme.breakpoints.down('xs')]: {
-      fontSize: "10px",
+      fontSize: "8px",
     },
     [theme.breakpoints.down('sm')]: {
-      fontSize: "15px",
+      fontSize: "13px",
     },
   },
   "@keyframes myEffectos": {
@@ -95,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   img: {
-    animation: `$myEffect 5000ms`,
+    animation: `$myEffect 3000ms`,
     [theme.breakpoints.down('xs')]: {
       width: "80%",
     },
@@ -117,7 +124,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       marginTop: "17px",
       justifyContent: "center",
-      textAlign: "center"
+      textAlign: "center",
     },
   },
 }))

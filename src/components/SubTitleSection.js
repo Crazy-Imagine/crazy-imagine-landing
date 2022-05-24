@@ -32,12 +32,11 @@ const useStyles = makeStyles(theme => ({
         },
         [theme.breakpoints.down('xs')]: {
             width: "86%",
-            gap: "10px",
+            gap: "4px",
             marginBottom: "17px"
         },
     },
     title: {
-        animation: `$myEffecto 5000ms`,
         fontFamily: "Nexa Bold",
         fontStyle: "normal",
         fontWeight: "400",
@@ -50,22 +49,49 @@ const useStyles = makeStyles(theme => ({
             fontSize: "28px",
             lineHeight: "28px",
         },
+        [theme.breakpoints.down('xs')]: {
+            width: "auto",
+            fontWeight: "auto",
+            fontSize: "22px",
+            lineHeight: "22px",
+        },
+    },
+    title2: {
+        animation: `$myEffecto 3000ms`,
+        fontFamily: "Nexa Bold",
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: "58px",
+        lineHeight: "58px",
+        color: "#193174",
+        [theme.breakpoints.down('sm')]: {
+            width: "auto",
+            fontWeight: "auto",
+            fontSize: "28px",
+            lineHeight: "28px",
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "auto",
+            fontWeight: "auto",
+            fontSize: "22px",
+            lineHeight: "22px",
+        },
     },
     "@keyframes myEffecto": {
-        "0%": { transform: "translate(1px, 1px) rotate(0deg)" },
-        "10%": { transform: "translate(-1px, -2px) rotate(-1deg)" },
-        "20%": { transform: "translate(-3px, 0px) rotate(1deg)" },
-        "30%": { transform: "translate(3px, 2px) rotate(0deg)" },
-        "40%": { transform: "translate(1px, -1px) rotate(1deg)" },
-        "50%": { transform: "translate(-1px, 2px) rotate(-1deg)" },
-        "60%": { transform: "translate(-3px, 1px) rotate(0deg)" },
-        "70%": { transform: "translate(3px, 1px) rotate(-1deg)" },
-        "80%": { transform: "translate(-1px, -1px) rotate(1deg)" },
-        "90%": { transform: "translate(1px, 2px) rotate(0deg)" },
-        "100%": { transform: "translate(1px, -2px) rotate(-1deg)" },
+        "0%": {
+            opacity: 0,
+            transform: "scale(0)"
+        },
+        "50%": {
+            opacity: 0.5,
+            transform: "scale(0.5)"
+        },
+        "100%": {
+            opacity: 1,
+            transform: "scale(1)"
+        }
     },
     desc: {
-        animation: `$myEffectos 5000ms`,
         fontFamily: "Hero New",
         fontStyle: "normal",
         fontWeight: "400",
@@ -74,10 +100,26 @@ const useStyles = makeStyles(theme => ({
         letterSpacing: "0.02em",
         color: "#193174",
         [theme.breakpoints.down('xs')]: {
-            fontSize: "10px",
+            fontSize: "8px",
         },
         [theme.breakpoints.down('sm')]: {
-            fontSize: "15px",
+            fontSize: "13px",
+        },
+    },
+    desc2: {
+        animation: `$myEffectos 8000ms`,
+        fontFamily: "Hero New",
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: "20px",
+        lineHeight: "130%",
+        letterSpacing: "0.02em",
+        color: "#193174",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "8px",
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "13px",
         },
     },
     "@keyframes myEffectos": {
@@ -92,6 +134,15 @@ const useStyles = makeStyles(theme => ({
         }
     },
     img: {
+        [theme.breakpoints.down('xs')]: {
+            width: "80%",
+            marginTop: "-27px",
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "80%",
+        },
+    },
+    img2: {
         animation: `$myEffect 5000ms`,
         [theme.breakpoints.down('xs')]: {
             width: "80%",
@@ -120,17 +171,17 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const SubTitleSection = ({ title, desc, img }) => {
+export const SubTitleSection = ({ title, desc, img, setY }) => {
     const classes = useStyles()
     return (
         <Box className={classes.container}>
 
             <Box className={classes.textContainer}>
-                <Typography className={classes.title}>{title}</Typography>
-                <Typography className={classes.desc}>{desc}</Typography>
+                <Typography className={(setY < -160) ? classes.title2 : classes.title}>{title}</Typography>
+                <Typography className={(setY < -160) ? classes.desc2 : classes.desc}>{desc}</Typography>
             </Box>
             <Box className={classes.imgn}>
-                <img className={classes.img} src={img} alt="" />
+                <img className={(setY < -160) ? classes.img2 : classes.img} src={img} alt="" />
             </Box>
 
         </Box>

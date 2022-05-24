@@ -18,9 +18,13 @@ const About = () => {
     const [y, setY] = useState(0);
 
     const handleNavigation = (e) => {
-        const div = ref.current
-        const window = e.currentTarget;
-        setY(div.getBoundingClientRect().y);
+
+        if (!ref.current) return
+        //console.log(ref.current);
+        const div = ref.current;
+        //const window = e.currentTarget;
+        //console.log(div?.getBoundingClientRect().y, "aca");
+        setY(div?.getBoundingClientRect().y);
     };
 
     useEffect(() => {
@@ -29,26 +33,30 @@ const About = () => {
 
     return (
         <PageWrapper>
-            <Hidden mdDown>
-                <Navbar variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-                <NavbarMobile variantIcons="primary" />
-            </Hidden>
-            <SectionHeader
-                title={`Our Team is Your
+            <div ref={ref}>
+                <Hidden mdDown>
+                    <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                    <NavbarMobile variantIcons="primary" />
+                </Hidden>
+                <SectionHeader
+                    title={`Our Team is Your
                 Greatest Resource`}
-                btn={false}
-                img={headerImage}
-                little={true}
-            />
-            <div ref={ref}></div>
-            <AboutSection />
-            <Imagen
-                setY={y}
-            />
-            <Footer />
-            <Copyright />
+                    btn={false}
+                    img={headerImage}
+                    little={true}
+                />
+
+                <AboutSection
+                    setY={y}
+                />
+                <Imagen
+                    setY={y}
+                />
+                <Footer />
+                <Copyright />
+            </div>
         </PageWrapper>
     );
 }
