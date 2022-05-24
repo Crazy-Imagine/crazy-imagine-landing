@@ -34,6 +34,7 @@ import {
   PROJECTS,
   WORK_WITH_US,
   ABOUT,
+  BLOG,
 } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 
@@ -184,7 +185,7 @@ const NavbarMobile = ({
               <Link className={classes.resetLink} to={`${PROJECTS}`}>
                 <Typography className={classes.textLink}>Services</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#blog`}>
+              <Link className={classes.resetLink} to={`${BLOG}`}>
                 <Typography className={classes.textLink}>Blog</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${WORK_WITH_US}`}>

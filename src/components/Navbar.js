@@ -9,6 +9,7 @@ import {
   PROJECTS,
   WORK_WITH_US,
   ABOUT,
+  BLOG,
 } from "../navigation/sitemap"
 import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
@@ -111,7 +112,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
               </Link>
             </Typography>
             <Typography>
-              <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+              <Link to={`${BLOG}`} className={classes.linkTypography}>
                 BLOG
               </Link>
             </Typography>
