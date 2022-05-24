@@ -136,11 +136,6 @@ const useStyles = makeStyles(theme => ({
 const CustomerReview = () => {
   const classes = useStyles()
   SwiperCore.use([Keyboard, Mousewheel])
-  const mySwiperConfig = {
-    mousewheel: {
-      forceToAxis: true,
-    },
-  }
 
   return (
     <StaticQuery

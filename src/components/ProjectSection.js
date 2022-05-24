@@ -177,12 +177,8 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = () => {
   const classes = useStyles()
-  SwiperCore.use([Keyboard, Mousewheel])
-  const mySwiperConfig = {
-    mousewheel: {
-      forceToAxis: true,
-    },
-  }
+  SwiperCore.use([Keyboard])
+
   return (
     <StaticQuery
       query={query}

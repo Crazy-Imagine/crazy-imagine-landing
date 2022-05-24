@@ -78,14 +78,16 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    background: "#F9F9F9",
+    padding: "20px",
+    backgroundColor: "rgba(235, 235, 235, 0.4)",
     marginTop: "94px",
     borderRadius: "14px 14px 0px 0px",
     [theme.breakpoints.down("md")]: {
       marginTop: "66px",
+      padding: "12px",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "42px",
+      padding: "8px",
     },
   },
   containerImage: {
@@ -102,6 +104,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       width: "364px",
+      marginTop: "30px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "226px",
@@ -120,6 +123,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "15px",
     color: "#193173",
     [theme.breakpoints.down("md")]: {
+      marginTop: "15px",
+      marginBottom: "10px",
       fontSize: "9px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -180,6 +185,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 55,
     [theme.breakpoints.down("md")]: {
       width: "364px",
+      margin: "30px 30px 30px 30px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "226px",
@@ -192,7 +198,7 @@ const useStyles = makeStyles(theme => ({
     height: 1,
     width: "250px",
     [theme.breakpoints.down("md")]: {
-      width: "175px",
+      width: "170px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "104px",
@@ -206,6 +212,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     gap: "20px",
     marginBottom: "50px",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "30px",
+    },
   },
   formButton: {
     background: "#797EF6",
@@ -226,6 +235,7 @@ const useStyles = makeStyles(theme => ({
     cursor: "pointer",
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
+      marginBottom: "25px",
       padding: "10px 14px 8px 14px",
       "& > span": {
         fontSize: "10px",

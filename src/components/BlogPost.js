@@ -107,9 +107,9 @@ const useStyes = makeStyles(theme => ({
     },
   },
   carousel: {
-    height: "450px",
+    height: "425px",
     [theme.breakpoints.down("md")]: {
-      height: "315px",
+      height: "285px",
     },
     [theme.breakpoints.down("xs")]: {
       height: "200px",
@@ -177,7 +177,6 @@ const BlogPost = () => {
             }}
             keyboard={{ enabled: true }}
             grabCursor={true}
-            mousewheel
             modules={[Pagination]}
             className={`mySwiper ${classes.slider}`}
           >

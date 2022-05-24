@@ -6,24 +6,24 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: "900",
     fontSize: "40px",
     lineHeight: "50px",
     whiteSpace: "pre-line",
     color: "#193174",
     marginTop: "124px",
     [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
+      fontSize: "35px",
       lineHeight: "35px",
       marginTop: "87px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "17px",
+      fontSize: "25px",
       lineHeight: "22px",
       marginTop: "54px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "17px",
+      fontSize: "20px",
       lineHeight: "22px",
       marginTop: "20px",
     },
