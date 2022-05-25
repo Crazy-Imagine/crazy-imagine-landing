@@ -2,7 +2,6 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
-import "animate.css"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({

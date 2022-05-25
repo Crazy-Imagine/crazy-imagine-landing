@@ -121,14 +121,23 @@ const useStyles = makeStyles(theme => ({
   swiperSlide: {
     height: "450px",
     transform: "scale(1)",
-    [theme.breakpoints.down("md")]: {
-      height: "300px",
+    [theme.breakpoints.between(960, 1280)]: {
+      height: "325px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "200px",
+    [theme.breakpoints.between(701, 959)]: {
+      height: "185px",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "225px",
+    [theme.breakpoints.between(450, 700)]: {
+      height: "175px",
+    },
+    [theme.breakpoints.between(400, 450)]: {
+      height: "220px",
+    },
+    [theme.breakpoints.between(200, 399)]: {
+      height: "160px",
+    },
+    [theme.breakpoints.between(0, 200)]: {
+      height: "145px",
     },
   },
 }))

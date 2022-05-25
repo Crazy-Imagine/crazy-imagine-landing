@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "26px",
-    /* flex: "1 0 40%", */
+    flex: "1 0 40%",
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
@@ -45,11 +45,26 @@ const useStyles = makeStyles(theme => ({
   wrapperTitle: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: "900",
     fontSize: "40px",
     lineHeight: "40px",
     textAlign: "center",
     color: "#193173",
+    marginBottom: "38px",
+  },
+  wrapperContainer: {
+    width: "75%",
+    margin: "auto",
+    marginTop: "83px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "40px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "10",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -72,6 +87,13 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "6px",
     },
   },
+  img: {
+    backgroundColor: "#27AAE1",
+    height: "210px",
+    [theme.breakpoints.down("md")]: {
+      height: "147px",
+    },
+  },
   link: {
     fontFamily: "Nexa",
     fontStyle: "normal",
@@ -79,6 +101,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15px",
     lineHeight: "15px",
     letterSpacing: "0.1em",
+    cursor: "pointer",
     color: "#888DFF",
     marginTop: "auto",
     [theme.breakpoints.down("md")]: {
@@ -97,6 +120,7 @@ const useStyles = makeStyles(theme => ({
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
     background: "#F9F9F9",
     gap: "21px",
   },
@@ -141,7 +165,7 @@ const BlogArticle = () => {
           })
           .slice(0, 6)
         return (
-          <Box>
+          <Box className={classes.wrapperContainer}>
             <Typography className={classes.wrapperTitle}>
               Browse All Articles
             </Typography>

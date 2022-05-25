@@ -84,6 +84,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     alignSelf: "flex-start",
     padding: "14px 20px 12px 20px",
+    "&:hover": {
+      backgroundColor: "#B0B4FF",
+    },
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",

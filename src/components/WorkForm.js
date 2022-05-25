@@ -87,7 +87,12 @@ const useStyles = makeStyles(theme => ({
       padding: "12px",
     },
     [theme.breakpoints.down("sm")]: {
+      marginTop: "30px",
       padding: "8px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
+      padding: "4px",
     },
   },
   containerImage: {

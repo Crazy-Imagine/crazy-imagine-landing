@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
       gap: "9px",
     },
     [theme.breakpoints.down("xs")]: {
+      width: "20%",
       gap: "5px",
     },
   },
@@ -122,10 +123,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
+      justifyContent: "flex-end",
       width: "35%",
     },
     [theme.breakpoints.down("xs")]: {
       width: "inherit",
+      justifyContent: "center",
       marginTop: "10px",
     },
   },

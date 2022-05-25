@@ -22,7 +22,6 @@ const useStyes = makeStyles(theme => ({
       gap: "18px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "auto",
       gap: "13px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -107,9 +106,12 @@ const useStyes = makeStyles(theme => ({
     },
   },
   carousel: {
-    height: "425px",
+    height: "400px",
     [theme.breakpoints.down("md")]: {
-      height: "285px",
+      height: "280px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "225px",
     },
     [theme.breakpoints.down("xs")]: {
       height: "200px",

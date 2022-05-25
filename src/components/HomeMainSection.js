@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     marginBottom: "87px",
     marginTop: "48px",
+    "&:hover": {
+      backgroundColor: "#B0B4FF",
+    },
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
@@ -93,7 +96,6 @@ const HomeMainSection = () => {
         desc="We will help you to strategize your web presence, designing and
           executing sitemaps and wireframes to provide a sleek, elegant, and
           seamless end-user experience"
-        /* img={mainImage} */
       />
       <Grid
         container

@@ -85,6 +85,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     color: "#888DFF",
     textAlign: "center",
+    textDecoration: "none",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -103,7 +104,9 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
       <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" />
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      <Link className={classes.link}>SERVICES →</Link>
+      <Link className={classes.link} style={{ textDecoration: "none" }}>
+        SERVICES →
+      </Link>
     </Box>
   )
 }
