@@ -65,11 +65,16 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
     height: "100%",
+
+    [theme.breakpoints.down("sm")]: {
+
+    },
     [theme.breakpoints.down("xs")]: {
       width: "auto",
       gap: "0px",
       marginBottom: "-45px",
       marginTop: "15px",
+      padding: "14px 4px 54px 4px",
     },
   },
   formatContactSection: {
@@ -91,7 +96,8 @@ const useStyles = makeStyles(theme => ({
     gap: "50px",
     [theme.breakpoints.down("md")]: {
       visibility: "hidden",
-      width: "0%",
+      width: "0px",
+      display: "none"
     },
   },
   infoContainer: {
@@ -146,6 +152,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: "14px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
+    },
+  },
+  footerSection: {
+    [theme.breakpoints.down("xs")]: {
+      height: "auto"
     },
   },
   footerLogo: {},

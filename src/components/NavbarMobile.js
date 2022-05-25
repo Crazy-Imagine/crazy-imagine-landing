@@ -138,13 +138,13 @@ const NavbarMobile = ({
           <Box
             display="flex"
             width="100%"
-            height="6em"
+            height="5.5em"
             alignItems="center"
             justifyContent="space-between"
           >
             <Link to={HOME}>
               <StaticImage
-                src="crazy-imagine-icon.svg"
+                src="../images/LOGO.png"
                 alt="logo"
                 className={classes.navbarLogo}
               />

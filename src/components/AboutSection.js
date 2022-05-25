@@ -11,21 +11,13 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    mmarginTop: "46px",
-    marginBottom: "66px",
     background: "#FFF",
     [theme.breakpoints.down("md")]: {
-      marginTop: "32px",
-      marginBottom: "46px",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "20px",
-      marginBottom: "28px",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      marginTop: "10px",
-      marginBottom: "14px",
     },
   },
 }))

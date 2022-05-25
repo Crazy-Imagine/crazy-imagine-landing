@@ -54,6 +54,9 @@ const useStyles = makeStyles(theme => ({
     height: "auto",
     marginTop: "83px",
     gap: "19px",
+    [theme.breakpoints.down("sm")]: {
+      alignItems: "center",
+    },
   },
   img: {
     animation: `$myEffecto 5000ms`,
