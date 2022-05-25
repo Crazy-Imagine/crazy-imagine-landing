@@ -1,58 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
-
-    img: {
-        marginTop: "auto",
-        width: "100%",
-        height: "100%",
-
+  img: {
+    marginTop: "auto",
+    width: "100%",
+    height: "100%",
+  },
+  container: {
+    display: "flex",
+    gap: "150px",
+    width: "100%",
+    objectFit: "contain",
+    [theme.breakpoints.down("xs")]: {
+      height: "280px",
     },
-    container: {
-        display: "flex",
-        gap: "150px",
-        height: "830px",
-        width: "100%",
-        [theme.breakpoints.down('xs')]: {
-            height: "280px",
-
-        },
-        [theme.breakpoints.down('sm')]: {
-
-        },
+  },
+  img2: {
+    animation: `$myEffect 3000ms`,
+    marginTop: "auto",
+    width: "100%",
+    height: "100%",
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
     },
-    img2: {
-        animation: `$myEffect 3000ms`,
-        marginTop: "auto",
-        width: "100%",
-        height: "100%",
+    "50%": {
+      opacity: 0.5,
     },
-    "@keyframes myEffect": {
-        "0%": {
-            opacity: 0,
-        },
-        "50%": {
-            opacity: 0.5,
-        },
-        "100%": {
-            opacity: 1,
-        }
+    "100%": {
+      opacity: 1,
     },
+  },
 }))
 
 const Imagen = ({ setY }) => {
-    useEffect(() => {
-        //console.log(setY)
-    }, [setY]);
+  useEffect(() => {
+    //console.log(setY)
+  }, [setY]);
 
-    const classes = useStyles()
-    return (
-        <Box className={(setY < -713) ? classes.img2 : classes.img}>
-            <StaticImage className={classes.img} src="../images/crazy1.png" />
-        </Box>
-    );
+  const classes = useStyles()
+  return (
+    <Box className={(setY < -713) ? classes.img2 : classes.img}>
+      <StaticImage className={classes.img} src="../images/crazy1.png" />
+    </Box>
+  );
 }
 
-export default Imagen;
+export default Imagen

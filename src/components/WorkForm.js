@@ -2,11 +2,10 @@ import * as React from "react"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import axios from "axios"
 import * as yup from "yup"
-import { makeStyles } from "@material-ui/core/styles"
-import { Box, Typography, Input } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
+import { Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Alert from "@material-ui/lab/Alert"
@@ -14,23 +13,82 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
 
 const useStyles = makeStyles(theme => ({
-  formContainer: {
+  root: {
+    "& .MuiFormLabel-root": {
+      fontFamily: "Hero New",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "140%",
+      color: "#193173",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "10px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "6px",
+      },
+    },
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px #D6D6D6 solid !important",
+    },
+    "& .MuiSvgIcon-root": {
+      background: "#E8E8E8",
+      color: "#797EF6",
+      borderRadius: "2px",
+    },
+    "& .MuiTypography-body1": {
+      fontFamily: "Hero New",
+      fontStyle: "italic",
+      fontWeight: "400",
+      fontSize: "13px",
+      lineHeight: "140%",
+      color: "#193173",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "9px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "6px",
+      },
+    },
+  },
+  container: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    padding: "20px",
-    marginTop: "35px",
-    gap: "20px 30px",
-    backgroundColor: "#3399FF",
+    height: "auto",
+    alignItems: "flex-start",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "80%",
+    gap: "93px",
+    [theme.breakpoints.down("md")]: {
+      gap: "65px",
+    },
     [theme.breakpoints.down("sm")]: {
+      gap: "40px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "20px",
       flexDirection: "column",
+      alignItems: "center",
     },
   },
-  formImage: {
-    width: "100% !impotant",
-    height: "100% !important",
+  formContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    backgroundColor: "rgba(235, 235, 235, 0.4)",
+    marginTop: "94px",
+    borderRadius: "14px 14px 0px 0px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "66px",
+      padding: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "8px",
+    },
   },
   containerImage: {
     display: "flex",
@@ -39,48 +97,67 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     width: "42%",
   },
-  title: {
-    marginTop: 25,
-    marginBottom: 14,
-    fontFamily: "Gotham-ultra",
-    fontSize: 30,
-    color: "#39f",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: 25,
-      marginTop: 15,
-      marginBottom: 8,
-    },
-  },
-  root: {
-    width: "100%",
-    marginTop: 25,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: 25,
-    paddingRight: 20,
-    [theme.breakpoints.down("sm")]: {
-      width: 520,
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: 380,
-      marginLeft: "auto",
-      marginRight: "auto",
-      overflowX: "hidden",
-    },
-  },
-  addressResponsive: {
+  attachContainer: {
+    width: "520px",
     display: "flex",
-    justifyContent: "center",
-    gridGap: "5px",
-    marginBottom: 0.1,
+    alignItems: "flex-start",
+    flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      width: "364px",
+      marginTop: "30px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "226px",
+    },
     [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
+      width: "189px",
     },
   },
-  boxLine: {
-    backgroundColor: "#39f",
+  attachLabel: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "140%",
+    marginTop: "43px",
+    marginBottom: "15px",
+    color: "#193173",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "15px",
+      marginBottom: "10px",
+      fontSize: "9px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "6px",
+    },
+  },
+  attachButton: {
+    border: "2px solid #797EF6",
+    borderRadius: "100px",
+    padding: "14px 20px 12px 20px",
+    marginBottom: "15px",
+    color: "#797EF6",
+    cursor: "pointer",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "14px",
+    lineHeight: "14px",
+    textAlign: "center",
+    letterSpacing: "0.05em",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "9px",
+      padding: "10px 14px 8px 14px",
+      fontSize: "10px",
+      lineHeight: "10px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      border: "1px solid #797EF6",
+      marginTop: "6px",
+      padding: "6px 9px 5px 9px",
+      fontSize: "6px",
+      lineHeight: "6px",
+    },
   },
   formInputAppears: {
     height: 1,
@@ -106,49 +183,73 @@ const useStyles = makeStyles(theme => ({
     marginRight: 40,
     marginTop: 35,
     marginBottom: 55,
+    [theme.breakpoints.down("md")]: {
+      width: "364px",
+      margin: "30px 30px 30px 30px",
+    },
     [theme.breakpoints.down("sm")]: {
-      width: 460,
-      marginLeft: 20,
-      marginRight: 20,
+      width: "226px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: 300,
-      marginLeft: 5,
-      marginRight: 5,
+      width: "189px",
     },
   },
   shortInput: {
     height: 1,
-    width: "260px",
-  },
-
-  addressForm: {
-    height: 1,
-    width: 170,
-    marginTop: 35,
-    marginBottom: 55,
+    width: "250px",
+    [theme.breakpoints.down("md")]: {
+      width: "170px",
+    },
     [theme.breakpoints.down("sm")]: {
-      width: 150,
+      width: "104px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: 300,
+      width: "86px",
     },
   },
   shortContainer: {
     display: "flex",
     flexDirection: "row",
+    gap: "20px",
+    marginBottom: "50px",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "30px",
+    },
   },
   formButton: {
-    background: "#3399ff",
-    color: "#fff",
-    height: 35,
-    fontFamily: "Lato",
-    width: 150,
-    fontSize: 18,
-    fontWeight: "bold",
-    borderRadius: 4,
-    border: "0px",
+    background: "#797EF6",
+    borderRadius: "100px",
+    padding: "14px 20px 12px 20px",
+    marginTop: "37px",
+    marginBottom: "125px",
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "14px",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "16px",
+      marginBottom: "25px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
+      padding: "6px 9px 5px 9px",
+      "& > span": {
+        fontSize: "6px",
+        lineHeight: "6px",
+      },
+    },
     "&:hover": {
       boxShadow:
         "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
@@ -181,8 +282,6 @@ const WorkForm = () => {
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
-
-
 
   const data = useStaticQuery(query)
   const image = data.strapiTeampage?.WorkFormImage?.localFile
@@ -315,7 +414,7 @@ const WorkForm = () => {
   }
 
   return (
-    <Box className={classes.formContainer}>
+    <Box className={classes.container}>
       <Box className={classes.containerImage}>
         <WorkInfo />
       </Box>
@@ -333,16 +432,11 @@ const WorkForm = () => {
           autoComplete="off"
           onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Box className={classes.formContainer}>
             <Box className={classes.shortContainer}>
               <TextField
                 required
-                className={classes.shortInput}
+                className={`${classes.shortInput} ${classes.root}`}
                 {...register("firstName")}
                 error={errors.name}
                 helperText={errors.name?.message}
@@ -353,7 +447,7 @@ const WorkForm = () => {
               />
               <TextField
                 required
-                className={classes.shortInput}
+                className={`${classes.shortInput} ${classes.root}`}
                 {...register("lastName")}
                 error={errors.name}
                 helperText={errors.name?.message}
@@ -365,18 +459,18 @@ const WorkForm = () => {
             </Box>
             <TextField
               required
-              className={classes.formInput}
+              className={`${classes.formInput} ${classes.root}`}
               error={errors.email}
               {...register("email")}
               helperText={errors.email?.message}
               type="text"
               id="outlined-basic"
-              label="Email"
+              label="Email Address"
               name="email"
             />
             <TextField
               required
-              className={classes.formInput}
+              className={`${classes.formInput} ${classes.root}`}
               error={errors.phone}
               {...register("phone")}
               helperText={errors.phone?.message}
@@ -387,7 +481,7 @@ const WorkForm = () => {
             />
             <TextField
               required
-              className={classes.formInput}
+              className={`${classes.formInput} ${classes.root}`}
               helperText={errors.linkedin?.message}
               error={errors.linkedin}
               {...register("linkedin")}
@@ -400,7 +494,7 @@ const WorkForm = () => {
             />
             <TextField
               required
-              className={classes.formInput}
+              className={`${classes.formInput} ${classes.root}`}
               helperText={errors.website?.message}
               error={errors.website}
               {...register("website")}
@@ -411,10 +505,17 @@ const WorkForm = () => {
               name="website"
               value=""
             />
-
+            <Box className={classes.attachContainer}>
+              <label className={classes.attachLabel}>Resume/CV </label>
+              <label className={classes.attachButton} for="resume-btn">
+                ATTACH
+              </label>
+            </Box>
             <Input
               type="file"
+              id="resume-btn"
               name="curriculum"
+              style={{ display: "none" }}
               {...register("curriculum", {
                 minLength: {
                   value: 1,
@@ -423,6 +524,38 @@ const WorkForm = () => {
               })}
               onChange={disableChangeButton}
             ></Input>
+            <Box className={classes.attachContainer}>
+              <label className={classes.attachLabel}>Cover Letter</label>
+              <label className={classes.attachButton} for="file-upload">
+                ATTACH
+              </label>
+            </Box>
+            <Input
+              type="file"
+              name="curriculum"
+              style={{ display: "none" }}
+              {...register("curriculum", {
+                minLength: {
+                  value: 1,
+                  message: "Load a file",
+                },
+              })}
+              onChange={disableChangeButton}
+            ></Input>
+            <TextField
+              required
+              className={`${classes.formInput} ${classes.root}`}
+              helperText={errors.website?.message}
+              error={errors.website}
+              {...register("website")}
+              form
+              onSelect={disableChangeButton}
+              type="text"
+              id="outlined-basic"
+              label="How did you hear about Crazy Imagine?"
+              name="website"
+              value=""
+            />
             <Alert
               severity="error"
               style={{

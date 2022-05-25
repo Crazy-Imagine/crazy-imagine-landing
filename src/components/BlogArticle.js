@@ -1,23 +1,19 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
-import { makeStyles, Box, Typography } from "@material-ui/core"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
-import "swiper/css"
-import "swiper/css/pagination"
-import "../css/carousel.css"
+import { Box, Typography } from "@material-ui/core"
+import { graphql, Link, StaticQuery } from "gatsby"
+import { makeStyles } from "@material-ui/core"
 
-const useStyes = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
     gap: "26px",
+    /* flex: "1 0 40%", */
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
     height: "inherit",
-    width: "max-content",
+    width: "480px",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
     },
@@ -31,10 +27,34 @@ const useStyes = makeStyles(theme => ({
       gap: "7px",
     },
   },
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "19px",
+    padding: "26px 25px 32px 37px",
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "8px",
+      padding: "11px 11px 10px 16px",
+    },
+  },
+  wrapperTitle: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#193173",
+  },
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "20px",
     lineHeight: "20px",
     color: "#193174",
@@ -74,52 +94,17 @@ const useStyes = makeStyles(theme => ({
       lineHeight: "4px",
     },
   },
-  textContainer: {
+  wrapper: {
     display: "flex",
-    flexDirection: "column",
-    gap: "19px",
-    padding: "26px 25px 32px 37px",
-    height: "100%",
-    [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "8px",
-      padding: "11px 11px 10px 16px",
-    },
-  },
-  img: {
-    backgroundColor: "#27AAE1",
-    height: "210px",
-    [theme.breakpoints.down("md")]: {
-      height: "147px",
-    },
-  },
-  slider: {
-    width: "80%",
-    boxSizing: "content-box",
-    [theme.breakpoints.between(0, 301)]: {
-      width: "75%",
-    },
-    [theme.breakpoints.between(419, 600)]: {
-      width: "50%",
-    },
-  },
-  carousel: {
-    height: "425px",
-    [theme.breakpoints.down("md")]: {
-      height: "285px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "200px",
-      width: "200px",
-    },
+    flexWrap: "wrap",
+    background: "#F9F9F9",
+    gap: "21px",
   },
 }))
 
-const BlogPost = () => {
-  const classes = useStyes()
+const BlogArticle = () => {
+  const classes = useStyles()
+
   return (
     <StaticQuery
       query={graphql`
@@ -154,35 +139,15 @@ const BlogPost = () => {
           .sort((a, b) => {
             return new Date(b.node.created_at) - new Date(a.node.created_at)
           })
-          .slice(0, 4)
-
-        SwiperCore.use([Keyboard, Mousewheel])
-
+          .slice(0, 6)
         return (
-          <Swiper
-            spaceBetween={30}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-              600: {
-                slidesPerView: 2,
-              },
-              700: {
-                slidesPerView: 3,
-              },
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            keyboard={{ enabled: true }}
-            grabCursor={true}
-            modules={[Pagination]}
-            className={`mySwiper ${classes.slider}`}
-          >
-            {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} className={classes.carousel}>
-                <Box className={classes.container}>
+          <Box>
+            <Typography className={classes.wrapperTitle}>
+              Browse All Articles
+            </Typography>
+            <Box className={classes.wrapper}>
+              {articlesSort.map(({ node }, index) => (
+                <Box key={index} className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}
                     className={classes.img}
@@ -191,16 +156,16 @@ const BlogPost = () => {
                     <Typography className={classes.title}>
                       {node.title}
                     </Typography>
-                    <Link className={classes.link}>VIEW PROJECT →</Link>
+                    <Link className={classes.link}>READ MORE →</Link>
                   </Box>
                 </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              ))}
+            </Box>
+          </Box>
         )
       }}
     />
   )
 }
 
-export default BlogPost
+export default BlogArticle

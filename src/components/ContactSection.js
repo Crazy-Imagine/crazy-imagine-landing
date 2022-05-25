@@ -3,7 +3,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
-import headerImage from '../images/satelite.svg'
+import headerImage from "../images/satelite.svg"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     color: "#193174",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
       lineHeight: "30px",
     },
@@ -22,16 +22,16 @@ const useStyles = makeStyles(theme => ({
   "@keyframes myEffect": {
     "0%": {
       opacity: 1,
-      transform: "scale(1)"
+      transform: "scale(1)",
     },
     "50%": {
       opacity: 1,
-      transform: "scale(1.1)"
+      transform: "scale(1.1)",
     },
     "100%": {
       opacity: 1,
-      transform: "scale(1)"
-    }
+      transform: "scale(1)",
+    },
   },
   subtitle: {
     animation: `$myEffect 5000ms`,
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "15px",
       lineHeight: "15px",
     },
@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     gap: "150px",
     height: "514px",
     width: "110%",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       height: "auto",
       flexDirection: "column",
       marginBottom: "20px",
@@ -83,9 +83,8 @@ const useStyles = makeStyles(theme => ({
     },
     "100%": {
       opacity: 1,
-    }
+    },
   },
-
 }))
 
 const ContactSection = ({ bgColor, bgImage }) => {
@@ -100,10 +99,8 @@ const ContactSection = ({ bgColor, bgImage }) => {
       <Box className={classes.container}>
         <Box className={classes.textContainer}>
           <Typography className={classes.subtitle}>REACH OUT</Typography>
-          <Typography className={classes.title}>
-            {`Imagine What`}
-          </Typography>
-          <Typography className={classes.title} style={{ marginTop: '-17px' }}>
+          <Typography className={classes.title}>{`Imagine What`}</Typography>
+          <Typography className={classes.title} style={{ marginTop: "-17px" }}>
             {`We Can Create`}
           </Typography>
           <Box className={classes.img}>

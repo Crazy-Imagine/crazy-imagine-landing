@@ -1,17 +1,9 @@
 import React from "react"
-import { Box, Button, makeStyles, Typography } from "@material-ui/core"
+import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
-import "swiper/css"
-import "swiper/css/pagination"
-import "../css/swiper-bullet.css"
-
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "1012px",
+    height: "auto",
     backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
@@ -99,21 +91,18 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  carouselContainer: {
+  cardContainer: {
     backgroundColor: "#FFFFFF",
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    height: "650px",
     overflow: "hidden",
     width: "980px",
     display: "flex",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
-      height: "455px",
       width: "686px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "282px",
       width: "425px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -122,24 +111,28 @@ const useStyles = makeStyles(theme => ({
       borderRadius: "8px",
     },
   },
-  titleCarousel: {
+  titleCard: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: "28px",
+    paddingLeft: "26px",
     lineHeight: "28px",
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
+      paddingLeft: "18px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       lineHeight: "12px",
+      paddingLeft: "9px",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "7px",
       lineHeight: "7px",
+      paddingLeft: "4px",
     },
   },
   link: {
@@ -148,16 +141,25 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "400",
     fontSize: "15px",
     lineHeight: "15px",
+    paddingLeft: "26px",
     letterSpacing: "0.1em",
     color: "#888DFF",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
+      paddingLeft: "18px",
       lineHeight: "11px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
+      paddingLeft: "9px",
       lineHeight: "7px",
     },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "4px",
+    },
+  },
+  img: {
+    height: "auto",
   },
   textContainer: {
     display: "flex",
@@ -175,94 +177,63 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectSection = () => {
+const FeaturedArticle = () => {
   const classes = useStyles()
-  SwiperCore.use([Keyboard])
-
   return (
     <StaticQuery
-      query={query}
+      query={graphql`
+        query {
+          articles: allStrapiArticle {
+            edges {
+              node {
+                id
+                description
+                title
+                slug
+                created_at
+                author {
+                  name
+                }
+                image {
+                  localFile {
+                    publicURL
+                  }
+                }
+                category {
+                  name
+                }
+              }
+            }
+          }
+        }
+      `}
       render={data => {
+        const articles = data.articles.edges
+        const featureArticle = articles
+          .sort((a, b) => {
+            return new Date(b.node.created_at) - new Date(a.node.created_at)
+          })
+          .slice(0, 1)
+        console.log("Article: ", featureArticle[0].node)
         return (
           <Box className={classes.container}>
-            <Typography className={classes.title}>Previous Projects</Typography>
-            <Swiper
-              slidesPerView={"auto"}
-              centeredSlides={true}
-              spaceBetween={10}
-              pagination={{
-                clickable: true,
-              }}
-              grabCursor={true}
-              style={{ backgroundColor: "#FFFFFF" }}
-              loop={true}
-              modules={[Pagination]}
-              keyboard={{ enabled: true }}
-              mousewheel
-              className={`${classes.container} purpleBullet`}
-            >
-              {data.projects.nodes.map((el, index) => (
-                <SwiperSlide key={index} style={{ backgroundColor: "#FFFFFF" }}>
-                  {console.log(data.projects.nodes[index].images[0].localFile)}
-                  <Box className={classes.carouselContainer}>
-                    <GatsbyImage
-                      alt="About the project"
-                      image={getImage(
-                        data.projects.nodes[index].images[0].localFile
-                      )}
-                      style={{
-                        objectFit: "contain",
-                        backgroundColor: "#27AAE1",
-                      }}
-                      imgStyle={{
-                        objectFit: "contain",
-                        backgroundColor: "#27AAE1",
-                      }}
-                    />
-                    <Box className={classes.textContainer}>
-                      <Typography className={classes.titleCarousel}>
-                        {el.title}
-                      </Typography>
-                      <Link className={classes.link}>VIEW PROJECT →</Link>
-                    </Box>
-                  </Box>
-                </SwiperSlide>
-              ))}
-              <Button className={classes.button}>ALL PROJECTS</Button>
-            </Swiper>
+            <Typography className={classes.title}>Featured Article</Typography>
+            <Box className={classes.cardContainer}>
+              <img
+                className={classes.img}
+                src={featureArticle[0].node.image[0].localFile.publicURL}
+              />
+              <Box className={classes.textContainer}>
+                <Typography className={classes.titleCard}>
+                  {featureArticle[0].node.title}
+                </Typography>
+                <Link className={classes.link}>READ MORE →</Link>
+              </Box>
+            </Box>
           </Box>
         )
       }}
     />
   )
 }
-
-const query = graphql`
-  query {
-    homePage: strapiHomepage {
-      projectsImage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
-          }
-        }
-      }
-    }
-    projects: allStrapiProjects(limit: 8) {
-      nodes {
-        title
-        slug
-        description
-        id
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(quality: 100)
-            }
-          }
-        }
-      }
-    }
-  }
-`
-export default ProjectSection
+export default FeaturedArticle

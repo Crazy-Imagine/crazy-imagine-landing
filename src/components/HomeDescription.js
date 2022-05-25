@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import bgImage from "../images/background.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +15,15 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      height: "329px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "203px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "100px",
+    },
   },
   textContainer: {
     display: "flex",
@@ -31,6 +40,18 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     textAlign: "center",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "17px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
+      lineHeight: "11px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+      lineHeight: "5px",
+    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -40,6 +61,18 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "39px",
     color: "#FFFFFF",
     textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "21px",
+      lineHeight: "27px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "13px",
+      lineHeight: "17px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "7px",
+      lineHeight: "10px",
+    },
   },
 }))
 

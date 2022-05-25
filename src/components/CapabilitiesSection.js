@@ -2,7 +2,6 @@ import React from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import Capabilities from "./Capabilities"
 import CapabilitiesCard from "./CapabilitiesCard"
-import { graphql, useStaticQuery } from "gatsby"
 import {
   faBagShopping,
   faChartSimple,
@@ -11,25 +10,58 @@ import {
   faMobile,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
+import fullstackImage from "../images/laptop.svg"
+import bgImage from "../images/Group1.svg"
+import qualityImage from "../images/quality.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    marginTop: "144px",
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
     gap: "45px",
-    height: "732px",
+    backgroundColor: "rgb(255, 255, 255)",
+    height: "772px",
+    [theme.breakpoints.down("md")]: {
+      gap: "32px",
+      height: "540px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "20px",
+      height: "335px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignSelf: "center",
+      height: "auto",
+    },
   },
   reverseContainer: {
     display: "flex",
     flexDirection: "row-reverse",
-    marginTop: "144px",
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
+    height: "772px",
     gap: "45px",
-    height: "667px",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      gap: "32px",
+      height: "540px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      background: "transparent",
+      gap: "20px",
+      height: "335px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignSelf: "center",
+      height: "auto",
+    },
   },
   cardContainerCenter: {
     display: "flex",
@@ -37,6 +69,12 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     alignItems: "center",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
   },
   cardContainer: {
     display: "flex",
@@ -44,17 +82,17 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     alignItems: "flex-start",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
+    },
   },
 }))
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-
-  // const capabilitiesSection = useStaticQuery(query)
-  // const images =
-  //   capabilitiesSection.allStrapiHomepage.nodes[0].CapabilitiesImages
-  // const fullstackImage = images[1].localFile.publicURL
-  // const qualitysupportImage = images[2].localFile.publicURL
 
   return (
     <>
@@ -67,7 +105,7 @@ const CapabilitiesSection = () => {
       CSS3, our full stack developres have
       the skills and experience to elevate your digital presence`}
           cls="container"
-          // img={fullstackImage}
+          img={fullstackImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
@@ -145,7 +183,7 @@ const CapabilitiesSection = () => {
           launch ready.
           `}
           cls="container"
-          // img={qualitysupportImage}
+          img={qualityImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard

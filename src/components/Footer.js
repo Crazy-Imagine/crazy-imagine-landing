@@ -10,7 +10,13 @@ import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import Section from "./Section"
-import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT } from "../navigation/sitemap"
+import {
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  CONTACT,
+} from "../navigation/sitemap"
 //import { Autocomplete } from "@material-ui/lab"
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   contactIcon: {
     fontSize: "22px",
     color: "#249DCF",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
     },
   },
@@ -33,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     color: "#27AAE1",
     marginTop: 3,
     alingSelf: "center",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
     },
   },
@@ -43,14 +49,13 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "100%",
-
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "100%",
       height: "auto",
-      flexDirection: "column"
+      flexDirection: "column",
     },
   },
   logoContainer: {
@@ -60,12 +65,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
     height: "100%",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "auto",
       gap: "0px",
       marginBottom: "-45px",
-      marginTop: "15px"
-
+      marginTop: "15px",
     },
   },
   formatContactSection: {
@@ -85,9 +89,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "50px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       visibility: "hidden",
-      width: "0%"
+      width: "0%",
     },
   },
   infoContainer: {
@@ -97,15 +101,14 @@ const useStyles = makeStyles(theme => ({
     gap: "28px",
     padding: "44px 0px 44px 44px",
     borderLeft: "1.5px solid #233B7E",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
       borderLeft: "0px solid #233B7E",
-
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       //visibility: "hidden"
       padding: "4px 0px 4px 4px",
-      marginBottom: "15px"
+      marginBottom: "15px",
     },
   },
   iconsContainer: {
@@ -113,8 +116,8 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center",
     /* marginRight: "auto", */
     gap: "21px",
-    [theme.breakpoints.down('xs')]: {
-      marginTop: "15px"
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
     },
   },
   info: {
@@ -122,9 +125,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     lineHeight: "20px",
     gap: "4px",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       lineHeight: "8px",
-
     },
   },
   linkTypography: {
@@ -134,7 +136,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     lineHeight: "16px",
     fontSize: "14px",
-    textDecoration: "none"
+    textDecoration: "none",
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -142,7 +144,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Hero New",
     fontWeight: "400",
     fontSize: "14px",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
     },
   },
@@ -168,19 +170,29 @@ const Footer = ({ height = "192px", align = "center" }) => {
         </Box>
         <Box className={classes.linkContainer}>
           <Typography>
-            <Link to={`${ABOUT}`} className={classes.linkTypography}>ABOUT</Link>
+            <Link to={`${ABOUT}`} className={classes.linkTypography}>
+              ABOUT
+            </Link>
           </Typography>
           <Typography>
-            <Link to={`${PROJECTS}`} className={classes.linkTypography}>SERVICES</Link>
+            <Link to={`${PROJECTS}`} className={classes.linkTypography}>
+              SERVICES
+            </Link>
           </Typography>
           <Typography>
-            <Link to={`${HOME}#blog`} className={classes.linkTypography}>BLOG</Link>
+            <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+              BLOG
+            </Link>
           </Typography>
           <Typography>
-            <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>WORK WITH US</Link>
+            <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>
+              WORK WITH US
+            </Link>
           </Typography>
           <Typography>
-            <Link to={`${CONTACT}`} className={classes.linkTypography}>CONTACT</Link>
+            <Link to={`${CONTACT}`} className={classes.linkTypography}>
+              CONTACT
+            </Link>
           </Typography>
         </Box>
         <Box className={classes.infoContainer}>

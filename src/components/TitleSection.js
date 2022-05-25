@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
+import mainImage from "../images/Group619.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -9,15 +10,16 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "59px",
-    marginTop: "144px",
-    marginBottom: "52px",
-    overflow: "hidden",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column",
-      height: "auto",
-      marginTop: "17px",
-      marginBottom: "17px"
-
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "41px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "25px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column ",
+      gap: "10px",
     },
   },
   textContainer: {
@@ -26,56 +28,64 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     justifyContent: "center",
     gap: "20px",
-    width: "41%",
-    [theme.breakpoints.down('sm')]: {
-      width: "79%",
-      gap: "10px",
-      marginBottom: "17px"
+    width: "39%",
+    whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      gap: "14px",
     },
-    [theme.breakpoints.down('xs')]: {
-      width: "86%",
-      gap: "4px",
+    [theme.breakpoints.down("sm")]: {
+      gap: "9px",
     },
-
+    [theme.breakpoints.down("xs")]: {
+      gap: "5px",
+    },
+  },
+  titleContainer: {
+    alignSelf: "flex-start",
   },
   title: {
-    animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
-    width: "526px",
-    [theme.breakpoints.down('sm')]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "28px",
-      lineHeight: "28px",
+    alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
     },
-    [theme.breakpoints.down('xs')]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
     },
   },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-      transform: "scale(0)"
+  blueTitle: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "58px",
+    lineHeight: "58px",
+    color: "#27AAE1",
+    alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
     },
-    "50%": {
-      opacity: 0.5,
-      transform: "scale(0.5)"
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
     },
-    "100%": {
-      opacity: 1,
-      transform: "scale(1)"
-    }
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
   desc: {
-    animation: `$myEffectos 8000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -83,61 +93,57 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "130%",
     letterSpacing: "0.02em",
     color: "#193174",
-    [theme.breakpoints.down('xs')]: {
-      fontSize: "8px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
     },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: "13px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "9px",
     },
-  },
-  "@keyframes myEffectos": {
-    "0%": {
-      opacity: 0,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
     },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
-    }
   },
   img: {
-    animation: `$myEffect 3000ms`,
-    [theme.breakpoints.down('xs')]: {
-      width: "80%",
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+      alignItems: "center",
     },
-    [theme.breakpoints.down('sm')]: {
-      width: "80%",
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+      height: "45%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "22%",
+      height: "22%",
     },
   },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(-200%)"
+  imgContainer: {
+    display: "flex",
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "35%",
     },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)"
-    }
-  },
-  imgn: {
-    [theme.breakpoints.down('sm')]: {
-      marginTop: "17px",
-      justifyContent: "center",
-      textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      width: "inherit",
+      marginTop: "10px",
     },
   },
 }))
 
-export const TitleSection = ({ title, desc, img }) => {
+export const TitleSection = ({ desc, img }) => {
   const classes = useStyles()
   return (
     <Box className={classes.container}>
-      <Box className={classes.imgn}>
-        <img className={classes.img} src={img} alt="" />
+      <Box className={classes.imgContainer}>
+        <img src={mainImage} className={classes.img} alt="Title Image" />
       </Box>
       <Box className={classes.textContainer}>
-        <Typography className={classes.title}>{title}</Typography>
+        <Box className={classes.titleContainer}>
+          <Typography className={classes.title}>{`Why 
+        Should You`}</Typography>
+          <Typography className={classes.blueTitle}>Choose Us</Typography>
+        </Box>
         <Typography className={classes.desc}>{desc}</Typography>
       </Box>
     </Box>

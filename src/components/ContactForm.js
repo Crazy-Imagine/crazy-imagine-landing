@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
     },
@@ -36,14 +36,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
     },
   },
@@ -53,10 +53,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-start",
     alignItems: "center",
     marginTop: "108px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "auto",
       marginTop: "30px",
     },
@@ -65,17 +65,16 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "15px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-
   },
   formCheck: {
     background: "#E8E8E8",
     border: "1px solid #797EF6",
     boxSizing: "border-box",
     borderRadius: "2px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
   },
@@ -96,35 +95,34 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
       color: "#FFFFFF",
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-
   },
   divider: {
     display: "flex",
     gap: "20px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "auto",
       flexDirection: "column",
     },
   },
   input: {
     width: "520px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
   },
   shortInput: {
     width: "250px",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
   },
@@ -133,7 +131,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white !important",
     display: "flex",
     justifyContent: "space-around",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "auto",
     },
   },

@@ -7,9 +7,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#071A4E",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: "auto"
+      height: "auto",
     },
   },
   copyContainer: {
@@ -18,33 +18,60 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     width: "92%",
     height: "78px",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("md")]: {
+      height: "55px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "34px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "20px",
       flexDirection: "column",
       height: "auto",
       marginTop: "5px",
-      marginBottom: "5px"
+      marginBottom: "5px",
     },
   },
   copyright: {
     color: "white",
     fontFamily: "Roboto",
     fontWeight: 400,
-    fontSize: 12,
+    fontSize: "12px",
     textAlign: "left",
     fontStyle: "normal",
-    [theme.breakpoints.down('xs')]: {
-      fontSize: "9px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
     },
   },
   barText: {
     color: "#27AAE1",
     fontSize: "15px",
     height: "17px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      height: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+      height: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+    },
   },
   text: {
     textAlign: "right",
     fontWeight: 700,
-    fontSize: 12,
+    fontSize: "12px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "7px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5px",
+    },
   },
 }))
 

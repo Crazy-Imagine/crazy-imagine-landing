@@ -1,11 +1,9 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
 import { Box, Hidden } from "@material-ui/core"
+import { graphql, useStaticQuery } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
-import HumanTalent from "../components/HumanTalent"
 import LastestPosts from "../components/LastestPosts"
 import ReferenceSection from "../components/ReferenceSection"
 import ContactSection from "../components/ContactSection"
@@ -17,6 +15,7 @@ import ProjectSection from "../components/ProjectSection"
 import HomeDescription from "../components/HomeDescription"
 import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
+import headerImage from "../images/flag.svg"
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -36,6 +35,7 @@ const IndexPage = () => {
               title={`Ideas Beyond\nYour Imagination`}
               desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
               btn={true}
+              img={headerImage}
               cls="textContainer"
             />
             <HomeMainSection />

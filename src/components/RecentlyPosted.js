@@ -1,8 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-
-import { BLOG } from "../navigation/sitemap"
+import { ARTICLE } from "../navigation/sitemap"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
@@ -77,10 +76,10 @@ const RecentlyPosted = () => {
             <Typography variant="h4" className={classes.recentlyPostedTitle}>
               Recently Posted
             </Typography>
-            {articlesSort.slice(0, 4).map((el) => (
+            {articlesSort.slice(0, 4).map(el => (
               <Box key={el.node.id} marginBottom="24px">
                 <Link
-                  to={`${BLOG}/${el.node.slug}`}
+                  to={`${ARTICLE}/${el.node.slug}`}
                   className={classes.linkContainer}
                 >
                   <Grid container alignItems="center">

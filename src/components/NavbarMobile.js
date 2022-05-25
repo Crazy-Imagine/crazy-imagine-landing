@@ -18,53 +18,72 @@ import {
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 import {
-  Home,
-  People,
-  Code,
-  LineWeight,
-  Drafts,
-  ImportContacts,
-  Close,
-} from "@material-ui/icons"
-import WorkIcon from "@material-ui/icons/Work"
-
+  faHouse,
+  faBars,
+  faCode,
+  faBlog,
+  faLaptopCode,
+  faPhone,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useScroll from "../hooks/useScroll"
-import { ABOUT, CONTACT, HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
+import {
+  CONTACT,
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  BLOG,
+} from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
-    backgroundColor: props.scroll ? "transparent" : "white",
+    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
   }),
-
   navbarMobileIcons: props => ({
     fontSize: 50,
-    color: props.scroll ? props.iconsVariant : "#23aae1",
+    color: props.scroll ? props.iconsVariant : "white",
   }),
   navbarMobileLogo: {
     width: 140,
     height: 73,
   },
   resetLink: {
-    color: "black",
     lineHeight: 2.5,
-    textDecoration: "none",
+    color: "white",
     "&:hover": {
-      color: "black",
+      color: "#67DAFF",
       textDecoration: "none",
     },
+  },
+  textLink: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "130%",
+    letterSpacing: "0.02em",
   },
   drawer: {
     width: "100%",
     "& .MuiDrawer-paper": {
       width: drawerWidth,
       boxSizing: "border-box",
+      backgroundColor: "#193174",
+    },
+  },
+  btn: {
+    "& .MuiButtonBase-root": {
+      padding: "8px",
     },
   },
   list: {
     width: "100%",
+    backgroundColor: "#193174",
   },
 }))
 
@@ -79,13 +98,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }))
 
 const icons = [
-  <Home />,
-  <LineWeight />,
-  <Code />,
-  <People />,
-  <ImportContacts />,
-  <Drafts />,
-  <WorkIcon />,
+  <FontAwesomeIcon icon={faHouse} size="lg" />,
+  <FontAwesomeIcon icon={faBars} size="lg" />,
+  <FontAwesomeIcon icon={faCode} size="lg" />,
+  <FontAwesomeIcon icon={faBlog} size="lg" />,
+  <FontAwesomeIcon icon={faLaptopCode} size="lg" />,
+  <FontAwesomeIcon icon={faPhone} size="lg" />,
 ]
 
 const NavbarMobile = ({
@@ -99,7 +117,6 @@ const NavbarMobile = ({
   const handleDrawerOpen = () => {
     setOpen(true)
   }
-
   const handleDrawerClose = () => {
     setOpen(!open)
   }
@@ -119,8 +136,6 @@ const NavbarMobile = ({
       >
         <Toolbar>
           <Box
-            // m={1}
-            // mx={15}
             display="flex"
             width="100%"
             height="6em"
@@ -129,7 +144,7 @@ const NavbarMobile = ({
           >
             <Link to={HOME}>
               <StaticImage
-                src="../images/LOGO.png"
+                src="crazy-imagine-icon.svg"
                 alt="logo"
                 className={classes.navbarLogo}
               />
@@ -138,8 +153,9 @@ const NavbarMobile = ({
               color="inherit"
               aria-label="open drawer"
               onClick={handleDrawerOpen}
+              className={classes.btn}
               edge="start"
-              sx={{ mr: 2, ...(open && { display: "none" }) }}
+              sx={{ p: 8, mr: 2, ...(open && { display: "none" }) }}
             >
               <MenuIcon className={classes.navbarMobileIcons} />
             </IconButton>
@@ -153,33 +169,32 @@ const NavbarMobile = ({
         >
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-              <Close />
+              <FontAwesomeIcon icon={faXmark} inverse />
             </IconButton>
           </DrawerHeader>
 
-          <Divider />
+          <Divider style={{ backgroundColor: "white", opacity: 0.7 }} />
           <List onClick={handleDrawerClose} className={classes.list}>
             {[
               <Link className={classes.resetLink} to={`${HOME}`}>
-                <Typography>Home</Typography>
+                <Typography className={classes.textLink}>Home</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${ABOUT}`}>
-                <Typography>About Us</Typography>
+                <Typography className={classes.textLink}>About</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${PROJECTS}`}>
-                <Typography>Services</Typography>
+                <Typography className={classes.textLink}>Services</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${TEAMS}`}>
-                <Typography>Team</Typography>
-              </Link>,
-              <Link className={classes.resetLink} to={`${HOME}#blog`}>
-                <Typography>Blog</Typography>
-              </Link>,
-              <Link className={classes.resetLink} to={`${CONTACT}`}>
-                <Typography>Contact</Typography>
+              <Link className={classes.resetLink} to={`${BLOG}`}>
+                <Typography className={classes.textLink}>Blog</Typography>
               </Link>,
               <Link className={classes.resetLink} to={`${WORK_WITH_US}`}>
-                <Typography>Work With Us</Typography>
+                <Typography className={classes.textLink}>
+                  Work With Us
+                </Typography>
+              </Link>,
+              <Link className={classes.resetLink} to={`${CONTACT}`}>
+                <Typography className={classes.textLink}>Contact Us</Typography>
               </Link>,
             ].map((text, index) => (
               <ListItem button key={index} alignItems="center">

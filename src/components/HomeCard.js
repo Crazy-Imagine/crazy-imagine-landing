@@ -6,13 +6,28 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     width: "150px",
     fontSize: "28px",
     lineHeight: "28px",
     textAlign: "center",
     whiteSpace: "pre-line",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      width: "105px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "65px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "33px",
+      fontSize: "6px",
+      lineHeight: "6px",
+    },
   },
   cardContainer: {
     backgroundColor: "#FFFFFF",
@@ -27,6 +42,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "27px",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "220px",
+      height: "130px",
+      gap: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "154px",
+      height: "91px",
+      gap: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "78px",
+      height: "46px",
+      gap: "6px",
+    },
   },
   cardIcon: {
     fontStyle: "normal",
@@ -35,6 +65,18 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "27px",
     textAlign: "center",
     color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "6px",
+      lineHeight: "6px",
+    },
   },
 }))
 

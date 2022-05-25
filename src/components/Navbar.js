@@ -3,7 +3,14 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/core/styles"
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core"
-import { CONTACT, HOME, PROJECTS, WORK_WITH_US, ABOUT } from "../navigation/sitemap"
+import {
+  CONTACT,
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  BLOG,
+} from "../navigation/sitemap"
 import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
@@ -13,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     width: "100%",
-    backgroundColor: props.scroll ? "transparent" : "white",
+    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
     zIndex: 999999,
   }),
   iconSpacing: {
@@ -24,9 +31,14 @@ const useStyles = makeStyles(theme => ({
   },
   navbarIcons: props => ({
     fontSize: 25,
-    color: props.scroll ? props.iconsVariant : "#23aae1",
+    color: props.scroll ? props.iconsVariant : "white",
   }),
-
+  contactButton: props => ({
+    width: "151px",
+    height: " 40px",
+    background: "#FFFFFF",
+    borderRadius: "100px",
+  }),
   linkTypography: props => ({
     fontSize: 16,
     fontWeight: "700",
@@ -36,15 +48,13 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "16px",
     textAlign: "right",
     transition: "all 300ms ease",
-    textDecoration: "none",
-    color: props.scroll ? props.linkVariant : "black",
+    color: props.scroll ? props.linkVariant : "white",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
-      color: props.scroll ? props.linkVariant : "black",
+      color: props.scroll ? props.linkVariant : "white",
     },
   }),
-
   barContainer: {
     margin: 1,
     display: "flex",
@@ -54,14 +64,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     gap: "50px",
   },
-
   linkContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "50px",
   },
-
   contactTypography: {
     fontSize: "14px",
     fontWeight: 700,
@@ -71,15 +79,6 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "14px",
     color: "#1E2F97",
   },
-
-  contactButton: {
-    width: "151px",
-    height: " 40px",
-    background: "#FFFFFF",
-    borderRadius: "100px",
-  },
-
-  navbarLogo: {},
 }))
 
 const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
@@ -113,7 +112,7 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
               </Link>
             </Typography>
             <Typography>
-              <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+              <Link to={`${BLOG}`} className={classes.linkTypography}>
                 BLOG
               </Link>
             </Typography>

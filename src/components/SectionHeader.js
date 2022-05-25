@@ -2,8 +2,7 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
-import 'animate.css'
-
+import "animate.css"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -16,17 +15,15 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px",
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
+    },
+    [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
       height: "auto",
       width: "93.2%",
       flexDirection: "column",
     },
-    [theme.breakpoints.down('sm')]: {
-      width: "93.2%",
-      justifyContent: "center"
-    },
-
   }),
   backgroundOut: props => ({
     background: "linear-gradient(179.23deg, #193174 27.17%, #27AAE1 96.81%)",
@@ -41,10 +38,10 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   }),
@@ -62,6 +59,20 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: "3px 3px 3px 3px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "inherit",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "3px 3px 3px 3px",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "inherit",
+      },
+    },
   },
   buttonRight: {
     border: "2px solid #FFFFFF",
@@ -69,7 +80,6 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
-
     "& > span": {
       fontSize: "12px",
       lineHeight: "10px",
@@ -79,11 +89,35 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: "4px 3px 3px 3px",
+      border: "1px solid #FFFFFF",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "inherit",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "4px 3px 3px 3px",
+      border: "1px solid #FFFFFF",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "inherit",
+      },
+    },
   },
   buttonContainer: {
     display: "flex",
     flexDirection: "row",
     gap: "12px",
+    [theme.breakpoints.down("sm")]: {
+      gap: "3px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "15px",
+      flexDirection: "column",
+      marginBototm: "5px",
+    },
   },
   textContainer: props => ({
     backgroundColor: "#27AAE1",
@@ -94,13 +128,16 @@ const useStyles = makeStyles(theme => ({
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
-
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       padding: "50px 0px 50px 50px",
       width: "auto",
       height: "auto",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("sm")]: {
+      padding: "50px 0px 50px 50px",
+      width: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
       padding: "10px 0px 10px 10px",
       width: "100%",
     },
@@ -110,33 +147,37 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       visibility: "hidden",
-      width: "0px"
+      display: "none",
+      width: "0px",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       visibility: "hidden",
       width: "0%",
     },
   }),
   img: {
     animation: `$myEffect 3000ms`,
-    [theme.breakpoints.down('sm')]: {
-      width: "auto"
+
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      display: "none",
     },
-    [theme.breakpoints.down('xs')]: {
-      visibility: "hidden"
+    [theme.breakpoints.down("xs")]: {
+      visibility: "hidden",
+      display: "none",
     },
   },
   "@keyframes myEffect": {
     "0%": {
       opacity: 0,
-      transform: "translateX(-200%)"
+      transform: "translateX(-200%)",
     },
     "100%": {
       opacity: 1,
-      transform: "translateX(0)"
-    }
+      transform: "translateX(0)",
+    },
   },
   title: props => ({
     fontStyle: "normal",
@@ -146,19 +187,19 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       lineHeight: "71px",
       fontWeight: 600,
-      fontSize: "58px"
+      fontSize: "58px",
     },
-    [theme.breakpoints.down('sm')]: {
-      lineHeight: "81px",
-      fontSize: props.little ? "70px" : "90px",
-      fontWeight: 700,
+    [theme.breakpoints.down("sm")]: {
+      lineHeight: props.little ? "41px" : "50px",
+      fontSize: props.little ? "61px" : "40px",
+      fontWeight: props.little ? 700 : 500,
     },
-    [theme.breakpoints.down('xs')]: {
-      lineHeight: "41px",
-      fontSize: "23px",
+    [theme.breakpoints.down("xs")]: {
+      lineHeight: props.little ? "41px" : "30px",
+      fontSize: props.little ? "23px" : "20px",
       fontWeight: 100,
     },
   }),
@@ -172,6 +213,14 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "inherit",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px",
+      lineHeight: "inherit",
+    },
   }),
 }))
 
