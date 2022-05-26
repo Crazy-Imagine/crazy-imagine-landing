@@ -38,6 +38,9 @@ const useStyles = makeStyles(theme => ({
     height: " 40px",
     background: "#FFFFFF",
     borderRadius: "100px",
+    "&:hover": {
+      background: "#F5F5F5",
+    },
   }),
   linkTypography: props => ({
     fontSize: 16,
@@ -124,7 +127,11 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
           </Box>
           <Link to={`${CONTACT}`} style={{ textDecoration: "none" }}>
             <Button className={classes.contactButton}>
-              <Link to={`${CONTACT}`} className={classes.contactTypography}>
+              <Link
+                to={`${CONTACT}`}
+                style={{ textDecoration: "none" }}
+                className={classes.contactTypography}
+              >
                 Contact Us
               </Link>
             </Button>

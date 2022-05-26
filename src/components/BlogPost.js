@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import { makeStyles, Box, Typography } from "@material-ui/core"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
+import SwiperCore, { Keyboard } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
@@ -17,17 +17,12 @@ const useStyes = makeStyles(theme => ({
     borderRadius: "14px",
     overflow: "hidden",
     height: "inherit",
-    width: "max-content",
+    width: "450px",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "13px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "inherit",
-      borderRadius: "7px",
-      gap: "7px",
     },
   },
   title: {
@@ -42,17 +37,9 @@ const useStyes = makeStyles(theme => ({
       fontSize: "16px",
       lineHeight: "16px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "10px",
-      lineHeight: "10px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "6px",
-      lineHeight: "6px",
-    },
   },
   link: {
-    fontFamily: "Nexa",
+    fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "15px",
@@ -63,14 +50,6 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "4px",
-      lineHeight: "4px",
     },
   },
   textContainer: {
@@ -101,21 +80,11 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.between(0, 301)]: {
       width: "75%",
     },
-    [theme.breakpoints.between(419, 600)]: {
-      width: "50%",
-    },
   },
   carousel: {
     height: "400px",
     [theme.breakpoints.down("md")]: {
-      height: "280px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "225px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "200px",
-      width: "200px",
+      height: "300px",
     },
   },
 }))
@@ -158,7 +127,7 @@ const BlogPost = () => {
           })
           .slice(0, 4)
 
-        SwiperCore.use([Keyboard, Mousewheel])
+        SwiperCore.use([Keyboard])
 
         return (
           <Swiper
@@ -180,7 +149,7 @@ const BlogPost = () => {
             keyboard={{ enabled: true }}
             grabCursor={true}
             modules={[Pagination]}
-            className={`mySwiper ${classes.slider}`}
+            className={`${classes.slider}`}
           >
             {articlesSort.map(({ node }, index) => (
               <SwiperSlide key={index} className={classes.carousel}>
@@ -193,7 +162,12 @@ const BlogPost = () => {
                     <Typography className={classes.title}>
                       {node.title}
                     </Typography>
-                    <Link className={classes.link}>VIEW PROJECT →</Link>
+                    <Link
+                      className={classes.link}
+                      style={{ textDecoration: "none" }}
+                    >
+                      VIEW PROJECT →
+                    </Link>
                   </Box>
                 </Box>
               </SwiperSlide>

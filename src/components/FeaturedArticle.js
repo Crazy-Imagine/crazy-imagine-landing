@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: "98px",
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
@@ -140,6 +141,7 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "15px",
+    cursor: "pointer",
     lineHeight: "15px",
     paddingLeft: "26px",
     letterSpacing: "0.1em",

@@ -176,24 +176,51 @@ const NavbarMobile = ({
           <Divider style={{ backgroundColor: "white", opacity: 0.7 }} />
           <List onClick={handleDrawerClose} className={classes.list}>
             {[
-              <Link className={classes.resetLink} to={`${HOME}`}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${HOME}`}
+              >
                 <Typography className={classes.textLink}>Home</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${ABOUT}`}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${ABOUT}`}
+              >
                 <Typography className={classes.textLink}>About</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${PROJECTS}`}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${PROJECTS}`}
+              >
                 <Typography className={classes.textLink}>Services</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${BLOG}`}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${BLOG}`}
+              >
                 <Typography className={classes.textLink}>Blog</Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${WORK_WITH_US}`}>
-                <Typography className={classes.textLink}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${WORK_WITH_US}`}
+              >
+                <Typography
+                  style={{ textDecoration: "none" }}
+                  className={classes.textLink}
+                >
                   Work With Us
                 </Typography>
               </Link>,
-              <Link className={classes.resetLink} to={`${CONTACT}`}>
+              <Link
+                className={classes.resetLink}
+                style={{ textDecoration: "none" }}
+                to={`${CONTACT}`}
+              >
                 <Typography className={classes.textLink}>Contact Us</Typography>
               </Link>,
             ].map((text, index) => (

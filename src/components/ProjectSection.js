@@ -4,7 +4,7 @@ import { graphql, Link, StaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
+import SwiperCore, { Keyboard } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/swiper-bullet.css"
@@ -21,9 +21,6 @@ const useStyles = makeStyles(theme => ({
       height: "708px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "439px",
-    },
-    [theme.breakpoints.down("xs")]: {
       height: "auto",
     },
   },
@@ -45,18 +42,11 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "33px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontWeight: "17px",
-      fontSize: "17px",
-      lineHeight: "17px",
+      fontWeight: "22px",
+      fontSize: "22px",
+      lineHeight: "22px",
       marginTop: "34px",
       marginBottom: "20px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontWeight: "10px",
-      fontSize: "10px",
-      lineHeight: "10px",
-      marginTop: "25px",
-      marginBottom: "12px",
     },
   },
   button: {
@@ -94,72 +84,46 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "10px",
       },
     },
-    [theme.breakpoints.down("xs")]: {
-      padding: "3px 3px 3px 3px",
-      "& > span": {
-        fontSize: "4px",
-        lineHeight: "inherit",
-      },
-    },
   },
   carouselContainer: {
     backgroundColor: "#FFFFFF",
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    height: "650px",
+    width: "525px",
+    height: "auto",
     overflow: "hidden",
-    width: "980px",
     display: "flex",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
-      height: "455px",
-      width: "686px",
+      width: "400px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "282px",
-      width: "425px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "180px",
-      width: "250px",
-      borderRadius: "8px",
+      width: "325px",
     },
   },
   titleCarousel: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "28px",
-    lineHeight: "28px",
+    fontSize: "24px",
+    lineHeight: "24px",
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "12px",
-      lineHeight: "12px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
     },
   },
   link: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "15px",
-    lineHeight: "15px",
+    fontSize: "12px",
+    lineHeight: "12px",
     letterSpacing: "0.1em",
     color: "#888DFF",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
     },
   },
   textContainer: {
@@ -170,10 +134,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       padding: "20px 0 27px 20px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "11px",
-      padding: "12px 0 17px 12px",
     },
   },
 }))
@@ -192,7 +152,7 @@ const ProjectSection = () => {
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
-              spaceBetween={10}
+              spaceBetween={30}
               pagination={{
                 clickable: true,
               }}
@@ -201,7 +161,6 @@ const ProjectSection = () => {
               loop={true}
               modules={[Pagination]}
               keyboard={{ enabled: true }}
-              mousewheel
               className={`${classes.container} purpleBullet`}
             >
               {data.projects.nodes.map((el, index) => (
@@ -226,7 +185,12 @@ const ProjectSection = () => {
                       <Typography className={classes.titleCarousel}>
                         {el.title}
                       </Typography>
-                      <Link className={classes.link}>VIEW PROJECT →</Link>
+                      <Link
+                        className={classes.link}
+                        style={{ textDecoration: "none" }}
+                      >
+                        VIEW PROJECT →
+                      </Link>
                     </Box>
                   </Box>
                 </SwiperSlide>

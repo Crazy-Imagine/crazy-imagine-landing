@@ -16,12 +16,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     background: "#FFF",
     [theme.breakpoints.down("md")]: {
-      height: "586px",
+      height: "600px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "363px",
-    },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       height: "auto",
     },
   },
@@ -59,24 +56,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: "10px",
         lineHeight: "14px",
         padding: "10px 14px 8px 14px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "21px",
-      marginTop: "21px",
-      "& > span": {
-        fontSize: "6px",
-        lineHeight: "9px",
-        padding: "6px 10px 6px 10px",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "8px",
-      marginTop: "8px",
-      padding: "2px 1px 1px 1px",
-      "& > span": {
-        fontSize: "4px",
-        lineHeight: "inherit",
       },
     },
   },

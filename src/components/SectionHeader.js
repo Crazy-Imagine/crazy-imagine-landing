@@ -49,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     color: "#1E2F97",
     padding: "14px 20px 12px 20px",
+    "&:hover": {
+      background: "#F5F5F5",
+    },
     "& > span": {
       fontSize: "12px",
       lineHeight: "10px",
@@ -158,7 +161,6 @@ const useStyles = makeStyles(theme => ({
   }),
   img: {
     animation: `$myEffect 3000ms`,
-
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       display: "none",
@@ -180,7 +182,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: props => ({
     fontStyle: "normal",
-    fontWeight: 700,
+    fontWeight: "900",
     fontFamily: "Nexa Bold",
     fontSize: props.little ? "70px" : "90px",
     lineHeight: "81px",

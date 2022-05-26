@@ -13,13 +13,15 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "41px",
+      height: "auto",
+      marginTop: "35px",
+      marginBottom: "35px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "25px",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column ",
-      gap: "10px",
     },
   },
   textContainer: {
@@ -31,14 +33,12 @@ const useStyles = makeStyles(theme => ({
     width: "39%",
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
+      marginTop: "9px",
+      marginBottom: "9px",
       gap: "14px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "20%",
-      gap: "5px",
     },
   },
   titleContainer: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: 900,
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
@@ -60,15 +60,11 @@ const useStyles = makeStyles(theme => ({
       fontSize: "29px",
       lineHeight: "29px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
-    },
   },
   blueTitle: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: 900,
     fontSize: "58px",
     lineHeight: "58px",
     color: "#27AAE1",
@@ -80,10 +76,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "29px",
       lineHeight: "29px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
     },
   },
   desc: {
@@ -97,12 +89,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
-    },
   },
   img: {
     [theme.breakpoints.down("md")]: {
@@ -110,13 +96,11 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
       alignItems: "center",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between(200, 600)]: {
       width: "45%",
-      height: "45%",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "22%",
-      height: "22%",
+    [theme.breakpoints.between(0, 200)]: {
+      width: "55%",
     },
   },
   imgContainer: {

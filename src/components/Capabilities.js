@@ -16,14 +16,12 @@ const useStyles = makeStyles(theme => ({
       alignSelf: "flex-end",
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "9px",
-      height: "auto",
-      alignSelf: "flex-end",
-    },
-    [theme.breakpoints.down("xs")]: {
-      gap: "5px",
       height: "auto",
       alignSelf: "center",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+      width: "65%",
     },
   },
   classContainer: {
@@ -60,20 +58,11 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "14px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "25px",
-      fontSize: "7px",
-      lineHeight: "7px",
-    },
   },
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: 900,
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
@@ -85,10 +74,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "25px",
       lineHeight: "25px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
-    },
   },
   img: {
     [theme.breakpoints.down("md")]: {
@@ -96,9 +81,7 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "35%",
-    },
-    [theme.breakpoints.down("xs")]: {
+      alignSelf: "center",
       width: "100%",
     },
   },
@@ -112,12 +95,6 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "7px",
     },
   },
 }))

@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core"
 
@@ -13,16 +14,18 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px",
     overflow: "hidden",
     height: "inherit",
-    width: "480px",
+    maxWidth: "480px",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
+      maxWidth: "300px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "auto",
       gap: "13px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "inherit",
+      flex: "1 0 48%",
+      borderRadius: "7px",
+      maxWidth: "250px",
       borderRadius: "7px",
       gap: "7px",
     },
@@ -51,11 +54,21 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: "#193173",
     marginBottom: "38px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "22px",
+      lineHeight: "22px",
+    },
   },
   wrapperContainer: {
     width: "75%",
     margin: "auto",
     marginTop: "83px",
+    display: "flex",
+    flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
     },
@@ -63,7 +76,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "20px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "10",
+      marginTop: "10px",
     },
   },
   title: {
@@ -81,10 +94,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "10px",
       lineHeight: "10px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "6px",
-      lineHeight: "6px",
     },
   },
   img: {
@@ -123,6 +132,38 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     background: "#F9F9F9",
     gap: "21px",
+  },
+  loadButton: {
+    background: "#797EF6",
+    borderRadius: "100px",
+    alignSelf: "center",
+    marginTop: "71px",
+    marginBottom: "105px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "50px",
+      marginBottom: "75px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "40px",
+      marginBottom: "70px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "71px",
+      marginBottom: "105px",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
   },
 }))
 
@@ -185,6 +226,7 @@ const BlogArticle = () => {
                 </Box>
               ))}
             </Box>
+            <Button className={classes.loadButton}>LOAD MORE</Button>
           </Box>
         )
       }}

@@ -3,7 +3,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core"
+import SwiperCore, { Keyboard } from "swiper/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
@@ -20,15 +20,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     letterSpacing: "0.02em",
     color: "#193174",
-    marginBottom: "auto",
+    height: "100%",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
     },
   },
   customerName: {
@@ -43,10 +37,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
     },
   },
   customerOcupation: {
@@ -87,10 +77,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "13px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "8px",
-      lineHeight: "8px",
-    },
   },
   containerInfo: {
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
@@ -121,30 +107,27 @@ const useStyles = makeStyles(theme => ({
   swiperSlide: {
     height: "450px",
     transform: "scale(1)",
-    [theme.breakpoints.between(960, 1280)]: {
-      height: "325px",
+    [theme.breakpoints.between(1201, 1280)]: {
+      height: "250px",
     },
-    [theme.breakpoints.between(701, 959)]: {
-      height: "185px",
+    [theme.breakpoints.between(901, 1200)]: {
+      height: "230px",
     },
-    [theme.breakpoints.between(450, 700)]: {
-      height: "175px",
+    [theme.breakpoints.between(550, 900)]: {
+      height: "225px",
     },
-    [theme.breakpoints.between(400, 450)]: {
-      height: "220px",
+    [theme.breakpoints.between(400, 549)]: {
+      height: "210px",
     },
-    [theme.breakpoints.between(200, 399)]: {
-      height: "160px",
-    },
-    [theme.breakpoints.between(0, 200)]: {
-      height: "145px",
+    [theme.breakpoints.between(200, 400)]: {
+      height: "250px",
     },
   },
 }))
 
 const CustomerReview = () => {
   const classes = useStyles()
-  SwiperCore.use([Keyboard, Mousewheel])
+  SwiperCore.use([Keyboard])
 
   return (
     <StaticQuery
@@ -159,10 +142,10 @@ const CustomerReview = () => {
                 0: {
                   slidesPerView: 1,
                 },
-                400: {
+                900: {
                   slidesPerView: 2,
                 },
-                700: {
+                1280: {
                   slidesPerView: 3,
                 },
               }}
@@ -174,7 +157,6 @@ const CustomerReview = () => {
                 width: "80%",
                 boxSizing: "content-box",
               }}
-              mousewheel
               keyboard={{ enabled: true }}
               modules={[Pagination]}
             >
