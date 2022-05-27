@@ -15,13 +15,17 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
     [theme.breakpoints.down("sm")]: {
-      height: "auto",
+
     },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
-      height: "auto",
+      height: props.little ? "232px" : "430px",
       width: "93.2%",
       flexDirection: "column",
+    },
+    [theme.breakpoints.between(400, 0)]: {
+      flexDirection: "column",
+      height: "auto",
     },
   }),
   backgroundOut: props => ({
@@ -42,6 +46,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
+      height: props.little ? "390px" : "488px",
+    },
+    [theme.breakpoints.between(400, 0)]: {
+      flexDirection: "column",
+      height: props.little ? "290px" : "388px",
     },
   }),
   buttonLeft: {
@@ -199,6 +208,16 @@ const useStyles = makeStyles(theme => ({
       fontWeight: props.little ? 700 : 500,
     },
     [theme.breakpoints.down("xs")]: {
+      lineHeight: props.little ? "61px" : "50px",
+      fontSize: props.little ? "43px" : "40px",
+      fontWeight: 100,
+    },
+    [theme.breakpoints.between(0, 300)]: {
+      lineHeight: props.little ? "51px" : "40px",
+      fontSize: props.little ? "33px" : "30px",
+      fontWeight: 100,
+    },
+    [theme.breakpoints.between(0, 200)]: {
       lineHeight: props.little ? "41px" : "30px",
       fontSize: props.little ? "23px" : "20px",
       fontWeight: 100,
