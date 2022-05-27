@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
     height: " 40px",
     background: "#FFFFFF",
     borderRadius: "100px",
+    textDecoration: "none",
   }),
   linkTypography: props => ({
     fontSize: 16,

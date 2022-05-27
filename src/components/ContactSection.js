@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle: {
-    animation: `$myEffect 5000ms`,
+    animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
-    animation: `$myEffecto 5000ms`,
+    animation: `$myEffecto 3000ms`,
     marginTop: "auto",
   },
   container: {

@@ -16,6 +16,7 @@ import {
   WORK_WITH_US,
   ABOUT,
   CONTACT,
+  BLOG,
 } from "../navigation/sitemap"
 //import { Autocomplete } from "@material-ui/lab"
 
@@ -168,10 +169,12 @@ const Footer = ({ height = "192px", align = "center" }) => {
     <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <StaticImage
-            src="../images/crazy-imagine-icon.svg"
-            alt="footerImage"
-          />
+          <Link to={`${HOME}`} className={classes.linkTypography}>
+            <StaticImage
+              src="../images/crazy-imagine-icon.svg"
+              alt="footerImage"
+            />
+          </Link>
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
             <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
@@ -191,7 +194,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             </Link>
           </Typography>
           <Typography>
-            <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+            <Link to={`${BLOG}`} className={classes.linkTypography}>
               BLOG
             </Link>
           </Typography>
