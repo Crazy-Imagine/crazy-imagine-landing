@@ -44,6 +44,16 @@
 
 @font-face {
   font-family: "Nexa";
+  src: url("../fonts/Nexa-Light.otf");
+}
+
+@font-face {
+  font-family: "Nexa Bold";
+  src: url("../fonts/Nexa-Bold.otf");
+}
+
+/* @font-face {
+  font-family: "Nexa";
   font-style: normal;
   font-weight: 300;
   src: local("Nexa"),
@@ -52,10 +62,10 @@
 @font-face {
   font-family: "Nexa Bold";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 900;
   src: local("Nexa"),
     url("https://fonts.cdnfonts.com/s/16221/NexaBold.woff") format("woff");
-}
+} */
 
 @font-face {
   font-family: "Hero New";

@@ -117,14 +117,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "11px",
       lineHeight: "11px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "4px",
-      lineHeight: "4px",
-    },
   },
   wrapper: {
     display: "flex",

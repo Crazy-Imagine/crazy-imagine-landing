@@ -14,9 +14,6 @@ const useStyles = makeStyles(theme => ({
       height: "708px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "439px",
-    },
-    [theme.breakpoints.down("xs")]: {
       height: "auto",
     },
   },
@@ -31,25 +28,20 @@ const useStyles = makeStyles(theme => ({
     color: "#193173",
     marginBottom: "47px",
     [theme.breakpoints.down("md")]: {
-      fontWeight: "28px",
       fontSize: "28px",
       lineHeight: "28px",
       marginTop: "55px",
       marginBottom: "33px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontWeight: "17px",
-      fontSize: "17px",
-      lineHeight: "17px",
+      fontSize: "22px",
+      lineHeight: "22px",
       marginTop: "34px",
       marginBottom: "20px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontWeight: "10px",
+    [theme.breakpoints.between(450, 0)]: {
       fontSize: "10px",
       lineHeight: "10px",
-      marginTop: "25px",
-      marginBottom: "12px",
     },
   },
   button: {
@@ -76,21 +68,6 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "10px",
       },
     },
-    [theme.breakpoints.down("sm")]: {
-      padding: "6px 9px 5px 9px",
-      marginTop: "15px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "3px 3px 3px 3px",
-      "& > span": {
-        fontSize: "4px",
-        lineHeight: "inherit",
-      },
-    },
   },
   cardContainer: {
     backgroundColor: "#FFFFFF",
@@ -106,10 +83,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "425px",
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "180px",
-      width: "250px",
-      borderRadius: "8px",
+    [theme.breakpoints.between(450, 600)]: {
+      width: "325px",
+    },
+    [theme.breakpoints.between(350, 450)]: {
+      width: "280px",
+    },
+    [theme.breakpoints.between(0, 350)]: {
+      width: "80%",
     },
   },
   titleCard: {
@@ -124,16 +105,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "20px",
       lineHeight: "20px",
       paddingLeft: "18px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "12px",
-      lineHeight: "12px",
-      paddingLeft: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "7px",
-      lineHeight: "7px",
-      paddingLeft: "4px",
     },
   },
   link: {
@@ -151,14 +122,6 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: "18px",
       lineHeight: "11px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      paddingLeft: "9px",
-      lineHeight: "7px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "4px",
-    },
   },
   img: {
     height: "auto",
@@ -171,10 +134,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       padding: "20px 0 27px 20px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "11px",
-      padding: "12px 0 17px 12px",
     },
   },
 }))

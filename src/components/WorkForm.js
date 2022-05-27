@@ -24,9 +24,6 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         fontSize: "10px",
       },
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "6px",
-      },
     },
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
@@ -43,12 +40,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("md")]: {
-        fontSize: "9px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "6px",
-      },
     },
   },
   container: {
@@ -132,9 +123,6 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "10px",
       fontSize: "9px",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "6px",
-    },
   },
   attachButton: {
     border: "2px solid #797EF6",
@@ -155,13 +143,6 @@ const useStyles = makeStyles(theme => ({
       padding: "10px 14px 8px 14px",
       fontSize: "10px",
       lineHeight: "10px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      border: "1px solid #797EF6",
-      marginTop: "6px",
-      padding: "6px 9px 5px 9px",
-      fontSize: "6px",
-      lineHeight: "6px",
     },
   },
   formInputAppears: {
@@ -227,6 +208,7 @@ const useStyles = makeStyles(theme => ({
     padding: "14px 20px 12px 20px",
     marginTop: "37px",
     marginBottom: "125px",
+    cursor: "pointer",
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
@@ -237,7 +219,6 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
-    cursor: "pointer",
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
       marginBottom: "25px",
@@ -245,14 +226,6 @@ const useStyles = makeStyles(theme => ({
       "& > span": {
         fontSize: "10px",
         lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "10px",
-      padding: "6px 9px 5px 9px",
-      "& > span": {
-        fontSize: "6px",
-        lineHeight: "6px",
       },
     },
     "&:hover": {

@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "10px",
       fontFamily: "Nexa",
       fontStyle: "normal",
-      fontWeight: 700,
+      fontWeight: 900,
       textAlign: "center",
       letterSpacing: "0.05em",
     },
@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "10px",
       fontFamily: "Nexa",
       fontStyle: "normal",
-      fontWeight: 700,
+      fontWeight: 900,
       textAlign: "center",
       letterSpacing: "0.05em",
     },
@@ -190,7 +190,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
       lineHeight: "71px",
-      fontWeight: 600,
+      fontWeight: 900,
       fontSize: "58px",
     },
     [theme.breakpoints.down("sm")]: {

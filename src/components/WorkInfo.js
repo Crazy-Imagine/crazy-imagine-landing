@@ -22,11 +22,6 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "22px",
       marginTop: "54px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "20px",
-      lineHeight: "22px",
-      marginTop: "20px",
-    },
   },
   desc: {
     fontFamily: "Hero New",
@@ -40,14 +35,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       marginTop: "13px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "10px",
-      marginTop: "9px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "7px",
-      marginTop: "7px",
     },
   },
 }))
