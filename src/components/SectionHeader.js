@@ -136,7 +136,7 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "50px 0px 50px 50px",
+      padding: "40px 0px 40px 40px",
       width: "100%",
     },
     [theme.breakpoints.down("xs")]: {
@@ -194,7 +194,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "58px",
     },
     [theme.breakpoints.down("sm")]: {
-      lineHeight: props.little ? "41px" : "50px",
+      lineHeight: props.little ? "71px" : "50px",
       fontSize: props.little ? "61px" : "40px",
       fontWeight: props.little ? 700 : 500,
     },

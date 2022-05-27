@@ -85,6 +85,9 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     backgroundColor: "#193174",
   },
+  hDrawer: {
+    justifyContent: "space-beetwen"
+  },
 }))
 
 const drawerWidth = "100%"
@@ -138,13 +141,13 @@ const NavbarMobile = ({
           <Box
             display="flex"
             width="100%"
-            height="6em"
+            height="5.5em"
             alignItems="center"
             justifyContent="space-between"
           >
             <Link to={HOME}>
               <StaticImage
-                src="crazy-imagine-icon.svg"
+                src="../images/LOGO.png"
                 alt="logo"
                 className={classes.navbarLogo}
               />
@@ -167,7 +170,13 @@ const NavbarMobile = ({
           anchor="left"
           open={open}
         >
-          <DrawerHeader>
+          <DrawerHeader style={{ justifyContent: "space-between" }}>
+            <Link to={`${HOME}`} onClick={handleDrawerClose}>
+              <StaticImage
+                src="../images/crazy-imagine-icon.svg"
+                alt="ss"
+              />
+            </Link>
             <IconButton onClick={handleDrawerClose}>
               <FontAwesomeIcon icon={faXmark} inverse />
             </IconButton>

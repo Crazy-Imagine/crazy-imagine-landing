@@ -39,17 +39,14 @@ const useStyles = makeStyles(theme => ({
 const Imagen = ({ setY }) => {
   useEffect(() => {
     //console.log(setY)
-  }, [setY])
+  }, [setY]);
 
   const classes = useStyles()
   return (
-    <Box className={classes.container}>
-      <StaticImage
-        className={setY < -713 ? classes.img2 : classes.img}
-        src="../images/crazy1.png"
-      />
+    <Box className={(setY < -713) ? classes.img2 : classes.img}>
+      <StaticImage className={classes.img} src="../images/crazy1.png" />
     </Box>
-  )
+  );
 }
 
 export default Imagen

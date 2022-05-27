@@ -38,6 +38,8 @@ const useStyles = makeStyles(theme => ({
     height: " 40px",
     background: "#FFFFFF",
     borderRadius: "100px",
+    textDecoration: "none",
+
     "&:hover": {
       background: "#F5F5F5",
     },

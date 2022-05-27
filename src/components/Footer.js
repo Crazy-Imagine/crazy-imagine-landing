@@ -16,17 +16,21 @@ import {
   WORK_WITH_US,
   ABOUT,
   CONTACT,
+  BLOG,
 } from "../navigation/sitemap"
 //import { Autocomplete } from "@material-ui/lab"
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    color: "white",
-    background: "red",
-  },
   container: {
     display: "flex",
     justifyContent: "center",
+  },
+  root: {
+    "& .MuiLink-root": {
+      "&:hover": {
+        color: "white",
+      },
+    },
   },
   contactIcon: {
     fontSize: "22px",
@@ -65,11 +69,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
     height: "100%",
+
+    [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {
       width: "auto",
       gap: "0px",
       marginBottom: "-45px",
       marginTop: "15px",
+      padding: "14px 4px 54px 4px",
     },
   },
   formatContactSection: {
@@ -91,7 +98,8 @@ const useStyles = makeStyles(theme => ({
     gap: "50px",
     [theme.breakpoints.down("md")]: {
       visibility: "hidden",
-      width: "0%",
+      width: "0px",
+      display: "none",
     },
   },
   infoContainer: {
@@ -137,6 +145,9 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "16px",
     fontSize: "14px",
     textDecoration: "none",
+    "&:hover": {
+      color: "white",
+    },
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -148,6 +159,11 @@ const useStyles = makeStyles(theme => ({
       fontSize: "10px",
     },
   },
+  footerSection: {
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+    },
+  },
   footerLogo: {},
 }))
 
@@ -157,10 +173,12 @@ const Footer = ({ height = "192px", align = "center" }) => {
     <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <StaticImage
-            src="../images/crazy-imagine-icon.svg"
-            alt="footerImage"
-          />
+          <Link to={`${HOME}`} className={classes.linkTypography}>
+            <StaticImage
+              src="../images/crazy-imagine-icon.svg"
+              alt="footerImage"
+            />
+          </Link>
           <Box className={classes.iconsContainer}>
             <TwitterIcon className={classes.contactIcon}></TwitterIcon>
             <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
@@ -170,27 +188,47 @@ const Footer = ({ height = "192px", align = "center" }) => {
         </Box>
         <Box className={classes.linkContainer}>
           <Typography>
-            <Link to={`${ABOUT}`} className={classes.linkTypography}>
+            <Link
+              to={`${ABOUT}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.root}`}
+            >
               ABOUT
             </Link>
           </Typography>
           <Typography>
-            <Link to={`${PROJECTS}`} className={classes.linkTypography}>
+            <Link
+              to={`${PROJECTS}`}
+              style={{ textDecoration: "none" }}
+              className={classes.linkTypography}
+            >
               SERVICES
             </Link>
           </Typography>
           <Typography>
-            <Link to={`${HOME}#blog`} className={classes.linkTypography}>
+            <Link
+              to={`${BLOG}`}
+              style={{ textDecoration: "none" }}
+              className={classes.linkTypography}
+            >
               BLOG
             </Link>
           </Typography>
           <Typography>
-            <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>
+            <Link
+              to={`${WORK_WITH_US}`}
+              style={{ textDecoration: "none" }}
+              className={classes.linkTypography}
+            >
               WORK WITH US
             </Link>
           </Typography>
           <Typography>
-            <Link to={`${CONTACT}`} className={classes.linkTypography}>
+            <Link
+              to={`${CONTACT}`}
+              style={{ textDecoration: "none" }}
+              className={classes.linkTypography}
+            >
               CONTACT
             </Link>
           </Typography>
