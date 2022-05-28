@@ -1,301 +1,132 @@
-import React, { useState } from "react"
-import { graphql, StaticQuery } from "gatsby"
-import ReactMarkdown from "react-markdown"
-
-import { useForm } from "@formspree/react"
+import { Box, makeStyles } from "@material-ui/core"
+import React from "react"
+import CardService from "./CardService"
+import ServiceCapabilities from "./ServiceCapabilities"
+import fullStackImage from "../images/laptop-purple.svg"
+import qualitySupport from "../images/quality-blue.svg"
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  makeStyles,
-  useTheme,
-  Typography,
-} from "@material-ui/core"
-
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons"
-import ProductsServicesDialog from "./ProductsServicesDialog"
+  faBagShopping,
+  faChartBar,
+  faCircleCheck,
+  faMobile,
+  faCode,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons"
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "column",
+    marginTop: "128px",
   },
   cardContainer: {
-    transition: "linear 300ms",
-    minHeight: 600,
-    maxHeight: 600,
-    background: "rgb(182 168 168 / 15%)",
-    "&:hover": {
-      boxShadow: "1px 4px 30px 0px rgba(0,0,0,0.15)",
-    },
-  },
-  pricipalTitle: {
-    fontSize: 45,
-    fontFamily: "Gotham",
-    marginBottom: 30,
-    textAlign: "center",
-  },
-  title: {
-    fontSize: 40,
-    marginBottom: 50,
-    fontFamily: "Gotham",
-    textAlign: "center",
-    minHeight: 92,
-  },
-  subTitle: {
-    fontSize: 32,
-    fontFamily: "poppins",
-    marginBottom: 30,
-    textAlign: "center",
-  },
-  productPrice: {
-    fontSize: 40,
-    fontWeight: "bold",
-    fontFamily: "gotham-book",
-    color: "#E36417",
-    marginBottom: 17,
-    textAlign: "center",
-    boxShadow: "5px 7px 21px -3px grey",
-    backgroundColor: "rgb(236 236 236 / 15%)",
-  },
-  buyButton: {
-    fontSize: 25,
-    fontWeight: "bold",
-    fontFamily: "Gotham",
-    padding: "17px 25px 22px 27px",
-    margin: "30px 0px",
-    backgroundColor: "#E36417",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "#e6712b",
-    },
-  },
-  paragraphs: {
-    fontSize: 20,
-    fontFamily: "gotham-book",
-    lineHeight: "22px",
-  },
-  carouselButton: {
-    zIndex: 9999,
-    "&:hover": {
-      background: "transparent",
-    },
-  },
-  boxLine: {
-    backgroundColor: "black",
+    display: "flex",
+    flexDirection: "row",
+    marginTop: "52px",
+    marginBottom: "115px",
+    justifyContent: "center",
+    gap: "34px",
   },
 }))
 
-const ServiceContent = ({
-  title,
-  description,
-  price,
-  handleClose,
-  handleClickOpen,
-  handleSubmit,
-  open,
-  state,
-}) => {
-  const classes = useStyles({
-    variant: open,
-  })
-  return (
-    <Grid
-      item
-      xs={12}
-      ms={6}
-      md={4}
-      lg={3}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Card className={classes.cardContainer}>
-        <Box p="15px">
-          <CardContent>
-            <Typography variant="h3" className={classes.title}>
-              {title}
-            </Typography>
-            <Typography variant="h2" className={classes.productPrice}>
-              {price}
-            </Typography>
-
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Button
-                variant="contained"
-                className={classes.buyButton}
-                onClick={handleClickOpen}
-              >
-                Contratar Ahora
-              </Button>
-              <ProductsServicesDialog
-                title={title}
-                open={open}
-                state={state}
-                handleClose={handleClose}
-                handleSubmit={handleSubmit}
-                classes={classes}
-              />
-            </Box>
-            <ReactMarkdown className={classes.paragraphs}>
-              {description}
-            </ReactMarkdown>
-          </CardContent>
-        </Box>
-      </Card>
-    </Grid>
-  )
-}
-
 const ServicesSection = () => {
-  const [open, setOpen] = useState(false)
   const classes = useStyles()
-  const theme = useTheme()
-  const [state, handleSubmit] = useForm("xzbyobpo")
-  const [activeStep, setActiveStep] = useState(0)
-
-  if (state.succeeded) {
-    console.log("yupi")
-  }
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
   return (
-    <StaticQuery
-      query={query}
-      render={data => {
-        const services = data.services.nodes
-
-        const handleNext = () => {
-          setActiveStep(prevActiveStep => prevActiveStep + 1)
-        }
-
-        const handleBack = () => {
-          setActiveStep(prevActiveStep => prevActiveStep - 1)
-        }
-
-        return (
-          <Box marginTop="40px" px={{ md: "20px", lg: "40px" }}>
-            <Typography variant="h4" className={classes.pricipalTitle}>
-              Services
-            </Typography>
-            <Box width="100%" display="flex" justifyContent="center">
-              <Box
-                height="34px"
-                width="1px"
-                className={classes.boxLine}
-                marginBottom="30px"
-              />
-            </Box>
-            <Grid container spacing={4} className={classes.container}>
-              <Grid item md={1}>
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={activeStep === 0}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                  Back
-                </Button>
-              </Grid>
-
-              {services && (
-                <>
-                  <ServiceContent
-                    title={services[activeStep].title}
-                    description={services[activeStep].subTitle}
-                    price={services[activeStep].price}
-                    open={open}
-                    state={state}
-                    classes={classes}
-                    handleClickOpen={handleClickOpen}
-                    handleClose={handleClose}
-                    handleSubmit={handleSubmit}
-                  />
-                  <ServiceContent
-                    title={services[activeStep + 1].title}
-                    description={services[activeStep + 1].subTitle}
-                    price={services[activeStep + 1].price}
-                    open={open}
-                    state={state}
-                    classes={classes}
-                    handleClickOpen={handleClickOpen}
-                    handleClose={handleClose}
-                    handleSubmit={handleSubmit}
-                  />
-                  <ServiceContent
-                    title={
-                      services[activeStep + 2]
-                        ? services[activeStep + 2].title
-                        : ""
-                    }
-                    description={
-                      services[activeStep + 2]
-                        ? services[activeStep + 2].subTitle
-                        : ""
-                    }
-                    price={
-                      services[activeStep + 2]
-                        ? services[activeStep + 2].price
-                        : ""
-                    }
-                    open={open}
-                    state={state}
-                    classes={classes}
-                    handleClickOpen={handleClickOpen}
-                    handleClose={handleClose}
-                    handleSubmit={handleSubmit}
-                  />
-                </>
-              )}
-              <Grid item md={1}>
-                <Button
-                  size="large"
-                  onClick={handleNext}
-                  disabled={activeStep === 2}
-                  className={classes.carouselButton}
-                >
-                  Next
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              </Grid>
-              <Grid item xs={12} ms={6} md={4} lg={3} />
-              <Grid item xs={12} ms={6} md={4} lg={3} />
-              <Grid item xs={12} ms={6} md={4} lg={3} />
-            </Grid>
-          </Box>
-        )
-      }}
-    />
+    <>
+      <Box className={classes.container}>
+        <ServiceCapabilities
+          title={`Full-Stack
+          Development`}
+          desc={`With strong backgrounds in code ranging from PHP7 to
+          Javascript to CSS3, our full stack developers have the skills
+          and experience to elevate your digital presence.`}
+          img={fullStackImage}
+        />
+        <Box className={classes.cardContainer}>
+          <CardService
+            title={`Web
+            Development`}
+            icon={faCode}
+            contentList={[
+              "Specialize in client-focused websites and cloud solutions.",
+              "Excel in utilizing the latest technologies – Javascript, React js, Angular js, Vue js,and PHP.",
+              "Seamlessly integrate frameworks into Laravel, Wordpress, and Codeigniter.",
+            ]}
+          />
+          <CardService
+            title={`Deployment
+            + DevOps`}
+            icon={faCircleCheck}
+            contentList={[
+              "Ensure product quality and performance via a pipeline of continuous delivery",
+              "Excel in creating reliable infrustructures that can be managed by coding",
+              "Seamlessly integrate popular cloud services such as AWS, Azure, and Google Cloud",
+            ]}
+          />
+        </Box>
+      </Box>
+      <Box className={classes.container}>
+        <ServiceCapabilities
+          title={`User
+          Experience`}
+          desc={`A positive and memorable user experience is our top
+          priority, from partial web development to full scale project
+          management and everything in between.`}
+        />
+        <Box className={classes.cardContainer}>
+          <CardService
+            title="eCommerce"
+            icon={faBagShopping}
+            contentList={[
+              "Utilize the latest technology to create user-friendly interfaces",
+              "Enable quick transactions, increasing your business’s profitability",
+              "Seamlessly integrate payment platforms such as Woocommerce, Prestashop, and Shopify",
+            ]}
+          />
+          <CardService
+            title={`Mobile
+            Development`}
+            icon={faMobile}
+            contentList={[
+              "Specialize in iOS, Swift iOS, and Android",
+              "Excel in the latest hybrid technologies such as React Native and Ionic",
+              "Create intuitive and user-friendly apps that will foster engagement and interaction",
+            ]}
+          />
+        </Box>
+      </Box>
+      <Box className={classes.container}>
+        <ServiceCapabilities
+          title={`Quality
+          Support`}
+          desc={`Nothing is more important than providing a high quality
+          experience, which is why we use a full range of QA systems
+          to ensure your project is launch ready.`}
+          img={qualitySupport}
+        />
+        <Box className={classes.cardContainer}>
+          <CardService
+            title="Marketing"
+            icon={faChartBar}
+            contentList={[
+              "Ensure that your brand is well positioned among search results",
+              "Experience with major social media networks such as LinkedIn, Instagram, and Facebook",
+              "Help build brand awareness and convert more users to consumers",
+            ]}
+          />
+          <CardService
+            title={`Virtual
+            Assistance`}
+            icon={faUserTie}
+            contentList={[
+              "Tasks that range from managing your virtual store, scheduling client meetings, organizing your digital storage, or placing online orders",
+              "Ensure that your business runs smoothly so you can focus on everything else",
+            ]}
+          />
+        </Box>
+      </Box>
+    </>
   )
 }
-const query = []
-// const query = graphql`
-//   query {
-//     services: allStrapiServices {
-//       nodes {
-//         id
-//         price
-//         title
-//         subTitle
-//       }
-//     }
-//   }
-// `
 
 export default ServicesSection
