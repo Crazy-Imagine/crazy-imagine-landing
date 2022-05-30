@@ -1,4 +1,3 @@
-exports.ARTICLE = "/article"
 exports.BLOG = "/Blog"
 exports.HOME = "/"
 exports.TEAMS = "/team"

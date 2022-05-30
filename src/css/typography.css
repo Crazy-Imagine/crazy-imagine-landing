@@ -52,21 +52,6 @@
   src: url("../fonts/Nexa-Bold.otf");
 }
 
-/* @font-face {
-  font-family: "Nexa";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Nexa"),
-    url("https://fonts.cdnfonts.com/s/16221/NexaLight.woff") format("woff");
-}
-@font-face {
-  font-family: "Nexa Bold";
-  font-style: normal;
-  font-weight: 900;
-  src: local("Nexa"),
-    url("https://fonts.cdnfonts.com/s/16221/NexaBold.woff") format("woff");
-} */
-
 @font-face {
   font-family: "Hero New";
   font-style: normal;

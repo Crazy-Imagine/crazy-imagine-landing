@@ -3,11 +3,13 @@ import { makeStyles } from "@material-ui/styles"
 import React from "react"
 
 const useStyles = makeStyles(theme => ({
-  container: {
+  container: props => ({
     display: "flex",
     gap: "59px",
-    justifyContent: "center",
-  },
+    width: props.img ? "unset" : "59%",
+    justifyContent: props.img ? "center" : "flex-start",
+    margin: props.img ? "unset" : "auto",
+  }),
   subtitle: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -26,12 +28,12 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
   },
-  textContainer: {
+  textContainer: props => ({
     display: "flex",
     flexDirection: "column",
     gap: "20px",
-    width: "35%",
-  },
+    width: props.img ? "35%" : "auto",
+  }),
   desc: {
     fontFamily: "Hero New",
     fontStyle: "normal",
@@ -45,10 +47,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ServiceCapabilities = ({ title, desc, img }) => {
-  const classes = useStyles()
+  const classes = useStyles({ img })
   return (
     <Box className={classes.container}>
-      <img src={img} />
+      {img && <img src={img} />}
       <Box className={classes.textContainer}>
         <Typography className={classes.subtitle}>CAPABILITIES</Typography>
         <Typography className={classes.title}>{title}</Typography>

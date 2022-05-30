@@ -12,20 +12,35 @@ import {
   faCode,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
+import bgImage from "../images/ServiceBg.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    marginTop: "128px",
+    paddingTop: "128px",
   },
+  bg: {
+    backgroundImage: `url(${bgImage})`,
+    backgroundColor: "#F9F9F9",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+  },
+  bgWhite: { backgroundColor: "white" },
   cardContainer: {
     display: "flex",
     flexDirection: "row",
-    marginTop: "52px",
-    marginBottom: "115px",
+    paddingTop: "52px",
+    paddingBottom: "115px",
     justifyContent: "center",
     gap: "34px",
+  },
+  pMajor: {
+    paddingBottom: "70px",
+  },
+  pMinor: {
+    paddingBottom: "52px",
   },
 }))
 
@@ -33,7 +48,7 @@ const ServicesSection = () => {
   const classes = useStyles()
   return (
     <>
-      <Box className={classes.container}>
+      <Box className={`${classes.container} ${classes.bgWhite}`}>
         <ServiceCapabilities
           title={`Full-Stack
           Development`}
@@ -42,7 +57,7 @@ const ServicesSection = () => {
           and experience to elevate your digital presence.`}
           img={fullStackImage}
         />
-        <Box className={classes.cardContainer}>
+        <Box className={`${classes.cardContainer} ${classes.pMinor}`}>
           <CardService
             title={`Web
             Development`}
@@ -65,7 +80,7 @@ const ServicesSection = () => {
           />
         </Box>
       </Box>
-      <Box className={classes.container}>
+      <Box className={`${classes.container} ${classes.bg}`}>
         <ServiceCapabilities
           title={`User
           Experience`}
@@ -73,7 +88,7 @@ const ServicesSection = () => {
           priority, from partial web development to full scale project
           management and everything in between.`}
         />
-        <Box className={classes.cardContainer}>
+        <Box className={`${classes.cardContainer} ${classes.pMajor}`}>
           <CardService
             title="eCommerce"
             icon={faBagShopping}
@@ -95,7 +110,7 @@ const ServicesSection = () => {
           />
         </Box>
       </Box>
-      <Box className={classes.container}>
+      <Box className={`${classes.container} ${classes.bgWhite}`}>
         <ServiceCapabilities
           title={`Quality
           Support`}
@@ -104,7 +119,7 @@ const ServicesSection = () => {
           to ensure your project is launch ready.`}
           img={qualitySupport}
         />
-        <Box className={classes.cardContainer}>
+        <Box className={`${classes.cardContainer} ${classes.pMajor}`}>
           <CardService
             title="Marketing"
             icon={faChartBar}

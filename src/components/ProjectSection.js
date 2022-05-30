@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "20px",
     },
   },
-  button: {
+  button: props => ({
+    display: props.btn ? "initial" : "none",
     background: "#797EF6",
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
@@ -84,7 +85,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "10px",
       },
     },
-  },
+  }),
   carouselContainer: {
     backgroundColor: "#FFFFFF",
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
@@ -138,17 +139,19 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectSection = () => {
-  const classes = useStyles()
+const ProjectSection = ({ title, btn }) => {
+  const classes = useStyles({ btn })
   SwiperCore.use([Keyboard])
 
   return (
     <StaticQuery
       query={query}
       render={data => {
+        const projects = data.projects.nodes.slice(0, 4)
+
         return (
           <Box className={classes.container}>
-            <Typography className={classes.title}>Previous Projects</Typography>
+            <Typography className={classes.title}>{title}</Typography>
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
@@ -163,15 +166,13 @@ const ProjectSection = () => {
               keyboard={{ enabled: true }}
               className={`${classes.container} purpleBullet`}
             >
-              {data.projects.nodes.map((el, index) => (
+              {projects.map((el, index) => (
                 <SwiperSlide key={index} style={{ backgroundColor: "#FFFFFF" }}>
-                  {console.log(data.projects.nodes[index].images[0].localFile)}
+                  {console.log(projects[index].images[0].localFile)}
                   <Box className={classes.carouselContainer}>
                     <GatsbyImage
                       alt="About the project"
-                      image={getImage(
-                        data.projects.nodes[index].images[0].localFile
-                      )}
+                      image={getImage(projects[index].images[0].localFile)}
                       style={{
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
@@ -195,7 +196,7 @@ const ProjectSection = () => {
                   </Box>
                 </SwiperSlide>
               ))}
-              <Button className={classes.button}>ALL PROJECTS</Button>
+              {btn && <Button className={classes.button}>ALL PROJECTS</Button>}
             </Swiper>
           </Box>
         )

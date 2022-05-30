@@ -1,9 +1,6 @@
 import React from "react"
 import { Box, Hidden } from "@material-ui/core"
 import SectionHeader from "../components/SectionHeader"
-import OurProjects from "../components/OurProjects"
-import ProjectsServices from "../components/ProjectsServices"
-import ProjectsContact from "../components/ProjectsContact"
 import Navbar from "../components/Navbar"
 import ServicesSection from "../components/ServicesSection"
 import Footer from "../components/Footer"
@@ -14,6 +11,7 @@ import NavbarMobile from "../components/NavbarMobile"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
 import headerImage from "../images/robot.svg"
+import ProjectSection from "../components/ProjectSection"
 
 const Projects = () => {
   const data = useStaticQuery(query)
@@ -35,6 +33,7 @@ const Projects = () => {
             little={true}
           />
           <ServicesSection />
+          <ProjectSection title={"Featured Projects"} btn={false} />
           <ContactSection />
           <Footer />
           <Copyright />

@@ -42,7 +42,7 @@ const IndexPage = () => {
             <HomeDescription />
             <CapabilitiesSection />
             <ReferenceSection />
-            <ProjectSection />
+            <ProjectSection title={"Previous Projects"} btn={true} />
             <LastestPosts />
             <ContactSection bgColor="#FFFFFF" />
             <Footer />

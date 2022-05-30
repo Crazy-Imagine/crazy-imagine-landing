@@ -7,6 +7,7 @@ import SwiperCore, { Keyboard } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
+import { ARTICLE, BLOG } from "../navigation/sitemap"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -163,10 +164,11 @@ const BlogPost = () => {
                       {node.title}
                     </Typography>
                     <Link
+                      to={`${BLOG}/${node.slug}`}
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >
-                      VIEW PROJECT →
+                      READ MORE →
                     </Link>
                   </Box>
                 </Box>

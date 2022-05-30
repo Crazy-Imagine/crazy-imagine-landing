@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     marginTop: "27px",
     whiteSpace: "pre-line",
+    minHeight: "54px",
   },
   list: {
-    marginTop: "auto",
     marginBottom: "46px",
     marginLeft: "41px",
     marginRight: "29px",
