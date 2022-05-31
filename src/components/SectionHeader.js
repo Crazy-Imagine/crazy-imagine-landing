@@ -58,8 +58,10 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     color: "#1E2F97",
     padding: "14px 20px 12px 20px",
+    border: "2px solid #FFFFFF",
     "&:hover": {
-      background: "#F5F5F5",
+      background: "transparent",
+      color: "#FFFFFF",
     },
     "& > span": {
       fontSize: "12px",
@@ -99,6 +101,10 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 900,
       textAlign: "center",
       letterSpacing: "0.05em",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      color: "#1E2F97",
     },
     [theme.breakpoints.down("sm")]: {
       padding: "4px 3px 3px 3px",
