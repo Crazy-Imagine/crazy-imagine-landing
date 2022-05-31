@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     width: "100%",
-    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
     zIndex: 999999,
   }),
   iconSpacing: {
@@ -33,17 +33,16 @@ const useStyles = makeStyles(theme => ({
     fontSize: 25,
     color: props.scroll ? props.iconsVariant : "white",
   }),
-  contactButton: props => ({
+  contactButton: {
     width: "151px",
     height: " 40px",
     background: "#FFFFFF",
     borderRadius: "100px",
     textDecoration: "none",
-
     "&:hover": {
       background: "#F5F5F5",
     },
-  }),
+  },
   linkTypography: props => ({
     fontSize: 16,
     fontWeight: "700",
@@ -86,9 +85,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
+const Navbar = ({
+  variant = "primary",
+  variantIcons = "primary",
+  color = "transparent",
+}) => {
   const { scroll } = useScroll()
-
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
 
@@ -96,10 +98,11 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
     scroll,
     linkVariant,
     iconsVariant,
+    color,
   })
 
   return (
-    <AppBar color="transparent" position="fixed" className={classes.container}>
+    <AppBar color={color} position="fixed" className={classes.container}>
       <Toolbar className={classes.root}>
         <Box class={classes.barContainer}>
           <Link to={HOME}>

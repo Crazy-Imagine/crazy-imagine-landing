@@ -5,33 +5,46 @@ import { BLOG } from "../navigation/sitemap"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles({
-  recentlyPostedTitle: {
-    fontFamily: "Roboto",
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#303030",
-    marginBottom: 12,
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "28px",
+    lineHeight: "28px",
+    color: "#193174",
+    marginBottom: "15px",
   },
-  recentlyPostedImage: {
-    borderRadius: 4,
-    marginRight: 12,
+  container: {
+    background: "#FFFFFF",
+    boxShadow: "0px 10px 20px 4px rgba(0, 0, 0, 0.05)",
+    borderRadius: "14px",
+    padding: "24px",
+  },
+  layout: {
+    paddingTop: "115px",
+    paddingRight: "100px",
   },
   listTitle: {
-    fontFamily: "Roboto",
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#303030",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "22px",
+    lineHeight: "22px",
+    color: "#193174",
   },
   description: {
     fontFamily: "Roboto",
     fontSize: 14,
     color: "#303030",
   },
-  linkContainer: {
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
+  link: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterSpacing: "0.1em",
+    color: "#888DFF",
   },
 })
 
@@ -72,34 +85,25 @@ const RecentlyPosted = () => {
           return new Date(b.node.created_at) - new Date(a.node.created_at)
         })
         return (
-          <Box>
-            <Typography variant="h4" className={classes.recentlyPostedTitle}>
-              Recently Posted
-            </Typography>
+          <Box className={classes.layout}>
+            <Typography className={classes.title}>Recently Posted</Typography>
             {articlesSort.slice(0, 4).map(el => (
               <Box key={el.node.id} marginBottom="24px">
-                <Link
-                  to={`${BLOG}/${el.node.slug}`}
-                  className={classes.linkContainer}
-                >
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <GatsbyImage
-                        className={classes.recentlyPostedImage}
-                        image={getImage(el.node.image[0].localFile)}
-                        alt={el.node.title}
-                      />
-                    </Grid>
-                    <Grid item xs>
-                      <Typography variant="h5" className={classes.listTitle}>
+                <Grid container alignItems="center">
+                  <Grid item xs>
+                    <Box className={classes.container}>
+                      <Typography className={classes.listTitle}>
                         {el.node.title}
                       </Typography>
-                      <Typography className={classes.description}>
-                        {el.node.description.slice(0, 80)}
-                      </Typography>
-                    </Grid>
+                      <Link
+                        className={classes.link}
+                        to={`${BLOG}/${el.node.slug}`}
+                      >
+                        READ MORE →
+                      </Link>
+                    </Box>
                   </Grid>
-                </Link>
+                </Grid>
               </Box>
             ))}
           </Box>

@@ -9,21 +9,16 @@ import {
   InputLabel,
 } from "@material-ui/core"
 import RecentlyPosted from "../components/RecentlyPosted"
+import PostCarousel from "../components/BlogPost"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
-import Sidebar from "../components/Sidebar"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
-import { BgImage } from "gbimage-bridge"
 import PostContent from "../components/PostContent"
-import PostCarousel from "../components/PostCarousel"
 import NavbarMobile from "../components/NavbarMobile"
 
 const useStyles = makeStyles(theme => ({
-  postContainer: {
-    backgroundColor: "#2A2A2A",
-  },
   date: {
     fontFamily: "Nexa",
     fontStyle: "normal",
@@ -37,7 +32,15 @@ const useStyles = makeStyles(theme => ({
     height: "490px",
     width: "80%",
     paddingTop: "60px",
-    margin: "110px auto 0px auto",
+    margin: "90px auto 0px auto",
+  },
+  author: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "900",
+    fontSize: "22px",
+    lineHeight: "31px",
+    color: "#27AAE1",
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -48,8 +51,12 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     marginTop: "25px",
   },
-  imageTitle: {
-    objectFit: "contain",
+  imgContainer: {
+    backgroundColor: "#27AAE1",
+    display: "flex",
+    justifyContent: "center",
+    padding: "45px 0px",
+    marginTop: "90px",
   },
   description: {
     fontFamily: "Hero New",
@@ -60,16 +67,6 @@ const useStyles = makeStyles(theme => ({
     color: "#27AAE1",
     marginTop: "50px",
   },
-  postImage: {
-    width: 100,
-    height: 100,
-  },
-  titleContainer: {
-    [theme.breakpoints.down("md")]: {
-      paddingBottom: 16,
-      alignItems: "center",
-    },
-  },
   label: {
     background: "#797EF6",
     borderRadius: "5px",
@@ -78,11 +75,9 @@ const useStyles = makeStyles(theme => ({
     padding: "10px 13px",
     width: "fit-content",
   },
-  author: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 20,
+  contentContainer: {
+    display: "flex",
+    flexDirection: "row",
   },
 }))
 
@@ -94,19 +89,11 @@ const Post = ({ data }) => {
   const category = data.article.category.name
   const date = data.article.category.created_at
 
-  {
-    /* <BgImage
-                image={getImage(data.article.image[0].localFile)}
-                alt={title}
-              
-              > */
-  }
-
   return (
     <Layout seo={data.article.seo}>
       <PageWrapper>
         <Hidden mdDown>
-          <Navbar variant="secondary" />
+          <Navbar color="#27AAE1" variant="secondary" />
         </Hidden>
         <Hidden lgUp>
           <NavbarMobile />
@@ -115,23 +102,21 @@ const Post = ({ data }) => {
           <InputLabel className={classes.label}>{category}</InputLabel>
           <Typography className={classes.title}>{title}</Typography>
           <Typography className={classes.date}>
-            {date} │{author}
+            {date} │ <span className={classes.author}>{author}</span>
           </Typography>
           <Typography className={classes.description}>{description}</Typography>
         </Box>
-        <GatsbyImage
-          image={getImage(data.article.image[0].localFile)}
-          alt={title}
-          style={{
-            objectFit: "contain",
-            backgroundColor: "#27AAE1",
-          }}
-          imgStyle={{
-            objectFit: "contain",
-            backgroundColor: "#27AAE1",
-          }}
-        />
-
+        <Box className={classes.imgContainer}>
+          <GatsbyImage
+            image={getImage(data.article.image[0].localFile)}
+            alt={title}
+          />
+        </Box>
+        <Box className={classes.contentContainer}>
+          <PostContent data={data} />
+          <RecentlyPosted />
+        </Box>
+        <PostCarousel />
         <Footer />
         <Copyright />
       </PageWrapper>

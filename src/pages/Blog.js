@@ -14,7 +14,7 @@ const Blog = () => {
   return (
     <PageWrapper>
       <Hidden mdDown>
-        <Navbar variant="secondary" />
+        <Navbar variant="secondary" linkVariant="" />
       </Hidden>
       <Hidden lgUp>
         <NavbarMobile variantIcons="primary" />
