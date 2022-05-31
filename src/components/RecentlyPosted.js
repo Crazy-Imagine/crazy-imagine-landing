@@ -19,6 +19,8 @@ const useStyles = makeStyles({
     boxShadow: "0px 10px 20px 4px rgba(0, 0, 0, 0.05)",
     borderRadius: "14px",
     padding: "24px",
+    display: "flex",
+    flexDirection: "column",
   },
   layout: {
     paddingTop: "115px",
@@ -42,6 +44,7 @@ const useStyles = makeStyles({
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: "15px",
+    paddingTop: "12px",
     lineHeight: "15px",
     letterSpacing: "0.1em",
     color: "#888DFF",
@@ -97,6 +100,7 @@ const RecentlyPosted = () => {
                       </Typography>
                       <Link
                         className={classes.link}
+                        style={{textDecoration: "none"}}
                         to={`${BLOG}/${el.node.slug}`}
                       >
                         READ MORE →

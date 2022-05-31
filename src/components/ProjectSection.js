@@ -8,6 +8,7 @@ import SwiperCore, { Keyboard } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/swiper-bullet.css"
+import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -189,6 +190,7 @@ const ProjectSection = ({ title, btn }) => {
                       <Link
                         className={classes.link}
                         style={{ textDecoration: "none" }}
+                        to={`${PROJECTS}/${el.slug}`}
                       >
                         VIEW PROJECT →
                       </Link>

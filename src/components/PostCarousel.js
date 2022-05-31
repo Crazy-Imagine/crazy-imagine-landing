@@ -1,23 +1,49 @@
 import React from "react"
 import BlogPost from "../components/BlogPost"
+import Link from '@material-ui/core/Link';
+
 import {
   Box,
-  Button,
-  Grid,
   makeStyles,
   Typography,
-  useTheme,
 } from "@material-ui/core"
 
-import { BLOG } from "../navigation/sitemap"
-
-const useStyles = makeStyles({})
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontFamily: 'Nexa Bold',
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: '#193174',
+    marginTop: "78px",
+    marginBottom: "89px",
+  },
+  link: {
+    fontFamily: 'Nexa Bold',
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterSpacing: "0.1em",
+    color: "#888DFF",
+    marginBottom: "51px",
+  }
+})
 
 const PostCarousel = () => {
+  const classes = useStyles()
   return (
-    <Box>
-      <Typography>Related Articles</Typography>
-      <Link>ALL BLOGS →</Link>
+    <Box className={classes.container}>
+      <Typography className={classes.title}>Related Articles</Typography>
+      <Link className={classes.link} style={{textDecoration: "none"}}>ALL BLOGS →</Link>
       <BlogPost />
     </Box>
   )

@@ -7,7 +7,7 @@ import SwiperCore, { Keyboard } from "swiper/core"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
-import { ARTICLE, BLOG } from "../navigation/sitemap"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyes = makeStyles(theme => ({
   container: {

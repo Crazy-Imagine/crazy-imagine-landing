@@ -7,17 +7,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#304fd5",
   },
   imageContainer: {
-    [theme.breakpoints.down("lg")]: {
-      marginLeft: 10,
-    },
-  },
-  heroImage: {
-    width: 800,
-    height: 641,
-    filter: "brightness(75%)",
-    [theme.breakpoints.down("md")]: {
-      width: "0px",
-    },
+    backgroundColor: "#27AAE1",
+    display: "flex",
+    justifyContent: "center",
+    padding: "45px 0px",
+    marginTop: "90px",
   },
   title: {
     fontFamily: "Gotham-Black",
@@ -41,38 +35,14 @@ const HeroProjectsSection = ({ image, title }) => {
     image.length > 1 ? image[1].localFile : image[0].localFile
   )
   return (
-    <Box width="100%" height="673px" className={classes.heroContainer}>
       <Box
-        marginLeft="150px"
-        display="flex"
-        height="100%"
         className={classes.imageContainer}
       >
-        <Box
-          display="flex"
-          alignItems="flex-end"
-          marginBottom={{ xs: "0px", md: "-90px" }}
-        >
           <GatsbyImage
             image={dataImage}
             alt={title}
-            className={classes.heroImage}
           />
-        </Box>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent={{ xs: "center", md: "center" }}
-          marginLeft={{ md: "0px", lg: "-270px" }}
-          zIndex="999"
-          width={{ xs: "100%", md: "100%", lg: "700px" }}
-        >
-          <Typography variant="h3" className={classes.title}>
-            {title}
-          </Typography>
-        </Box>
       </Box>
-    </Box>
   )
 }
 

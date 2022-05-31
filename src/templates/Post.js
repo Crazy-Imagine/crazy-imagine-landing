@@ -9,7 +9,7 @@ import {
   InputLabel,
 } from "@material-ui/core"
 import RecentlyPosted from "../components/RecentlyPosted"
-import PostCarousel from "../components/BlogPost"
+import PostCarousel from "../components/PostCarousel"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
@@ -78,6 +78,7 @@ const useStyles = makeStyles(theme => ({
   contentContainer: {
     display: "flex",
     flexDirection: "row",
+    background: "white"  
   },
 }))
 
