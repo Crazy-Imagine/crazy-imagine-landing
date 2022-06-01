@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     gap: "59px",
     marginTop: "34px",
     marginBottom: "52px",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       height: "auto",
@@ -171,19 +172,20 @@ const useStyles = makeStyles(theme => ({
 
 export const SubTitleSection = ({ title, desc, img, setY }) => {
   const classes = useStyles()
+  //console.log(setY);
   return (
     <Box className={classes.container}>
       <Box className={classes.textContainer}>
-        <Typography className={setY < -160 ? classes.title2 : classes.title}>
+        <Typography className={setY < -225 ? classes.title2 : classes.title}>
           {title}
         </Typography>
-        <Typography className={setY < -160 ? classes.desc2 : classes.desc}>
+        <Typography className={setY < -225 ? classes.desc2 : classes.desc}>
           {desc}
         </Typography>
       </Box>
       <Box className={classes.imgn}>
         <img
-          className={setY < -160 ? classes.img2 : classes.img}
+          className={setY < -225 ? classes.img2 : classes.img}
           src={img}
           alt=""
         />

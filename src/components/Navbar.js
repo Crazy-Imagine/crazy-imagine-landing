@@ -36,11 +36,15 @@ const useStyles = makeStyles(theme => ({
   contactButton: {
     width: "151px",
     height: " 40px",
-    background: "#FFFFFF",
+    background: "transparent",
     borderRadius: "100px",
     textDecoration: "none",
+    border: "2px solid #FFFFFF",
     "&:hover": {
-      background: "#F5F5F5",
+      background: "#FFFFFF",
+      "& a": {
+        color: "#1E2F97",
+      },
     },
   },
   linkTypography: props => ({
@@ -81,7 +85,20 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.05em",
     textAlign: "center",
     lineHeight: "14px",
-    color: "#1E2F97",
+    color: "#FFFFFF",
+  },
+  contactTypographyOutside: {
+    fontSize: "14px",
+    fontWeight: 700,
+    textDecoration: "none",
+    letterSpacing: "0.05em",
+    textAlign: "center",
+    lineHeight: "14px",
+    backgroundColor: "#1E2F97",
+    color: "red",
+    "&:hover": {
+      color: "#FFFFF",
+    },
   },
 }))
 
@@ -130,7 +147,10 @@ const Navbar = ({
               </Link>
             </Typography>
           </Box>
-          <Link to={`${CONTACT}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`${CONTACT}`}
+            style={{ textDecoration: "none", borderRadius: "100px" }}
+          >
             <Button className={classes.contactButton}>
               <Link
                 to={`${CONTACT}`}

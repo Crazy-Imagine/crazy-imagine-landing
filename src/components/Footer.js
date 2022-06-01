@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: "50px",
+    gap: "20px",
     height: "100%",
 
     [theme.breakpoints.down("sm")]: {},
@@ -180,10 +180,12 @@ const Footer = ({ height = "192px", align = "center" }) => {
             />
           </Link>
           <Box className={classes.iconsContainer}>
-            <TwitterIcon className={classes.contactIcon}></TwitterIcon>
-            <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
-            <InstagramIcon className={classes.contactIcon}></InstagramIcon>
-            <FacebookIcon className={classes.contactIcon}></FacebookIcon>
+            <a href="https://ve.linkedin.com/company/crazy-imagine-software" target="_blank" >
+              <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
+            </a>
+            <a href="https://instagram.com/crazyimaginedev?igshid=YmMyMTA2M2Y=" target="_blank" >
+              <InstagramIcon className={classes.contactIcon}></InstagramIcon>
+            </a>
           </Box>
         </Box>
         <Box className={classes.linkContainer}>

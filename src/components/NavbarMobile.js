@@ -47,7 +47,13 @@ const useStyles = makeStyles(theme => ({
   navbarMobileIcons: props => ({
     fontSize: 50,
     color: props.scroll ? props.iconsVariant : "white",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 30,
+    },
   }),
+  navbarLogo: {
+
+  },
   navbarMobileLogo: {
     width: 140,
     height: 73,
@@ -79,6 +85,11 @@ const useStyles = makeStyles(theme => ({
   btn: {
     "& .MuiButtonBase-root": {
       padding: "8px",
+
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "-20px",
+      marginLeft: "1px",
     },
   },
   list: {
@@ -87,6 +98,16 @@ const useStyles = makeStyles(theme => ({
   },
   hDrawer: {
     justifyContent: "space-beetwen"
+  },
+  navbarMobileResponsive: {
+    display: "flex",
+    width: "100%",
+    height: "5.5em",
+    alignItems: "center",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("xs")]: {
+      height: "3em",
+    },
   },
 }))
 
@@ -139,15 +160,11 @@ const NavbarMobile = ({
       >
         <Toolbar>
           <Box
-            display="flex"
-            width="100%"
-            height="5.5em"
-            alignItems="center"
-            justifyContent="space-between"
+            className={classes.navbarMobileResponsive}
           >
             <Link to={HOME}>
               <StaticImage
-                src="../images/LOGO.png"
+                src="../images/crazy-imagine-icon.svg"
                 alt="logo"
                 className={classes.navbarLogo}
               />

@@ -175,7 +175,6 @@ const FeaturedArticle = () => {
             return new Date(b.node.created_at) - new Date(a.node.created_at)
           })
           .slice(0, 1)
-
         return (
           <Box className={classes.container}>
             <Typography className={classes.title}>Featured Article</Typography>
