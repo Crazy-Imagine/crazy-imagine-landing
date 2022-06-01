@@ -82,9 +82,7 @@ const ProductsSection = () => {
   })
   const [state, handleSubmit] = useForm("xzbyobpo")
 
-  if (state.succeeded) {
-    console.log("yupi")
-  }
+
 
   const handleClickOpen = () => {
     setOpen(true)

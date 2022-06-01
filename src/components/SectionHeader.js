@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
-      height: props.little ? "232px" : "430px",
+      height: props.little ? "232px" : "400px",
       width: "93.2%",
       flexDirection: "column",
+
     },
     [theme.breakpoints.between(400, 0)]: {
       flexDirection: "column",
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: props.little ? "390px" : "488px",
+      height: props.little ? "390px" : "538px",
     },
     [theme.breakpoints.between(400, 0)]: {
       flexDirection: "column",
@@ -153,10 +154,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       padding: "40px 0px 40px 40px",
       width: "100%",
+      alignItems: props.little ? "center" : "stretch",
     },
     [theme.breakpoints.down("xs")]: {
       padding: "10px 0px 10px 10px",
       width: "100%",
+      alignItems: props.little ? "center" : "start",
     },
   }),
   imgContainer: props => ({

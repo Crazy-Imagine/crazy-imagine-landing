@@ -156,9 +156,7 @@ const ServicesSection = () => {
   const [state, handleSubmit] = useForm("xzbyobpo")
   const [activeStep, setActiveStep] = useState(0)
 
-  if (state.succeeded) {
-    console.log("yupi")
-  }
+
 
   const handleClickOpen = () => {
     setOpen(true)
