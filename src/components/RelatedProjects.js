@@ -8,7 +8,8 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
 import "../css/swiper-bullet.css"
-import { BLOG } from "../navigation/sitemap"
+import { PROJECTS } from "../navigation/sitemap"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -91,30 +92,32 @@ const useStyes = makeStyles(theme => ({
   },
 }))
 
-const BlogPost = ({ bulletClass }) => {
+const RelatedProjects = () => {
   const classes = useStyes()
   return (
     <StaticQuery
       query={graphql`
         query {
-          articles: allStrapiArticle {
-            edges {
-              node {
-                id
-                description
-                title
-                slug
-                created_at
-                author {
-                  name
+          homePage: strapiHomepage {
+            projectsImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
                 }
-                image {
-                  localFile {
-                    publicURL
+              }
+            }
+          }
+          projects: allStrapiProjects(limit: 8) {
+            nodes {
+              title
+              slug
+              description
+              id
+              images {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(quality: 100, height: 210)
                   }
-                }
-                category {
-                  name
                 }
               }
             }
@@ -122,13 +125,8 @@ const BlogPost = ({ bulletClass }) => {
         }
       `}
       render={data => {
-        const articles = data.articles.edges
-        const articlesSort = articles
-          .sort((a, b) => {
-            return new Date(b.node.created_at) - new Date(a.node.created_at)
-          })
-          .slice(0, 4)
-
+        const projects = data.projects.nodes
+        console.log(projects)
         SwiperCore.use([Keyboard])
 
         return (
@@ -151,21 +149,29 @@ const BlogPost = ({ bulletClass }) => {
             keyboard={{ enabled: true }}
             grabCursor={true}
             modules={[Pagination]}
-            className={`${classes.slider} ${bulletClass}`}
+            className={`${classes.slider} purpleBullet`}
           >
-            {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} className={classes.carousel}>
+            {projects.map(({ node }, index) => (
+              <SwiperSlide key={index}>
                 <Box className={classes.container}>
-                  <img
-                    src={node.image[0].localFile.publicURL}
-                    className={classes.img}
+                  <GatsbyImage
+                    alt="About the project"
+                    image={getImage(projects[index].images[0].localFile)}
+                    style={{
+                      objectFit: "contain",
+                      backgroundColor: "#27AAE1",
+                    }}
+                    imgStyle={{
+                      objectFit: "contain",
+                      backgroundColor: "#27AAE1",
+                    }}
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
-                      {node.title}
+                      {projects[index].title}
                     </Typography>
                     <Link
-                      to={`${BLOG}/${node.slug}`}
+                      to={`${PROJECTS}/${projects[index].slug}`}
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >
@@ -182,4 +188,4 @@ const BlogPost = ({ bulletClass }) => {
   )
 }
 
-export default BlogPost
+export default RelatedProjects

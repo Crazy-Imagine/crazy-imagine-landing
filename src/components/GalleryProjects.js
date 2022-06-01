@@ -1,20 +1,14 @@
-import React, { useState } from "react"
-import { Box, Button, Hidden, makeStyles } from "@material-ui/core"
+import React from "react"
+import { Box, makeStyles } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { ArrowBackOutlined, ArrowForwardOutlined } from "@material-ui/icons"
+import DescriptionProjects from "../components/DescriptionProjects"
 
 const useStyles = makeStyles({
-  galleryImage: {
-    width: "100%",
-    height: 322,
-    transition: "transform 300ms",
-    "&:hover": {
-      transform: "scale(0.95)",
-    },
-    "&:active": {
-      zIndex: "999",
-      transform: "scale(1.3, 1.5)",
-    },
+  galleryContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: "21px",
   },
   carouselButton: {
     backgroundColor: "transparent",
@@ -30,66 +24,47 @@ const useStyles = makeStyles({
   },
 })
 
-const GalleryProjects = ({ gallery }) => {
+const GalleryProjects = ({ gallery, description }) => {
   const classes = useStyles()
+  const firstGallery = gallery.slice(2, 4)
+  const secondGallery = gallery.slice(4)
 
-  const [activeStep, setActiveStep] = useState(0)
-
-  const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-  }
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
-  console.log(gallery)
   return (
-    <Box marginTop="50px">
-      <Box display="flex">
-        {gallery[activeStep] ? (
-          <>
-            <Button
-              variant="contained"
-              startIcon={<ArrowBackOutlined />}
-              onClick={handleBack}
-              disabled={activeStep === 0}
-              className={classes.carouselButton}
-            />
-            <GatsbyImage
-              image={getImage(gallery[activeStep].localFile)}
-              alt={`image`}
-              className={classes.galleryImage}
-            />{" "}
-            <Hidden mdDown>
-              <GatsbyImage
-                image={getImage(gallery[activeStep + 1].localFile)}
-                alt={`image`}
-                className={classes.galleryImage}
-              />
-              <GatsbyImage
-                image={getImage(gallery[activeStep].localFile)}
-                alt={`image`}
-                className={classes.galleryImage}
-              />
-              <GatsbyImage
-                image={getImage(gallery[activeStep + 2].localFile)}
-                alt={`image`}
-                className={classes.galleryImage}
-              />
-            </Hidden>
-            <Button
-              variant="contained"
-              startIcon={<ArrowForwardOutlined />}
-              onClick={handleNext}
-              disabled={activeStep === gallery.length - 3}
-              className={classes.carouselButton}
-            />
-          </>
-        ) : (
-          ""
-        )}
+    <>
+      <Box className={classes.galleryContainer}>
+        {firstGallery.map(({ localFile }, index) => (
+          <GatsbyImage
+            image={getImage(localFile)}
+            style={{
+              maxWidth: "530px",
+              objectFit: "contain",
+            }}
+            imgStyle={{
+              maxWidth: "530px",
+              objectFit: "contain",
+            }}
+            alt={`image`}
+          />
+        ))}
       </Box>
-    </Box>
+      <DescriptionProjects description={description} />
+      <Box className={classes.galleryContainer}>
+        {secondGallery.map(({ localFile }, index) => (
+          <GatsbyImage
+            image={getImage(localFile)}
+            imgStyle={{
+              maxWidth: "530px",
+              objectFit: "contain",
+            }}
+            style={{
+              maxWidth: "530px",
+              objectFit: "contain",
+            }}
+            alt={`image`}
+          />
+        ))}
+      </Box>
+    </>
   )
 }
 

@@ -16,10 +16,7 @@ const About = () => {
 
   const handleNavigation = e => {
     if (!ref.current) return
-    //console.log(ref.current);
     const div = ref.current
-    //const window = e.currentTarget;
-    //console.log(div?.getBoundingClientRect().y, "aca");
     setY(div?.getBoundingClientRect().y)
   }
 

@@ -1,7 +1,6 @@
 import React from "react"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Box, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import clsx from "clsx"
 
 const useStyles = makeStyles({
   container: {
@@ -9,6 +8,18 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     padding: "115px",
+  },
+  galleryImage: {
+    width: "100%",
+    height: 322,
+    transition: "transform 300ms",
+    "&:hover": {
+      transform: "scale(0.95)",
+    },
+    "&:active": {
+      zIndex: "999",
+      transform: "scale(1.3, 1.5)",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -32,12 +43,12 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    gap: "21px",
   },
 })
 
 const AboutProjects = ({ aboutProject, moreAbout, gallery }) => {
   const classes = useStyles()
-  console.log(gallery)
 
   return (
     <>
@@ -48,13 +59,21 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery }) => {
       <Box className={classes.imgContainer}>
         <GatsbyImage
           image={getImage(gallery[0].localFile)}
+          imgStyle={{
+            maxWidth: "530px",
+            objectFit: "contain",
+          }}
+          style={{ maxWidth: "530px", objectFit: "contain" }}
           alt="About the project"
-          className={classes.projectImage}
         />
         <GatsbyImage
           image={getImage(gallery[1].localFile)}
+          imgStyle={{
+            maxWidth: "530px",
+            objectFit: "contain",
+          }}
+          style={{ maxWidth: "530px", objectFit: "contain" }}
           alt="More"
-          className={classes.projectImage}
         />
       </Box>
       <Box className={classes.container}>

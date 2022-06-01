@@ -169,7 +169,6 @@ const ProjectSection = ({ title, btn }) => {
             >
               {projects.map((el, index) => (
                 <SwiperSlide key={index} style={{ backgroundColor: "#FFFFFF" }}>
-                  {console.log(projects[index].images[0].localFile)}
                   <Box className={classes.carouselContainer}>
                     <GatsbyImage
                       alt="About the project"

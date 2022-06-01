@@ -8,10 +8,9 @@ import Copyright from "../components/Copyright"
 import HeroProjectsSection from "../components/HeroProjectsSection"
 import AboutProjects from "../components/AboutProjects"
 import GalleryProjects from "../components/GalleryProjects"
-import DescriptionProjects from "../components/DescriptionProjects"
-import MoreProjects from "../components/MoreProjects"
 import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
+import RelatedSection from "../components/RelatedSection"
 
 const useStyles = makeStyles({
   title: {
@@ -56,6 +55,7 @@ const Project = ({ data }) => {
   const title = dataProject.title
   const date = dataProject.created_at
   const description = dataProject.description
+
   return (
     <Layout seo={dataProject?.seo}>
       <PageWrapper>
@@ -81,9 +81,9 @@ const Project = ({ data }) => {
           <GalleryProjects
             gallery={dataProject?.galleryImages}
             id={dataProject.id}
+            description={dataProject?.moreAbout}
           />
-          <DescriptionProjects description={dataProject?.moreAbout} />
-          <MoreProjects />
+          <RelatedSection />
           <Footer />
           <Copyright />
         </Box>
@@ -116,18 +116,14 @@ export const query = graphql`
       images {
         localFile {
           childImageSharp {
-            gatsbyImageData(quality: 100)
+            gatsbyImageData(width: 530, quality: 100)
           }
         }
       }
       galleryImages {
         localFile {
           childImageSharp {
-            gatsbyImageData(
-              placeholder: BLURRED
-              layout: FULL_WIDTH
-              quality: 100
-            )
+            gatsbyImageData(width: 530, quality: 100)
           }
         }
       }
