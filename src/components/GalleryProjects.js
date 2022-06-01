@@ -42,7 +42,7 @@ const GalleryProjects = ({ gallery }) => {
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
-
+  console.log(gallery)
   return (
     <Box marginTop="50px">
       <Box display="flex">

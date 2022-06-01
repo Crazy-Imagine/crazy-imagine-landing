@@ -15,7 +15,7 @@ import NavbarMobile from "../components/NavbarMobile"
 
 const useStyles = makeStyles({
   title: {
-    fontFamily: 'Nexa Bold',
+    fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: "70px",
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     marginBottom: "17px",
   },
   date: {
-    fontFamily: 'Nexa',
+    fontFamily: "Nexa",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "22px",
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     marginBottom: "50px",
   },
   description: {
-    fontFamily: 'Hero New',
+    fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "22px",
@@ -43,10 +43,11 @@ const useStyles = makeStyles({
   },
   header: {
     height: "490px",
-  width: "80%",
-  paddingTop: "60px",
-  margin: "90px auto 0px auto",}
-}) 
+    width: "80%",
+    paddingTop: "60px",
+    margin: "70px auto 0px auto",
+  },
+})
 
 const Project = ({ data }) => {
   const classes = useStyles()
@@ -74,6 +75,7 @@ const Project = ({ data }) => {
           <AboutProjects
             aboutProject={dataProject?.details}
             images={image}
+            gallery={dataProject?.galleryImages}
             moreAbout={dataProject?.description}
           />
           <GalleryProjects
@@ -91,43 +93,47 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-query Project($id: String!) {
-  strapiProjects(id: {eq: $id}) {
-    details
-    description
-    id
-    moreAbout
-    title
-    seo {
-      metaTitle
-      metaDescription
+  query Project($id: String!) {
+    strapiProjects(id: { eq: $id }) {
+      details
+      description
       id
-      shareImage {
-        localFile {
-          publicURL
-          childImageSharp {
-            gatsbyImageData
+      moreAbout
+      title
+      seo {
+        metaTitle
+        metaDescription
+        id
+        shareImage {
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
-    }
-    images {
-      localFile {
-        childImageSharp {
-          gatsbyImageData(quality: 100)
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100)
+          }
         }
       }
-    }
-    galleryImages {
-      localFile {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 100)
+      galleryImages {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: FULL_WIDTH
+              quality: 100
+            )
+          }
         }
       }
+      created_at(formatString: "DD MMMM, YYYY")
     }
-    created_at(formatString: "DD MMMM, YYYY")
   }
-}
 `
 
 export default Project

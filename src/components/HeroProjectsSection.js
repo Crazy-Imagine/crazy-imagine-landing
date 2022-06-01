@@ -35,14 +35,9 @@ const HeroProjectsSection = ({ image, title }) => {
     image.length > 1 ? image[1].localFile : image[0].localFile
   )
   return (
-      <Box
-        className={classes.imageContainer}
-      >
-          <GatsbyImage
-            image={dataImage}
-            alt={title}
-          />
-      </Box>
+    <Box className={classes.imageContainer}>
+      <GatsbyImage image={dataImage} alt={title} />
+    </Box>
   )
 }
 
