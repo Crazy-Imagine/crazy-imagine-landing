@@ -172,7 +172,6 @@ const useStyles = makeStyles(theme => ({
 
 export const SubTitleSection = ({ title, desc, img, setY }) => {
   const classes = useStyles()
-  //console.log(setY);
   return (
     <Box className={classes.container}>
       <Box className={classes.textContainer}>

@@ -126,7 +126,6 @@ const RelatedProjects = () => {
       `}
       render={data => {
         const projects = data.projects.nodes
-        console.log(projects)
         SwiperCore.use([Keyboard])
 
         return (

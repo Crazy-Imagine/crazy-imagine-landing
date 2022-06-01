@@ -79,6 +79,7 @@ const Project = ({ data }) => {
             moreAbout={dataProject?.description}
           />
           <GalleryProjects
+            images={image}
             gallery={dataProject?.galleryImages}
             id={dataProject.id}
             description={dataProject?.moreAbout}

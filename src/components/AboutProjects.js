@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
 })
 
-const AboutProjects = ({ aboutProject, moreAbout, gallery }) => {
+const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
 
   return (
@@ -58,7 +58,9 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery }) => {
       </Box>
       <Box className={classes.imgContainer}>
         <GatsbyImage
-          image={getImage(gallery[0].localFile)}
+          image={getImage(
+            gallery[0] ? gallery[0].localFile : images[0].localFile
+          )}
           imgStyle={{
             maxWidth: "530px",
             objectFit: "contain",
@@ -67,7 +69,9 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery }) => {
           alt="About the project"
         />
         <GatsbyImage
-          image={getImage(gallery[1].localFile)}
+          image={getImage(
+            gallery[1] ? gallery[1].localFile : images[0].localFile
+          )}
           imgStyle={{
             maxWidth: "530px",
             objectFit: "contain",
