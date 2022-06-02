@@ -4,6 +4,7 @@ import SubTitleSection from "./SubTitleSection"
 import AboutTitle from "./AboutTitle"
 import aboutImage from "../images/sateliteBackground.svg"
 import aboutImage1 from "../images/antenaBackground.svg"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,6 +25,8 @@ const useStyles = makeStyles(theme => ({
 
 const AboutSection = ({ bgColor, bgImage, setY }) => {
   const classes = useStyles()
+  //const ref = useRef()
+  //const isVisible = useIntersection(ref, "0px")
   return (
     <>
       <Box className={classes.container}>
@@ -34,6 +37,7 @@ const AboutSection = ({ bgColor, bgImage, setY }) => {
           img={aboutImage}
         />
         <SubTitleSection
+
           title="…to create more."
           desc="Collaboration with our internal team as well as with our clients sets our work apart from the pack. 
                 Our commitment to communication as well as accountability drives us towards innovation and unrivaled quality."

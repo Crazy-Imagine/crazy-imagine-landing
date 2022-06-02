@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: "98px",
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
@@ -18,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
+    animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -42,6 +44,16 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between(450, 0)]: {
       fontSize: "10px",
       lineHeight: "10px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(-300%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
     },
   },
   button: {

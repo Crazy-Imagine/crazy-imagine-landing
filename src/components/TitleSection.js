@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-start",
   },
   title: {
+    animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -61,7 +62,9 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "29px",
     },
   },
+
   blueTitle: {
+    animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -78,7 +81,22 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "29px",
     },
   },
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
+      transform: "scale(0)",
+    },
+    "50%": {
+      opacity: 0.5,
+      transform: "scale(0.5)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+  },
   desc: {
+    animation: `$myEffectos 8000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -90,7 +108,19 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
   },
+  "@keyframes myEffectos": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
   img: {
+    animation: `$myEffect 3000ms`,
     [theme.breakpoints.down("md")]: {
       width: "70%",
       height: "70%",
@@ -101,6 +131,16 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 200)]: {
       width: "55%",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
     },
   },
   imgContainer: {

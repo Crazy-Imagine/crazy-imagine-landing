@@ -1,9 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   img: {
+    animation: `$myEffect 3000ms`,
     marginTop: "auto",
     width: "100%",
     height: "100%",
@@ -38,9 +40,11 @@ const useStyles = makeStyles(theme => ({
 
 const Imagen = ({ setY }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box className={setY < -713 ? classes.img2 : classes.img}>
-      <StaticImage className={classes.img} src="../images/crazy1.png" />
+    <Box ref={ref} className={isVisible ? classes.img2 : classes.img}>
+      <StaticImage className={`${isVisible && classes.img2}`} src="../images/crazy1.png" />
     </Box>
   )
 }

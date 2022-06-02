@@ -23,6 +23,8 @@ const useStyles = makeStyles(theme => ({
     gap: "45px",
     backgroundColor: "rgb(255, 255, 255)",
     height: "772px",
+
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       gap: "32px",
       height: "540px",
@@ -49,6 +51,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       gap: "32px",
       height: "540px",
@@ -90,10 +93,13 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
     },
   },
+
+
 }))
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
+
 
   return (
     <>

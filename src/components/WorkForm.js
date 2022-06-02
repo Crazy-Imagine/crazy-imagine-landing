@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formContainer: {
+    animation: `$myEffect 3000ms`,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -86,12 +87,25 @@ const useStyles = makeStyles(theme => ({
       padding: "4px",
     },
   },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
   containerImage: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     width: "42%",
+  },
+  container1: {
+    overflow: "hidden",
   },
   attachContainer: {
     width: "520px",
@@ -396,7 +410,7 @@ const WorkForm = () => {
       <Box className={classes.containerImage}>
         <WorkInfo />
       </Box>
-      <Box>
+      <Box className={classes.container1}>
         <Box
           style={{
             width: "fit-content",

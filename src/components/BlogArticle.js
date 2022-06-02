@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Typography } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -54,6 +55,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: "#193173",
     marginBottom: "38px",
+    visibility: "hidden",
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -63,11 +65,45 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "22px",
     },
   },
+  wrapperTitle2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "900",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#193173",
+    marginBottom: "38px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "22px",
+      lineHeight: "22px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+    "50%": {
+      opacity: 1,
+      transform: "scale(1.1)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+  },
   wrapperContainer: {
     width: "75%",
     margin: "auto",
     marginTop: "83px",
     display: "flex",
+    overflow: "hidden",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
@@ -131,6 +167,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center",
     marginTop: "71px",
     marginBottom: "105px",
+    visibility: "hidden",
     [theme.breakpoints.down("md")]: {
       marginTop: "50px",
       marginBottom: "75px",
@@ -157,11 +194,57 @@ const useStyles = makeStyles(theme => ({
       color: "#FFFFFF",
     },
   },
+  loadButton2: {
+    background: "#797EF6",
+    borderRadius: "100px",
+    alignSelf: "center",
+    marginTop: "71px",
+    marginBottom: "105px",
+    animation: `$myEffecto 3000ms`,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "50px",
+      marginBottom: "75px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "40px",
+      marginBottom: "70px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "71px",
+      marginBottom: "105px",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+  },
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(300%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
 }))
 
 const BlogArticle = () => {
   const classes = useStyles()
-
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
+  const ref1 = useRef()
+  const isVisible1 = useIntersection(ref1, "0px")
   return (
     <StaticQuery
       query={graphql`
@@ -199,7 +282,7 @@ const BlogArticle = () => {
           .slice(0, 6)
         return (
           <Box className={classes.wrapperContainer}>
-            <Typography className={classes.wrapperTitle}>
+            <Typography ref={ref} className={isVisible ? classes.wrapperTitle2 : classes.wrapperTitle}>
               Browse All Articles
             </Typography>
             <Box className={classes.wrapper}>
@@ -218,7 +301,7 @@ const BlogArticle = () => {
                 </Box>
               ))}
             </Box>
-            <Button className={classes.loadButton}>LOAD MORE</Button>
+            <Button ref={ref1} className={isVisible1 ? classes.loadButton2 : classes.loadButton}>LOAD MORE</Button>
           </Box>
         )
       }}

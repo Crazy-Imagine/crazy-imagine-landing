@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    visibility: "hidden",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       fontWeight: "auto",
@@ -99,6 +101,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "130%",
     letterSpacing: "0.02em",
     color: "#193174",
+    visibility: "hidden",
     [theme.breakpoints.down("xs")]: {
       fontSize: "8px",
     },
@@ -134,6 +137,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
+    visibility: "hidden",
     [theme.breakpoints.down("xs")]: {
       width: "80%",
       marginTop: "-27px",
@@ -172,19 +176,21 @@ const useStyles = makeStyles(theme => ({
 
 export const SubTitleSection = ({ title, desc, img, setY }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={classes.container}>
       <Box className={classes.textContainer}>
-        <Typography className={setY < -225 ? classes.title2 : classes.title}>
+        <Typography className={isVisible ? classes.title2 : classes.title}>
           {title}
         </Typography>
-        <Typography className={setY < -225 ? classes.desc2 : classes.desc}>
+        <Typography className={isVisible ? classes.desc2 : classes.desc}>
           {desc}
         </Typography>
       </Box>
       <Box className={classes.imgn}>
         <img
-          className={setY < -225 ? classes.img2 : classes.img}
+          className={isVisible ? classes.img2 : classes.img}
           src={img}
           alt=""
         />

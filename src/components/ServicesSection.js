@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     paddingTop: "128px",
+    overflow: "hidden",
   },
   bg: {
     backgroundImage: `url(${bgImage})`,

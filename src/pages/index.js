@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Box, Hidden } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import Navbar from "../components/Navbar"
@@ -17,37 +17,53 @@ import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
 
+
 const IndexPage = () => {
   const data = useStaticQuery(query)
+  const ref = useRef()
+  const [y, setY] = useState(0)
+
+  const handleNavigation = e => {
+    if (!ref.current) return
+    const div = ref.current
+    setY(div?.getBoundingClientRect().y)
+    //console.log(y);
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", e => handleNavigation(e))
+  }, [])
 
   return (
     <>
       <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
         <PageWrapper>
-          <Hidden mdDown>
-            <Navbar variant="secondary" />
-          </Hidden>
-          <Hidden lgUp>
-            <NavbarMobile />
-          </Hidden>
-          <Box overflow="hidden">
-            <SectionHeader
-              title={`Ideas Beyond\nYour Imagination`}
-              desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
-              btn={true}
-              img={headerImage}
-              cls="textContainer"
-            />
-            <HomeMainSection />
-            <HomeDescription />
-            <CapabilitiesSection />
-            <ReferenceSection />
-            <ProjectSection title={"Previous Projects"} btn={true} />
-            <LastestPosts />
-            <ContactSection bgColor="#FFFFFF" />
-            <Footer />
-            <Copyright />
-          </Box>
+          <div ref={ref}>
+            <Hidden mdDown>
+              <Navbar variant="secondary" />
+            </Hidden>
+            <Hidden lgUp>
+              <NavbarMobile />
+            </Hidden>
+            <Box overflow="hidden">
+              <SectionHeader
+                title={`Ideas Beyond\nYour Imagination`}
+                desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
+                btn={true}
+                img={headerImage}
+                cls="textContainer"
+              />
+              <HomeMainSection />
+              <HomeDescription />
+              <CapabilitiesSection />
+              <ReferenceSection />
+              <ProjectSection title={"Previous Projects"} btn={true} />
+              <LastestPosts />
+              <ContactSection bgColor="#FFFFFF" />
+              <Footer />
+              <Copyright />
+            </Box>
+          </div>
         </PageWrapper>
       </Layout>
     </>

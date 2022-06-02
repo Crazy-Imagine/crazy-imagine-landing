@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   title: {
+    animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "900",
@@ -23,7 +24,22 @@ const useStyles = makeStyles(theme => ({
       marginTop: "54px",
     },
   },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+    "50%": {
+      opacity: 1,
+      transform: "scale(1.1)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+  },
   desc: {
+    animation: `$myEffecto 3000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -35,6 +51,17 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       marginTop: "13px",
+    },
+  },
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
     },
   },
 }))
