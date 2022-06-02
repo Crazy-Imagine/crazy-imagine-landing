@@ -11,17 +11,21 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "50px",
     whiteSpace: "pre-line",
     color: "#193174",
-    marginTop: "124px",
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
+      marginTop: "40px",
       lineHeight: "35px",
-      marginTop: "87px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "25px",
+      marginTop: "15px",
       lineHeight: "22px",
-      marginTop: "54px",
     },
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   desc: {
     fontFamily: "Hero New",
@@ -43,19 +47,10 @@ const WorkInfo = () => {
   const classes = useStyles()
 
   return (
-    <Box>
+    <Box className={classes.container}>
       <Typography className={classes.title}>{`Interested
       In Working
-      With Us`}</Typography>
-      <Typography className={classes.desc}>
-        {`Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit,
-        sed do eiusmod tempor 
-        incididunt ut labore et dolore 
-        magna aliqua. Ut enim ad
-        minim veniam, quis nostrud
-        exercitation ullamco.`}
-      </Typography>
+      With Us?`}</Typography>
     </Box>
   )
 }

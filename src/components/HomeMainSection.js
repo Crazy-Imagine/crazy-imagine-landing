@@ -6,7 +6,8 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
 import TitleSection from "./TitleSection"
-import { graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
+import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "87px",
     marginTop: "48px",
     "&:hover": {
-      backgroundColor: "#B0B4FF",
+      backgroundColor: "#30AADE",
     },
     "& > span": {
       fontFamily: "Nexa Bold",
@@ -88,7 +89,9 @@ const HomeMainSection = () => {
           <HomeCard title={`Quality\nSupport`} icon={faCircleCheck} />
         </Grid>
       </Grid>
-      <Button className={classes.button}>GET STARTED</Button>
+      <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+        <Button className={classes.button}>GET STARTED</Button>
+      </Link>
     </Box>
   )
 }

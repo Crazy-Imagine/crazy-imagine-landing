@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     paddingTop: "128px",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "64px",
+    },
   },
   bg: {
     backgroundImage: `url(${bgImage})`,
@@ -35,12 +38,22 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: "115px",
     justifyContent: "center",
     gap: "34px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
   },
   pMajor: {
     paddingBottom: "70px",
+    [theme.breakpoints.down("md")]: {
+      paddingBottom: "50px",
+    },
   },
   pMinor: {
     paddingBottom: "52px",
+    [theme.breakpoints.down("md")]: {
+      paddingBottom: "50px",
+    },
   },
 }))
 

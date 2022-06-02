@@ -12,7 +12,7 @@ import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -21,6 +21,10 @@ const useStyles = makeStyles({
     lineHeight: "72px",
     color: "#193174",
     marginBottom: "17px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "51px",
+      lineHeight: "53px",
+    },
   },
   date: {
     fontFamily: "Nexa",
@@ -30,6 +34,11 @@ const useStyles = makeStyles({
     lineHeight: "22px",
     color: "#193174",
     marginBottom: "50px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+      marginBottom: "35px",
+    },
   },
   description: {
     fontFamily: "Hero New",
@@ -39,14 +48,22 @@ const useStyles = makeStyles({
     lineHeight: "31px",
     color: "#27AAE1",
     marginBottom: "99px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "22px",
+    },
   },
   header: {
     height: "490px",
     width: "80%",
     paddingTop: "60px",
     margin: "70px auto 0px auto",
+    [theme.breakpoints.down("md")]: {
+      height: "400px",
+      margin: "50px auto 0px auto",
+    },
   },
-})
+}))
 
 const Project = ({ data }) => {
   const classes = useStyles()

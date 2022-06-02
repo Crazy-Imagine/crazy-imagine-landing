@@ -1,5 +1,4 @@
 import React from "react"
-import clsx from "clsx"
 import Swal from "sweetalert2"
 import { Box, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
@@ -85,7 +84,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-start",
     padding: "14px 20px 12px 20px",
     "&:hover": {
-      backgroundColor: "#B0B4FF",
+      backgroundColor: "#30AADE",
     },
     "& > span": {
       fontFamily: "Nexa Bold",

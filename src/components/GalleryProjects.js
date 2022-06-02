@@ -3,12 +3,15 @@ import { Box, makeStyles } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import DescriptionProjects from "../components/DescriptionProjects"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   galleryContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     gap: "21px",
+    [theme.breakpoints.down("md")]: {
+      padding: "0 35px",
+    },
   },
   carouselButton: {
     backgroundColor: "transparent",
@@ -22,7 +25,7 @@ const useStyles = makeStyles({
       backgroundColor: "transparent",
     },
   },
-})
+}))
 
 const GalleryProjects = ({ gallery, description }) => {
   const classes = useStyles()

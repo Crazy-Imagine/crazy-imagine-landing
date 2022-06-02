@@ -1,6 +1,8 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
+import { BLOG } from "../navigation/sitemap"
+
 const useStyles = makeStyles(theme => ({
   container: {
     height: "auto",
@@ -106,6 +108,11 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "20px",
       paddingLeft: "18px",
     },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+      paddingLeft: "9px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -119,7 +126,7 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
-      paddingLeft: "18px",
+      paddingLeft: "9px",
       lineHeight: "11px",
     },
   },
@@ -134,6 +141,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       padding: "20px 0 27px 20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "18px",
+      padding: "12px 0 18px 12px",
     },
   },
 }))
@@ -181,13 +192,20 @@ const FeaturedArticle = () => {
             <Box className={classes.cardContainer}>
               <img
                 className={classes.img}
+                alt="Feature Article Image"
                 src={featureArticle[0].node.image[0].localFile.publicURL}
               />
               <Box className={classes.textContainer}>
                 <Typography className={classes.titleCard}>
                   {featureArticle[0].node.title}
                 </Typography>
-                <Link className={classes.link}>READ MORE →</Link>
+                <Link
+                  to={`${BLOG}/${featureArticle[0].node.slug}`}
+                  style={{ textDecoration: "none" }}
+                  className={classes.link}
+                >
+                  READ MORE →
+                </Link>
               </Box>
             </Box>
           </Box>

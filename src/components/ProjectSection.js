@@ -5,10 +5,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
+import { PROJECTS } from "../navigation/sitemap"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/swiper-bullet.css"
-import { PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
     padding: "14px 20px 12px 20px",
     alignSelf: "center",
     "&:hover": {
-      backgroundColor: "#B0B4FF",
+      backgroundColor: "#30AADE",
     },
     "& > span": {
       fontFamily: "Nexa Bold",
@@ -128,6 +128,12 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "11px",
     },
   },
+  slide: {
+    backgroundColor: "#FFFFFF",
+    [theme.breakpoints.between(0, 400)]: {
+      width: "75%",
+    },
+  },
   textContainer: {
     display: "flex",
     flexDirection: "column",
@@ -168,7 +174,7 @@ const ProjectSection = ({ title, btn }) => {
               className={`${classes.container} purpleBullet`}
             >
               {projects.map((el, index) => (
-                <SwiperSlide key={index} style={{ backgroundColor: "#FFFFFF" }}>
+                <SwiperSlide key={index} className={classes.slide}>
                   <Box className={classes.carouselContainer}>
                     <GatsbyImage
                       alt="About the project"
@@ -197,7 +203,11 @@ const ProjectSection = ({ title, btn }) => {
                   </Box>
                 </SwiperSlide>
               ))}
-              {btn && <Button className={classes.button}>ALL PROJECTS</Button>}
+              {btn && (
+                <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+                  <Button className={classes.button}>ALL PROJECTS</Button>
+                </Link>
+              )}
             </Swiper>
           </Box>
         )

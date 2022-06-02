@@ -58,7 +58,6 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "50px",
       paddingBottom: "50px",
       gap: "20px",
-      height: "335px",
       flexDirection: "column",
       alignSelf: "center",
       height: "auto",
@@ -97,13 +96,13 @@ const CapabilitiesSection = () => {
 
   return (
     <>
-      <Box className={classes.container}>
+      <Box className={classes.container} id="capabilities">
         <Capabilities
           title={`Full-Stack
       Development`}
           desc={`With strong backgrounds in code
       ranging from PHP7 to Javascript to
-      CSS3, our full stack developres have
+      CSS3, our full stack developers have
       the skills and experience to elevate your digital presence`}
           cls="container"
           img={fullstackImage}
@@ -126,7 +125,7 @@ const CapabilitiesSection = () => {
             title={`Deployment +
         DevOps`}
             desc={`Our streamlined
-        deployment popelines
+        deployment pipelines
         create a stable work
         environment, reliable
         infrastructure, and

@@ -3,6 +3,7 @@ import { Box, Typography } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -26,7 +27,6 @@ const useStyles = makeStyles(theme => ({
       flex: "1 0 48%",
       borderRadius: "7px",
       maxWidth: "250px",
-      borderRadius: "7px",
       gap: "7px",
     },
   },
@@ -104,15 +104,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   link: {
-    fontFamily: "Nexa",
+    fontFamily: "Nexa Bold",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "700",
     fontSize: "15px",
     lineHeight: "15px",
     letterSpacing: "0.1em",
-    cursor: "pointer",
     color: "#888DFF",
-    marginTop: "auto",
+    textDecoration: "none",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -131,18 +130,6 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center",
     marginTop: "71px",
     marginBottom: "105px",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "50px",
-      marginBottom: "75px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "40px",
-      marginBottom: "70px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "71px",
-      marginBottom: "105px",
-    },
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
@@ -155,6 +142,29 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
       color: "#FFFFFF",
+    },
+    "&:hover": {
+      backgroundColor: "#30AADE",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "50px",
+      marginBottom: "75px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "40px",
+      marginBottom: "70px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      "& > span": {
+        fontSize: "9px",
+        lineHeight: "9px",
+      },
+      marginTop: "30px",
+      marginBottom: "45px",
     },
   },
 }))
@@ -207,13 +217,20 @@ const BlogArticle = () => {
                 <Box key={index} className={classes.container}>
                   <img
                     src={node.image[0].localFile.publicURL}
+                    alt="Blog Image"
                     className={classes.img}
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
                       {node.title}
                     </Typography>
-                    <Link className={classes.link}>READ MORE →</Link>
+                    <Link
+                      to={`${BLOG}/${node.slug}`}
+                      className={classes.link}
+                      style={{ textDecoration: "none" }}
+                    >
+                      READ MORE →
+                    </Link>
                   </Box>
                 </Box>
               ))}

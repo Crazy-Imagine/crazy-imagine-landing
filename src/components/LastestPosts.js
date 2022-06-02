@@ -1,9 +1,11 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
+/* import Link from "gatsby" */
 import BlogPost from "./BlogPost"
 import bgImage from "../images/background.svg"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyes = makeStyles(theme => ({
   title: {
@@ -68,7 +70,11 @@ const LastestPosts = () => {
       <Typography
         className={classes.title}
       >{`The Latest in Tech Talk`}</Typography>
-      <Link className={classes.link} style={{ textDecoration: "none" }}>
+      <Link
+        to={`${BLOG}`}
+        className={classes.link}
+        style={{ textDecoration: "none" }}
+      >
         ALL BLOGS →
       </Link>
       <BlogPost />

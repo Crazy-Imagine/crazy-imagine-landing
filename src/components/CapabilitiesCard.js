@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, makeStyles } from "@material-ui/core"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
+import { PROJECTS } from "../navigation/sitemap"
 import Typography from "@material-ui/core/Typography"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -83,7 +84,11 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
       <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" />
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>
-      <Link className={classes.link} style={{ textDecoration: "none" }}>
+      <Link
+        to={`${PROJECTS}`}
+        className={classes.link}
+        style={{ textDecoration: "none" }}
+      >
         SERVICES →
       </Link>
     </Box>

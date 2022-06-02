@@ -2,6 +2,8 @@ import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
+import { Link } from "gatsby"
+import { HOME, PROJECTS } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -14,15 +16,12 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px",
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
-    [theme.breakpoints.down("sm")]: {
-
-    },
+    [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
       height: props.little ? "232px" : "400px",
       width: "93.2%",
       flexDirection: "column",
-
     },
     [theme.breakpoints.between(400, 0)]: {
       flexDirection: "column",
@@ -264,13 +263,20 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
           <Typography className={classes.desc}>{desc}</Typography>
           {btn && (
             <Box className={classes.buttonContainer}>
-              <Button className={classes.buttonLeft}>Capabilities</Button>
-              <Button className={classes.buttonRight}>Get Started</Button>
+              <Link
+                to={`${HOME}#capabilities`}
+                style={{ textDecoration: "none" }}
+              >
+                <Button className={classes.buttonLeft}>Capabilities</Button>{" "}
+              </Link>
+              <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+                <Button className={classes.buttonRight}>Get Started</Button>
+              </Link>
             </Box>
           )}
         </Box>
         <Box className={classes.imgContainer}>
-          <img className={classes.img} src={img} alt="Header Image" />
+          <img className={classes.img} src={img} alt="Header Section" />
         </Box>
       </Box>
     </Box>

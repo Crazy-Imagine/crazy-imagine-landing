@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Typography, makeStyles } from "@material-ui/core"
+import { Box, makeStyles } from "@material-ui/core"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
@@ -12,18 +12,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     padding: "45px 0px",
     marginTop: "90px",
-  },
-  title: {
-    fontFamily: "Gotham-Black",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    fontSize: 90,
-    marginBottom: -70,
-    color: "white",
-    lineHeight: 0.9,
     [theme.breakpoints.down("md")]: {
-      fontSize: 50,
-      textAlign: "center",
+      padding: "25px 0px",
     },
   },
 }))

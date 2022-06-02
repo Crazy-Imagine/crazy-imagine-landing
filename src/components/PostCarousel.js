@@ -1,8 +1,8 @@
 import React from "react"
 import BlogPost from "../components/BlogPost"
-import Link from "@material-ui/core/Link"
-
+import { Link } from "gatsby"
 import { Box, makeStyles, Typography } from "@material-ui/core"
+import { BLOG } from "../navigation/sitemap"
 
 const useStyles = makeStyles({
   container: {
@@ -39,7 +39,11 @@ const PostCarousel = () => {
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>Related Articles</Typography>
-      <Link className={classes.link} style={{ textDecoration: "none" }}>
+      <Link
+        to={`${BLOG}`}
+        className={classes.link}
+        style={{ textDecoration: "none" }}
+      >
         ALL BLOGS →
       </Link>
       <BlogPost bulletClass="purpleBullet" />

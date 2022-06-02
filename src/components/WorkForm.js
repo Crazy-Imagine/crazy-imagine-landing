@@ -1,7 +1,6 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { graphql, useStaticQuery } from "gatsby"
 import axios from "axios"
 import * as yup from "yup"
 import { Box, makeStyles } from "@material-ui/core"
@@ -32,6 +31,11 @@ const useStyles = makeStyles(theme => ({
       background: "#E8E8E8",
       color: "#797EF6",
       borderRadius: "2px",
+    },
+    "& .MuiInputBase-input": {
+      [theme.breakpoints.between(0, 600)]: {
+        margin: "3px",
+      },
     },
     "& .MuiTypography-body1": {
       fontFamily: "Hero New",
@@ -86,27 +90,27 @@ const useStyles = makeStyles(theme => ({
       padding: "4px",
     },
   },
-  containerImage: {
+  containerInfo: {
+    width: "42%",
     display: "flex",
+    alignSelf: "center",
+    alignItems: "center",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    width: "42%",
   },
   attachContainer: {
-    width: "520px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    width: "100%",
+  },
+  attach: {
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
-      width: "364px",
       marginTop: "30px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "226px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "189px",
     },
   },
   attachLabel: {
@@ -120,8 +124,8 @@ const useStyles = makeStyles(theme => ({
     color: "#193173",
     [theme.breakpoints.down("md")]: {
       marginTop: "15px",
+      fontSize: "10px",
       marginBottom: "10px",
-      fontSize: "9px",
     },
   },
   attachButton: {
@@ -138,28 +142,15 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "14px",
     textAlign: "center",
     letterSpacing: "0.05em",
+    "&:hover": {
+      backgroundColor: "#797EF6",
+      color: "white",
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: "9px",
       padding: "10px 14px 8px 14px",
       fontSize: "10px",
       lineHeight: "10px",
-    },
-  },
-  formInputAppears: {
-    height: 1,
-    width: 519,
-    marginLeft: 40,
-    marginRight: 40,
-    marginBottom: 60,
-    [theme.breakpoints.down("sm")]: {
-      width: 460,
-      marginLeft: 20,
-      marginRight: 20,
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: 300,
-      marginLeft: 5,
-      marginRight: 5,
     },
   },
   formInput: {
@@ -168,7 +159,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 40,
     marginRight: 40,
     marginTop: 35,
-    marginBottom: 55,
+    marginBottom: 40,
     [theme.breakpoints.down("md")]: {
       width: "364px",
       margin: "30px 30px 30px 30px",
@@ -197,7 +188,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     gap: "20px",
-    marginBottom: "50px",
+    marginTop: "40px",
+    marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
       marginBottom: "30px",
     },
@@ -206,9 +198,12 @@ const useStyles = makeStyles(theme => ({
     background: "#797EF6",
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
-    marginTop: "37px",
-    marginBottom: "125px",
+    marginTop: "18px",
+    marginBottom: "37px",
     cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#30AADE",
+    },
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
@@ -227,11 +222,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: "10px",
         lineHeight: "10px",
       },
-    },
-    "&:hover": {
-      boxShadow:
-        "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
-      backgroundColor: "#d5d5d5",
     },
   },
   actionPadding: {
@@ -260,9 +250,6 @@ const WorkForm = () => {
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
-
-  const data = useStaticQuery(query)
-  const image = data.strapiTeampage?.WorkFormImage?.localFile
 
   const disableChangeButton = () => {
     if (getValues("website") || getValues("curriculum")) {
@@ -338,7 +325,6 @@ const WorkForm = () => {
       axios
         .post(`${domain}/upload`, formData)
         .then(async response => {
-          //after success
           const file = response.data[0].id
           const sendData = {
             name: data.name,
@@ -393,7 +379,7 @@ const WorkForm = () => {
 
   return (
     <Box className={classes.container}>
-      <Box className={classes.containerImage}>
+      <Box className={classes.containerInfo}>
         <WorkInfo />
       </Box>
       <Box>
@@ -435,28 +421,30 @@ const WorkForm = () => {
                 name="lastname"
               />
             </Box>
-            <TextField
-              required
-              className={`${classes.formInput} ${classes.root}`}
-              error={errors.email}
-              {...register("email")}
-              helperText={errors.email?.message}
-              type="text"
-              id="outlined-basic"
-              label="Email Address"
-              name="email"
-            />
-            <TextField
-              required
-              className={`${classes.formInput} ${classes.root}`}
-              error={errors.phone}
-              {...register("phone")}
-              helperText={errors.phone?.message}
-              type="text"
-              id="outlined-basic"
-              label="Phone"
-              name="phone"
-            />
+            <Box className={classes.shortContainer}>
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                error={errors.email}
+                {...register("email")}
+                helperText={errors.email?.message}
+                type="text"
+                id="outlined-basic"
+                label="Email Address"
+                name="email"
+              />
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                error={errors.phone}
+                {...register("phone")}
+                helperText={errors.phone?.message}
+                type="text"
+                id="outlined-basic"
+                label="Phone"
+                name="phone"
+              />
+            </Box>
             <TextField
               required
               className={`${classes.formInput} ${classes.root}`}
@@ -484,42 +472,44 @@ const WorkForm = () => {
               value=""
             />
             <Box className={classes.attachContainer}>
-              <label className={classes.attachLabel}>Resume/CV </label>
-              <label className={classes.attachButton} for="resume-btn">
-                ATTACH
-              </label>
+              <Box className={classes.attach}>
+                <label className={classes.attachLabel}>Resume/CV </label>
+                <label className={classes.attachButton} for="resume-btn">
+                  ATTACH
+                </label>
+              </Box>
+              <Input
+                type="file"
+                id="resume-btn"
+                name="curriculum"
+                style={{ display: "none" }}
+                {...register("curriculum", {
+                  minLength: {
+                    value: 1,
+                    message: "Load a file",
+                  },
+                })}
+                onChange={disableChangeButton}
+              ></Input>
+              <Box className={classes.attach}>
+                <label className={classes.attachLabel}>Cover Letter</label>
+                <label className={classes.attachButton} for="file-upload">
+                  ATTACH
+                </label>
+              </Box>
+              <Input
+                type="file"
+                name="curriculum"
+                style={{ display: "none" }}
+                {...register("curriculum", {
+                  minLength: {
+                    value: 1,
+                    message: "Load a file",
+                  },
+                })}
+                onChange={disableChangeButton}
+              ></Input>
             </Box>
-            <Input
-              type="file"
-              id="resume-btn"
-              name="curriculum"
-              style={{ display: "none" }}
-              {...register("curriculum", {
-                minLength: {
-                  value: 1,
-                  message: "Load a file",
-                },
-              })}
-              onChange={disableChangeButton}
-            ></Input>
-            <Box className={classes.attachContainer}>
-              <label className={classes.attachLabel}>Cover Letter</label>
-              <label className={classes.attachButton} for="file-upload">
-                ATTACH
-              </label>
-            </Box>
-            <Input
-              type="file"
-              name="curriculum"
-              style={{ display: "none" }}
-              {...register("curriculum", {
-                minLength: {
-                  value: 1,
-                  message: "Load a file",
-                },
-              })}
-              onChange={disableChangeButton}
-            ></Input>
             <TextField
               required
               className={`${classes.formInput} ${classes.root}`}
@@ -569,19 +559,5 @@ const WorkForm = () => {
     </Box>
   )
 }
-
-const query = graphql`
-  query {
-    strapiTeampage {
-      WorkFormImage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED)
-          }
-        }
-      }
-    }
-  }
-`
 
 export default WorkForm
