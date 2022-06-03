@@ -35,16 +35,12 @@ const useStyles = makeStyles(theme => ({
   },
   "@keyframes myEffect": {
     "0%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-    "50%": {
-      opacity: 1,
-      transform: "scale(1.1)",
+      opacity: 0,
+      transform: "translateX(-500%)",
     },
     "100%": {
       opacity: 1,
-      transform: "scale(1)",
+      transform: "translateX(0)",
     },
   },
   subtitle: {
@@ -92,7 +88,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
   },
   img2: {
-    animation: `$myEffecto 3000ms`,
+    //animation: `$myEffecto 3000ms`,
     marginTop: "auto",
   },
   container: {
@@ -140,7 +136,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
           <Typography className={isVisible ? classes.title2 : classes.title} style={{ marginTop: "-17px" }}>
             {`We Can Create`}
           </Typography>
-          <Box className={isVisible ? classes.img2 : classes.img}>
+          <Box className={classes.img2}>
             <StaticImage src="../images/satelite.svg" />
           </Box>
         </Box>

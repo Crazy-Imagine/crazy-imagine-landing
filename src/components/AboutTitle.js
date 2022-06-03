@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -37,7 +38,28 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    animation: `$myEffecto 3000ms`,
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "58px",
+    lineHeight: "58px",
+    color: "#193174",
+    width: "526px",
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      fontWeight: "auto",
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+      fontWeight: "auto",
+      fontSize: "22px",
+      lineHeight: "22px",
+    },
+  }, title2: {
+    //animation: `$myEffectos 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -73,7 +95,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc: {
-    animation: `$myEffectos 8000ms`,
+    visibility: "hidden",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "130%",
+    letterSpacing: "0.02em",
+    color: "#193174",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "13px",
+    },
+  },
+  desc2: {
+    //animation: `$myEffectos 3000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -100,6 +138,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
+    visibility: "hidden",
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
+    },
+  },
+  img2: {
     animation: `$myEffect 3000ms`,
     [theme.breakpoints.down("xs")]: {
       width: "80%",
@@ -129,14 +176,17 @@ const useStyles = makeStyles(theme => ({
 
 export const AboutTitle = ({ title, desc, img }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
+
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={classes.container}>
       <Box className={classes.imgn}>
-        <img className={classes.img} src={img} alt="" />
+        <img className={isVisible ? classes.img2 : classes.img} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
-        <Typography className={classes.title}>{title}</Typography>
-        <Typography className={classes.desc}>{desc}</Typography>
+        <Typography className={isVisible ? classes.title2 : classes.title}>{title}</Typography>
+        <Typography className={isVisible ? classes.desc2 : classes.desc}>{desc}</Typography>
       </Box>
     </Box>
   )

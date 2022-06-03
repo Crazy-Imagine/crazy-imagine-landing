@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -113,16 +113,12 @@ const useStyles = makeStyles(theme => ({
   },
   "@keyframes myEffect": {
     "0%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-    "50%": {
-      opacity: 1,
-      transform: "scale(1.1)",
+      opacity: 0,
+      transform: "translateX(-200%)",
     },
     "100%": {
       opacity: 1,
-      transform: "scale(1)",
+      transform: "translateX(0)",
     },
   },
   img: {
@@ -137,7 +133,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    animation: `$myEffecto 5000ms`,
+    //animation: `$myEffecto 5000ms`,
     [theme.breakpoints.down("md")]: {
       width: "70%",
       height: "70%",
@@ -161,7 +157,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    animation: `$myEffecto 5000ms`,
+    //animation: `$myEffecto 5000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -192,10 +188,10 @@ const Capabilities = ({ title, desc, img, cls }) => {
   const isVisible = useIntersection(ref, "0px")
   return (
     <Box ref={ref} className={classes[cls]}>
-      <Typography className={isVisible ? classes.subtitle2 : classes.subtitle}>CAPABILITIES</Typography>
-      <Typography className={isVisible ? classes.title2 : classes.title}>{title}</Typography>
-      <Typography className={isVisible ? classes.desc2 : classes.desc}>{desc}</Typography>
-      {img && <img className={isVisible ? classes.img2 : classes.img} src={img} />}
+      <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
+      <Typography className={classes.title2}>{title}</Typography>
+      <Typography className={classes.desc2}>{desc}</Typography>
+      {img && <img className={classes.img2} src={img} />}
     </Box>
   )
 }

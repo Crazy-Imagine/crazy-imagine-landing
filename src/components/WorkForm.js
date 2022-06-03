@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useForm } from "react-hook-form"
 import axios from "axios"
 import * as yup from "yup"
@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button"
 import Alert from "@material-ui/lab/Alert"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,6 +84,29 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formContainer: {
+    visibility: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    backgroundColor: "rgba(235, 235, 235, 0.4)",
+    marginTop: "94px",
+    borderRadius: "14px 14px 0px 0px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "66px",
+      padding: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "30px",
+      padding: "8px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
+      padding: "4px",
+    },
+  },
+  formContainer2: {
     animation: `$myEffect 3000ms`,
     display: "flex",
     flexDirection: "column",
@@ -278,6 +302,8 @@ const useStyles = makeStyles(theme => ({
 
 const WorkForm = () => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
@@ -403,7 +429,7 @@ const WorkForm = () => {
   }
 
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={classes.container}>
       <Box className={classes.containerInfo}>
         <WorkInfo />
       </Box>
@@ -421,7 +447,7 @@ const WorkForm = () => {
           autoComplete="off"
           onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <Box className={classes.formContainer}>
+          <Box className={isVisible ? classes.formContainer2 : classes.formContainer}>
             <Box className={classes.shortContainer}>
               <TextField
                 required

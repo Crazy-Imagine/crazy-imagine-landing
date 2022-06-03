@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import mainImage from "../images/Group619.svg"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-start",
   },
   title: {
-    animation: `$myEffecto 3000ms`,
+    visibility: "hidden",
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -62,9 +63,44 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "29px",
     },
   },
-
+  title2: {
+    //animation: `$myEffecto 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: 900,
+    fontSize: "58px",
+    lineHeight: "58px",
+    color: "#193174",
+    alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
+    },
+  },
   blueTitle: {
-    animation: `$myEffecto 3000ms`,
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: 900,
+    fontSize: "58px",
+    lineHeight: "58px",
+    color: "#27AAE1",
+    alignSelf: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "41px",
+      lineHeight: "41px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "29px",
+      lineHeight: "29px",
+    },
+  },
+  blueTitle2: {
+    //animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -96,7 +132,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc: {
-    animation: `$myEffectos 8000ms`,
+    visibility: "hidden",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "130%",
+    letterSpacing: "0.02em",
+    color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+    },
+  },
+  desc2: {
+    //animation: `$myEffectos 3000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -120,6 +169,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
+    visibility: "hidden",
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      height: "70%",
+      alignItems: "center",
+    },
+    [theme.breakpoints.between(200, 600)]: {
+      width: "45%",
+    },
+    [theme.breakpoints.between(0, 200)]: {
+      width: "55%",
+    },
+  },
+  img2: {
     animation: `$myEffect 3000ms`,
     [theme.breakpoints.down("md")]: {
       width: "70%",
@@ -160,18 +223,20 @@ const useStyles = makeStyles(theme => ({
 
 export const TitleSection = ({ desc, img }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={classes.container}>
       <Box className={classes.imgContainer}>
-        <img src={mainImage} className={classes.img} alt="Title Image" />
+        <img src={mainImage} className={isVisible ? classes.img2 : classes.img} alt="Title Image" />
       </Box>
       <Box className={classes.textContainer}>
         <Box className={classes.titleContainer}>
-          <Typography className={classes.title}>{`Why 
+          <Typography className={classes.title2}>{`Why 
         Should You`}</Typography>
-          <Typography className={classes.blueTitle}>Choose Us</Typography>
+          <Typography className={classes.blueTitle2}>Choose Us</Typography>
         </Box>
-        <Typography className={classes.desc}>{desc}</Typography>
+        <Typography className={classes.desc2}>{desc}</Typography>
       </Box>
     </Box>
   )

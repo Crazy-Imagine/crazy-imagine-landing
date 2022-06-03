@@ -148,6 +148,7 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
+
   },
   infoTypography: {
     color: "#FFFFFF",
