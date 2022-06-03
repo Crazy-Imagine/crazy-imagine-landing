@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "10px",
     "&::before": {
       left: "0",
-      bottom: "0",
+      bottom: "-2px",
       width: "100%",
       height: "3px",
       background: "white",
