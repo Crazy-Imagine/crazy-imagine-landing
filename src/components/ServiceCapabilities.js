@@ -17,6 +17,22 @@ const useStyles = makeStyles(theme => ({
       gap: "40px",
     },
   }),
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
+  conta: {
+    visibility: "hidden",
+  },
+  conta2: {
+    animation: `$myEffect 3000ms`,
+  },
   subtitle: {
     visibility: "hidden",
     fontFamily: "Nexa Bold",
@@ -33,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -69,7 +85,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -89,20 +105,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "24px",
     },
   },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-    "50%": {
-      opacity: 1,
-      transform: "scale(1.1)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-  },
+
   textContainer: props => ({
     display: "flex",
     flexDirection: "column",
@@ -136,7 +139,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    animation: `$myEffecto 3000ms`,
+    //animation: `$myEffect 3000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -160,7 +163,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   imagen2: {
-    animation: `$myEffecto 3000ms`,
+    //animation: `$myEffect 3000ms`,
     width: "unset",
     [theme.breakpoints.down("sm")]: {
       width: "35%",
@@ -187,26 +190,28 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   return (
-    <Box ref={ref} className={classes.container}>
-      {img && (
-        <img
-          src={img}
-          className={isVisible ? classes.imagen2 : classes.imagen}
-          alt={`${title}`}
-        />
-      )}
-      <Box className={classes.textContainer}>
-        <Typography
-          className={isVisible ? classes.subtitle2 : classes.subtitle}
-        >
-          CAPABILITIES
-        </Typography>
-        <Typography className={isVisible ? classes.title2 : classes.title}>
-          {title}
-        </Typography>
-        <Typography className={isVisible ? classes.desc2 : classes.desc}>
-          {desc}
-        </Typography>
+    <Box ref={ref} className={isVisible ? classes.conta2 : classes.conta}>
+      <Box className={classes.container}>
+        {img && (
+          <img
+            src={img}
+            className={classes.imagen2}
+            alt={`${title}`}
+          />
+        )}
+        <Box className={classes.textContainer}>
+          <Typography
+            className={classes.subtitle2}
+          >
+            CAPABILITIES
+          </Typography>
+          <Typography className={classes.title2}>
+            {title}
+          </Typography>
+          <Typography className={classes.desc2}>
+            {desc}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   )

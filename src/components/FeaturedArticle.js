@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,6 +22,34 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    marginTop: "84px",
+    textAlign: "center",
+    color: "#193173",
+    marginBottom: "47px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginTop: "55px",
+      marginBottom: "33px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "22px",
+      lineHeight: "22px",
+      marginTop: "34px",
+      marginBottom: "20px",
+    },
+    [theme.breakpoints.between(450, 0)]: {
+      fontSize: "10px",
+      lineHeight: "10px",
+    },
+  },
+  title2: {
     animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -163,6 +192,8 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedArticle = () => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
     <StaticQuery
       query={graphql`
@@ -199,8 +230,8 @@ const FeaturedArticle = () => {
           })
           .slice(0, 1)
         return (
-          <Box className={classes.container}>
-            <Typography className={classes.title}>Featured Article</Typography>
+          <Box ref={ref} className={classes.container}>
+            <Typography className={isVisible ? classes.title2 : classes.title}>Featured Article</Typography>
             <Box className={classes.cardContainer}>
               <img
                 className={classes.img}

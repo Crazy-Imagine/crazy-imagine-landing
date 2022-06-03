@@ -162,6 +162,7 @@ const useStyles = makeStyles(theme => ({
       position: "absolute",
       transition: "transform .5s ease",
     },
+
   },
   infoTypography: {
     color: "#FFFFFF",
