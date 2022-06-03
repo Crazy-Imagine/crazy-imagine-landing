@@ -45,19 +45,39 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "140%",
       color: "#193173",
     },
+    "& .MuiFormHelperText-root.Mui-error": {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "10px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "8px",
+      },
+    },
   },
   curriculumAlert: {
+    paddingLeft: "30px",
     backgroundColor: "transparent",
-    color: "red",
-    fontSize: "0.845rem",
+    color: "#F44336",
     marginTop: "5px",
-    fontFamily: "Hero New",
+    fontFamily: "Roboto",
     fontStyle: "normal",
+    alignSelf: "flex-start",
     fontWeight: "400",
     fontSize: "12px",
     lineHeight: "140%",
     [theme.breakpoints.down("md")]: {
+      fontSize: "10px",
+    },
+    [theme.breakpoints.down("xs")]: {
       fontSize: "8px",
+    },
+    "& .MuiAlert-icon": {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "18px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
+      },
     },
   },
   container: {
@@ -263,13 +283,12 @@ const useStyles = makeStyles(theme => ({
   },
   successfullAlert: {
     backgroundColor: "transparent",
-    fontSize: "0.845rem",
+    width: "80%",
     marginTop: "5px",
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "10px",
-    lineHeight: "140%",
     [theme.breakpoints.down("md")]: {
       fontSize: "8px",
     },
@@ -290,7 +309,7 @@ const WorkForm = () => {
         setAlertMessage("")
         setFormStatus("")
       }
-    }, 3000)
+    }, 10000)
 
     return () => {
       clearTimeout(timer)
@@ -367,13 +386,12 @@ const WorkForm = () => {
             setFormStatus("well")
             setShowMessage(true)
             reset()
-          } else {
-            setShowMessage(true)
-            setAlertMessage("There was an error trying to send your form")
-            setFormStatus("bad")
           }
         })
         .catch(error => {
+          setShowMessage(true)
+          setAlertMessage("There was an error trying to send your form")
+          setFormStatus("bad")
           console.log(error)
         })
     } else {
@@ -509,6 +527,7 @@ const WorkForm = () => {
                   },
                 })}
               ></Input>
+
               {/* <Box className={classes.attach} style={{ display: "none" }}>
                 <label className={classes.attachLabel}>Cover Letter</label>
                 <label className={classes.attachButton} for="file-upload">
@@ -529,6 +548,15 @@ const WorkForm = () => {
               ></Input>
             */}
             </Box>
+            <Alert
+              severity="error"
+              className={classes.curriculumAlert}
+              style={{
+                display: errors.curriculum !== undefined ? "inherit" : "none",
+              }}
+            >
+              {errors.curriculum?.message}
+            </Alert>
             <TextField
               required
               className={`${classes.formInput} ${classes.root}`}
@@ -541,15 +569,6 @@ const WorkForm = () => {
               label="How did you hear about Crazy Imagine?"
               name="reference"
             />
-            <Alert
-              severity="error"
-              className={classes.curriculumAlert}
-              style={{
-                display: errors.curriculum !== undefined ? "inherit" : "none",
-              }}
-            >
-              {errors.curriculum?.message}
-            </Alert>
             {/* <Alert
               severity="error"
               style={{
@@ -567,7 +586,7 @@ const WorkForm = () => {
               className={classes.successfullAlert}
               style={{
                 visibility: showMessage === true ? "visible" : "hidden",
-                color: formStatus === "well" ? "#4caf50" : "red",
+                color: formStatus === "well" ? "#4caf50" : "#F44336",
               }}
             >
               {alertMessage}

@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import TwitterIcon from "@material-ui/icons/Twitter"
-import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import Section from "./Section"
@@ -62,6 +60,20 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
     },
   },
+  effect: {
+    paddingTop: "10px",
+    "&::before": {
+      left: "0",
+      bottom: "0",
+      width: "100%",
+      height: "3px",
+      background: "white",
+      transform: "scaleX(0)",
+    },
+    "&:hover::before": {
+      transform: "scaleX(1)",
+    },
+  },
   logoContainer: {
     display: "flex",
     flexDirection: "column",
@@ -69,7 +81,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "20px",
     height: "100%",
-
     [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {
       width: "auto",
@@ -145,8 +156,11 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "16px",
     fontSize: "14px",
     textDecoration: "none",
-    "&:hover": {
-      color: "white",
+    position: "relative",
+    "&::before, &::after": {
+      content: "''",
+      position: "absolute",
+      transition: "transform .5s ease",
     },
   },
   infoTypography: {
@@ -180,10 +194,16 @@ const Footer = ({ height = "192px", align = "center" }) => {
             />
           </Link>
           <Box className={classes.iconsContainer}>
-            <a href="https://ve.linkedin.com/company/crazy-imagine-software" target="_blank" >
+            <a
+              href="https://ve.linkedin.com/company/crazy-imagine-software"
+              target="_blank"
+            >
               <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
             </a>
-            <a href="https://instagram.com/crazyimaginedev?igshid=YmMyMTA2M2Y=" target="_blank" >
+            <a
+              href="https://instagram.com/crazyimaginedev?igshid=YmMyMTA2M2Y="
+              target="_blank"
+            >
               <InstagramIcon className={classes.contactIcon}></InstagramIcon>
             </a>
           </Box>
@@ -193,7 +213,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             <Link
               to={`${ABOUT}`}
               style={{ textDecoration: "none" }}
-              className={`${classes.linkTypography} ${classes.root}`}
+              className={`${classes.linkTypography} ${classes.effect}`}
             >
               ABOUT
             </Link>
@@ -202,7 +222,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             <Link
               to={`${PROJECTS}`}
               style={{ textDecoration: "none" }}
-              className={classes.linkTypography}
+              className={`${classes.linkTypography} ${classes.effect}`}
             >
               SERVICES
             </Link>
@@ -211,7 +231,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             <Link
               to={`${BLOG}`}
               style={{ textDecoration: "none" }}
-              className={classes.linkTypography}
+              className={`${classes.linkTypography} ${classes.effect}`}
             >
               BLOG
             </Link>
@@ -220,7 +240,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             <Link
               to={`${WORK_WITH_US}`}
               style={{ textDecoration: "none" }}
-              className={classes.linkTypography}
+              className={`${classes.linkTypography} ${classes.effect}`}
             >
               WORK WITH US
             </Link>
@@ -229,7 +249,7 @@ const Footer = ({ height = "192px", align = "center" }) => {
             <Link
               to={`${CONTACT}`}
               style={{ textDecoration: "none" }}
-              className={classes.linkTypography}
+              className={`${classes.linkTypography} ${classes.effect}`}
             >
               CONTACT
             </Link>

@@ -55,13 +55,18 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     lineHeight: "16px",
     textAlign: "right",
-    transition: "all 300ms ease",
     color: props.scroll ? props.linkVariant : "white",
+    // "& a": {
+
+    position: "relative",
     textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-      color: props.scroll ? props.linkVariant : "white",
+    lineHeight: "24px",
+    "&::before, &::after": {
+      content: "''",
+      position: "absolute",
+      transition: "transform .5s ease",
     },
+    // },
   }),
   barContainer: {
     margin: 1,
@@ -78,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
   },
-  contactTypography: {
+  contactTypography: props => ({
     fontSize: "14px",
     fontWeight: 700,
     textDecoration: "none",
@@ -86,6 +91,20 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     color: "#FFFFFF",
+  }),
+  effect: {
+    paddingTop: "10px",
+    "&::before": {
+      left: "0",
+      bottom: "0",
+      width: "100%",
+      height: "3px",
+      background: "white",
+      transform: "scaleX(0)",
+    },
+    "&:hover::before": {
+      transform: "scaleX(1)",
+    },
   },
   contactTypographyOutside: {
     fontSize: "14px",
@@ -127,22 +146,34 @@ const Navbar = ({
           </Link>
           <Box className={classes.linkContainer}>
             <Typography>
-              <Link to={`${ABOUT}`} className={classes.linkTypography}>
+              <Link
+                to={`${ABOUT}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
                 ABOUT
               </Link>
             </Typography>
             <Typography>
-              <Link to={`${PROJECTS}`} className={classes.linkTypography}>
+              <Link
+                to={`${PROJECTS}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
                 SERVICES
               </Link>
             </Typography>
             <Typography>
-              <Link to={`${BLOG}`} className={classes.linkTypography}>
+              <Link
+                to={`${BLOG}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
                 BLOG
               </Link>
             </Typography>
             <Typography>
-              <Link to={`${WORK_WITH_US}`} className={classes.linkTypography}>
+              <Link
+                to={`${WORK_WITH_US}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
                 WORK WITH US
               </Link>
             </Typography>
