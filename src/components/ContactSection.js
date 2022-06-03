@@ -3,7 +3,6 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
-import headerImage from "../images/satelite.svg"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -131,9 +130,18 @@ const ContactSection = ({ bgColor, bgImage }) => {
     >
       <Box ref={ref} className={classes.container}>
         <Box className={classes.textContainer}>
-          <Typography className={isVisible ? classes.subtitle2 : classes.subtitle}>REACH OUT</Typography>
-          <Typography className={isVisible ? classes.title2 : classes.title}>{`Imagine What`}</Typography>
-          <Typography className={isVisible ? classes.title2 : classes.title} style={{ marginTop: "-17px" }}>
+          <Typography
+            className={isVisible ? classes.subtitle2 : classes.subtitle}
+          >
+            REACH OUT
+          </Typography>
+          <Typography
+            className={isVisible ? classes.title2 : classes.title}
+          >{`Imagine What`}</Typography>
+          <Typography
+            className={isVisible ? classes.title2 : classes.title}
+            style={{ marginTop: "-17px" }}
+          >
             {`We Can Create`}
           </Typography>
           <Box className={classes.img2}>

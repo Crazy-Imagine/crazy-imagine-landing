@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useRef } from "react"
 import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core"
 import { useIntersection } from "../hooks/useIntersection"
@@ -13,10 +13,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     whiteSpace: "pre-line",
+    marginTop: "120px",
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
-      marginTop: "40px",
+      marginTop: "120px",
       lineHeight: "35px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
+    marginTop: "140px",
     fontWeight: "900",
     fontSize: "40px",
     lineHeight: "50px",
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
-      marginTop: "40px",
+      marginTop: "120px",
       lineHeight: "35px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -114,7 +116,9 @@ const WorkInfo = () => {
 
   return (
     <Box ref={ref} className={classes.container}>
-      <Typography className={isVisible ? classes.title2 : classes.title}>{`Interested
+      <Typography
+        className={isVisible ? classes.title2 : classes.title}
+      >{`Interested
       In Working
       With Us?`}</Typography>
     </Box>

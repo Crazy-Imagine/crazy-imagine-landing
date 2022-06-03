@@ -228,7 +228,11 @@ export const TitleSection = ({ desc, img }) => {
   return (
     <Box ref={ref} className={classes.container}>
       <Box className={classes.imgContainer}>
-        <img src={mainImage} className={isVisible ? classes.img2 : classes.img} alt="Title Image" />
+        <img
+          src={mainImage}
+          className={isVisible ? classes.img2 : classes.img}
+          alt="Title"
+        />
       </Box>
       <Box className={classes.textContainer}>
         <Box className={classes.titleContainer}>

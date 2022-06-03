@@ -1,6 +1,5 @@
-import React, { useRef } from "react"
+import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -184,14 +183,12 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box ref={ref} className={classes[cls]}>
+    <Box className={classes[cls]}>
       <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
       <Typography className={classes.title2}>{title}</Typography>
       <Typography className={classes.desc2}>{desc}</Typography>
-      {img && <img className={classes.img2} src={img} />}
+      {img && <img className={classes.img2} src={img} alt="Capabilities" />}
     </Box>
   )
 }

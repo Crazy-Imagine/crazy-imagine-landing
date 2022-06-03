@@ -231,11 +231,13 @@ const FeaturedArticle = () => {
           .slice(0, 1)
         return (
           <Box ref={ref} className={classes.container}>
-            <Typography className={isVisible ? classes.title2 : classes.title}>Featured Article</Typography>
+            <Typography className={isVisible ? classes.title2 : classes.title}>
+              Featured Article
+            </Typography>
             <Box className={classes.cardContainer}>
               <img
                 className={classes.img}
-                alt="Feature Article Image"
+                alt="Feature Article"
                 src={featureArticle[0].node.image[0].localFile.publicURL}
               />
               <Box className={classes.textContainer}>

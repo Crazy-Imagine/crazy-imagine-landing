@@ -150,8 +150,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   containerInfo: {
-    width: "42%",
-    alignSelf: "center",
+    width: "fit-content",
   },
   "@keyframes myEffect": {
     "0%": {
@@ -174,11 +173,17 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
   },
   attachContainer: {
-    width: "80%",
+    width: "87%",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "row",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "78%",
+    },
   },
   attach: {
     display: "flex",
@@ -465,7 +470,11 @@ const WorkForm = () => {
           autoComplete="off"
           onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <Box className={isVisible ? classes.formContainer2 : classes.formContainer}>
+          <Box
+            className={
+              isVisible ? classes.formContainer2 : classes.formContainer
+            }
+          >
             <Box className={classes.shortContainer}>
               <TextField
                 required

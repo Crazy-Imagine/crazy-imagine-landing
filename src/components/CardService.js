@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChartBar } from "@fortawesome/free-solid-svg-icons"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({

@@ -57,8 +57,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "right",
     color: props.scroll ? props.linkVariant : "white",
     position: "relative",
-    textDecoration: "none",
-    lineHeight: "24px",
+    textDecoration: "none !important",
     "&::before, &::after": {
       content: "''",
       position: "absolute",
@@ -96,8 +95,8 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "10px",
     "&::before": {
       left: "0",
-      bottom: "0",
       width: "100%",
+      bottom: "-2px",
       height: "3px",
       background: "white",
       transform: "scaleX(0)",

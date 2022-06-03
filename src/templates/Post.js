@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "auto",
       margin: "0px auto 0px auto",
-      height: "auto",
     },
   },
   author: {
