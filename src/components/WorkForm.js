@@ -46,6 +46,20 @@ const useStyles = makeStyles(theme => ({
       color: "#193173",
     },
   },
+  curriculumAlert: {
+    backgroundColor: "transparent",
+    color: "red",
+    fontSize: "0.845rem",
+    marginTop: "5px",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "12px",
+    lineHeight: "140%",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "8px",
+    },
+  },
   container: {
     display: "flex",
     flexDirection: "row",
@@ -116,11 +130,11 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
   },
   attachContainer: {
+    width: "80%",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
     alignItems: "flex-start",
-    width: "100%",
+    flexDirection: "row",
+    justifyContent: "flex-start",
   },
   attach: {
     display: "flex",
@@ -249,24 +263,25 @@ const useStyles = makeStyles(theme => ({
   },
   successfullAlert: {
     backgroundColor: "transparent",
+    fontSize: "0.845rem",
+    marginTop: "5px",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "10px",
+    lineHeight: "140%",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "8px",
+    },
   },
 }))
 
 const WorkForm = () => {
   const classes = useStyles()
 
-  const [disableButton, setDisableButton] = useState(true)
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
-
-  const disableChangeButton = () => {
-    if (getValues("website") || getValues("curriculum")) {
-      setDisableButton(false)
-    } else {
-      setDisableButton(true)
-    }
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -283,8 +298,9 @@ const WorkForm = () => {
   }, [formStatus])
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
+    firstName: yup.string().required("First Name is required"),
+    lastName: yup.string().required("Last Name is required"),
+    email: yup.string().email().required("Email is required"),
     phone: yup
       .string()
       .matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, "Invalid number")
@@ -295,7 +311,7 @@ const WorkForm = () => {
       is: "",
       then: yup
         .mixed()
-        .test("required", "You need to provide a file", value => {
+        .test("required", "Please post a website or resume", value => {
           return value && value.length
         })
         .test("fileSize", "The file must be max 2 mb", (value, context) => {
@@ -310,6 +326,7 @@ const WorkForm = () => {
         ),
       otherwise: yup.mixed(),
     }),
+    reference: yup.string(),
   })
 
   const {
@@ -317,7 +334,6 @@ const WorkForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    getValues,
   } = useForm({
     defaultValues: { website: "" },
     resolver: yupResolver(schema),
@@ -326,8 +342,6 @@ const WorkForm = () => {
   const domain = process.env.API_URL || "http://localhost:1337"
 
   const onSubmitHandler = async data => {
-    setDisableButton(true)
-
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
@@ -336,12 +350,13 @@ const WorkForm = () => {
         .then(async response => {
           const file = response.data[0].id
           const sendData = {
-            name: data.name,
+            firstName: data.firstName,
+            lastName: data.lastName,
             email: data.email,
             phone: data.phone,
-            state: data.state,
-            zip: data.zip,
+            linkedin: data.linkedin,
             website: data.website,
+            reference: data.reference,
             curriculum: file,
           }
 
@@ -364,14 +379,15 @@ const WorkForm = () => {
     } else {
       if (data.website !== "") {
         const sendData = {
-          name: data.name,
+          firstName: data.firstName,
+          lastName: data.lastName,
           email: data.email,
           phone: data.phone,
+          linkedin: data.linkedin,
           website: data.website,
+          reference: data.reference,
         }
-
         const res = await axios.post(`${domain}/curriculums`, sendData)
-
         if (res.statusText === "OK") {
           setAlertMessage("Form has been send succesfully")
           setFormStatus("well")
@@ -411,8 +427,8 @@ const WorkForm = () => {
                 required
                 className={`${classes.shortInput} ${classes.root}`}
                 {...register("firstName")}
-                error={errors.name}
-                helperText={errors.name?.message}
+                error={errors.firstName}
+                helperText={errors.firstName?.message}
                 type="text"
                 id="outlined-basic"
                 label="First Name"
@@ -422,12 +438,12 @@ const WorkForm = () => {
                 required
                 className={`${classes.shortInput} ${classes.root}`}
                 {...register("lastName")}
-                error={errors.name}
-                helperText={errors.name?.message}
+                error={errors.lastName}
+                helperText={errors.lastName?.message}
                 type="text"
                 id="outlined-basic"
                 label="Last Name"
-                name="lastname"
+                name="lastName"
               />
             </Box>
             <Box className={classes.shortContainer}>
@@ -455,30 +471,24 @@ const WorkForm = () => {
               />
             </Box>
             <TextField
-              required
               className={`${classes.formInput} ${classes.root}`}
               helperText={errors.linkedin?.message}
               error={errors.linkedin}
               {...register("linkedin")}
-              onSelect={disableChangeButton}
               type="text"
               id="outlined-basic"
               label="LinkedIn Profile"
               name="linkedin"
-              value=""
             />
             <TextField
-              required
               className={`${classes.formInput} ${classes.root}`}
               helperText={errors.website?.message}
               error={errors.website}
               {...register("website")}
-              onSelect={disableChangeButton}
               type="text"
               id="outlined-basic"
               label="Website"
               name="website"
-              value=""
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
@@ -498,9 +508,8 @@ const WorkForm = () => {
                     message: "Load a file",
                   },
                 })}
-                onChange={disableChangeButton}
               ></Input>
-              <Box className={classes.attach}>
+              {/* <Box className={classes.attach} style={{ display: "none" }}>
                 <label className={classes.attachLabel}>Cover Letter</label>
                 <label className={classes.attachButton} for="file-upload">
                   ATTACH
@@ -508,43 +517,51 @@ const WorkForm = () => {
               </Box>
               <Input
                 type="file"
-                name="curriculum"
+                id="file-upload"
+                name="coverLetter"
                 style={{ display: "none" }}
-                {...register("curriculum", {
+                {...register("coverLetter", {
                   minLength: {
                     value: 1,
                     message: "Load a file",
                   },
                 })}
-                onChange={disableChangeButton}
               ></Input>
+            */}
             </Box>
             <TextField
               required
               className={`${classes.formInput} ${classes.root}`}
-              helperText={errors.website?.message}
-              error={errors.website}
-              {...register("website")}
+              helperText={errors.reference?.message}
+              error={errors.reference}
+              {...register("reference")}
               form
-              onSelect={disableChangeButton}
               type="text"
               id="outlined-basic"
               label="How did you hear about Crazy Imagine?"
-              name="website"
-              value=""
+              name="reference"
             />
             <Alert
               severity="error"
+              className={classes.curriculumAlert}
               style={{
                 display: errors.curriculum !== undefined ? "inherit" : "none",
+              }}
+            >
+              {errors.curriculum?.message}
+            </Alert>
+            {/* <Alert
+              severity="error"
+              style={{
+                display: errors.cover !== undefined ? "inherit" : "none",
                 backgroundColor: "transparent",
                 color: "red",
                 fontSize: "0.845rem",
                 marginTop: 5,
               }}
             >
-              {errors.curriculum?.message}
-            </Alert>
+              {errors.coverLetter?.message}
+            </Alert> */}
             <Alert
               severity={formStatus === "well" ? "success" : "error"}
               className={classes.successfullAlert}
@@ -555,11 +572,7 @@ const WorkForm = () => {
             >
               {alertMessage}
             </Alert>
-            <Button
-              className={classes.formButton}
-              type="submit"
-              disabled={disableButton}
-            >
+            <Button className={classes.formButton} type="submit">
               SUBMIT
             </Button>
           </Box>

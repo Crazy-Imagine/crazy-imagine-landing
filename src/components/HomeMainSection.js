@@ -70,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "87px",
     marginTop: "48px",
     "&:hover": {
-      backgroundColor: "#B0B4FF",
+      backgroundColor: "#30AADE",
     },
     "& > span": {
       fontFamily: "Nexa Bold",

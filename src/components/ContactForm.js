@@ -163,7 +163,7 @@ const ContactForm = () => {
       return Swal.fire(
         "Thank You!",
         "Your submission has been received",
-        "success"
+        "Success"
       )
     }
   }
@@ -180,7 +180,6 @@ const ContactForm = () => {
               label="Name"
               className={`${classes.shortInput} ${classes.root} `}
             />
-
             <TextField
               id="subject"
               name="subject"
@@ -189,7 +188,6 @@ const ContactForm = () => {
               className={`${classes.shortInput} ${classes.root} `}
             />
           </Box>
-
           <TextField
             id="email"
             type="email"
@@ -200,9 +198,10 @@ const ContactForm = () => {
           />
           <TextField
             id="about"
+            name="comments"
             label="Comments/Questions/Schemes"
-            className={`${classes.input} ${classes.root}`}
             required
+            className={`${classes.input} ${classes.root}`}
           />
           <ValidationError
             prefix="Message"
