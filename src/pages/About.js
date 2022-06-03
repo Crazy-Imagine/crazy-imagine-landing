@@ -13,7 +13,7 @@ import Imagen from "../components/Imagen"
 const About = () => {
   return (
     <PageWrapper>
-      <div ref={ref}>
+      <div>
         <Hidden mdDown>
           <Navbar variant="secondary" />
         </Hidden>
