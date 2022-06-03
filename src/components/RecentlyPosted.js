@@ -2,9 +2,8 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -13,6 +12,10 @@ const useStyles = makeStyles({
     lineHeight: "28px",
     color: "#193174",
     marginBottom: "15px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "21px",
+      lineHeight: "21px",
+    },
   },
   container: {
     background: "#FFFFFF",
@@ -21,10 +24,19 @@ const useStyles = makeStyles({
     padding: "24px",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      padding: "18px",
+    },
   },
   layout: {
     paddingTop: "115px",
     paddingRight: "100px",
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "30px",
+      paddingTop: "85px",
+      paddingRight: "85px",
+    },
   },
   listTitle: {
     fontFamily: "Nexa Bold",
@@ -33,11 +45,10 @@ const useStyles = makeStyles({
     fontSize: "22px",
     lineHeight: "22px",
     color: "#193174",
-  },
-  description: {
-    fontFamily: "Roboto",
-    fontSize: 14,
-    color: "#303030",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "16px",
+      lineHeight: "16px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -48,8 +59,13 @@ const useStyles = makeStyles({
     lineHeight: "15px",
     letterSpacing: "0.1em",
     color: "#888DFF",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+      paddingTop: "10px",
+    },
   },
-})
+}))
 
 const RecentlyPosted = () => {
   const classes = useStyles()
@@ -100,7 +116,7 @@ const RecentlyPosted = () => {
                       </Typography>
                       <Link
                         className={classes.link}
-                        style={{textDecoration: "none"}}
+                        style={{ textDecoration: "none" }}
                         to={`${BLOG}/${el.node.slug}`}
                       >
                         READ MORE →

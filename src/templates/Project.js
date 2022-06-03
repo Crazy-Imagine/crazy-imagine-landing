@@ -25,6 +25,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "51px",
       lineHeight: "53px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
   },
   date: {
     fontFamily: "Nexa",
@@ -51,6 +55,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "22px",
+      marginBottom: "0px",
     },
   },
   header: {
@@ -59,8 +64,8 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "60px",
     margin: "70px auto 0px auto",
     [theme.breakpoints.down("md")]: {
-      height: "400px",
-      margin: "50px auto 0px auto",
+      height: "auto",
+      margin: "0px auto 0px auto",
     },
   },
 }))

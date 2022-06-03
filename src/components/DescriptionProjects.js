@@ -11,12 +11,23 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "25px",
     color: "#787878",
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      fontSize: "16px",
+      lineHeight: "20px",
+    },
   },
   container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     padding: "115px",
+    [theme.breakpoints.down("md")]: {
+      padding: "85px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "75px 45px 75px 45px",
+    },
   },
 }))
 

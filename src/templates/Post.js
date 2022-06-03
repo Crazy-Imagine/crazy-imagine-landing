@@ -27,12 +27,22 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "22px",
     marginTop: "60px",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "16px",
+      lineHeight: "16px",
+      marginTop: "42px",
+    },
   },
   header: {
     height: "490px",
     width: "80%",
     paddingTop: "60px",
     margin: "90px auto 0px auto",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+      margin: "0px auto 0px auto",
+      height: "auto",
+    },
   },
   author: {
     fontFamily: "Nexa Bold",
@@ -41,6 +51,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "22px",
     lineHeight: "31px",
     color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "16px",
+      lineHeight: "22px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -50,6 +64,16 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "72px",
     color: "#193174",
     marginTop: "25px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "49px",
+      lineHeight: "50px",
+      marginTop: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      lineHeight: "25px",
+      marginTop: "10px",
+    },
   },
   imgContainer: {
     backgroundColor: "#27AAE1",
@@ -57,6 +81,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     padding: "45px 0px",
     marginTop: "90px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "45px",
+    },
   },
   description: {
     fontFamily: "Hero New",
@@ -66,11 +93,35 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "31px",
     color: "#27AAE1",
     marginTop: "50px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "25px",
+      fontSize: "17px",
+      lineHeight: "22px",
+    },
+  },
+  root: {
+    "& .MuiFormLabel-root": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "700",
+      fontSize: "15px",
+      lineHeight: "15px",
+      letterSpacing: "0.1em",
+      color: "white",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "12px",
+        lineHeight: "12px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
   },
   label: {
+    color: "white",
     background: "#797EF6",
     borderRadius: "5px",
-    color: "white",
     textTransform: "uppercase",
     padding: "10px 13px",
     width: "fit-content",
@@ -78,7 +129,12 @@ const useStyles = makeStyles(theme => ({
   contentContainer: {
     display: "flex",
     flexDirection: "row",
-    background: "white"  
+    background: "white",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column-reverse",
+      justifyContent: "center",
+      alignItems: "center",
+    },
   },
 }))
 

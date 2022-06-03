@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
@@ -6,9 +6,11 @@ import { Link } from "gatsby"
 import BlogPost from "./BlogPost"
 import bgImage from "../images/background.svg"
 import { BLOG } from "../navigation/sitemap"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyes = makeStyles(theme => ({
   title: {
+    visibility: "hidden",
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -23,10 +25,35 @@ const useStyes = makeStyles(theme => ({
       marginTop: "55px",
     },
   },
+  title2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#FFFFFF",
+    marginTop: "78px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineWeight: "28px",
+      marginTop: "55px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
@@ -39,10 +66,12 @@ const useStyes = makeStyles(theme => ({
     },
   },
   link: {
+    visibility: "hidden",
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "15px",
+    textAlign: "center",
     lineHeight: "15px",
     letterspacing: "0.1em",
     color: "#888DFF",
@@ -50,6 +79,33 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+    },
+  },
+  link2: {
+    animation: `$myEffectos 5000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    textAlign: "center",
+    lineHeight: "15px",
+    letterspacing: "0.1em",
+    color: "#888DFF",
+    marginBottom: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
+  },
+  "@keyframes myEffectos": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
     },
   },
   containerPost: {
@@ -64,15 +120,17 @@ const useStyes = makeStyles(theme => ({
 
 const LastestPosts = () => {
   const classes = useStyes()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={classes.container}>
       <Typography
-        className={classes.title}
+        className={isVisible ? classes.title2 : classes.title}
       >{`The Latest in Tech Talk`}</Typography>
       <Link
         to={`${BLOG}`}
-        className={classes.link}
+        className={isVisible ? classes.link2 : classes.link}
         style={{ textDecoration: "none" }}
       >
         ALL BLOGS →

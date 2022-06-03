@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
+import { useIntersection } from "../hooks/useIntersection"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/swiper-bullet.css"
@@ -26,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
+    visibility: "hidden",
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -48,6 +50,46 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "22px",
       marginTop: "34px",
       marginBottom: "20px",
+    },
+  },
+  title2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    marginTop: "84px",
+    textAlign: "center",
+    color: "#193173",
+    marginBottom: "47px",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "28px",
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginTop: "55px",
+      marginBottom: "33px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontWeight: "22px",
+      fontSize: "22px",
+      lineHeight: "22px",
+      marginTop: "34px",
+      marginBottom: "20px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
+    "50%": {
+      opacity: 1,
+      transform: "scale(1.1)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
     },
   },
   button: props => ({
@@ -148,6 +190,8 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = ({ title, btn }) => {
   const classes = useStyles({ btn })
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
 
   return (
@@ -157,8 +201,10 @@ const ProjectSection = ({ title, btn }) => {
         const projects = data.projects.nodes.slice(0, 4)
 
         return (
-          <Box className={classes.container}>
-            <Typography className={classes.title}>{title}</Typography>
+          <Box ref={ref} className={classes.container}>
+            <Typography className={isVisible ? classes.title2 : classes.title}>
+              {title}
+            </Typography>
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}

@@ -84,6 +84,11 @@ const useStyes = makeStyles(theme => ({
       width: "75%",
     },
   },
+  slide: {
+    [theme.breakpoints.between(0, 400)]: {
+      width: "75%",
+    },
+  },
   carousel: {
     height: "400px",
     [theme.breakpoints.down("md")]: {
@@ -151,7 +156,7 @@ const RelatedProjects = () => {
             className={`${classes.slider} purpleBullet`}
           >
             {projects.map(({ node }, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className={classes.slide}>
                 <Box className={classes.container}>
                   <GatsbyImage
                     alt="About the project"

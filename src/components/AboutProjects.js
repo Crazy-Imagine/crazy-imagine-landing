@@ -2,23 +2,17 @@ import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     padding: "115px",
-  },
-  galleryImage: {
-    width: "100%",
-    height: 322,
-    transition: "transform 300ms",
-    "&:hover": {
-      transform: "scale(0.95)",
+    [theme.breakpoints.down("md")]: {
+      padding: "75px",
     },
-    "&:active": {
-      zIndex: "999",
-      transform: "scale(1.3, 1.5)",
+    [theme.breakpoints.down("sm")]: {
+      padding: "75px 45px 75px 45px",
     },
   },
   title: {
@@ -29,6 +23,10 @@ const useStyles = makeStyles({
     lineHeight: "28px",
     color: "#193174",
     marginBottom: "26px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "21px",
+      lineHeight: "21px",
+    },
   },
   description: {
     fontFamily: "Hero New",
@@ -38,14 +36,26 @@ const useStyles = makeStyles({
     lineHeight: "25px",
     color: "#787878",
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "20px",
+      width: "100%",
+    },
   },
   imgContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     gap: "21px",
+    [theme.breakpoints.down("md")]: {
+      gap: "18px",
+      padding: "0 35px",
+    },
+    [theme.breakpoints.between(0, 600)]: {
+      flexDirection: "column",
+    },
   },
-})
+}))
 
 const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()

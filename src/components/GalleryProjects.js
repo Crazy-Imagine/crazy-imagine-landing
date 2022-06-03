@@ -12,17 +12,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       padding: "0 35px",
     },
-  },
-  carouselButton: {
-    backgroundColor: "transparent",
-    boxShadow: "none",
-    "&:hover": {
-      color: "#23aee1",
-      backgroundColor: "transparent",
-      boxShadow: "none",
-    },
-    "&:disabled": {
-      backgroundColor: "transparent",
+    [theme.breakpoints.between(0, 600)]: {
+      flexDirection: "column",
     },
   },
 }))

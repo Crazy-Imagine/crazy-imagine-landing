@@ -1,5 +1,4 @@
 import React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ReactMarkdown from "react-markdown"
 import { Box, makeStyles } from "@material-ui/core"
 
@@ -12,10 +11,21 @@ const useStyles = makeStyles(theme => ({
     fontSize: "18px",
     lineHeight: "25px",
     color: "#787878",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "12px",
+      lineHeight: "20px",
+    },
   },
   container: {
     width: "70%",
     padding: "115px",
+    [theme.breakpoints.down("md")]: {
+      padding: "85px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      padding: "45px",
+    },
   },
 }))
 

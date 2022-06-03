@@ -20,6 +20,8 @@ const useStyles = makeStyles(theme => ({
 
 const AboutSection = ({ bgColor, bgImage, setY }) => {
   const classes = useStyles()
+  //const ref = useRef()
+  //const isVisible = useIntersection(ref, "0px")
   return (
     <>
       <Box className={classes.container}>

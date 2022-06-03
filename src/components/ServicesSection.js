@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       paddingTop: "64px",
     },
+    overflow: "hidden",
   },
   bg: {
     backgroundImage: `url(${bgImage})`,

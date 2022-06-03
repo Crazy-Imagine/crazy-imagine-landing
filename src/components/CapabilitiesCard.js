@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
 import { PROJECTS } from "../navigation/sitemap"
 import Typography from "@material-ui/core/Typography"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   container: {
+    visibility: "hidden",
     background: "#FFFFFF",
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     padding: "29px 20px 29px 20px",
@@ -20,6 +22,33 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "175px",
       gap: "15px",
+    },
+  },
+  container2: {
+    animation: `$myEffect 3000ms`,
+    background: "#FFFFFF",
+    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+    padding: "29px 20px 29px 20px",
+    borderRadius: "14px",
+    width: "250px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "22px",
+    aliginItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "175px",
+      gap: "15px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
     },
   },
   icon: {
@@ -79,8 +108,10 @@ const useStyles = makeStyles(theme => ({
 
 export const CapabilitiesCard = ({ icon, title, desc }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box className={classes.container}>
+    <Box ref={ref} className={isVisible ? classes.container2 : classes.container}>
       <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" />
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>

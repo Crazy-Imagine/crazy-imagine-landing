@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Card, CardContent, makeStyles, Typography } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -25,9 +26,27 @@ const useStyles = makeStyles(theme => ({
     },
   },
   cardContainer: {
+    visibility: "hidden",
     backgroundColor: "#FFFFFF",
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     borderRadius: "14px",
+  },
+  cardContainer2: {
+    animation: `$myEffectos 3000ms`,
+    backgroundColor: "#FFFFFF",
+    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+    borderRadius: "14px",
+  },
+  "@keyframes myEffectos": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+    },
   },
   cardContent: {
     width: "314px",
@@ -64,9 +83,11 @@ const useStyles = makeStyles(theme => ({
 
 const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Card className={classes.cardContainer}>
+    <Card ref={ref} className={isVisible ? classes.cardContainer2 : classes.cardContainer}>
       <CardContent className={classes.cardContent}>
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
         <Typography className={classes.title}>{title}</Typography>

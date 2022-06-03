@@ -1,13 +1,27 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
 import headerImage from "../images/satelite.svg"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
   title: {
-    animation: `$myEffect 5000ms`,
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "40px",
+    lineHeight: "50px",
+    color: "#193174",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "25px",
+      lineHeight: "30px",
+    },
+  },
+  title2: {
+    animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -34,6 +48,21 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle: {
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "20px",
+    lineHeight: "20px",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    color: "#797EF6",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
+  },
+  subtitle2: {
     animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -59,6 +88,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img: {
+    visibility: "hidden",
+    marginTop: "auto",
+  },
+  img2: {
     animation: `$myEffecto 3000ms`,
     marginTop: "auto",
   },
@@ -92,21 +125,22 @@ const useStyles = makeStyles(theme => ({
 
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
-
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
     <Section
       width="76%"
       backgroundImage={bgImage ? bgImage : ""}
       backgroundColor={bgColor ? bgColor : ""}
     >
-      <Box className={classes.container}>
+      <Box ref={ref} className={classes.container}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.subtitle}>REACH OUT</Typography>
-          <Typography className={classes.title}>{`Imagine What`}</Typography>
-          <Typography className={classes.title} style={{ marginTop: "-17px" }}>
+          <Typography className={isVisible ? classes.subtitle2 : classes.subtitle}>REACH OUT</Typography>
+          <Typography className={isVisible ? classes.title2 : classes.title}>{`Imagine What`}</Typography>
+          <Typography className={isVisible ? classes.title2 : classes.title} style={{ marginTop: "-17px" }}>
             {`We Can Create`}
           </Typography>
-          <Box className={classes.img}>
+          <Box className={isVisible ? classes.img2 : classes.img}>
             <StaticImage src="../images/satelite.svg" />
           </Box>
         </Box>
