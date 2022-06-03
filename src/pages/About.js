@@ -1,5 +1,5 @@
 import { Hidden } from "@material-ui/core"
-import React, { useEffect, useState, useRef } from "react"
+import React from "react"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import NavbarMobile from "../components/NavbarMobile"
@@ -11,19 +11,6 @@ import AboutSection from "../components/AboutSection"
 import Imagen from "../components/Imagen"
 
 const About = () => {
-  const ref = useRef()
-  const [y, setY] = useState(0)
-
-  const handleNavigation = () => {
-    if (!ref.current) return
-    const div = ref.current
-    setY(div?.getBoundingClientRect().y)
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", e => handleNavigation(e))
-  }, [])
-
   return (
     <PageWrapper>
       <div ref={ref}>
@@ -40,8 +27,8 @@ const About = () => {
           img={headerImage}
           little={true}
         />
-        <AboutSection setY={y} />
-        <Imagen setY={y} />
+        <AboutSection />
+        <Imagen />
         <Footer />
         <Copyright />
       </div>
