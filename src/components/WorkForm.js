@@ -447,8 +447,8 @@ const WorkForm = () => {
   }
 
   return (
-    <Box ref={ref} className={classes.container}>
-      <Box className={classes.containerInfo}>
+    <Box className={classes.container}>
+      <Box ref={ref} className={classes.containerInfo}>
         <WorkInfo />
       </Box>
       <Box className={classes.container1}>

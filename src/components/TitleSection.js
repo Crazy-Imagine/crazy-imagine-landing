@@ -226,7 +226,7 @@ export const TitleSection = ({ desc, img }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Box className={classes.imgContainer}>
         <img src={mainImage} className={isVisible ? classes.img2 : classes.img} alt="Title Image" />
       </Box>
@@ -236,7 +236,7 @@ export const TitleSection = ({ desc, img }) => {
         Should You`}</Typography>
           <Typography className={classes.blueTitle2}>Choose Us</Typography>
         </Box>
-        <Typography className={classes.desc2}>{desc}</Typography>
+        <Typography ref={ref} className={classes.desc2}>{desc}</Typography>
       </Box>
     </Box>
   )

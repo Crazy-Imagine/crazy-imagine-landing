@@ -180,13 +180,13 @@ export const AboutTitle = ({ title, desc, img }) => {
   const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Box className={classes.imgn}>
         <img className={isVisible ? classes.img2 : classes.img} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
-        <Typography className={isVisible ? classes.title2 : classes.title}>{title}</Typography>
-        <Typography className={isVisible ? classes.desc2 : classes.desc}>{desc}</Typography>
+        <Typography className={classes.title2}>{title}</Typography>
+        <Typography ref={ref} className={classes.desc2}>{desc}</Typography>
       </Box>
     </Box>
   )
