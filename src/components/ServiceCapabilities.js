@@ -190,7 +190,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   return (
-    <Box ref={ref} className={isVisible ? classes.conta2 : classes.conta}>
+    <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container}>
         {img && (
           <img
@@ -208,7 +208,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
           <Typography className={classes.title2}>
             {title}
           </Typography>
-          <Typography className={classes.desc2}>
+          <Typography ref={ref} className={classes.desc2}>
             {desc}
           </Typography>
         </Box>

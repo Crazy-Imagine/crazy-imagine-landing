@@ -86,16 +86,12 @@ const useStyles = makeStyles(theme => ({
   },
   "@keyframes myEffect": {
     "0%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-    "50%": {
-      opacity: 1,
-      transform: "scale(1.1)",
+      opacity: 0,
+      transform: "translateY(-200%)",
     },
     "100%": {
       opacity: 1,
-      transform: "scale(1)",
+      transform: "translateY(0)",
     },
   },
   wrapperContainer: {
@@ -103,7 +99,6 @@ const useStyles = makeStyles(theme => ({
     margin: "auto",
     marginTop: "83px",
     display: "flex",
-    overflow: "hidden",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
