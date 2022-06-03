@@ -16,10 +16,6 @@ const TeamMembersSection = () => {
   const classes = useStyles()
   const teamMemberSection = useStaticQuery(query)
   const memberSection = teamMemberSection.allStrapiTeampage.nodes[0]
-
-  const imageOne = memberSection.gallery[0].localFile
-  const imageTwo = memberSection.gallery[1].localFile
-  const imageThree = memberSection.gallery[2].localFile
   const imageFour = memberSection.gallery[3].localFile
   const imageFive = memberSection.gallery[4].localFile
   const imageSix = memberSection.gallery[5].localFile
@@ -52,7 +48,6 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        /* image={getImage(imageOne)} */
         md={6}
         alt="An efficient team"
       ></AnimatedTitle>
@@ -67,7 +62,6 @@ const TeamMembersSection = () => {
         animation="animationRight"
         paragraphClass="paragraphRight"
         lineClass="boxLineRight"
-        /*   image={getImage(imageTwo)} */
         md={6}
         alt="A qualified team"
       ></AnimatedTitle>
@@ -85,7 +79,6 @@ const TeamMembersSection = () => {
         animation="animationLeft"
         paragraphClass="paragraphLeft"
         lineClass="boxLineLeft"
-        /* image={getImage(imageThree)} */
         md={6}
         alt="An experience team"
       ></AnimatedTitle>

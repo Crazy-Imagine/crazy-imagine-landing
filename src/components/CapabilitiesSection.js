@@ -92,13 +92,10 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
     },
   },
-
-
 }))
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-
 
   return (
     <>
@@ -225,17 +222,4 @@ const CapabilitiesSection = () => {
   )
 }
 
-// const query = graphql`
-//   query {
-//     allStrapiHomepage {
-//       nodes {
-//         CapabilitiesImages {
-//           localFile {
-//             publicURL
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 export default CapabilitiesSection

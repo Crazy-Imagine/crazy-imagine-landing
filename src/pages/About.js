@@ -14,7 +14,7 @@ const About = () => {
   const ref = useRef()
   const [y, setY] = useState(0)
 
-  const handleNavigation = e => {
+  const handleNavigation = () => {
     if (!ref.current) return
     const div = ref.current
     setY(div?.getBoundingClientRect().y)

@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Imagen = ({ setY }) => {
+const Imagen = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")

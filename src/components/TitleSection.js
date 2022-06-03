@@ -221,7 +221,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const TitleSection = ({ desc, img }) => {
+export const TitleSection = ({ desc }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
@@ -240,7 +240,9 @@ export const TitleSection = ({ desc, img }) => {
         Should You`}</Typography>
           <Typography className={classes.blueTitle2}>Choose Us</Typography>
         </Box>
-        <Typography ref={ref} className={classes.desc2}>{desc}</Typography>
+        <Typography ref={ref} className={classes.desc2}>
+          {desc}
+        </Typography>
       </Box>
     </Box>
   )

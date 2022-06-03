@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react"
-import { Box, Typography } from "@material-ui/core"
+import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { makeStyles } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 

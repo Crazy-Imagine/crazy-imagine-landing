@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useRef } from "react"
 import { Box, Hidden } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import Navbar from "../components/Navbar"
@@ -17,22 +17,9 @@ import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
 
-
 const IndexPage = () => {
   const data = useStaticQuery(query)
   const ref = useRef()
-  const [y, setY] = useState(0)
-
-  const handleNavigation = e => {
-    if (!ref.current) return
-    const div = ref.current
-    setY(div?.getBoundingClientRect().y)
-    //console.log(y);
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", e => handleNavigation(e))
-  }, [])
 
   return (
     <>

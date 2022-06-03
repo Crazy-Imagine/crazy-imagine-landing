@@ -1,8 +1,6 @@
 import React, { useRef } from "react"
-import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core"
+import { Box, Typography, makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
-/* import Link from "gatsby" */
 import BlogPost from "./BlogPost"
 import bgImage from "../images/background.svg"
 import { BLOG } from "../navigation/sitemap"

@@ -174,7 +174,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SubTitleSection = ({ title, desc, img, setY }) => {
+export const SubTitleSection = ({ title, desc, img }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")

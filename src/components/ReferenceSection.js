@@ -1,5 +1,4 @@
 import React, { useRef } from "react"
-import { graphql } from "gatsby"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import CustomerReview from "./CustomerReview"
 import bgImage from "../images/background.svg"
@@ -75,7 +74,10 @@ const ReferenceSection = () => {
 
   return (
     <Box className={classes.referenceContainer}>
-      <Typography ref={ref} className={isVisible ? classes.title2 : classes.title}>
+      <Typography
+        ref={ref}
+        className={isVisible ? classes.title2 : classes.title}
+      >
         {`People Who Work
                   With Us Say`}
       </Typography>

@@ -1,9 +1,11 @@
 import React, { useRef } from "react"
 import { Box, Grid, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
-import { faCode } from "@fortawesome/free-solid-svg-icons"
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
+import {
+  faCode,
+  faThumbsUp,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
 import TitleSection from "./TitleSection"
 import { Link } from "gatsby"
@@ -146,17 +148,5 @@ const HomeMainSection = () => {
     </Box>
   )
 }
-/* const query = graphql`
-  query {
-    allStrapiHomepage {
-      nodes {
-        CapabilitiesImages {
-          localFile {
-            publicURL
-          }
-        }
-      }
-    }
-  }
-` */
+
 export default HomeMainSection

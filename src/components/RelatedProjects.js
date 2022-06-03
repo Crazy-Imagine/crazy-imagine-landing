@@ -155,7 +155,7 @@ const RelatedProjects = () => {
             modules={[Pagination]}
             className={`${classes.slider} purpleBullet`}
           >
-            {projects.map(({ node }, index) => (
+            {projects.map(index => (
               <SwiperSlide key={index} className={classes.slide}>
                 <Box className={classes.container}>
                   <GatsbyImage

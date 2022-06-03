@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "50px",
   },
-  contactTypography: props => ({
+  contactTypography: {
     fontSize: "14px",
     fontWeight: 700,
     textDecoration: "none",
@@ -90,7 +90,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     color: "#FFFFFF",
-  }),
+  },
   effect: {
     paddingTop: "10px",
     "&::before": {

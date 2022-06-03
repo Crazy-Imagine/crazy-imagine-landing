@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
       height: "34px",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "20px",
       flexDirection: "column",
       height: "auto",
       marginTop: "5px",

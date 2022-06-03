@@ -1,6 +1,5 @@
 import React from "react"
-import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core"
+import { Box, Typography, makeStyles } from "@material-ui/core"
 import Link from "@material-ui/core/Link"
 import RelatedProjects from "../components/RelatedProjects"
 

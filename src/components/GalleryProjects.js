@@ -26,7 +26,7 @@ const GalleryProjects = ({ gallery, description }) => {
   return (
     <>
       <Box className={classes.galleryContainer}>
-        {firstGallery.map(({ localFile }, index) => (
+        {firstGallery.map(({ localFile }) => (
           <GatsbyImage
             image={getImage(localFile)}
             style={{
@@ -43,7 +43,7 @@ const GalleryProjects = ({ gallery, description }) => {
       </Box>
       <DescriptionProjects description={description} />
       <Box className={classes.galleryContainer}>
-        {secondGallery.map(({ localFile }, index) => (
+        {secondGallery.map(({ localFile }) => (
           <GatsbyImage
             image={getImage(localFile)}
             imgStyle={{

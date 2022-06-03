@@ -2,8 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding } from "@fortawesome/free-solid-svg-icons"
-import { faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
@@ -16,7 +15,6 @@ import {
   CONTACT,
   BLOG,
 } from "../navigation/sitemap"
-//import { Autocomplete } from "@material-ui/lab"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -133,7 +131,6 @@ const useStyles = makeStyles(theme => ({
   iconsContainer: {
     display: "flex",
     alignSelf: "center",
-    /* marginRight: "auto", */
     gap: "21px",
     [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
@@ -184,7 +181,7 @@ const useStyles = makeStyles(theme => ({
   footerLogo: {},
 }))
 
-const Footer = ({ height = "192px", align = "center" }) => {
+const Footer = ({ height = "192px" }) => {
   const classes = useStyles()
   return (
     <Section backgroundColor="#193174" width="92%" height={height}>

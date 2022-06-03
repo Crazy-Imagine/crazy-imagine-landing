@@ -1,5 +1,4 @@
-import { Box, Typography } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core"
+import { Box, Typography, makeStyles } from "@material-ui/core"
 import React, { useRef } from "react"
 import { useIntersection } from "../hooks/useIntersection"
 
@@ -49,7 +48,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -85,7 +83,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    //animation: `$myEffect 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -139,7 +136,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffect 3000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -163,7 +159,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   imagen2: {
-    //animation: `$myEffect 3000ms`,
     width: "unset",
     [theme.breakpoints.down("sm")]: {
       width: "35%",
@@ -192,22 +187,10 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container}>
-        {img && (
-          <img
-            src={img}
-            className={classes.imagen2}
-            alt={`${title}`}
-          />
-        )}
+        {img && <img src={img} className={classes.imagen2} alt={`${title}`} />}
         <Box className={classes.textContainer}>
-          <Typography
-            className={classes.subtitle2}
-          >
-            CAPABILITIES
-          </Typography>
-          <Typography className={classes.title2}>
-            {title}
-          </Typography>
+          <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
+          <Typography className={classes.title2}>{title}</Typography>
           <Typography ref={ref} className={classes.desc2}>
             {desc}
           </Typography>
