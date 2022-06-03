@@ -162,7 +162,9 @@ const useStyles = makeStyles(theme => ({
       position: "absolute",
       transition: "transform .5s ease",
     },
-
+    "&:hover": {
+      color: "white",
+    },
   },
   infoTypography: {
     color: "#FFFFFF",

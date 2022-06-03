@@ -56,8 +56,6 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "16px",
     textAlign: "right",
     color: props.scroll ? props.linkVariant : "white",
-    // "& a": {
-
     position: "relative",
     textDecoration: "none",
     lineHeight: "24px",
@@ -66,7 +64,9 @@ const useStyles = makeStyles(theme => ({
       position: "absolute",
       transition: "transform .5s ease",
     },
-    // },
+    "&:hover": {
+      color: "white",
+    },
   }),
   barContainer: {
     margin: 1,
