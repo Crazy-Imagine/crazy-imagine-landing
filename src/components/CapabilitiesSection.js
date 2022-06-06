@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
     gap: "45px",
     backgroundColor: "rgb(255, 255, 255)",
     height: "772px",
-
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       gap: "32px",

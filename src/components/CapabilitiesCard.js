@@ -18,10 +18,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     gap: "22px",
-    aliginItems: "center",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       width: "175px",
       gap: "15px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      alignSelf: "center",
+      width: "65%",
     },
   },
   container2: {
@@ -35,10 +39,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     gap: "22px",
-    aliginItems: "center",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       width: "175px",
       gap: "15px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      alignSelf: "center",
+      width: "65%",
     },
   },
   "@keyframes myEffect": {
@@ -111,7 +119,10 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   return (
-    <Box ref={ref} className={isVisible ? classes.container2 : classes.container}>
+    <Box
+      ref={ref}
+      className={isVisible ? classes.container2 : classes.container}
+    >
       <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" />
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.desc}>{desc}</Typography>

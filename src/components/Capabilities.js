@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       gap: "5px",
       height: "auto",
+      width: "70%",
       alignSelf: "center",
     },
   },
