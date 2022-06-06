@@ -1,0 +1,102 @@
+import React, { useRef } from "react"
+import { Box, Typography } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import bgImage from "../images/background.svg"
+import { useIntersection } from "../hooks/useIntersection"
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    height: "470px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "#193174",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
+    overflow: "hidden",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+      paddingTop: "50px",
+      paddingBottom: "50px",
+    },
+  },
+  textContainer: {
+    visibility: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "60%",
+  },
+  textContainer2: {
+    animation: `$myEffect 3000ms`,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "60%",
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
+  text: {
+    fontFamily: "Nexa",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "24px",
+    color: "#FFFFFF",
+    textAlign: "center",
+    whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "17px",
+    },
+  },
+  desc: {
+    fontFamily: "Hero New",
+    fontWeight: "600",
+    whiteSpace: "pre-line",
+    fontSize: "30px",
+    lineHeight: "39px",
+    color: "#FFFFFF",
+    textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "21px",
+      lineHeight: "27px",
+    },
+  },
+}))
+
+const HomeDescription = () => {
+  const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
+  return (
+    <Box ref={ref} className={classes.container}>
+      <Box className={isVisible ? classes.textContainer2 : classes.textContainer}>
+        <Typography className={classes.text}>
+          {`With deep expertise that spans across the web development spectrum,\nwe can optimize your digital presence at any level.`}
+        </Typography>
+        <br></br>
+        <Typography
+          className={classes.desc}
+        >{`Whether you are interested in partial web or 
+        mobile development, full scale web development 
+        and project management, or something in 
+        between, CrazyImagine is here for you.`}</Typography>
+      </Box>
+    </Box>
+  )
+}
+
+export default HomeDescription

@@ -1,158 +1,306 @@
 import * as React from "react"
 import { useEffect, useState, useRef } from "react"
 import { useForm } from "react-hook-form"
-import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import axios from "axios"
 import * as yup from "yup"
-import { makeStyles } from "@material-ui/core/styles"
-import { Box, Typography, Input } from "@material-ui/core"
+import { Box, makeStyles, Input } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
-import Link from "@material-ui/core/Link"
 import Button from "@material-ui/core/Button"
-import Card from "@material-ui/core/Card"
-import CardActions from "@material-ui/core/CardActions"
-import CardContent from "@material-ui/core/CardContent"
 import Alert from "@material-ui/lab/Alert"
 import { yupResolver } from "@hookform/resolvers/yup"
+import WorkInfo from "../components/WorkInfo"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
-  formContainer: {
+  root: {
+    "& .MuiFormLabel-root": {
+      fontFamily: "Hero New",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "140%",
+      color: "#193173",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "10px",
+      },
+    },
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px #D6D6D6 solid !important",
+    },
+    "& .MuiSvgIcon-root": {
+      background: "#E8E8E8",
+      color: "#797EF6",
+      borderRadius: "2px",
+    },
+    "& .MuiInputBase-input": {
+      [theme.breakpoints.between(0, 600)]: {
+        margin: "3px",
+      },
+    },
+    "& .MuiTypography-body1": {
+      fontFamily: "Hero New",
+      fontStyle: "italic",
+      fontWeight: "400",
+      fontSize: "13px",
+      lineHeight: "140%",
+      color: "#193173",
+    },
+    "& .MuiFormHelperText-root.Mui-error": {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "10px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "8px",
+      },
+    },
+  },
+  curriculumAlert: {
+    paddingLeft: "30px",
+    backgroundColor: "transparent",
+    color: "#F44336",
+    marginTop: "5px",
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    alignSelf: "flex-start",
+    fontWeight: "400",
+    fontSize: "12px",
+    lineHeight: "140%",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "10px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
+    "& .MuiAlert-icon": {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "18px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
+      },
+    },
+  },
+  container: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    padding: "20px",
-    marginTop: "35px",
-    gap: "20px 30px",
-    backgroundColor: "#3399FF",
+    height: "auto",
+    alignItems: "flex-start",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "80%",
+    gap: "93px",
+    [theme.breakpoints.down("md")]: {
+      gap: "65px",
+    },
     [theme.breakpoints.down("sm")]: {
+      gap: "40px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "20px",
       flexDirection: "column",
+      alignItems: "center",
     },
   },
-  formImage: {
-    width: "100% !impotant",
-    height: "100% !important",
+  formContainer: {
+    visibility: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    backgroundColor: "rgba(235, 235, 235, 0.4)",
+    marginTop: "94px",
+    borderRadius: "14px 14px 0px 0px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "66px",
+      padding: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "30px",
+      padding: "8px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
+      padding: "4px",
+    },
+  },
+  formContainer2: {
+    animation: `$myEffect 3000ms`,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    backgroundColor: "rgba(235, 235, 235, 0.4)",
+    marginTop: "94px",
+    borderRadius: "14px 14px 0px 0px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "66px",
+      padding: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "30px",
+      padding: "8px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
+      padding: "4px",
+    },
+  },
+  containerInfo: {
+    width: "fit-content",
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
   },
   containerImage: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
+    alignSelf: "center",
     alignItems: "center",
-    width: "42%",
-    height: "592px",
-    [theme.breakpoints.down("sm")]: {
-      height: "300px",
-      width: "100%",
-    },
-  },
-  title: {
-    marginTop: 25,
-    marginBottom: 14,
-    fontFamily: "Gotham-ultra",
-    fontSize: 30,
-    color: "#39f",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: 25,
-      marginTop: 15,
-      marginBottom: 8,
-    },
-  },
-  root: {
-    width: "100%",
-    marginTop: 25,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: 25,
-    paddingRight: 20,
-    [theme.breakpoints.down("sm")]: {
-      width: 520,
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: 380,
-      marginLeft: "auto",
-      marginRight: "auto",
-      overflowX: "hidden",
-    },
-  },
-  addressResponsive: {
-    display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
-    gridGap: "5px",
-    marginBottom: 0.1,
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
+  },
+  container1: {
+    overflow: "hidden",
+  },
+  attachContainer: {
+    width: "87%",
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      width: "80%",
     },
-  },
-  boxLine: {
-    backgroundColor: "#39f",
-  },
-  formInputAppears: {
-    height: 1,
-    width: 519,
-    marginLeft: 40,
-    marginRight: 40,
-    marginBottom: 60,
     [theme.breakpoints.down("sm")]: {
-      width: 460,
-      marginLeft: 20,
-      marginRight: 20,
+      width: "78%",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: 300,
-      marginLeft: 5,
-      marginRight: 5,
+  },
+  attach: {
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "30px",
+    },
+  },
+  attachLabel: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "140%",
+    marginTop: "43px",
+    marginBottom: "15px",
+    color: "#193173",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "15px",
+      fontSize: "10px",
+      marginBottom: "10px",
+    },
+  },
+  attachButton: {
+    border: "2px solid #797EF6",
+    borderRadius: "100px",
+    padding: "14px 20px 12px 20px",
+    marginBottom: "15px",
+    color: "#797EF6",
+    cursor: "pointer",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "14px",
+    lineHeight: "14px",
+    textAlign: "center",
+    letterSpacing: "0.05em",
+    "&:hover": {
+      backgroundColor: "#797EF6",
+      color: "white",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "9px",
+      padding: "10px 14px 8px 14px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   formInput: {
     height: 1,
-    width: 519,
+    width: "520px",
     marginLeft: 40,
     marginRight: 40,
     marginTop: 35,
-    marginBottom: 55,
+    marginBottom: 40,
+    [theme.breakpoints.down("md")]: {
+      width: "364px",
+      margin: "30px 30px 30px 30px",
+    },
     [theme.breakpoints.down("sm")]: {
-      width: 460,
-      marginLeft: 20,
-      marginRight: 20,
+      width: "226px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: 300,
-      marginLeft: 5,
-      marginRight: 5,
+      width: "189px",
     },
   },
-  addressForm: {
+  shortInput: {
     height: 1,
-    width: 170,
-    marginTop: 35,
-    marginBottom: 55,
+    width: "250px",
+    [theme.breakpoints.down("md")]: {
+      width: "170px",
+    },
     [theme.breakpoints.down("sm")]: {
-      width: 150,
+      width: "104px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: 300,
+      width: "86px",
+    },
+  },
+  shortContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: "20px",
+    marginTop: "40px",
+    marginBottom: "40px",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "30px",
     },
   },
   formButton: {
-    background: "#3399ff",
-    color: "#fff",
-    height: 35,
-    fontFamily: "Lato",
-    width: 150,
-    fontSize: 18,
-    fontWeight: "bold",
-    borderRadius: 4,
-    border: "0px",
+    background: "#797EF6",
+    borderRadius: "100px",
+    padding: "14px 20px 12px 20px",
+    marginTop: "18px",
+    marginBottom: "37px",
     cursor: "pointer",
     "&:hover": {
-      boxShadow:
-        "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
-      backgroundColor: "#d5d5d5",
+      backgroundColor: "#30AADE",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "14px",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "16px",
+      marginBottom: "25px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
     },
   },
   actionPadding: {
@@ -163,40 +311,26 @@ const useStyles = makeStyles(theme => ({
   },
   successfullAlert: {
     backgroundColor: "transparent",
-  },
-  "@keyframes fadeIn": {
-    "0%": {
-      opacity: "0",
-    },
-    "100%": {
-      opacity: "1",
+    width: "80%",
+    marginTop: "5px",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "10px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "8px",
     },
   },
 }))
 
 const WorkForm = () => {
   const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
-  const [disableButton, setDisableButton] = useState(true)
-  const [showAttach, setShowAttach] = useState(false)
-  const [showLink, setShowLink] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
-
-  const domref = useRef()
-  const isVisible = useIntersection(domref, "0px")
-
-  const data = useStaticQuery(query)
-  const image = data.strapiTeampage?.WorkFormImage?.localFile
-
-  const disableChangeButton = () => {
-    if (getValues("website") || getValues("curriculum")) {
-      setDisableButton(false)
-    } else {
-      setDisableButton(true)
-    }
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -205,7 +339,7 @@ const WorkForm = () => {
         setAlertMessage("")
         setFormStatus("")
       }
-    }, 3000)
+    }, 10000)
 
     return () => {
       clearTimeout(timer)
@@ -213,27 +347,20 @@ const WorkForm = () => {
   }, [formStatus])
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
+    firstName: yup.string().required("First Name is required"),
+    lastName: yup.string().required("Last Name is required"),
+    email: yup.string().email().required("Email is required"),
     phone: yup
       .string()
       .matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, "Invalid number")
       .required("Phone is required"),
-    address: yup.string().required().typeError("Introduce your address"),
-    city: yup.string().required().typeError("Introduce your city"),
-    state: yup.string().required().typeError("Introduce your state"),
-    zip: yup
-      .string()
-      .required()
-      .matches(/^[\d]+$/, "Must be only digits")
-      .min(4, "Must be at least 4 digits")
-      .typeError("Must be at least 4 digits"),
+    linkedin: yup.string(),
     website: yup.string(),
     curriculum: yup.mixed().when("website", {
       is: "",
       then: yup
         .mixed()
-        .test("required", "You need to provide a file", value => {
+        .test("required", "Please post a website or resume", value => {
           return value && value.length
         })
         .test("fileSize", "The file must be max 2 mb", (value, context) => {
@@ -248,6 +375,7 @@ const WorkForm = () => {
         ),
       otherwise: yup.mixed(),
     }),
+    reference: yup.string(),
   })
 
   const {
@@ -255,7 +383,6 @@ const WorkForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    getValues,
   } = useForm({
     defaultValues: { website: "" },
     resolver: yupResolver(schema),
@@ -264,64 +391,52 @@ const WorkForm = () => {
   const domain = process.env.API_URL || "http://localhost:1337"
 
   const onSubmitHandler = async data => {
-    setDisableButton(true)
-
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
       formData.append("files", data.curriculum[0])
       axios
         .post(`${domain}/upload`, formData)
         .then(async response => {
-          //after success
           const file = response.data[0].id
           const sendData = {
-            name: data.name,
+            firstName: data.firstName,
+            lastName: data.lastName,
             email: data.email,
             phone: data.phone,
-            address: data.address,
-            city: data.city,
-            state: data.state,
-            zip: data.zip,
+            linkedin: data.linkedin,
             website: data.website,
+            reference: data.reference,
             curriculum: file,
           }
 
           const res = await axios.post(`${domain}/curriculums`, sendData)
 
           if (res.statusText === "OK") {
-            setShowAttach(false)
-            setShowLink(false)
             setAlertMessage("Form has been send succesfully")
             setFormStatus("well")
             setShowMessage(true)
             reset()
-          } else {
-            setShowMessage(true)
-            setAlertMessage("There was an error trying to send your form")
-            setFormStatus("bad")
           }
         })
         .catch(error => {
+          setShowMessage(true)
+          setAlertMessage("There was an error trying to send your form")
+          setFormStatus("bad")
           console.log(error)
         })
     } else {
       if (data.website !== "") {
         const sendData = {
-          name: data.name,
+          firstName: data.firstName,
+          lastName: data.lastName,
           email: data.email,
           phone: data.phone,
-          address: data.address,
-          city: data.city,
-          state: data.state,
-          zip: data.zip,
+          linkedin: data.linkedin,
           website: data.website,
+          reference: data.reference,
         }
-
         const res = await axios.post(`${domain}/curriculums`, sendData)
-
         if (res.statusText === "OK") {
-          setShowAttach(false)
-          setShowLink(false)
           setAlertMessage("Form has been send succesfully")
           setFormStatus("well")
           setShowMessage(true)
@@ -336,254 +451,188 @@ const WorkForm = () => {
   }
 
   return (
-    <Box className={classes.formContainer}>
-      <Box className={classes.containerImage}>
-        <GatsbyImage
-          image={getImage(image)}
-          alt="Team mates around the office"
-          className={classes.formImage}
-          imgStyle={{ objectFit: "contain", height: "400px !important" }}
-        />
+    <Box className={classes.container}>
+      <Box ref={ref} className={classes.containerInfo}>
+        <WorkInfo />
       </Box>
-      <Box>
-        <Card
-          className={`${classes.root}  ${
-            isVisible ? classes.formAnimation : ""
-          }`}
-          ref={domref}
+      <Box className={classes.container1}>
+        <Box
+          style={{
+            width: "fit-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+          alignSelf="center"
+        ></Box>
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <CardContent>
-            <Box
-              style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-              alignSelf="center"
-            >
-              <Box>
-                <Typography
-                  variant="h3"
-                  align="center"
-                  className={classes.title}
-                >
-                  Send us your info
-                </Typography>
-                <Box
-                  width="45px"
-                  height="6px"
-                  marginTop="15px"
-                  className={classes.boxLine}
-                ></Box>
-              </Box>
+          <Box
+            className={
+              isVisible ? classes.formContainer2 : classes.formContainer
+            }
+          >
+            <Box className={classes.shortContainer}>
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                {...register("firstName")}
+                error={errors.firstName}
+                helperText={errors.firstName?.message}
+                type="text"
+                id="outlined-basic"
+                label="First Name"
+                name="firstName"
+              />
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                {...register("lastName")}
+                error={errors.lastName}
+                helperText={errors.lastName?.message}
+                type="text"
+                id="outlined-basic"
+                label="Last Name"
+                name="lastName"
+              />
             </Box>
-            <form
-              noValidate
-              autoComplete="off"
-              onSubmit={handleSubmit(onSubmitHandler)}
-            >
-              <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <TextField
-                  required
-                  className={classes.formInput}
-                  {...register("name")}
-                  error={errors.name}
-                  helperText={errors.name?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Name"
-                  name="name"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.email}
-                  {...register("email")}
-                  helperText={errors.email?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Email"
-                  name="email"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.phone}
-                  {...register("phone")}
-                  helperText={errors.phone?.message}
-                  type="text"
-                  id="outlined-basic"
-                  label="Phone"
-                  name="phone"
-                  variant="outlined"
-                />
-                <TextField
-                  required
-                  className={classes.formInput}
-                  error={errors.address}
-                  helperText={errors.address?.message}
-                  {...register("address")}
-                  type="text"
-                  id="outlined-basic"
-                  label="Address"
-                  name="address"
-                  variant="outlined"
-                />
-                <Box className={classes.addressResponsive}>
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.city?.message}
-                    {...register("city")}
-                    error={errors.city}
-                    type="text"
-                    id="outlined-basic"
-                    label="City"
-                    name="city"
-                    variant="outlined"
-                  />
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.state?.message}
-                    {...register("state")}
-                    error={errors.state}
-                    type="text"
-                    id="outlined-basic"
-                    label="State/Province"
-                    name="state"
-                    variant="outlined"
-                  />
-                  <TextField
-                    required
-                    className={classes.addressForm}
-                    helperText={errors.zip?.message}
-                    {...register("zip")}
-                    error={errors.zip}
-                    type="number"
-                    id="outlined-basic"
-                    label="ZIP Code"
-                    name="zip"
-                    variant="outlined"
-                  />
-                </Box>
-                <Box mt={2.5} mb={2}>
-                  <label>
-                    Resume*<br></br>
-                    <Link
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        setShowAttach(true)
-                        setShowLink(false)
-                      }}
-                    >
-                      Attach your resume
-                    </Link>{" "}
-                    or{" "}
-                    <Link
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        setShowLink(true)
-                        setShowAttach(false)
-                      }}
-                    >
-                      Paste your resume
-                    </Link>
-                  </label>
-                </Box>
-                {showLink && (
-                  <>
-                    <TextField
-                      required
-                      className={classes.formInputAppears}
-                      helperText={errors.website?.message}
-                      error={errors.website}
-                      {...register("website")}
-                      onSelect={disableChangeButton}
-                      type="text"
-                      id="outlined-basic"
-                      label="Paste your resume"
-                      name="website"
-                      value=""
-                      variant="outlined"
-                    />
-                  </>
-                )}
-                {showAttach && (
-                  <>
-                    <Input
-                      type="file"
-                      name="curriculum"
-                      {...register("curriculum", {
-                        minLength: {
-                          value: 1,
-                          message: "Load a file",
-                        },
-                      })}
-                      onChange={disableChangeButton}
-                    ></Input>
-                    <Alert
-                      severity="error"
-                      style={{
-                        display:
-                          errors.curriculum !== undefined ? "inherit" : "none",
-                        backgroundColor: "transparent",
-                        color: "red",
-                        fontSize: "0.845rem",
-                        marginTop: 5,
-                      }}
-                    >
-                      {errors.curriculum?.message}
-                    </Alert>
-                  </>
-                )}
-                <Alert
-                  severity={formStatus === "well" ? "success" : "error"}
-                  className={classes.successfullAlert}
-                  style={{
-                    visibility: showMessage === true ? "visible" : "hidden",
-                    color: formStatus === "well" ? "#4caf50" : "red",
-                  }}
-                >
-                  {alertMessage}
-                </Alert>
-                <CardActions className={classes.actionPadding}>
-                  <Button
-                    className={classes.formButton}
-                    type="submit"
-                    disabled={disableButton}
-                  >
-                    SUBMIT
-                  </Button>
-                </CardActions>
+            <Box className={classes.shortContainer}>
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                error={errors.email}
+                {...register("email")}
+                helperText={errors.email?.message}
+                type="text"
+                id="outlined-basic"
+                label="Email Address"
+                name="email"
+              />
+              <TextField
+                required
+                className={`${classes.shortInput} ${classes.root}`}
+                error={errors.phone}
+                {...register("phone")}
+                helperText={errors.phone?.message}
+                type="text"
+                id="outlined-basic"
+                label="Phone"
+                name="phone"
+              />
+            </Box>
+            <TextField
+              className={`${classes.formInput} ${classes.root}`}
+              helperText={errors.linkedin?.message}
+              error={errors.linkedin}
+              {...register("linkedin")}
+              type="text"
+              id="outlined-basic"
+              label="LinkedIn Profile"
+              name="linkedin"
+            />
+            <TextField
+              className={`${classes.formInput} ${classes.root}`}
+              helperText={errors.website?.message}
+              error={errors.website}
+              {...register("website")}
+              type="text"
+              id="outlined-basic"
+              label="Website"
+              name="website"
+            />
+            <Box className={classes.attachContainer}>
+              <Box className={classes.attach}>
+                <label className={classes.attachLabel}>Resume/CV </label>
+                <label className={classes.attachButton} for="resume-btn">
+                  ATTACH
+                </label>
               </Box>
-            </form>
-          </CardContent>
-        </Card>
+              <Input
+                type="file"
+                id="resume-btn"
+                name="curriculum"
+                style={{ display: "none" }}
+                {...register("curriculum", {
+                  minLength: {
+                    value: 1,
+                    message: "Load a file",
+                  },
+                })}
+              ></Input>
+
+              {/* <Box className={classes.attach} style={{ display: "none" }}>
+                <label className={classes.attachLabel}>Cover Letter</label>
+                <label className={classes.attachButton} for="file-upload">
+                  ATTACH
+                </label>
+              </Box>
+              <Input
+                type="file"
+                id="file-upload"
+                name="coverLetter"
+                style={{ display: "none" }}
+                {...register("coverLetter", {
+                  minLength: {
+                    value: 1,
+                    message: "Load a file",
+                  },
+                })}
+              ></Input>
+            */}
+            </Box>
+            <Alert
+              severity="error"
+              className={classes.curriculumAlert}
+              style={{
+                display: errors.curriculum !== undefined ? "inherit" : "none",
+              }}
+            >
+              {errors.curriculum?.message}
+            </Alert>
+            <TextField
+              required
+              className={`${classes.formInput} ${classes.root}`}
+              helperText={errors.reference?.message}
+              error={errors.reference}
+              {...register("reference")}
+              form
+              type="text"
+              id="outlined-basic"
+              label="How did you hear about Crazy Imagine?"
+              name="reference"
+            />
+            {/* <Alert
+              severity="error"
+              style={{
+                display: errors.cover !== undefined ? "inherit" : "none",
+                backgroundColor: "transparent",
+                color: "red",
+                fontSize: "0.845rem",
+                marginTop: 5,
+              }}
+            >
+              {errors.coverLetter?.message}
+            </Alert> */}
+            <Alert
+              severity={formStatus === "well" ? "success" : "error"}
+              className={classes.successfullAlert}
+              style={{
+                visibility: showMessage === true ? "visible" : "hidden",
+                color: formStatus === "well" ? "#4caf50" : "#F44336",
+              }}
+            >
+              {alertMessage}
+            </Alert>
+            <Button className={classes.formButton} type="submit">
+              SUBMIT
+            </Button>
+          </Box>
+        </form>
       </Box>
     </Box>
   )
 }
-
-const query = graphql`
-  query {
-    strapiTeampage {
-      WorkFormImage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED)
-          }
-        }
-      }
-    }
-  }
-`
 
 export default WorkForm

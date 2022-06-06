@@ -1,74 +1,139 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
-import { Box, Hidden, Typography, makeStyles, Grid } from "@material-ui/core"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import {
+  Box,
+  Hidden,
+  Typography,
+  makeStyles,
+  InputLabel,
+} from "@material-ui/core"
 import RecentlyPosted from "../components/RecentlyPosted"
+import PostCarousel from "../components/PostCarousel"
 import Navbar from "../components/Navbar"
-
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
-import Sidebar from "../components/Sidebar"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
-import { BgImage } from "gbimage-bridge"
 import PostContent from "../components/PostContent"
-import PostCarousel from "../components/PostCarousel"
 import NavbarMobile from "../components/NavbarMobile"
 
 const useStyles = makeStyles(theme => ({
-  postContainer: {
-    backgroundColor: "#2A2A2A",
-  },
-  imageTitle: {
-    width: 958,
-    height: 731,
+  date: {
+    fontFamily: "Nexa",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "22px",
+    lineHeight: "22px",
+    marginTop: "60px",
+    color: "#193174",
     [theme.breakpoints.down("md")]: {
-      width: "100%",
+      fontSize: "16px",
+      lineHeight: "16px",
+      marginTop: "42px",
     },
   },
-  title: {
-    color: "#ffffff",
-    fontFamily: "Gotham",
-    fontWeight: 500,
-    fontSize: 72,
-    filter: "drop-shadow(1px 4px 6px black)",
-    margin: "auto 0px",
-    maxWidth: 808,
-    marginRight: "auto",
+  header: {
+    height: "490px",
+    width: "80%",
+    paddingTop: "60px",
+    margin: "90px auto 0px auto",
     [theme.breakpoints.down("md")]: {
-      justifyContent: "center",
-      fontSize: 38,
-      marginRight: 0,
-      maxWidth: "100%",
-      textAlign: "center",
-    },
-  },
-  description: {
-    color: "#ffffff",
-    fontSize: 24,
-    fontFamily: "Roboto",
-    maxWidth: 980,
-    [theme.breakpoints.down("md")]: {
-      maxWidth: "85%",
-    },
-  },
-
-  postImage: {
-    width: 100,
-    height: 100,
-  },
-  titleContainer: {
-    [theme.breakpoints.down("md")]: {
-      paddingBottom: 16,
-      alignItems: "center",
+      height: "auto",
+      margin: "0px auto 0px auto",
     },
   },
   author: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "900",
+    fontSize: "22px",
+    lineHeight: "31px",
+    color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "16px",
+      lineHeight: "22px",
+    },
+  },
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "70px",
+    lineHeight: "72px",
+    color: "#193174",
+    marginTop: "25px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "49px",
+      lineHeight: "50px",
+      marginTop: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      lineHeight: "25px",
+      marginTop: "10px",
+    },
+  },
+  imgContainer: {
+    backgroundColor: "#27AAE1",
+    display: "flex",
+    justifyContent: "center",
+    padding: "45px 0px",
+    marginTop: "90px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "45px",
+    },
+  },
+  description: {
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "22px",
+    lineHeight: "31px",
+    color: "#27AAE1",
+    marginTop: "50px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "25px",
+      fontSize: "17px",
+      lineHeight: "22px",
+    },
+  },
+  root: {
+    "& .MuiFormLabel-root": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "700",
+      fontSize: "15px",
+      lineHeight: "15px",
+      letterSpacing: "0.1em",
+      color: "white",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "12px",
+        lineHeight: "12px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "10px",
+        lineHeight: "10px",
+      },
+    },
+  },
+  label: {
     color: "white",
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 20,
+    background: "#797EF6",
+    borderRadius: "5px",
+    textTransform: "uppercase",
+    padding: "10px 13px",
+    width: "fit-content",
+  },
+  contentContainer: {
+    display: "flex",
+    flexDirection: "row",
+    background: "white",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column-reverse",
+      justifyContent: "center",
+      alignItems: "center",
+    },
   },
 }))
 
@@ -77,91 +142,37 @@ const Post = ({ data }) => {
   const title = data.article.title
   const description = data.article.description
   const author = data.article.author.name
+  const category = data.article.category.name
+  const date = data.article.category.created_at
 
   return (
     <Layout seo={data.article.seo}>
       <PageWrapper>
         <Hidden mdDown>
-          <Navbar variant="secondary" />
+          <Navbar color="#27AAE1" variant="secondary" />
         </Hidden>
         <Hidden lgUp>
           <NavbarMobile />
         </Hidden>
-        <Box className={classes.postContainer}>
-          <Box
-            height="850px"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="flex-end"
-            paddingBottom="38px"
-            className={classes.titleContainer}
-          >
-            <Box
-              display="flex"
-              marginTop="auto"
-              justifyContent={{
-                xs: "center",
-                md: "flex-start",
-              }}
-              marginBottom="auto"
-            >
-              <BgImage
-                image={getImage(data.article.image[0].localFile)}
-                alt={title}
-                className={classes.imageTitle}
-              >
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  height="100%"
-                  marginLeft={{ xs: "0px", md: "-300px" }}
-                >
-                  <Typography variant="h4" className={classes.title}>
-                    {title}
-                  </Typography>
-                </Box>
-              </BgImage>
-            </Box>
-          </Box>
-          <Box
-            display="flex"
-            justifyContent="center"
-            paddingBottom="76px"
-            flexDirection="column"
-            alignItems="center"
-            gap="10px"
-          >
-            <Typography className={classes.description}>
-              {description}
-            </Typography>
-            <Box
-              width="100%"
-              display="flex"
-              justifyContent="right"
-              marginRight="10%"
-            >
-              <Typography className={classes.author}>
-                Article by: {author}
-              </Typography>
-            </Box>
-          </Box>
+        <Box className={classes.header}>
+          <InputLabel className={classes.label}>{category}</InputLabel>
+          <Typography className={classes.title}>{title}</Typography>
+          <Typography className={classes.date}>
+            {date} │ <span className={classes.author}>{author}</span>
+          </Typography>
+          <Typography className={classes.description}>{description}</Typography>
         </Box>
-        <Grid container>
-          <Grid item xs>
-            <PostContent data={data} />
-          </Grid>
-          <Hidden smDown>
-            <Grid item>
-              <Sidebar>
-                <RecentlyPosted />
-              </Sidebar>
-            </Grid>
-          </Hidden>
-        </Grid>
-        <Hidden mdDown>
-          <PostCarousel articles={data.article} />
-        </Hidden>
+        <Box className={classes.imgContainer}>
+          <GatsbyImage
+            image={getImage(data.article.image[0].localFile)}
+            alt={title}
+          />
+        </Box>
+        <Box className={classes.contentContainer}>
+          <PostContent data={data} />
+          <RecentlyPosted />
+        </Box>
+        <PostCarousel />
         <Footer />
         <Copyright />
       </PageWrapper>
@@ -199,9 +210,14 @@ export const query = graphql`
               width: 800
               placeholder: BLURRED
               layout: CONSTRAINED
+              quality: 100
             )
           }
         }
+      }
+      category {
+        name
+        created_at(formatString: "DD MMMM, YYYY")
       }
     }
   }

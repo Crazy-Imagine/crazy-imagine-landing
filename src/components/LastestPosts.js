@@ -1,44 +1,139 @@
-import { Box, makeStyles, Typography } from "@material-ui/core"
-import React from "react"
+import React, { useRef } from "react"
+import { Box, Typography, makeStyles } from "@material-ui/core"
+import { Link } from "gatsby"
 import BlogPost from "./BlogPost"
+import bgImage from "../images/background.svg"
+import { BLOG } from "../navigation/sitemap"
+import { useIntersection } from "../hooks/useIntersection"
 
-const useStyes = makeStyles({
+const useStyes = makeStyles(theme => ({
   title: {
-    fontFamily: "Gotham-ultra",
-    fontSize: 40,
-    color: "#000a30",
-    fontWeight: "bold",
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#FFFFFF",
+    marginTop: "78px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineWeight: "28px",
+      marginTop: "55px",
+    },
   },
-  boxLine: {
-    backgroundColor: "#23aae1",
+  title2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    color: "#FFFFFF",
+    marginTop: "78px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineWeight: "28px",
+      marginTop: "55px",
+    },
   },
-})
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "23px",
+    justifyContent: "center",
+    backgroundColor: "#193174",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      gap: "16px",
+    },
+  },
+  link: {
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    textAlign: "center",
+    lineHeight: "15px",
+    letterspacing: "0.1em",
+    color: "#888DFF",
+    marginBottom: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
+  },
+  link2: {
+    animation: `$myEffectos 5000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    textAlign: "center",
+    lineHeight: "15px",
+    letterspacing: "0.1em",
+    color: "#888DFF",
+    marginBottom: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
+  },
+  "@keyframes myEffectos": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
+  containerPost: {
+    display: "flex",
+    flexDirection: "row",
+    gap: "21px",
+    [theme.breakpoints.down("md")]: {
+      gap: "15px",
+    },
+  },
+}))
 
 const LastestPosts = () => {
   const classes = useStyes()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Box>
-      <Box
-        textAlign="center"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
+    <Box ref={ref} className={classes.container}>
+      <Typography
+        className={isVisible ? classes.title2 : classes.title}
+      >{`The Latest in Tech Talk`}</Typography>
+      <Link
+        to={`${BLOG}`}
+        className={isVisible ? classes.link2 : classes.link}
+        style={{ textDecoration: "none" }}
       >
-        <Typography component={"div"} className={classes.title}>
-          Latest Posts
-        </Typography>
-        <Box
-          width="45px"
-          height="6px"
-          marginBottom={{ xs: "30px", md: "108px" }}
-          marginTop="8px"
-          className={classes.boxLine}
-        ></Box>
-      </Box>
+        ALL BLOGS →
+      </Link>
       <BlogPost />
-      <Box id="contact" paddingBottom="80px"></Box>
     </Box>
   )
 }

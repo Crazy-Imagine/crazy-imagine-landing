@@ -1,89 +1,89 @@
-import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
+import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-
 import CustomerReview from "./CustomerReview"
+import bgImage from "../images/background.svg"
+import { useIntersection } from "../hooks/useIntersection"
 
-const useStyes = makeStyles({
+const useStyes = makeStyles(theme => ({
   title: {
-    fontFamily: "Gotham-ultra",
-    fontSize: 40,
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    marginBottom: "50px",
+    color: "#FFFFFF",
+    whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginBottom: "35px",
+    },
   },
-  boxLine: {
-    backgroundColor: "#23aae1",
+  title2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "40px",
+    lineHeight: "40px",
+    textAlign: "center",
+    marginBottom: "50px",
+    color: "#FFFFFF",
+    whiteSpace: "pre-line",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginBottom: "35px",
+    },
   },
-  referenceImage: {
-    height: 630,
-    filter: "brightness(90%)",
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
   },
-})
+  referenceContainer: {
+    textAlign: "center",
+    background: "#193174",
+    paddingTop: "78px",
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
+    overflow: "hidden",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "55px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "34px",
+    },
+  },
+}))
 
 const ReferenceSection = () => {
   const classes = useStyes()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <StaticQuery
-      query={query}
-      render={data => {
-        const dataImage = data.homePage.clientsImage.localFile
-        const bgImage = getImage(dataImage)
-        return (
-          <Box id="clients">
-            <BgImage
-              image={bgImage}
-              alt="imageSection"
-              className={classes.referenceImage}
-            >
-              <Box
-                textAlign="center"
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                maxWidth="840px"
-                m="auto"
-                paddingTop="47px"
-                paddingBottom="45"
-              >
-                <Typography variant="h3" className={classes.title}>
-                  What our clients say
-                </Typography>
-                <Box
-                  width="45px"
-                  height="6px"
-                  marginBottom={{ xs: "30px", md: "75px" }}
-                  marginTop="8px"
-                  className={classes.boxLine}
-                ></Box>
-                <CustomerReview />
-              </Box>
-              <Box id="blog" />
-            </BgImage>
-            <Box marginBottom="80px" id="blog" />
-          </Box>
-        )
-      }}
-    />
+    <Box className={classes.referenceContainer}>
+      <Typography
+        ref={ref}
+        className={isVisible ? classes.title2 : classes.title}
+      >
+        {`People Who Work
+                  With Us Say`}
+      </Typography>
+      <CustomerReview />
+    </Box>
   )
 }
-
-const query = graphql`
-  query {
-    homePage: strapiHomepage {
-      clientsImage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-          }
-        }
-      }
-    }
-  }
-`
 
 export default ReferenceSection

@@ -4,33 +4,29 @@ import ReactMarkdown from "react-markdown"
 
 const useStyles = makeStyles(theme => ({
   description: {
-    fontFamily: "Roboto",
-    fontSize: 18,
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "18px",
+    lineHeight: "25px",
+    color: "#787878",
+    width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      fontSize: "16px",
+      lineHeight: "20px",
+    },
+  },
+  container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    textAlign: "center",
-    height: "287px",
-    alignItems: "center",
-    "& h3": {
-      fontSize: 40,
-      fontFamily: "Roboto",
-      margin: 0,
-      width: 300,
-    },
+    padding: "115px",
     [theme.breakpoints.down("md")]: {
-      textAlign: "initial",
-      height: "auto",
-      width: "100%",
-      justifyContent: "center",
-      alignItems: "center"
+      padding: "85px",
     },
-  },
-  contentContainer: {
-    [theme.breakpoints.down("md")]: {
-      width: "auto",
-      marginLeft: 10,
-      marginRight: 10,
+    [theme.breakpoints.down("sm")]: {
+      padding: "75px 45px 75px 45px",
     },
   },
 }))
@@ -38,13 +34,7 @@ const useStyles = makeStyles(theme => ({
 const DescriptionProjects = ({ description }) => {
   const classes = useStyles()
   return (
-    <Box
-      display="flex"
-      margin="auto"
-      width="964px"
-      py="60px"
-      className={classes.contentContainer}
-    >
+    <Box className={classes.container}>
       <ReactMarkdown className={classes.description}>
         {description}
       </ReactMarkdown>

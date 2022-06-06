@@ -1,95 +1,98 @@
-import React from "react"
-
-import {
-  Box,
-  Card,
-  CardContent,
-  makeStyles,
-  Typography,
-} from "@material-ui/core"
+import React, { useRef } from "react"
+import { Card, CardContent, makeStyles, Typography } from "@material-ui/core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
-  cardContainer: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    boxShadow: "0px 0px 34px 0px rgba(5,0,6,0.26)",
-    transitionProperty: "background, translate, color",
-    transitionDuration: "300ms, 300ms, 300ms",
-    transform: "translateY(-90px)",
-    whiteSpace: "normal",
-    "&:hover": {
-      backgroundColor: "#23aae1",
-      color: "white",
-      transform: "translateY(-115px)",
-      "& $cardIcon": {
-        color: "white",
-      },
-    },
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    width: "150px",
+    fontSize: "28px",
+    lineHeight: "28px",
+    textAlign: "center",
+    whiteSpace: "pre-line",
+    color: "#193174",
     [theme.breakpoints.down("md")]: {
-      transform: "translateY(0px)",
-      "&:hover": {
-        transform: "translateY(0px)",
-      },
+      width: "105px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "65px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+  },
+  cardContainer: {
+    visibility: "hidden",
+    backgroundColor: "#FFFFFF",
+    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+    borderRadius: "14px",
+  },
+  cardContainer2: {
+    animation: `$myEffectos 3000ms`,
+    backgroundColor: "#FFFFFF",
+    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+    borderRadius: "14px",
+  },
+  "@keyframes myEffectos": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
     },
   },
   cardContent: {
-    color: "black",
-    "&:hover": {
-      color: "white",
+    width: "314px",
+    height: "185px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "27px",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "220px",
+      height: "130px",
+      gap: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "154px",
+      height: "91px",
+      gap: "12px",
     },
   },
-  title: {
-    fontSize: 34,
-    fontWeight: "bold",
-    fontFamily: "Lato",
-    lineHeight: 1.3,
-  },
-  description: {
-    fontSize: 20,
-    maxHeight: 157,
-    overflow: "hidden"
-  },
   cardIcon: {
-    fontSize: 64,
-    color: "#23aae1",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "27px",
+    lineHeight: "27px",
+    textAlign: "center",
+    color: "#27AAE1",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+    },
   },
 }))
 
-const textOverflow = text => {
-  if (text.length > 142) {
-    return text.slice(0, 142) + "..."
-  }
-  return text
-}
-
-const HomeCard = ({ title, description, Icon }) => {
+const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
-
-  const content = textOverflow(description)
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Box display="flex" className={classes.cardTranslate}>
-      <Card className={classes.cardContainer}>
-        <CardContent className={classes.cardContent}>
-          <Box
-            width="250px"
-            height="300px"
-            p="10px"
-            display="flex"
-            flexDirection="column"
-            alignContent="center"
-            textAlign="center"
-            gridGap="0.5em"
-          >
-            <Typography>
-              <Icon className={classes.cardIcon} />
-            </Typography>
-            <Typography className={classes.title}>{title}</Typography>
-            <Typography className={classes.description}>{content}</Typography>
-          </Box>
-        </CardContent>
-      </Card>
-    </Box>
+    <Card ref={ref} className={isVisible ? classes.cardContainer2 : classes.cardContainer}>
+      <CardContent className={classes.cardContent}>
+        <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
+        <Typography className={classes.title}>{title}</Typography>
+      </CardContent>
+    </Card>
   )
 }
 

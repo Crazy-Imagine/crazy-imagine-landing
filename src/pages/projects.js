@@ -1,16 +1,17 @@
 import React from "react"
 import { Box, Hidden } from "@material-ui/core"
-import ProjectsMainSection from "../components/ProjectsMainSection"
-import OurProjects from "../components/OurProjects"
-import ProjectsServices from "../components/ProjectsServices"
-import ProjectsContact from "../components/ProjectsContact"
+import SectionHeader from "../components/SectionHeader"
 import Navbar from "../components/Navbar"
+import ServicesSection from "../components/ServicesSection"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
+import ContactSection from "../components/ContactSection"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
 import Layout from "../components/layout"
 import { graphql, useStaticQuery } from "gatsby"
+import headerImage from "../images/robot.svg"
+import ProjectSection from "../components/ProjectSection"
 
 const Projects = () => {
   const data = useStaticQuery(query)
@@ -18,19 +19,23 @@ const Projects = () => {
     <Layout seo={data.projectsPage.SEO}>
       <PageWrapper>
         <Hidden mdDown>
-          <Navbar variant="dark" variantIcons="dark" />
+          <Navbar variant="secondary" />
         </Hidden>
         <Hidden lgUp>
-          <NavbarMobile variantIcons="primary" />
+          <NavbarMobile />
         </Hidden>
-        <Box paddingTop="185px" overflow="hidden">
-          <ProjectsMainSection />
-          <OurProjects />
-          <ProjectsServices />
-          <Hidden mdDown>
-            <ProjectsContact />
-          </Hidden>
-          <Footer height="498px" align="flex-end" />
+        <Box overflow="hidden">
+          <SectionHeader
+            title={`Let Your Imagination
+          Run Wild`}
+            img={headerImage}
+            btn={false}
+            little={true}
+          />
+          <ServicesSection />
+          <ProjectSection title={"Featured Projects"} btn={false} />
+          <ContactSection />
+          <Footer />
           <Copyright />
         </Box>
       </PageWrapper>

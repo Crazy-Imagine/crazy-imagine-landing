@@ -1,58 +1,131 @@
 import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-
 import { makeStyles } from "@material-ui/core/styles"
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core"
-import FacebookIcon from "@material-ui/icons/Facebook"
-import InstagramIcon from "@material-ui/icons/Instagram"
-import TwitterIcon from "@material-ui/icons/Twitter"
-import HomeIcon from "@material-ui/icons/Home"
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
-import SearchIcon from "@material-ui/icons/Search"
-import useScroll from "../hooks/useScroll"
-import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
-import clsx from "clsx"
+import {
+  CONTACT,
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  BLOG,
+} from "../navigation/sitemap"
 import { colors, colorsIconos } from "../helpers/navbarColors"
+import Button from "@material-ui/core/Button"
+import useScroll from "../hooks/useScroll"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
-    backgroundColor: props.scroll ? "transparent" : "white",
-    zIndex: 999999
+    width: "100%",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
+    zIndex: 999999,
   }),
   iconSpacing: {
     marginLeft: theme.spacing(10),
   },
+  root: {
+    justifyContent: "center",
+  },
   navbarIcons: props => ({
     fontSize: 25,
-    color: props.scroll ? props.iconsVariant : "#23aae1",
+    color: props.scroll ? props.iconsVariant : "white",
   }),
-
-  linkTypograpy: props => ({
-    transition: "all 300ms ease",
-    fontSize: 18,
-    fontWeight: "bold",
-    lineHeight: "29px",
-    color: props.scroll ? props.linkVariant : "black",
-    textTransform: "uppercase",
+  contactButton: {
+    width: "151px",
+    height: " 40px",
+    background: "transparent",
+    borderRadius: "100px",
     textDecoration: "none",
+    border: "2px solid #FFFFFF",
     "&:hover": {
-      textDecoration: "none",
-      color: props.scroll ? props.linkVariant : "black",
+      background: "#FFFFFF",
+      "& a": {
+        color: "#1E2F97",
+      },
+    },
+  },
+  linkTypography: props => ({
+    fontSize: 16,
+    fontWeight: "700",
+    fontFamily: "Nexa",
+    width: "100%",
+    letterSpacing: "0.1em",
+    lineHeight: "16px",
+    textAlign: "right",
+    color: props.scroll ? props.linkVariant : "white",
+    position: "relative",
+    textDecoration: "none !important",
+    "&::before, &::after": {
+      content: "''",
+      position: "absolute",
+      transition: "transform .5s ease",
+    },
+    "&:hover": {
+      color: "white",
     },
   }),
-
-  navbarLogo: {
-    width: 140,
-    height: 73,
+  barContainer: {
+    margin: 1,
+    display: "flex",
+    width: "94%",
+    height: "6em",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "50px",
+  },
+  linkContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "50px",
+  },
+  contactTypography: {
+    fontSize: "14px",
+    fontWeight: 700,
+    textDecoration: "none",
+    letterSpacing: "0.05em",
+    textAlign: "center",
+    lineHeight: "14px",
+    color: "#FFFFFF",
+  },
+  effect: {
+    paddingTop: "10px",
+    "&::before": {
+      left: "0",
+      width: "100%",
+      bottom: "-2px",
+      height: "3px",
+      background: "white",
+      transform: "scaleX(0)",
+    },
+    "&:hover::before": {
+      transform: "scaleX(1)",
+    },
+  },
+  contactTypographyOutside: {
+    fontSize: "14px",
+    fontWeight: 700,
+    textDecoration: "none",
+    letterSpacing: "0.05em",
+    textAlign: "center",
+    lineHeight: "14px",
+    backgroundColor: "#1E2F97",
+    color: "red",
+    "&:hover": {
+      color: "#FFFFF",
+    },
   },
 }))
 
-const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
+const Navbar = ({
+  variant = "primary",
+  variantIcons = "primary",
+  color = "transparent",
+}) => {
   const { scroll } = useScroll()
-
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
 
@@ -60,90 +133,64 @@ const Navbar = ({ variant = "primary", variantIcons = "primary" }) => {
     scroll,
     linkVariant,
     iconsVariant,
+    color,
   })
 
   return (
-    <AppBar color="transparent" position="fixed" className={classes.container}>
-      <Toolbar>
-        <Box
-          m={1}
-          mx={15}
-          display="flex"
-          width="100%"
-          height="6em"
-          alignItems="center"
-          justifyContent="space-evenly"
-        >
+    <AppBar color={color} position="fixed" className={classes.container}>
+      <Toolbar className={classes.root}>
+        <Box class={classes.barContainer}>
           <Link to={HOME}>
-            <StaticImage
-              src="../images/LOGO.png"
-              alt="logo"
-              className={classes.navbarLogo}
-            />
+            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
           </Link>
-          <Link to={`${HOME}`}>
-            <HomeIcon
-              className={clsx(classes.iconSpacing, classes.navbarIcons)}
-              color="primary"
-              fontSize="large"
-            />
-          </Link>
-          <Typography variant="h5">
-            <Link to={`${HOME}#about`} className={classes.linkTypograpy}>
-              ABOUT US
-            </Link>
-          </Typography>
-          <Typography variant="h5">
-            <Link to={`${PROJECTS}`} className={classes.linkTypograpy}>
-              Services
-            </Link>
-          </Typography>
-          <Typography variant="h5">
-            <Link to={`${TEAMS}`} className={classes.linkTypograpy}>
-              Team
-            </Link>
-          </Typography>
-          <Typography variant="h5">
-            <Link to={`${HOME}#blog`} className={classes.linkTypograpy}>
-              Blog
-            </Link>
-          </Typography>
-          <Typography variant="h5">
-            <Link to={`${HOME}#contact`} className={classes.linkTypograpy}>
-              Contact
-            </Link>
-          </Typography>
-          <Typography variant="h5">
-            <Link to={`${WORK_WITH_US}`} className={classes.linkTypograpy}>
-              Work With Us
-            </Link>
-          </Typography>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="inherit"
-            width="20%"
-          >
-            <Link to={`${HOME}`}>
-              <FacebookIcon
-                className={clsx(classes.spacing, classes.navbarIcons)}
-                color="primary"
-                fontSize="large"
-              />
-            </Link>
-            <Link to={`${HOME}`}>
-              <TwitterIcon fontSize="large" className={classes.navbarIcons} />
-            </Link>
-            <Link to={`${HOME}`}>
-              <InstagramIcon fontSize="large" className={classes.navbarIcons} />
-            </Link>
-            <Link to={`${HOME}`}>
-              <LinkedInIcon fontSize="large" className={classes.navbarIcons} />
-            </Link>
-            <Link to={`${HOME}`}>
-              <SearchIcon fontSize="large" className={classes.navbarIcons} />
-            </Link>
+          <Box className={classes.linkContainer}>
+            <Typography>
+              <Link
+                to={`${ABOUT}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
+                ABOUT
+              </Link>
+            </Typography>
+            <Typography>
+              <Link
+                to={`${PROJECTS}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
+                SERVICES
+              </Link>
+            </Typography>
+            <Typography>
+              <Link
+                to={`${BLOG}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
+                BLOG
+              </Link>
+            </Typography>
+            <Typography>
+              <Link
+                to={`${WORK_WITH_US}`}
+                className={`${classes.linkTypography} ${classes.effect}`}
+              >
+                WORK WITH US
+              </Link>
+            </Typography>
           </Box>
+          <Link
+            to={`${CONTACT}`}
+            style={{ textDecoration: "none", borderRadius: "100px" }}
+          >
+            <Button className={classes.contactButton}>
+              <Link
+                to={`${CONTACT}`}
+                style={{ textDecoration: "none" }}
+                className={classes.contactTypography}
+              >
+                Contact Us
+              </Link>
+            </Button>
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

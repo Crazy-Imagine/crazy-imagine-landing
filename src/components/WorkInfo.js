@@ -1,68 +1,123 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
-import { Box } from "@material-ui/core"
-import { AnimatedTitle } from "./AnimatedTitle"
+import { useRef } from "react"
+import { Box, Typography, makeStyles } from "@material-ui/core"
+import { useIntersection } from "../hooks/useIntersection"
+
+const useStyles = makeStyles(theme => ({
+  title: {
+    visibility: "hidden",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "900",
+    fontSize: "40px",
+    lineHeight: "50px",
+    whiteSpace: "pre-line",
+    marginTop: "120px",
+    color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "35px",
+      marginTop: "120px",
+      lineHeight: "35px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      marginTop: "70px",
+      lineHeight: "22px",
+    },
+  },
+  title2: {
+    animation: `$myEffect 3000ms`,
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    marginTop: "140px",
+    fontWeight: "900",
+    fontSize: "40px",
+    lineHeight: "50px",
+    whiteSpace: "pre-line",
+    color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "35px",
+      marginTop: "120px",
+      lineHeight: "35px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      marginTop: "70px",
+      lineHeight: "22px",
+    },
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  desc: {
+    visibility: "hidden",
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "130%",
+    letterSpacing: "0.02em",
+    color: "#193174",
+    marginTop: "19px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      marginTop: "13px",
+    },
+  },
+  desc2: {
+    animation: `$myEffecto 3000ms`,
+    fontFamily: "Hero New",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "130%",
+    letterSpacing: "0.02em",
+    color: "#193174",
+    marginTop: "19px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      marginTop: "13px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-100%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
+  "@keyframes myEffecto": {
+    "0%": {
+      opacity: 0,
+    },
+    "50%": {
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
+}))
 
 const WorkInfo = () => {
-  const WorkWithUsPage = useStaticQuery(query)
-  console.log({WorkWithUsPage})
-  const images = WorkWithUsPage.allStrapiWorkWithUs.nodes[0].images
-  const imageOne = images[0].localFile
-  const imageTwo = images[1].localFile
+  const classes = useStyles()
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
+
   return (
-    <Box paddingTop="35px">
-      <AnimatedTitle
-        title="YOUR DREAM JOB, HERE!"
-        content="We are a fresh and comfortable startup with more than 5 years on
-                the market. We work with the most recent development
-                technologies, offering the best of our efforts to bring to the
-                client the best quality products. Covering most of the
-                development areas. Our products and services have highlights on
-                turnaround time, design, mobile responsive, web, and app
-                development."
-        boxClass="containerResponsive"
-        titleClass="titleLeft"
-        animation="animationLeft"
-        paragraphClass="paragraphLeft"
-        lineClass="boxLineLeft"
-        image={getImage(imageOne)}
-        alt="Team mates"
-        md={6}
-      ></AnimatedTitle>
-      <AnimatedTitle
-        title="KNOW OUR VALUES"
-        content="We mainly focuse on responsability, efficiency, respect, kindness, we care about your physical and mental health.
-          We take care of our employees, promoting a relaxed and fun work environment, choosing social activities to integrate all of them.
-          We evaluate you, and we choose you a challenge that you can reach results and improve your skills.
-          Our principal challenge is that you grow with us"
-        boxClass="containerReverse"
-        titleClass="titleRight"
-        animation="animationRight"
-        paragraphClass="paragraphRight"
-        lineClass="boxLineRight"
-        image={getImage(imageTwo)}
-        alt="Boss with the team"
-        md={6}
-      ></AnimatedTitle>
+    <Box ref={ref} className={classes.container}>
+      <Typography
+        className={isVisible ? classes.title2 : classes.title}
+      >{`Interested
+      In Working
+      With Us?`}</Typography>
     </Box>
   )
 }
-
-const query = graphql`
-  query {
-    allStrapiWorkWithUs {
-      nodes {
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FIXED)
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default WorkInfo

@@ -1,49 +1,97 @@
-import React, { useState } from "react"
+import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
-
-import { Button, Grid, makeStyles, Box, Hidden } from "@material-ui/core"
-import { ArrowBackOutlined, ArrowForwardOutlined } from "@material-ui/icons"
-
-import PostCard from "./PostCard"
+import { makeStyles, Box, Typography } from "@material-ui/core"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Pagination } from "swiper"
+import SwiperCore, { Keyboard } from "swiper/core"
+import "swiper/css"
+import "swiper/css/pagination"
+import "../css/carousel.css"
+import "../css/swiper-bullet.css"
 import { BLOG } from "../navigation/sitemap"
 
 const useStyes = makeStyles(theme => ({
   container: {
-    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    gap: "26px",
+    background: "#FFFFFF",
+    borderRadius: "14px",
+    overflow: "hidden",
+    height: "inherit",
+    width: "450px",
     [theme.breakpoints.down("md")]: {
-      width: "auto",
+      gap: "18px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "13px",
+    },
+  },
+  title: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "20px",
+    lineHeight: "20px",
+    color: "#193174",
+    textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "16px",
+      lineHeight: "16px",
     },
   },
   link: {
-    "&:hover": {
-      textDecoration: "none",
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterSpacing: "0.1em",
+    color: "#888DFF",
+    marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
     },
   },
-  carouselButton: {
-    backgroundColor: "transparent",
-    boxShadow: "none",
-    height: 500,
-    "&:hover": {
-      color: "#23aee1",
-      backgroundColor: "transparent",
-      boxShadow: "none",
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "19px",
+    padding: "26px 25px 32px 37px",
+    height: "100%",
+    [theme.breakpoints.down("md")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
     },
-    "&:disabled": {
-      backgroundColor: "transparent",
+    [theme.breakpoints.down("sm")]: {
+      gap: "8px",
+      padding: "11px 11px 10px 16px",
+    },
+  },
+  img: {
+    backgroundColor: "#27AAE1",
+    height: "210px",
+    [theme.breakpoints.down("md")]: {
+      height: "147px",
+    },
+  },
+  slider: {
+    width: "80%",
+    boxSizing: "content-box",
+    [theme.breakpoints.between(0, 301)]: {
+      width: "75%",
+    },
+  },
+  carousel: {
+    height: "400px",
+    [theme.breakpoints.down("md")]: {
+      height: "300px",
     },
   },
 }))
 
-const BlogPost = () => {
-  const [activeStep, setActiveStep] = useState(0)
-
-  const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-  }
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
+const BlogPost = ({ bulletClass }) => {
   const classes = useStyes()
   return (
     <StaticQuery
@@ -75,99 +123,60 @@ const BlogPost = () => {
       `}
       render={data => {
         const articles = data.articles.edges
-        const articlesSort = articles.sort((a, b) => {
-          return new Date(b.node.created_at) - new Date(a.node.created_at)
-        })
+        const articlesSort = articles
+          .sort((a, b) => {
+            return new Date(b.node.created_at) - new Date(a.node.created_at)
+          })
+          .slice(0, 4)
+
+        SwiperCore.use([Keyboard])
 
         return (
-          <Box display="flex" alignItems="center">
-            <Hidden smDown>
-              <Button
-                variant="contained"
-                startIcon={<ArrowBackOutlined />}
-                onClick={handleBack}
-                disabled={activeStep === 0}
-                className={classes.carouselButton}
-              />
-            </Hidden>
-            <Grid
-              container
-              spacing={4}
-              justifyContent="center"
-              className={classes.container}
-            >
-              {articlesSort[activeStep] ? (
-                <>
-                  <Grid item key={articlesSort[activeStep].node.id}>
+          <Swiper
+            spaceBetween={30}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              600: {
+                slidesPerView: 2,
+              },
+              700: {
+                slidesPerView: 3,
+              },
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            keyboard={{ enabled: true }}
+            grabCursor={true}
+            modules={[Pagination]}
+            className={`${classes.slider} ${bulletClass}`}
+          >
+            {articlesSort.map(({ node }, index) => (
+              <SwiperSlide key={index} className={classes.carousel}>
+                <Box className={classes.container}>
+                  <img
+                    src={node.image[0].localFile.publicURL}
+                    className={classes.img}
+                    alt="Blog"
+                  />
+                  <Box className={classes.textContainer}>
+                    <Typography className={classes.title}>
+                      {node.title}
+                    </Typography>
                     <Link
-                      to={`${BLOG}/${articlesSort[activeStep].node.slug}`}
+                      to={`${BLOG}/${node.slug}`}
                       className={classes.link}
+                      style={{ textDecoration: "none" }}
                     >
-                      <PostCard
-                        image={
-                          articlesSort[activeStep].node.image[0]?.localFile
-                            ?.publicURL
-                        }
-                        author={articlesSort[activeStep].node.author.name}
-                        tags={articlesSort[activeStep].node.category.name}
-                        title={articlesSort[activeStep].node.title}
-                        description={articlesSort[activeStep].node.description}
-                      />
+                      READ MORE →
                     </Link>
-                  </Grid>
-                  <Grid item key={articlesSort[activeStep + 1].node.id}>
-                    <Link
-                      to={`${BLOG}/${articlesSort[activeStep + 1].node.slug}`}
-                      className={classes.link}
-                    >
-                      <PostCard
-                        image={
-                          articlesSort[activeStep + 1]?.node.image[0]?.localFile
-                            ?.publicURL
-                        }
-                        author={articlesSort[activeStep + 1].node.author.name}
-                        tags={articlesSort[activeStep + 1]?.node.category.name}
-                        title={articlesSort[activeStep + 1]?.node.title}
-                        description={
-                          articlesSort[activeStep + 1]?.node.description
-                        }
-                      />
-                    </Link>
-                  </Grid>
-                  <Grid item key={articlesSort[activeStep + 2].node.id}>
-                    <Link
-                      to={`${BLOG}/${articlesSort[activeStep + 2].node.slug}`}
-                      className={classes.link}
-                    >
-                      <PostCard
-                        image={
-                          articlesSort[activeStep + 2]?.node.image[0]?.localFile
-                            ?.publicURL
-                        }
-                        author={articlesSort[activeStep + 2].node.author.name}
-                        tags={articlesSort[activeStep + 2]?.node.category.name}
-                        title={articlesSort[activeStep + 2]?.node.title}
-                        description={
-                          articlesSort[activeStep + 2]?.node.description
-                        }
-                      />
-                    </Link>
-                  </Grid>
-                </>
-              ) : (
-                <></>
-              )}
-            </Grid>
-            <Hidden smDown>
-              <Button
-                variant="contained"
-                startIcon={<ArrowForwardOutlined />}
-                onClick={handleNext}
-                disabled={activeStep === articles.length - 3}
-                className={classes.carouselButton}
-              />
-            </Hidden>
-          </Box>
+                  </Box>
+                </Box>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         )
       }}
     />

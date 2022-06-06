@@ -1,131 +1,150 @@
-import React from "react"
-import { BgImage } from "gbimage-bridge"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle"
-import CodeIcon from "@material-ui/icons/Code"
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
-
+import React, { useRef } from "react"
+import { Box, Grid, makeStyles } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
+import {
+  faCode,
+  faThumbsUp,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
+import TitleSection from "./TitleSection"
+import { Link } from "gatsby"
+import { PROJECTS } from "../navigation/sitemap"
+import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
-  imageSize: {
-    width: "100%",
-    height: 800,
+  container: {
+    height: "837px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    background: "#FFF",
     overflow: "hidden",
-    borderRadius: "0% 0% 70% 70% / 0% 0% 30% 30% ",
     [theme.breakpoints.down("md")]: {
-      borderRadius: 0,
+      height: "600px",
     },
-  },
-  title: {
-    fontSize: 44,
-    fontFamily: "gotham-book",
-    color: "white",
-    textTransform: "uppercase",
-  },
-  mainTitle: {
-    fontSize: 76,
-    fontFamily: "Gotham-Black",
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
     [theme.breakpoints.down("md")]: {
-      fontSize: 42,
-      marginBottom: 30,
+      height: "auto",
     },
-  },
-  subTitle: {
-    fontSize: 23,
-    fontFamily: "gotham-Medium",
-    color: "white",
-    lineHeight: "22px",
-    height: 65,
-    overflow: "hidden",
-    maxWidth: 552,
-  },
-  cardIcon: {
-    fontSize: 64,
-  },
-  cardCenter: {
-    backgroundColor: "#23aae1",
   },
   cardContainer: {
-    gap: 30,
-    justifyContent: "center",
-    marginBottom: 30,
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "10px",
+      flexDirection: "column",
+    },
+  },
+  button: {
+    visibility: "hidden",
+    background: "#797EF6",
+    borderRadius: "100px",
+    marginBottom: "87px",
+    marginTop: "48px",
+    "&:hover": {
+      backgroundColor: "#30AADE",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
     [theme.breakpoints.down("md")]: {
-      marginTop: 30,
+      marginBottom: "61px",
+      marginTop: "34px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+  },
+  button2: {
+    animation: `$myEffect 3000ms`,
+    background: "#797EF6",
+    borderRadius: "100px",
+    marginBottom: "87px",
+    marginTop: "48px",
+    "&:hover": {
+      backgroundColor: "#30AADE",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "61px",
+      marginTop: "34px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
     },
   },
 }))
 
-const HomeMainSection = ({ title, mainTitle, description, image }) => {
+const HomeMainSection = () => {
   const classes = useStyles()
-
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
   return (
-    <Box>
-      <BgImage
-        image={image}
-        alt="mainSectionImage"
-        className={classes.imageSize}
+    <Box className={classes.container}>
+      <TitleSection
+        desc="We will help you to strategize your web presence, designing and
+          executing sitemaps and wireframes to provide a sleek, elegant, and
+          seamless end-user experience"
+      />
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        spacing={3}
+        className={classes.cardContainer}
       >
-        <Box
-          height="100%"
-          width="70%"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          mx="auto"
-          textAlign="center"
-          className={classes.boxContainer}
-        >
-          <Typography variant="h2" color="secondary" className={classes.title}>
-            {title}
-          </Typography>
-
-          <Typography
-            variant="h1"
-            color="secondary"
-            className={classes.mainTitle}
-          >
-            {mainTitle}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            color="secondary"
-            className={classes.subTitle}
-          >
-            {description}
-          </Typography>
-        </Box>
-      </BgImage>
-
-      <Grid container className={classes.cardContainer}>
         <Grid item xs="auto">
-          <HomeCard
-            title="Code"
-            description="Our background involves using cutting-edge technologies such as: PHP7, HTML5, Javascript, CSS3, Wordpress and Angular, among others."
-            Icon={AccountCircleIcon}
-          />
+          <HomeCard title={`Full-stack\nDevelopment`} icon={faCode} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard
-            title="User Experience"
-            description="Our philosophy goes hand in hand with user interface satisfaction and excellence."
-            Icon={CodeIcon}
-          />
+          <HomeCard title={`User\nExperience`} icon={faThumbsUp} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard
-            title="Quality"
-            description="We are the best so tha's why offer you 100% quality in our services"
-            Icon={ArrowUpwardIcon}
-          />
+          <HomeCard title={`Quality\nSupport`} icon={faCircleCheck} />
         </Grid>
-        <Box id="about" />
       </Grid>
+      <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+        <Button
+          ref={ref}
+          className={isVisible ? classes.button2 : classes.button}
+        >
+          GET STARTED
+        </Button>
+      </Link>
     </Box>
   )
 }

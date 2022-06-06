@@ -1,183 +1,283 @@
 import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
-import RoomIcon from "@material-ui/icons/Room"
-import EmailIcon from "@material-ui/icons/Email"
-import FacebookIcon from "@material-ui/icons/Facebook"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBuilding, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons"
+import { Box, makeStyles, Typography } from "@material-ui/core"
 import InstagramIcon from "@material-ui/icons/Instagram"
-import TwitterIcon from "@material-ui/icons/Twitter"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
-
 import Section from "./Section"
-import { HOME, PROJECTS, TEAMS, WORK_WITH_US } from "../navigation/sitemap"
+import {
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  CONTACT,
+  BLOG,
+} from "../navigation/sitemap"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: "flex",
+    justifyContent: "center",
+  },
   root: {
-    color: "white",
+    "& .MuiLink-root": {
+      "&:hover": {
+        color: "white",
+      },
+    },
   },
-  footerLogo: {
-    width: 147,
-    height: 78,
+  contactIcon: {
+    fontSize: "22px",
+    color: "#249DCF",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
+    },
   },
-  sectionTitle: {
-    marginBottom: 14,
-    color: "white",
-    fontSize: 24,
-    fontWeight: "bold",
-    lineHeight: "59px",
+  infoIcon: {
+    color: "#27AAE1",
+    marginTop: 3,
+    alingSelf: "center",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
+    },
   },
-  sectionLink: {
-    marginBottom: 18,
-    fontSize: 19,
-    lineHeight: "21px",
+  footerContainer: {
+    display: "flex",
+    height: "192px",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      height: "auto",
+      flexDirection: "column",
+    },
   },
-  footerIcons: {
-    marginRight: 8,
-    marginTop: 16,
+  effect: {
+    paddingTop: "10px",
+    "&::before": {
+      left: "0",
+      bottom: "-2px",
+      width: "100%",
+      height: "3px",
+      background: "white",
+      transform: "scaleX(0)",
+    },
+    "&:hover::before": {
+      transform: "scaleX(1)",
+    },
+  },
+  logoContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "20px",
+    height: "100%",
+    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+      gap: "0px",
+      marginBottom: "-45px",
+      marginTop: "15px",
+      padding: "14px 4px 54px 4px",
+    },
   },
   formatContactSection: {
     "& $sectionLink": {
       marginBottom: 20,
     },
     "& $sectionTitle": {
-      lineHeight: "inherit",
+      lineHeight: "inherit ",
       marginBottom: 4,
       marginTop: 13,
     },
   },
-  gridContainer: {
-    height: "100%",
-  },
-  items: {
+  linkContainer: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  resetLink: {
-    color: "#ffffff",
-    textDecoration: "none",
-    "&:hover": {
-      color: "#ffffff",
-      textDecoration: "none",
+    flexDirection: "row",
+    height: "50%",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    gap: "50px",
+    [theme.breakpoints.down("md")]: {
+      visibility: "hidden",
+      width: "0px",
+      display: "none",
     },
   },
-})
+  infoContainer: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    gap: "28px",
+    padding: "44px 0px 44px 44px",
+    borderLeft: "1.5px solid #233B7E",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+      borderLeft: "0px solid #233B7E",
+    },
+    [theme.breakpoints.down("xs")]: {
+      //visibility: "hidden"
+      padding: "4px 0px 4px 4px",
+      marginBottom: "15px",
+    },
+  },
+  iconsContainer: {
+    display: "flex",
+    alignSelf: "center",
+    gap: "21px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "15px",
+    },
+  },
+  info: {
+    display: "flex",
+    flexDirection: "row",
+    lineHeight: "20px",
+    gap: "4px",
+    [theme.breakpoints.down("xs")]: {
+      lineHeight: "8px",
+    },
+  },
+  linkTypography: {
+    color: "#FFFFFF",
+    fontStyle: "normal",
+    fontFamily: "Nexa",
+    fontWeight: "700",
+    lineHeight: "16px",
+    fontSize: "14px",
+    textDecoration: "none",
+    position: "relative",
+    "&::before, &::after": {
+      content: "''",
+      position: "absolute",
+      transition: "transform .5s ease",
+    },
+    "&:hover": {
+      color: "white",
+    },
+  },
+  infoTypography: {
+    color: "#FFFFFF",
+    fontStyle: "normal",
+    fontFamily: "Hero New",
+    fontWeight: "400",
+    fontSize: "14px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px",
+    },
+  },
+  footerSection: {
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+    },
+  },
+  footerLogo: {},
+}))
 
-const Footer = ({ height = "400px", align = "center" }) => {
+const Footer = ({ height = "192px" }) => {
   const classes = useStyles()
   return (
-    <Section backgroundColor="#1D1D1D" width="1060px" height={height}>
-      <Box py={5} className={classes.root} height="100%">
-        <Grid container alignItems={align} className={classes.gridContainer}>
-          <Grid item xs={12} md={5} className={classes.items}>
+    <Section backgroundColor="#193174" width="92%" height={height}>
+      <Box className={classes.footerContainer}>
+        <Box className={classes.logoContainer}>
+          <Link to={`${HOME}`} className={classes.linkTypography}>
             <StaticImage
-              src="../images/LOGO.png"
+              src="../images/crazy-imagine-icon.svg"
               alt="footerImage"
-              className={classes.footerLogo}
             />
-            <Box
-              className={classes.formatContactSection}
-              display={{ xs: "flex", md: "block" }}
-              flexDirection="column"
-              alignItems="center"
-              marginTop="20px"
+          </Link>
+          <Box className={classes.iconsContainer}>
+            <a
+              href="https://ve.linkedin.com/company/crazy-imagine-software"
+              target="_blank"
             >
-              <Typography variant="h3" className={classes.sectionTitle}>
-                CONTACT
-              </Typography>
-              <Box marginBottom="15px" />
-              <Typography className={classes.sectionLink}>
-                <RoomIcon /> Urb Ambrosio Plaza #1 Street
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                House #2/123, San Cristobal, Venezuela.
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <EmailIcon /> support@crazyimagine.com
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item container xs={12} md={7} spacing={1}>
-            <Grid item xs={12} md={4} className={classes.items}>
-              <Typography variant="h3" className={classes.sectionTitle}>
-                ABOUT US
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${PROJECTS}`} className={classes.resetLink}>
-                  Projects
-                </Link>
-              </Typography>
-
-              <Typography className={classes.sectionLink}>
-                <Link to={`${TEAMS}`} className={classes.resetLink}>
-                  Our Team
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#about`} className={classes.resetLink}>
-                  About Crazy Imagine
-                </Link>
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4} className={classes.items}>
-              <Typography variant="h3" className={classes.sectionTitle}>
-                COMPANY
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${PROJECTS}`} className={classes.resetLink}>
-                  What else we povide
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${PROJECTS}#all`} className={classes.resetLink}>
-                  Our Technologies
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#stats`} className={classes.resetLink}>
-                  Our Stats
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#clients`} className={classes.resetLink}>
-                  What our clients say
-                </Link>
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4} className={classes.items}>
-              <Typography variant="h3" className={classes.sectionTitle}>
-                GET STARTED
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#contact`} className={classes.resetLink}>
-                  Contact Us
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${WORK_WITH_US}`} className={classes.resetLink}>
-                  Work With Us
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#projects`} className={classes.resetLink}>
-                  Our References
-                </Link>
-              </Typography>
-              <Typography className={classes.sectionLink}>
-                <Link to={`${HOME}#blog`} className={classes.resetLink}>
-                  Last Posts
-                </Link>
-              </Typography>
-              <Typography>
-                <FacebookIcon className={classes.footerIcons} />{" "}
-                <TwitterIcon className={classes.footerIcons} />{" "}
-                <InstagramIcon className={classes.footerIcons} />{" "}
-                <LinkedInIcon className={classes.footerIcons} />
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
+              <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
+            </a>
+            <a
+              href="https://instagram.com/crazyimaginedev?igshid=YmMyMTA2M2Y="
+              target="_blank"
+            >
+              <InstagramIcon className={classes.contactIcon}></InstagramIcon>
+            </a>
+          </Box>
+        </Box>
+        <Box className={classes.linkContainer}>
+          <Typography>
+            <Link
+              to={`${ABOUT}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.effect}`}
+            >
+              ABOUT
+            </Link>
+          </Typography>
+          <Typography>
+            <Link
+              to={`${PROJECTS}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.effect}`}
+            >
+              SERVICES
+            </Link>
+          </Typography>
+          <Typography>
+            <Link
+              to={`${BLOG}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.effect}`}
+            >
+              BLOG
+            </Link>
+          </Typography>
+          <Typography>
+            <Link
+              to={`${WORK_WITH_US}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.effect}`}
+            >
+              WORK WITH US
+            </Link>
+          </Typography>
+          <Typography>
+            <Link
+              to={`${CONTACT}`}
+              style={{ textDecoration: "none" }}
+              className={`${classes.linkTypography} ${classes.effect}`}
+            >
+              CONTACT
+            </Link>
+          </Typography>
+        </Box>
+        <Box className={classes.infoContainer}>
+          <Box className={classes.info}>
+            <FontAwesomeIcon
+              icon={faBuilding}
+              className={classes.infoIcon}
+              size="1x"
+            />
+            <Typography className={classes.infoTypography}>
+              Urb Ambrosio Plaza #1 Street House #2/123 <br></br> San Cristobal,
+              Venezuela
+            </Typography>
+          </Box>
+          <Box className={classes.info}>
+            <FontAwesomeIcon
+              icon={faEnvelopeOpen}
+              className={classes.infoIcon}
+              size="1x"
+            />
+            <Typography className={classes.infoTypography}>
+              Support@crazyimagine.com
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     </Section>
   )
