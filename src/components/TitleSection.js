@@ -41,6 +41,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "9px",
     },
+    [theme.breakpoints.down("xs")]: {
+      width: "65%",
+    },
   },
   titleContainer: {
     alignSelf: "flex-start",
@@ -64,7 +67,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    //animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -100,7 +102,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   blueTitle2: {
-    //animation: `$myEffecto 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,

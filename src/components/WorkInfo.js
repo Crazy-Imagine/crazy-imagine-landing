@@ -45,6 +45,11 @@ const useStyles = makeStyles(theme => ({
       marginTop: "70px",
       lineHeight: "22px",
     },
+    [theme.breakpoints.down("xs")]: {
+      whiteSpace: "normal",
+      width: "75%",
+      textAlign: "center",
+    },
   },
   container: {
     display: "flex",

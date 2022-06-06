@@ -66,6 +66,11 @@ const useStyles = makeStyles(theme => ({
       height: "91px",
       gap: "12px",
     },
+    [theme.breakpoints.down("xs")]: {
+      width: "200px",
+      height: "110px",
+      gap: "12px",
+    },
   },
   cardIcon: {
     fontStyle: "normal",
@@ -87,7 +92,10 @@ const HomeCard = ({ title, icon }) => {
   const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Card ref={ref} className={isVisible ? classes.cardContainer2 : classes.cardContainer}>
+    <Card
+      ref={ref}
+      className={isVisible ? classes.cardContainer2 : classes.cardContainer}
+    >
       <CardContent className={classes.cardContent}>
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
         <Typography className={classes.title}>{title}</Typography>
