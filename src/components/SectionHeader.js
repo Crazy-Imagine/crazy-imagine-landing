@@ -16,11 +16,13 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px",
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+    },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
-      height: props.little ? "232px" : "400px",
-      width: "93.2%",
+      height: props.little ? "232px" : "auto",
+      width: "88%",
       flexDirection: "column",
     },
     [theme.breakpoints.between(400, 0)]: {
@@ -41,16 +43,19 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    [theme.breakpoints.down("md")]: {
+      height: "450px",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: props.little ? "390px" : "538px",
+      height: props.little ? "390px" : "370px",
     },
-    [theme.breakpoints.between(400, 0)]: {
+    [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
-      height: props.little ? "290px" : "388px",
+      height: props.little ? "290px" : "350px",
     },
   }),
   buttonLeft: {
@@ -72,17 +77,24 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
     },
+    [theme.breakpoints.down("md")]: {
+      padding: "5px 5px 5px 5px",
+      "& > span": {
+        fontSize: "12px",
+        lineHeight: "inherit",
+      },
+    },
     [theme.breakpoints.down("sm")]: {
       padding: "3px 3px 3px 3px",
       "& > span": {
-        fontSize: "10px",
+        fontSize: "12px",
         lineHeight: "inherit",
       },
     },
     [theme.breakpoints.down("xs")]: {
       padding: "3px 3px 3px 3px",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "9px",
         lineHeight: "inherit",
       },
     },
@@ -106,11 +118,18 @@ const useStyles = makeStyles(theme => ({
       background: "#FFFFFF",
       color: "#1E2F97",
     },
+    [theme.breakpoints.down("md")]: {
+      padding: "5px 5px 5px 5px",
+      "& > span": {
+        fontSize: "12px",
+        lineHeight: "inherit",
+      },
+    },
     [theme.breakpoints.down("sm")]: {
       padding: "4px 3px 3px 3px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "10px",
+        fontSize: "12px",
         lineHeight: "inherit",
       },
     },
@@ -118,7 +137,7 @@ const useStyles = makeStyles(theme => ({
       padding: "4px 3px 3px 3px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "9px",
         lineHeight: "inherit",
       },
     },
@@ -132,7 +151,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       gap: "15px",
-      flexDirection: "column",
       marginBototm: "5px",
     },
   },
@@ -153,12 +171,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       padding: "40px 0px 40px 40px",
       width: "100%",
-      alignItems: props.little ? "center" : "stretch",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px 0px 10px 10px",
+      padding: "10px 0px 20px 10px",
       width: "100%",
-      alignItems: props.little ? "center" : "start",
     },
   }),
   imgContainer: props => ({
@@ -216,16 +233,18 @@ const useStyles = makeStyles(theme => ({
       fontWeight: props.little ? 700 : 500,
     },
     [theme.breakpoints.down("xs")]: {
+      whiteSpace: "normal",
+      textAlign: "center",
       lineHeight: props.little ? "61px" : "50px",
       fontSize: props.little ? "43px" : "40px",
       fontWeight: 100,
     },
-    [theme.breakpoints.between(0, 300)]: {
+    [theme.breakpoints.between(0, 400)]: {
       lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "33px" : "30px",
+      fontSize: props.little ? "26px" : "30px",
       fontWeight: 100,
     },
-    [theme.breakpoints.between(0, 200)]: {
+    [theme.breakpoints.between(0, 350)]: {
       lineHeight: props.little ? "41px" : "30px",
       fontSize: props.little ? "23px" : "20px",
       fontWeight: 100,
@@ -244,6 +263,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
       lineHeight: "inherit",
+      textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
