@@ -220,7 +220,7 @@ const ProjectSection = ({ title, btn }) => {
                   <Box className={classes.carouselContainer}>
                     <GatsbyImage
                       alt="About the project"
-                      image={getImage(projects[index].images[0].localFile)}
+                      image={getImage(el.images[0].localFile)}
                       style={{
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
