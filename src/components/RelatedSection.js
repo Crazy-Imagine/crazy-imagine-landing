@@ -1,7 +1,8 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
 import RelatedProjects from "../components/RelatedProjects"
+import { PROJECTS } from "../navigation/sitemap"
 
 const useStyes = makeStyles(theme => ({
   title: {
@@ -21,7 +22,6 @@ const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     gap: "23px",
     paddingTop: "78px",
     paddingBottom: "54px",
@@ -38,6 +38,7 @@ const useStyes = makeStyles(theme => ({
     letterspacing: "0.1em",
     color: "#888DFF",
     marginBottom: "auto",
+    textAlign: "center",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -59,7 +60,11 @@ const RelatedSection = () => {
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>Related Projects</Typography>
-      <Link className={classes.link} style={{ textDecoration: "none" }}>
+      <Link
+        to={`${PROJECTS}`}
+        className={classes.link}
+        style={{ textDecoration: "none" }}
+      >
         ALL BLOGS →
       </Link>
       <RelatedProjects />

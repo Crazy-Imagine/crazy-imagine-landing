@@ -132,6 +132,7 @@ const RelatedProjects = () => {
       render={data => {
         const projects = data.projects.nodes
         SwiperCore.use([Keyboard])
+        console.log(projects.images)
 
         return (
           <Swiper
@@ -155,12 +156,12 @@ const RelatedProjects = () => {
             modules={[Pagination]}
             className={`${classes.slider} purpleBullet`}
           >
-            {projects.map(index => (
+            {projects.map((el, index) => (
               <SwiperSlide key={index} className={classes.slide}>
                 <Box className={classes.container}>
                   <GatsbyImage
                     alt="About the project"
-                    image={getImage(projects[index].images[0].localFile)}
+                    image={getImage(el.images[0].localFile)}
                     style={{
                       objectFit: "contain",
                       backgroundColor: "#27AAE1",
@@ -172,10 +173,10 @@ const RelatedProjects = () => {
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
-                      {projects[index].title}
+                      {el.title}
                     </Typography>
                     <Link
-                      to={`${PROJECTS}/${projects[index].slug}`}
+                      to={`${PROJECTS}/${el.slug}`}
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >

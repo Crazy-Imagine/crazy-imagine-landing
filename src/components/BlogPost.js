@@ -159,6 +159,7 @@ const BlogPost = ({ bulletClass }) => {
                   <img
                     src={node.image[0].localFile.publicURL}
                     className={classes.img}
+                    alt="Blog"
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
