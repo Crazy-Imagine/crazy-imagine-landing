@@ -69,12 +69,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     gap: "20px",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "flex-start",
     [theme.breakpoints.down("md")]: {
       gap: "14px",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   },
@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "14px",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   },

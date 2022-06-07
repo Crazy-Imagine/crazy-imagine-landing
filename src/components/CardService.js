@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   container2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     width: "470px",
     height: "465px",
     display: "flex",

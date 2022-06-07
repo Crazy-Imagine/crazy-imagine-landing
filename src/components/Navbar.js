@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     border: "2px solid #FFFFFF",
     "&:hover": {
       background: "#FFFFFF",
-      "& a": {
+      "& span": {
         color: "#1E2F97",
       },
     },
@@ -182,13 +182,13 @@ const Navbar = ({
             style={{ textDecoration: "none", borderRadius: "100px" }}
           >
             <Button className={classes.contactButton}>
-              <Link
+              <span
                 to={`${CONTACT}`}
                 style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
                 Contact Us
-              </Link>
+              </span>
             </Button>
           </Link>
         </Box>

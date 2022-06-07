@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formContainer2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

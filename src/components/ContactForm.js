@@ -104,6 +104,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "auto",
     },
+    [theme.breakpoints.down("md")]: {
+      margin: "auto",
+    },
   },
   divider: {
     display: "flex",

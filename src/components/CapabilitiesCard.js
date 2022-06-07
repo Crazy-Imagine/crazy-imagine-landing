@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   container2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     background: "#FFFFFF",
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     padding: "29px 20px 29px 20px",

@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 700,
@@ -82,12 +82,8 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
   },
-  img: {
-    visibility: "hidden",
-    marginTop: "auto",
-  },
   img2: {
-    //animation: `$myEffecto 3000ms`,
+    //animation: `$myEffecto 2000ms`,
     marginTop: "auto",
   },
   container: {
@@ -103,17 +99,6 @@ const useStyles = makeStyles(theme => ({
       gap: "0px",
       marginTop: "-30px",
       width: "100%",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
 }))

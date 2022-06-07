@@ -37,35 +37,19 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "17px",
     },
   },
-  title: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    visibility: "hidden",
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  },
   title2: {
-    //animation: `$myEffectos 3000ms`,
+    //animation: `$myEffectos 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "auto",
+      fontSize: "53px",
+      lineHeight: "53px",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       fontWeight: "auto",
@@ -77,40 +61,10 @@ const useStyles = makeStyles(theme => ({
       fontWeight: "auto",
       fontSize: "22px",
       lineHeight: "22px",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-      transform: "scale(0)",
-    },
-    "50%": {
-      opacity: 0.5,
-      transform: "scale(0.5)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-  },
-  desc: {
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    visibility: "hidden",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "13px",
     },
   },
   desc2: {
-    //animation: `$myEffectos 3000ms`,
+    //animation: `$myEffectos 2000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -123,17 +77,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "13px",
-    },
-  },
-  "@keyframes myEffectos": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
   img: {
@@ -147,7 +90,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("xs")]: {
       width: "80%",
       marginTop: "-27px",
@@ -181,10 +124,10 @@ export const SubTitleSection = ({ title, desc, img }) => {
   return (
     <Box ref={ref} className={classes.container}>
       <Box className={classes.textContainer}>
-        <Typography className={isVisible ? classes.title2 : classes.title}>
+        <Typography className={classes.title}>
           {title}
         </Typography>
-        <Typography className={isVisible ? classes.desc2 : classes.desc}>
+        <Typography className={classes.desc}>
           {desc}
         </Typography>
       </Box>

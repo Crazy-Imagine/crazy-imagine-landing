@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   wrapperTitle2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "900",
@@ -204,7 +204,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center",
     marginTop: "71px",
     marginBottom: "105px",
-    animation: `$myEffecto 3000ms`,
+    animation: `$myEffecto 2000ms`,
     "&:hover": {
       backgroundColor: "#30AADE",
     },

@@ -40,8 +40,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "34px",
     [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
       alignItems: "center",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
     },
   },
   pMajor: {

@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   button2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     background: "#797EF6",
     borderRadius: "100px",
     marginBottom: "87px",

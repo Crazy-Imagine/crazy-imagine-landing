@@ -17,7 +17,10 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
     [theme.breakpoints.down("md")]: {
-      height: "auto",
+      height: props.little ? "320px" : "410px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "50px",
     },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
@@ -44,14 +47,15 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     [theme.breakpoints.down("md")]: {
-      height: "450px",
+      height: props.little ? "450px" : "540px",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      height: "450px",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: props.little ? "390px" : "370px",
+      height: props.little ? "350px" : "350px",
     },
     [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
@@ -194,7 +198,7 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   img: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       display: "none",

@@ -16,9 +16,11 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       height: "708px",
+      paddingBottom: "58px",
     },
     [theme.breakpoints.down("sm")]: {
       height: "auto",
+      paddingBottom: "38px",
     },
   },
   title: {
@@ -50,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",

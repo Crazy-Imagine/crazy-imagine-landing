@@ -20,11 +20,12 @@ const useStyles = makeStyles(theme => ({
     width: "70%",
     padding: "115px",
     [theme.breakpoints.down("md")]: {
-      padding: "85px",
+      padding: "65px",
+      width: "85%",
     },
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      padding: "45px",
+      padding: "25px",
     },
   },
 }))

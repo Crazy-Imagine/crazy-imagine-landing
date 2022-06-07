@@ -48,24 +48,6 @@ const useStyles = makeStyles(theme => ({
   titleContainer: {
     alignSelf: "flex-start",
   },
-  title: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    alignSelf: "flex-start",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "41px",
-      lineHeight: "41px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "29px",
-      lineHeight: "29px",
-    },
-  },
   title2: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -73,24 +55,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
-    alignSelf: "flex-start",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "41px",
-      lineHeight: "41px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "29px",
-      lineHeight: "29px",
-    },
-  },
-  blueTitle: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#27AAE1",
     alignSelf: "flex-start",
     [theme.breakpoints.down("md")]: {
       fontSize: "41px",
@@ -118,35 +82,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "29px",
     },
   },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-      transform: "scale(0)",
-    },
-    "50%": {
-      opacity: 0.5,
-      transform: "scale(0.5)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "scale(1)",
-    },
-  },
-  desc: {
-    visibility: "hidden",
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-    },
-  },
   desc2: {
-    //animation: `$myEffectos 3000ms`,
+    //animation: `$myEffectos 2000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -156,17 +93,6 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
-    },
-  },
-  "@keyframes myEffectos": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
   img: {
@@ -184,7 +110,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("md")]: {
       width: "70%",
       height: "70%",
