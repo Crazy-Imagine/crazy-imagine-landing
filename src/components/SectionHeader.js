@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
-      height: props.little ? "290px" : "350px",
+      height: "350px",
     },
   }),
   buttonLeft: {

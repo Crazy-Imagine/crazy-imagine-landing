@@ -87,6 +87,10 @@ const useStyles = makeStyles(theme => ({
       marginLeft: "20px",
       marginRight: "9px",
     },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "18px",
+      paddingRight: "22px",
+    },
   },
   listItem: {
     marginBottom: "20px",

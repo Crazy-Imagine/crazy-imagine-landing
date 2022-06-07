@@ -74,6 +74,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "21px",
       lineHeight: "27px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "17px",
+    },
   },
 }))
 
@@ -83,7 +87,9 @@ const HomeDescription = () => {
   const isVisible = useIntersection(ref, "0px")
   return (
     <Box ref={ref} className={classes.container}>
-      <Box className={isVisible ? classes.textContainer2 : classes.textContainer}>
+      <Box
+        className={isVisible ? classes.textContainer2 : classes.textContainer}
+      >
         <Typography className={classes.text}>
           {`With deep expertise that spans across the web development spectrum,\nwe can optimize your digital presence at any level.`}
         </Typography>
