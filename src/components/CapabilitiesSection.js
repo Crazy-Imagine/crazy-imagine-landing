@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     gap: "20px",
-    alignItems: "flex-start",
+    alignItems: "stretch",
     justifyContent: "flex-start",
     [theme.breakpoints.down("md")]: {
       gap: "14px",
