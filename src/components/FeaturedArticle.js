@@ -3,6 +3,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -214,6 +215,9 @@ const FeaturedArticle = () => {
                 image {
                   localFile {
                     publicURL
+                    childImageSharp {
+                      gatsbyImageData(quality: 5)
+                    }
                   }
                 }
                 category {
@@ -237,10 +241,10 @@ const FeaturedArticle = () => {
               Featured Article
             </Typography>
             <Box className={classes.cardContainer}>
-              <img
+              <GatsbyImage
                 className={classes.img}
                 alt="Feature Article"
-                src={featureArticle[0].node.image[0].localFile.publicURL}
+                image={getImage(featureArticle[0].node.image[0].localFile)}
               />
               <Box className={classes.textContainer}>
                 <Typography className={classes.titleCard}>

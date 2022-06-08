@@ -23,19 +23,20 @@ const useStyles = makeStyles({
 const NotFoundPage = () => {
   const classes = useStyles()
   return (
-    <Layout seo={{ metaTitle: "404: Not found" }} >
-
-      <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
-        <Link to={`${HOME}`}>
-          <StaticImage
-            src="../images/LOGO.png"
-            alt="logo"
-            className={classes.navbarLogo}
-          />
-        </Link>
-        <Typography variant="h3" className={classes.title}>Page Not Found</Typography>
-      </Box>
-    </Layout>
+    <main>
+      <Layout seo={{ metaTitle: "404: Not found" }} >
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
+          <Link to={`${HOME}`}>
+            <StaticImage
+              src="../images/LOGO.png"
+              alt="logo"
+              className={classes.navbarLogo}
+            />
+          </Link>
+          <Typography variant="h3" className={classes.title}>Page Not Found</Typography>
+        </Box>
+      </Layout>
+    </main>
   )
 }
 

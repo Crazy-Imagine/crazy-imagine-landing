@@ -94,17 +94,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
     },
   },
-  "@keyframes myEffectos": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
   img: {
     visibility: "hidden",
     [theme.breakpoints.down("xs")]: {

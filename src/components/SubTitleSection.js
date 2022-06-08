@@ -124,10 +124,10 @@ export const SubTitleSection = ({ title, desc, img }) => {
   return (
     <Box ref={ref} className={classes.container}>
       <Box className={classes.textContainer}>
-        <Typography className={classes.title}>
+        <Typography className={classes.title2}>
           {title}
         </Typography>
-        <Typography className={classes.desc}>
+        <Typography className={classes.desc2}>
           {desc}
         </Typography>
       </Box>

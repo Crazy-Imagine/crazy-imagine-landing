@@ -70,7 +70,7 @@ const ProjectsMainSection = () => {
           image {
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(quality: 5)
               }
             }
           }
@@ -97,7 +97,7 @@ const ProjectsMainSection = () => {
               marginTop="28px"
             >
               <Link to={`${PROJECTS}#all`} className={classes.resetLink}>
-              <Typography className={classes.seeMore}>See more</Typography>
+                <Typography className={classes.seeMore}>See more</Typography>
               </Link>
             </Box>
           </Box>

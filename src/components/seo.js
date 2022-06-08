@@ -9,6 +9,7 @@ const SEO = ({ seo = {} }) => {
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
+  //console.log(fullSeo)
 
   const getMetaTags = () => {
     const tags = [];

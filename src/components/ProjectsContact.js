@@ -116,14 +116,14 @@ const query = graphql`
         images: projectContactImg {
           localFile {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
             }
           }
         }
         imageContact: imgContact {
           localFile {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
             }
           }
         }

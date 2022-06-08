@@ -104,6 +104,7 @@ const RecentlyPosted = () => {
                         height: 76
                         placeholder: BLURRED
                         layout: CONSTRAINED
+                        quality: 5
                       )
                     }
                   }

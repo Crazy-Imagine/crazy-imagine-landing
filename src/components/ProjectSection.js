@@ -275,7 +275,7 @@ const query = graphql`
       projectsImage {
         localFile {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
           }
         }
       }
@@ -289,7 +289,7 @@ const query = graphql`
         images {
           localFile {
             childImageSharp {
-              gatsbyImageData(quality: 100)
+              gatsbyImageData(quality: 30)
             }
           }
         }

@@ -198,7 +198,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(quality: 5)
             }
           }
         }
@@ -210,7 +210,7 @@ export const query = graphql`
               width: 800
               placeholder: BLURRED
               layout: CONSTRAINED
-              quality: 100
+              quality: 30
             )
           }
         }

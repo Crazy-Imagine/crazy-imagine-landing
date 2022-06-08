@@ -422,7 +422,7 @@ const WorkForm = () => {
           setShowMessage(true)
           setAlertMessage("There was an error trying to send your form")
           setFormStatus("bad")
-          console.log(error)
+          //console.log(error)
         })
     } else {
       if (data.website !== "") {

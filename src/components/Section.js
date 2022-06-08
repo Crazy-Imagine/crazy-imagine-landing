@@ -42,6 +42,7 @@ const Section = ({
     height,
   })
 
+
   return (
     <Box className={classes.sectionContainer}>
       <Box width={width} className={classes.sectionResponsive}>

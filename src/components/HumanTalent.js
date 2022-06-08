@@ -213,7 +213,7 @@ const query = graphql`
       teamImages {
         localFile {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
       }
