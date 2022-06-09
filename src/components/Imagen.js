@@ -27,7 +27,7 @@ const Imagen = () => {
     <Box className={classes.img2}>
       <StaticImage
         className={`${classes.img2}`}
-        src="../images/crazy1.png"
+        src="../images/crazy.svg"
       />
     </Box>
   )

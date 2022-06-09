@@ -14,6 +14,15 @@ const Layout = ({ children, seo }) => (
             shareImage {
               localFile {
                 publicURL
+                childImageSharp {
+                  gatsbyImageData(quality: 5)
+                  fluid (maxWidth: 100, maxHeight: 280){
+                    src
+                    srcSet
+                    sizes
+                    srcWebp
+                  }
+                }
               }
             }
           }

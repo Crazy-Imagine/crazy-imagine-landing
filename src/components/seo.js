@@ -42,6 +42,7 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
+
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
@@ -68,6 +69,7 @@ const SEO = ({ seo = {} }) => {
       });
     }
     tags.push({ name: "twitter:card", content: "summary_large_image" });
+    tags.push({ name: "keywords", content: "crazy, developer, software, work, programming" });
 
     return tags;
   };

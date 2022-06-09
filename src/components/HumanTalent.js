@@ -1,4 +1,4 @@
-import React from "react"
+/*import React from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import clsx from "clsx"
@@ -214,10 +214,16 @@ const query = graphql`
         localFile {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
+            fluid (maxWidth: 643, maxHeight: 980){
+              src
+              srcSet
+              sizes
+              srcWebp
+            }
           }
         }
       }
     }
   }
 `
-export default HumanTalent
+export default HumanTalent*/

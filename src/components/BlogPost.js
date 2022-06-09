@@ -118,6 +118,15 @@ const BlogPost = ({ bulletClass }) => {
                 image {
                   localFile {
                     publicURL
+                    childImageSharp {
+                      gatsbyImageData(quality: 5)
+                      fluid (maxWidth: 300, maxHeight: 480){
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                      }
+                    }
                   }
                 }
                 category {

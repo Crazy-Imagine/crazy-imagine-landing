@@ -217,6 +217,12 @@ const FeaturedArticle = () => {
                     publicURL
                     childImageSharp {
                       gatsbyImageData(quality: 5)
+                      fluid (maxWidth: 643, maxHeight: 980){
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                      }
                     }
                   }
                 }

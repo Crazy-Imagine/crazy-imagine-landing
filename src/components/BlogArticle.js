@@ -284,7 +284,13 @@ const BlogArticle = () => {
                 image {
                   localFile {
                     childImageSharp {
-                      gatsbyImageData(quality: 65)
+                      gatsbyImageData(quality: 5)
+                      fluid (maxWidth: 300, maxHeight: 480){
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                      }
                     }
                   }
                 }
