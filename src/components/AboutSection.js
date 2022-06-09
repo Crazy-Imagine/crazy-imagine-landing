@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     background: "#FFF",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: "1037px",
+      height: "auto",
     },
   },
 }))
