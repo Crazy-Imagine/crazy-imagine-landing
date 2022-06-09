@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     height: props.little ? "332px" : "530px",
     [theme.breakpoints.down("md")]: {
-      height: props.little ? "320px" : "410px",
+      height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "50px",
@@ -55,11 +55,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: props.little ? "350px" : "350px",
+      height: props.little ? "370px" : "350px",
     },
     [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
-      height: "350px",
+      //height: props.little ? "290px" : "350px",
     },
   }),
   buttonLeft: {
