@@ -183,7 +183,6 @@ const Navbar = ({
           >
             <Button className={classes.contactButton}>
               <span
-                to={`${CONTACT}`}
                 style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
