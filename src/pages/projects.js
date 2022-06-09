@@ -18,6 +18,7 @@ const Projects = () => {
   return (
     <Layout seo={data.projectsPage.SEO}>
       <PageWrapper>
+
         <Hidden mdDown>
           <Navbar variant="secondary" />
         </Hidden>
@@ -25,18 +26,24 @@ const Projects = () => {
           <NavbarMobile />
         </Hidden>
         <Box overflow="hidden">
-          <SectionHeader
-            title={`Let Your Imagination
+          <header>
+            <SectionHeader
+              title={`Let Your Imagination
           Run Wild`}
-            img={headerImage}
-            btn={false}
-            little={true}
-          />
-          <ServicesSection />
-          <ProjectSection title={"Featured Projects"} btn={false} />
-          <ContactSection />
-          <Footer />
-          <Copyright />
+              img={headerImage}
+              btn={false}
+              little={true}
+            />
+          </header>
+          <main>
+            <ServicesSection />
+            <ProjectSection title={"Featured Projects"} btn={false} />
+            <ContactSection />
+          </main>
+          <footer>
+            <Footer />
+            <Copyright />
+          </footer>
         </Box>
       </PageWrapper>
     </Layout>

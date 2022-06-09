@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "21px",
       lineHeight: "21px",
+      textAlign: "center",
     },
   },
   container: {
@@ -32,10 +33,24 @@ const useStyles = makeStyles(theme => ({
   layout: {
     paddingTop: "115px",
     paddingRight: "100px",
+    flexDirection: "row",
     [theme.breakpoints.down("md")]: {
       paddingLeft: "30px",
-      paddingTop: "85px",
-      paddingRight: "85px",
+      paddingTop: "65px",
+      paddingRight: "30px",
+      width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "20px",
+      paddingTop: "55px",
+      paddingRight: "20px",
+      width: "80%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "10px",
+      paddingTop: "35px",
+      paddingRight: "10px",
+      width: "80%",
     },
   },
   listTitle: {
@@ -89,6 +104,7 @@ const RecentlyPosted = () => {
                         height: 76
                         placeholder: BLURRED
                         layout: CONSTRAINED
+                        quality: 5
                       )
                     }
                   }

@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    height: "inherit",
+    height: "fit-content",
     maxWidth: "480px",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   wrapperTitle2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "900",
@@ -204,7 +205,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center",
     marginTop: "71px",
     marginBottom: "105px",
-    animation: `$myEffecto 3000ms`,
+    animation: `$myEffecto 2000ms`,
     "&:hover": {
       backgroundColor: "#30AADE",
     },
@@ -282,7 +283,9 @@ const BlogArticle = () => {
                 }
                 image {
                   localFile {
-                    publicURL
+                    childImageSharp {
+                      gatsbyImageData(quality: 65)
+                    }
                   }
                 }
                 category {
@@ -313,11 +316,12 @@ const BlogArticle = () => {
             </Typography>
             <Box className={classes.wrapper}>
               {articlesSort.map(({ node }, index) => (
+
                 <Box key={index} className={classes.container}>
-                  <img
-                    src={node.image[0].localFile.publicURL}
+
+                  <GatsbyImage
+                    image={getImage(node.image[0].localFile)}
                     alt="Blog"
-                    className={classes.img}
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>

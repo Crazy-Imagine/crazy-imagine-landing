@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     border: "2px solid #FFFFFF",
     "&:hover": {
       background: "#FFFFFF",
-      "& a": {
+      "& span": {
         color: "#1E2F97",
       },
     },
@@ -141,7 +141,7 @@ const Navbar = ({
       <Toolbar className={classes.root}>
         <Box class={classes.barContainer}>
           <Link to={HOME}>
-            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
+            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
           <Box className={classes.linkContainer}>
             <Typography>
@@ -182,13 +182,12 @@ const Navbar = ({
             style={{ textDecoration: "none", borderRadius: "100px" }}
           >
             <Button className={classes.contactButton}>
-              <Link
-                to={`${CONTACT}`}
+              <span
                 style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
                 Contact Us
-              </Link>
+              </span>
             </Button>
           </Link>
         </Box>

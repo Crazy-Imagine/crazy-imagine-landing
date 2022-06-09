@@ -8,27 +8,37 @@ import SectionHeader from "../components/SectionHeader"
 import ContactSection from "../components/ContactSection"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/astronaut.svg"
+import Layout from "../components/layout"
+
 
 const Contact = () => {
   return (
-    <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="secondary" />
-      </Hidden>
-      <Hidden lgUp>
-        <NavbarMobile variantIcons="primary" />
-      </Hidden>
-      <SectionHeader
-        title={`Let's Imagine 
+    <Layout seo={{ metaTitle: "Imagine What We Can Create", metaDescription: "ContactUs" }} >
+      <PageWrapper>
+        <header>
+          <Hidden mdDown>
+            <Navbar variant="secondary" />
+          </Hidden>
+          <Hidden lgUp>
+            <NavbarMobile variantIcons="primary" />
+          </Hidden>
+          <SectionHeader
+            title={`Let's Imagine 
                 Together`}
-        btn={false}
-        img={headerImage}
-        little={true}
-      />
-      <ContactSection />
-      <Footer />
-      <Copyright />
-    </PageWrapper>
+            btn={false}
+            img={headerImage}
+            little={true}
+          />
+        </header>
+        <main>
+          <ContactSection />
+        </main>
+        <footer>
+          <Footer />
+          <Copyright />
+        </footer>
+      </PageWrapper>
+    </Layout>
   )
 }
 

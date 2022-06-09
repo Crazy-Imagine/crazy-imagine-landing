@@ -167,6 +167,7 @@ const NavbarMobile = ({
                 src="../images/crazy-imagine-icon.svg"
                 alt="logo"
                 className={classes.navbarLogo}
+                style={{ width: "100%", height: "100%" }}
               />
             </Link>
             <IconButton
@@ -192,6 +193,7 @@ const NavbarMobile = ({
               <StaticImage
                 src="../images/crazy-imagine-icon.svg"
                 alt="ss"
+                style={{ width: "100%", height: "100%" }}
               />
             </Link>
             <IconButton onClick={handleDrawerClose}>

@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "50px",
+    },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
       height: props.little ? "232px" : "auto",
@@ -44,18 +47,19 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     [theme.breakpoints.down("md")]: {
-      height: "450px",
+      height: props.little ? "450px" : "540px",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      height: "450px",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
-      height: props.little ? "390px" : "370px",
+      height: props.little ? "370px" : "350px",
     },
     [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
-      height: props.little ? "290px" : "350px",
+      //height: props.little ? "290px" : "350px",
     },
   }),
   buttonLeft: {
@@ -194,7 +198,7 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   img: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       display: "none",
@@ -279,7 +283,7 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography className={classes.title}><span>{title}</span></Typography>
           <Typography className={classes.desc}>{desc}</Typography>
           {btn && (
             <Box className={classes.buttonContainer}>

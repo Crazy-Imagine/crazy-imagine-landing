@@ -39,6 +39,10 @@ const useStyes = makeStyles(theme => ({
       fontSize: "16px",
       lineHeight: "16px",
     },
+    [theme.breakpoints.down(300, 0)]: {
+      fontSize: "14px",
+      lineHeight: "14px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -52,6 +56,9 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingBottom: "12px",
     },
   },
   textContainer: {

@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
@@ -53,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -152,6 +151,11 @@ const useStyles = makeStyles(theme => ({
       fontSize: "20px",
       lineHeight: "20px",
     },
+    [theme.breakpoints.between(0, 300)]: {
+      fontWeight: "18px",
+      fontSize: "18px",
+      lineHeight: "18px",
+    },
   },
   link: {
     fontFamily: "Nexa Bold",
@@ -164,6 +168,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
     },
   },
   slide: {
@@ -246,7 +254,10 @@ const ProjectSection = ({ title, btn }) => {
                 </SwiperSlide>
               ))}
               {btn && (
-                <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`${PROJECTS}`}
+                  style={{ textDecoration: "none", alignSelf: "center" }}
+                >
                   <Button className={classes.button}>ALL PROJECTS</Button>
                 </Link>
               )}
@@ -264,7 +275,7 @@ const query = graphql`
       projectsImage {
         localFile {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
           }
         }
       }
@@ -278,7 +289,7 @@ const query = graphql`
         images {
           localFile {
             childImageSharp {
-              gatsbyImageData(quality: 100)
+              gatsbyImageData(quality: 30)
             }
           }
         }

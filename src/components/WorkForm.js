@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formContainer2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -422,7 +422,7 @@ const WorkForm = () => {
           setShowMessage(true)
           setAlertMessage("There was an error trying to send your form")
           setFormStatus("bad")
-          console.log(error)
+          //console.log(error)
         })
     } else {
       if (data.website !== "") {
@@ -544,10 +544,10 @@ const WorkForm = () => {
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
-                <label className={classes.attachLabel}>Resume/CV </label>
-                <label className={classes.attachButton} for="resume-btn">
+                <span className={classes.attachLabel}>Resume/CV </span>
+                <span className={classes.attachButton} for="resume-btn">
                   ATTACH
-                </label>
+                </span>
               </Box>
               <Input
                 type="file"

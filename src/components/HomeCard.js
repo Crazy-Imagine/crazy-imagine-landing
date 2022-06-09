@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px",
   },
   cardContainer2: {
-    animation: `$myEffectos 3000ms`,
+    animation: `$myEffectos 2000ms`,
     backgroundColor: "#FFFFFF",
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     borderRadius: "14px",

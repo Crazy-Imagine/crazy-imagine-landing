@@ -9,28 +9,37 @@ import SectionHeader from "../components/SectionHeader"
 import headerImage from "../images/deco.svg"
 import BlogArticle from "../components/BlogArticle"
 import { Hidden } from "@material-ui/core"
+import Layout from "../components/layout"
 
 const Blog = () => {
   return (
-    <PageWrapper>
-      <Hidden mdDown>
-        <Navbar variant="secondary" linkVariant="" />
-      </Hidden>
-      <Hidden lgUp>
-        <NavbarMobile variantIcons="primary" />
-      </Hidden>
-      <SectionHeader
-        title={`The Latest in Tech
+    <Layout seo={{ metaTitle: "The Latest in Tech Talk from our Team", metaDescription: "Articles" }} >
+      <PageWrapper>
+        <header>
+          <Hidden mdDown>
+            <Navbar variant="secondary" linkVariant="" />
+          </Hidden>
+          <Hidden lgUp>
+            <NavbarMobile variantIcons="primary" />
+          </Hidden>
+          <SectionHeader
+            title={`The Latest in Tech
         Talk from our Team`}
-        btn={false}
-        img={headerImage}
-        little={true}
-      />
-      <FeaturedArticle />
-      <BlogArticle />
-      <Footer />
-      <Copyright />
-    </PageWrapper>
+            btn={false}
+            img={headerImage}
+            little={true}
+          />
+        </header>
+        <main>
+          <FeaturedArticle />
+          <BlogArticle />
+        </main>
+        <footer>
+          <Footer />
+          <Copyright />
+        </footer>
+      </PageWrapper>
+    </Layout>
   )
 }
 

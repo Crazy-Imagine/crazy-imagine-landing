@@ -45,24 +45,8 @@ const useStyles = makeStyles(theme => ({
       alignSelf: "center",
     },
   },
-  subtitle: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "20px",
-    letterSpacing: "0.1em",
-    textTransform: "uppercase",
-    color: "#797EF6",
-    marginBottom: "6px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      lineHeight: "14px",
-    },
-  },
   subtitle2: {
-    //animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -75,27 +59,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "14px",
-    },
-  },
-  title: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "41px",
-      lineHeight: "41px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "25px",
-      lineHeight: "25px",
     },
   },
   title2: {
-    //animation: `$myEffect 3000ms`,
+    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -109,27 +76,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "25px",
       lineHeight: "25px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)",
-    },
-  },
-  img: {
-    visibility: "hidden",
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-      height: "70%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      alignSelf: "center",
-      width: "100%",
     },
   },
   img2: {
@@ -143,19 +89,6 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
   },
-  desc: {
-    visibility: "hidden",
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-    },
-  },
   desc2: {
     //animation: `$myEffecto 5000ms`,
     fontFamily: "Hero New",
@@ -167,17 +100,6 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
 }))

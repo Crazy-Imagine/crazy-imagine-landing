@@ -67,7 +67,12 @@ module.exports = {
         icon: `src/images/LOGO.png`,
       },
     },
-    "gatsby-plugin-offline",
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/index/*`, `/About/*`, `/Blog/*`, `/Contact/*`, `/WorkWithUsPage/*`, `/projects/*`],
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts-v2`,
       options: {

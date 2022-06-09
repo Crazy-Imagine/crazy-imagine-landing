@@ -25,6 +25,7 @@ const IndexPage = () => {
     <>
       <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
         <PageWrapper>
+
           <div ref={ref}>
             <Hidden mdDown>
               <Navbar variant="secondary" />
@@ -33,22 +34,28 @@ const IndexPage = () => {
               <NavbarMobile />
             </Hidden>
             <Box overflow="hidden">
-              <SectionHeader
-                title={`Ideas Beyond\nYour Imagination`}
-                desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
-                btn={true}
-                img={headerImage}
-                cls="textContainer"
-              />
-              <HomeMainSection />
-              <HomeDescription />
-              <CapabilitiesSection />
-              <ReferenceSection />
-              <ProjectSection title={"Previous Projects"} btn={true} />
-              <LastestPosts />
-              <ContactSection bgColor="#FFFFFF" />
-              <Footer />
-              <Copyright />
+              <header>
+                <SectionHeader
+                  title={`Ideas Beyond\nYour Imagination`}
+                  desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
+                  btn={true}
+                  img={headerImage}
+                  cls="textContainer"
+                />
+              </header>
+              <main>
+                <HomeMainSection />
+                <HomeDescription />
+                <CapabilitiesSection />
+                <ReferenceSection />
+                <ProjectSection title={"Previous Projects"} btn={true} />
+                <LastestPosts />
+                <ContactSection bgColor="#FFFFFF" />
+              </main>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
             </Box>
           </div>
         </PageWrapper>
@@ -79,7 +86,7 @@ const query = graphql`
             localFile {
               publicURL
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
               }
             }
           }

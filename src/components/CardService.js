@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   container2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     width: "470px",
     height: "465px",
     display: "flex",
@@ -86,6 +86,10 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "20px",
       marginLeft: "20px",
       marginRight: "9px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "18px",
+      paddingRight: "22px",
     },
   },
   listItem: {

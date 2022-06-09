@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
       gap: "4px",
     },
   },
-  title: {
-    visibility: "hidden",
+  title2: {
+    //animation: `$myEffectos 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -46,27 +46,11 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     width: "526px",
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
+    [theme.breakpoints.down("md")]: {
       fontWeight: "auto",
-      fontSize: "28px",
-      lineHeight: "28px",
+      fontSize: "53px",
+      lineHeight: "53px",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  }, title2: {
-    //animation: `$myEffectos 3000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    width: "526px",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       fontWeight: "auto",
@@ -94,24 +78,8 @@ const useStyles = makeStyles(theme => ({
       transform: "scale(1)",
     },
   },
-  desc: {
-    visibility: "hidden",
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "13px",
-    },
-  },
   desc2: {
-    //animation: `$myEffectos 3000ms`,
+    //animation: `$myEffectos 2000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -124,17 +92,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "13px",
-    },
-  },
-  "@keyframes myEffectos": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
   img: {
@@ -147,7 +104,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("xs")]: {
       width: "80%",
     },
@@ -167,7 +124,7 @@ const useStyles = makeStyles(theme => ({
   },
   imgn: {
     [theme.breakpoints.down("sm")]: {
-      marginTop: "17px",
+      marginTop: "47px",
       justifyContent: "center",
       textAlign: "center",
     },

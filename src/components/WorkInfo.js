@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    animation: `$myEffect 3000ms`,
+    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     marginTop: "140px",
@@ -43,7 +43,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "25px",
       marginTop: "70px",
-      lineHeight: "22px",
+      lineHeight: "30px",
+      textAlign: "center",
+      margin: "auto",
     },
     [theme.breakpoints.down("xs")]: {
       whiteSpace: "normal",
@@ -56,36 +58,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
   },
-  desc: {
-    visibility: "hidden",
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    marginTop: "19px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      marginTop: "13px",
-    },
-  },
-  desc2: {
-    animation: `$myEffecto 3000ms`,
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    marginTop: "19px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      marginTop: "13px",
-    },
-  },
   "@keyframes myEffect": {
     "0%": {
       opacity: 0,
@@ -94,17 +66,6 @@ const useStyles = makeStyles(theme => ({
     "100%": {
       opacity: 1,
       transform: "translateX(0)",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
 }))

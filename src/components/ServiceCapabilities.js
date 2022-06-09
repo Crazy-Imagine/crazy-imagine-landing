@@ -30,22 +30,7 @@ const useStyles = makeStyles(theme => ({
     visibility: "hidden",
   },
   conta2: {
-    animation: `$myEffect 3000ms`,
-  },
-  subtitle: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "20px",
-    lineHeight: "20px",
-    letterSpacing: "0.1em",
-    textTransform: "uppercase",
-    color: "#797EF6",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      lineHeight: "14px",
-    },
+    animation: `$myEffect 2000ms`,
   },
   subtitle2: {
     fontFamily: "Nexa Bold",
@@ -59,27 +44,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "14px",
-    },
-  },
-  title: {
-    visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "58px",
-    lineHeight: "58px",
-    color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "40px",
-      lineHeight: "40px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.between(0, 400)]: {
-      fontSize: "24px",
-      lineHeight: "24px",
     },
   },
   title2: {
@@ -112,20 +76,6 @@ const useStyles = makeStyles(theme => ({
       width: props.img ? "59%" : "auto",
     },
   }),
-  desc: {
-    visibility: "hidden",
-    fontFamily: "Hero New",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
-    color: "#193174",
-    whiteSpace: "pre-line",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-    },
-  },
   img: {
     width: "unset",
     [theme.breakpoints.down("sm")]: {
@@ -148,16 +98,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
   },
-  imagen: {
-    visibility: "hidden",
-    width: "unset",
-    [theme.breakpoints.down("sm")]: {
-      width: "35%",
-    },
-    [theme.breakpoints.between(400, 0)]: {
-      width: "45%",
-    },
-  },
   imagen2: {
     width: "unset",
     [theme.breakpoints.down("sm")]: {
@@ -165,17 +105,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(400, 0)]: {
       width: "45%",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-    },
-    "50%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
     },
   },
 }))

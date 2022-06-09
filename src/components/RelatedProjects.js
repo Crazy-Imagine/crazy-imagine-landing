@@ -107,7 +107,7 @@ const RelatedProjects = () => {
             projectsImage {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
                 }
               }
             }
@@ -121,7 +121,7 @@ const RelatedProjects = () => {
               images {
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(quality: 100, height: 210)
+                    gatsbyImageData(quality: 30, height: 210)
                   }
                 }
               }
@@ -132,7 +132,7 @@ const RelatedProjects = () => {
       render={data => {
         const projects = data.projects.nodes
         SwiperCore.use([Keyboard])
-        console.log(projects.images)
+
 
         return (
           <Swiper
