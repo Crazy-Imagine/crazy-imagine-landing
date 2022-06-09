@@ -85,6 +85,7 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
           imgStyle={{
             maxWidth: "530px",
             objectFit: "contain",
+
           }}
           style={{ maxWidth: "530px", objectFit: "contain" }}
           alt="More"

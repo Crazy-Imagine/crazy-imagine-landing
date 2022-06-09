@@ -544,10 +544,10 @@ const WorkForm = () => {
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
-                <label className={classes.attachLabel}>Resume/CV </label>
-                <label className={classes.attachButton} for="resume-btn">
+                <span className={classes.attachLabel}>Resume/CV </span>
+                <span className={classes.attachButton} for="resume-btn">
                   ATTACH
-                </label>
+                </span>
               </Box>
               <Input
                 type="file"

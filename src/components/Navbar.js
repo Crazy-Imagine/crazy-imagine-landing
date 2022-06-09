@@ -141,7 +141,7 @@ const Navbar = ({
       <Toolbar className={classes.root}>
         <Box class={classes.barContainer}>
           <Link to={HOME}>
-            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" />
+            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
           <Box className={classes.linkContainer}>
             <Typography>

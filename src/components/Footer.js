@@ -191,6 +191,7 @@ const Footer = ({ height = "192px" }) => {
             <StaticImage
               src="../images/crazy-imagine-icon.svg"
               alt="footerImage"
+              style={{ width: "100%", height: "100%" }}
             />
           </Link>
           <Box className={classes.iconsContainer}>

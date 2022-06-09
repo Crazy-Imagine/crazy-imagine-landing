@@ -130,7 +130,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             {`We Can Create`}
           </Typography>
           <Box className={classes.img2}>
-            <StaticImage src="../images/satelite.svg" />
+            <StaticImage src="../images/satelite.svg" style={{ width: "100%", height: "100%" }} />
           </Box>
         </Box>
         <ContactForm />

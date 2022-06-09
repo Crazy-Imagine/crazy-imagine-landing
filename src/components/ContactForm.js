@@ -177,15 +177,15 @@ const ContactForm = () => {
         <Box className={classes.inputContainer}>
           <Box className={classes.divider}>
             <TextField
-              id="message"
-              name="message"
+              id="name"
+              name="name"
               required
               label="Name"
               className={`${classes.shortInput} ${classes.root} `}
             />
             <TextField
-              id="subject"
-              name="subject"
+              id="company"
+              name="company"
               required
               label="Company"
               className={`${classes.shortInput} ${classes.root} `}
@@ -200,7 +200,7 @@ const ContactForm = () => {
             label="Email Address"
           />
           <TextField
-            id="about"
+            id="comments"
             name="comments"
             label="Comments/Questions/Schemes"
             required
@@ -221,6 +221,7 @@ const ContactForm = () => {
           <Button
             className={classes.formButton}
             disabled={state.submitting}
+            type="submit"
             onClick={() => handleClick()}
           >
             CONTACT US
