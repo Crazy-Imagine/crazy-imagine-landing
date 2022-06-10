@@ -51,23 +51,23 @@ const Projects = () => {
 }
 
 const query = graphql`
-  query {
-    projectsPage: strapiProjectsPage {
-      SEO {
-        metaDescription
-        metaTitle
-        id
-        shareImage {
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData
-            }
+query {
+  projectsPage: strapiProjectsPage {
+    SEO {
+      metaDescription
+      metaTitle
+      id
+      shareImage {
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData
           }
         }
       }
     }
   }
+}
 `
 
 export default Projects

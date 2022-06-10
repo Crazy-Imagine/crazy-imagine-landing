@@ -116,43 +116,43 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-  query Project($id: String!) {
-    strapiProjects(id: { eq: $id }) {
-      details
-      description
+query Project($id: String!) {
+  strapiProjects(id: { eq: $id }) {
+    details
+    description
+    id
+    moreAbout
+    title
+    seo {
+      metaTitle
+      metaDescription
       id
-      moreAbout
-      title
-      seo {
-        metaTitle
-        metaDescription
-        id
-        shareImage {
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(quality: 50)
-            }
-          }
-        }
-      }
-      images {
+      shareImage {
         localFile {
+          publicURL
           childImageSharp {
-            gatsbyImageData(width: 530, quality: 50)
+            gatsbyImageData(quality: 50)
           }
         }
       }
-      galleryImages {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 530, quality: 50)
-          }
-        }
-      }
-      created_at(formatString: "DD MMMM, YYYY")
     }
+    images {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(width: 530, quality: 50)
+        }
+      }
+    }
+    galleryImages {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(width: 530, quality: 50)
+        }
+      }
+    }
+    created_at(formatString: "DD MMMM, YYYY")
   }
+}
 `
 
 export default Project

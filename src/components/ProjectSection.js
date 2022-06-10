@@ -283,31 +283,31 @@ const ProjectSection = ({ title, btn, size }) => {
 }
 
 const query = graphql`
-  query {
-    homePage: strapiHomepage {
-      projectsImage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
-          }
+query {
+  homePage: strapiHomepage {
+    projectsImage {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
         }
       }
     }
-    projects: allStrapiProjects(limit: 8) {
-      nodes {
-        title
-        slug
-        description
-        id
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(quality: 30)
-            }
+  }
+  projects: allStrapiProjects(limit: 8) {
+    nodes {
+      title
+      slug
+      description
+      id
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 30)
           }
         }
       }
     }
   }
+}
 `
 export default ProjectSection

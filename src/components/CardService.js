@@ -33,7 +33,11 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     borderRadius: "14px",
     [theme.breakpoints.down("md")]: {
-      width: "55%",
+      width: "45%",
+      height: "auto",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "45%",
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {

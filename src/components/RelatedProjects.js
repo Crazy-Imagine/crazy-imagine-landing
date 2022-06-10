@@ -102,32 +102,32 @@ const RelatedProjects = () => {
   return (
     <StaticQuery
       query={graphql`
-        query {
-          homePage: strapiHomepage {
-            projectsImage {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
-                }
+      query {
+        homePage: strapiHomepage {
+          projectsImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
               }
             }
           }
-          projects: allStrapiProjects(limit: 8) {
-            nodes {
-              title
-              slug
-              description
-              id
-              images {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(quality: 30, height: 210)
-                  }
+        }
+        projects: allStrapiProjects(limit: 8) {
+          nodes {
+            title
+            slug
+            description
+            id
+            images {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(quality: 30, height: 210)
                 }
               }
             }
           }
         }
+      }
       `}
       render={data => {
         const projects = data.projects.nodes

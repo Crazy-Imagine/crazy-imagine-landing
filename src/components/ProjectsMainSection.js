@@ -63,20 +63,20 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectsMainSection = () => {
   const data = useStaticQuery(graphql`
-    query {
-      projects: allStrapiProjectsPage {
-        nodes {
-          mainTitle
-          image {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(quality: 5)
-              }
+  query {
+    projects: allStrapiProjectsPage {
+      nodes {
+        mainTitle
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 5)
             }
           }
         }
       }
     }
+  }
   `)
   const project = data.projects.nodes[0]
   const image = getImage(project.image.localFile)

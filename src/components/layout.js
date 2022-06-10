@@ -6,22 +6,19 @@ import Seo from "./seo"
 const Layout = ({ children, seo }) => (
   <StaticQuery
     query={graphql`
-      query {
-        strapiHomepage {
-          seo {
-            metaTitle
-            metaDescription
-            shareImage {
-              localFile {
-                publicURL
-                childImageSharp {
-                  gatsbyImageData(quality: 5)
-                }
-              }
+    query {
+      strapiHomepage {
+        seo {
+          metaTitle
+          metaDescription
+          shareImage {
+            localFile {
+              publicURL
             }
           }
         }
       }
+    }
     `}
     render={data => (
       <>
