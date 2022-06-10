@@ -108,12 +108,6 @@ const RelatedProjects = () => {
               localFile {
                 childImageSharp {
                   gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
-                  fluid (maxWidth: 300, maxHeight: 480){
-                    src
-                    srcSet
-                    sizes
-                    srcWebp
-                  }
                 }
               }
             }
@@ -128,12 +122,6 @@ const RelatedProjects = () => {
                 localFile {
                   childImageSharp {
                     gatsbyImageData(quality: 30, height: 210)
-                    fluid (maxWidth: 30, maxHeight: 210){
-                      src
-                      srcSet
-                      sizes
-                      srcWebp
-                    }
                   }
                 }
               }

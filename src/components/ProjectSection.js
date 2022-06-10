@@ -303,12 +303,6 @@ const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(quality: 30)
-              fluid (maxWidth: 300, maxHeight: 480){
-                src
-                srcSet
-                sizes
-                srcWebp
-              }
             }
           }
         }

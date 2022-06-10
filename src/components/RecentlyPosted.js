@@ -106,12 +106,6 @@ const RecentlyPosted = () => {
                         layout: CONSTRAINED
                         quality: 5
                       )
-                      fluid (maxWidth: 72, maxHeight: 76){
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                      }
                     }
                   }
                 }

@@ -117,12 +117,6 @@ const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-              fluid (maxWidth: 300, maxHeight: 480){
-                src
-                srcSet
-                sizes
-                srcWebp
-              }
             }
           }
         }
@@ -130,12 +124,6 @@ const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-              fluid (maxWidth: 300, maxHeight: 480){
-                src
-                srcSet
-                sizes
-                srcWebp
-              }
             }
           }
         }
