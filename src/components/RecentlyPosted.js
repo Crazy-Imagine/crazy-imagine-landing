@@ -87,32 +87,32 @@ const RecentlyPosted = () => {
   return (
     <StaticQuery
       query={graphql`
-        query {
-          article: allStrapiArticle {
-            edges {
-              node {
-                id
-                description
-                title
-                slug
-                created_at
-                image {
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(
-                        width: 72
-                        height: 76
-                        placeholder: BLURRED
-                        layout: CONSTRAINED
-                        quality: 5
-                      )
-                    }
+      query {
+        article: allStrapiArticle {
+          edges {
+            node {
+              id
+              description
+              title
+              slug
+              created_at
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(
+                      width: 72
+                      height: 76
+                      placeholder: BLURRED
+                      layout: CONSTRAINED
+                      quality: 5
+                    )
                   }
                 }
               }
             }
           }
         }
+      }
       `}
       render={data => {
         const articles = data.article.edges

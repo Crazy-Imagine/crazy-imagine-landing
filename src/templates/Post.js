@@ -181,46 +181,46 @@ const Post = ({ data }) => {
 }
 
 export const query = graphql`
-  query Article($id: String!) {
-    article: strapiArticle(id: { eq: $id }) {
-      title
+query Article($id: String!) {
+  article: strapiArticle(id: { eq: $id }) {
+    title
+    id
+    description
+    content
+    author {
+      name
+    }
+    seo {
       id
-      description
-      content
-      author {
-        name
-      }
-      seo {
-        id
-        metaDescription
-        metaTitle
-        shareImage {
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(quality: 5)
-            }
-          }
-        }
-      }
-      image {
+      metaDescription
+      metaTitle
+      shareImage {
         localFile {
+          publicURL
           childImageSharp {
-            gatsbyImageData(
-              width: 800
-              placeholder: BLURRED
-              layout: CONSTRAINED
-              quality: 30
-            )
+            gatsbyImageData(quality: 5)
           }
         }
-      }
-      category {
-        name
-        created_at(formatString: "DD MMMM, YYYY")
       }
     }
+    image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(
+            width: 800
+            placeholder: BLURRED
+            layout: CONSTRAINED
+            quality: 30
+          )
+        }
+      }
+    }
+    category {
+      name
+      created_at(formatString: "DD MMMM, YYYY")
+    }
   }
+}
 `
 
 export default Post

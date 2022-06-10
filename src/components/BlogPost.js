@@ -103,30 +103,30 @@ const BlogPost = ({ bulletClass }) => {
   return (
     <StaticQuery
       query={graphql`
-        query {
-          articles: allStrapiArticle {
-            edges {
-              node {
-                id
-                description
-                title
-                slug
-                created_at
-                author {
-                  name
+      query {
+        articles: allStrapiArticle {
+          edges {
+            node {
+              id
+              description
+              title
+              slug
+              created_at
+              author {
+                name
+              }
+              image {
+                localFile {
+                  publicURL
                 }
-                image {
-                  localFile {
-                    publicURL
-                  }
-                }
-                category {
-                  name
-                }
+              }
+              category {
+                name
               }
             }
           }
         }
+      }
       `}
       render={data => {
         const articles = data.articles.edges

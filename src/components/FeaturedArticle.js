@@ -200,33 +200,33 @@ const FeaturedArticle = () => {
   return (
     <StaticQuery
       query={graphql`
-        query {
-          articles: allStrapiArticle {
-            edges {
-              node {
-                id
-                description
-                title
-                slug
-                created_at
-                author {
-                  name
-                }
-                image {
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      gatsbyImageData(quality: 5)
-                    }
+      query {
+        articles: allStrapiArticle {
+          edges {
+            node {
+              id
+              description
+              title
+              slug
+              created_at
+              author {
+                name
+              }
+              image {
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    gatsbyImageData(quality: 5)
                   }
                 }
-                category {
-                  name
-                }
+              }
+              category {
+                name
               }
             }
           }
         }
+      }
       `}
       render={data => {
         const articles = data.articles.edges

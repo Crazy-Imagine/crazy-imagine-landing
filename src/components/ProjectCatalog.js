@@ -20,21 +20,21 @@ const ProjectCatalog = () => {
 }
 
 const query = graphql`
-  query {
-    projects: allStrapiProjects {
-      nodes {
-        id
-        slug
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
+query {
+  projects: allStrapiProjects {
+    nodes {
+      id
+      slug
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
       }
     }
   }
+}
 `
 
 export default ProjectCatalog

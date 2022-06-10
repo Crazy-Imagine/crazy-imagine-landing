@@ -89,28 +89,28 @@ const OurProjects = () => {
 }
 
 const query = graphql`
-  query {
-    projects: allStrapiProjectsPage {
-      nodes {
-        title: ourProjectsTitle
-        description: outProjectsDescription
-        bgImage: ourProjectsImage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
+query {
+  projects: allStrapiProjectsPage {
+    nodes {
+      title: ourProjectsTitle
+      description: outProjectsDescription
+      bgImage: ourProjectsImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
-        bgImageTitle: imageTitle {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
+      }
+      bgImageTitle: imageTitle {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
       }
     }
   }
+}
 `
 
 export default OurProjects

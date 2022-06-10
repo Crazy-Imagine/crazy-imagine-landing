@@ -269,32 +269,32 @@ const BlogArticle = () => {
   return (
     <StaticQuery
       query={graphql`
-        query {
-          articles: allStrapiArticle {
-            edges {
-              node {
-                id
-                description
-                title
-                slug
-                created_at
-                author {
-                  name
-                }
-                image {
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(quality: 65)
-                    }
+      query {
+        articles: allStrapiArticle {
+          edges {
+            node {
+              id
+              description
+              title
+              slug
+              created_at
+              author {
+                name
+              }
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(quality: 65)
                   }
                 }
-                category {
-                  name
-                }
+              }
+              category {
+                name
               }
             }
           }
         }
+      }
       `}
       render={data => {
         const articles = data.articles.edges
@@ -321,7 +321,13 @@ const BlogArticle = () => {
 
                   <GatsbyImage
                     image={getImage(node.image[0].localFile)}
+                    imgStyle={{
+                      maxWidth: "480px",
+                      maxHeight: "300px",
+
+                    }}
                     alt="Blog"
+
                   />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>

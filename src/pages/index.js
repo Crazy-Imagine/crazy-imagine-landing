@@ -48,7 +48,7 @@ const IndexPage = () => {
                 <HomeDescription />
                 <CapabilitiesSection />
                 <ReferenceSection />
-                <ProjectSection title={"Previous Projects"} btn={true} />
+                <ProjectSection title={"Previous Projects"} btn={true} size={true} />
                 <LastestPosts />
                 <ContactSection bgColor="#FFFFFF" />
               </main>
@@ -65,39 +65,39 @@ const IndexPage = () => {
 }
 
 const query = graphql`
-  query {
-    allStrapiArticle {
-      nodes {
-        id
-        description
-        author {
-          name
-        }
-        title
+query {
+  allStrapiArticle {
+    nodes {
+      id
+      description
+      author {
+        name
       }
+      title
     }
-    allStrapiHomepage {
-      nodes {
-        seo {
-          id
-          metaDescription
-          metaTitle
-          shareImage {
-            localFile {
-              publicURL
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-              }
+  }
+  allStrapiHomepage {
+    nodes {
+      seo {
+        id
+        metaDescription
+        metaTitle
+        shareImage {
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
             }
           }
         }
-        hero {
-          id
-          title
-        }
+      }
+      hero {
+        id
+        title
       }
     }
   }
+}
 `
 
 export default IndexPage

@@ -110,26 +110,26 @@ const ProjectsContact = () => {
 }
 
 const query = graphql`
-  query MyQuery {
-    projects: allStrapiProjectsPage {
-      nodes {
-        images: projectContactImg {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
+query MyQuery {
+  projects: allStrapiProjectsPage {
+    nodes {
+      images: projectContactImg {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
-        imageContact: imgContact {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
+      }
+      imageContact: imgContact {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
           }
         }
       }
     }
   }
+}
 `
 
 export default ProjectsContact
