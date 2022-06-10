@@ -32,11 +32,21 @@ const useStyles = makeStyles(theme => ({
     background: "#FFFFFF",
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     borderRadius: "14px",
+    [theme.breakpoints.down("md")]: {
+      width: "55%",
+      height: "auto",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "45%",
       height: "auto",
     },
     [theme.breakpoints.down("xs")]: {
+      width: "55%",
+    },
+    [theme.breakpoints.between(0, 420)]: {
+      width: "65%",
+    },
+    [theme.breakpoints.between(0, 380)]: {
       width: "75%",
     },
   },

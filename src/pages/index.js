@@ -48,7 +48,7 @@ const IndexPage = () => {
                 <HomeDescription />
                 <CapabilitiesSection />
                 <ReferenceSection />
-                <ProjectSection title={"Previous Projects"} btn={true} />
+                <ProjectSection title={"Previous Projects"} btn={true} size={true} />
                 <LastestPosts />
                 <ContactSection bgColor="#FFFFFF" />
               </main>

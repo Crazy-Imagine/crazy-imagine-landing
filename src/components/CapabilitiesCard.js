@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       alignSelf: "center",
-      width: "65%",
+      width: "75%",
     },
   },
   "@keyframes myEffect": {

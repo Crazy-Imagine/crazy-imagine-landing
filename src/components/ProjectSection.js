@@ -151,6 +151,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "20px",
       lineHeight: "20px",
     },
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "18px",
+      fontSize: "18px",
+      lineHeight: "18px",
+      width: "90%",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    },
     [theme.breakpoints.between(0, 300)]: {
       fontWeight: "18px",
       fontSize: "18px",
@@ -192,7 +201,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectSection = ({ title, btn }) => {
+const ProjectSection = ({ title, btn, size }) => {
   const classes = useStyles({ btn })
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
@@ -202,7 +211,11 @@ const ProjectSection = ({ title, btn }) => {
     <StaticQuery
       query={query}
       render={data => {
-        const projects = data.projects.nodes.slice(0, 4)
+        let projects = data.projects.nodes
+
+        if (size) {
+          projects = projects.slice(0, 4)
+        }
 
         return (
           <Box ref={ref} className={classes.container}>

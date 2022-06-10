@@ -21,7 +21,7 @@ const SEO = ({ seo = {} }) => {
           content: fullSeo.metaTitle,
         },
         {
-          name: "twitter:title",
+          name: "title",
           content: fullSeo.metaTitle,
         }
       );
@@ -34,10 +34,6 @@ const SEO = ({ seo = {} }) => {
         },
         {
           property: "og:description",
-          content: fullSeo.metaDescription,
-        },
-        {
-          name: "twitter:description",
           content: fullSeo.metaDescription,
         }
       );
@@ -55,10 +51,6 @@ const SEO = ({ seo = {} }) => {
         {
           property: "og:image",
           content: imageUrl,
-        },
-        {
-          name: "twitter:image",
-          content: imageUrl,
         }
       );
     }
@@ -68,9 +60,8 @@ const SEO = ({ seo = {} }) => {
         content: "article",
       });
     }
-    tags.push({ name: "twitter:card", content: "summary_large_image" });
-    tags.push({ name: "keywords", content: "crazy, developer, software, work, programming" });
-
+    tags.push({ name: "keywords", content: "crazy imagine, developer, software, work, Full-stack Development, programming, user Experience, quality support " });
+    tags.push({ name: "author", content: "Crazy Imagine" });
     return tags;
   };
 

@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
       gap: "9px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "65%",
+      width: "50%",
     },
   },
   titleContainer: {

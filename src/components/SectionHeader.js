@@ -18,19 +18,28 @@ const useStyles = makeStyles(theme => ({
     height: props.little ? "332px" : "530px",
     [theme.breakpoints.down("md")]: {
       height: "auto",
+      paddingTop: "10px",
+      marginTop: "10px",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "50px",
+      height: props.little ? "312px" : "290px",
     },
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
-      height: props.little ? "232px" : "auto",
-      width: "88%",
-      flexDirection: "column",
-    },
-    [theme.breakpoints.between(400, 0)]: {
-      flexDirection: "column",
       height: "auto",
+      //width: "99%",
+      width: "100%",
+      borderRadius: "0px",
+      //flexDirection: "column",
+    },
+    [theme.breakpoints.between(450, 350)]: {
+      //flexDirection: "column",
+      height: props.little ? "257px" : "235px",
+    },
+    [theme.breakpoints.between(350, 0)]: {
+      //flexDirection: "column",
+      height: props.little ? "237px" : "215px",
     },
   }),
   backgroundOut: props => ({
@@ -89,18 +98,21 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "3px 3px 3px 3px",
+      padding: "6px 6px 6px 6px",
       "& > span": {
-        fontSize: "12px",
+        fontSize: "10px",
         lineHeight: "inherit",
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "3px 3px 3px 3px",
+      padding: "5px 5px 5px 5px",
+      border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "9px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
+      //visibility: "hidden",
+      //display: "none",
     },
   },
   buttonRight: {
@@ -130,20 +142,22 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "4px 3px 3px 3px",
+      padding: "7px 7px 7px 7px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "12px",
+        fontSize: "10px",
         lineHeight: "inherit",
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "4px 3px 3px 3px",
+      padding: "5px 5px 5px 5px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "9px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
+      //visibility: "hidden",
+      //display: "none",
     },
   },
   buttonContainer: {
@@ -154,8 +168,8 @@ const useStyles = makeStyles(theme => ({
       gap: "3px",
     },
     [theme.breakpoints.down("xs")]: {
-      gap: "15px",
-      marginBototm: "5px",
+      gap: "5px",
+      marginBottom: "5px",
     },
   },
   textContainer: props => ({
@@ -173,13 +187,15 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "40px 0px 40px 40px",
+      padding: "20px 0px 20px 50px",
       width: "100%",
-      alignItems: "center",
+      //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px 0px 20px 10px",
+      padding: "10px 0px 10px 20px",
       width: "100%",
+      gap: "22px",
+      justifyContent: "center",
     },
   }),
   imgContainer: props => ({
@@ -188,24 +204,27 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
     [theme.breakpoints.down("sm")]: {
-      visibility: "hidden",
-      display: "none",
-      width: "0px",
+      //visibility: "hidden",
+      //display: "none",
+      //width: "0px",
+      marginRight: props.little ? "50px" : "0px",
     },
     [theme.breakpoints.down("xs")]: {
-      visibility: "hidden",
-      width: "0%",
+      //visibility: "hidden",
+      //width: "0%",
+      marginRight: props.little ? "10px" : "0px",
     },
   }),
   img: {
     animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      display: "none",
+      width: "200%",
+      //display: "none",
     },
     [theme.breakpoints.down("xs")]: {
-      visibility: "hidden",
-      display: "none",
+      width: "300%",
+      //visibility: "hidden",
+      //display: "none",
     },
   },
   "@keyframes myEffect": {
@@ -232,25 +251,25 @@ const useStyles = makeStyles(theme => ({
       fontSize: "58px",
     },
     [theme.breakpoints.down("sm")]: {
-      lineHeight: props.little ? "71px" : "50px",
-      fontSize: props.little ? "61px" : "40px",
-      fontWeight: props.little ? 700 : 500,
+      lineHeight: props.little ? "61px" : "40px",
+      fontSize: props.little ? "51px" : "30px",
+      fontWeight: props.little ? 600 : 400,
     },
     [theme.breakpoints.down("xs")]: {
       whiteSpace: "normal",
-      textAlign: "center",
-      lineHeight: props.little ? "61px" : "50px",
-      fontSize: props.little ? "43px" : "40px",
+      //textAlign: "center",
+      lineHeight: props.little ? "51px" : "40px",
+      fontSize: props.little ? "23px" : "30px",
       fontWeight: 100,
     },
     [theme.breakpoints.between(0, 400)]: {
-      lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "26px" : "30px",
+      lineHeight: props.little ? "41px" : "30px",
+      fontSize: props.little ? "21px" : "25px",
       fontWeight: 100,
     },
     [theme.breakpoints.between(0, 350)]: {
-      lineHeight: props.little ? "41px" : "30px",
-      fontSize: props.little ? "23px" : "20px",
+      lineHeight: props.little ? "31px" : "20px",
+      fontSize: props.little ? "21px" : "20px",
       fontWeight: 100,
     },
   }),
@@ -267,7 +286,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
       lineHeight: "inherit",
-      textAlign: "center",
+      //textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
