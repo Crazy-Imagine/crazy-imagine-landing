@@ -216,7 +216,7 @@ const FeaturedArticle = () => {
                 localFile {
                   publicURL
                   childImageSharp {
-                    gatsbyImageData(quality: 5)
+                    gatsbyImageData(quality: 25)
                   }
                 }
               }
