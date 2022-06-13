@@ -26,31 +26,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    marginTop: "84px",
-    textAlign: "center",
-    color: "#193173",
-    marginBottom: "47px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-      marginTop: "55px",
-      marginBottom: "33px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "22px",
-      lineHeight: "22px",
-      marginTop: "34px",
-      marginBottom: "20px",
-    },
-    [theme.breakpoints.between(450, 0)]: {
-      fontSize: "10px",
-      lineHeight: "10px",
-    },
   },
   title2: {
     animation: `$myEffect 2000ms`,

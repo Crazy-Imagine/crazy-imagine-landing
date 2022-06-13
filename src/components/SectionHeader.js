@@ -111,8 +111,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: "8px",
         lineHeight: "inherit",
       },
-      //visibility: "hidden",
-      //display: "none",
     },
   },
   buttonRight: {
@@ -156,8 +154,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: "8px",
         lineHeight: "inherit",
       },
-      //visibility: "hidden",
-      //display: "none",
     },
   },
   buttonContainer: {
@@ -204,14 +200,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
     [theme.breakpoints.down("sm")]: {
-      //visibility: "hidden",
-      //display: "none",
-      //width: "0px",
       marginRight: props.little ? "50px" : "0px",
     },
     [theme.breakpoints.down("xs")]: {
-      //visibility: "hidden",
-      //width: "0%",
       marginRight: props.little ? "10px" : "0px",
     },
   }),
@@ -219,12 +210,9 @@ const useStyles = makeStyles(theme => ({
     animation: `$myEffect 2000ms`,
     [theme.breakpoints.down("sm")]: {
       width: "200%",
-      //display: "none",
     },
     [theme.breakpoints.down("xs")]: {
       width: "300%",
-      //visibility: "hidden",
-      //display: "none",
     },
   },
   "@keyframes myEffect": {

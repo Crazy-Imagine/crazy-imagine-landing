@@ -9,19 +9,6 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyes = makeStyles(theme => ({
   title: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginTop: "78px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineWeight: "28px",
-      marginTop: "55px",
-    },
   },
   title2: {
     animation: `$myEffect 2000ms`,
@@ -65,19 +52,6 @@ const useStyes = makeStyles(theme => ({
   },
   link: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "15px",
-    textAlign: "center",
-    lineHeight: "15px",
-    letterspacing: "0.1em",
-    color: "#888DFF",
-    marginBottom: "auto",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
-      lineHeight: "11px",
-    },
   },
   link2: {
     animation: `$myEffectos 5000ms`,

@@ -104,26 +104,6 @@ const useStyles = makeStyles(theme => ({
   },
   formContainer: {
     visibility: "hidden",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "20px",
-    backgroundColor: "rgba(235, 235, 235, 0.4)",
-    marginTop: "94px",
-    borderRadius: "14px 14px 0px 0px",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "66px",
-      padding: "12px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "30px",
-      padding: "8px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
-      padding: "4px",
-    },
   },
   formContainer2: {
     animation: `$myEffect 2000ms`,

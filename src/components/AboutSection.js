@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const AboutSection = ({ setY }) => {
+const AboutSection = () => {
   const classes = useStyles()
   return (
     <>
@@ -35,7 +35,6 @@ const AboutSection = ({ setY }) => {
           desc="Collaboration with our internal team as well as with our clients sets our work apart from the pack. 
                 Our commitment to communication as well as accountability drives us towards innovation and unrivaled quality."
           img={aboutImage1}
-          setY={setY}
         />
       </Box>
     </>

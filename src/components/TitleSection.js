@@ -97,17 +97,6 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     visibility: "hidden",
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-      height: "70%",
-      alignItems: "center",
-    },
-    [theme.breakpoints.between(200, 600)]: {
-      width: "45%",
-    },
-    [theme.breakpoints.between(0, 200)]: {
-      width: "55%",
-    },
   },
   img2: {
     animation: `$myEffect 2000ms`,
