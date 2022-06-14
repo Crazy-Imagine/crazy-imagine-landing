@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import Swal from "sweetalert2"
 import { Box, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField"
 import Checkbox from "@material-ui/core/Checkbox"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import { useForm, ValidationError } from "@formspree/react"
-//import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -145,33 +145,42 @@ const useStyles = makeStyles(theme => ({
 
 const ContactForm = () => {
   const classes = useStyles({})
-  //const form = useRef();
-  const [state, handleSubmit] = useForm("myyogzrz")
+  const form = useRef();
 
-  /*const sendEmail = (e) => {
+  //const [state, handleSubmit] = useForm("myyogzrz")
+
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_7qbw35m', 'template_js1fue8', form.current, 'kLVvPJBEhIKcTATUr')
+    emailjs.sendForm('service_idrfktg', 'template_d6gox3w', form.current, 'Yj5TqwauXSazzj4UJ')
       .then((result) => {
-        return Swal.fire(
+        Swal.fire(
           "Thank You!",
           "Your submission has been received",
           "Success"
         )
-        console.log(result.text);
+        for (const formu of document.getElementsByTagName("form")) {
+          formu.reset()
+        }
+        //console.log(result.text);
       }, (error) => {
-        return Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Something went wrong!",
         })
-        console.log(error.text);
+        //console.log(error.text);
       });
-  };*/
+  };
 
+  /*
   const handleClick = newState => {
+    console.log("state", state)
+
     window.onbeforeunload = () => {
+
       for (const form of document.getElementsByTagName("form")) {
+
         setTimeout(() => {
           if (!state.succeeded) {
             return Swal.fire({
@@ -194,11 +203,11 @@ const ContactForm = () => {
         "Success"
       )
     }
-  }
+  } */
 
   return (
     <Box className={classes.formContainer}>
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={sendEmail}>
         <Box className={classes.inputContainer}>
           <Box className={classes.divider}>
             <TextField
@@ -234,7 +243,7 @@ const ContactForm = () => {
           <ValidationError
             prefix="Message"
             field="message"
-            errors={state.errors}
+          //errors={state.errors}
           />
           <FormControlLabel
             value="end"
@@ -245,9 +254,9 @@ const ContactForm = () => {
           />
           <Button
             className={classes.formButton}
-            disabled={state.submitting}
+            //disabled={state.submitting}
             type="submit"
-            onClick={() => handleClick()}
+          //onClick={() => handleClick()}
           >
             CONTACT US
           </Button>
