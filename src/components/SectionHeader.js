@@ -105,10 +105,10 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "5px 5px 5px 5px",
+      padding: "3px 3px 3px 3px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "7px",
         lineHeight: "inherit",
       },
     },
@@ -140,18 +140,18 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "7px 7px 7px 7px",
-      border: "1px solid #FFFFFF",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
       padding: "5px 5px 5px 5px",
       border: "1px solid #FFFFFF",
       "& > span": {
         fontSize: "8px",
+        lineHeight: "inherit",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "4px 4px 4px 4px",
+      border: "1px solid #FFFFFF",
+      "& > span": {
+        fontSize: "7px",
         lineHeight: "inherit",
       },
     },
@@ -164,7 +164,7 @@ const useStyles = makeStyles(theme => ({
       gap: "3px",
     },
     [theme.breakpoints.down("xs")]: {
-      gap: "5px",
+      gap: "3px",
       marginBottom: "5px",
     },
   },
@@ -208,6 +208,12 @@ const useStyles = makeStyles(theme => ({
   }),
   img: {
     animation: `$myEffect 2000ms`,
+    width: "307px",
+    height: "407px",
+    [theme.breakpoints.down("lg")]: {
+      width: "auto",
+      height: "auto",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "200%",
     },

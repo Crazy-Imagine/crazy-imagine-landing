@@ -64,6 +64,14 @@ const useStyles = makeStyles(theme => ({
     //animation: `$myEffecto 2000ms`,
     marginTop: "auto",
   },
+  imag: {
+    width: "352px",
+    height: "234px",
+    [theme.breakpoints.down("lg")]: {
+      width: "auto",
+      height: "auto",
+    },
+  },
   container: {
     display: "flex",
     justifyContent: "space-between",
@@ -108,7 +116,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             {`We Can Create`}
           </Typography>
           <Box className={classes.img2}>
-            <StaticImage src="../images/satelite.svg" style={{ width: "100%", height: "100%" }} />
+            <StaticImage src="../images/satelite.svg" className={classes.imag} />
           </Box>
         </Box>
         <ContactForm />

@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField"
 import Checkbox from "@material-ui/core/Checkbox"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import { useForm, ValidationError } from "@formspree/react"
+//import emailjs from '@emailjs/browser';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -144,7 +145,29 @@ const useStyles = makeStyles(theme => ({
 
 const ContactForm = () => {
   const classes = useStyles({})
+  //const form = useRef();
   const [state, handleSubmit] = useForm("myyogzrz")
+
+  /*const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_7qbw35m', 'template_js1fue8', form.current, 'kLVvPJBEhIKcTATUr')
+      .then((result) => {
+        return Swal.fire(
+          "Thank You!",
+          "Your submission has been received",
+          "Success"
+        )
+        console.log(result.text);
+      }, (error) => {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        })
+        console.log(error.text);
+      });
+  };*/
 
   const handleClick = newState => {
     window.onbeforeunload = () => {
@@ -162,7 +185,9 @@ const ContactForm = () => {
       }
     }
     window.onbeforeunload()
+
     if (state.succeeded) {
+
       return Swal.fire(
         "Thank You!",
         "Your submission has been received",

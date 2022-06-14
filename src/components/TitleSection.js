@@ -100,6 +100,12 @@ const useStyles = makeStyles(theme => ({
   },
   img2: {
     animation: `$myEffect 2000ms`,
+    width: "314px",
+    height: "357px",
+    [theme.breakpoints.down("lg")]: {
+      width: "auto",
+      height: "auto",
+    },
     [theme.breakpoints.down("md")]: {
       width: "70%",
       height: "70%",
