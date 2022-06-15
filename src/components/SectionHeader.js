@@ -155,7 +155,7 @@ const useStyles = makeStyles(theme => ({
       border: "1px solid #FFFFFF",
       borderRadius: "8px",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "7px",
         lineHeight: "inherit",
       },
     },
@@ -168,7 +168,7 @@ const useStyles = makeStyles(theme => ({
       gap: "3px",
     },
     [theme.breakpoints.down("xs")]: {
-      gap: "3px",
+      gap: "5px",
       marginBottom: "5px",
     },
   },
@@ -192,7 +192,7 @@ const useStyles = makeStyles(theme => ({
       //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px 0px 10px 15px",
+      padding: "10px 0px 10px 10px",
       width: "100%",
       gap: "14px",
       justifyContent: "center",
@@ -288,7 +288,7 @@ const useStyles = makeStyles(theme => ({
       //textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "12.5px",
+      fontSize: "11px",
       lineHeight: "inherit",
     },
   }),
