@@ -32,6 +32,8 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       borderRadius: "0px",
       //flexDirection: "column",
+      background: props.little ? "#27AAE1" : "transparent",
+
     },
     [theme.breakpoints.between(450, 350)]: {
       //flexDirection: "column",
@@ -107,8 +109,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       padding: "3px 3px 3px 3px",
       border: "1px solid #FFFFFF",
+      borderRadius: "8px",
       "& > span": {
-        fontSize: "7px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
     },
@@ -150,8 +153,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       padding: "4px 4px 4px 4px",
       border: "1px solid #FFFFFF",
+      borderRadius: "8px",
       "& > span": {
-        fontSize: "7px",
+        fontSize: "8px",
         lineHeight: "inherit",
       },
     },
@@ -188,10 +192,11 @@ const useStyles = makeStyles(theme => ({
       //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px 0px 10px 20px",
+      padding: "10px 0px 10px 15px",
       width: "100%",
-      gap: "22px",
+      gap: "14px",
       justifyContent: "center",
+      background: props.little ? "#27AAE1" : "transparent",
     },
   }),
   imgContainer: props => ({
@@ -210,7 +215,7 @@ const useStyles = makeStyles(theme => ({
     animation: `$myEffect 2000ms`,
     width: "307px",
     height: "407px",
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down("xl")]: {
       width: "auto",
       height: "auto",
     },
@@ -283,7 +288,7 @@ const useStyles = makeStyles(theme => ({
       //textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
+      fontSize: "12.5px",
       lineHeight: "inherit",
     },
   }),
