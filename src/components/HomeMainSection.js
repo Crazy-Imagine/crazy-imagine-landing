@@ -35,35 +35,6 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     visibility: "hidden",
-    background: "#797EF6",
-    borderRadius: "100px",
-    marginBottom: "87px",
-    marginTop: "48px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "61px",
-      marginTop: "34px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "14px",
-        padding: "10px 14px 8px 14px",
-      },
-    },
   },
   button2: {
     animation: `$myEffect 2000ms`,

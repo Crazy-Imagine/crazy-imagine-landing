@@ -9,24 +9,6 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyles = makeStyles(theme => ({
   container: {
     visibility: "hidden",
-    background: "#FFFFFF",
-    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
-    padding: "29px 20px 29px 20px",
-    borderRadius: "14px",
-    width: "250px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    gap: "22px",
-    alignItems: "center",
-    [theme.breakpoints.down("md")]: {
-      width: "175px",
-      gap: "15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      alignSelf: "center",
-      width: "65%",
-    },
   },
   container2: {
     animation: `$myEffect 2000ms`,

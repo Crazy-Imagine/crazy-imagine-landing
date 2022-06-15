@@ -18,13 +18,16 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    height: "inherit",
+
     width: "450px",
+    height: "368px",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
+      height: "inherit",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "13px",
+
     },
   },
   title: {
@@ -78,8 +81,10 @@ const useStyes = makeStyles(theme => ({
   },
   img: {
     backgroundColor: "#27AAE1",
+    with: "450px",
     height: "210px",
     [theme.breakpoints.down("md")]: {
+      width: "387px",
       height: "147px",
     },
   },
@@ -118,6 +123,9 @@ const BlogPost = ({ bulletClass }) => {
               image {
                 localFile {
                   publicURL
+                  childImageSharp {
+                    gatsbyImageData(quality: 5)
+                  }
                 }
               }
               category {

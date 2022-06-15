@@ -7,20 +7,6 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyes = makeStyles(theme => ({
   title: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    marginBottom: "50px",
-    color: "#FFFFFF",
-    whiteSpace: "pre-line",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-      marginBottom: "35px",
-    },
   },
   title2: {
     animation: `$myEffect 2000ms`,

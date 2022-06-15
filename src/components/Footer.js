@@ -123,7 +123,6 @@ const useStyles = makeStyles(theme => ({
       borderLeft: "0px solid #233B7E",
     },
     [theme.breakpoints.down("xs")]: {
-      //visibility: "hidden"
       padding: "4px 0px 4px 4px",
       marginBottom: "15px",
     },

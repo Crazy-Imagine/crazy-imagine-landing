@@ -6,21 +6,6 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyles = makeStyles(theme => ({
   container: {
     visibility: "hidden",
-    width: "470px",
-    height: "465px",
-    display: "flex",
-    flexDirection: "column",
-    justfiyContent: "center",
-    background: "#FFFFFF",
-    boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
-    borderRadius: "14px",
-    [theme.breakpoints.down("sm")]: {
-      width: "45%",
-      height: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "75%",
-    },
   },
   container2: {
     animation: `$myEffect 2000ms`,

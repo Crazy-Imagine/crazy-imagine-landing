@@ -8,16 +8,6 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyles = makeStyles(theme => ({
   title: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: 700,
-    fontSize: "40px",
-    lineHeight: "50px",
-    color: "#193174",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "25px",
-      lineHeight: "30px",
-    },
   },
   title2: {
     animation: `$myEffect 2000ms`,
@@ -44,18 +34,6 @@ const useStyles = makeStyles(theme => ({
   },
   subtitle: {
     visibility: "hidden",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: 700,
-    fontSize: "20px",
-    lineHeight: "20px",
-    letterSpacing: "0.1em",
-    textTransform: "uppercase",
-    color: "#797EF6",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
-    },
   },
   subtitle2: {
     animation: `$myEffect 2000ms`,
@@ -85,6 +63,14 @@ const useStyles = makeStyles(theme => ({
   img2: {
     //animation: `$myEffecto 2000ms`,
     marginTop: "auto",
+  },
+  imag: {
+    width: "352px",
+    height: "234px",
+    [theme.breakpoints.down("lg")]: {
+      width: "auto",
+      height: "auto",
+    },
   },
   container: {
     display: "flex",
@@ -130,7 +116,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             {`We Can Create`}
           </Typography>
           <Box className={classes.img2}>
-            <StaticImage src="../images/satelite.svg" style={{ width: "100%", height: "100%" }} />
+            <StaticImage src="../images/satelite.svg" className={classes.imag} />
           </Box>
         </Box>
         <ContactForm />

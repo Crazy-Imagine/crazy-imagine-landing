@@ -32,6 +32,8 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       borderRadius: "0px",
       //flexDirection: "column",
+      background: props.little ? "#27AAE1" : "transparent",
+
     },
     [theme.breakpoints.between(450, 350)]: {
       //flexDirection: "column",
@@ -105,14 +107,13 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "5px 5px 5px 5px",
+      padding: "3px 3px 3px 3px",
       border: "1px solid #FFFFFF",
+      borderRadius: "8px",
       "& > span": {
         fontSize: "8px",
         lineHeight: "inherit",
       },
-      //visibility: "hidden",
-      //display: "none",
     },
   },
   buttonRight: {
@@ -142,22 +143,21 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "7px 7px 7px 7px",
-      border: "1px solid #FFFFFF",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
       padding: "5px 5px 5px 5px",
       border: "1px solid #FFFFFF",
       "& > span": {
         fontSize: "8px",
         lineHeight: "inherit",
       },
-      //visibility: "hidden",
-      //display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "4px 4px 4px 4px",
+      border: "1px solid #FFFFFF",
+      borderRadius: "8px",
+      "& > span": {
+        fontSize: "7px",
+        lineHeight: "inherit",
+      },
     },
   },
   buttonContainer: {
@@ -192,10 +192,11 @@ const useStyles = makeStyles(theme => ({
       //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px 0px 10px 20px",
+      padding: "10px 0px 10px 10px",
       width: "100%",
-      gap: "22px",
+      gap: "14px",
       justifyContent: "center",
+      background: props.little ? "#27AAE1" : "transparent",
     },
   }),
   imgContainer: props => ({
@@ -204,27 +205,25 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
     [theme.breakpoints.down("sm")]: {
-      //visibility: "hidden",
-      //display: "none",
-      //width: "0px",
       marginRight: props.little ? "50px" : "0px",
     },
     [theme.breakpoints.down("xs")]: {
-      //visibility: "hidden",
-      //width: "0%",
       marginRight: props.little ? "10px" : "0px",
     },
   }),
   img: {
     animation: `$myEffect 2000ms`,
+    width: "307px",
+    height: "407px",
+    [theme.breakpoints.down("xl")]: {
+      width: "auto",
+      height: "auto",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "200%",
-      //display: "none",
     },
     [theme.breakpoints.down("xs")]: {
       width: "300%",
-      //visibility: "hidden",
-      //display: "none",
     },
   },
   "@keyframes myEffect": {
@@ -289,7 +288,7 @@ const useStyles = makeStyles(theme => ({
       //textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
+      fontSize: "11px",
       lineHeight: "inherit",
     },
   }),

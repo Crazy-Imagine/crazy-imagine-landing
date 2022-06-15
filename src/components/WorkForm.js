@@ -104,26 +104,6 @@ const useStyles = makeStyles(theme => ({
   },
   formContainer: {
     visibility: "hidden",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "20px",
-    backgroundColor: "rgba(235, 235, 235, 0.4)",
-    marginTop: "94px",
-    borderRadius: "14px 14px 0px 0px",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "66px",
-      padding: "12px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "30px",
-      padding: "8px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
-      padding: "4px",
-    },
   },
   formContainer2: {
     animation: `$myEffect 2000ms`,
@@ -326,6 +306,7 @@ const useStyles = makeStyles(theme => ({
 const WorkForm = () => {
   const classes = useStyles()
   const ref = useRef()
+  const fileRef = useRef()
   const isVisible = useIntersection(ref, "0px")
 
   const [showMessage, setShowMessage] = useState(false)
@@ -389,6 +370,8 @@ const WorkForm = () => {
     mode: "onChange",
   })
   const domain = process.env.API_URL || "http://localhost:1337"
+
+
 
   const onSubmitHandler = async data => {
     if (data.curriculum?.length === 1) {
@@ -545,13 +528,15 @@ const WorkForm = () => {
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
                 <span className={classes.attachLabel}>Resume/CV </span>
-                <span className={classes.attachButton} for="resume-btn">
+                <label className={classes.attachButton} htmlFor="resume-btn">
                   ATTACH
-                </span>
+                </label>
+                {/*<button className={classes.attachButton} onClick={() => fileRef.current.click()}>ATTACH</button>*/}
               </Box>
               <Input
                 type="file"
                 id="resume-btn"
+                ref={fileRef}
                 name="curriculum"
                 style={{ display: "none" }}
                 {...register("curriculum", {
@@ -561,26 +546,6 @@ const WorkForm = () => {
                   },
                 })}
               ></Input>
-
-              {/* <Box className={classes.attach} style={{ display: "none" }}>
-                <label className={classes.attachLabel}>Cover Letter</label>
-                <label className={classes.attachButton} for="file-upload">
-                  ATTACH
-                </label>
-              </Box>
-              <Input
-                type="file"
-                id="file-upload"
-                name="coverLetter"
-                style={{ display: "none" }}
-                {...register("coverLetter", {
-                  minLength: {
-                    value: 1,
-                    message: "Load a file",
-                  },
-                })}
-              ></Input>
-            */}
             </Box>
             <Alert
               severity="error"
@@ -603,18 +568,6 @@ const WorkForm = () => {
               label="How did you hear about Crazy Imagine?"
               name="reference"
             />
-            {/* <Alert
-              severity="error"
-              style={{
-                display: errors.cover !== undefined ? "inherit" : "none",
-                backgroundColor: "transparent",
-                color: "red",
-                fontSize: "0.845rem",
-                marginTop: 5,
-              }}
-            >
-              {errors.coverLetter?.message}
-            </Alert> */}
             <Alert
               severity={formStatus === "well" ? "success" : "error"}
               className={classes.successfullAlert}

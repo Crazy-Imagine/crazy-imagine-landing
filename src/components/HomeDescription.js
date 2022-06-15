@@ -25,11 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   textContainer: {
     visibility: "hidden",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "60%",
   },
   textContainer2: {
     animation: `$myEffect 2000ms`,
