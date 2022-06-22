@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-//import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -234,7 +234,7 @@ const ProjectSection = ({ title, btn, size }) => {
               {projects.map((el, index) => (
                 <SwiperSlide key={index} className={classes.slide}>
                   <Box className={classes.carouselContainer}>
-                    {/* <GatsbyImage
+                    <GatsbyImage
                       alt="About the project"
                       image={getImage(el.images[0].localFile)}
                       style={{
@@ -246,10 +246,11 @@ const ProjectSection = ({ title, btn, size }) => {
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
                       }}
-                    /> */}
+                    />
 
-                    <Box style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }}>
-                    </Box>
+                    {/* <Box style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }}>
+                    
+                  </Box>*/}
                     <Box className={classes.textContainer}>
                       <Typography className={classes.titleCarousel}>
                         {el.title}
@@ -274,7 +275,7 @@ const ProjectSection = ({ title, btn, size }) => {
                 </Link>
               )}
             </Swiper>
-          </Box>
+          </Box >
         )
       }}
     />
@@ -286,7 +287,6 @@ query {
   homePage: strapiHomepage {
     projectsImage {
       localFile {
-        publicURL
         childImageSharp {
           gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
         }
@@ -301,7 +301,6 @@ query {
       id
       images {
         localFile {
-          publicURL
           childImageSharp {
             gatsbyImageData(quality: 30)
           }
