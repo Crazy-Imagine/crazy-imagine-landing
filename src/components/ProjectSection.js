@@ -287,7 +287,6 @@ query {
     projectsImage {
       localFile {
         publicURL
-        url
         childImageSharp {
           gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 30)
         }
@@ -303,7 +302,6 @@ query {
       images {
         localFile {
           publicURL
-          url
           childImageSharp {
             gatsbyImageData(quality: 30)
           }
