@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+//import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -13,7 +13,7 @@ import "../css/swiper-bullet.css"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "850px",
+    height: "830px",
     //backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
