@@ -312,6 +312,7 @@ const WorkForm = () => {
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
+  const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -320,7 +321,7 @@ const WorkForm = () => {
         setAlertMessage("")
         setFormStatus("")
       }
-    }, 10000)
+    }, 1000)
 
     return () => {
       clearTimeout(timer)
@@ -353,7 +354,9 @@ const WorkForm = () => {
           function (value) {
             return value && value[0] && value[0].type === "application/pdf"
           }
-        ),
+        ).test("well", "File uploaded successfully", value => {
+          return
+        }),
       otherwise: yup.mixed(),
     }),
     reference: yup.string(),
@@ -392,7 +395,9 @@ const WorkForm = () => {
             curriculum: file,
           }
 
+          setShowButton(true)
           const res = await axios.post(`${domain}/curriculums`, sendData)
+          setShowButton(false)
 
           if (res.statusText === "OK") {
             setAlertMessage("Form has been send succesfully")
@@ -405,7 +410,6 @@ const WorkForm = () => {
           setShowMessage(true)
           setAlertMessage("There was an error trying to send your form")
           setFormStatus("bad")
-          //console.log(error)
         })
     } else {
       if (data.website !== "") {
@@ -418,7 +422,11 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
+
+        setShowButton(true)
         const res = await axios.post(`${domain}/curriculums`, sendData)
+        setShowButton(false)
+
         if (res.statusText === "OK") {
           setAlertMessage("Form has been send succesfully")
           setFormStatus("well")
@@ -548,10 +556,11 @@ const WorkForm = () => {
               ></Input>
             </Box>
             <Alert
-              severity="error"
+              severity={errors.curriculum?.message === "File uploaded successfully" ? "success" : "error"}
               className={classes.curriculumAlert}
               style={{
                 display: errors.curriculum !== undefined ? "inherit" : "none",
+                color: errors.curriculum?.message === "File uploaded successfully" ? "green" : "red"
               }}
             >
               {errors.curriculum?.message}
@@ -578,7 +587,7 @@ const WorkForm = () => {
             >
               {alertMessage}
             </Alert>
-            <Button className={classes.formButton} type="submit">
+            <Button className={classes.formButton} type="submit" disabled={showButton === true}>
               SUBMIT
             </Button>
           </Box>

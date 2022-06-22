@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "gatsby"
 import {
@@ -37,6 +36,7 @@ import {
   BLOG,
 } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
+import Image from "../images/crazy-imagine-icon.svg"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -163,8 +163,8 @@ const NavbarMobile = ({
             className={classes.navbarMobileResponsive}
           >
             <Link to={HOME}>
-              <StaticImage
-                src="../images/crazy-imagine-icon.svg"
+              <img
+                src={Image}
                 alt="logo"
                 className={classes.navbarLogo}
                 style={{ width: "100%", height: "100%" }}
@@ -190,8 +190,8 @@ const NavbarMobile = ({
         >
           <DrawerHeader style={{ justifyContent: "space-between" }}>
             <Link to={`${HOME}`} onClick={handleDrawerClose}>
-              <StaticImage
-                src="../images/crazy-imagine-icon.svg"
+              <img
+                src={Image}
                 alt="ss"
                 style={{ width: "100%", height: "100%" }}
               />

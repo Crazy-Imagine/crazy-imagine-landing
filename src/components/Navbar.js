@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/core/styles"
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core"
 import {
@@ -14,6 +13,7 @@ import {
 import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
+import Image from "../images/crazy-imagine-icon.svg"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -141,7 +141,7 @@ const Navbar = ({
       <Toolbar className={classes.root}>
         <Box class={classes.barContainer}>
           <Link to={HOME}>
-            <StaticImage src="../images/crazy-imagine-icon.svg" alt="logo" style={{ width: "100%", height: "100%" }} />
+            <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
           <Box className={classes.linkContainer}>
             <Typography>

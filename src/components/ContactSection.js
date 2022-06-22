@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { StaticImage } from "gatsby-plugin-image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
+import Image from "../images/satelite.svg"
 import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
@@ -116,7 +116,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
             {`We Can Create`}
           </Typography>
           <Box className={classes.img2}>
-            <StaticImage src="../images/satelite.svg" className={classes.imag} />
+            <img src={Image} className={classes.imag} alt="imagen" />
           </Box>
         </Box>
         <ContactForm />
