@@ -106,6 +106,7 @@ const RelatedProjects = () => {
         homePage: strapiHomepage {
           projectsImage {
             localFile {
+              publicURL
               childImageSharp {
                 gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
               }
@@ -120,6 +121,7 @@ const RelatedProjects = () => {
             id
             images {
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(quality: 30, height: 210)
                 }
