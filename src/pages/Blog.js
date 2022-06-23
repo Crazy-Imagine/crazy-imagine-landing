@@ -15,35 +15,39 @@ const Layout = lazy(() => import("../components/layout"))
 
 const Blog = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout seo={{ metaTitle: "The Latest in Tech Talk from our Team", metaDescription: "Articles" }} >
-        <PageWrapper>
-          <header>
-            <Hidden mdDown>
-              <Navbar variant="secondary" linkVariant="" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile variantIcons="primary" />
-            </Hidden>
-            <SectionHeader
-              title={`The Latest in Tech
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={{ metaTitle: "The Latest in Tech Talk from our Team", metaDescription: "Articles" }} >
+            <PageWrapper>
+              <header>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" linkVariant="" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile variantIcons="primary" />
+                </Hidden>
+                <SectionHeader
+                  title={`The Latest in Tech
         Talk from our Team`}
-              btn={false}
-              img={headerImage}
-              little={true}
-            />
-          </header>
-          <main>
-            <FeaturedArticle />
-            <BlogArticle />
-          </main>
-          <footer>
-            <Footer />
-            <Copyright />
-          </footer>
-        </PageWrapper>
-      </Layout>
-    </Suspense>
+                  btn={false}
+                  img={headerImage}
+                  little={true}
+                />
+              </header>
+              <main>
+                <FeaturedArticle />
+                <BlogArticle />
+              </main>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

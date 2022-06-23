@@ -19,39 +19,43 @@ const Layout = lazy(() => import("../components/layout"))
 const Projects = () => {
   const data = useStaticQuery(query)
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout seo={data.projectsPage.SEO}>
-        <PageWrapper>
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={data.projectsPage.SEO}>
+            <PageWrapper>
 
-          <Hidden mdDown>
-            <Navbar variant="secondary" />
-          </Hidden>
-          <Hidden lgUp>
-            <NavbarMobile />
-          </Hidden>
-          <Box overflow="hidden">
-            <header>
-              <SectionHeader
-                title={`Let Your Imagination
+              <Hidden mdDown>
+                <Navbar variant="secondary" />
+              </Hidden>
+              <Hidden lgUp>
+                <NavbarMobile />
+              </Hidden>
+              <Box overflow="hidden">
+                <header>
+                  <SectionHeader
+                    title={`Let Your Imagination
           Run Wild`}
-                img={headerImage}
-                btn={false}
-                little={true}
-              />
-            </header>
-            <main>
-              <ServicesSection />
-              <ProjectSection title={"Featured Projects"} btn={false} />
-              <ContactSection />
-            </main>
-            <footer>
-              <Footer />
-              <Copyright />
-            </footer>
-          </Box>
-        </PageWrapper>
-      </Layout>
-    </Suspense>
+                    img={headerImage}
+                    btn={false}
+                    little={true}
+                  />
+                </header>
+                <main>
+                  <ServicesSection />
+                  <ProjectSection title={"Featured Projects"} btn={false} />
+                  <ContactSection />
+                </main>
+                <footer>
+                  <Footer />
+                  <Copyright />
+                </footer>
+              </Box>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

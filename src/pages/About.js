@@ -15,35 +15,39 @@ const Layout = lazy(() => import("../components/layout"))
 
 const About = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout seo={{ metaTitle: "Our Team is Your Greatest Resource", metaDescription: "At CrazyImagine, our biggest strength is the quality of our team. We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive." }} >
-        <PageWrapper>
-          <header>
-            <Hidden mdDown>
-              <Navbar variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile variantIcons="primary" />
-            </Hidden>
-            <SectionHeader
-              title={`Our Team is Your
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={{ metaTitle: "Our Team is Your Greatest Resource", metaDescription: "At CrazyImagine, our biggest strength is the quality of our team. We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive." }} >
+            <PageWrapper>
+              <header>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile variantIcons="primary" />
+                </Hidden>
+                <SectionHeader
+                  title={`Our Team is Your
                 Greatest Resource`}
-              btn={false}
-              img={headerImage}
-              little={true}
-            />
-          </header>
-          <section>
-            <AboutSection />
-            <Imagen />
-          </section>
-          <footer>
-            <Footer />
-            <Copyright />
-          </footer>
-        </PageWrapper>
-      </Layout>
-    </Suspense>
+                  btn={false}
+                  img={headerImage}
+                  little={true}
+                />
+              </header>
+              <section>
+                <AboutSection />
+                <Imagen />
+              </section>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

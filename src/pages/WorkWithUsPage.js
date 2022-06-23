@@ -18,35 +18,39 @@ const Layout = lazy(() => import("../components/layout"))
 const WorkWithUsPage = () => {
   const data = useStaticQuery(query)
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout seo={data.workWithUs.SEO}>
-        <PageWrapper>
-          <header>
-            <Hidden mdDown>
-              <Navbar variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <SectionHeader
-              title={`Work With Us
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={data.workWithUs.SEO}>
+            <PageWrapper>
+              <header>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile />
+                </Hidden>
+                <SectionHeader
+                  title={`Work With Us
       At Crazy Imagine`}
-              btn={false}
-              little={true}
-              img={headerImage}
-            />
-          </header>
-          <main>
-            <WorkForm />
-            <Imagen />
-          </main>
-          <footer>
-            <Footer />
-            <Copyright />
-          </footer>
-        </PageWrapper>
-      </Layout>
-    </Suspense>
+                  btn={false}
+                  little={true}
+                  img={headerImage}
+                />
+              </header>
+              <main>
+                <WorkForm />
+                <Imagen />
+              </main>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

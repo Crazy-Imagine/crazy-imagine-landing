@@ -15,34 +15,38 @@ const Layout = lazy(() => import("../components/layout"))
 
 const Contact = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <Layout seo={{ metaTitle: "Imagine What We Can Create", metaDescription: "ContactUs" }} >
-        <PageWrapper>
-          <header>
-            <Hidden mdDown>
-              <Navbar variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile variantIcons="primary" />
-            </Hidden>
-            <SectionHeader
-              title={`Let's Imagine 
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={{ metaTitle: "Imagine What We Can Create", metaDescription: "ContactUs" }} >
+            <PageWrapper>
+              <header>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile variantIcons="primary" />
+                </Hidden>
+                <SectionHeader
+                  title={`Let's Imagine 
                 Together`}
-              btn={false}
-              img={headerImage}
-              little={true}
-            />
-          </header>
-          <main>
-            <ContactSection />
-          </main>
-          <footer>
-            <Footer />
-            <Copyright />
-          </footer>
-        </PageWrapper>
-      </Layout>
-    </Suspense>
+                  btn={false}
+                  img={headerImage}
+                  little={true}
+                />
+              </header>
+              <main>
+                <ContactSection />
+              </main>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

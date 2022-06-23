@@ -25,45 +25,47 @@ const IndexPage = () => {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
-          <PageWrapper>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
+            <PageWrapper>
 
-            <div ref={ref}>
-              <Hidden mdDown>
-                <Navbar variant="secondary" />
-              </Hidden>
-              <Hidden lgUp>
-                <NavbarMobile />
-              </Hidden>
-              <Box overflow="hidden">
-                <header>
-                  <SectionHeader
-                    title={`Ideas Beyond\nYour Imagination`}
-                    desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
-                    btn={true}
-                    img={headerImage}
-                    cls="textContainer"
-                  />
-                </header>
-                <main>
-                  <HomeMainSection />
-                  <HomeDescription />
-                  <CapabilitiesSection />
-                  <ReferenceSection />
-                  <ProjectSection title={"Previous Projects"} btn={true} size={true} />
-                  <LastestPosts />
-                  <ContactSection bgColor="#FFFFFF" />
-                </main>
-                <footer>
-                  <Footer />
-                  <Copyright />
-                </footer>
-              </Box>
-            </div>
-          </PageWrapper>
-        </Layout>
-      </Suspense>
+              <div ref={ref}>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile />
+                </Hidden>
+                <Box overflow="hidden">
+                  <header>
+                    <SectionHeader
+                      title={`Ideas Beyond\nYour Imagination`}
+                      desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
+                      btn={true}
+                      img={headerImage}
+                      cls="textContainer"
+                    />
+                  </header>
+                  <main>
+                    <HomeMainSection />
+                    <HomeDescription />
+                    <CapabilitiesSection />
+                    <ReferenceSection />
+                    <ProjectSection title={"Previous Projects"} btn={true} size={true} />
+                    <LastestPosts />
+                    <ContactSection bgColor="#FFFFFF" />
+                  </main>
+                  <footer>
+                    <Footer />
+                    <Copyright />
+                  </footer>
+                </Box>
+              </div>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
     </>
   )
 }

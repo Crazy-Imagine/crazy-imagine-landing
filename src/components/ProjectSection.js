@@ -234,7 +234,7 @@ const ProjectSection = ({ title, btn, size }) => {
               {projects.map((el, index) => (
                 <SwiperSlide key={index} className={classes.slide}>
                   <Box className={classes.carouselContainer}>
-                    <GatsbyImage
+                    {/* <GatsbyImage
                       alt="About the project"
                       image={getImage(el.images[0].localFile)}
                       style={{
@@ -246,11 +246,11 @@ const ProjectSection = ({ title, btn, size }) => {
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
                       }}
-                    />
+                    /> */}
 
-                    {/* <Box style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }}>
-                    
-                  </Box>*/}
+                    <Box style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }}>
+
+                    </Box>
                     <Box className={classes.textContainer}>
                       <Typography className={classes.titleCarousel}>
                         {el.title}
@@ -301,6 +301,7 @@ query {
       id
       images {
         localFile {
+          publicURL
           childImageSharp {
             gatsbyImageData(quality: 30)
           }
