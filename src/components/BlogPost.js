@@ -89,10 +89,10 @@ const useStyes = makeStyles(theme => ({
     },
   },
   slider: {
-    width: "80%",
+    width: "75.5%",
     boxSizing: "content-box",
-    [theme.breakpoints.between(0, 301)]: {
-      width: "75%",
+    [theme.breakpoints.between(0, 600)]: {
+      width: "65%",
     },
   },
   carousel: {
@@ -156,7 +156,7 @@ const BlogPost = ({ bulletClass }) => {
               600: {
                 slidesPerView: 2,
               },
-              700: {
+              900: {
                 slidesPerView: 3,
               },
             }}

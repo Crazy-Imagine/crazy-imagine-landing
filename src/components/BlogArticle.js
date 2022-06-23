@@ -227,7 +227,7 @@ const BlogArticle = () => {
               image {
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(quality: 65)
+                    gatsbyImageData(quality: 45)
                   }
                 }
               }

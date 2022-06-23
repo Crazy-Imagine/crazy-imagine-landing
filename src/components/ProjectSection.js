@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+//import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -13,11 +13,14 @@ import "../css/swiper-bullet.css"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "1012px",
-    backgroundColor: "#FFFFFF",
+    height: "830px",
+    //backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    //padding: "0 10%",
+    //width: "95%",
+    //boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
@@ -102,10 +105,11 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   carouselContainer: {
-    backgroundColor: "#FFFFFF",
-    boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
+    //backgroundColor: "#FFFFFF",
+    boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
+    //boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    width: "525px",
+    width: "535px",
     height: "auto",
     overflow: "hidden",
     display: "flex",
@@ -161,7 +165,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    backgroundColor: "#FFFFFF",
+    //backgroundColor: "#FFFFFF",
     [theme.breakpoints.between(0, 400)]: {
       width: "75%",
     },
@@ -174,6 +178,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       padding: "20px 0 27px 20px",
+
     },
   },
 }))
@@ -191,7 +196,7 @@ const ProjectSection = ({ title, btn, size }) => {
         let projects = data.projects.nodes
 
         if (size) {
-          projects = projects.slice(0, 4)
+          projects = projects.slice(0, 6)
         }
 
         return (
@@ -202,12 +207,25 @@ const ProjectSection = ({ title, btn, size }) => {
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
-              spaceBetween={30}
+              spaceBetween={50}
+              // breakpoints={{
+              //   0: {
+              //     slidesPerView: 1,
+              //   },
+              //   600: {
+              //     slidesPerView: 2,
+              //   },
+              //   900: {
+              //     slidesPerView: 3,
+              //   },
+              // }}
               pagination={{
                 clickable: true,
               }}
               grabCursor={true}
-              style={{ backgroundColor: "#FFFFFF" }}
+              style={{
+                //backgroundColor: "#FFFFFF",
+              }}
               loop={true}
               modules={[Pagination]}
               keyboard={{ enabled: true }}
@@ -216,18 +234,24 @@ const ProjectSection = ({ title, btn, size }) => {
               {projects.map((el, index) => (
                 <SwiperSlide key={index} className={classes.slide}>
                   <Box className={classes.carouselContainer}>
-                    <GatsbyImage
+                    {/* <GatsbyImage
                       alt="About the project"
                       image={getImage(el.images[0].localFile)}
                       style={{
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
+
                       }}
                       imgStyle={{
                         objectFit: "contain",
                         backgroundColor: "#27AAE1",
                       }}
-                    />
+                    /> */}
+
+                    <Box
+                      style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} />
+
+
                     <Box className={classes.textContainer}>
                       <Typography className={classes.titleCarousel}>
                         {el.title}
@@ -252,7 +276,7 @@ const ProjectSection = ({ title, btn, size }) => {
                 </Link>
               )}
             </Swiper>
-          </Box>
+          </Box >
         )
       }}
     />
@@ -278,6 +302,7 @@ query {
       id
       images {
         localFile {
+          publicURL
           childImageSharp {
             gatsbyImageData(quality: 30)
           }

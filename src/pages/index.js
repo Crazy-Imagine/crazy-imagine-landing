@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, Suspense, lazy } from "react"
 import { Box, Hidden } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import Navbar from "../components/Navbar"
@@ -9,13 +9,15 @@ import ReferenceSection from "../components/ReferenceSection"
 import ContactSection from "../components/ContactSection"
 import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
-import Layout from "../components/layout"
+//import Layout from "../components/layout"
+import Loading from "../components/Loading"
 import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
 import HomeDescription from "../components/HomeDescription"
 import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
+const Layout = lazy(() => import("../components/layout"))
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -23,43 +25,47 @@ const IndexPage = () => {
 
   return (
     <>
-      <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
-        <PageWrapper>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={data.allStrapiHomepage.nodes[0].seo}>
+            <PageWrapper>
 
-          <div ref={ref}>
-            <Hidden mdDown>
-              <Navbar variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <Box overflow="hidden">
-              <header>
-                <SectionHeader
-                  title={`Ideas Beyond\nYour Imagination`}
-                  desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
-                  btn={true}
-                  img={headerImage}
-                  cls="textContainer"
-                />
-              </header>
-              <main>
-                <HomeMainSection />
-                <HomeDescription />
-                <CapabilitiesSection />
-                <ReferenceSection />
-                <ProjectSection title={"Previous Projects"} btn={true} size={true} />
-                <LastestPosts />
-                <ContactSection bgColor="#FFFFFF" />
-              </main>
-              <footer>
-                <Footer />
-                <Copyright />
-              </footer>
-            </Box>
-          </div>
-        </PageWrapper>
-      </Layout>
+              <div ref={ref}>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile />
+                </Hidden>
+                <Box overflow="hidden">
+                  <header>
+                    <SectionHeader
+                      title={`Ideas Beyond\nYour Imagination`}
+                      desc="TEAMWORK IS THE HEART OF EVERYTHING WE DO"
+                      btn={true}
+                      img={headerImage}
+                      cls="textContainer"
+                    />
+                  </header>
+                  <main>
+                    <HomeMainSection />
+                    <HomeDescription />
+                    <CapabilitiesSection />
+                    <ReferenceSection />
+                    <ProjectSection title={"Previous Projects"} btn={true} size={true} />
+                    <LastestPosts />
+                    <ContactSection bgColor="#FFFFFF" />
+                  </main>
+                  <footer>
+                    <Footer />
+                    <Copyright />
+                  </footer>
+                </Box>
+              </div>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
     </>
   )
 }

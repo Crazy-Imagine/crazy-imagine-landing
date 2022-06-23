@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
+import Imagen from "../images/crazy-imagine-icon.svg"
 import Section from "./Section"
 import {
   HOME,
@@ -187,8 +187,8 @@ const Footer = ({ height = "192px" }) => {
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
           <Link to={`${HOME}`} className={classes.linkTypography}>
-            <StaticImage
-              src="../images/crazy-imagine-icon.svg"
+            <img
+              src={Imagen}
               alt="footerImage"
               style={{ width: "100%", height: "100%" }}
             />

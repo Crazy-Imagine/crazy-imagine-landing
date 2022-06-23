@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Suspense, lazy } from "react"
 import { Hidden } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
@@ -9,40 +10,47 @@ import Imagen from "../components/Imagen"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/rocket.svg"
-import Layout from "../components/layout"
-import { graphql, useStaticQuery } from "gatsby"
+import Loading from "../components/Loading"
 
+import { graphql, useStaticQuery } from "gatsby"
+const Layout = lazy(() => import("../components/layout"))
+//import Layout from "../components/layout"
 const WorkWithUsPage = () => {
   const data = useStaticQuery(query)
   return (
-    <Layout seo={data.workWithUs.SEO}>
-      <PageWrapper>
-        <header>
-          <Hidden mdDown>
-            <Navbar variant="secondary" />
-          </Hidden>
-          <Hidden lgUp>
-            <NavbarMobile />
-          </Hidden>
-          <SectionHeader
-            title={`Work With Us
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Layout seo={data.workWithUs.SEO}>
+            <PageWrapper>
+              <header>
+                <Hidden mdDown>
+                  <Navbar variant="secondary" />
+                </Hidden>
+                <Hidden lgUp>
+                  <NavbarMobile />
+                </Hidden>
+                <SectionHeader
+                  title={`Work With Us
       At Crazy Imagine`}
-            btn={false}
-            little={true}
-            img={headerImage}
-          />
-        </header>
-        <main>
-          <WorkForm />
-          <Imagen />
-        </main>
-        <footer>
-          <Footer />
-          <Copyright />
-        </footer>
-      </PageWrapper>
-    </Layout>
-
+                  btn={false}
+                  little={true}
+                  img={headerImage}
+                />
+              </header>
+              <main>
+                <WorkForm />
+                <Imagen />
+              </main>
+              <footer>
+                <Footer />
+                <Copyright />
+              </footer>
+            </PageWrapper>
+          </Layout>
+        </React.Suspense>
+      )}
+    </>
   )
 }
 

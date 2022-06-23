@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
+//import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import Loading from "./Loading";
+const Helmet = lazy(() => import("react-helmet"))
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(query);
@@ -9,7 +11,7 @@ const SEO = ({ seo = {} }) => {
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
-  //console.log(fullSeo)
+
 
   const getMetaTags = () => {
     const tags = [];
@@ -68,39 +70,45 @@ const SEO = ({ seo = {} }) => {
   const metaTags = getMetaTags();
 
   return (
-    <Helmet
-      title={fullSeo.metaTitle}
-      titleTemplate={`%s | ${siteName}`}
-      link={[
-        {
-          rel: "icon",
-          href: favicon.publicURL,
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Staatliches",
-        },
-        {
-          rel: "stylesheet",
-          href:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
-        },
-      ]}
-      script={[
-        {
-          src:
-            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
-        },
-        {
-          src:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
-        },
-        {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
-        },
-      ]}
-      meta={metaTags}
-    />
+    <>
+      {typeof window !== 'undefined' && (
+        <React.Suspense fallback={<Loading />}>
+          <Helmet
+            title={fullSeo.metaTitle}
+            titleTemplate={`%s | ${siteName}`}
+            link={[
+              {
+                rel: "icon",
+                href: favicon.publicURL,
+              },
+              {
+                rel: "stylesheet",
+                href: "https://fonts.googleapis.com/css?family=Staatliches",
+              },
+              {
+                rel: "stylesheet",
+                href:
+                  "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
+              },
+            ]}
+            script={[
+              {
+                src:
+                  "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
+              },
+              {
+                src:
+                  "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
+              },
+              {
+                src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
+              },
+            ]}
+            meta={metaTags}
+          />
+        </React.Suspense>
+      )}
+    </>
   );
 };
 

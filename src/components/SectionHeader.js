@@ -143,10 +143,10 @@ const useStyles = makeStyles(theme => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "5px 5px 5px 5px",
+      padding: "6px 6px 6px 6px",
       border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "9px",
         lineHeight: "inherit",
       },
     },
@@ -183,12 +183,14 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
       padding: "50px 0px 50px 50px",
+      gap: "32px",
       width: "auto",
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
       padding: "20px 0px 20px 50px",
       width: "100%",
+      gap: "22px",
       //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
@@ -213,12 +215,9 @@ const useStyles = makeStyles(theme => ({
   }),
   img: {
     animation: `$myEffect 2000ms`,
-    width: "307px",
-    height: "407px",
-    [theme.breakpoints.down("xl")]: {
-      width: "auto",
-      height: "auto",
-    },
+    //width: "306px",
+    //height: "406px",
+
     [theme.breakpoints.down("sm")]: {
       width: "200%",
     },
@@ -301,7 +300,7 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title}><span>{title}</span></Typography>
+          <Typography className={classes.title} variant="h1"><span>{title}</span></Typography>
           <Typography className={classes.desc}>{desc}</Typography>
           {btn && (
             <Box className={classes.buttonContainer}>
