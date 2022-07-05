@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import mainImage from "../images/Group619.svg"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -147,6 +148,9 @@ export const TitleSection = ({ desc }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
   return (
     <Box className={classes.container}>
       <Box className={classes.imgContainer}>
@@ -158,9 +162,8 @@ export const TitleSection = ({ desc }) => {
       </Box>
       <Box className={classes.textContainer}>
         <Box className={classes.titleContainer}>
-          <Typography className={classes.title2}>{`Why 
-        Should You`}</Typography>
-          <Typography className={classes.blueTitle2}>Choose Us</Typography>
+          <Typography className={classes.title2}>{t("home_homeMainSection_titleSection_title")}</Typography>
+          <Typography className={classes.blueTitle2}>{t("home_homeMainSection_titleSection_blueTitle")}</Typography>
         </Box>
         <Typography ref={ref} className={classes.desc2}>
           {desc}

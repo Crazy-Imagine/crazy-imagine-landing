@@ -10,6 +10,7 @@ import { useIntersection } from "../hooks/useIntersection"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/swiper-bullet.css"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -188,6 +189,7 @@ const ProjectSection = ({ title, btn, size }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
+  const { t } = useTranslation()
 
   return (
     <StaticQuery
@@ -261,7 +263,7 @@ const ProjectSection = ({ title, btn, size }) => {
                         style={{ textDecoration: "none" }}
                         to={`${PROJECTS}/${el.slug}`}
                       >
-                        VIEW PROJECT →
+                        {t("common_projectSection_button_viewProject")}
                       </Link>
                     </Box>
                   </Box>
@@ -272,7 +274,7 @@ const ProjectSection = ({ title, btn, size }) => {
                   to={`${PROJECTS}`}
                   style={{ textDecoration: "none", alignSelf: "center" }}
                 >
-                  <Button className={classes.button}>ALL PROJECTS</Button>
+                  <Button className={classes.button}>{t("home_projectSection_button")}</Button>
                 </Link>
               )}
             </Swiper>

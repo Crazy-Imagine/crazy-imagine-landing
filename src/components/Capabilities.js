@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -111,9 +112,12 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
   return (
     <Box className={classes[cls]}>
-      <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
+      <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>
       <Typography className={classes.title2}>{title}</Typography>
       <Typography className={classes.desc2}>{desc}</Typography>
       {img && <img className={classes.img2} src={img} alt="Capabilities" />}

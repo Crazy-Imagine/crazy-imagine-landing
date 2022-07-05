@@ -15,6 +15,7 @@ import {
   CONTACT,
   BLOG,
 } from "../navigation/sitemap"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -182,6 +183,7 @@ const useStyles = makeStyles(theme => ({
 
 const Footer = ({ height = "192px" }) => {
   const classes = useStyles()
+  const { t } = useTranslation()
   return (
     <Section backgroundColor="#193174" width="92%" height={height}>
       <Box className={classes.footerContainer}>
@@ -215,7 +217,7 @@ const Footer = ({ height = "192px" }) => {
               style={{ textDecoration: "none" }}
               className={`${classes.linkTypography} ${classes.effect}`}
             >
-              ABOUT
+              {t("common_button_about")}
             </Link>
           </Typography>
           <Typography>
@@ -224,7 +226,7 @@ const Footer = ({ height = "192px" }) => {
               style={{ textDecoration: "none" }}
               className={`${classes.linkTypography} ${classes.effect}`}
             >
-              SERVICES
+              {t("common_button_services")}
             </Link>
           </Typography>
           <Typography>
@@ -233,7 +235,7 @@ const Footer = ({ height = "192px" }) => {
               style={{ textDecoration: "none" }}
               className={`${classes.linkTypography} ${classes.effect}`}
             >
-              BLOG
+              {t("common_button_blog")}
             </Link>
           </Typography>
           <Typography>
@@ -242,7 +244,7 @@ const Footer = ({ height = "192px" }) => {
               style={{ textDecoration: "none" }}
               className={`${classes.linkTypography} ${classes.effect}`}
             >
-              WORK WITH US
+              {t("common_button_work_with_us")}
             </Link>
           </Typography>
           <Typography>
@@ -251,7 +253,7 @@ const Footer = ({ height = "192px" }) => {
               style={{ textDecoration: "none" }}
               className={`${classes.linkTypography} ${classes.effect}`}
             >
-              CONTACT
+              {t("home_footer_button_contact")}
             </Link>
           </Typography>
         </Box>
@@ -262,10 +264,14 @@ const Footer = ({ height = "192px" }) => {
               className={classes.infoIcon}
               size="1x"
             />
-            <Typography className={classes.infoTypography}>
-              Urb Ambrosio Plaza #1 Street House #2/123 <br></br> San Cristobal,
-              Venezuela
-            </Typography>
+            <Box style={{ flexDirection: "column" }}>
+              <Typography className={classes.infoTypography}>
+                {t("home_footer_direction1")}
+              </Typography>
+              <Typography className={classes.infoTypography}>
+                {t("home_footer_direction2")}
+              </Typography>
+            </Box>
           </Box>
           <Box className={classes.info}>
             <FontAwesomeIcon

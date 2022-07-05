@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -137,6 +138,7 @@ const CardService = ({ icon, title, contentList }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation()
   return (
     <Box
       ref={ref}

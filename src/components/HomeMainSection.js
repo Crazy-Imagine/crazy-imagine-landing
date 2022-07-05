@@ -11,6 +11,8 @@ import TitleSection from "./TitleSection"
 import { Link } from "gatsby"
 import { PROJECTS } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -84,12 +86,13 @@ const HomeMainSection = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
   return (
     <Box className={classes.container}>
       <TitleSection
-        desc="We will help you to strategize your web presence, designing and
-          executing sitemaps and wireframes to provide a sleek, elegant, and
-          seamless end-user experience"
+        desc={t("home_homeMainSection_titleSection_description")}
       />
       <Grid
         container
@@ -99,13 +102,13 @@ const HomeMainSection = () => {
         className={classes.cardContainer}
       >
         <Grid item xs="auto">
-          <HomeCard title={`Full-stack\nDevelopment`} icon={faCode} />
+          <HomeCard title={t("common_capabilities_title1")} icon={faCode} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard title={`User\nExperience`} icon={faThumbsUp} />
+          <HomeCard title={t("common_capabilities_title2")} icon={faThumbsUp} />
         </Grid>
         <Grid item xs="auto">
-          <HomeCard title={`Quality\nSupport`} icon={faCircleCheck} />
+          <HomeCard title={t("common_capabilities_title3")} icon={faCircleCheck} />
         </Grid>
       </Grid>
       <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
@@ -113,7 +116,7 @@ const HomeMainSection = () => {
           ref={ref}
           className={isVisible ? classes.button2 : classes.button}
         >
-          GET STARTED
+          {t("common_button_get_started")}
         </Button>
       </Link>
     </Box>

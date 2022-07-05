@@ -10,6 +10,7 @@ import Alert from "@material-ui/lab/Alert"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -308,7 +309,7 @@ const WorkForm = () => {
   const ref = useRef()
   const fileRef = useRef()
   const isVisible = useIntersection(ref, "0px")
-
+  const { t } = useTranslation()
   const [showMessage, setShowMessage] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
@@ -329,37 +330,37 @@ const WorkForm = () => {
   }, [formStatus])
 
   const schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required"),
-    lastName: yup.string().required("Last Name is required"),
-    email: yup.string().email().required("Email is required"),
+    firstName: yup.string().required(t("workWithUs_workForm_schemaYup_firstName")),
+    lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
+    email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
     phone: yup
       .string()
-      .matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, "Invalid number")
-      .required("Phone is required"),
+      .matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone1"))
+      .required(t("workWithUs_workForm_schemaYup_phone2")),
     linkedin: yup.string(),
     website: yup.string(),
     curriculum: yup.mixed().when("website", {
       is: "",
       then: yup
         .mixed()
-        .test("required", "Please post a website or resume", value => {
+        .test("required", t("workWithUs_workForm_schemaYup_curriculum1"), value => {
           return value && value.length
         })
-        .test("fileSize", "The file must be max 2 mb", (value, context) => {
+        .test("fileSize", t("workWithUs_workForm_schemaYup_curriculum2"), (value, context) => {
           return value && value[0] && value[0].size <= 200000
         })
         .test(
           "type",
-          "Only the following formats are accepted: .pdf",
+          t("workWithUs_workForm_schemaYup_curriculum3"),
           function (value) {
             return value && value[0] && value[0].type === "application/pdf"
           }
-        ).test("well", "File uploaded successfully", value => {
+        ).test("well", t("workWithUs_workForm_schemaYup_curriculum4"), value => {
           return
         }),
       otherwise: yup.mixed(),
     }),
-    reference: yup.string(),
+    reference: yup.string().required(t("workWithUs_workForm_schemaYup_reference")),
   })
 
   const {
@@ -400,16 +401,16 @@ const WorkForm = () => {
           setShowButton(false)
 
           if (res.statusText === "OK") {
-            setAlertMessage("Form has been send succesfully")
+            setAlertMessage(t("workWithUs_workForm_submit_success"))
             setFormStatus("well")
             setShowMessage(true)
             reset()
           }
         })
         .catch(error => {
-          setShowMessage(true)
-          setAlertMessage("There was an error trying to send your form")
+          setAlertMessage(t("workWithUs_workForm_submit_error"))
           setFormStatus("bad")
+          setShowMessage(true)
         })
     } else {
       if (data.website !== "") {
@@ -428,12 +429,12 @@ const WorkForm = () => {
         setShowButton(false)
 
         if (res.statusText === "OK") {
-          setAlertMessage("Form has been send succesfully")
+          setAlertMessage(t("workWithUs_workForm_submit_success"))
           setFormStatus("well")
           setShowMessage(true)
           reset()
         } else {
-          setAlertMessage("There was an error trying to send your form")
+          setAlertMessage(t("workWithUs_workForm_submit_error"))
           setFormStatus("bad")
           setShowMessage(true)
         }
@@ -474,7 +475,7 @@ const WorkForm = () => {
                 helperText={errors.firstName?.message}
                 type="text"
                 id="outlined-basic"
-                label="First Name"
+                label={t("workWithUs_workForm_textField_label1")}
                 name="firstName"
               />
               <TextField
@@ -485,7 +486,7 @@ const WorkForm = () => {
                 helperText={errors.lastName?.message}
                 type="text"
                 id="outlined-basic"
-                label="Last Name"
+                label={t("workWithUs_workForm_textField_label2")}
                 name="lastName"
               />
             </Box>
@@ -498,7 +499,7 @@ const WorkForm = () => {
                 helperText={errors.email?.message}
                 type="text"
                 id="outlined-basic"
-                label="Email Address"
+                label={t("workWithUs_workForm_textField_label3")}
                 name="email"
               />
               <TextField
@@ -509,7 +510,7 @@ const WorkForm = () => {
                 helperText={errors.phone?.message}
                 type="text"
                 id="outlined-basic"
-                label="Phone"
+                label={t("workWithUs_workForm_textField_label4")}
                 name="phone"
               />
             </Box>
@@ -520,7 +521,7 @@ const WorkForm = () => {
               {...register("linkedin")}
               type="text"
               id="outlined-basic"
-              label="LinkedIn Profile"
+              label={t("workWithUs_workForm_textField_label5")}
               name="linkedin"
             />
             <TextField
@@ -530,14 +531,14 @@ const WorkForm = () => {
               {...register("website")}
               type="text"
               id="outlined-basic"
-              label="Website"
+              label={t("workWithUs_workForm_textField_label6")}
               name="website"
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
-                <span className={classes.attachLabel}>Resume/CV </span>
+                <span className={classes.attachLabel}>{t("workWithUs_workForm_textField_label7")}</span>
                 <label className={classes.attachButton} htmlFor="resume-btn">
-                  ATTACH
+                  {t("workWithUs_workForm_textField_button1")}
                 </label>
                 {/*<button className={classes.attachButton} onClick={() => fileRef.current.click()}>ATTACH</button>*/}
               </Box>
@@ -556,11 +557,11 @@ const WorkForm = () => {
               ></Input>
             </Box>
             <Alert
-              severity={errors.curriculum?.message === "File uploaded successfully" ? "success" : "error"}
+              severity={(errors.curriculum?.message === "File uploaded successfully" || errors.curriculum?.message === "Archivo cargado con éxito") ? "success" : "error"}
               className={classes.curriculumAlert}
               style={{
                 display: errors.curriculum !== undefined ? "inherit" : "none",
-                color: errors.curriculum?.message === "File uploaded successfully" ? "green" : "red"
+                color: (errors.curriculum?.message === "File uploaded successfully" || errors.curriculum?.message === "Archivo cargado con éxito") ? "green" : "red"
               }}
             >
               {errors.curriculum?.message}
@@ -568,13 +569,13 @@ const WorkForm = () => {
             <TextField
               required
               className={`${classes.formInput} ${classes.root}`}
-              helperText={errors.reference?.message}
               error={errors.reference}
               {...register("reference")}
+              helperText={errors.reference?.message}
               form
               type="text"
               id="outlined-basic"
-              label="How did you hear about Crazy Imagine?"
+              label={t("workWithUs_workForm_textField_label8")}
               name="reference"
             />
             <Alert
@@ -588,7 +589,7 @@ const WorkForm = () => {
               {alertMessage}
             </Alert>
             <Button className={classes.formButton} type="submit" disabled={showButton === true}>
-              SUBMIT
+              {t("workWithUs_workForm_textField_button2")}
             </Button>
           </Box>
         </form>

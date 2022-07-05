@@ -13,6 +13,7 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
 import bgImage from "../images/ServiceBg.svg"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -62,97 +63,85 @@ const useStyles = makeStyles(theme => ({
 
 const ServicesSection = () => {
   const classes = useStyles()
+  const { t } = useTranslation()
 
   return (
     <>
       <Box className={`${classes.container} ${classes.bgWhite}`}>
         <ServiceCapabilities
-          title={`Full-Stack
-          Development`}
-          desc={`With strong backgrounds in code ranging from PHP7 to
-          Javascript to CSS3, our full stack developers have the skills
-          and experience to elevate your digital presence.`}
+          title={t("common_capabilities_title1")}
+          desc={t("common_capabilities_description1")}
           img={fullStackImage}
         />
         <Box className={`${classes.cardContainer} ${classes.pMinor}`}>
           <CardService
-            title={`Web
-            Development`}
+            title={t("common_capabilities_capabilitiesCard_title1")}
             icon={faCode}
             contentList={[
-              "Specialize in client-focused websites and cloud solutions.",
-              "Excel in utilizing the latest technologies – Javascript, React js, Angular js, Vue js,and PHP.",
-              "Seamlessly integrate frameworks into Laravel, Wordpress, and Codeigniter.",
+              t("services_capabilities_capabilitiesCard_description1_item1"),
+              t("services_capabilities_capabilitiesCard_description1_item2"),
+              t("services_capabilities_capabilitiesCard_description1_item3"),
             ]}
           />
           <CardService
-            title={`Deployment
-            + DevOps`}
+            title={t("common_capabilities_capabilitiesCard_title2")}
             icon={faCircleCheck}
             contentList={[
-              "Ensure product quality and performance via a pipeline of continuous delivery",
-              "Excel in creating reliable infrustructures that can be managed by coding",
-              "Seamlessly integrate popular cloud services such as AWS, Azure, and Google Cloud",
+              t("services_capabilities_capabilitiesCard_description2_item1"),
+              t("services_capabilities_capabilitiesCard_description2_item2"),
+              t("services_capabilities_capabilitiesCard_description2_item3"),
             ]}
           />
         </Box>
       </Box>
       <Box className={`${classes.container} ${classes.bg}`}>
         <ServiceCapabilities
-          title={`User
-          Experience`}
-          desc={`A positive and memorable user experience is our top
-          priority, from partial web development to full scale project
-          management and everything in between.`}
+          title={t("common_capabilities_title2")}
+          desc={t("common_capabilities_description2")}
         />
         <Box className={`${classes.cardContainer} ${classes.pMajor}`}>
           <CardService
-            title="eCommerce"
+            title={t("common_capabilities_capabilitiesCard_title3")}
             icon={faBagShopping}
             contentList={[
-              "Utilize the latest technology to create user-friendly interfaces",
-              "Enable quick transactions, increasing your business’s profitability",
-              "Seamlessly integrate payment platforms such as Woocommerce, Prestashop, and Shopify",
+              t("services_capabilities_capabilitiesCard_description3_item1"),
+              t("services_capabilities_capabilitiesCard_description3_item2"),
+              t("services_capabilities_capabilitiesCard_description3_item3"),
             ]}
           />
           <CardService
-            title={`Mobile
-            Development`}
+            title={t("services_capabilities_capabilitiesCard_title4")}
             icon={faMobile}
             contentList={[
-              "Specialize in iOS, Swift iOS, and Android",
-              "Excel in the latest hybrid technologies such as React Native and Ionic",
-              "Create intuitive and user-friendly apps that will foster engagement and interaction",
+              t("services_capabilities_capabilitiesCard_description4_item1"),
+              t("services_capabilities_capabilitiesCard_description4_item2"),
+              t("services_capabilities_capabilitiesCard_description4_item3"),
             ]}
           />
         </Box>
       </Box>
       <Box className={`${classes.container} ${classes.bgWhite}`}>
         <ServiceCapabilities
-          title={`Quality
-          Support`}
-          desc={`Nothing is more important than providing a high quality
-          experience, which is why we use a full range of QA systems
-          to ensure your project is launch ready.`}
+          title={t("common_capabilities_title3")}
+          desc={t("common_capabilities_description3")}
           img={qualitySupport}
         />
         <Box className={`${classes.cardContainer} ${classes.pMajor}`}>
           <CardService
-            title="Marketing"
+            title={t("common_capabilities_capabilitiesCard_title5")}
             icon={faChartBar}
             contentList={[
-              "Ensure that your brand is well positioned among search results",
-              "Experience with major social media networks such as LinkedIn, Instagram, and Facebook",
-              "Help build brand awareness and convert more users to consumers",
+              t("services_capabilities_capabilitiesCard_description5_item1"),
+              t("services_capabilities_capabilitiesCard_description5_item2"),
+              t("services_capabilities_capabilitiesCard_description5_item3"),
             ]}
           />
           <CardService
-            title={`Virtual
-            Assistance`}
+            title={t("common_capabilities_capabilitiesCard_title6")}
             icon={faUserTie}
             contentList={[
-              "Tasks that range from managing your virtual store, scheduling client meetings, organizing your digital storage, or placing online orders",
-              "Ensure that your business runs smoothly so you can focus on everything else",
+              t("services_capabilities_capabilitiesCard_description6_item1"),
+              t("services_capabilities_capabilitiesCard_description6_item2"),
             ]}
           />
         </Box>

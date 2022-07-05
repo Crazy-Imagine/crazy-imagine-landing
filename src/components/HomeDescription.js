@@ -3,6 +3,7 @@ import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import bgImage from "../images/background.svg"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -80,21 +81,21 @@ const HomeDescription = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
   return (
     <Box ref={ref} className={classes.container}>
       <Box
         className={isVisible ? classes.textContainer2 : classes.textContainer}
       >
         <Typography className={classes.text}>
-          {`With deep expertise that spans across the web development spectrum,\nwe can optimize your digital presence at any level.`}
+          {t("home_homeDescription_text")}
         </Typography>
         <br></br>
         <Typography
           className={classes.desc}
-        >{`Whether you are interested in partial web or 
-        mobile development, full scale web development 
-        and project management, or something in 
-        between, CrazyImagine is here for you.`}</Typography>
+        >{t("home_homeDescription_description")}</Typography>
       </Box>
     </Box>
   )

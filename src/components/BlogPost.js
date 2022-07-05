@@ -9,6 +9,7 @@ import "swiper/css/pagination"
 import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { BLOG } from "../navigation/sitemap"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -105,6 +106,9 @@ const useStyes = makeStyles(theme => ({
 
 const BlogPost = ({ bulletClass }) => {
   const classes = useStyes()
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
   return (
     <StaticQuery
       query={graphql`
@@ -185,7 +189,7 @@ const BlogPost = ({ bulletClass }) => {
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >
-                      READ MORE →
+                      {t("common_lastestPosts_blogPost_button_readMore")}
                     </Link>
                   </Box>
                 </Box>

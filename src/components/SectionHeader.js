@@ -4,6 +4,9 @@ import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
 import { Link } from "gatsby"
 import { HOME, PROJECTS } from "../navigation/sitemap"
+//import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -101,8 +104,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       padding: "6px 6px 6px 6px",
+      border: "1px solid #FFFFFF",
       "& > span": {
-        fontSize: "10px",
+        fontSize: "9px",
         lineHeight: "inherit",
       },
     },
@@ -111,7 +115,7 @@ const useStyles = makeStyles(theme => ({
       border: "1px solid #FFFFFF",
       borderRadius: "8px",
       "& > span": {
-        fontSize: "8px",
+        fontSize: "7px",
         lineHeight: "inherit",
       },
     },
@@ -295,6 +299,12 @@ const useStyles = makeStyles(theme => ({
 
 export const SectionHeader = ({ title, desc, btn, little, img }) => {
   const classes = useStyles({ little, btn })
+  //const { t } = useTranslation();
+  const { t } = useTranslation()
+  //const { t } = useI18next();
+  const context = React.useContext(I18nextContext);
+
+
 
   return (
     <Box className={classes.backgroundOut}>
@@ -308,10 +318,10 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
                 to={`${HOME}#capabilities`}
                 style={{ textDecoration: "none" }}
               >
-                <Button className={classes.buttonLeft}>Capabilities</Button>{" "}
+                <Button className={classes.buttonLeft}>{t("common_button_capabilities")}</Button>{" "}
               </Link>
               <Link to={`${PROJECTS}`} style={{ textDecoration: "none" }}>
-                <Button className={classes.buttonRight}>Get Started</Button>
+                <Button className={classes.buttonRight}>{t("common_button_get_started")}</Button>
               </Link>
             </Box>
           )}
@@ -320,6 +330,7 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
           <img className={classes.img} src={img} alt="Header Section" />
         </Box>
       </Box>
+      {/* <p style={{ display: "none" }}>{t('headerSectionHome')}</p> */}
     </Box>
   )
 }

@@ -1,9 +1,10 @@
 import React, { useRef } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { BLOG } from "../navigation/sitemap"
+import { BLOG, PROJECTS } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -172,6 +173,7 @@ const FeaturedArticle = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useI18next();
   return (
     <StaticQuery
       query={graphql`
@@ -213,7 +215,7 @@ const FeaturedArticle = () => {
         return (
           <Box ref={ref} className={classes.container}>
             <Typography className={isVisible ? classes.title2 : classes.title}>
-              Featured Article
+              {t("blog_featuredArticle_title")}
             </Typography>
             <Box className={classes.cardContainer}>
               <GatsbyImage
@@ -230,7 +232,7 @@ const FeaturedArticle = () => {
                   style={{ textDecoration: "none" }}
                   className={classes.link}
                 >
-                  READ MORE →
+                  {t("common_lastestPosts_blogPost_button_readMore")}
                 </Link>
               </Box>
             </Box>

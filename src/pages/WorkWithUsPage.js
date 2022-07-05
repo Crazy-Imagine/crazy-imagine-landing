@@ -11,67 +11,80 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/rocket.svg"
 import Loading from "../components/Loading"
-
 import { graphql, useStaticQuery } from "gatsby"
-const Layout = lazy(() => import("../components/layout"))
-//import Layout from "../components/layout"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+//const Layout = lazy(() => import("../components/layout"))
+import Layout from "../components/layout"
 const WorkWithUsPage = () => {
-  const data = useStaticQuery(query)
+  //const data = useStaticQuery(query)
+  const { t } = useTranslation()
   return (
-    <>
-      {typeof window !== 'undefined' && (
-        <React.Suspense fallback={<Loading />}>
-          <Layout seo={data.workWithUs.SEO}>
-            <PageWrapper>
-              <header>
-                <Hidden mdDown>
-                  <Navbar variant="secondary" />
-                </Hidden>
-                <Hidden lgUp>
-                  <NavbarMobile />
-                </Hidden>
-                <SectionHeader
-                  title={`Work With Us
-      At Crazy Imagine`}
-                  btn={false}
-                  little={true}
-                  img={headerImage}
-                />
-              </header>
-              <main>
-                <WorkForm />
-                <Imagen />
-              </main>
-              <footer>
-                <Footer />
-                <Copyright />
-              </footer>
-            </PageWrapper>
-          </Layout>
-        </React.Suspense>
-      )}
-    </>
+    // <>
+    //   {typeof window !== 'undefined' && (
+    //     <React.Suspense fallback={<Loading />}>
+    <Layout>
+      <PageWrapper>
+        <header>
+          <Hidden mdDown>
+            <Navbar variant="secondary" />
+          </Hidden>
+          <Hidden lgUp>
+            <NavbarMobile />
+          </Hidden>
+          <SectionHeader
+            title={t("workWithUs_sectionHeader_title")}
+            btn={false}
+            little={true}
+            img={headerImage}
+          />
+        </header>
+        <main>
+          <WorkForm />
+          <Imagen />
+        </main>
+        <footer>
+          <Footer />
+          <Copyright />
+        </footer>
+      </PageWrapper>
+    </Layout>
+    //      </React.Suspense>
+    //   )}
+    // </>
   )
 }
 
-const query = graphql`
-query {
-  workWithUs: strapiWorkWithUs {
-    SEO {
-      id
-      metaDescription
-      metaTitle
-      shareImage {
-        localFile {
-          publicURL
-          childImageSharp {
-            gatsbyImageData(quality: 5)
-          }
+// const query = graphql`
+// query {
+//   workWithUs: strapiWorkWithUs {
+//     SEO {
+//       id
+//       metaDescription
+//       metaTitle
+//       shareImage {
+//         localFile {
+//           publicURL
+//           childImageSharp {
+//             gatsbyImageData(quality: 5)
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// `
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
         }
       }
     }
   }
-}
-`
+`;
 
 export default WorkWithUsPage

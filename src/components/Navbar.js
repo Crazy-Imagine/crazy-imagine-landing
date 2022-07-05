@@ -14,6 +14,8 @@ import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
 import Image from "../images/crazy-imagine-icon.svg"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import LanguageModal from "../components/LanguageModal"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -128,6 +130,9 @@ const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
+  const { t } = useI18next();
 
   const classes = useStyles({
     scroll,
@@ -143,13 +148,14 @@ const Navbar = ({
           <Link to={HOME}>
             <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
+          <LanguageModal />
           <Box className={classes.linkContainer}>
             <Typography>
               <Link
                 to={`${ABOUT}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                ABOUT
+                {t("common_button_about")}
               </Link>
             </Typography>
             <Typography>
@@ -157,7 +163,7 @@ const Navbar = ({
                 to={`${PROJECTS}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                SERVICES
+                {t("common_button_services")}
               </Link>
             </Typography>
             <Typography>
@@ -165,7 +171,7 @@ const Navbar = ({
                 to={`${BLOG}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                BLOG
+                {t("common_button_blog")}
               </Link>
             </Typography>
             <Typography>
@@ -173,7 +179,7 @@ const Navbar = ({
                 to={`${WORK_WITH_US}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                WORK WITH US
+                {t("common_button_work_with_us")}
               </Link>
             </Typography>
           </Box>
@@ -186,7 +192,7 @@ const Navbar = ({
                 style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
-                Contact Us
+                {t("common_button_contact_us")}
               </span>
             </Button>
           </Link>
