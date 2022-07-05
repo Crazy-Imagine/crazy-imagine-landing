@@ -17,6 +17,9 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
+import { useTranslation, useI18next, Link, I18nextContext } from "gatsby-plugin-react-i18next"
+import Language from "../components/LanguageModal"
+
 
 const useStyles = makeStyles(theme => ({
   date: {
@@ -144,6 +147,15 @@ const Post = ({ data }) => {
   const author = data.article.author.name
   const category = data.article.category.name
   const date = data.article.category.created_at
+  // const context = React.useContext(I18nextContext);
+  // const lang = context.language;
+  const { t } = useI18next();
+
+  //const data = useStaticQuery(query)
+  // console.log(context.language);
+  // console.log(t("home"));
+
+
 
   return (
     <Layout seo={data.article.seo}>
@@ -181,7 +193,7 @@ const Post = ({ data }) => {
 }
 
 export const query = graphql`
-query Article($id: String!) {
+query Article($id: String!, $language: String!) {
   article: strapiArticle(id: { eq: $id }) {
     title
     id
@@ -218,6 +230,15 @@ query Article($id: String!) {
     category {
       name
       created_at(formatString: "DD MMMM, YYYY")
+    }
+  }
+  locales: allLocale(filter: {language: {eq: $language}}) {
+    edges {
+      node {
+        ns
+        data
+        language
+      }
     }
   }
 }

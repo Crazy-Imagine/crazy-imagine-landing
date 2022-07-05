@@ -4,32 +4,31 @@ import { useTranslation, useI18next, Trans } from "gatsby-plugin-react-i18next"
 import { Hidden, Box, Button, Grid, Typography } from "@material-ui/core"
 
 const Language = () => {
-    const { t } = useTranslation();
-    const { languages, changeLanguage } = useI18next();
-    return (
+  const { t } = useTranslation();
+  const { languages, changeLanguage } = useI18next();
+  return (
 
 
-        <div>
-            <Box>
-                {/* <h1>{t("home")}</h1>
-                        <Trans>home</Trans> */}
-                <Box>
-                    <Button onClick={(e) => {
-                        e.preventDefault();
-                        changeLanguage("es");
-                    }}>ES</Button>
-                    <Button onClick={(e) => {
-                        e.preventDefault();
-                        changeLanguage("en");
-                    }}>EN</Button>
-                </Box>
-            </Box>
-        </div>
+    <div>
+      <Box>
+        <Box>
+          <Button onClick={(e) => {
+            e.preventDefault();
+            changeLanguage("es");
+          }}>ES</Button>
+          <Button onClick={(e) => {
+            e.preventDefault();
+            changeLanguage("en");
+          }}>EN</Button>
+        </Box>
+      </Box>
+    </div>
 
 
 
-    );
+  );
 }
+
 // export const query = graphql`
 //   query ($language: String!) {
 //     locales: allLocale(filter: {language: {eq: $language}}) {

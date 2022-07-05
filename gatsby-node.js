@@ -1,4 +1,8 @@
 const { BLOG, TEAMS, PROJECTS } = require("./src/navigation/sitemap")
+const path = require(`path`)
+console.log(path, "Asdarqwerew")
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
@@ -27,6 +31,8 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
+  const context = React.useContext(I18nextContext);
+
   const { createPage } = actions
 
   const posts = result.data.articles.edges
@@ -50,6 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: ProjectsTemplate,
       context: {
         id: project.id,
+        language: context.language,
       },
     })
   })

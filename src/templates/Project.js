@@ -11,6 +11,7 @@ import GalleryProjects from "../components/GalleryProjects"
 import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
+import { useTranslation, useI18next, Link, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -77,6 +78,8 @@ const Project = ({ data }) => {
   const title = dataProject.title
   const date = dataProject.created_at
   const description = dataProject.description
+  const { t } = useI18next();
+
 
   return (
     <Layout seo={dataProject?.seo}>
@@ -116,7 +119,7 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-query Project($id: String!) {
+query Project($id: String!, $language: String!) {
   strapiProjects(id: { eq: $id }) {
     details
     description
@@ -151,6 +154,15 @@ query Project($id: String!) {
       }
     }
     created_at(formatString: "DD MMMM, YYYY")
+  }
+  locales: allLocale(filter: {language: {eq: $language}}) {
+    edges {
+      node {
+        ns
+        data
+        language
+      }
+    }
   }
 }
 `
