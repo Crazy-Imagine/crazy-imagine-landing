@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -9,6 +9,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyles = makeStyles(theme => ({
   review: {
@@ -129,7 +131,28 @@ const useStyles = makeStyles(theme => ({
 const CustomerReview = () => {
   const classes = useStyles()
   SwiperCore.use([Keyboard])
+  //const context = React.useContext(I18nextContext);
+  //const lang = context.language;
+  // let reviewws = [];
 
+  // useEffect(() => {
+  //   const getStrapi = async () => {
+  //     if (lang === "es") {
+  //       const url = `http://localhost:1337/reviews?_locale=es-VE`;
+  //       const resp = await fetch(url).then(response => response.json())
+  //         .then(data => console.log(data));
+  //       reviewws = resp
+  //     } else {
+  //       const url = `http://localhost:1337/reviews?_locale=en`;
+  //       const resp = await fetch(url).then(response => response.json())
+  //         .then(data => console.log(data));
+  //       reviewws = resp
+  //     }
+
+  //   }
+  //   getStrapi()
+  // }, [lang])
+  // console.log(reviewws, "reviewws")
   return (
     <StaticQuery
       query={query}
@@ -188,6 +211,7 @@ const CustomerReview = () => {
                     </Box>
                     <Typography className={classes.review}>
                       {review.review}
+                      {/* {reviewws[index].review} */}
                     </Typography>
                     <Box>
                       <Typography className={classes.customerName}>

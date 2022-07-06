@@ -10,6 +10,8 @@ import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { PROJECTS } from "../navigation/sitemap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -99,6 +101,8 @@ const useStyes = makeStyles(theme => ({
 
 const RelatedProjects = () => {
   const classes = useStyes()
+  const { t } = useTranslation()
+
   return (
     <StaticQuery
       query={graphql`
@@ -180,7 +184,7 @@ const RelatedProjects = () => {
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >
-                      READ MORE →
+                      {t("common_lastestPosts_blogPost_button_readMore")}
                     </Link>
                   </Box>
                 </Box>

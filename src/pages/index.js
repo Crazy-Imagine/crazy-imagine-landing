@@ -28,6 +28,7 @@ const IndexPage = () => {
   const ref = useRef()
   const { t } = useTranslation()
   //const { t } = useI18next();
+
   const context = React.useContext(I18nextContext);
   const lang = context.language;
   //const data = useStaticQuery(query)
@@ -66,7 +67,6 @@ const IndexPage = () => {
             <header>
               <SectionHeader
                 title={t("home_sectionHeader_title")}
-                //title={`Ideas Beyond\nYour Imagination`}
                 desc={t("home_sectionHeader_description")}
                 btn={true}
                 img={headerImage}

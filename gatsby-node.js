@@ -1,7 +1,10 @@
+// require = require('esm')(module)
+// module.exports = require('./gatsby-node.esm.js')
 const { BLOG, TEAMS, PROJECTS } = require("./src/navigation/sitemap")
-const path = require(`path`)
-console.log(path, "Asdarqwerew")
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+//const path = require(`path`)
+//console.log(path, "Asdarqwerew")
+//import { I18nextContext } from "gatsby-plugin-react-i18next"
+//const { I18nextContext } = require("gatsby-plugin-react-i18next")
 
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -31,7 +34,10 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
+  //const context = CONTEXT;
+  //const lang = sessionStorage.getItem('lang');
+
 
   const { createPage } = actions
 
@@ -56,7 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: ProjectsTemplate,
       context: {
         id: project.id,
-        language: context.language,
+        language: "en",
       },
     })
   })

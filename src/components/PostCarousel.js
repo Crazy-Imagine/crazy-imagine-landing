@@ -3,6 +3,8 @@ import BlogPost from "../components/BlogPost"
 import { Link } from "gatsby"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -52,15 +54,16 @@ const useStyles = makeStyles(theme => ({
 
 const PostCarousel = () => {
   const classes = useStyles()
+  const { t } = useTranslation()
   return (
     <Box className={classes.container}>
-      <Typography className={classes.title}>Related Articles</Typography>
+      <Typography className={classes.title}>{t("post_postCarousel_title")}</Typography>
       <Link
         to={`${BLOG}`}
         className={classes.link}
         style={{ textDecoration: "none" }}
       >
-        ALL BLOGS →
+        {t("common_lastestPosts_button_allBlogs")}
       </Link>
       <BlogPost bulletClass="purpleBullet" />
     </Box>

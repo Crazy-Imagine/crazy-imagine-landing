@@ -115,5 +115,10 @@
     "workWithUs_workForm_textField_label8": "¿Cómo se enteró de Crazy Imagine?",
     "workWithUs_workForm_textField_button1": "ADJUNTAR",
     "workWithUs_workForm_textField_button2": "ENVIAR",
-    "contactUs_sectionHeader_title": "Imaginemos\nJuntos"
+    "contactUs_sectionHeader_title": "Imaginemos\nJuntos",
+    "post_recentlyPosted_title": "Publicado Recientemente",
+    "post_postCarousel_title": "Artículos Relacionados",
+    "project_aboutProjects_title": "Sobre el proyecto",
+    "project_aboutProjects_subtitle": "Más que un juego",
+    "project_RelatedSection_title": "Proyectos relacionados"
 }

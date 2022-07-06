@@ -2,6 +2,8 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
+import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -84,6 +86,8 @@ const useStyles = makeStyles(theme => ({
 
 const RecentlyPosted = () => {
   const classes = useStyles()
+  const { t } = useI18next();
+
   return (
     <StaticQuery
       query={graphql`
@@ -121,7 +125,7 @@ const RecentlyPosted = () => {
         })
         return (
           <Box className={classes.layout}>
-            <Typography className={classes.title}>Recently Posted</Typography>
+            <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
             {articlesSort.slice(0, 4).map(el => (
               <Box key={el.node.id} marginBottom="24px">
                 <Grid container alignItems="center">
@@ -135,7 +139,7 @@ const RecentlyPosted = () => {
                         style={{ textDecoration: "none" }}
                         to={`${BLOG}/${el.node.slug}`}
                       >
-                        READ MORE →
+                        {t("common_lastestPosts_blogPost_button_readMore")}
                       </Link>
                     </Box>
                   </Grid>
