@@ -13,6 +13,7 @@ import Loading from "../components/Loading"
 //const Layout = lazy(() => import("../components/layout"))
 import { graphql, useStaticQuery } from "gatsby"
 import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
 
 
 const Contact = () => {
@@ -38,6 +39,9 @@ const Contact = () => {
           />
         </header>
         <main>
+          {sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          }
           <ContactSection />
         </main>
         <footer>

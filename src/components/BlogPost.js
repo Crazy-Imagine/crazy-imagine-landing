@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { makeStyles, Box, Typography } from "@material-ui/core"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -109,6 +109,30 @@ const BlogPost = ({ bulletClass }) => {
   const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
+  //const context = React.useContext(I18nextContext);
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
+
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/articles?_locale=es-VE`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    } else {
+      const url = `http://localhost:1337/articles?_locale=en`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  // console.log(contentReviews)
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
+
   return (
     <StaticQuery
       query={graphql`
@@ -151,51 +175,110 @@ const BlogPost = ({ bulletClass }) => {
         SwiperCore.use([Keyboard])
 
         return (
-          <Swiper
-            spaceBetween={30}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-              600: {
-                slidesPerView: 2,
-              },
-              900: {
-                slidesPerView: 3,
-              },
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            keyboard={{ enabled: true }}
-            grabCursor={true}
-            modules={[Pagination]}
-            className={`${classes.slider} ${bulletClass}`}
-          >
-            {articlesSort.map(({ node }, index) => (
-              <SwiperSlide key={index} className={classes.carousel}>
-                <Box className={classes.container}>
-                  <img
-                    src={node.image[0].localFile.publicURL}
-                    className={classes.img}
-                    alt="Blog"
-                  />
-                  <Box className={classes.textContainer}>
-                    <Typography className={classes.title}>
-                      {node.title}
-                    </Typography>
-                    <Link
-                      to={`${BLOG}/${node.slug}`}
-                      className={classes.link}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {t("common_lastestPosts_blogPost_button_readMore")}
-                    </Link>
-                  </Box>
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <>
+            {(lang === "en") ?
+              <>
+                <Swiper
+                  spaceBetween={30}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    600: {
+                      slidesPerView: 2,
+                    },
+                    900: {
+                      slidesPerView: 3,
+                    },
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  keyboard={{ enabled: true }}
+                  grabCursor={true}
+                  modules={[Pagination]}
+                  className={`${classes.slider} ${bulletClass}`}
+                >
+                  {articlesSort.map(({ node }, index) => (
+                    <SwiperSlide key={index} className={classes.carousel}>
+                      <Box className={classes.container}>
+                        <img
+                          //src={contentReviews[index]?.image[0].url}
+                          src={node.image[0].localFile.publicURL}
+                          className={classes.img}
+                          alt="Blog"
+                        />
+                        <Box className={classes.textContainer}>
+                          <Typography className={classes.title}>
+                            {node.title}
+                            {/* {contentReviews[index]?.title} */}
+                          </Typography>
+                          <Link
+                            to={`${BLOG}/${node.slug}`}
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </>
+              :
+              <>
+                <Swiper
+                  spaceBetween={30}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    600: {
+                      slidesPerView: 2,
+                    },
+                    900: {
+                      slidesPerView: 3,
+                    },
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  keyboard={{ enabled: true }}
+                  grabCursor={true}
+                  modules={[Pagination]}
+                  className={`${classes.slider} ${bulletClass}`}
+                >
+                  {articlesSort.map(({ node }, index) => (
+                    <SwiperSlide key={index} className={classes.carousel}>
+                      <Box className={classes.container}>
+                        <img
+                          src={contentReviews[index]?.image[0].url}
+                          // src={node.image[0].localFile.publicURL}
+                          className={classes.img}
+                          alt="Blog"
+                        />
+                        <Box className={classes.textContainer}>
+                          <Typography className={classes.title}>
+                            {/* {node.title} */}
+                            {contentReviews[index]?.title}
+                          </Typography>
+                          <Link
+                            to={`${BLOG}/${node.slug}`}
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </>
+            }
+          </>
+
         )
       }}
     />

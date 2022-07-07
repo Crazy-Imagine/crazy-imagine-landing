@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     alignSelf: "flex-end",
     color: "#27AAE1",
+    marginBottom: "6px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -131,28 +132,31 @@ const useStyles = makeStyles(theme => ({
 const CustomerReview = () => {
   const classes = useStyles()
   SwiperCore.use([Keyboard])
-  //const context = React.useContext(I18nextContext);
-  //const lang = context.language;
-  // let reviewws = [];
+  const context = React.useContext(I18nextContext);
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
 
-  // useEffect(() => {
-  //   const getStrapi = async () => {
-  //     if (lang === "es") {
-  //       const url = `http://localhost:1337/reviews?_locale=es-VE`;
-  //       const resp = await fetch(url).then(response => response.json())
-  //         .then(data => console.log(data));
-  //       reviewws = resp
-  //     } else {
-  //       const url = `http://localhost:1337/reviews?_locale=en`;
-  //       const resp = await fetch(url).then(response => response.json())
-  //         .then(data => console.log(data));
-  //       reviewws = resp
-  //     }
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/reviews?_locale=es-VE`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
 
-  //   }
-  //   getStrapi()
-  // }, [lang])
-  // console.log(reviewws, "reviewws")
+    } else {
+      const url = `http://localhost:1337/reviews?_locale=en`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  //console.log(contentReviews)
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
+
+
   return (
     <StaticQuery
       query={query}
@@ -210,15 +214,17 @@ const CustomerReview = () => {
                       />
                     </Box>
                     <Typography className={classes.review}>
-                      {review.review}
-                      {/* {reviewws[index].review} */}
+                      {/* {review.review} */}
+                      {contentReviews[index]?.review}
                     </Typography>
                     <Box>
                       <Typography className={classes.customerName}>
-                        {review.name}
+                        {/* {review.name} */}
+                        {contentReviews[index]?.name}
                       </Typography>
                       <Typography className={classes.customerOcupation}>
-                        {review.ocupation}
+                        {/* {review.ocupation} */}
+                        {contentReviews[index]?.ocupation}
                       </Typography>
                     </Box>
                   </Box>

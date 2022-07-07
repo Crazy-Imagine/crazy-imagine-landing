@@ -18,13 +18,11 @@ const Language = () => {
         <Box>
           <Button onClick={(e) => {
             e.preventDefault();
-
-            changeLanguage("es"); sessionStorage.setItem('lang', 'es')
+            changeLanguage("es");
           }}>ES</Button>
           <Button onClick={(e) => {
             e.preventDefault();
-
-            changeLanguage("en"); sessionStorage.setItem('lang', 'en')
+            changeLanguage("en");
           }}>EN</Button>
         </Box>
       </Box>
