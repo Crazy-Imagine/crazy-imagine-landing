@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
@@ -86,7 +86,27 @@ const useStyles = makeStyles(theme => ({
 
 const RecentlyPosted = () => {
   const classes = useStyles()
+  const context = React.useContext(I18nextContext);
+  //useI18next(I18nextContext)
   const { t } = useI18next();
+  //const context = React.useContext(I18nextContext);
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
+
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/articles?_locale=es-VE`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  //console.log(contentReviews)
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
 
   return (
     <StaticQuery
@@ -124,29 +144,58 @@ const RecentlyPosted = () => {
           return new Date(b.node.created_at) - new Date(a.node.created_at)
         })
         return (
-          <Box className={classes.layout}>
-            <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
-            {articlesSort.slice(0, 4).map(el => (
-              <Box key={el.node.id} marginBottom="24px">
-                <Grid container alignItems="center">
-                  <Grid item xs>
-                    <Box className={classes.container}>
-                      <Typography className={classes.listTitle}>
-                        {el.node.title}
-                      </Typography>
-                      <Link
-                        className={classes.link}
-                        style={{ textDecoration: "none" }}
-                        to={`${BLOG}/${el.node.slug}`}
-                      >
-                        {t("common_lastestPosts_blogPost_button_readMore")}
-                      </Link>
-                    </Box>
-                  </Grid>
-                </Grid>
+          <>
+            {(lang === "en") ?
+              <Box className={classes.layout}>
+                <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
+                {articlesSort.slice(0, 4).map(el => (
+                  <Box key={el.node.id} marginBottom="24px">
+                    <Grid container alignItems="center">
+                      <Grid item xs>
+                        <Box className={classes.container}>
+                          <Typography className={classes.listTitle}>
+                            {el.node.title}
+                          </Typography>
+                          <Link
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                            to={`${BLOG}/${el.node.slug}`}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                ))}
               </Box>
-            ))}
-          </Box>
+              :
+              <Box className={classes.layout}>
+                <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
+                {articlesSort.slice(0, 4).map(({ node }, index) => (
+                  <Box key={node.id} marginBottom="24px">
+                    <Grid container alignItems="center">
+                      <Grid item xs>
+                        <Box className={classes.container}>
+                          <Typography className={classes.listTitle}>
+                            {/* {el.node.title} */}
+                            {contentReviews[index]?.title}
+                          </Typography>
+                          <Link
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                            to={`${BLOG}/${contentReviews[index]?.Key}`}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                ))}
+              </Box>
+            }
+          </>
         )
       }}
     />

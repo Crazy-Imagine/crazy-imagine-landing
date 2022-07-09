@@ -32,7 +32,7 @@ const IndexPage = () => {
   const context = React.useContext(I18nextContext);
   const lang = context.language;
   //const data = useStaticQuery(query)
-  console.log(context.language);
+  //console.log(context.language);
 
   // const { languages, changeLanguage } = useI18next();
   // const getStrapi = async () => {
@@ -42,10 +42,10 @@ const IndexPage = () => {
   // }
 
   // getStrapi();
-  const handleclick = lang => {
-    if (lang === 'en') console.log('language', lang)
-    console.log(lang,)
-  }
+  // const handleclick = lang => {
+  //   if (lang === 'en') console.log('language', lang)
+  //   console.log(lang,)
+  // }
 
 
   return (

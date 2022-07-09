@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { Box, Hidden, Typography, makeStyles } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
@@ -78,43 +78,106 @@ const Project = ({ data }) => {
   const title = dataProject.title
   const date = dataProject.created_at
   const description = dataProject.description
+  const key = dataProject.Key
+  // console.log(key, "madafaka")
+  // const context = React.useContext(I18nextContext);
+  // const lang = context.language;
+  const context = React.useContext(I18nextContext);
   const { t } = useI18next();
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
+  //console.log("lang: ", lang)
+
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/projects?_locale=es-VE&_Key=${key}`;
+      //console.log("url: ", url)
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  //console.log(contentReviews, "DDDDDDD")
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
+
 
 
   return (
-    <Layout seo={dataProject?.seo}>
-      <PageWrapper>
-        <Hidden mdDown>
-          <Navbar variant="secondary" color={"#193174"} />
-        </Hidden>
-        <Hidden lgUp>
-          <NavbarMobile />
-        </Hidden>
-        <Box className={classes.header}>
-          <Typography className={classes.title}>{title}</Typography>
-          <Typography className={classes.date}>{date}</Typography>
-          <Typography className={classes.description}>{description}</Typography>
-        </Box>
-        <Box overflow="hidden">
-          <HeroProjectsSection image={image} title={dataProject?.title} />
-          <AboutProjects
-            aboutProject={dataProject?.details}
-            images={image}
-            gallery={dataProject?.galleryImages}
-            moreAbout={dataProject?.description}
-          />
-          <GalleryProjects
-            images={image}
-            gallery={dataProject?.galleryImages}
-            id={dataProject.id}
-            description={dataProject?.moreAbout}
-          />
-          <RelatedSection />
-          <Footer />
-          <Copyright />
-        </Box>
-      </PageWrapper>
-    </Layout>
+    <>
+      {(lang === "en") ?
+        <Layout seo={dataProject?.seo}>
+          <PageWrapper>
+            <Hidden mdDown>
+              <Navbar variant="secondary" color={"#193174"} />
+            </Hidden>
+            <Hidden lgUp>
+              <NavbarMobile />
+            </Hidden>
+            <Box className={classes.header}>
+              <Typography className={classes.title}>{title}</Typography>
+              <Typography className={classes.date}>{date}</Typography>
+              <Typography className={classes.description}>{description}</Typography>
+            </Box>
+            <Box overflow="hidden">
+              <HeroProjectsSection image={image} title={dataProject?.title} />
+              <AboutProjects
+                aboutProject={dataProject?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={dataProject?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={dataProject?.moreAbout}
+              />
+              <RelatedSection />
+              <Footer />
+              <Copyright />
+            </Box>
+          </PageWrapper>
+        </Layout>
+        :
+        <Layout seo={dataProject?.seo}>
+          <PageWrapper>
+            <Hidden mdDown>
+              <Navbar variant="secondary" color={"#193174"} />
+            </Hidden>
+            <Hidden lgUp>
+              <NavbarMobile />
+            </Hidden>
+            <Box className={classes.header}>
+              <Typography className={classes.title}>{title}</Typography>
+              <Typography className={classes.date}>{date}</Typography>
+              <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
+            </Box>
+            <Box overflow="hidden">
+              <HeroProjectsSection image={image} title={dataProject?.title} />
+              <AboutProjects
+                aboutProject={contentReviews[0]?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={contentReviews[0]?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={contentReviews[0]?.moreAbout}
+              />
+              <RelatedSection />
+              <Footer />
+              <Copyright />
+            </Box>
+          </PageWrapper>
+        </Layout>
+      }
+    </>
   )
 }
 
@@ -126,6 +189,7 @@ query Project($id: String!, $language: String!) {
     id
     moreAbout
     title
+    Key
     seo {
       metaTitle
       metaDescription
@@ -153,7 +217,7 @@ query Project($id: String!, $language: String!) {
         }
       }
     }
-    created_at(formatString: "DD MMMM, YYYY")
+    created_at(formatString: "DD/MM/YYYY")
   }
   locales: allLocale(filter: {language: {eq: $language}}) {
     edges {

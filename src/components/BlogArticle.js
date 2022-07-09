@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import { graphql, StaticQuery } from "gatsby"
@@ -209,7 +209,27 @@ const BlogArticle = () => {
   const loadArticles = length => {
     if (length > load) setLoad(load + 2)
   }
+  const context = React.useContext(I18nextContext);
   const { t } = useI18next();
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
+
+
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/articles?_locale=es-VE`;
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  // console.log(contentReviews)
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
+
 
   return (
     <StaticQuery
@@ -250,56 +270,123 @@ const BlogArticle = () => {
           .slice(0, load)
 
         return (
-          <Box className={classes.wrapperContainer}>
-            <Typography
-              ref={ref}
-              className={
-                isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
-              }
-            >
-              {t("blog_blogArticle_title")}
-            </Typography>
-            <Box className={classes.wrapper}>
-              {articlesSort.map(({ node }, index) => (
+          <>
+            {(lang === "en") ?
+              <Box className={classes.wrapperContainer}>
+                <Typography
+                  ref={ref}
+                  className={
+                    isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
+                  }
+                >
+                  {t("blog_blogArticle_title")}
+                </Typography>
+                <Box className={classes.wrapper}>
+                  {articlesSort.map(({ node }, index) => (
 
-                <Box key={index} className={classes.container}>
+                    <Box key={index} className={classes.container}>
 
-                  <GatsbyImage
-                    image={getImage(node.image[0].localFile)}
-                    imgStyle={{
-                      maxWidth: "480px",
-                      maxHeight: "300px",
+                      <GatsbyImage
+                        image={getImage(node.image[0].localFile)}
+                        imgStyle={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
 
-                    }}
-                    alt="Blog"
+                        }}
+                        alt="Blog"
 
-                  />
-                  <Box className={classes.textContainer}>
-                    <Typography className={classes.title}>
-                      {node.title}
-                    </Typography>
-                    <Link
-                      to={`${BLOG}/${node.slug}`}
-                      language="es"
-                      className={classes.link}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {t("common_lastestPosts_blogPost_button_readMore")}
-                    </Link>
-                  </Box>
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {node.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${node.slug}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </Box>
+                  ))}
                 </Box>
-              ))}
-            </Box>
-            <Button
-              ref={ref1}
-              onClick={() => {
-                loadArticles(articles.length)
-              }}
-              className={isVisible1 ? classes.loadButton2 : classes.loadButton}
-            >
-              {t("blog_blogArticle_button")}
-            </Button>
-          </Box>
+                <Button
+                  ref={ref1}
+                  onClick={() => {
+                    loadArticles(articles.length)
+                  }}
+                  className={isVisible1 ? classes.loadButton2 : classes.loadButton}
+                >
+                  {t("blog_blogArticle_button")}
+                </Button>
+              </Box>
+              :
+              <Box className={classes.wrapperContainer}>
+                <Typography
+                  ref={ref}
+                  className={
+                    isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
+                  }
+                >
+                  {t("blog_blogArticle_title")}
+                </Typography>
+                <Box className={classes.wrapper}>
+                  {articlesSort.map(({ node }, index) => (
+
+                    <Box key={index} className={classes.container}>
+
+                      {/* <GatsbyImage
+                        image={getImage(node.image[0].localFile)}
+                        imgStyle={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
+
+                        }}
+                        alt="Blog"
+
+                      /> */}
+                      <img
+                        src={contentReviews[index]?.image[0].url}
+                        // src={node.image[0].localFile.publicURL}
+                        style={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
+
+                        }}
+                        alt="Blog"
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {/* {node.title} */}
+                          {contentReviews[index]?.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${contentReviews[index]?.Key}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+                <Button
+                  ref={ref1}
+                  onClick={() => {
+                    loadArticles(articles.length)
+                  }}
+                  className={isVisible1 ? classes.loadButton2 : classes.loadButton}
+                >
+                  {t("blog_blogArticle_button")}
+                </Button>
+              </Box>
+            }
+          </>
+
         )
       }}
     />

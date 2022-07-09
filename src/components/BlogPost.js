@@ -119,11 +119,6 @@ const BlogPost = ({ bulletClass }) => {
       const resp = await fetch(url).then(response => response.json())
         .then(data => { setContentReviews(data) });
 
-    } else {
-      const url = `http://localhost:1337/articles?_locale=en`;
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
-
     }
   }
 
@@ -264,7 +259,7 @@ const BlogPost = ({ bulletClass }) => {
                             {contentReviews[index]?.title}
                           </Typography>
                           <Link
-                            to={`${BLOG}/${node.slug}`}
+                            to={`${BLOG}/${contentReviews[index]?.Key}`}
                             className={classes.link}
                             style={{ textDecoration: "none" }}
                           >

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -147,48 +147,108 @@ const Post = ({ data }) => {
   const author = data.article.author.name
   const category = data.article.category.name
   const date = data.article.category.created_at
+  const key = data.article.Key
+  // console.log(key, "madafaka")
   // const context = React.useContext(I18nextContext);
   // const lang = context.language;
+  const context = React.useContext(I18nextContext);
   const { t } = useI18next();
+  const lang = context.language;
+  const [contentReviews, setContentReviews] = useState([]);
+  //console.log("lang: ", lang)
 
-  //const data = useStaticQuery(query)
-  // console.log(context.language);
-  // console.log(t("home"));
+  const getStrapi = async () => {
+    if (lang === "es") {
+      const url = `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
+      //console.log("url: ", url)
+      const resp = await fetch(url).then(response => response.json())
+        .then(data => { setContentReviews(data) });
+
+    }
+  }
+
+  //console.log(contentReviews, "DDDDDDD")
+
+  useEffect(() => {
+    getStrapi()
+  }, [lang])
 
 
 
   return (
-    <Layout seo={data.article.seo}>
-      <PageWrapper>
-        <Hidden mdDown>
-          <Navbar color="#27AAE1" variant="secondary" />
-        </Hidden>
-        <Hidden lgUp>
-          <NavbarMobile />
-        </Hidden>
-        <Box className={classes.header}>
-          <InputLabel className={classes.label}>{category}</InputLabel>
-          <Typography className={classes.title}>{title}</Typography>
-          <Typography className={classes.date}>
-            {date} │ <span className={classes.author}>{author}</span>
-          </Typography>
-          <Typography className={classes.description}>{description}</Typography>
-        </Box>
-        <Box className={classes.imgContainer}>
-          <GatsbyImage
-            image={getImage(data.article.image[0].localFile)}
-            alt={title}
-          />
-        </Box>
-        <Box className={classes.contentContainer}>
-          <PostContent data={data} />
-          <RecentlyPosted />
-        </Box>
-        <PostCarousel />
-        <Footer />
-        <Copyright />
-      </PageWrapper>
-    </Layout>
+    <>
+      {(lang === "en") ?
+        <Layout seo={data.article.seo}>
+          <PageWrapper>
+            <Hidden mdDown>
+              <Navbar color="#27AAE1" variant="secondary" />
+            </Hidden>
+            <Hidden lgUp>
+              <NavbarMobile />
+            </Hidden>
+            <Box className={classes.header}>
+              <InputLabel className={classes.label}>{category}</InputLabel>
+              <Typography className={classes.title}>{title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{description}</Typography>
+            </Box>
+            <Box className={classes.imgContainer}>
+              <GatsbyImage
+                image={getImage(data.article.image[0].localFile)}
+                alt={title}
+              />
+            </Box>
+            <Box className={classes.contentContainer}>
+              <PostContent data={data} />
+              <RecentlyPosted />
+            </Box>
+            <PostCarousel />
+            <Footer />
+            <Copyright />
+          </PageWrapper>
+        </Layout>
+        :
+        <Layout seo={data.article.seo}>
+          <PageWrapper>
+            <Hidden mdDown>
+              <Navbar color="#27AAE1" variant="secondary" />
+            </Hidden>
+            <Hidden lgUp>
+              <NavbarMobile />
+            </Hidden>
+            <Box className={classes.header}>
+              {/* <InputLabel className={classes.label}>{category}</InputLabel> */}
+              <InputLabel className={classes.label}>{contentReviews[0]?.category.name}</InputLabel>
+              <Typography className={classes.title}>{contentReviews[0]?.title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
+            </Box>
+            <Box className={classes.imgContainer}>
+              <GatsbyImage
+                image={getImage(data.article.image[0].localFile)}
+                alt={title}
+              />
+              {/* <img
+                src={contentReviews[0]?.image[0].url}
+                //src={node.image[0].localFile.publicURL}
+                alt={contentReviews[0]?.title}
+              /> */}
+            </Box>
+            <Box className={classes.contentContainer}>
+              <PostContent data={contentReviews[0]} />
+              <RecentlyPosted />
+            </Box>
+            <PostCarousel />
+            <Footer />
+            <Copyright />
+          </PageWrapper>
+        </Layout>
+      }
+    </>
   )
 }
 
@@ -199,6 +259,7 @@ query Article($id: String!, $language: String!) {
     id
     description
     content
+    Key
     author {
       name
     }
@@ -229,7 +290,7 @@ query Article($id: String!, $language: String!) {
     }
     category {
       name
-      created_at(formatString: "DD MMMM, YYYY")
+      created_at(formatString: "DD/MM/YYYY")
     }
   }
   locales: allLocale(filter: {language: {eq: $language}}) {
