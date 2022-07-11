@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { Box, Hidden, Typography, makeStyles } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
@@ -11,7 +11,7 @@ import GalleryProjects from "../components/GalleryProjects"
 import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -83,7 +83,7 @@ const Project = ({ data }) => {
   // const context = React.useContext(I18nextContext);
   // const lang = context.language;
   const context = React.useContext(I18nextContext);
-  const { t } = useI18next();
+  //const { t } = useI18next();
   const lang = context.language;
   const [contentReviews, setContentReviews] = useState([]);
   //console.log("lang: ", lang)

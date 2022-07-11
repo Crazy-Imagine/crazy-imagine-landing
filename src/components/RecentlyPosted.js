@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 
 const useStyles = makeStyles(theme => ({
@@ -98,7 +98,6 @@ const RecentlyPosted = () => {
       const url = `http://localhost:1337/articles?_locale=es-VE`;
       const resp = await fetch(url).then(response => response.json())
         .then(data => { setContentReviews(data) });
-
     }
   }
 

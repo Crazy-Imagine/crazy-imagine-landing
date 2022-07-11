@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -17,8 +17,8 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
-import Language from "../components/LanguageModal"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
+//import Language from "../components/LanguageModal"
 
 
 const useStyles = makeStyles(theme => ({
@@ -152,7 +152,7 @@ const Post = ({ data }) => {
   // const context = React.useContext(I18nextContext);
   // const lang = context.language;
   const context = React.useContext(I18nextContext);
-  const { t } = useI18next();
+  //const { t } = useI18next();
   const lang = context.language;
   const [contentReviews, setContentReviews] = useState([]);
   //console.log("lang: ", lang)

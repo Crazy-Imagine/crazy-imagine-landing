@@ -9,7 +9,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
 
 
 const useStyles = makeStyles(theme => ({
@@ -139,11 +139,6 @@ const CustomerReview = () => {
   const getStrapi = async () => {
     if (lang === "es") {
       const url = `http://localhost:1337/reviews?_locale=es-VE`;
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
-
-    } else {
-      const url = `http://localhost:1337/reviews?_locale=en`;
       const resp = await fetch(url).then(response => response.json())
         .then(data => { setContentReviews(data) });
 

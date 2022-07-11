@@ -1,5 +1,5 @@
 import { Hidden } from "@material-ui/core"
-import React, { Suspense, lazy } from "react"
+import React from "react"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import NavbarMobile from "../components/NavbarMobile"
@@ -10,10 +10,12 @@ import headerImage from "../images/marciano.svg"
 import AboutSection from "../components/AboutSection"
 import Imagen from "../components/Imagen"
 import Layout from "../components/layout"
-import Loading from "../components/Loading"
-import { graphql, useStaticQuery } from "gatsby"
+//import Loading from "../components/Loading"
+import { graphql } from "gatsby"
 //const Layout = lazy(() => import("../components/layout"))
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
+
 
 const About = () => {
   const { t } = useTranslation()
@@ -37,10 +39,13 @@ const About = () => {
             little={true}
           />
         </header>
-        <section>
+        <main>
+          {sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          }
           <AboutSection />
           <Imagen />
-        </section>
+        </main>
         <footer>
           <Footer />
           <Copyright />

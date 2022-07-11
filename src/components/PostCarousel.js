@@ -3,7 +3,7 @@ import BlogPost from "../components/BlogPost"
 import { Link } from "gatsby"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 
 const useStyles = makeStyles(theme => ({

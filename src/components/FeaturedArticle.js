@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-import { BLOG, PROJECTS } from "../navigation/sitemap"
+import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {

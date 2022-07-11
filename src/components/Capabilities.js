@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -112,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
   return (

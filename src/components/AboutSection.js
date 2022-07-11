@@ -4,7 +4,7 @@ import SubTitleSection from "./SubTitleSection"
 import AboutTitle from "./AboutTitle"
 import aboutImage from "../images/sateliteBackground.svg"
 import aboutImage1 from "../images/antenaBackground.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {

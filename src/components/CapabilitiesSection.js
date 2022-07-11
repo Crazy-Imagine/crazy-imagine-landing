@@ -13,7 +13,7 @@ import {
 import fullstackImage from "../images/laptop.svg"
 import bgImage from "../images/Group1.svg"
 import qualityImage from "../images/quality.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -96,7 +96,7 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
 

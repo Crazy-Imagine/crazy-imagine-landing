@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, Box, Typography, Modal, Button } from "@material-ui/core"
-import { useTranslation, useI18next, Trans, I18nextContext } from "gatsby-plugin-react-i18next"
-import bgImage from "../images/LOGO.png"
+import { useI18next } from "gatsby-plugin-react-i18next"
+import bgImage from "../images/flag.svg"
 
 
 const useStyles = makeStyles(theme => ({
     container: {
 
-        marginTop: "auto",
+        //marginTop: "auto",
         display: "flex",
         justifyContent: "center",
-        marginBottom: "auto",
+        //marginBottom: "auto",
         alignItems: "center",
         flexDirection: "column",
         //backdropFilter: "blur(3px)",
@@ -21,11 +21,11 @@ const useStyles = makeStyles(theme => ({
         padding: "32px 0px 5px 0px",
         borderRadius: "14px",
         position: "absolute",
-        top: "45%",
-        left: "30%",
-        margin: "auto",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
         width: 650,
-        height: 250,
+        height: 240,
         //border: '2px solid #000',
         display: "flex",
         flexDirection: "row",
@@ -36,6 +36,25 @@ const useStyles = makeStyles(theme => ({
         "&:focus-visible": {
             outline: "none"
         },
+        [theme.breakpoints.down("md")]: {
+            width: 590,
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: "85%",
+            //borderRadius: "0px",
+            padding: "0px 0px 0px 0px",
+            display: "flex",
+            //alignItems: "end",
+
+            //justifyContent: "flex-start",
+        },
+        [theme.breakpoints.between(0, 500)]: {
+            width: "100%",
+            borderRadius: "0px",
+            height: 180,
+
+        },
+
     },
     title: {
         fontFamily: "Nexa Bold",
@@ -49,18 +68,45 @@ const useStyles = makeStyles(theme => ({
         marginTop: "27px",
         whiteSpace: "pre-line",
         minHeight: "54px",
+        [theme.breakpoints.between(0, 510)]: {
+            fontWeight: 100,
+            lineHeight: "40px",
+            fontSize: "33px",
+            marginTop: "0px",
+            marginLeft: "0px",
+        },
     },
     buttonBox: {
         textAlign: "center",
-        marginLeft: "50px",
+        marginLeft: "20px",
+        [theme.breakpoints.down("xs")]: {
+            flexDirection: "row",
+            marginLeft: "0px",
+        },
     },
     imgBox: {
-        width: "100px",
-        height: "auto",
+
+        width: "auto",
+        height: "252.7%",
+        [theme.breakpoints.between(500, 1280)]: {
+            height: "220.7%",
+        },
+        [theme.breakpoints.down("xs")]: {
+            justifyContent: "flex-end",
+            width: "auto",
+            height: "auto",
+            display: "none",
+        },
     },
     img: {
-        marginBottom: "190px",
-        marginLeft: "50px",
+        // marginBottom: "190px",
+        // marginLeft: "50px",
+    },
+    boxT: {
+        [theme.breakpoints.down("xs")]: {
+            //display: "flex",
+            justifyContent: "flex-start",
+        },
     },
     button2: {
         background: "#797EF6",
@@ -85,6 +131,26 @@ const useStyles = makeStyles(theme => ({
             letterSpacing: "0.05em",
             color: "#FFFFFF",
         },
+        [theme.breakpoints.down("xs")]: {
+            borderRadius: "50px",
+            marginBottom: "17px",
+            marginTop: "18px",
+            spacer: "5px",
+            margin: "0px 5px 0px 5px",
+            "& > span": {
+                fontFamily: "Nexa Bold",
+                fontStyle: "normal",
+                fontWeight: "50",
+                fontSize: "8px",
+                padding: "4px 5px 4px 5px",
+                lineHeight: "10px",
+                display: "flex",
+                alignItems: "center",
+                textAlign: "center",
+                letterSpacing: "0.05em",
+                color: "#FFFFFF",
+            },
+        },
     },
 }))
 
@@ -94,10 +160,10 @@ const ModalLang = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { t } = useTranslation();
+    //const { t } = useTranslation();
     const { languages, changeLanguage } = useI18next();
-    const context = React.useContext(I18nextContext);
-    const lang = context.language;
+    //const context = React.useContext(I18nextContext);
+    //const lang = context.language;
     //if (lang === "en") handleClose(false);
 
     return (
@@ -112,7 +178,7 @@ const ModalLang = () => {
                 {/* <Box className={classes.container}> */}
 
                 <Box className={classes.containerInfo}>
-                    <Box>
+                    <Box className={classes.boxT}>
                         <Typography variant="h1" className={classes.title}>
                             Choose Language
                         </Typography>

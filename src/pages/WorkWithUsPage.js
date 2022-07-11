@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Suspense, lazy } from "react"
 import { Hidden } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
@@ -10,11 +9,12 @@ import Imagen from "../components/Imagen"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/rocket.svg"
-import Loading from "../components/Loading"
-import { graphql, useStaticQuery } from "gatsby"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { graphql } from "gatsby"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 //const Layout = lazy(() => import("../components/layout"))
 import Layout from "../components/layout"
+import ModalLang from "../components/ModalLang"
+
 const WorkWithUsPage = () => {
   //const data = useStaticQuery(query)
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ const WorkWithUsPage = () => {
     // <>
     //   {typeof window !== 'undefined' && (
     //     <React.Suspense fallback={<Loading />}>
-    <Layout>
+    <Layout seo={{ metaTitle: "Work With Us At Crazy Imagine", metaDescription: "Work With Us At Crazy Imagine" }}>
       <PageWrapper>
         <header>
           <Hidden mdDown>
@@ -39,6 +39,9 @@ const WorkWithUsPage = () => {
           />
         </header>
         <main>
+          {sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          }
           <WorkForm />
           <Imagen />
         </main>

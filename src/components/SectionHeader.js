@@ -4,8 +4,7 @@ import Button from "@material-ui/core/Button"
 import bgImage from "../images/headerBackground.svg"
 import { Link } from "gatsby"
 import { HOME, PROJECTS } from "../navigation/sitemap"
-//import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 
 const useStyles = makeStyles(theme => ({
@@ -302,7 +301,7 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
   //const { t } = useTranslation();
   const { t } = useTranslation()
   //const { t } = useI18next();
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
 
 
 

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"
+import React from "react"
 import PageWrapper from "../components/PageWrapper"
 import Navbar from "../components/Navbar"
 import NavbarMobile from "../components/NavbarMobile"
@@ -8,30 +8,19 @@ import Copyright from "../components/Copyright"
 import SectionHeader from "../components/SectionHeader"
 import headerImage from "../images/deco.svg"
 import BlogArticle from "../components/BlogArticle"
-import { Hidden, Box, Button } from "@material-ui/core"
+import { Hidden } from "@material-ui/core"
 import Layout from "../components/layout"
-import Loading from "../components/Loading"
 import { graphql } from "gatsby"
-//const Layout = lazy(() => import("../components/layout"))
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
-import LanguageModal from "../components/LanguageModal"
+import { useI18next } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
 
 
 
 const Blog = () => {
 
-  const { languages, changeLanguage } = useI18next();
-  const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
+  //const { languages, changeLanguage } = useI18next();
+  //React.useContext(I18nextContext);
   const { t } = useI18next();
-
-
-  //const { t } = useTranslation()
-  console.log(context.language);
-  const handleclick = lang => {
-    if (lang === 'en') console.log('language', lang)
-    console.log(lang,)
-  }
   return (
     // <>
     //   {typeof window !== 'undefined' && (
@@ -53,6 +42,9 @@ const Blog = () => {
           />
         </header>
         <main>
+          {sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          }
           <FeaturedArticle />
           <BlogArticle />
         </main>

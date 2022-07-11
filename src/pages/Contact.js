@@ -1,5 +1,5 @@
 import { Hidden } from "@material-ui/core"
-import React, { Suspense, lazy } from "react"
+import React from "react"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import NavbarMobile from "../components/NavbarMobile"
@@ -9,10 +9,9 @@ import ContactSection from "../components/ContactSection"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/astronaut.svg"
 import Layout from "../components/layout"
-import Loading from "../components/Loading"
 //const Layout = lazy(() => import("../components/layout"))
-import { graphql, useStaticQuery } from "gatsby"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { graphql } from "gatsby"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 import ModalLang from "../components/ModalLang"
 
 

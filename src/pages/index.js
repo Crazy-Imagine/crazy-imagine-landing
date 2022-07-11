@@ -1,6 +1,6 @@
-import React, { useRef, Suspense, lazy } from "react"
-import { Box, Button, Hidden } from "@material-ui/core"
-import { graphql, useStaticQuery } from "gatsby"
+import React, { useRef } from "react"
+import { Box, Hidden } from "@material-ui/core"
+import { graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
@@ -10,51 +10,31 @@ import ContactSection from "../components/ContactSection"
 import NavbarMobile from "../components/NavbarMobile"
 import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
-import Loading from "../components/Loading"
-import LanguageModal from "../components/LanguageModal"
 import HomeMainSection from "../components/HomeMainSection"
 import ProjectSection from "../components/ProjectSection"
 import HomeDescription from "../components/HomeDescription"
 import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 //const Layout = lazy(() => import("../components/layout"))
 //import { useTranslation } from "react-i18next"
 //import { useTranslation } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
+
 
 const IndexPage = () => {
   //const data = useStaticQuery(query)
   const ref = useRef()
   const { t } = useTranslation()
-  //const { t } = useI18next();
-
-  const context = React.useContext(I18nextContext);
-  const lang = context.language;
-  //const data = useStaticQuery(query)
-  //console.log(context.language);
-
-  // const { languages, changeLanguage } = useI18next();
-  // const getStrapi = async () => {
-  //   const url = `http://localhost:1337/articles?_locale=es-VE`;
-  //   const resp = await fetch(url).then(response => response.json())
-  //     .then(data => console.log(data));
-  // }
-
-  // getStrapi();
-  // const handleclick = lang => {
-  //   if (lang === 'en') console.log('language', lang)
-  //   console.log(lang,)
-  // }
-
+  //React.useContext(I18nextContext);
 
   return (
     // <>
     //   {typeof window !== 'undefined' && (
     //     <React.Suspense fallback={<Loading />}>
 
-    <Layout >
-
+    <Layout seo={{ metaTitle: "Crazy Imagine", metaDescription: "We are a growing startup with more than 5 years in the market, with experience on mobile and web development, using the most popular Javascript technologies like React js, Angular js, Vue js, Node js and PHP frameworks like Laravel, Code Igniter, Prestashop, and Wordpress. " }}>
       <PageWrapper>
         <div ref={ref}>
           <Hidden mdDown>
@@ -74,6 +54,9 @@ const IndexPage = () => {
               />
             </header>
             <main>
+              {sessionStorage.getItem("lang") !== "true" &&
+                <ModalLang />
+              }
               <HomeMainSection />
               <HomeDescription />
               <CapabilitiesSection />

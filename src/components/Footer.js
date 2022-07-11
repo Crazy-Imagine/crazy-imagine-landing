@@ -15,7 +15,7 @@ import {
   CONTACT,
   BLOG,
 } from "../navigation/sitemap"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -199,12 +199,14 @@ const Footer = ({ height = "192px" }) => {
             <a
               href="https://ve.linkedin.com/company/crazy-imagine-software"
               target="_blank"
+              rel="noreferrer"
             >
               <LinkedInIcon className={classes.contactIcon}></LinkedInIcon>
             </a>
             <a
               href="https://instagram.com/crazyimaginedev?igshid=YmMyMTA2M2Y="
               target="_blank"
+              rel="noreferrer"
             >
               <InstagramIcon className={classes.contactIcon}></InstagramIcon>
             </a>

@@ -9,7 +9,7 @@ import "swiper/css/pagination"
 import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   container: {

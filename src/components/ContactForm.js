@@ -10,7 +10,7 @@ import emailjs from '@emailjs/browser';
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   root: {

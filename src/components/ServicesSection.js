@@ -13,7 +13,7 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons"
 import bgImage from "../images/ServiceBg.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"
+import React from "react"
 import { Box, Hidden } from "@material-ui/core"
 import SectionHeader from "../components/SectionHeader"
 import Navbar from "../components/Navbar"
@@ -8,24 +8,24 @@ import Copyright from "../components/Copyright"
 import ContactSection from "../components/ContactSection"
 import PageWrapper from "../components/PageWrapper"
 import NavbarMobile from "../components/NavbarMobile"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
-import { graphql, useStaticQuery } from "gatsby"
+import { useTranslation } from "gatsby-plugin-react-i18next"
+import { graphql } from "gatsby"
 import headerImage from "../images/robot.svg"
 import ProjectSection from "../components/ProjectSection"
-import Loading from "../components/Loading"
 //const Layout = lazy(() => import("../components/layout"))
 import Layout from "../components/layout"
+import ModalLang from "../components/ModalLang"
+
 
 const Projects = () => {
   const { t } = useTranslation()
-  const context = React.useContext(I18nextContext);
-  const lang = context.language;
+
   //const data = useStaticQuery(query)
   return (
     // <>
     //   {typeof window !== 'undefined' && (
     //     <React.Suspense fallback={<Loading />}>
-    <Layout >
+    <Layout seo={{ metaTitle: "Projects", metaDescription: "Our passion is to create solutions which could give that extra value to your product, service or to business in general." }}>
       <PageWrapper>
 
         <Hidden mdDown>
@@ -44,6 +44,9 @@ const Projects = () => {
             />
           </header>
           <main>
+            {sessionStorage.getItem("lang") !== "true" &&
+              <ModalLang />
+            }
             <ServicesSection />
             <ProjectSection title={t("services_projectSection_title")} btn={false} />
             <ContactSection />

@@ -14,7 +14,7 @@ import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
 import Image from "../images/crazy-imagine-icon.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 import LanguageModal from "../components/LanguageModal"
 
 const useStyles = makeStyles(theme => ({
@@ -130,7 +130,7 @@ const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
 
@@ -148,7 +148,7 @@ const Navbar = ({
           <Link to={HOME}>
             <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
-          <LanguageModal />
+          {/* <LanguageModal /> */}
           <Box className={classes.linkContainer}>
             <Typography>
               <Link
@@ -183,6 +183,7 @@ const Navbar = ({
               </Link>
             </Typography>
           </Box>
+          <LanguageModal />
           <Link
             to={`${CONTACT}`}
             style={{ textDecoration: "none", borderRadius: "100px" }}

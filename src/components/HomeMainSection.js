@@ -11,7 +11,7 @@ import TitleSection from "./TitleSection"
 import { Link } from "gatsby"
 import { PROJECTS } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 
 const useStyles = makeStyles(theme => ({
@@ -86,7 +86,7 @@ const HomeMainSection = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
   return (

@@ -1,7 +1,7 @@
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import React, { useRef } from "react"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({

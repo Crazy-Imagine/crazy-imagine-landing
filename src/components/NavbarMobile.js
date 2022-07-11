@@ -37,7 +37,7 @@ import {
 } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 import Image from "../images/crazy-imagine-icon.svg"
-import { useTranslation, useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 import LanguageModal from "../components/LanguageModal"
 
 const useStyles = makeStyles(theme => ({
@@ -139,7 +139,7 @@ const NavbarMobile = ({
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const context = React.useContext(I18nextContext);
+  //const context = React.useContext(I18nextContext);
   //useI18next(I18nextContext)
   const { t } = useI18next();
 
@@ -175,6 +175,7 @@ const NavbarMobile = ({
                 style={{ width: "100%", height: "100%" }}
               />
             </Link>
+
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -193,7 +194,9 @@ const NavbarMobile = ({
           anchor="left"
           open={open}
         >
+
           <DrawerHeader style={{ justifyContent: "space-between" }}>
+
             <Link to={`${HOME}`} onClick={handleDrawerClose}>
               <img
                 src={Image}
@@ -201,6 +204,7 @@ const NavbarMobile = ({
                 style={{ width: "100%", height: "100%" }}
               />
             </Link>
+            <LanguageModal />
             <IconButton onClick={handleDrawerClose}>
               <FontAwesomeIcon icon={faXmark} inverse />
             </IconButton>
@@ -264,7 +268,7 @@ const NavbarMobile = ({
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-            <LanguageModal />
+            {/* <LanguageModal /> */}
           </List>
         </Drawer>
       </AppBar>
