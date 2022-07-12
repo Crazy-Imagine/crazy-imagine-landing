@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: "70px",
-    lineHeight: "72px",
+    lineHeight: "71px",
     color: "#193174",
     marginBottom: "17px",
     [theme.breakpoints.down("md")]: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "22px",
     lineHeight: "22px",
     color: "#193174",
-    marginBottom: "50px",
+    marginBottom: "49px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   description: {
     fontFamily: "Hero New",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "399",
     fontSize: "22px",
     lineHeight: "31px",
     color: "#27AAE1",
@@ -81,9 +81,6 @@ const Project = ({ data }) => {
   const date = dataProject.created_at
   const description = dataProject.description
   const key = dataProject.Key
-  // console.log(key, "madafaka")
-  // const context = React.useContext(I18nextContext);
-  // const lang = context.language;
   const context = React.useContext(I18nextContext);
   //const { t } = useI18next();
   const lang = context.language;
@@ -124,9 +121,11 @@ const Project = ({ data }) => {
               <Typography className={classes.date}>{date}</Typography>
               <Typography className={classes.description}>{description}</Typography>
             </Box>
-            {sessionStorage.getItem("lang") !== "true" &&
+            {typeof window !== 'undefined' && (
+              sessionStorage.getItem("lang") !== "true" &&
               <ModalLang />
-            }
+            )}
+
             <Box overflow="hidden">
               <HeroProjectsSection image={image} title={dataProject?.title} />
               <AboutProjects
@@ -161,9 +160,10 @@ const Project = ({ data }) => {
               <Typography className={classes.date}>{date}</Typography>
               <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
             </Box>
-            {sessionStorage.getItem("lang") !== "true" &&
+            {typeof window !== 'undefined' && (
+              sessionStorage.getItem("lang") !== "true" &&
               <ModalLang />
-            }
+            )}
             <Box overflow="hidden">
               <HeroProjectsSection image={image} title={dataProject?.title} />
               <AboutProjects

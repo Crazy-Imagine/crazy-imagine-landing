@@ -42,9 +42,10 @@ const Blog = () => {
           />
         </header>
         <main>
-          {sessionStorage.getItem("lang") !== "true" &&
+          {typeof window !== 'undefined' && (
+            sessionStorage.getItem("lang") !== "true" &&
             <ModalLang />
-          }
+          )}
           <FeaturedArticle />
           <BlogArticle />
         </main>

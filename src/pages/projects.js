@@ -44,9 +44,10 @@ const Projects = () => {
             />
           </header>
           <main>
-            {sessionStorage.getItem("lang") !== "true" &&
+            {typeof window !== 'undefined' && (
+              sessionStorage.getItem("lang") !== "true" &&
               <ModalLang />
-            }
+            )}
             <ServicesSection />
             <ProjectSection title={t("services_projectSection_title")} btn={false} />
             <ContactSection />

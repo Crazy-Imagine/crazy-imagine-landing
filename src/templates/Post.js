@@ -196,9 +196,10 @@ const Post = ({ data }) => {
               </Typography>
               <Typography className={classes.description}>{description}</Typography>
             </Box>
-            {sessionStorage.getItem("lang") !== "true" &&
+            {typeof window !== 'undefined' && (
+              sessionStorage.getItem("lang") !== "true" &&
               <ModalLang />
-            }
+            )}
             <Box className={classes.imgContainer}>
               <GatsbyImage
                 image={getImage(data.article.image[0].localFile)}
@@ -232,9 +233,10 @@ const Post = ({ data }) => {
               </Typography>
               <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
             </Box>
-            {sessionStorage.getItem("lang") !== "true" &&
+            {typeof window !== 'undefined' && (
+              sessionStorage.getItem("lang") !== "true" &&
               <ModalLang />
-            }
+            )}
             <Box className={classes.imgContainer}>
               <GatsbyImage
                 image={getImage(data.article.image[0].localFile)}

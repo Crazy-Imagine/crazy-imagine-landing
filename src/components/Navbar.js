@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     color: props.scroll ? props.iconsVariant : "white",
   }),
   contactButton: {
-    width: "151px",
+    width: "150px",
     height: " 40px",
     background: "transparent",
     borderRadius: "100px",

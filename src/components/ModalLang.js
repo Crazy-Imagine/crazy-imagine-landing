@@ -191,7 +191,12 @@ const ModalLang = () => {
                                     e.preventDefault();
                                     changeLanguage("es");
                                     handleClose(false);
-                                    sessionStorage.setItem("lang", "true")
+                                    {
+                                        typeof window !== 'undefined' && (
+                                            sessionStorage.setItem("lang", "true")
+                                        )
+                                    }
+
                                 }}>ES</Button>
                             <Button
                                 className={classes.button2}
@@ -199,7 +204,12 @@ const ModalLang = () => {
                                     e.preventDefault();
                                     changeLanguage("en");
                                     handleClose(false);
-                                    sessionStorage.setItem("lang", "true")
+
+                                    {
+                                        typeof window !== 'undefined' && (
+                                            sessionStorage.setItem("lang", "true")
+                                        )
+                                    }
                                 }}>EN</Button>
                         </Box>
                     </Box>
