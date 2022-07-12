@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "490px",
+    height: "480px",
     width: "80%",
     paddingTop: "60px",
     margin: "90px auto 0px auto",
