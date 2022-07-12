@@ -179,85 +179,57 @@ const Post = ({ data }) => {
 
   return (
     <>
-      {(lang === "en") ?
-        <Layout seo={data.article.seo}>
-          <PageWrapper>
-            <Hidden mdDown>
-              <Navbar color="#27AAE1" variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <Box className={classes.header}>
-              <InputLabel className={classes.label}>{category}</InputLabel>
-              <Typography className={classes.title}>{title}</Typography>
-              <Typography className={classes.date}>
-                {date} │ <span className={classes.author}>{author}</span>
-              </Typography>
-              <Typography className={classes.description}>{description}</Typography>
-            </Box>
-            {typeof window !== 'undefined' && (
-              sessionStorage.getItem("lang") !== "true" &&
-              <ModalLang />
-            )}
-            <Box className={classes.imgContainer}>
-              <GatsbyImage
-                image={getImage(data.article.image[0].localFile)}
-                alt={title}
-              />
-            </Box>
-            <Box className={classes.contentContainer}>
+      <Layout seo={data.article.seo}>
+        <PageWrapper>
+          <Hidden mdDown>
+            <Navbar color="#27AAE1" variant="secondary" />
+          </Hidden>
+          <Hidden lgUp>
+            <NavbarMobile />
+          </Hidden>
+          <Box className={classes.header}>
+            {(lang === "en") ?
+              <>
+                <InputLabel className={classes.label}>{category}</InputLabel>
+                <Typography className={classes.title}>{title}</Typography>
+                <Typography className={classes.date}>
+                  {date} │ <span className={classes.author}>{author}</span>
+                </Typography>
+                <Typography className={classes.description}>{description}</Typography></>
+              :
+              <>
+                <InputLabel className={classes.label}>{contentReviews[0]?.category.name}</InputLabel>
+                <Typography className={classes.title}>{contentReviews[0]?.title}</Typography>
+                <Typography className={classes.date}>
+                  {date} │ <span className={classes.author}>{author}</span>
+                </Typography>
+                <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
+              </>}
+          </Box>
+          {typeof window !== 'undefined' && (
+            sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          )}
+          <Box className={classes.imgContainer}>
+            <GatsbyImage
+              image={getImage(data.article.image[0].localFile)}
+              alt={title}
+            />
+          </Box>
+          <Box className={classes.contentContainer}>
+            {(lang === "en") ?
               <PostContent data={data} />
-              <RecentlyPosted />
-            </Box>
-            <PostCarousel />
-            <Footer />
-            <Copyright />
-          </PageWrapper>
-        </Layout>
-        :
-        <Layout seo={data.article.seo}>
-          <PageWrapper>
-            <Hidden mdDown>
-              <Navbar color="#27AAE1" variant="secondary" />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <Box className={classes.header}>
-              {/* <InputLabel className={classes.label}>{category}</InputLabel> */}
-              <InputLabel className={classes.label}>{contentReviews[0]?.category.name}</InputLabel>
-              <Typography className={classes.title}>{contentReviews[0]?.title}</Typography>
-              <Typography className={classes.date}>
-                {date} │ <span className={classes.author}>{author}</span>
-              </Typography>
-              <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
-            </Box>
-            {typeof window !== 'undefined' && (
-              sessionStorage.getItem("lang") !== "true" &&
-              <ModalLang />
-            )}
-            <Box className={classes.imgContainer}>
-              <GatsbyImage
-                image={getImage(data.article.image[0].localFile)}
-                alt={title}
-              />
-              {/* <img
-                src={contentReviews[0]?.image[0].url}
-                //src={node.image[0].localFile.publicURL}
-                alt={contentReviews[0]?.title}
-              /> */}
-            </Box>
-            <Box className={classes.contentContainer}>
+              :
               <PostContent data={contentReviews[0]} />
-              <RecentlyPosted />
-            </Box>
-            <PostCarousel />
-            <Footer />
-            <Copyright />
-          </PageWrapper>
-        </Layout>
-      }
+            }
+            <RecentlyPosted />
+          </Box>
+          <PostCarousel />
+          <Footer />
+          <Copyright />
+        </PageWrapper>
+      </Layout>
+
     </>
   )
 }

@@ -144,56 +144,46 @@ const RecentlyPosted = () => {
         })
         return (
           <>
-            {(lang === "en") ?
-              <Box className={classes.layout}>
-                <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
-                {articlesSort.slice(0, 4).map(el => (
-                  <Box key={el.node.id} marginBottom="24px">
-                    <Grid container alignItems="center">
-                      <Grid item xs>
-                        <Box className={classes.container}>
-                          <Typography className={classes.listTitle}>
-                            {el.node.title}
-                          </Typography>
-                          <Link
-                            className={classes.link}
-                            style={{ textDecoration: "none" }}
-                            to={`${BLOG}/${el.node.slug}`}
-                          >
-                            {t("common_lastestPosts_blogPost_button_readMore")}
-                          </Link>
-                        </Box>
-                      </Grid>
+
+            <Box className={classes.layout}>
+              <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
+              {articlesSort.slice(0, 4).map(({ node }, index) => (
+                <Box key={node.id} marginBottom="24px">
+                  <Grid container alignItems="center">
+                    <Grid item xs>
+                      <Box className={classes.container}>
+                        {(lang === "en") ?
+                          <>
+                            <Typography className={classes.listTitle}>
+                              {node.title}
+                            </Typography>
+                            <Link
+                              className={classes.link}
+                              style={{ textDecoration: "none" }}
+                              to={`${BLOG}/${node.slug}`}
+                            >
+                              {t("common_lastestPosts_blogPost_button_readMore")}
+                            </Link></>
+                          :
+                          <>
+                            <Typography className={classes.listTitle}>
+                              {/* {el.node.title} */}
+                              {contentReviews[index]?.title}
+                            </Typography>
+                            <Link
+                              className={classes.link}
+                              style={{ textDecoration: "none" }}
+                              to={`${BLOG}/${contentReviews[index]?.Key}`}
+                            >
+                              {t("common_lastestPosts_blogPost_button_readMore")}
+                            </Link>
+                          </>}
+                      </Box>
                     </Grid>
-                  </Box>
-                ))}
-              </Box>
-              :
-              <Box className={classes.layout}>
-                <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
-                {articlesSort.slice(0, 4).map(({ node }, index) => (
-                  <Box key={node.id} marginBottom="24px">
-                    <Grid container alignItems="center">
-                      <Grid item xs>
-                        <Box className={classes.container}>
-                          <Typography className={classes.listTitle}>
-                            {/* {el.node.title} */}
-                            {contentReviews[index]?.title}
-                          </Typography>
-                          <Link
-                            className={classes.link}
-                            style={{ textDecoration: "none" }}
-                            to={`${BLOG}/${contentReviews[index]?.Key}`}
-                          >
-                            {t("common_lastestPosts_blogPost_button_readMore")}
-                          </Link>
-                        </Box>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                ))}
-              </Box>
-            }
+                  </Grid>
+                </Box>
+              ))}
+            </Box>
           </>
         )
       }}

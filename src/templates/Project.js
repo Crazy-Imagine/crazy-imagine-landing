@@ -103,88 +103,68 @@ const Project = ({ data }) => {
     getStrapi()
   }, [lang])
 
-
-
   return (
     <>
-      {(lang === "en") ?
-        <Layout seo={dataProject?.seo}>
-          <PageWrapper>
-            <Hidden mdDown>
-              <Navbar variant="secondary" color={"#193174"} />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <Box className={classes.header}>
-              <Typography className={classes.title}>{title}</Typography>
-              <Typography className={classes.date}>{date}</Typography>
+      <Layout seo={dataProject?.seo}>
+        <PageWrapper>
+          <Hidden mdDown>
+            <Navbar variant="secondary" color={"#193174"} />
+          </Hidden>
+          <Hidden lgUp>
+            <NavbarMobile />
+          </Hidden>
+          <Box className={classes.header}>
+            <Typography className={classes.title}>{title}</Typography>
+            <Typography className={classes.date}>{date}</Typography>
+            {(lang === "en") ?
               <Typography className={classes.description}>{description}</Typography>
-            </Box>
-            {typeof window !== 'undefined' && (
-              sessionStorage.getItem("lang") !== "true" &&
-              <ModalLang />
-            )}
-
-            <Box overflow="hidden">
-              <HeroProjectsSection image={image} title={dataProject?.title} />
-              <AboutProjects
-                aboutProject={dataProject?.details}
-                images={image}
-                gallery={dataProject?.galleryImages}
-                moreAbout={dataProject?.description}
-              />
-              <GalleryProjects
-                images={image}
-                gallery={dataProject?.galleryImages}
-                id={dataProject.id}
-                description={dataProject?.moreAbout}
-              />
-              <RelatedSection />
-              <Footer />
-              <Copyright />
-            </Box>
-          </PageWrapper>
-        </Layout>
-        :
-        <Layout seo={dataProject?.seo}>
-          <PageWrapper>
-            <Hidden mdDown>
-              <Navbar variant="secondary" color={"#193174"} />
-            </Hidden>
-            <Hidden lgUp>
-              <NavbarMobile />
-            </Hidden>
-            <Box className={classes.header}>
-              <Typography className={classes.title}>{title}</Typography>
-              <Typography className={classes.date}>{date}</Typography>
+              :
               <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
-            </Box>
-            {typeof window !== 'undefined' && (
-              sessionStorage.getItem("lang") !== "true" &&
-              <ModalLang />
-            )}
-            <Box overflow="hidden">
-              <HeroProjectsSection image={image} title={dataProject?.title} />
-              <AboutProjects
-                aboutProject={contentReviews[0]?.details}
-                images={image}
-                gallery={dataProject?.galleryImages}
-                moreAbout={contentReviews[0]?.description}
-              />
-              <GalleryProjects
-                images={image}
-                gallery={dataProject?.galleryImages}
-                id={dataProject.id}
-                description={contentReviews[0]?.moreAbout}
-              />
-              <RelatedSection />
-              <Footer />
-              <Copyright />
-            </Box>
-          </PageWrapper>
-        </Layout>
-      }
+            }
+          </Box>
+          {typeof window !== 'undefined' && (
+            sessionStorage.getItem("lang") !== "true" &&
+            <ModalLang />
+          )}
+
+          <Box overflow="hidden">
+            <HeroProjectsSection image={image} title={dataProject?.title} />
+            {(lang === "en") ?
+              <>
+                <AboutProjects
+                  aboutProject={dataProject?.details}
+                  images={image}
+                  gallery={dataProject?.galleryImages}
+                  moreAbout={dataProject?.description}
+                />
+                <GalleryProjects
+                  images={image}
+                  gallery={dataProject?.galleryImages}
+                  id={dataProject.id}
+                  description={dataProject?.moreAbout}
+                />
+              </>
+              :
+              <>
+                <AboutProjects
+                  aboutProject={contentReviews[0]?.details}
+                  images={image}
+                  gallery={dataProject?.galleryImages}
+                  moreAbout={contentReviews[0]?.description}
+                />
+                <GalleryProjects
+                  images={image}
+                  gallery={dataProject?.galleryImages}
+                  id={dataProject.id}
+                  description={contentReviews[0]?.moreAbout}
+                />
+              </>}
+            <RelatedSection />
+            <Footer />
+            <Copyright />
+          </Box>
+        </PageWrapper>
+      </Layout>
     </>
   )
 }

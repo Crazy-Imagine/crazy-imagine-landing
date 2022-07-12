@@ -154,166 +154,106 @@ const CustomerReview = () => {
 
   return (
     <>
-      {(lang === "en") ?
 
-        <StaticQuery
-          query={query}
-          render={data => {
-            const reviews = data.reviews.nodes
-            return (
 
-              <>
-                <Swiper
-                  spaceBetween={50}
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1,
-                    },
-                    900: {
-                      slidesPerView: 2,
-                    },
-                    1280: {
-                      slidesPerView: 3,
-                    },
-                  }}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  grabCursor={true}
-                  style={{
-                    width: "80%",
-                    boxSizing: "content-box",
-                  }}
-                  keyboard={{ enabled: true }}
-                  modules={[Pagination]}
-                >
-                  {reviews.map((review, index) => (
-                    <SwiperSlide key={index} className={classes.swiperSlide}>
-                      <Box className={classes.containerInfo}>
-                        <Box className={classes.iconsContainer}>
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                        </Box>
-                        <Typography className={classes.review}>
-                          {review.review}
-                          {/* {contentReviews[index]?.review} */}
-                        </Typography>
-                        <Box>
-                          <Typography className={classes.customerName}>
-                            {review.name}
-                            {/* {contentReviews[index]?.name} */}
-                          </Typography>
-                          <Typography className={classes.customerOcupation}>
-                            {review.ocupation}
-                            {/* {contentReviews[index]?.ocupation} */}
-                          </Typography>
-                        </Box>
+      <StaticQuery
+        query={query}
+        render={data => {
+          const reviews = data.reviews.nodes
+          return (
+
+            <>
+              <Swiper
+                spaceBetween={50}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  900: {
+                    slidesPerView: 2,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                  },
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                grabCursor={true}
+                style={{
+                  width: "80%",
+                  boxSizing: "content-box",
+                }}
+                keyboard={{ enabled: true }}
+                modules={[Pagination]}
+              >
+                {reviews.map((review, index) => (
+                  <SwiperSlide key={index} className={classes.swiperSlide}>
+                    <Box className={classes.containerInfo}>
+                      <Box className={classes.iconsContainer}>
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faStar}
+                          className={classes.icon}
+                        />
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faStar}
+                          className={classes.icon}
+                        />
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faStar}
+                          className={classes.icon}
+                        />
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faStar}
+                          className={classes.icon}
+                        />
                       </Box>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </>
-            )
-          }}
-        />
-        :
-        <StaticQuery
-          query={query}
-          render={data => {
-            const reviews = data.reviews.nodes
-            return (
+                      {(lang === "en") ?
+                        <>
+                          <Typography className={classes.review}>
+                            {review.review}
+                            {/* {contentReviews[index]?.review} */}
+                          </Typography>
+                          <Box>
+                            <Typography className={classes.customerName}>
+                              {review.name}
+                              {/* {contentReviews[index]?.name} */}
+                            </Typography>
+                            <Typography className={classes.customerOcupation}>
+                              {review.ocupation}
+                              {/* {contentReviews[index]?.ocupation} */}
+                            </Typography>
+                          </Box></>
+                        :
+                        <>
+                          <Typography className={classes.review}>
+                            {/* {review.review} */}
+                            {contentReviews[index]?.review}
+                          </Typography>
+                          <Box>
+                            <Typography className={classes.customerName}>
+                              {/* {review.name} */}
+                              {contentReviews[index]?.name}
+                            </Typography>
+                            <Typography className={classes.customerOcupation}>
+                              {/* {review.ocupation} */}
+                              {contentReviews[index]?.ocupation}
+                            </Typography>
+                          </Box></>
+                      }
+                    </Box>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </>
+          )
+        }}
+      />
 
-              <>
-                <Swiper
-                  spaceBetween={50}
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1,
-                    },
-                    900: {
-                      slidesPerView: 2,
-                    },
-                    1280: {
-                      slidesPerView: 3,
-                    },
-                  }}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  grabCursor={true}
-                  style={{
-                    width: "80%",
-                    boxSizing: "content-box",
-                  }}
-                  keyboard={{ enabled: true }}
-                  modules={[Pagination]}
-                >
-                  {reviews.map((review, index) => (
-                    <SwiperSlide key={index} className={classes.swiperSlide}>
-                      <Box className={classes.containerInfo}>
-                        <Box className={classes.iconsContainer}>
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                          <FontAwesomeIcon
-                            size="1x"
-                            icon={faStar}
-                            className={classes.icon}
-                          />
-                        </Box>
-                        <Typography className={classes.review}>
-                          {/* {review.review} */}
-                          {contentReviews[index]?.review}
-                        </Typography>
-                        <Box>
-                          <Typography className={classes.customerName}>
-                            {/* {review.name} */}
-                            {contentReviews[index]?.name}
-                          </Typography>
-                          <Typography className={classes.customerOcupation}>
-                            {/* {review.ocupation} */}
-                            {contentReviews[index]?.ocupation}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </>
-            )
-          }}
-        />
-      }
     </>
   )
 }
