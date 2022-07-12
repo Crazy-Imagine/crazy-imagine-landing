@@ -190,7 +190,7 @@ const ModalLang = () => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     changeLanguage("es");
-                                    handleClose(false);
+                                    handleClose();
                                     {
                                         typeof window !== 'undefined' && (
                                             sessionStorage.setItem("lang", "true")
@@ -203,7 +203,7 @@ const ModalLang = () => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     changeLanguage("en");
-                                    handleClose(false);
+                                    handleClose();
 
                                     {
                                         typeof window !== 'undefined' && (
