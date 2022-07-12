@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     width: "70%",
-    padding: "115px",
+    padding: "100px",
     [theme.breakpoints.down("md")]: {
       padding: "65px",
       width: "85%",

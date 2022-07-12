@@ -7,52 +7,49 @@ const useStyles = makeStyles(theme => ({
   button2: {
     background: "transparent",
     //background: "#797EF6",
-    //borderRadius: "20px",
+    borderRadius: "100%",
+    //width: "50%",
+    padding: "0px",
+    margin: "0 -9px",
+    //marginBottom: "-10px",
+    cursor: "pointer",
+    //width: "60px",
+    //display: "flex",
     //marginBottom: "37px",
     //marginTop: "28px",
-    spacer: "25px",
-    margin: "5px 15px 5px 15px",
+    //spacer: "25px",
+    //margin: "5px 15px 5px 15px",
     "&:hover": {
       //backgroundColor: "#30AADE",
     },
     "& > span": {
       fontFamily: "Hero New",
       fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "16px",
-      lineHeight: "130%",
+      //fontWeight: "400",
+      //fontSize: "16px",
+      //lineHeight: "130%",
       letterSpacing: "0.02em",
+      borderRadius: "100%",
+      padding: "0",
       //fontFamily: "Nexa Bold",
       //fontStyle: "normal",
       //fontWeight: "400",
-      fontSize: "14px",
+      fontSize: "30px",
       //padding: "14px 20px 12px 20px",
       //lineHeight: "14px",
-      display: "flex",
+      //display: "flex",
       alignItems: "center",
       textAlign: "center",
       //letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
-    [theme.breakpoints.down("xs")]: {
-      //borderRadius: "50px",
-      //marginBottom: "17px",
-      //marginTop: "18px",
-      spacer: "5px",
-      margin: "0px 5px 0px 5px",
+    [theme.breakpoints.between(1280, 1470)]: {
       "& > span": {
-        fontFamily: "Nexa Bold",
-        fontStyle: "normal",
-        fontWeight: "50",
-        fontSize: "8px",
-        padding: "4px 5px 4px 5px",
-        lineHeight: "10px",
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        letterSpacing: "0.05em",
-        color: "#FFFFFF",
+        fontSize: "25px",
       },
+    },
+    [theme.breakpoints.between(0, 1280)]: {
+      margin: "-5px",
     },
   },
 }))
@@ -61,6 +58,7 @@ const Language = () => {
   const classes = useStyles()
   //const { t } = useTranslation();
   const { languages, changeLanguage } = useI18next();
+  // const { t } = useI18next();
   // const handleClick = (lang) => {
   //   localStorage.setItem('lang', lang)
   //   //setAgreed(true)
@@ -70,24 +68,24 @@ const Language = () => {
   return (
 
 
-    <div>
-      <Box>
-        <Box style={{ flexDirection: "row" }}>
-          <Button
-            className={classes.button2}
-            onClick={(e) => {
-              e.preventDefault();
-              changeLanguage("es");
-            }}>ES</Button>
-          <Button
-            className={classes.button2}
-            onClick={(e) => {
-              e.preventDefault();
-              changeLanguage("en");
-            }}>EN</Button>
-        </Box>
+    // <div>
+    <Box>
+      <Box style={{ flexDirection: "row", diplay: "flex" }}>
+        <Button
+          className={classes.button2}
+          onClick={(e) => {
+            e.preventDefault();
+            changeLanguage("es");
+          }}>🇪🇸</Button>
+        <Button
+          className={classes.button2}
+          onClick={(e) => {
+            e.preventDefault();
+            changeLanguage("en");
+          }}>🇺🇸</Button>
       </Box>
-    </div>
+    </Box>
+    // </div>
 
 
 

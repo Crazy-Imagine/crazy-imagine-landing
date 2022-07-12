@@ -27,7 +27,7 @@
     "home_sectionHeader_description": "TEAMWORK IS THE HEART OF EVERYTHING WE DO",
     "home_homeMainSection_titleSection_title": "Why\nShould You",
     "home_homeMainSection_titleSection_blueTitle": "Choose Us",
-    "home_homeMainSection_titleSection_description": "We will help you to strategize your web presence, designing and\nexecuting sitemaps and wireframes to provide a sleek, elegant, and\nseamless end-user experience",
+    "home_homeMainSection_titleSection_description": "We will help you to strategize your web presence, designing and executing sitemaps and wireframes to provide a sleek, elegant, and seamless end-user experience",
     "home_homeDescription_text": "With deep expertise that spans across the web development spectrum,\nwe can optimize your digital presence at any level.",
     "home_homeDescription_description": "Whether you are interested in partial web or\nmobile development, full scale web development\nand project management, or something in\nbetween, CrazyImagine is here for you.",
     "home_capabilities_capabilitiesCard_title4": "Mobile Dev",
@@ -120,5 +120,6 @@
     "post_postCarousel_title": "Related Articles",
     "project_aboutProjects_title": "About the project",
     "project_aboutProjects_subtitle": "More than game",
-    "project_RelatedSection_title": "Related Projects"
+    "project_RelatedSection_title": "Related Projects",
+    "modalLang": "Choose Language"
 }

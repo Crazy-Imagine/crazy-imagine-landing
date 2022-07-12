@@ -10,9 +10,9 @@
     "common_capabilities_title1": "Desarrollo\nFull-stack",
     "common_capabilities_title2": "Experiencia de Usuario",
     "common_capabilities_title3": "Soporte de Calidad",
-    "common_capabilities_description1": "Con una sólida formación en código que va desde PHP7\na Javascript y CSS3, nuestros desarrolladores full-stack\ntienen las habilidades y la experiencia para elevar su\npresencia digital",
-    "common_capabilities_description2": "Una experiencia de usuario positiva y memorable es\nnuestra máxima prioridad, desde el desarrollo parcial de\nla web hasta gestión de proyectos a gran escala y todo\nlo demás.",
-    "common_capabilities_description3": "No hay nada más importante que ofrecer una\nexperiencia de alta calidad, por lo que utilizamos una\ngama completa de sistemas de control de calidad para\ngarantizar que su proyecto esté listo para el\nlanzamiento.",
+    "common_capabilities_description1": "Con una sólida formación en código que va desde PHP7 a Javascript y CSS3, nuestros desarrolladores full-stack tienen las habilidades y la experiencia para elevar su presencia digital",
+    "common_capabilities_description2": "Una experiencia de usuario positiva y memorable es nuestra máxima prioridad, desde el desarrollo parcial de la web hasta gestión de proyectos a gran escala y todo lo demás.",
+    "common_capabilities_description3": "No hay nada más importante que ofrecer una experiencia de alta calidad, por lo que utilizamos una gama completa de sistemas de control de calidad para garantizar que su proyecto esté listo para el\nlanzamiento.",
     "common_capabilities_capabilitiesCard_title1": "Desarrollo\nWeb",
     "common_capabilities_capabilitiesCard_title2": "Deployment +\nDevOps",
     "common_capabilities_capabilitiesCard_title3": "eCommerce",
@@ -27,7 +27,7 @@
     "home_sectionHeader_description": "EL TRABAJO EN EQUIPO ES EL CORAZÓN DE TODO LO QUE HACEMOS",
     "home_homeMainSection_titleSection_title": "Porqué\nDeberías",
     "home_homeMainSection_titleSection_blueTitle": "Elegirnos",
-    "home_homeMainSection_titleSection_description": "Te ayudaremos a crear una estrategia para su presencia en la web,\ndiseñando y ejecutando mapas de sitio y esquemas para\nproporcionar una experiencia de usuario final elegante y fluida.",
+    "home_homeMainSection_titleSection_description": "Te ayudaremos a crear una estrategia para su presencia en la web, diseñando y ejecutando mapas de sitio y esquemas para proporcionar una experiencia de usuario final elegante y fluida.",
     "home_homeDescription_text": "Con una profunda experiencia que abarca todo el espectro del desarrollo web,\npodemos optimizar tu presencia digital a cualquier nivel.",
     "home_homeDescription_description": "Si estás interesado en el desarrollo parcial de la\nweb o móvil, el desarrollo web a gran escala\ny la gestión de proyectos, o algo\nintermedio, CrazyImagine está aquí para ti.",
     "home_capabilities_capabilitiesCard_title4": "Desarrollo Móvil",
@@ -107,7 +107,7 @@
     "workWithUs_workForm_submit_error": "Hubo un error al intentar enviar su formulario",
     "workWithUs_workForm_textField_label1": "Nombre",
     "workWithUs_workForm_textField_label2": "Apellido",
-    "workWithUs_workForm_textField_label3": "Dirección De Correo Electrónico",
+    "workWithUs_workForm_textField_label3": "Dirección De Correo",
     "workWithUs_workForm_textField_label4": "Teléfono",
     "workWithUs_workForm_textField_label5": "Perfil LinkedIn",
     "workWithUs_workForm_textField_label6": "Página Web",
@@ -120,5 +120,6 @@
     "post_postCarousel_title": "Artículos Relacionados",
     "project_aboutProjects_title": "Sobre el proyecto",
     "project_aboutProjects_subtitle": "Más que un juego",
-    "project_RelatedSection_title": "Proyectos relacionados"
+    "project_RelatedSection_title": "Proyectos relacionados",
+    "modalLang": "Elige el idioma"
 }

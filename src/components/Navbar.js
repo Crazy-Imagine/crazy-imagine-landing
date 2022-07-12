@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     justifyContent: "center",
+    // [theme.breakpoints.between(1280, 1300)]: {
+    //   justifyContent: "space-between",
+    // },
   },
   navbarIcons: props => ({
     fontSize: 25,
@@ -48,6 +51,9 @@ const useStyles = makeStyles(theme => ({
         color: "#1E2F97",
       },
     },
+    // [theme.breakpoints.between(1280, 1300)]: {
+    //   display: "none",
+    // },
   },
   linkTypography: props => ({
     fontSize: 16,
@@ -68,6 +74,7 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
+
   }),
   barContainer: {
     margin: 1,
@@ -77,12 +84,24 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     gap: "50px",
+    [theme.breakpoints.between(1280, 1300)]: {
+      gap: "20px",
+    },
   },
   linkContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "50px",
+    [theme.breakpoints.between(1345, 1470)]: {
+      gap: "20px",
+    },
+    [theme.breakpoints.between(1322, 1345)]: {
+      gap: "15px",
+    },
+    [theme.breakpoints.between(1300, 1322)]: {
+      gap: "10px",
+    },
   },
   contactTypography: {
     fontSize: "14px",
@@ -115,7 +134,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     backgroundColor: "#1E2F97",
-    color: "red",
+    //color: "red",
     "&:hover": {
       color: "#FFFFF",
     },
@@ -182,8 +201,10 @@ const Navbar = ({
                 {t("common_button_work_with_us")}
               </Link>
             </Typography>
+            <LanguageModal />
           </Box>
-          <LanguageModal />
+          {/* <Box style={{ flexDirection: "row", display: "flex", spacer: "5px" }}> */}
+          {/* <LanguageModal /> */}
           <Link
             to={`${CONTACT}`}
             style={{ textDecoration: "none", borderRadius: "100px" }}
@@ -197,6 +218,7 @@ const Navbar = ({
               </span>
             </Button>
           </Link>
+          {/* </Box> */}
         </Box>
       </Toolbar>
     </AppBar>

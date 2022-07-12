@@ -24,6 +24,7 @@ import {
   faLaptopCode,
   faPhone,
   faXmark,
+  faFlag,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useScroll from "../hooks/useScroll"
@@ -130,6 +131,7 @@ const icons = [
   <FontAwesomeIcon icon={faBlog} size="lg" />,
   <FontAwesomeIcon icon={faLaptopCode} size="lg" />,
   <FontAwesomeIcon icon={faPhone} size="lg" />,
+  <FontAwesomeIcon icon={faFlag} size="lg" />,
 ]
 
 const NavbarMobile = ({
@@ -204,7 +206,7 @@ const NavbarMobile = ({
                 style={{ width: "100%", height: "100%" }}
               />
             </Link>
-            <LanguageModal />
+            {/* <LanguageModal /> */}
             <IconButton onClick={handleDrawerClose}>
               <FontAwesomeIcon icon={faXmark} inverse />
             </IconButton>
@@ -260,6 +262,7 @@ const NavbarMobile = ({
               >
                 <Typography className={classes.textLink}>{t("common_button_contact_us")}</Typography>
               </Link>,
+              <LanguageModal />
             ].map((text, index) => (
               <ListItem button key={index} alignItems="center">
                 <ListItemIcon className={classes.resetLink}>
@@ -268,7 +271,11 @@ const NavbarMobile = ({
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-            {/* <LanguageModal /> */}
+
+            {/* <Box style={{ position: "absolute", left: "6.8%" }}>
+              <LanguageModal />
+              
+            </Box> */}
           </List>
         </Drawer>
       </AppBar>

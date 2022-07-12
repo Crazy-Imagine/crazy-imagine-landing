@@ -165,6 +165,7 @@ const ModalLang = () => {
     //const context = React.useContext(I18nextContext);
     //const lang = context.language;
     //if (lang === "en") handleClose(false);
+    //const { t } = useI18next();
 
     return (
         <>
@@ -180,6 +181,7 @@ const ModalLang = () => {
                 <Box className={classes.containerInfo}>
                     <Box className={classes.boxT}>
                         <Typography variant="h1" className={classes.title}>
+                            {/* {t("modalLang")} */}
                             Choose Language
                         </Typography>
                         <Box className={classes.buttonBox}>

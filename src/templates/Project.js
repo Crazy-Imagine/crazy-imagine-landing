@@ -12,6 +12,8 @@ import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
+
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -60,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "490px",
+    height: "330px",
     width: "80%",
     paddingTop: "60px",
     margin: "70px auto 0px auto",
@@ -122,6 +124,9 @@ const Project = ({ data }) => {
               <Typography className={classes.date}>{date}</Typography>
               <Typography className={classes.description}>{description}</Typography>
             </Box>
+            {sessionStorage.getItem("lang") !== "true" &&
+              <ModalLang />
+            }
             <Box overflow="hidden">
               <HeroProjectsSection image={image} title={dataProject?.title} />
               <AboutProjects
@@ -156,6 +161,9 @@ const Project = ({ data }) => {
               <Typography className={classes.date}>{date}</Typography>
               <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
             </Box>
+            {sessionStorage.getItem("lang") !== "true" &&
+              <ModalLang />
+            }
             <Box overflow="hidden">
               <HeroProjectsSection image={image} title={dataProject?.title} />
               <AboutProjects

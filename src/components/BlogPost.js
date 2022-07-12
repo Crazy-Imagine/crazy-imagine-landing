@@ -203,7 +203,8 @@ const BlogPost = ({ bulletClass }) => {
                           className={classes.img}
                           alt="Blog"
                         />
-                        <Box className={classes.textContainer}>
+                        {/* <Box
+                          style={{ backgroundImage: `url(${node.image[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} /> */}                        <Box className={classes.textContainer}>
                           <Typography className={classes.title}>
                             {node.title}
                             {/* {contentReviews[index]?.title} */}

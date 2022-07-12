@@ -28,6 +28,8 @@ const IndexPage = () => {
   const ref = useRef()
   const { t } = useTranslation()
   //React.useContext(I18nextContext);
+  // const lng = new Intl.Locale()
+  //console.log(Intl.Locale.prototype, "languaje")
 
   return (
     // <>

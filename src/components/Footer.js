@@ -106,7 +106,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "50px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.between(1280, 1450)]: {
+      gap: "20px",
+    },
+    [theme.breakpoints.between(0, 1300)]: {
       visibility: "hidden",
       width: "0px",
       display: "none",

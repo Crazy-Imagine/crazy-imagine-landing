@@ -19,6 +19,8 @@ import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
 //import Language from "../components/LanguageModal"
+import ModalLang from "../components/ModalLang"
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -194,6 +196,9 @@ const Post = ({ data }) => {
               </Typography>
               <Typography className={classes.description}>{description}</Typography>
             </Box>
+            {sessionStorage.getItem("lang") !== "true" &&
+              <ModalLang />
+            }
             <Box className={classes.imgContainer}>
               <GatsbyImage
                 image={getImage(data.article.image[0].localFile)}
@@ -227,6 +232,9 @@ const Post = ({ data }) => {
               </Typography>
               <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
             </Box>
+            {sessionStorage.getItem("lang") !== "true" &&
+              <ModalLang />
+            }
             <Box className={classes.imgContainer}>
               <GatsbyImage
                 image={getImage(data.article.image[0].localFile)}
