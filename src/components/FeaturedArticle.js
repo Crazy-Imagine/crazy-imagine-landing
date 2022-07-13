@@ -175,24 +175,22 @@ const FeaturedArticle = () => {
   const isVisible = useIntersection(ref, "0px")
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
-  const lang = context.language;
-  const [contentReviews, setContentReviews] = useState([]);
+  const langg = context.language;
+  const [contentFeaturedArticle, setcontentFeaturedArticle] = useState([]);
 
 
   const getStrapi = async () => {
-    if (lang === "es") {
-      const url = `http://localhost:1337/articles?_locale=es-VE`;
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
+    if (langg === "es") {
+      const urlFA = `http://localhost:1337/articles?_locale=es-VE`;
+      const resp = await fetch(urlFA).then(respp => respp.json())
+        .then(data => { setcontentFeaturedArticle(data) });
 
     }
   }
 
-  //console.log(contentReviews)
-
   useEffect(() => {
     getStrapi()
-  }, [lang])
+  }, [langg])
 
 
   return (
@@ -234,62 +232,54 @@ const FeaturedArticle = () => {
           })
           .slice(0, 1)
         return (
-          <>
-
-
-            <Box ref={ref} className={classes.container}>
-              <Typography className={isVisible ? classes.title2 : classes.title}>
-                {t("blog_featuredArticle_title")}
-              </Typography>
-              <Box className={classes.cardContainer}>
-                {(lang === "en") ?
-                  <>
-                    <GatsbyImage
-                      className={classes.img}
-                      alt="Feature Article"
-                      image={getImage(featureArticle[0].node.image[0].localFile)}
-                    />
-                    <Box className={classes.textContainer}>
-                      <Typography className={classes.titleCard}>
-                        {featureArticle[0].node.title}
-                      </Typography>
-                      <Link
-                        to={`${BLOG}/${featureArticle[0].node.slug}`}
-                        style={{ textDecoration: "none" }}
-                        className={classes.link}
-                      >
-                        {t("common_lastestPosts_blogPost_button_readMore")}
-                      </Link>
-                    </Box>
-                  </>
-                  :
-                  <>
-                    <img
-                      src={contentReviews[0]?.image[0].url}
-                      //src={node.image[0].localFile.publicURL}
-                      className={classes.img}
-                      alt="Feature Article"
-                    />
-                    <Box className={classes.textContainer}>
-                      <Typography className={classes.titleCard}>
-                        {/* {featureArticle[0].node.title} */}
-                        {contentReviews[0]?.title}
-                      </Typography>
-                      <Link
-                        //to={`${BLOG}/${featureArticle[0].node.slug}`}
-                        to={`${BLOG}/${contentReviews[0]?.Key}`}
-                        style={{ textDecoration: "none" }}
-                        className={classes.link}
-                      >
-                        {t("common_lastestPosts_blogPost_button_readMore")}
-                      </Link>
-                    </Box>
-                  </>
-                }
-              </Box>
+          <Box ref={ref} className={classes.container}>
+            <Typography className={isVisible ? classes.title2 : classes.title}>
+              {t("blog_featuredArticle_title")}
+            </Typography>
+            <Box className={classes.cardContainer}>
+              {(langg === "en") ?
+                <>
+                  <GatsbyImage
+                    className={classes.img}
+                    alt="Feature Article"
+                    image={getImage(featureArticle[0].node.image[0].localFile)}
+                  />
+                  <Box className={classes.textContainer}>
+                    <Typography className={classes.titleCard}>
+                      {featureArticle[0].node.title}
+                    </Typography>
+                    <Link
+                      to={`${BLOG}/${featureArticle[0].node.slug}`}
+                      style={{ textDecoration: "none" }}
+                      className={classes.link}
+                    >
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </Link>
+                  </Box>
+                </>
+                :
+                <>
+                  <img
+                    src={contentFeaturedArticle[0]?.image[0].url}
+                    className={classes.img}
+                    alt="Feature Article"
+                  />
+                  <Box className={classes.textContainer}>
+                    <Typography className={classes.titleCard}>
+                      {contentFeaturedArticle[0]?.title}
+                    </Typography>
+                    <Link
+                      to={`${BLOG}/${contentFeaturedArticle[0]?.Key}`}
+                      style={{ textDecoration: "none" }}
+                      className={classes.link}
+                    >
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </Link>
+                  </Box>
+                </>
+              }
             </Box>
-
-          </>
+          </Box>
         )
       }}
     />

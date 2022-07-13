@@ -82,90 +82,83 @@ const Project = ({ data }) => {
   const description = dataProject.description
   const key = dataProject.Key
   const context = React.useContext(I18nextContext);
-  //const { t } = useI18next();
-  const lang = context.language;
-  const [contentReviews, setContentReviews] = useState([]);
-  //console.log("lang: ", lang)
+  const languages = context.language;
+  const [contentProjectsTemplate, setcontentProjectsTemplate] = useState([]);
 
   const getStrapi = async () => {
-    if (lang === "es") {
+    if (languages === "es") {
       const url = `http://localhost:1337/projects?_locale=es-VE&_Key=${key}`;
-      //console.log("url: ", url)
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
+      const respuest = await fetch(url).then(responses => responses.json())
+        .then(data => { setcontentProjectsTemplate(data) });
 
     }
   }
 
-  //console.log(contentReviews, "DDDDDDD")
-
   useEffect(() => {
     getStrapi()
-  }, [lang])
+  }, [languages])
 
   return (
-    <>
-      <Layout seo={dataProject?.seo}>
-        <PageWrapper>
-          <Hidden mdDown>
-            <Navbar variant="secondary" color={"#193174"} />
-          </Hidden>
-          <Hidden lgUp>
-            <NavbarMobile />
-          </Hidden>
-          <Box className={classes.header}>
-            <Typography className={classes.title}>{title}</Typography>
-            <Typography className={classes.date}>{date}</Typography>
-            {(lang === "en") ?
-              <Typography className={classes.description}>{description}</Typography>
-              :
-              <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
-            }
-          </Box>
-          {typeof window !== 'undefined' && (
-            sessionStorage.getItem("lang") !== "true" &&
-            <ModalLang />
-          )}
+    <Layout seo={dataProject?.seo}>
+      <PageWrapper>
+        <Hidden mdDown>
+          <Navbar variant="secondary" color={"#193174"} />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
+        <Box className={classes.header}>
+          <Typography className={classes.title}>{title}</Typography>
+          <Typography className={classes.date}>{date}</Typography>
+          {(languages === "en") ?
+            <Typography className={classes.description}>{description}</Typography>
+            :
+            <Typography className={classes.description}>{contentProjectsTemplate[0]?.description}</Typography>
+          }
+        </Box>
+        {typeof window !== 'undefined' && (
+          sessionStorage.getItem("lang") !== "true" &&
+          <ModalLang />
+        )}
 
-          <Box overflow="hidden">
-            <HeroProjectsSection image={image} title={dataProject?.title} />
-            {(lang === "en") ?
-              <>
-                <AboutProjects
-                  aboutProject={dataProject?.details}
-                  images={image}
-                  gallery={dataProject?.galleryImages}
-                  moreAbout={dataProject?.description}
-                />
-                <GalleryProjects
-                  images={image}
-                  gallery={dataProject?.galleryImages}
-                  id={dataProject.id}
-                  description={dataProject?.moreAbout}
-                />
-              </>
-              :
-              <>
-                <AboutProjects
-                  aboutProject={contentReviews[0]?.details}
-                  images={image}
-                  gallery={dataProject?.galleryImages}
-                  moreAbout={contentReviews[0]?.description}
-                />
-                <GalleryProjects
-                  images={image}
-                  gallery={dataProject?.galleryImages}
-                  id={dataProject.id}
-                  description={contentReviews[0]?.moreAbout}
-                />
-              </>}
-            <RelatedSection />
-            <Footer />
-            <Copyright />
-          </Box>
-        </PageWrapper>
-      </Layout>
-    </>
+        <Box overflow="hidden">
+          <HeroProjectsSection image={image} title={dataProject?.title} />
+          {(languages === "en") ?
+            <>
+              <AboutProjects
+                aboutProject={dataProject?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={dataProject?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={dataProject?.moreAbout}
+              />
+            </>
+            :
+            <>
+              <AboutProjects
+                aboutProject={contentProjectsTemplate[0]?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={contentProjectsTemplate[0]?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={contentProjectsTemplate[0]?.moreAbout}
+              />
+            </>}
+          <RelatedSection />
+          <Footer />
+          <Copyright />
+        </Box>
+      </PageWrapper>
+    </Layout>
   )
 }
 
@@ -220,46 +213,3 @@ query Project($id: String!, $language: String!) {
 `
 
 export default Project
-
-
-// export const query = graphql`
-// query Project($id: String!) {
-//   strapiProjects(id: { eq: $id }) {
-//     details
-//     description
-//     id
-//     moreAbout
-//     title
-//     seo {
-//       metaTitle
-//       metaDescription
-//       id
-//       shareImage {
-//         localFile {
-//           publicURL
-//           childImageSharp {
-//             gatsbyImageData(quality: 50)
-//           }
-//         }
-//       }
-//     }
-//     images {
-//       localFile {
-//         childImageSharp {
-//           gatsbyImageData(width: 530, quality: 50)
-//         }
-//       }
-//     }
-//     galleryImages {
-//       localFile {
-//         childImageSharp {
-//           gatsbyImageData(width: 530, quality: 50)
-//         }
-//       }
-//     }
-//     created_at(formatString: "DD MMMM, YYYY")
-//   }
-// }
-// `
-
-// export default Project

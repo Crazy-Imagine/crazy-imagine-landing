@@ -211,24 +211,22 @@ const BlogArticle = () => {
   }
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
-  const lang = context.language;
-  const [contentReviews, setContentReviews] = useState([]);
+  const langu = context.language;
+  const [contentBlogArticle, setcontentBlogArticle] = useState([]);
 
 
   const getStrapi = async () => {
-    if (lang === "es") {
-      const url = `http://localhost:1337/articles?_locale=es-VE`;
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
+    if (langu === "es") {
+      const urlBA = `http://localhost:1337/articles?_locale=es-VE`;
+      const respu = await fetch(urlBA).then(respu => respu.json())
+        .then(data => { setcontentBlogArticle(data) });
 
     }
   }
 
-  // console.log(contentReviews)
-
   useEffect(() => {
     getStrapi()
-  }, [lang])
+  }, [langu])
 
 
   return (
@@ -270,89 +268,86 @@ const BlogArticle = () => {
           .slice(0, load)
 
         return (
-          <>
 
-            <Box className={classes.wrapperContainer}>
-              <Typography
-                ref={ref}
-                className={
-                  isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
-                }
-              >
-                {t("blog_blogArticle_title")}
-              </Typography>
-              <Box className={classes.wrapper}>
-                {articlesSort.map(({ node }, index) => (
 
-                  <Box key={index} className={classes.container}>
-                    {(lang === "en") ?
-                      <>
-                        <GatsbyImage
-                          image={getImage(node.image[0].localFile)}
-                          imgStyle={{
-                            maxWidth: "480px",
-                            maxHeight: "300px",
+          <Box className={classes.wrapperContainer}>
+            <Typography
+              ref={ref}
+              className={
+                isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
+              }
+            >
+              {t("blog_blogArticle_title")}
+            </Typography>
+            <Box className={classes.wrapper}>
+              {articlesSort.map(({ node }, index) => (
 
-                          }}
-                          alt="Blog"
+                <Box key={index} className={classes.container}>
+                  {(langu === "en") ?
+                    <>
+                      <GatsbyImage
+                        image={getImage(node.image[0].localFile)}
+                        imgStyle={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
 
-                        />
-                        <Box className={classes.textContainer}>
-                          <Typography className={classes.title}>
-                            {node.title}
-                          </Typography>
-                          <Link
-                            to={`${BLOG}/${node.slug}`}
-                            language="es"
-                            className={classes.link}
-                            style={{ textDecoration: "none" }}
-                          >
-                            {t("common_lastestPosts_blogPost_button_readMore")}
-                          </Link>
-                        </Box>
-                      </>
-                      :
-                      <>
-                        <img
-                          src={contentReviews[index]?.image[0].url}
-                          // src={node.image[0].localFile.publicURL}
-                          style={{
-                            maxWidth: "480px",
-                            maxHeight: "300px",
+                        }}
+                        alt="Blog"
 
-                          }}
-                          alt="Blog"
-                        />
-                        <Box className={classes.textContainer}>
-                          <Typography className={classes.title}>
-                            {/* {node.title} */}
-                            {contentReviews[index]?.title}
-                          </Typography>
-                          <Link
-                            to={`${BLOG}/${contentReviews[index]?.Key}`}
-                            language="es"
-                            className={classes.link}
-                            style={{ textDecoration: "none" }}
-                          >
-                            {t("common_lastestPosts_blogPost_button_readMore")}
-                          </Link>
-                        </Box>
-                      </>
-                    }
-                  </Box>
-                ))}
-              </Box>
-              <Button
-                ref={ref1}
-                onClick={() => {
-                  loadArticles(articles.length)
-                }}
-                className={isVisible1 ? classes.loadButton2 : classes.loadButton}
-              >
-                {t("blog_blogArticle_button")}
-              </Button>
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {node.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${node.slug}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </>
+                    :
+                    <>
+                      <img
+                        src={contentBlogArticle[index]?.image[0].url}
+                        style={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
+
+                        }}
+                        alt="Blog"
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {contentBlogArticle[index]?.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${contentBlogArticle[index]?.Key}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </>
+                  }
+                </Box>
+              ))}
             </Box>
-          </>
+            <Button
+              ref={ref1}
+              onClick={() => {
+                loadArticles(articles.length)
+              }}
+              className={isVisible1 ? classes.loadButton2 : classes.loadButton}
+            >
+              {t("blog_blogArticle_button")}
+            </Button>
+          </Box>
 
         )
       }}

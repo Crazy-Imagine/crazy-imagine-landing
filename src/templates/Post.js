@@ -18,7 +18,6 @@ import Layout from "../components/layout"
 import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
-//import Language from "../components/LanguageModal"
 import ModalLang from "../components/ModalLang"
 
 
@@ -155,82 +154,78 @@ const Post = ({ data }) => {
   // const lang = context.language;
   const context = React.useContext(I18nextContext);
   //const { t } = useI18next();
-  const lang = context.language;
-  const [contentReviews, setContentReviews] = useState([]);
+  const la = context.language;
+  const [contentPostTemplate, setcontentPostTemplate] = useState([]);
   //console.log("lang: ", lang)
 
   const getStrapi = async () => {
-    if (lang === "es") {
-      const url = `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
+    if (la === "es") {
+      const urlPT = `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
       //console.log("url: ", url)
-      const resp = await fetch(url).then(response => response.json())
-        .then(data => { setContentReviews(data) });
+      const re = await fetch(urlPT).then(respons => respons.json())
+        .then(data => { setcontentPostTemplate(data) });
 
     }
   }
 
-  //console.log(contentReviews, "DDDDDDD")
-
   useEffect(() => {
     getStrapi()
-  }, [lang])
+  }, [la])
 
 
 
   return (
-    <>
-      <Layout seo={data.article.seo}>
-        <PageWrapper>
-          <Hidden mdDown>
-            <Navbar color="#27AAE1" variant="secondary" />
-          </Hidden>
-          <Hidden lgUp>
-            <NavbarMobile />
-          </Hidden>
-          <Box className={classes.header}>
-            {(lang === "en") ?
-              <>
-                <InputLabel className={classes.label}>{category}</InputLabel>
-                <Typography className={classes.title}>{title}</Typography>
-                <Typography className={classes.date}>
-                  {date} │ <span className={classes.author}>{author}</span>
-                </Typography>
-                <Typography className={classes.description}>{description}</Typography></>
-              :
-              <>
-                <InputLabel className={classes.label}>{contentReviews[0]?.category.name}</InputLabel>
-                <Typography className={classes.title}>{contentReviews[0]?.title}</Typography>
-                <Typography className={classes.date}>
-                  {date} │ <span className={classes.author}>{author}</span>
-                </Typography>
-                <Typography className={classes.description}>{contentReviews[0]?.description}</Typography>
-              </>}
-          </Box>
-          {typeof window !== 'undefined' && (
-            sessionStorage.getItem("lang") !== "true" &&
-            <ModalLang />
-          )}
-          <Box className={classes.imgContainer}>
-            <GatsbyImage
-              image={getImage(data.article.image[0].localFile)}
-              alt={title}
-            />
-          </Box>
-          <Box className={classes.contentContainer}>
-            {(lang === "en") ?
-              <PostContent data={data} />
-              :
-              <PostContent data={contentReviews[0]} />
-            }
-            <RecentlyPosted />
-          </Box>
-          <PostCarousel />
-          <Footer />
-          <Copyright />
-        </PageWrapper>
-      </Layout>
-
-    </>
+    <Layout seo={data.article.seo}>
+      <PageWrapper>
+        <Hidden mdDown>
+          <Navbar color="#27AAE1" variant="secondary" />
+        </Hidden>
+        <Hidden lgUp>
+          <NavbarMobile />
+        </Hidden>
+        <Box className={classes.header}>
+          {(la === "en") ?
+            <>
+              <InputLabel className={classes.label}>{category}</InputLabel>
+              <Typography className={classes.title}>{title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{description}</Typography></>
+            :
+            <>
+              <InputLabel className={classes.label}>{contentPostTemplate[0]?.category.name}</InputLabel>
+              <Typography className={classes.title}>{contentPostTemplate[0]?.title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{contentPostTemplate[0]?.description}</Typography>
+            </>
+          }
+        </Box>
+        {typeof window !== 'undefined' && (
+          sessionStorage.getItem("lang") !== "true" &&
+          <ModalLang />
+        )}
+        <Box className={classes.imgContainer}>
+          <GatsbyImage
+            image={getImage(data.article.image[0].localFile)}
+            alt={title}
+          />
+        </Box>
+        <Box className={classes.contentContainer}>
+          {(la === "en") ?
+            <PostContent data={data} />
+            :
+            <PostContent data={contentPostTemplate[0]} />
+          }
+          <RecentlyPosted />
+        </Box>
+        <PostCarousel />
+        <Footer />
+        <Copyright />
+      </PageWrapper>
+    </Layout>
   )
 }
 
@@ -288,48 +283,3 @@ query Article($id: String!, $language: String!) {
 `
 
 export default Post
-
-// export const query = graphql`
-// query Article($id: String!) {
-//   article: strapiArticle(id: { eq: $id }) {
-//     title
-//     id
-//     description
-//     content
-//     author {
-//       name
-//     }
-//     seo {
-//       id
-//       metaDescription
-//       metaTitle
-//       shareImage {
-//         localFile {
-//           publicURL
-//           childImageSharp {
-//             gatsbyImageData(quality: 5)
-//           }
-//         }
-//       }
-//     }
-//     image {
-//       localFile {
-//         childImageSharp {
-//           gatsbyImageData(
-//             width: 800
-//             placeholder: BLURRED
-//             layout: CONSTRAINED
-//             quality: 30
-//           )
-//         }
-//       }
-//     }
-//     category {
-//       name
-//       created_at(formatString: "DD MMMM, YYYY")
-//     }
-//   }
-// }
-// `
-
-// export default Post
