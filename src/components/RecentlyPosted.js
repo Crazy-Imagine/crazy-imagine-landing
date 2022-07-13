@@ -93,7 +93,7 @@ const RecentlyPosted = () => {
 
   const getStrapi = async () => {
     if (languag === "es") {
-      const urlRP = `${process.env.API_URL}/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
+      const urlRP = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
       const re = await fetch(urlRP).then(res => res.json())
         .then(data => { setcontentRecentlyPosted(data) });
     }

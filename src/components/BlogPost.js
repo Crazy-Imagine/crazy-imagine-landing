@@ -115,7 +115,7 @@ const BlogPost = ({ bulletClass }) => {
 
   const getStrapi = async () => {
     if (lan === "es") {
-      const urlBP = `${process.env.API_URL}/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
+      const urlBP = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
       const respp = await fetch(urlBP).then(resp => resp.json())
         .then(data => { setBlogPost(data) });
 

@@ -181,7 +181,7 @@ const FeaturedArticle = () => {
 
   const getStrapi = async () => {
     if (langg === "es") {
-      const urlFA = `${process.env.API_URL}/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
+      const urlFA = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
       const resp = await fetch(urlFA).then(respp => respp.json())
         .then(data => { setcontentFeaturedArticle(data) });
 
