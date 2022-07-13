@@ -138,7 +138,8 @@ const CustomerReview = () => {
 
   const getStrapi = async () => {
     if (lang === "es") {
-      const urlCR = `http://localhost:1337/reviews?_locale=es-VE`;
+      const urlCR = `${process.env.API_URL}/reviews?_locale=es-VE` || "http://localhost:1337/reviews?_locale=es-VE"
+      // const urlCR = `http://localhost:1337/reviews?_locale=es-VE`;
       const resp = await fetch(urlCR).then(response => response.json())
         .then(data => { setContentReviews(data) });
 

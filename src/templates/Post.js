@@ -160,7 +160,7 @@ const Post = ({ data }) => {
 
   const getStrapi = async () => {
     if (la === "es") {
-      const urlPT = `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
+      const urlPT = `${process.env.API_URL}/articles?_locale=es-VE&_Key=${key}` || `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
       //console.log("url: ", url)
       const re = await fetch(urlPT).then(respons => respons.json())
         .then(data => { setcontentPostTemplate(data) });

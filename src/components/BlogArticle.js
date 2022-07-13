@@ -217,7 +217,8 @@ const BlogArticle = () => {
 
   const getStrapi = async () => {
     if (langu === "es") {
-      const urlBA = `http://localhost:1337/articles?_locale=es-VE`;
+      const urlBA = `${process.env.API_URL}/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
+      //const urlBA = `http://localhost:1337/articles?_locale=es-VE`;
       const respu = await fetch(urlBA).then(respu => respu.json())
         .then(data => { setcontentBlogArticle(data) });
 

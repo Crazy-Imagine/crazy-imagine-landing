@@ -87,7 +87,7 @@ const Project = ({ data }) => {
 
   const getStrapi = async () => {
     if (languages === "es") {
-      const url = `http://localhost:1337/projects?_locale=es-VE&_Key=${key}`;
+      const url = `${process.env.API_URL}/projects?_locale=es-VE&_Key=${key}` || `http://localhost:1337/projects?_locale=es-VE&_Key=${key}`;
       const respuest = await fetch(url).then(responses => responses.json())
         .then(data => { setcontentProjectsTemplate(data) });
 
