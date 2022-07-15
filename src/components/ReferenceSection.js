@@ -60,7 +60,6 @@ const ReferenceSection = () => {
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
 
-
   return (
     <Box className={classes.referenceContainer}>
       <Typography

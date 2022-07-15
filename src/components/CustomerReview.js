@@ -10,7 +10,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
-
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   review: {
@@ -135,28 +135,13 @@ const CustomerReview = () => {
   const context = React.useContext(I18nextContext);
   const lang = context.language;
   const [contentReviews, setContentReviews] = useState([]);
-
-  const getStrapi = async () => {
-    if (lang === "es") {
-      const urlCR = `http://3.91.249.33:1337/reviews?_locale=es-VE` || "http://localhost:1337/reviews?_locale=es-VE"
-      // const urlCR = `http://localhost:1337/reviews?_locale=es-VE`;
-      const resp = await fetch(urlCR).then(response => response.json())
-        .then(data => { setContentReviews(data) });
-
-    }
-  }
-
-  //console.log(contentReviews)
+  const strapi = useGet("reviews", "false", lang)
 
   useEffect(() => {
-    getStrapi()
-  }, [lang])
-
+    setContentReviews(strapi)
+  }, [strapi])
 
   return (
-
-
-
     <StaticQuery
       query={query}
       render={data => {
@@ -215,32 +200,26 @@ const CustomerReview = () => {
                     <>
                       <Typography className={classes.review}>
                         {review.review}
-                        {/* {contentReviews[index]?.review} */}
                       </Typography>
                       <Box>
                         <Typography className={classes.customerName}>
                           {review.name}
-                          {/* {contentReviews[index]?.name} */}
                         </Typography>
                         <Typography className={classes.customerOcupation}>
                           {review.ocupation}
-                          {/* {contentReviews[index]?.ocupation} */}
                         </Typography>
                       </Box>
                     </>
                     :
                     <>
                       <Typography className={classes.review}>
-                        {/* {review.review} */}
                         {contentReviews[index]?.review}
                       </Typography>
                       <Box>
                         <Typography className={classes.customerName}>
-                          {/* {review.name} */}
                           {contentReviews[index]?.name}
                         </Typography>
                         <Typography className={classes.customerOcupation}>
-                          {/* {review.ocupation} */}
                           {contentReviews[index]?.ocupation}
                         </Typography>
                       </Box>

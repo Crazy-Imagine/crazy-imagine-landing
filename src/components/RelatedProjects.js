@@ -12,7 +12,6 @@ import { PROJECTS } from "../navigation/sitemap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
-
 const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
@@ -136,8 +135,6 @@ const RelatedProjects = () => {
       render={data => {
         const projects = data.projects.nodes
         SwiperCore.use([Keyboard])
-
-
         return (
           <Swiper
             spaceBetween={30}

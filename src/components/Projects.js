@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Projects = ({ projects }) => {
-
   const classes = useStyles()
   return (
     <Box marginTop="55px">

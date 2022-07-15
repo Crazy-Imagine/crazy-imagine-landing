@@ -17,14 +17,9 @@ import ModalLang from "../components/ModalLang"
 
 
 const Blog = () => {
-
-  //const { languages, changeLanguage } = useI18next();
-  //React.useContext(I18nextContext);
   const { t } = useI18next();
+
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
     <Layout seo={{ metaTitle: "The Latest in Tech Talk from our Team", metaDescription: "Articles" }} >
       <PageWrapper>
         <header>
@@ -55,9 +50,6 @@ const Blog = () => {
         </footer>
       </PageWrapper>
     </Layout>
-    //     </React.Suspense>
-    //   )}
-    // </>
   )
 }
 export const query = graphql`

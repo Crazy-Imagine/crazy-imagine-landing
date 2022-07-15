@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
 import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
-
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -90,18 +90,11 @@ const RecentlyPosted = () => {
   const { t } = useI18next();
   const languag = context.language;
   const [contentRecentlyPosted, setcontentRecentlyPosted] = useState([]);
-
-  const getStrapi = async () => {
-    if (languag === "es") {
-      const urlRP = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
-      const re = await fetch(urlRP).then(res => res.json())
-        .then(data => { setcontentRecentlyPosted(data) });
-    }
-  }
+  const strapi = useGet("articles", "false", languag)
 
   useEffect(() => {
-    getStrapi()
-  }, [languag])
+    setcontentRecentlyPosted(strapi)
+  }, [strapi])
 
   return (
     <StaticQuery

@@ -81,8 +81,6 @@ const HomeDescription = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  //const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
   return (
     <Box ref={ref} className={classes.container}>

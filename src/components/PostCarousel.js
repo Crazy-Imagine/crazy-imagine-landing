@@ -5,7 +5,6 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
-
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",

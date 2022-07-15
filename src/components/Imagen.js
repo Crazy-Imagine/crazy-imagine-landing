@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    //animation: `$myEffect 2000ms`,
     marginTop: "auto",
     width: "100%",
     height: "100%",

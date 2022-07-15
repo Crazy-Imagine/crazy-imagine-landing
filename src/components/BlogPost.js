@@ -10,6 +10,7 @@ import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { BLOG } from "../navigation/sitemap"
 import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -107,24 +108,14 @@ const useStyes = makeStyles(theme => ({
 const BlogPost = ({ bulletClass }) => {
   const classes = useStyes()
   const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
-  //const context = React.useContext(I18nextContext);
   const lan = context.language;
   const [BlogPost, setBlogPost] = useState([]);
-
-  const getStrapi = async () => {
-    if (lan === "es") {
-      const urlBP = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
-      const respp = await fetch(urlBP).then(resp => resp.json())
-        .then(data => { setBlogPost(data) });
-
-    }
-  }
+  const strapi = useGet("articles", "false", lan)
 
   useEffect(() => {
-    getStrapi()
-  }, [lan])
+    setBlogPost(strapi)
+  }, [strapi])
 
   return (
     <StaticQuery

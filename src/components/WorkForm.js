@@ -375,8 +375,6 @@ const WorkForm = () => {
   })
   const domain = process.env.API_URL || "http://localhost:1337"
 
-
-
   const onSubmitHandler = async data => {
     if (data.curriculum?.length === 1) {
       const formData = new FormData()
@@ -540,7 +538,6 @@ const WorkForm = () => {
                 <label className={classes.attachButton} htmlFor="resume-btn">
                   {t("workWithUs_workForm_textField_button1")}
                 </label>
-                {/*<button className={classes.attachButton} onClick={() => fileRef.current.click()}>ATTACH</button>*/}
               </Box>
               <Input
                 type="file"
@@ -557,11 +554,11 @@ const WorkForm = () => {
               ></Input>
             </Box>
             <Alert
-              severity={(errors.curriculum?.message === "File uploaded successfully" || errors.curriculum?.message === "Archivo cargado con éxito") ? "success" : "error"}
+              severity={(errors.curriculum?.message === t("workWithUs_workForm_schemaYup_curriculum4")) ? "success" : "error"}
               className={classes.curriculumAlert}
               style={{
                 display: errors.curriculum !== undefined ? "inherit" : "none",
-                color: (errors.curriculum?.message === "File uploaded successfully" || errors.curriculum?.message === "Archivo cargado con éxito") ? "green" : "red"
+                color: (errors.curriculum?.message === t("workWithUs_workForm_schemaYup_curriculum4")) ? "green" : "red"
               }}
             >
               {errors.curriculum?.message}

@@ -9,7 +9,6 @@ import ContactSection from "../components/ContactSection"
 import Copyright from "../components/Copyright"
 import headerImage from "../images/astronaut.svg"
 import Layout from "../components/layout"
-//const Layout = lazy(() => import("../components/layout"))
 import { graphql } from "gatsby"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 import ModalLang from "../components/ModalLang"
@@ -18,9 +17,6 @@ import ModalLang from "../components/ModalLang"
 const Contact = () => {
   const { t } = useTranslation()
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
     <Layout seo={{ metaTitle: "Imagine What We Can Create", metaDescription: "ContactUs" }} >
       <PageWrapper>
         <header>
@@ -50,9 +46,6 @@ const Contact = () => {
         </footer>
       </PageWrapper>
     </Layout>
-    //     </React.Suspense>
-    //   )}
-    // </>
   )
 }
 export const query = graphql`

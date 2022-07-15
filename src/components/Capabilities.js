@@ -47,7 +47,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -63,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -80,7 +78,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    //animation: `$myEffecto 5000ms`,
     width: "405px",
     [theme.breakpoints.down("lg")]: {
       width: "auto",
@@ -96,7 +93,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffecto 5000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -112,8 +108,6 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
-  //const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
   return (
     <Box className={classes[cls]}>

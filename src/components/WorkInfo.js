@@ -4,7 +4,6 @@ import { Box, Typography, makeStyles } from "@material-ui/core"
 import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
-
 const useStyles = makeStyles(theme => ({
   title: {
     visibility: "hidden",

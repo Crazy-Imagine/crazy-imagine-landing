@@ -6,6 +6,7 @@ import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useI18next, Link, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -213,22 +214,11 @@ const BlogArticle = () => {
   const { t } = useI18next();
   const langu = context.language;
   const [contentBlogArticle, setcontentBlogArticle] = useState([]);
-
-
-  const getStrapi = async () => {
-    if (langu === "es") {
-      const urlBA = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
-      //const urlBA = `http://localhost:1337/articles?_locale=es-VE`;
-      const respu = await fetch(urlBA).then(respu => respu.json())
-        .then(data => { setcontentBlogArticle(data) });
-
-    }
-  }
+  const strapi = useGet("articles", "false", langu)
 
   useEffect(() => {
-    getStrapi()
-  }, [langu])
-
+    setcontentBlogArticle(strapi)
+  }, [strapi])
 
   return (
     <StaticQuery
@@ -267,10 +257,7 @@ const BlogArticle = () => {
             return new Date(b.node.created_at) - new Date(a.node.created_at)
           })
           .slice(0, load)
-
         return (
-
-
           <Box className={classes.wrapperContainer}>
             <Typography
               ref={ref}

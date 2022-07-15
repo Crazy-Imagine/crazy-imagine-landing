@@ -20,9 +20,6 @@ import ModalLang from "../components/ModalLang"
 const About = () => {
   const { t } = useTranslation()
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
     <Layout seo={{ metaTitle: "Our Team is Your Greatest Resource", metaDescription: "At CrazyImagine, our biggest strength is the quality of our team. We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive." }} >
       <PageWrapper>
         <header>
@@ -53,9 +50,6 @@ const About = () => {
         </footer>
       </PageWrapper>
     </Layout>
-    //     </React.Suspense>
-    //   )}
-    // </>
   )
 }
 export const query = graphql`

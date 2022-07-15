@@ -33,7 +33,7 @@ const AboutSection = () => {
         />
         <SubTitleSection
           title={t("about_aboutSection_title2")}
-          desc={t("about_aboutSection_description1")}
+          desc={t("about_aboutSection_description2")}
           img={aboutImage1}
         />
       </Box>

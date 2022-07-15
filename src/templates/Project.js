@@ -13,7 +13,7 @@ import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
 import ModalLang from "../components/ModalLang"
-
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -84,19 +84,11 @@ const Project = ({ data }) => {
   const context = React.useContext(I18nextContext);
   const languages = context.language;
   const [contentProjectsTemplate, setcontentProjectsTemplate] = useState([]);
-
-  const getStrapi = async () => {
-    if (languages === "es") {
-      const url = `http://3.91.249.33:1337/projects?_locale=es-VE&_Key=${key}` || `http://localhost:1337/projects?_locale=es-VE&_Key=${key}`;
-      const respuest = await fetch(url).then(responses => responses.json())
-        .then(data => { setcontentProjectsTemplate(data) });
-
-    }
-  }
+  const strapi = useGet("projects", key, languages)
 
   useEffect(() => {
-    getStrapi()
-  }, [languages])
+    setcontentProjectsTemplate(strapi)
+  }, [strapi])
 
   return (
     <Layout seo={dataProject?.seo}>

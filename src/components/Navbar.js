@@ -30,9 +30,6 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     justifyContent: "center",
-    // [theme.breakpoints.between(1280, 1300)]: {
-    //   justifyContent: "space-between",
-    // },
   },
   navbarIcons: props => ({
     fontSize: 25,
@@ -51,9 +48,6 @@ const useStyles = makeStyles(theme => ({
         color: "#1E2F97",
       },
     },
-    // [theme.breakpoints.between(1280, 1300)]: {
-    //   display: "none",
-    // },
   },
   linkTypography: props => ({
     fontSize: 16,
@@ -134,7 +128,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     backgroundColor: "#1E2F97",
-    //color: "red",
     "&:hover": {
       color: "#FFFFF",
     },
@@ -149,10 +142,7 @@ const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  //const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
-
   const classes = useStyles({
     scroll,
     linkVariant,
@@ -167,7 +157,6 @@ const Navbar = ({
           <Link to={HOME}>
             <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
-          {/* <LanguageModal /> */}
           <Box className={classes.linkContainer}>
             <Typography>
               <Link
@@ -203,8 +192,6 @@ const Navbar = ({
             </Typography>
             <LanguageModal />
           </Box>
-          {/* <Box style={{ flexDirection: "row", display: "flex", spacer: "5px" }}> */}
-          {/* <LanguageModal /> */}
           <Link
             to={`${CONTACT}`}
             style={{ textDecoration: "none", borderRadius: "100px" }}
@@ -218,23 +205,10 @@ const Navbar = ({
               </span>
             </Button>
           </Link>
-          {/* </Box> */}
         </Box>
       </Toolbar>
     </AppBar>
   )
 }
-// export const query = graphql`
-//   query ($language: String!) {
-//     locales: allLocale(filter: {language: {eq: $language}}) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `
+
 export default Navbar

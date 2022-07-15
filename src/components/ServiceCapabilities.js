@@ -67,7 +67,6 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "24px",
     },
   },
-
   textContainer: props => ({
     display: "flex",
     flexDirection: "column",

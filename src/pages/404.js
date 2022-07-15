@@ -1,5 +1,4 @@
 import * as React from "react"
-//import { Suspense, lazy } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
@@ -8,7 +7,6 @@ import { Box, Typography } from "@material-ui/core"
 
 
 import { HOME } from "../navigation/sitemap"
-//const Layout = lazy(() => import("../components/layout"))
 
 const useStyles = makeStyles({
   navbarLogo: {
@@ -25,8 +23,6 @@ const useStyles = makeStyles({
 const NotFoundPage = () => {
   const classes = useStyles()
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
     <main>
       <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
         <Link to={`${HOME}`}>
@@ -39,8 +35,6 @@ const NotFoundPage = () => {
         <Typography variant="h3" className={classes.title}>Page Not Found</Typography>
       </Box>
     </main>
-    //   )}
-    // </>
   )
 }
 

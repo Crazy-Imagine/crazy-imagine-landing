@@ -64,7 +64,6 @@ const useStyles = makeStyles(theme => ({
 const ServicesSection = () => {
   const classes = useStyles()
   const { t } = useTranslation()
-
   return (
     <>
       <Box className={`${classes.container} ${classes.bgWhite}`}>

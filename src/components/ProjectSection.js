@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import { Box, Button, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
-//import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -15,13 +14,9 @@ import { useTranslation } from "gatsby-plugin-react-i18next"
 const useStyles = makeStyles(theme => ({
   container: {
     height: "830px",
-    //backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    //padding: "0 10%",
-    //width: "95%",
-    //boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     [theme.breakpoints.down("md")]: {
       height: "708px",
     },
@@ -106,9 +101,7 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   carouselContainer: {
-    //backgroundColor: "#FFFFFF",
     boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
-    //boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     width: "535px",
     height: "auto",
@@ -166,7 +159,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    //backgroundColor: "#FFFFFF",
     [theme.breakpoints.between(0, 400)]: {
       width: "75%",
     },
@@ -210,17 +202,6 @@ const ProjectSection = ({ title, btn, size }) => {
               slidesPerView={"auto"}
               centeredSlides={true}
               spaceBetween={50}
-              // breakpoints={{
-              //   0: {
-              //     slidesPerView: 1,
-              //   },
-              //   600: {
-              //     slidesPerView: 2,
-              //   },
-              //   900: {
-              //     slidesPerView: 3,
-              //   },
-              // }}
               pagination={{
                 clickable: true,
               }}
@@ -236,20 +217,6 @@ const ProjectSection = ({ title, btn, size }) => {
               {projects.map((el, index) => (
                 <SwiperSlide key={index} className={classes.slide}>
                   <Box className={classes.carouselContainer}>
-                    {/* <GatsbyImage
-                      alt="About the project"
-                      image={getImage(el.images[0].localFile)}
-                      style={{
-                        objectFit: "contain",
-                        backgroundColor: "#27AAE1",
-
-                      }}
-                      imgStyle={{
-                        objectFit: "contain",
-                        backgroundColor: "#27AAE1",
-                      }}
-                    /> */}
-
                     <Box
                       style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} />
 

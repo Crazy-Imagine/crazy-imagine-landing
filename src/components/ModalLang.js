@@ -3,18 +3,12 @@ import { makeStyles, Box, Typography, Modal, Button } from "@material-ui/core"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import bgImage from "../images/flag.svg"
 
-
 const useStyles = makeStyles(theme => ({
     container: {
-
-        //marginTop: "auto",
         display: "flex",
         justifyContent: "center",
-        //marginBottom: "auto",
         alignItems: "center",
         flexDirection: "column",
-        //backdropFilter: "blur(3px)",
-        // opacity: "0.2"
     },
     containerInfo: {
         boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
@@ -26,10 +20,8 @@ const useStyles = makeStyles(theme => ({
         transform: "translate(-50%, -50%)",
         width: 650,
         height: 240,
-        //border: '2px solid #000',
         display: "flex",
         flexDirection: "row",
-        //boxShadow: 24,
         backgroundColor: "white",
         justifyContent: "center",
         alignItems: "center",
@@ -41,20 +33,14 @@ const useStyles = makeStyles(theme => ({
         },
         [theme.breakpoints.down("xs")]: {
             width: "85%",
-            //borderRadius: "0px",
             padding: "0px 0px 0px 0px",
             display: "flex",
-            //alignItems: "end",
-
-            //justifyContent: "flex-start",
         },
         [theme.breakpoints.between(0, 500)]: {
             width: "100%",
             borderRadius: "0px",
             height: 180,
-
         },
-
     },
     title: {
         fontFamily: "Nexa Bold",
@@ -98,13 +84,8 @@ const useStyles = makeStyles(theme => ({
             display: "none",
         },
     },
-    img: {
-        // marginBottom: "190px",
-        // marginLeft: "50px",
-    },
     boxT: {
         [theme.breakpoints.down("xs")]: {
-            //display: "flex",
             justifyContent: "flex-start",
         },
     },
@@ -159,25 +140,14 @@ const ModalLang = () => {
     const [open, setOpen] = useState(true);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    //const { t } = useTranslation();
     const { languages, changeLanguage } = useI18next();
-    //const context = React.useContext(I18nextContext);
-    //const lang = context.language;
-    //if (lang === "en") handleClose(false);
-    //const { t } = useI18next();
 
     return (
         <>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
             <Modal
-                // disableEnforceFocus
                 open={open}
-                // onClose={handleClose}
                 style={{ backdropFilter: "blur(3px)", zIndex: 9999999, }}
             >
-                {/* <Box className={classes.container}> */}
-
                 <Box className={classes.containerInfo}>
                     <Box className={classes.boxT}>
                         <Typography variant="h1" className={classes.title}>
@@ -221,7 +191,6 @@ const ModalLang = () => {
                         />
                     </Box>
                 </Box>
-                {/* </Box> */}
             </Modal>
         </>
     );

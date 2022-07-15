@@ -96,8 +96,6 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-  //const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
 
   return (

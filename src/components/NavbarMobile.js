@@ -141,8 +141,6 @@ const NavbarMobile = ({
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  //const context = React.useContext(I18nextContext);
-  //useI18next(I18nextContext)
   const { t } = useI18next();
 
   const handleDrawerOpen = () => {
@@ -271,11 +269,6 @@ const NavbarMobile = ({
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-
-            {/* <Box style={{ position: "absolute", left: "6.8%" }}>
-              <LanguageModal />
-              
-            </Box> */}
           </List>
         </Drawer>
       </AppBar>

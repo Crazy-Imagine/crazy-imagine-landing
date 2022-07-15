@@ -5,7 +5,6 @@ import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import Checkbox from "@material-ui/core/Checkbox"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
-//import { useForm, ValidationError } from "@formspree/react"
 import emailjs from '@emailjs/browser';
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
@@ -179,14 +178,12 @@ const ContactForm = () => {
           formu.reset()
         }
         //reset()
-        //console.log(result.text);
       }, (error) => {
         Swal.fire({
           icon: "error",
           title: t("home_contacSection_contactForm_swalError_title"),
           text: t("home_contacSection_contactForm_swalError_text"),
         })
-        //console.log(error.text);
       });
   };
 
@@ -242,9 +239,7 @@ const ContactForm = () => {
           />
           <Button
             className={classes.formButton}
-            //disabled={state.submitting}
             type="submit"
-          //onClick={() => handleClick()}
           >
             {t("common_button_contact_us")}
           </Button>

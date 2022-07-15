@@ -19,8 +19,7 @@ import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
 import ModalLang from "../components/ModalLang"
-
-
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   date: {
@@ -149,30 +148,14 @@ const Post = ({ data }) => {
   const category = data.article.category.name
   const date = data.article.category.created_at
   const key = data.article.Key
-  // console.log(key, "madafaka")
-  // const context = React.useContext(I18nextContext);
-  // const lang = context.language;
   const context = React.useContext(I18nextContext);
-  //const { t } = useI18next();
   const la = context.language;
   const [contentPostTemplate, setcontentPostTemplate] = useState([]);
-  //console.log("lang: ", lang)
-
-  const getStrapi = async () => {
-    if (la === "es") {
-      const urlPT = `http://3.91.249.33:1337/articles?_locale=es-VE&_Key=${key}` || `http://localhost:1337/articles?_locale=es-VE&_Key=${key}`;
-      //console.log("url: ", url)
-      const re = await fetch(urlPT).then(respons => respons.json())
-        .then(data => { setcontentPostTemplate(data) });
-
-    }
-  }
+  const strapi = useGet("articles", key, la)
 
   useEffect(() => {
-    getStrapi()
-  }, [la])
-
-
+    setcontentPostTemplate(strapi)
+  }, [strapi])
 
   return (
     <Layout seo={data.article.seo}>

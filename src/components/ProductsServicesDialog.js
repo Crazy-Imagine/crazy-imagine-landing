@@ -17,8 +17,6 @@ const ProductsServicesDialog = ({
   handleSubmit,
   state,
   title
-  //handleCloseState,
-  //openState
 }) => {
 
   return (
@@ -85,7 +83,6 @@ const ProductsServicesDialog = ({
           >
             Sumbit
           </Button>
-
         </DialogActions>
       </form>
     </Dialog>

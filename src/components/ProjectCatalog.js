@@ -36,5 +36,4 @@ query {
   }
 }
 `
-
 export default ProjectCatalog

@@ -11,17 +11,12 @@ import Copyright from "../components/Copyright"
 import headerImage from "../images/rocket.svg"
 import { graphql } from "gatsby"
 import { useTranslation } from "gatsby-plugin-react-i18next"
-//const Layout = lazy(() => import("../components/layout"))
 import Layout from "../components/layout"
 import ModalLang from "../components/ModalLang"
 
 const WorkWithUsPage = () => {
-  //const data = useStaticQuery(query)
   const { t } = useTranslation()
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
     <Layout seo={{ metaTitle: "Work With Us At Crazy Imagine", metaDescription: "Work With Us At Crazy Imagine" }}>
       <PageWrapper>
         <header>
@@ -52,31 +47,9 @@ const WorkWithUsPage = () => {
         </footer>
       </PageWrapper>
     </Layout>
-    //      </React.Suspense>
-    //   )}
-    // </>
   )
 }
 
-// const query = graphql`
-// query {
-//   workWithUs: strapiWorkWithUs {
-//     SEO {
-//       id
-//       metaDescription
-//       metaTitle
-//       shareImage {
-//         localFile {
-//           publicURL
-//           childImageSharp {
-//             gatsbyImageData(quality: 5)
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// `
 export const query = graphql`
   query ($language: String!) {
     locales: allLocale(filter: {language: {eq: $language}}) {

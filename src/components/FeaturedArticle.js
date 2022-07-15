@@ -5,6 +5,7 @@ import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -177,21 +178,11 @@ const FeaturedArticle = () => {
   const { t } = useI18next();
   const langg = context.language;
   const [contentFeaturedArticle, setcontentFeaturedArticle] = useState([]);
-
-
-  const getStrapi = async () => {
-    if (langg === "es") {
-      const urlFA = `http://3.91.249.33:1337/articles?_locale=es-VE` || `http://localhost:1337/articles?_locale=es-VE`;
-      const resp = await fetch(urlFA).then(respp => respp.json())
-        .then(data => { setcontentFeaturedArticle(data) });
-
-    }
-  }
+  const strapi = useGet("articles", "false", langg)
 
   useEffect(() => {
-    getStrapi()
-  }, [langg])
-
+    setcontentFeaturedArticle(strapi)
+  }, [strapi])
 
   return (
     <StaticQuery

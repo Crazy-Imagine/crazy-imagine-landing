@@ -17,25 +17,13 @@ import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
 import { useTranslation } from "gatsby-plugin-react-i18next"
-//const Layout = lazy(() => import("../components/layout"))
-//import { useTranslation } from "react-i18next"
-//import { useTranslation } from "gatsby-plugin-react-i18next"
 import ModalLang from "../components/ModalLang"
 
-
 const IndexPage = () => {
-  //const data = useStaticQuery(query)
   const ref = useRef()
   const { t } = useTranslation()
-  //React.useContext(I18nextContext);
-  // const lng = new Intl.Locale()
-  //console.log(Intl.Locale.prototype, "languaje")
 
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
-
     <Layout seo={{ metaTitle: "Crazy Imagine", metaDescription: "We are a growing startup with more than 5 years in the market, with experience on mobile and web development, using the most popular Javascript technologies like React js, Angular js, Vue js, Node js and PHP frameworks like Laravel, Code Igniter, Prestashop, and Wordpress. " }}>
       <PageWrapper>
         <div ref={ref}>
@@ -76,9 +64,6 @@ const IndexPage = () => {
         </div>
       </PageWrapper>
     </Layout>
-    //     </React.Suspense>
-    //   )}
-    // </>
   )
 }
 
@@ -126,17 +111,4 @@ query($language: String!){
   }
 }
 `
-// export const query = graphql`
-//   query ($language: String!) {
-//     locales: allLocale(filter: {language: {eq: $language}}) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `;
 export default IndexPage

@@ -12,19 +12,13 @@ import { useTranslation } from "gatsby-plugin-react-i18next"
 import { graphql } from "gatsby"
 import headerImage from "../images/robot.svg"
 import ProjectSection from "../components/ProjectSection"
-//const Layout = lazy(() => import("../components/layout"))
 import Layout from "../components/layout"
 import ModalLang from "../components/ModalLang"
 
 
 const Projects = () => {
   const { t } = useTranslation()
-
-  //const data = useStaticQuery(query)
   return (
-    // <>
-    //   {typeof window !== 'undefined' && (
-    //     <React.Suspense fallback={<Loading />}>
     <Layout seo={{ metaTitle: "Projects", metaDescription: "Our passion is to create solutions which could give that extra value to your product, service or to business in general." }}>
       <PageWrapper>
 
@@ -59,9 +53,6 @@ const Projects = () => {
         </Box>
       </PageWrapper>
     </Layout>
-    //     </React.Suspense>
-    //   )}
-    // </>
   )
 }
 

@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown"
 import { Box, makeStyles } from "@material-ui/core"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
 
-
 const useStyles = makeStyles(theme => ({
   content: {
     textAlign: "justify",
@@ -35,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 const PostContent = ({ data }) => {
   const classes = useStyles()
   const context = React.useContext(I18nextContext);
-  //const { t } = useI18next();
   const lang = context.language;
   return (
     <>

@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 import { HOME, PROJECTS } from "../navigation/sitemap"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
-
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
     backgroundColor: "#27AAE1",
@@ -30,19 +29,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       justifyContent: "center",
       height: "auto",
-      //width: "99%",
       width: "100%",
       borderRadius: "0px",
-      //flexDirection: "column",
       background: props.little ? "#27AAE1" : "transparent",
-
     },
     [theme.breakpoints.between(450, 350)]: {
-      //flexDirection: "column",
       height: props.little ? "257px" : "235px",
     },
     [theme.breakpoints.between(350, 0)]: {
-      //flexDirection: "column",
       height: props.little ? "237px" : "215px",
     },
   }),
@@ -72,7 +66,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 400)]: {
       flexDirection: "column",
-      //height: props.little ? "290px" : "350px",
     },
   }),
   buttonLeft: {
@@ -194,7 +187,6 @@ const useStyles = makeStyles(theme => ({
       padding: "20px 0px 20px 50px",
       width: "100%",
       gap: "22px",
-      //alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
       padding: "10px 0px 10px 10px",
@@ -218,9 +210,6 @@ const useStyles = makeStyles(theme => ({
   }),
   img: {
     animation: `$myEffect 2000ms`,
-    //width: "306px",
-    //height: "406px",
-
     [theme.breakpoints.down("sm")]: {
       width: "200%",
     },
@@ -258,7 +247,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       whiteSpace: "normal",
-      //textAlign: "center",
       lineHeight: props.little ? "51px" : "40px",
       fontSize: props.little ? "23px" : "30px",
       fontWeight: 100,
@@ -287,7 +275,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
       lineHeight: "inherit",
-      //textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "11px",
@@ -298,12 +285,7 @@ const useStyles = makeStyles(theme => ({
 
 export const SectionHeader = ({ title, desc, btn, little, img }) => {
   const classes = useStyles({ little, btn })
-  //const { t } = useTranslation();
   const { t } = useTranslation()
-  //const { t } = useI18next();
-  //const context = React.useContext(I18nextContext);
-
-
 
   return (
     <Box className={classes.backgroundOut}>
@@ -329,7 +311,6 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
           <img className={classes.img} src={img} alt="Header Section" />
         </Box>
       </Box>
-      {/* <p style={{ display: "none" }}>{t('headerSectionHome')}</p> */}
     </Box>
   )
 }
