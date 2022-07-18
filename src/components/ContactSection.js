@@ -4,6 +4,7 @@ import ContactForm from "./ContactForm"
 import Section from "./Section"
 import Image from "../images/satelite.svg"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -61,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    //animation: `$myEffecto 2000ms`,
     marginTop: "auto",
   },
   imag: {
@@ -93,6 +93,7 @@ const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation()
   return (
     <Section
       width="76%"
@@ -104,16 +105,16 @@ const ContactSection = ({ bgColor, bgImage }) => {
           <Typography
             className={isVisible ? classes.subtitle2 : classes.subtitle}
           >
-            REACH OUT
+            {t("home_contacSection_subtitle")}
           </Typography>
           <Typography
             className={isVisible ? classes.title2 : classes.title}
-          >{`Imagine What`}</Typography>
+          >{t("home_contacSection_title1")}</Typography>
           <Typography
             className={isVisible ? classes.title2 : classes.title}
             style={{ marginTop: "-17px" }}
           >
-            {`We Can Create`}
+            {t("home_contacSection_title2")}
           </Typography>
           <Box className={classes.img2}>
             <img src={Image} className={classes.imag} alt="imagen" />

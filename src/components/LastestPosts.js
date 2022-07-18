@@ -5,6 +5,7 @@ import BlogPost from "./BlogPost"
 import bgImage from "../images/background.svg"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   title: {
@@ -94,18 +95,19 @@ const LastestPosts = () => {
   const classes = useStyes()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useI18next();
 
   return (
     <Box ref={ref} className={classes.container}>
       <Typography
         className={isVisible ? classes.title2 : classes.title}
-      >{`The Latest in Tech Talk`}</Typography>
+      >{t("home_lastestPosts_title")}</Typography>
       <Link
         to={`${BLOG}`}
         className={isVisible ? classes.link2 : classes.link}
         style={{ textDecoration: "none" }}
       >
-        ALL BLOGS →
+        {t("common_lastestPosts_button_allBlogs")}
       </Link>
       <BlogPost />
     </Box>

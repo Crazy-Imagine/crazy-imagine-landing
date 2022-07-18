@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -76,18 +77,18 @@ const useStyles = makeStyles(theme => ({
 
 const Copyright = () => {
   const classes = useStyles()
+  const { t } = useTranslation()
 
   return (
     <Box className={classes.container}>
       <Box className={classes.copyContainer}>
         <Typography className={classes.copyright}>
           {" "}
-          ©2022 Crazy Imagine, All Rights Reserved
+          {t("home_copyright_label1")}
         </Typography>
         <Typography className={classes.copyright}>
           {" "}
-          Terms & Conditions <span className={classes.barText}>|</span> Privacy
-          Policy
+          {t("home_copyright_label2")}<span className={classes.barText}>|</span>{t("home_copyright_label3")}
         </Typography>
       </Box>
     </Box>

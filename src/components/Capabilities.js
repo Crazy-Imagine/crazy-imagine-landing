@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -46,7 +47,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subtitle2: {
-    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -62,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    //animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -79,7 +78,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    //animation: `$myEffecto 5000ms`,
     width: "405px",
     [theme.breakpoints.down("lg")]: {
       width: "auto",
@@ -95,7 +93,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffecto 5000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",
@@ -111,9 +108,10 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls }) => {
   const classes = useStyles()
+  const { t } = useI18next();
   return (
     <Box className={classes[cls]}>
-      <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
+      <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>
       <Typography className={classes.title2}>{title}</Typography>
       <Typography className={classes.desc2}>{desc}</Typography>
       {img && <img className={classes.img2} src={img} alt="Capabilities" />}

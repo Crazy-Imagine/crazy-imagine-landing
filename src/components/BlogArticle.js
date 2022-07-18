@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
-import { graphql, Link, StaticQuery } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useI18next, Link, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -208,6 +210,10 @@ const BlogArticle = () => {
   const loadArticles = length => {
     if (length > load) setLoad(load + 2)
   }
+  const context = React.useContext(I18nextContext);
+  const { t } = useI18next();
+  const langu = context.language;
+  const contentBlogArticle = useGet("articles", "false", langu)
 
   return (
     <StaticQuery
@@ -246,7 +252,6 @@ const BlogArticle = () => {
             return new Date(b.node.created_at) - new Date(a.node.created_at)
           })
           .slice(0, load)
-
         return (
           <Box className={classes.wrapperContainer}>
             <Typography
@@ -255,35 +260,64 @@ const BlogArticle = () => {
                 isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
               }
             >
-              Browse All Articles
+              {t("blog_blogArticle_title")}
             </Typography>
             <Box className={classes.wrapper}>
               {articlesSort.map(({ node }, index) => (
 
                 <Box key={index} className={classes.container}>
+                  {(langu === "en") ?
+                    <>
+                      <GatsbyImage
+                        image={getImage(node.image[0].localFile)}
+                        imgStyle={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
 
-                  <GatsbyImage
-                    image={getImage(node.image[0].localFile)}
-                    imgStyle={{
-                      maxWidth: "480px",
-                      maxHeight: "300px",
+                        }}
+                        alt="Blog"
 
-                    }}
-                    alt="Blog"
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {node.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${node.slug}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </>
+                    :
+                    <>
+                      <img
+                        src={contentBlogArticle[index]?.image[0].url}
+                        style={{
+                          maxWidth: "480px",
+                          maxHeight: "300px",
 
-                  />
-                  <Box className={classes.textContainer}>
-                    <Typography className={classes.title}>
-                      {node.title}
-                    </Typography>
-                    <Link
-                      to={`${BLOG}/${node.slug}`}
-                      className={classes.link}
-                      style={{ textDecoration: "none" }}
-                    >
-                      READ MORE →
-                    </Link>
-                  </Box>
+                        }}
+                        alt="Blog"
+                      />
+                      <Box className={classes.textContainer}>
+                        <Typography className={classes.title}>
+                          {contentBlogArticle[index]?.title}
+                        </Typography>
+                        <Link
+                          to={`${BLOG}/${contentBlogArticle[index]?.Key}`}
+                          language="es"
+                          className={classes.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {t("common_lastestPosts_blogPost_button_readMore")}
+                        </Link>
+                      </Box>
+                    </>
+                  }
                 </Box>
               ))}
             </Box>
@@ -294,9 +328,10 @@ const BlogArticle = () => {
               }}
               className={isVisible1 ? classes.loadButton2 : classes.loadButton}
             >
-              LOAD MORE
+              {t("blog_blogArticle_button")}
             </Button>
           </Box>
+
         )
       }}
     />

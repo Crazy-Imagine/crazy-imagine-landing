@@ -5,8 +5,11 @@ import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import Checkbox from "@material-ui/core/Checkbox"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
-import { useForm, ValidationError } from "@formspree/react"
 import emailjs from '@emailjs/browser';
+import { useForm } from "react-hook-form"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -146,82 +149,63 @@ const useStyles = makeStyles(theme => ({
 const ContactForm = () => {
   const classes = useStyles({})
   const form = useRef();
-
-  //const [state, handleSubmit] = useForm("myyogzrz")
+  const { t } = useTranslation()
+  const schema = yup.object().shape({
+    name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
+    email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
+    comments: yup.string().required(t("home_contacSection_contactForm_schemaYup_comments")),
+  })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  })
 
   const sendEmail = (e) => {
-    e.preventDefault();
-
+    //e.preventDefault();
     emailjs.sendForm('service_idrfktg', 'template_d6gox3w', form.current, 'Yj5TqwauXSazzj4UJ')
       .then((result) => {
         Swal.fire(
-          "Thank You!",
-          "Your submission has been received",
-          "Success"
+          t("home_contacSection_contactForm_swalSuccess_title"),
+          t("home_contacSection_contactForm_swalSuccess_text"),
+          "success"
         )
         for (const formu of document.getElementsByTagName("form")) {
           formu.reset()
         }
-        //console.log(result.text);
+        //reset()
       }, (error) => {
         Swal.fire({
           icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
+          title: t("home_contacSection_contactForm_swalError_title"),
+          text: t("home_contacSection_contactForm_swalError_text"),
         })
-        //console.log(error.text);
       });
   };
 
-  /*
-  const handleClick = newState => {
-    console.log("state", state)
-
-    window.onbeforeunload = () => {
-
-      for (const form of document.getElementsByTagName("form")) {
-
-        setTimeout(() => {
-          if (!state.succeeded) {
-            return Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Something went wrong!",
-            })
-          }
-          form.reset()
-        }, 300)
-      }
-    }
-    window.onbeforeunload()
-
-    if (state.succeeded) {
-
-      return Swal.fire(
-        "Thank You!",
-        "Your submission has been received",
-        "Success"
-      )
-    }
-  } */
-
   return (
     <Box className={classes.formContainer}>
-      <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} noValidate autoComplete="off" onSubmit={handleSubmit(sendEmail)}>
         <Box className={classes.inputContainer}>
           <Box className={classes.divider}>
             <TextField
               id="name"
               name="name"
               required
-              label="Name"
+              label={t("home_contacSection_contactForm_textField_label1")}
               className={`${classes.shortInput} ${classes.root} `}
+              {...register("name")}
+              error={errors.name}
+              helperText={errors.name?.message}
             />
             <TextField
               id="company"
               name="company"
-              required
-              label="Company"
+              label={t("home_contacSection_contactForm_textField_label2")}
               className={`${classes.shortInput} ${classes.root} `}
             />
           </Box>
@@ -231,34 +215,33 @@ const ContactForm = () => {
             name="email"
             className={`${classes.input} ${classes.root}`}
             required
-            label="Email Address"
+            label={t("home_contacSection_contactForm_textField_label3")}
+            error={errors.email}
+            {...register("email")}
+            helperText={errors.email?.message}
           />
           <TextField
             id="comments"
             name="comments"
-            label="Comments/Questions/Schemes"
+            label={t("home_contacSection_contactForm_textField_label4")}
             required
             className={`${classes.input} ${classes.root}`}
-          />
-          <ValidationError
-            prefix="Message"
-            field="message"
-          //errors={state.errors}
+            {...register("comments")}
+            error={errors.comments}
+            helperText={errors.comments?.message}
           />
           <FormControlLabel
             value="end"
             control={<Checkbox />}
-            label="Keep me up-to-date on news and exciting projects."
+            label={t("home_contacSection_contactForm_formControlLabel_checkbox_label")}
             className={classes.root}
             labelPlacement="end"
           />
           <Button
             className={classes.formButton}
-            //disabled={state.submitting}
             type="submit"
-          //onClick={() => handleClick()}
           >
-            CONTACT US
+            {t("common_button_contact_us")}
           </Button>
         </Box>
       </form>

@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core"
 import { BLOG } from "../navigation/sitemap"
+import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -84,6 +86,11 @@ const useStyles = makeStyles(theme => ({
 
 const RecentlyPosted = () => {
   const classes = useStyles()
+  const context = React.useContext(I18nextContext);
+  const { t } = useI18next();
+  const languag = context.language;
+  const contentRecentlyPosted = useGet("articles", "false", languag)
+
   return (
     <StaticQuery
       query={graphql`
@@ -121,22 +128,39 @@ const RecentlyPosted = () => {
         })
         return (
           <Box className={classes.layout}>
-            <Typography className={classes.title}>Recently Posted</Typography>
-            {articlesSort.slice(0, 4).map(el => (
-              <Box key={el.node.id} marginBottom="24px">
+            <Typography className={classes.title}>{t("post_recentlyPosted_title")}</Typography>
+            {articlesSort.slice(0, 4).map(({ node }, index) => (
+              <Box key={node.id} marginBottom="24px">
                 <Grid container alignItems="center">
                   <Grid item xs>
                     <Box className={classes.container}>
-                      <Typography className={classes.listTitle}>
-                        {el.node.title}
-                      </Typography>
-                      <Link
-                        className={classes.link}
-                        style={{ textDecoration: "none" }}
-                        to={`${BLOG}/${el.node.slug}`}
-                      >
-                        READ MORE →
-                      </Link>
+                      {(languag === "en") ?
+                        <>
+                          <Typography className={classes.listTitle}>
+                            {node.title}
+                          </Typography>
+                          <Link
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                            to={`${BLOG}/${node.slug}`}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </>
+                        :
+                        <>
+                          <Typography className={classes.listTitle}>
+                            {contentRecentlyPosted[index]?.title}
+                          </Typography>
+                          <Link
+                            className={classes.link}
+                            style={{ textDecoration: "none" }}
+                            to={`${BLOG}/${contentRecentlyPosted[index]?.Key}`}
+                          >
+                            {t("common_lastestPosts_blogPost_button_readMore")}
+                          </Link>
+                        </>
+                      }
                     </Box>
                   </Grid>
                 </Grid>

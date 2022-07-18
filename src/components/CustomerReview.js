@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -9,6 +9,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   review: {
@@ -34,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     alignSelf: "flex-end",
     color: "#27AAE1",
+    marginBottom: "6px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -129,6 +132,9 @@ const useStyles = makeStyles(theme => ({
 const CustomerReview = () => {
   const classes = useStyles()
   SwiperCore.use([Keyboard])
+  const context = React.useContext(I18nextContext);
+  const lang = context.language;
+  const contentReviews = useGet("reviews", "false", lang)
 
   return (
     <StaticQuery
@@ -136,75 +142,93 @@ const CustomerReview = () => {
       render={data => {
         const reviews = data.reviews.nodes
         return (
-          <>
-            <Swiper
-              spaceBetween={50}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1,
-                },
-                900: {
-                  slidesPerView: 2,
-                },
-                1280: {
-                  slidesPerView: 3,
-                },
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              grabCursor={true}
-              style={{
-                width: "80%",
-                boxSizing: "content-box",
-              }}
-              keyboard={{ enabled: true }}
-              modules={[Pagination]}
-            >
-              {reviews.map((review, index) => (
-                <SwiperSlide key={index} className={classes.swiperSlide}>
-                  <Box className={classes.containerInfo}>
-                    <Box className={classes.iconsContainer}>
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                      <FontAwesomeIcon
-                        size="1x"
-                        icon={faStar}
-                        className={classes.icon}
-                      />
-                    </Box>
-                    <Typography className={classes.review}>
-                      {review.review}
-                    </Typography>
-                    <Box>
-                      <Typography className={classes.customerName}>
-                        {review.name}
-                      </Typography>
-                      <Typography className={classes.customerOcupation}>
-                        {review.ocupation}
-                      </Typography>
-                    </Box>
+          <Swiper
+            spaceBetween={50}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              900: {
+                slidesPerView: 2,
+              },
+              1280: {
+                slidesPerView: 3,
+              },
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            grabCursor={true}
+            style={{
+              width: "80%",
+              boxSizing: "content-box",
+            }}
+            keyboard={{ enabled: true }}
+            modules={[Pagination]}
+          >
+            {reviews.map((review, index) => (
+              <SwiperSlide key={index} className={classes.swiperSlide}>
+                <Box className={classes.containerInfo}>
+                  <Box className={classes.iconsContainer}>
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faStar}
+                      className={classes.icon}
+                    />
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faStar}
+                      className={classes.icon}
+                    />
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faStar}
+                      className={classes.icon}
+                    />
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faStar}
+                      className={classes.icon}
+                    />
                   </Box>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </>
+                  {(lang === "en") ?
+                    <>
+                      <Typography className={classes.review}>
+                        {review.review}
+                      </Typography>
+                      <Box>
+                        <Typography className={classes.customerName}>
+                          {review.name}
+                        </Typography>
+                        <Typography className={classes.customerOcupation}>
+                          {review.ocupation}
+                        </Typography>
+                      </Box>
+                    </>
+                    :
+                    <>
+                      <Typography className={classes.review}>
+                        {contentReviews[index]?.review}
+                      </Typography>
+                      <Box>
+                        <Typography className={classes.customerName}>
+                          {contentReviews[index]?.name}
+                        </Typography>
+                        <Typography className={classes.customerOcupation}>
+                          {contentReviews[index]?.ocupation}
+                        </Typography>
+                      </Box>
+                    </>
+                  }
+                </Box>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
         )
       }}
     />
+
   )
 }
 

@@ -3,6 +3,7 @@ import { Box, makeStyles, Typography } from "@material-ui/core"
 import CustomerReview from "./CustomerReview"
 import bgImage from "../images/background.svg"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   title: {
@@ -57,6 +58,7 @@ const ReferenceSection = () => {
   const classes = useStyes()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation()
 
   return (
     <Box className={classes.referenceContainer}>
@@ -64,8 +66,7 @@ const ReferenceSection = () => {
         ref={ref}
         className={isVisible ? classes.title2 : classes.title}
       >
-        {`People Who Work
-                  With Us Say`}
+        {t("home_referenceSection_title")}
       </Typography>
       <CustomerReview />
     </Box>

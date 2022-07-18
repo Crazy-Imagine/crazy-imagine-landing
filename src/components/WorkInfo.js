@@ -2,6 +2,7 @@ import * as React from "react"
 import { useRef } from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -56,14 +57,13 @@ const WorkInfo = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation()
 
   return (
     <Box ref={ref} className={classes.container}>
       <Typography
         className={isVisible ? classes.title2 : classes.title}
-      >{`Interested
-      In Working
-      With Us?`}</Typography>
+      >{t("workWithUs_workForm_workInfo_title")}</Typography>
     </Box>
   )
 }

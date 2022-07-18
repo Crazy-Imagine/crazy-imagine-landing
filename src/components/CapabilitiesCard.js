@@ -5,6 +5,7 @@ import { PROJECTS } from "../navigation/sitemap"
 import Typography from "@material-ui/core/Typography"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -118,6 +119,7 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useI18next();
   return (
     <Box
       ref={ref}
@@ -131,7 +133,7 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
         className={classes.link}
         style={{ textDecoration: "none" }}
       >
-        SERVICES →
+        {t("common_capabilities_button_services")}
       </Link>
     </Box>
   )

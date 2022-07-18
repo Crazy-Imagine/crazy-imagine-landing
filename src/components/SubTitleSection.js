@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title2: {
-    //animation: `$myEffectos 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -64,7 +63,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffectos 2000ms`,
     fontFamily: "Hero New",
     fontStyle: "normal",
     fontWeight: "400",

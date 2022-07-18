@@ -4,6 +4,7 @@ import SubTitleSection from "./SubTitleSection"
 import AboutTitle from "./AboutTitle"
 import aboutImage from "../images/sateliteBackground.svg"
 import aboutImage1 from "../images/antenaBackground.svg"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,19 +22,18 @@ const useStyles = makeStyles(theme => ({
 
 const AboutSection = () => {
   const classes = useStyles()
+  const { t } = useTranslation()
   return (
     <>
       <Box className={classes.container}>
         <AboutTitle
-          title={`Working together…`}
-          desc="At CrazyImagine, our biggest strength is the quality of our team. We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, 
-                as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive."
+          title={t("about_aboutSection_title1")}
+          desc={t("about_aboutSection_description1")}
           img={aboutImage}
         />
         <SubTitleSection
-          title="…to create more."
-          desc="Collaboration with our internal team as well as with our clients sets our work apart from the pack. 
-                Our commitment to communication as well as accountability drives us towards innovation and unrivaled quality."
+          title={t("about_aboutSection_title2")}
+          desc={t("about_aboutSection_description2")}
           img={aboutImage1}
         />
       </Box>

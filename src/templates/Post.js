@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -17,6 +17,9 @@ import PageWrapper from "../components/PageWrapper"
 import Layout from "../components/layout"
 import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   date: {
@@ -34,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "490px",
+    height: "480px",
     width: "80%",
     paddingTop: "60px",
     margin: "90px auto 0px auto",
@@ -144,6 +147,10 @@ const Post = ({ data }) => {
   const author = data.article.author.name
   const category = data.article.category.name
   const date = data.article.category.created_at
+  const key = data.article.Key
+  const context = React.useContext(I18nextContext);
+  const la = context.language;
+  const contentPostTemplate = useGet("articles", key, la)
 
   return (
     <Layout seo={data.article.seo}>
@@ -155,13 +162,29 @@ const Post = ({ data }) => {
           <NavbarMobile />
         </Hidden>
         <Box className={classes.header}>
-          <InputLabel className={classes.label}>{category}</InputLabel>
-          <Typography className={classes.title}>{title}</Typography>
-          <Typography className={classes.date}>
-            {date} │ <span className={classes.author}>{author}</span>
-          </Typography>
-          <Typography className={classes.description}>{description}</Typography>
+          {(la === "en") ?
+            <>
+              <InputLabel className={classes.label}>{category}</InputLabel>
+              <Typography className={classes.title}>{title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{description}</Typography></>
+            :
+            <>
+              <InputLabel className={classes.label}>{contentPostTemplate[0]?.category.name}</InputLabel>
+              <Typography className={classes.title}>{contentPostTemplate[0]?.title}</Typography>
+              <Typography className={classes.date}>
+                {date} │ <span className={classes.author}>{author}</span>
+              </Typography>
+              <Typography className={classes.description}>{contentPostTemplate[0]?.description}</Typography>
+            </>
+          }
         </Box>
+        {typeof window !== 'undefined' && (
+          sessionStorage.getItem("lang") !== "true" &&
+          <ModalLang />
+        )}
         <Box className={classes.imgContainer}>
           <GatsbyImage
             image={getImage(data.article.image[0].localFile)}
@@ -169,7 +192,11 @@ const Post = ({ data }) => {
           />
         </Box>
         <Box className={classes.contentContainer}>
-          <PostContent data={data} />
+          {(la === "en") ?
+            <PostContent data={data} />
+            :
+            <PostContent data={contentPostTemplate[0]} />
+          }
           <RecentlyPosted />
         </Box>
         <PostCarousel />
@@ -181,12 +208,13 @@ const Post = ({ data }) => {
 }
 
 export const query = graphql`
-query Article($id: String!) {
+query Article($id: String!, $language: String!) {
   article: strapiArticle(id: { eq: $id }) {
     title
     id
     description
     content
+    Key
     author {
       name
     }
@@ -217,7 +245,16 @@ query Article($id: String!) {
     }
     category {
       name
-      created_at(formatString: "DD MMMM, YYYY")
+      created_at(formatString: "DD/MM/YYYY")
+    }
+  }
+  locales: allLocale(filter: {language: {eq: $language}}) {
+    edges {
+      node {
+        ns
+        data
+        language
+      }
     }
   }
 }

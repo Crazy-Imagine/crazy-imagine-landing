@@ -24,6 +24,7 @@ import {
   faLaptopCode,
   faPhone,
   faXmark,
+  faFlag,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useScroll from "../hooks/useScroll"
@@ -37,6 +38,8 @@ import {
 } from "../navigation/sitemap"
 import { colorsIconos, colors } from "../helpers/navbarColors"
 import Image from "../images/crazy-imagine-icon.svg"
+import { useI18next } from "gatsby-plugin-react-i18next"
+import LanguageModal from "../components/LanguageModal"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -128,6 +131,7 @@ const icons = [
   <FontAwesomeIcon icon={faBlog} size="lg" />,
   <FontAwesomeIcon icon={faLaptopCode} size="lg" />,
   <FontAwesomeIcon icon={faPhone} size="lg" />,
+  <FontAwesomeIcon icon={faFlag} size="lg" />,
 ]
 
 const NavbarMobile = ({
@@ -137,6 +141,7 @@ const NavbarMobile = ({
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
+  const { t } = useI18next();
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -170,6 +175,7 @@ const NavbarMobile = ({
                 style={{ width: "100%", height: "100%" }}
               />
             </Link>
+
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -188,7 +194,9 @@ const NavbarMobile = ({
           anchor="left"
           open={open}
         >
+
           <DrawerHeader style={{ justifyContent: "space-between" }}>
+
             <Link to={`${HOME}`} onClick={handleDrawerClose}>
               <img
                 src={Image}
@@ -196,6 +204,7 @@ const NavbarMobile = ({
                 style={{ width: "100%", height: "100%" }}
               />
             </Link>
+            {/* <LanguageModal /> */}
             <IconButton onClick={handleDrawerClose}>
               <FontAwesomeIcon icon={faXmark} inverse />
             </IconButton>
@@ -209,28 +218,28 @@ const NavbarMobile = ({
                 style={{ textDecoration: "none" }}
                 to={`${HOME}`}
               >
-                <Typography className={classes.textLink}>Home</Typography>
+                <Typography className={classes.textLink}>{t("common_button_home")}</Typography>
               </Link>,
               <Link
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 to={`${ABOUT}`}
               >
-                <Typography className={classes.textLink}>About</Typography>
+                <Typography className={classes.textLink}>{t("common_button_about")}</Typography>
               </Link>,
               <Link
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 to={`${PROJECTS}`}
               >
-                <Typography className={classes.textLink}>Services</Typography>
+                <Typography className={classes.textLink}>{t("common_button_services")}</Typography>
               </Link>,
               <Link
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 to={`${BLOG}`}
               >
-                <Typography className={classes.textLink}>Blog</Typography>
+                <Typography className={classes.textLink}>{t("common_button_blog")}</Typography>
               </Link>,
               <Link
                 className={classes.resetLink}
@@ -241,7 +250,7 @@ const NavbarMobile = ({
                   style={{ textDecoration: "none" }}
                   className={classes.textLink}
                 >
-                  Work With Us
+                  {t("common_button_work_with_us")}
                 </Typography>
               </Link>,
               <Link
@@ -249,8 +258,9 @@ const NavbarMobile = ({
                 style={{ textDecoration: "none" }}
                 to={`${CONTACT}`}
               >
-                <Typography className={classes.textLink}>Contact Us</Typography>
+                <Typography className={classes.textLink}>{t("common_button_contact_us")}</Typography>
               </Link>,
+              <LanguageModal />
             ].map((text, index) => (
               <ListItem button key={index} alignItems="center">
                 <ListItemIcon className={classes.resetLink}>

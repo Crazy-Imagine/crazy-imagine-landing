@@ -3,6 +3,7 @@ import { Box, Typography, makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
 import RelatedProjects from "../components/RelatedProjects"
 import { PROJECTS } from "../navigation/sitemap"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   title: {
@@ -56,16 +57,16 @@ const useStyes = makeStyles(theme => ({
 
 const RelatedSection = () => {
   const classes = useStyes()
-
+  const { t } = useTranslation()
   return (
     <Box className={classes.container}>
-      <Typography className={classes.title}>Related Projects</Typography>
+      <Typography className={classes.title}>{t("project_RelatedSection_title")}</Typography>
       <Link
         to={`${PROJECTS}`}
         className={classes.link}
         style={{ textDecoration: "none" }}
       >
-        ALL BLOGS →
+        {t("common_lastestPosts_button_allBlogs")}
       </Link>
       <RelatedProjects />
     </Box>

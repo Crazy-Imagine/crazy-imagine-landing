@@ -26,7 +26,6 @@ exports.createPages = async ({ graphql, actions }) => {
   if (result.errors) {
     throw result.errors
   }
-
   const { createPage } = actions
 
   const posts = result.data.articles.edges
@@ -50,6 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: ProjectsTemplate,
       context: {
         id: project.id,
+        language: "en",
       },
     })
   })

@@ -2,9 +2,7 @@ import React from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
-
 import { Box, makeStyles, Typography } from "@material-ui/core"
-
 import { HOME } from "../navigation/sitemap"
 
 const useStyles = makeStyles({

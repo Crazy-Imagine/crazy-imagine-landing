@@ -1,9 +1,9 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 //import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import Loading from "./Loading";
-const Helmet = lazy(() => import("react-helmet"))
+const Helmet = React.lazy(() => import("react-helmet"))
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(query);
@@ -11,7 +11,6 @@ const SEO = ({ seo = {} }) => {
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
-
 
   const getMetaTags = () => {
     const tags = [];

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { Box, Hidden, Typography, makeStyles } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
@@ -11,6 +11,9 @@ import GalleryProjects from "../components/GalleryProjects"
 import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
+import { I18nextContext } from "gatsby-plugin-react-i18next"
+import ModalLang from "../components/ModalLang"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -18,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: "70px",
-    lineHeight: "72px",
+    lineHeight: "71px",
     color: "#193174",
     marginBottom: "17px",
     [theme.breakpoints.down("md")]: {
@@ -37,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "22px",
     lineHeight: "22px",
     color: "#193174",
-    marginBottom: "50px",
+    marginBottom: "49px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -47,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   description: {
     fontFamily: "Hero New",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight: "399",
     fontSize: "22px",
     lineHeight: "31px",
     color: "#27AAE1",
@@ -59,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "490px",
+    height: "330px",
     width: "80%",
     paddingTop: "60px",
     margin: "70px auto 0px auto",
@@ -77,6 +80,10 @@ const Project = ({ data }) => {
   const title = dataProject.title
   const date = dataProject.created_at
   const description = dataProject.description
+  const key = dataProject.Key
+  const context = React.useContext(I18nextContext);
+  const languages = context.language;
+  const contentProjectsTemplate = useGet("projects", key, languages)
 
   return (
     <Layout seo={dataProject?.seo}>
@@ -90,22 +97,49 @@ const Project = ({ data }) => {
         <Box className={classes.header}>
           <Typography className={classes.title}>{title}</Typography>
           <Typography className={classes.date}>{date}</Typography>
-          <Typography className={classes.description}>{description}</Typography>
+          {(languages === "en") ?
+            <Typography className={classes.description}>{description}</Typography>
+            :
+            <Typography className={classes.description}>{contentProjectsTemplate[0]?.description}</Typography>
+          }
         </Box>
+        {typeof window !== 'undefined' && (
+          sessionStorage.getItem("lang") !== "true" &&
+          <ModalLang />
+        )}
+
         <Box overflow="hidden">
           <HeroProjectsSection image={image} title={dataProject?.title} />
-          <AboutProjects
-            aboutProject={dataProject?.details}
-            images={image}
-            gallery={dataProject?.galleryImages}
-            moreAbout={dataProject?.description}
-          />
-          <GalleryProjects
-            images={image}
-            gallery={dataProject?.galleryImages}
-            id={dataProject.id}
-            description={dataProject?.moreAbout}
-          />
+          {(languages === "en") ?
+            <>
+              <AboutProjects
+                aboutProject={dataProject?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={dataProject?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={dataProject?.moreAbout}
+              />
+            </>
+            :
+            <>
+              <AboutProjects
+                aboutProject={contentProjectsTemplate[0]?.details}
+                images={image}
+                gallery={dataProject?.galleryImages}
+                moreAbout={contentProjectsTemplate[0]?.description}
+              />
+              <GalleryProjects
+                images={image}
+                gallery={dataProject?.galleryImages}
+                id={dataProject.id}
+                description={contentProjectsTemplate[0]?.moreAbout}
+              />
+            </>}
           <RelatedSection />
           <Footer />
           <Copyright />
@@ -116,13 +150,14 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-query Project($id: String!) {
+query Project($id: String!, $language: String!) {
   strapiProjects(id: { eq: $id }) {
     details
     description
     id
     moreAbout
     title
+    Key
     seo {
       metaTitle
       metaDescription
@@ -150,7 +185,16 @@ query Project($id: String!) {
         }
       }
     }
-    created_at(formatString: "DD MMMM, YYYY")
+    created_at(formatString: "DD/MM/YYYY")
+  }
+  locales: allLocale(filter: {language: {eq: $language}}) {
+    edges {
+      node {
+        ns
+        data
+        language
+      }
+    }
   }
 }
 `

@@ -14,12 +14,9 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
     },
     img2: {
-        //animation: `$myEffect 3000ms infinite linear`,
         width: "140px",
         height: "73px",
         zIndex: "99999",
-        //top: "50%",
-        //margin: "auto",
     },
     preloader: {
         width: "20px",
@@ -27,7 +24,6 @@ const useStyles = makeStyles(theme => ({
         border: "3px solid #eee",
         borderTop: "3px solid #666",
         borderRadius: "50%",
-        //margin: "auto",
         animation: `$myEffect 2000ms infinite`,
     },
     "@keyframes myEffect": {

@@ -1,9 +1,11 @@
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, Link, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
+import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -172,6 +174,11 @@ const FeaturedArticle = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const context = React.useContext(I18nextContext);
+  const { t } = useI18next();
+  const langg = context.language;
+  const contentFeaturedArticle = useGet("articles", "false", langg)
+
   return (
     <StaticQuery
       query={graphql`
@@ -213,26 +220,50 @@ const FeaturedArticle = () => {
         return (
           <Box ref={ref} className={classes.container}>
             <Typography className={isVisible ? classes.title2 : classes.title}>
-              Featured Article
+              {t("blog_featuredArticle_title")}
             </Typography>
             <Box className={classes.cardContainer}>
-              <GatsbyImage
-                className={classes.img}
-                alt="Feature Article"
-                image={getImage(featureArticle[0].node.image[0].localFile)}
-              />
-              <Box className={classes.textContainer}>
-                <Typography className={classes.titleCard}>
-                  {featureArticle[0].node.title}
-                </Typography>
-                <Link
-                  to={`${BLOG}/${featureArticle[0].node.slug}`}
-                  style={{ textDecoration: "none" }}
-                  className={classes.link}
-                >
-                  READ MORE →
-                </Link>
-              </Box>
+              {(langg === "en") ?
+                <>
+                  <GatsbyImage
+                    className={classes.img}
+                    alt="Feature Article"
+                    image={getImage(featureArticle[0].node.image[0].localFile)}
+                  />
+                  <Box className={classes.textContainer}>
+                    <Typography className={classes.titleCard}>
+                      {featureArticle[0].node.title}
+                    </Typography>
+                    <Link
+                      to={`${BLOG}/${featureArticle[0].node.slug}`}
+                      style={{ textDecoration: "none" }}
+                      className={classes.link}
+                    >
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </Link>
+                  </Box>
+                </>
+                :
+                <>
+                  <img
+                    src={contentFeaturedArticle[0]?.image[0].url}
+                    className={classes.img}
+                    alt="Feature Article"
+                  />
+                  <Box className={classes.textContainer}>
+                    <Typography className={classes.titleCard}>
+                      {contentFeaturedArticle[0]?.title}
+                    </Typography>
+                    <Link
+                      to={`${BLOG}/${contentFeaturedArticle[0]?.Key}`}
+                      style={{ textDecoration: "none" }}
+                      className={classes.link}
+                    >
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </Link>
+                  </Box>
+                </>
+              }
             </Box>
           </Box>
         )

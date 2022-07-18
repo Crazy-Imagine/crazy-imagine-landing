@@ -16,9 +16,7 @@ const ProductsServicesDialog = ({
   handleClose,
   handleSubmit,
   state,
-  title,
-  handleCloseState,
-  openState
+  title
 }) => {
 
   return (
@@ -70,7 +68,7 @@ const ProductsServicesDialog = ({
             label="Plan"
             value={title}
             fullWidth
-            //   disabled
+          //   disabled
           />
           <ValidationError prefix="Plan" field="plan" errors={state.errors} />
         </DialogContent>
@@ -85,7 +83,6 @@ const ProductsServicesDialog = ({
           >
             Sumbit
           </Button>
-
         </DialogActions>
       </form>
     </Dialog>

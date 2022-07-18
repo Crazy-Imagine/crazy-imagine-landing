@@ -13,6 +13,7 @@ import {
 import fullstackImage from "../images/laptop.svg"
 import bgImage from "../images/Group1.svg"
 import qualityImage from "../images/quality.svg"
+import { useI18next } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -95,125 +96,67 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
+  const { t } = useI18next();
 
   return (
     <>
       <Box className={classes.container} id="capabilities">
         <Capabilities
-          title={`Full-Stack
-      Development`}
-          desc={`With strong backgrounds in code
-      ranging from PHP7 to Javascript to
-      CSS3, our full stack developers have
-      the skills and experience to elevate your digital presence`}
+          title={t("common_capabilities_title1")}
+          desc={t("common_capabilities_description1")}
           cls="container"
           img={fullstackImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
             icon={faCode}
-            title={`Web
-        Development`}
-            desc={`By focusing on the
-          specific needs of your 
-          company, we can develop a thoughtful back-end
-          architecture and responsive front-end
-          design to create a trully
-          unique and high-performing user
-          experience.`}
+            title={t("common_capabilities_capabilitiesCard_title1")}
+            desc={t("home_capabilities_capabilitiesCard_description1")}
           />
           <CapabilitiesCard
             icon={faGears}
-            title={`Deployment +
-        DevOps`}
-            desc={`Our streamlined
-        deployment pipelines
-        create a stable work
-        environment, reliable
-        infrastructure, and
-        improved software performance.`}
+            title={t("common_capabilities_capabilitiesCard_title2")}
+            desc={t("home_capabilities_capabilitiesCard_description2")}
           />
         </Box>
       </Box>
       <Box className={classes.reverseContainer}>
         <Capabilities
-          title={`User
-          Experience`}
-          desc={`A positive and memorable user
-          experience is our top priority,
-          from partial web development to
-          full scale project management
-          and everything in between.`}
+          title={t("common_capabilities_title2")}
+          desc={t("common_capabilities_description2")}
           cls="classContainer"
           bgImg={true}
         />
         <Box className={classes.cardContainerCenter}>
           <CapabilitiesCard
             icon={faBagShopping}
-            title={`eCommerce`}
-            desc={`Using the latest
-            trending technologies
-            such as Woocommerce,
-            Prestashop, and Shopify, we can
-            seamlessly integrate
-            payment platforms to
-            meet your 
-            operational needs`}
+            title={t("common_capabilities_capabilitiesCard_title3")}
+            desc={t("home_capabilities_capabilitiesCard_description3")}
           />
           <CapabilitiesCard
             icon={faMobile}
-            title={`Deployment +
-      DevOps`}
-            desc={`By collaborating with our
-            customers on specific
-            needs, we create intuitive
-            and user-friendly apps
-            that will faster
-            engagement and interaction with
-            their audiences`}
+            title={t("home_capabilities_capabilitiesCard_title4")}
+            desc={t("home_capabilities_capabilitiesCard_description4")}
           />
         </Box>
       </Box>
       <Box className={classes.container}>
         <Capabilities
-          title={`Quality
-          Support`}
-          desc={`Nothing is more important than 
-          providing a high quality experience, 
-          which is why we use a full range of 
-          QA systems to ensure your project is 
-          launch ready.
-          `}
+          title={t("common_capabilities_title3")}
+          desc={t("common_capabilities_description3")}
           cls="container"
           img={qualityImage}
         />
         <Box className={classes.cardContainer}>
           <CapabilitiesCard
             icon={faChartSimple}
-            title={`Marketing`}
-            desc={`Visibility leads to 
-            engagement, which is 
-            why we have a dedicated team 
-            specializing in marketing. With highly 
-            skilled SEO experts and experience 
-            in LinkedIn, Instagram, and beyond, 
-            our social network management 
-            can bring brand awareness to 
-            businesses of
-            any scope.`}
+            title={t("common_capabilities_capabilitiesCard_title5")}
+            desc={t("home_capabilities_capabilitiesCard_description5")}
           />
           <CapabilitiesCard
             icon={faUserTie}
-            title={`Virtual
-            Assistance`}
-            desc={`Check off your to-do list
-            in no time with the help
-            of our skilled virtual
-            assistants. From calendar
-            management to file
-            storage and
-            organization, let us
-            simplify your digital life.`}
+            title={t("common_capabilities_capabilitiesCard_title6")}
+            desc={t("home_capabilities_capabilitiesCard_description6")}
           />
         </Box>
       </Box>

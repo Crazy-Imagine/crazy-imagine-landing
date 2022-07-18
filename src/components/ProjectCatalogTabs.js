@@ -50,26 +50,7 @@ const ProjectCatalogTabs = () => {
         flexDirection="column"
         alignItems="center"
       >
-        {/* <Box
-          width="244px"
-          height="5px"
-          zIndex="999"
-          marginTop="12px"
-          className={classes.ourPackagesContainer}
-        />
-         <Box
-          width="170px"
-          height="31px"
-          borderRadius="30px"
-          className={classes.ourPackagesContainer}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          zIndex="999"
-        >
-       <Typography className={classes.ourPackages}>Our packages</Typography>*/}
       </Box>
-      {/*</Box>*/}
     </Box>
   )
 }

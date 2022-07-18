@@ -14,6 +14,8 @@ import { colors, colorsIconos } from "../helpers/navbarColors"
 import Button from "@material-ui/core/Button"
 import useScroll from "../hooks/useScroll"
 import Image from "../images/crazy-imagine-icon.svg"
+import { useI18next } from "gatsby-plugin-react-i18next"
+import LanguageModal from "../components/LanguageModal"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -34,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     color: props.scroll ? props.iconsVariant : "white",
   }),
   contactButton: {
-    width: "151px",
+    width: "150px",
     height: " 40px",
     background: "transparent",
     borderRadius: "100px",
@@ -66,6 +68,7 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
+
   }),
   barContainer: {
     margin: 1,
@@ -75,12 +78,24 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     gap: "50px",
+    [theme.breakpoints.between(1280, 1300)]: {
+      gap: "20px",
+    },
   },
   linkContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "50px",
+    [theme.breakpoints.between(1345, 1470)]: {
+      gap: "20px",
+    },
+    [theme.breakpoints.between(1322, 1345)]: {
+      gap: "15px",
+    },
+    [theme.breakpoints.between(1300, 1322)]: {
+      gap: "10px",
+    },
   },
   contactTypography: {
     fontSize: "14px",
@@ -113,7 +128,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     backgroundColor: "#1E2F97",
-    color: "red",
     "&:hover": {
       color: "#FFFFF",
     },
@@ -128,7 +142,7 @@ const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-
+  const { t } = useI18next();
   const classes = useStyles({
     scroll,
     linkVariant,
@@ -149,7 +163,7 @@ const Navbar = ({
                 to={`${ABOUT}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                ABOUT
+                {t("common_button_about")}
               </Link>
             </Typography>
             <Typography>
@@ -157,7 +171,7 @@ const Navbar = ({
                 to={`${PROJECTS}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                SERVICES
+                {t("common_button_services")}
               </Link>
             </Typography>
             <Typography>
@@ -165,7 +179,7 @@ const Navbar = ({
                 to={`${BLOG}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                BLOG
+                {t("common_button_blog")}
               </Link>
             </Typography>
             <Typography>
@@ -173,9 +187,10 @@ const Navbar = ({
                 to={`${WORK_WITH_US}`}
                 className={`${classes.linkTypography} ${classes.effect}`}
               >
-                WORK WITH US
+                {t("common_button_work_with_us")}
               </Link>
             </Typography>
+            <LanguageModal />
           </Box>
           <Link
             to={`${CONTACT}`}
@@ -186,7 +201,7 @@ const Navbar = ({
                 style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
-                Contact Us
+                {t("common_button_contact_us")}
               </span>
             </Button>
           </Link>

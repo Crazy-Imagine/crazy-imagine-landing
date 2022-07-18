@@ -1,6 +1,7 @@
 import { Box, Typography, makeStyles } from "@material-ui/core"
 import React, { useRef } from "react"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: props => ({
@@ -66,7 +67,6 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "24px",
     },
   },
-
   textContainer: props => ({
     display: "flex",
     flexDirection: "column",
@@ -113,12 +113,13 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   const classes = useStyles({ img })
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation()
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container}>
         {img && <img src={img} className={classes.imagen2} alt={`${title}`} />}
         <Box className={classes.textContainer}>
-          <Typography className={classes.subtitle2}>CAPABILITIES</Typography>
+          <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>
           <Typography className={classes.title2}>{title}</Typography>
           <Typography ref={ref} className={classes.desc2}>
             {desc}

@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -59,11 +60,12 @@ const useStyles = makeStyles(theme => ({
 
 const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
+  const { t } = useTranslation()
 
   return (
     <>
       <Box className={classes.container}>
-        <Typography className={classes.title}>About the project</Typography>
+        <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
         <Typography className={classes.description}>{aboutProject}</Typography>
       </Box>
       <Box className={classes.imgContainer}>
@@ -92,7 +94,7 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
         />
       </Box>
       <Box className={classes.container}>
-        <Typography className={classes.title}>More than game</Typography>
+        <Typography className={classes.title}>{t("project_aboutProjects_subtitle")}</Typography>
         <Typography className={classes.description}>{moreAbout}</Typography>
       </Box>
     </>
