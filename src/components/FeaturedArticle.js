@@ -177,12 +177,7 @@ const FeaturedArticle = () => {
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
   const langg = context.language;
-  const [contentFeaturedArticle, setcontentFeaturedArticle] = useState([]);
-  const strapi = useGet("articles", "false", langg)
-
-  useEffect(() => {
-    setcontentFeaturedArticle(strapi)
-  }, [strapi])
+  const contentFeaturedArticle = useGet("articles", "false", langg)
 
   return (
     <StaticQuery

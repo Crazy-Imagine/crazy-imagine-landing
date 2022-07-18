@@ -150,12 +150,7 @@ const Post = ({ data }) => {
   const key = data.article.Key
   const context = React.useContext(I18nextContext);
   const la = context.language;
-  const [contentPostTemplate, setcontentPostTemplate] = useState([]);
-  const strapi = useGet("articles", key, la)
-
-  useEffect(() => {
-    setcontentPostTemplate(strapi)
-  }, [strapi])
+  const contentPostTemplate = useGet("articles", key, la)
 
   return (
     <Layout seo={data.article.seo}>

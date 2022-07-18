@@ -83,12 +83,7 @@ const Project = ({ data }) => {
   const key = dataProject.Key
   const context = React.useContext(I18nextContext);
   const languages = context.language;
-  const [contentProjectsTemplate, setcontentProjectsTemplate] = useState([]);
-  const strapi = useGet("projects", key, languages)
-
-  useEffect(() => {
-    setcontentProjectsTemplate(strapi)
-  }, [strapi])
+  const contentProjectsTemplate = useGet("projects", key, languages)
 
   return (
     <Layout seo={dataProject?.seo}>

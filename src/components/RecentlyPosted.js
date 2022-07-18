@@ -89,12 +89,7 @@ const RecentlyPosted = () => {
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
   const languag = context.language;
-  const [contentRecentlyPosted, setcontentRecentlyPosted] = useState([]);
-  const strapi = useGet("articles", "false", languag)
-
-  useEffect(() => {
-    setcontentRecentlyPosted(strapi)
-  }, [strapi])
+  const contentRecentlyPosted = useGet("articles", "false", languag)
 
   return (
     <StaticQuery

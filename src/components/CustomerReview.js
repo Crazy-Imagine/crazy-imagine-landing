@@ -134,12 +134,7 @@ const CustomerReview = () => {
   SwiperCore.use([Keyboard])
   const context = React.useContext(I18nextContext);
   const lang = context.language;
-  const [contentReviews, setContentReviews] = useState([]);
-  const strapi = useGet("reviews", "false", lang)
-
-  useEffect(() => {
-    setContentReviews(strapi)
-  }, [strapi])
+  const contentReviews = useGet("reviews", "false", lang)
 
   return (
     <StaticQuery

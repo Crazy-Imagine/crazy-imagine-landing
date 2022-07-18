@@ -213,12 +213,7 @@ const BlogArticle = () => {
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
   const langu = context.language;
-  const [contentBlogArticle, setcontentBlogArticle] = useState([]);
-  const strapi = useGet("articles", "false", langu)
-
-  useEffect(() => {
-    setcontentBlogArticle(strapi)
-  }, [strapi])
+  const contentBlogArticle = useGet("articles", "false", langu)
 
   return (
     <StaticQuery

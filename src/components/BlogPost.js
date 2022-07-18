@@ -110,12 +110,7 @@ const BlogPost = ({ bulletClass }) => {
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
   const lan = context.language;
-  const [BlogPost, setBlogPost] = useState([]);
-  const strapi = useGet("articles", "false", lan)
-
-  useEffect(() => {
-    setBlogPost(strapi)
-  }, [strapi])
+  const BlogPost = useGet("articles", "false", lan)
 
   return (
     <StaticQuery
