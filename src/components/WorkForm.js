@@ -373,7 +373,7 @@ const WorkForm = () => {
     resolver: yupResolver(schema),
     mode: "onChange",
   })
-  const domain = process.env.API_URL || "http://localhost:1337"
+  const domain = process.env.GATSBY_API_URL || "http://localhost:1337"
 
   const onSubmitHandler = async data => {
     if (data.curriculum?.length === 1) {
