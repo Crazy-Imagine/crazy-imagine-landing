@@ -3,8 +3,8 @@ import { useState, useEffect } from "react"
 export const useGet = (table, key, lang) => {
   const [contentReviews, setContentReviews] = useState([]);
   const getStrapi = async () => {
-    const domain = process.env.API_URL || "http://localhost:1337"
-    //console.log(process.env.API_URL)
+    const domain = process.env.GATSBY_API_URL || "http://localhost:1337"
+    //console.log(process.env.GATSBY_API_URL)
     if (lang === "es") {
       if (key === "false") {
         const url = `${domain}/${table}?_locale=es-VE`
