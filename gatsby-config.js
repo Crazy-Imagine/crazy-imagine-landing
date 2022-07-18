@@ -1,6 +1,6 @@
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config({
-    path: `.env`,
+    path: `.env.${process.env.NODE_ENV}`,
   })
 }
 
