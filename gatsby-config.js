@@ -1,12 +1,8 @@
-/*require("dotenv").config({
-  path: `.env`,
-});*/
-
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
-
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config({
+    path: `.env`,
+  })
+}
 
 module.exports = {
   siteMetadata: {
