@@ -19,9 +19,8 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-
-    width: "450px",
-    height: "368px",
+    maxWidth: "480px",
+    height: "fit-content",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       height: "inherit",
@@ -69,7 +68,7 @@ const useStyes = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "19px",
-    padding: "26px 25px 32px 37px",
+    padding: "6px 25px 22px 27px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "13px",

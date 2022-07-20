@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "480px",
+    height: "600px",
     width: "80%",
     paddingTop: "60px",
     margin: "90px auto 0px auto",
@@ -149,7 +149,6 @@ const Post = ({ data }) => {
   const author = articlesFilter[0].author.name
   const category = articlesFilter[0].category.name
   const date = articlesFilter[0].category.created_at
-  const key = articlesFilter[0].Key
   const slug = articlesFilter[0].slug
 
   return (

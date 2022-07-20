@@ -118,6 +118,7 @@ const RelatedProjects = () => {
             locale
             images {
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(quality: 30, height: 210)
                 }
@@ -155,18 +156,8 @@ const RelatedProjects = () => {
             {projects.filter(projects => projects.locale.includes(lang)).map((el, index) => (
               <SwiperSlide key={index} className={classes.slide}>
                 <Box className={classes.container}>
-                  <GatsbyImage
-                    alt="About the project"
-                    image={getImage(el.images[0].localFile)}
-                    style={{
-                      objectFit: "contain",
-                      backgroundColor: "#27AAE1",
-                    }}
-                    imgStyle={{
-                      objectFit: "contain",
-                      backgroundColor: "#27AAE1",
-                    }}
-                  />
+                  <Box
+                    style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
                       {el.title}

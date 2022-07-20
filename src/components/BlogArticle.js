@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "19px",
-    padding: "26px 25px 32px 37px",
+    padding: "6px 25px 22px 37px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "13px",
@@ -231,6 +231,7 @@ const BlogArticle = () => {
               }
               image {
                 localFile {
+                  publicURL
                   childImageSharp {
                     gatsbyImageData(quality: 45)
                   }
@@ -267,16 +268,8 @@ const BlogArticle = () => {
 
                 <Box key={index} className={classes.container}>
                   <>
-                    <GatsbyImage
-                      image={getImage(node.image[0].localFile)}
-                      imgStyle={{
-                        maxWidth: "480px",
-                        maxHeight: "300px",
-
-                      }}
-                      alt="Blog"
-
-                    />
+                    <Box
+                      style={{ backgroundImage: `url(${node.image[0].localFile.publicURL})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "100%" }} />
                     <Box className={classes.textContainer}>
                       <Typography className={classes.title}>
                         {node.title}

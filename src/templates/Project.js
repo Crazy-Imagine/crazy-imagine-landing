@@ -77,12 +77,10 @@ const Project = ({ data }) => {
   const langu = context.language;
   const project = data.allStrapiProjects.nodes
   const projectsFilter = project.filter(({ locale }) => locale.includes(langu))
-  //const dataProject = data.strapiProjects
   const image = projectsFilter[0].images
   const title = projectsFilter[0].title
   const date = projectsFilter[0].created_at
   const description = projectsFilter[0].description
-  const key = projectsFilter[0].Key
 
   return (
     <Layout>

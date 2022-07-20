@@ -92,10 +92,8 @@ const useStyles = makeStyles(theme => ({
 const Language = () => {
   const classes = useStyles()
   const { languages, changeLanguage } = useI18next();
-  const [age, setAge] = React.useState('');
   const { t } = useTranslation()
   const handleChange = (event) => {
-    setAge(event.target.value);
     if (event.target.value === "ES") { changeLanguage("es"); }
     if (event.target.value === "EN") { changeLanguage("en"); }
   };
