@@ -13,8 +13,6 @@ import { graphql } from "gatsby"
 import headerImage from "../images/robot.svg"
 import ProjectSection from "../components/ProjectSection"
 import Layout from "../components/layout"
-import ModalLang from "../components/ModalLang"
-
 
 const Projects = () => {
   const { t } = useTranslation()
@@ -38,10 +36,6 @@ const Projects = () => {
             />
           </header>
           <main>
-            {typeof window !== 'undefined' && (
-              sessionStorage.getItem("lang") !== "true" &&
-              <ModalLang />
-            )}
             <ServicesSection />
             <ProjectSection title={t("services_projectSection_title")} btn={false} />
             <ContactSection />

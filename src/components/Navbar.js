@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "none",
     width: "100%",
     backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
-    zIndex: 999999,
+    zIndex: 9,
   }),
   iconSpacing: {
     marginLeft: theme.spacing(10),

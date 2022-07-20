@@ -25,6 +25,7 @@ query {
     nodes {
       id
       slug
+      Key
       images {
         localFile {
           childImageSharp {

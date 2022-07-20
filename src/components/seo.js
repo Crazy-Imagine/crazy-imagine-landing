@@ -24,7 +24,7 @@ const SEO = ({ seo = {} }) => {
         {
           name: "title",
           content: fullSeo.metaTitle,
-        }
+        },
       );
     }
     if (fullSeo.metaDescription) {

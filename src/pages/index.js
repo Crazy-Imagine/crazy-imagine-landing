@@ -17,7 +17,6 @@ import { SectionHeader } from "../components/SectionHeader.js"
 import CapabilitiesSection from "../components/CapabilitiesSection"
 import headerImage from "../images/flag.svg"
 import { useTranslation } from "gatsby-plugin-react-i18next"
-import ModalLang from "../components/ModalLang"
 
 const IndexPage = () => {
   const ref = useRef()
@@ -44,10 +43,6 @@ const IndexPage = () => {
               />
             </header>
             <main>
-              {typeof window !== 'undefined' && (
-                sessionStorage.getItem("lang") !== "true" &&
-                <ModalLang />
-              )}
               <HomeMainSection />
               <HomeDescription />
               <CapabilitiesSection />

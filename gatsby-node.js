@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               slug
-              id
+              Key
             }
           }
         }
@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions }) => {
         projects: allStrapiProjects {
           nodes {
             slug
-            id
+            Key
           }
         }
       }
@@ -39,7 +39,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `${BLOG}/${post.node.slug}`,
       component: PostTemplate,
       context: {
-        id: post.node.id,
+        key: post.node.Key,
+        language: "en",
       },
     })
   })
@@ -48,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `${PROJECTS}/${project.slug}`,
       component: ProjectsTemplate,
       context: {
-        id: project.id,
+        key: project.Key,
         language: "en",
       },
     })

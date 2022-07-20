@@ -48,7 +48,7 @@ const Projects = ({ projects }) => {
         <Grid container spacing={2} justifyContent="center">
           {projects.nodes.map(el => (
             <Grid item xs={12} md={6} className={classes.items} key={el.id}>
-              <Link to={`${PROJECTS}/${el?.slug}`} >
+              <Link to={`${PROJECTS}/${el?.Key}`} >
                 <Box>
                   <GatsbyImage
                     image={getImage(el?.images[0].localFile)}

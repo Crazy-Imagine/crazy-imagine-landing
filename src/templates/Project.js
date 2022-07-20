@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { Box, Hidden, Typography, makeStyles } from "@material-ui/core"
 import PageWrapper from "../components/PageWrapper"
@@ -12,8 +12,6 @@ import Layout from "../components/layout"
 import NavbarMobile from "../components/NavbarMobile"
 import RelatedSection from "../components/RelatedSection"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
-import ModalLang from "../components/ModalLang"
-import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -75,18 +73,19 @@ const useStyles = makeStyles(theme => ({
 
 const Project = ({ data }) => {
   const classes = useStyles()
-  const dataProject = data.strapiProjects
-  const image = dataProject.images
-  const title = dataProject.title
-  const date = dataProject.created_at
-  const description = dataProject.description
-  const key = dataProject.Key
   const context = React.useContext(I18nextContext);
-  const languages = context.language;
-  const contentProjectsTemplate = useGet("projects", key, languages)
+  const langu = context.language;
+  const project = data.allStrapiProjects.nodes
+  const projectsFilter = project.filter(({ locale }) => locale.includes(langu))
+  //const dataProject = data.strapiProjects
+  const image = projectsFilter[0].images
+  const title = projectsFilter[0].title
+  const date = projectsFilter[0].created_at
+  const description = projectsFilter[0].description
+  const key = projectsFilter[0].Key
 
   return (
-    <Layout seo={dataProject?.seo}>
+    <Layout>
       <PageWrapper>
         <Hidden mdDown>
           <Navbar variant="secondary" color={"#193174"} />
@@ -97,49 +96,24 @@ const Project = ({ data }) => {
         <Box className={classes.header}>
           <Typography className={classes.title}>{title}</Typography>
           <Typography className={classes.date}>{date}</Typography>
-          {(languages === "en") ?
-            <Typography className={classes.description}>{description}</Typography>
-            :
-            <Typography className={classes.description}>{contentProjectsTemplate[0]?.description}</Typography>
-          }
+          <Typography className={classes.description}>{description}</Typography>
         </Box>
-        {typeof window !== 'undefined' && (
-          sessionStorage.getItem("lang") !== "true" &&
-          <ModalLang />
-        )}
-
         <Box overflow="hidden">
-          <HeroProjectsSection image={image} title={dataProject?.title} />
-          {(languages === "en") ?
-            <>
-              <AboutProjects
-                aboutProject={dataProject?.details}
-                images={image}
-                gallery={dataProject?.galleryImages}
-                moreAbout={dataProject?.description}
-              />
-              <GalleryProjects
-                images={image}
-                gallery={dataProject?.galleryImages}
-                id={dataProject.id}
-                description={dataProject?.moreAbout}
-              />
-            </>
-            :
-            <>
-              <AboutProjects
-                aboutProject={contentProjectsTemplate[0]?.details}
-                images={image}
-                gallery={dataProject?.galleryImages}
-                moreAbout={contentProjectsTemplate[0]?.description}
-              />
-              <GalleryProjects
-                images={image}
-                gallery={dataProject?.galleryImages}
-                id={dataProject.id}
-                description={contentProjectsTemplate[0]?.moreAbout}
-              />
-            </>}
+          <HeroProjectsSection image={image} title={projectsFilter[0]?.title} />
+          <>
+            <AboutProjects
+              aboutProject={projectsFilter[0]?.details}
+              images={image}
+              gallery={projectsFilter[0]?.galleryImages}
+              moreAbout={projectsFilter[0]?.description}
+            />
+            <GalleryProjects
+              images={image}
+              gallery={projectsFilter[0]?.galleryImages}
+              id={projectsFilter[0].id}
+              description={projectsFilter[0]?.moreAbout}
+            />
+          </>
           <RelatedSection />
           <Footer />
           <Copyright />
@@ -150,42 +124,45 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-query Project($id: String!, $language: String!) {
-  strapiProjects(id: { eq: $id }) {
-    details
-    description
-    id
-    moreAbout
-    title
-    Key
-    seo {
-      metaTitle
-      metaDescription
+query Project($key: String!, $language: String!) {
+  allStrapiProjects(filter: {Key: {eq: $key}}) {
+    nodes {
+      details
+      description
       id
-      shareImage {
-        localFile {
-          publicURL
-          childImageSharp {
-            gatsbyImageData(quality: 50)
+      moreAbout
+      title
+      Key
+      locale
+      seo {
+        metaTitle
+        metaDescription
+        id
+        shareImage {
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(quality: 50)
+            }
           }
         }
       }
-    }
-    images {
-      localFile {
-        childImageSharp {
-          gatsbyImageData(width: 530, quality: 50)
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 530, quality: 50)
+          }
         }
       }
-    }
-    galleryImages {
-      localFile {
-        childImageSharp {
-          gatsbyImageData(width: 530, quality: 50)
+      galleryImages {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 530, quality: 50)
+          }
         }
       }
+      created_at(formatString: "DD/MM/YYYY")
     }
-    created_at(formatString: "DD/MM/YYYY")
   }
   locales: allLocale(filter: {language: {eq: $language}}) {
     edges {

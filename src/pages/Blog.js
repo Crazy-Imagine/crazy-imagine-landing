@@ -12,9 +12,6 @@ import { Hidden } from "@material-ui/core"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { useI18next } from "gatsby-plugin-react-i18next"
-import ModalLang from "../components/ModalLang"
-
-
 
 const Blog = () => {
   const { t } = useI18next();
@@ -37,10 +34,6 @@ const Blog = () => {
           />
         </header>
         <main>
-          {typeof window !== 'undefined' && (
-            sessionStorage.getItem("lang") !== "true" &&
-            <ModalLang />
-          )}
           <FeaturedArticle />
           <BlogArticle />
         </main>

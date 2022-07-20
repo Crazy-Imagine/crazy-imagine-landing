@@ -11,6 +11,8 @@ module.exports = {
     description:
       "We are a growing startup with more than 5 years in the market, with experience on mobile and web development, using the most popular Javascript technologies like React js, Angular js, Vue js, Node js and PHP frameworks like Laravel, Code Igniter, Prestashop, and Wordpress.",
     url: "https://crazyimagine.com/",
+    httpEquiv: "Content-Security-Policy",
+    content: "upgrade-insecure-requests",
   },
   plugins: [
     "gatsby-plugin-material-ui",
@@ -68,13 +70,26 @@ module.exports = {
       options: {
         apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
         collectionTypes: [
-          "article",
-          "category",
+          {
+            name: "article",
+            api: { qs: { _locale: `all` } }
+          },
+          {
+            name: "category",
+            api: { qs: { _locale: `all` } }
+          },
           "writer",
           "curriculums",
           "members",
-          "projects",
-          "reviews",
+          {
+            name: "projects",
+            api: { qs: { _locale: `all` } }
+          },
+          {
+            name: "reviews",
+            api: { qs: { _locale: `all` } }
+          },
+
         ],
         singleTypes: [
           `homepage`,

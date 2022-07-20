@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Box, makeStyles, Typography } from "@material-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -10,7 +10,6 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "../css/carousel.css"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
-import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   review: {
@@ -134,7 +133,6 @@ const CustomerReview = () => {
   SwiperCore.use([Keyboard])
   const context = React.useContext(I18nextContext);
   const lang = context.language;
-  const contentReviews = useGet("reviews", "false", lang)
 
   return (
     <StaticQuery
@@ -166,7 +164,7 @@ const CustomerReview = () => {
             keyboard={{ enabled: true }}
             modules={[Pagination]}
           >
-            {reviews.map((review, index) => (
+            {reviews.filter(reviews => reviews.locale.includes(lang)).map((review, index) => (
               <SwiperSlide key={index} className={classes.swiperSlide}>
                 <Box className={classes.containerInfo}>
                   <Box className={classes.iconsContainer}>
@@ -191,62 +189,39 @@ const CustomerReview = () => {
                       className={classes.icon}
                     />
                   </Box>
-                  {(lang === "en") ?
-                    <>
-                      <Typography className={classes.review}>
-                        {review.review}
+                  <>
+                    <Typography className={classes.review}>
+                      {review.review}
+                    </Typography>
+                    <Box>
+                      <Typography className={classes.customerName}>
+                        {review.name}
                       </Typography>
-                      <Box>
-                        <Typography className={classes.customerName}>
-                          {review.name}
-                        </Typography>
-                        <Typography className={classes.customerOcupation}>
-                          {review.ocupation}
-                        </Typography>
-                      </Box>
-                    </>
-                    :
-                    <>
-                      <Typography className={classes.review}>
-                        {contentReviews[index]?.review}
+                      <Typography className={classes.customerOcupation}>
+                        {review.ocupation}
                       </Typography>
-                      <Box>
-                        <Typography className={classes.customerName}>
-                          {contentReviews[index]?.name}
-                        </Typography>
-                        <Typography className={classes.customerOcupation}>
-                          {contentReviews[index]?.ocupation}
-                        </Typography>
-                      </Box>
-                    </>
-                  }
+                    </Box>
+                  </>
                 </Box>
               </SwiperSlide>
             ))}
           </Swiper>
-
         )
       }}
     />
 
   )
 }
-
+//{reviews.filter(reviews => reviews.locale.includes(lang)).map((review, index) => (  ))}
 const query = graphql`
   query {
-    reviews: allStrapiReviews {
+    reviews: allStrapiReviews{
       nodes {
         name
         ocupation
         review
         id
-        avatar {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 5)
-            }
-          }
-        }
+        locale
       }
     }
   }
