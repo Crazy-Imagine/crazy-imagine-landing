@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button"
 import { graphql, StaticQuery } from "gatsby"
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useI18next, Link, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({

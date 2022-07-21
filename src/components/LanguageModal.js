@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //import { graphql } from "gatsby"
-import { useI18next } from "gatsby-plugin-react-i18next"
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next"
 import { makeStyles, Box, FormControl, Select, MenuItem } from "@material-ui/core"
-import { useTranslation } from "gatsby-plugin-react-i18next"
 
 const useStyles = makeStyles(theme => ({
   button2: {
@@ -93,28 +92,58 @@ const Language = () => {
   const classes = useStyles()
   const { languages, changeLanguage } = useI18next();
   const { t } = useTranslation()
+  const languageWindow = window.navigator.language.includes("es")
+  useEffect(() => {
+    if (!sessionStorage.getItem("language")) {
+      sessionStorage.setItem("language", "true")
+      languageWindow ?
+        changeLanguage("es") :
+        changeLanguage("en")
+    }
+  }, [])
+
+  // function success(pos) {
+  //   const crd = pos.coords;
+  //   console.log(window.navigator.language)
+  // };
+
+  // function error(err) {
+  //   console.warn('ERROR(' + err.code + '): ' + err.message);
+  // };
+  // const geo = window.navigator.geolocation.getCurrentPosition(success, error)
   const handleChange = (event) => {
     if (event.target.value === "ES") { changeLanguage("es"); }
     if (event.target.value === "EN") { changeLanguage("en"); }
   };
 
   return (
-    <Box>
-      <FormControl className={classes.formControl}>
-        <Select
-          value={t("languageModal_select")}
-          onChange={handleChange}
-          className={classes.selectEmpty}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem value={t("languageModal_select")} style={{ zIndex: 999, }} className={classes.item}>
-            {t("languageModal_select")}
-          </MenuItem>
-          <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem>
-          <MenuItem value="ES" style={{ zIndex: 999, }} className={classes.item}>ES</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <>
+      {/* {typeof window !== 'undefined' && (
+                sessionStorage.getItem("lang") !== "true" &&
+                <ModalLang />
+              )} */}
+      <Box>
+        <FormControl className={classes.formControl}>
+          <Select
+            value={t("languageModal_select")}
+            onChange={handleChange}
+            className={classes.selectEmpty}
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+            <MenuItem value={t("languageModal_select")} style={{ zIndex: 999, }} className={classes.item}>
+              {t("languageModal_select")}
+            </MenuItem>
+            {/* <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem> */}
+            {(t("languageModal_select") === "ES") ?
+              <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem>
+              :
+              <MenuItem value="ES" style={{ zIndex: 999, }} className={classes.item}>ES</MenuItem>
+            }
+
+          </Select>
+        </FormControl>
+      </Box>
+    </>
   );
 }
 

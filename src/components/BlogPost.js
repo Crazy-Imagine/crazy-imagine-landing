@@ -19,7 +19,7 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    maxWidth: "480px",
+    width: "380px",
     height: "fit-content",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
@@ -69,7 +69,7 @@ const useStyes = makeStyles(theme => ({
     flexDirection: "column",
     gap: "19px",
     padding: "6px 25px 22px 27px",
-    height: "100%",
+    height: "100px",
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
@@ -179,11 +179,13 @@ const BlogPost = ({ bulletClass }) => {
               <SwiperSlide key={index} className={classes.carousel}>
                 <Box className={classes.container}>
                   <>
-                    <img
+                    {/* <img
                       src={node.image[0].localFile.publicURL}
                       className={classes.img}
                       alt="Blog"
-                    />
+                    /> */}
+                    <Box
+                      style={{ backgroundImage: `url(${node.image[0].localFile.publicURL})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "100%" }} />
                     <Box className={classes.textContainer}>
                       <Typography className={classes.title}>
                         {node.title}
