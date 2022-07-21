@@ -153,7 +153,7 @@ const Navbar = ({
   return (
     <AppBar color={color} position="fixed" className={classes.container}>
       <Toolbar className={classes.root}>
-        <Box class={classes.barContainer}>
+        <Box className={classes.barContainer}>
           <Link to={HOME}>
             <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>
