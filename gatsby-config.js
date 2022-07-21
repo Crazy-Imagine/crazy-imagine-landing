@@ -1,8 +1,8 @@
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({
-    path: `.env`,
-  })
-}
+// if (process.env.NODE_ENV === "development") {
+//   require("dotenv").config({
+//     path: `.env`,
+//   })
+// }
 
 module.exports = {
   siteMetadata: {
@@ -68,7 +68,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
+        apiURL: process.env.API_URL || "http://localhost:1337",
         collectionTypes: [
           {
             name: "article",
