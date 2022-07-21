@@ -12,6 +12,7 @@ const SEO = ({ seo = {} }) => {
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
 
+
   const getMetaTags = () => {
     const tags = [];
 
@@ -24,7 +25,7 @@ const SEO = ({ seo = {} }) => {
         {
           name: "title",
           content: fullSeo.metaTitle,
-        },
+        }
       );
     }
     if (fullSeo.metaDescription) {

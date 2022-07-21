@@ -109,10 +109,6 @@ const Language = () => {
 
   return (
     <>
-      {/* {typeof window !== 'undefined' && (
-                sessionStorage.getItem("lang") !== "true" &&
-                <ModalLang />
-              )} */}
       <Box>
         <FormControl className={classes.formControl}>
           <Select
@@ -124,13 +120,11 @@ const Language = () => {
             <MenuItem value={t("languageModal_select")} style={{ zIndex: 999, }} className={classes.item}>
               {t("languageModal_select")}
             </MenuItem>
-            {/* <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem> */}
             {(t("languageModal_select") === "ES") ?
               <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem>
               :
               <MenuItem value="ES" style={{ zIndex: 999, }} className={classes.item}>ES</MenuItem>
             }
-
           </Select>
         </FormControl>
       </Box>
