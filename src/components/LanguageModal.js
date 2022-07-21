@@ -102,15 +102,6 @@ const Language = () => {
     }
   }, [])
 
-  // function success(pos) {
-  //   const crd = pos.coords;
-  //   console.log(window.navigator.language)
-  // };
-
-  // function error(err) {
-  //   console.warn('ERROR(' + err.code + '): ' + err.message);
-  // };
-  // const geo = window.navigator.geolocation.getCurrentPosition(success, error)
   const handleChange = (event) => {
     if (event.target.value === "ES") { changeLanguage("es"); }
     if (event.target.value === "EN") { changeLanguage("en"); }
