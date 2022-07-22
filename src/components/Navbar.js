@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     justifyContent: "center",
+
   },
   navbarIcons: props => ({
     fontSize: 25,
@@ -68,7 +69,6 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
-
   }),
   barContainer: {
     margin: 1,
@@ -87,14 +87,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     gap: "50px",
-    [theme.breakpoints.between(1345, 1470)]: {
+    [theme.breakpoints.between(0, 1470)]: {
       gap: "20px",
-    },
-    [theme.breakpoints.between(1322, 1345)]: {
-      gap: "15px",
-    },
-    [theme.breakpoints.between(1300, 1322)]: {
-      gap: "10px",
     },
   },
   contactTypography: {
