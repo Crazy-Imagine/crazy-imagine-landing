@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { makeStyles, Box, Typography } from "@material-ui/core"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -10,7 +10,6 @@ import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { BLOG } from "../navigation/sitemap"
 import { useI18next, I18nextContext } from "gatsby-plugin-react-i18next"
-import { useGet } from "../hooks/useGet"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -20,9 +19,8 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-
-    width: "450px",
-    height: "368px",
+    width: "380px",
+    height: "fit-content",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
       height: "inherit",
@@ -70,8 +68,8 @@ const useStyes = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "19px",
-    padding: "26px 25px 32px 37px",
-    height: "100%",
+    padding: "6px 25px 22px 27px",
+    height: "100px",
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
@@ -110,7 +108,6 @@ const BlogPost = ({ bulletClass }) => {
   const context = React.useContext(I18nextContext);
   const { t } = useI18next();
   const lan = context.language;
-  const BlogPost = useGet("articles", "false", lan)
 
   return (
     <StaticQuery
@@ -124,6 +121,7 @@ const BlogPost = ({ bulletClass }) => {
               title
               slug
               created_at
+              locale
               author {
                 name
               }
@@ -145,7 +143,8 @@ const BlogPost = ({ bulletClass }) => {
       `}
       render={data => {
         const articles = data.articles.edges
-        const articlesSort = articles
+        const articlesFilter = articles.filter(({ node }) => node.locale.includes(lan))
+        const articlesSort = articlesFilter
           .sort((a, b) => {
             return new Date(b.node.created_at) - new Date(a.node.created_at)
           })
@@ -179,47 +178,27 @@ const BlogPost = ({ bulletClass }) => {
             {articlesSort.map(({ node }, index) => (
               <SwiperSlide key={index} className={classes.carousel}>
                 <Box className={classes.container}>
-                  {(lan === "en") ?
-                    <>
-                      <img
-                        src={node.image[0].localFile.publicURL}
-                        className={classes.img}
-                        alt="Blog"
-                      />
-                      <Box className={classes.textContainer}>
-                        <Typography className={classes.title}>
-                          {node.title}
-                        </Typography>
-                        <Link
-                          to={`${BLOG}/${node.slug}`}
-                          className={classes.link}
-                          style={{ textDecoration: "none" }}
-                        >
-                          {t("common_lastestPosts_blogPost_button_readMore")}
-                        </Link>
-                      </Box>
-                    </>
-                    :
-                    <>
-                      <img
-                        src={BlogPost[index]?.image[0].url}
-                        className={classes.img}
-                        alt="Blog"
-                      />
-                      <Box className={classes.textContainer}>
-                        <Typography className={classes.title}>
-                          {BlogPost[index]?.title}
-                        </Typography>
-                        <Link
-                          to={`${BLOG}/${BlogPost[index]?.Key}`}
-                          className={classes.link}
-                          style={{ textDecoration: "none" }}
-                        >
-                          {t("common_lastestPosts_blogPost_button_readMore")}
-                        </Link>
-                      </Box>
-                    </>
-                  }
+                  <>
+                    {/* <img
+                      src={node.image[0].localFile.publicURL}
+                      className={classes.img}
+                      alt="Blog"
+                    /> */}
+                    <Box
+                      style={{ backgroundImage: `url(${node.image[0].localFile.publicURL})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "100%" }} />
+                    <Box className={classes.textContainer}>
+                      <Typography className={classes.title}>
+                        {node.title}
+                      </Typography>
+                      <Link
+                        to={`${BLOG}/${node.slug}`}
+                        className={classes.link}
+                        style={{ textDecoration: "none" }}
+                      >
+                        {t("common_lastestPosts_blogPost_button_readMore")}
+                      </Link>
+                    </Box>
+                  </>
                 </Box>
               </SwiperSlide>
             ))}

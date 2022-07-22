@@ -37,19 +37,11 @@ const PostContent = ({ data }) => {
   const lang = context.language;
   return (
     <>
-      {(lang === "en") ?
-        <Box className={classes.container}>
-          <ReactMarkdown className={classes.content}>
-            {data.article.content}
-          </ReactMarkdown>
-        </Box>
-        :
-        <Box className={classes.container}>
-          <ReactMarkdown className={classes.content}>
-            {data?.content}
-          </ReactMarkdown>
-        </Box>
-      }
+      <Box className={classes.container}>
+        <ReactMarkdown className={classes.content}>
+          {data.content}
+        </ReactMarkdown>
+      </Box>
     </>
   )
 }

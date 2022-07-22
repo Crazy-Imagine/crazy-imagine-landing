@@ -23,13 +23,14 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "none",
     width: "100%",
     backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
-    zIndex: 999999,
+    zIndex: 9,
   }),
   iconSpacing: {
     marginLeft: theme.spacing(10),
   },
   root: {
     justifyContent: "center",
+
   },
   navbarIcons: props => ({
     fontSize: 25,
@@ -68,7 +69,6 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
-
   }),
   barContainer: {
     margin: 1,
@@ -87,14 +87,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     gap: "50px",
-    [theme.breakpoints.between(1345, 1470)]: {
+    [theme.breakpoints.between(0, 1470)]: {
       gap: "20px",
-    },
-    [theme.breakpoints.between(1322, 1345)]: {
-      gap: "15px",
-    },
-    [theme.breakpoints.between(1300, 1322)]: {
-      gap: "10px",
     },
   },
   contactTypography: {
@@ -153,7 +147,7 @@ const Navbar = ({
   return (
     <AppBar color={color} position="fixed" className={classes.container}>
       <Toolbar className={classes.root}>
-        <Box class={classes.barContainer}>
+        <Box className={classes.barContainer}>
           <Link to={HOME}>
             <img src={Image} alt="logo" style={{ width: "100%", height: "100%" }} />
           </Link>

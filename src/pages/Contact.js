@@ -11,9 +11,6 @@ import headerImage from "../images/astronaut.svg"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { useTranslation } from "gatsby-plugin-react-i18next"
-import ModalLang from "../components/ModalLang"
-
-
 const Contact = () => {
   const { t } = useTranslation()
   return (
@@ -34,10 +31,6 @@ const Contact = () => {
           />
         </header>
         <main>
-          {typeof window !== 'undefined' && (
-            sessionStorage.getItem("lang") !== "true" &&
-            <ModalLang />
-          )}
           <ContactSection />
         </main>
         <footer>

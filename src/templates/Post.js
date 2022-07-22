@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -18,8 +18,6 @@ import Layout from "../components/layout"
 import PostContent from "../components/PostContent"
 import NavbarMobile from "../components/NavbarMobile"
 import { I18nextContext } from "gatsby-plugin-react-i18next"
-import ModalLang from "../components/ModalLang"
-import { useGet } from "../hooks/useGet"
 
 const useStyles = makeStyles(theme => ({
   date: {
@@ -37,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "480px",
+    height: "600px",
     width: "80%",
     paddingTop: "60px",
     margin: "90px auto 0px auto",
@@ -142,61 +140,44 @@ const useStyles = makeStyles(theme => ({
 
 const Post = ({ data }) => {
   const classes = useStyles()
-  const title = data.article.title
-  const description = data.article.description
-  const author = data.article.author.name
-  const category = data.article.category.name
-  const date = data.article.category.created_at
-  const key = data.article.Key
   const context = React.useContext(I18nextContext);
-  const la = context.language;
-  const contentPostTemplate = useGet("articles", key, la)
+  const langu = context.language;
+  const posts = data.articles.nodes
+  const articlesFilter = posts.filter(({ locale }) => locale.includes(langu))
+  const title = articlesFilter[0].title
+  const description = articlesFilter[0].description
+  const author = articlesFilter[0].author.name
+  const category = articlesFilter[0].category.name
+  const date = articlesFilter[0].category.created_at
+  const slug = articlesFilter[0].slug
 
   return (
-    <Layout seo={data.article.seo}>
+    <Layout>
       <PageWrapper>
         <Hidden mdDown>
-          <Navbar color="#27AAE1" variant="secondary" />
+          <Navbar color="#27AAE1" variant="secondary" template={slug} />
         </Hidden>
         <Hidden lgUp>
-          <NavbarMobile />
+          <NavbarMobile template="true" />
         </Hidden>
         <Box className={classes.header}>
-          {(la === "en") ?
-            <>
-              <InputLabel className={classes.label}>{category}</InputLabel>
-              <Typography className={classes.title}>{title}</Typography>
-              <Typography className={classes.date}>
-                {date} │ <span className={classes.author}>{author}</span>
-              </Typography>
-              <Typography className={classes.description}>{description}</Typography></>
-            :
-            <>
-              <InputLabel className={classes.label}>{contentPostTemplate[0]?.category.name}</InputLabel>
-              <Typography className={classes.title}>{contentPostTemplate[0]?.title}</Typography>
-              <Typography className={classes.date}>
-                {date} │ <span className={classes.author}>{author}</span>
-              </Typography>
-              <Typography className={classes.description}>{contentPostTemplate[0]?.description}</Typography>
-            </>
-          }
+          <>
+            <InputLabel className={classes.label}>{category}</InputLabel>
+            <Typography className={classes.title}>{title}</Typography>
+            <Typography className={classes.date}>
+              {date} │ <span className={classes.author}>{author}</span>
+            </Typography>
+            <Typography className={classes.description}>{description}</Typography>
+          </>
         </Box>
-        {typeof window !== 'undefined' && (
-          sessionStorage.getItem("lang") !== "true" &&
-          <ModalLang />
-        )}
         <Box className={classes.imgContainer}>
           <GatsbyImage
-            image={getImage(data.article.image[0].localFile)}
+            image={getImage(articlesFilter[0].image[0].localFile)}
             alt={title}
           />
         </Box>
         <Box className={classes.contentContainer}>
-          {(la === "en") ?
-            <PostContent data={data} />
-            :
-            <PostContent data={contentPostTemplate[0]} />
-          }
+          <PostContent data={articlesFilter[0]} />
           <RecentlyPosted />
         </Box>
         <PostCarousel />
@@ -208,44 +189,31 @@ const Post = ({ data }) => {
 }
 
 export const query = graphql`
-query Article($id: String!, $language: String!) {
-  article: strapiArticle(id: { eq: $id }) {
-    title
-    id
-    description
-    content
-    Key
-    author {
-      name
-    }
-    seo {
+query Article($key: String!, $language: String!) {
+   articles: allStrapiArticle(
+    filter: {Key: {eq: $key}}
+  ) {
+    nodes {
       id
-      metaDescription
-      metaTitle
-      shareImage {
+      description
+      title
+      slug
+      created_at
+      locale
+      content
+      author {
+        name
+      }
+      image {
         localFile {
-          publicURL
           childImageSharp {
-            gatsbyImageData(quality: 5)
+            gatsbyImageData(quality: 45)
           }
         }
       }
-    }
-    image {
-      localFile {
-        childImageSharp {
-          gatsbyImageData(
-            width: 800
-            placeholder: BLURRED
-            layout: CONSTRAINED
-            quality: 30
-          )
-        }
+      category {
+        name
       }
-    }
-    category {
-      name
-      created_at(formatString: "DD/MM/YYYY")
     }
   }
   locales: allLocale(filter: {language: {eq: $language}}) {

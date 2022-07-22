@@ -12,7 +12,6 @@ import headerImage from "../images/rocket.svg"
 import { graphql } from "gatsby"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 import Layout from "../components/layout"
-import ModalLang from "../components/ModalLang"
 
 const WorkWithUsPage = () => {
   const { t } = useTranslation()
@@ -34,10 +33,6 @@ const WorkWithUsPage = () => {
           />
         </header>
         <main>
-          {typeof window !== 'undefined' && (
-            sessionStorage.getItem("lang") !== "true" &&
-            <ModalLang />
-          )}
           <WorkForm />
           <Imagen />
         </main>

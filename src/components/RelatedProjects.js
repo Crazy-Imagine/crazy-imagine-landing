@@ -9,8 +9,7 @@ import "swiper/css/pagination"
 import "../css/carousel.css"
 import "../css/swiper-bullet.css"
 import { PROJECTS } from "../navigation/sitemap"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { useTranslation } from "gatsby-plugin-react-i18next"
+import { useTranslation, I18nextContext } from "gatsby-plugin-react-i18next"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -100,29 +99,25 @@ const useStyes = makeStyles(theme => ({
 
 const RelatedProjects = () => {
   const classes = useStyes()
+  const context = React.useContext(I18nextContext);
+  const lang = context.language;
   const { t } = useTranslation()
 
   return (
     <StaticQuery
       query={graphql`
       query {
-        homePage: strapiHomepage {
-          projectsImage {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, quality: 5)
-              }
-            }
-          }
-        }
-        projects: allStrapiProjects(limit: 8) {
+        projects: allStrapiProjects {
           nodes {
             title
             slug
             description
             id
+            Key
+            locale
             images {
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(quality: 30, height: 210)
                 }
@@ -157,27 +152,17 @@ const RelatedProjects = () => {
             modules={[Pagination]}
             className={`${classes.slider} purpleBullet`}
           >
-            {projects.map((el, index) => (
+            {projects.filter(projects => projects.locale.includes(lang)).map((el, index) => (
               <SwiperSlide key={index} className={classes.slide}>
                 <Box className={classes.container}>
-                  <GatsbyImage
-                    alt="About the project"
-                    image={getImage(el.images[0].localFile)}
-                    style={{
-                      objectFit: "contain",
-                      backgroundColor: "#27AAE1",
-                    }}
-                    imgStyle={{
-                      objectFit: "contain",
-                      backgroundColor: "#27AAE1",
-                    }}
-                  />
+                  <Box
+                    style={{ backgroundImage: `url(${el.images[0].localFile.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
                       {el.title}
                     </Typography>
                     <Link
-                      to={`${PROJECTS}/${el.slug}`}
+                      to={`${PROJECTS}/${el.Key}`}
                       className={classes.link}
                       style={{ textDecoration: "none" }}
                     >
