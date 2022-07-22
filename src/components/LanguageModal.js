@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-//import { graphql } from "gatsby"
 import { useI18next, useTranslation } from "gatsby-plugin-react-i18next"
-import { makeStyles, Box, FormControl, Select, MenuItem } from "@material-ui/core"
+import { makeStyles, Box, FormControl, Select, MenuItem, withTheme } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   button2: {
@@ -34,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formControl: {
-    minWidth: 120,
+    width: "auto",
     zIndex: 99,
     color: "white",
     "&::before": {
@@ -55,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
   selectEmpty: {
     marginTop: "5px",
+    width: "auto",
     color: "white",
     fontSize: 16,
     fontWeight: "700",
@@ -62,22 +62,50 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     lineHeight: "16px",
     textAlign: "right",
-    "&::before": {
-      display: "none",
+    "& MuiInput-underline:hover:not(.Mui-disabled):before": {
+      color: "white",
       borderBottom: "none",
-      border: "none",
     },
-    "&::after": {
-      display: "none",
+    "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+      color: "white",
       borderBottom: "none",
-      border: "none",
+    },
+    "& ::MuiInput-underline:hover:not(.Mui-disabled):before": {
+      color: "white",
+      borderBottom: "none",
+    },
+    "&::before, &::after": {
+      display: "none",
+      content: "''",
+      position: "absolute",
+      transition: "transform .5s ease",
+      borderBottom: "none",
+      color: "white",
     },
     "&::hover": {
       display: "none",
-      borderBottom: "none",
-      border: "none",
-      background: "transparent",
+      color: "white",
+      borderBotom: "none",
+      "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+        color: "white",
+        borderBottom: "none",
+      },
+    },
+    "& .MuiInputBase-input": {
+      color: "white",
+      animationName: "none",
+      content: "''",
+    },
+    "& .MuiInput-underline:before": {
       backgroundColor: "transparent",
+    },
+    "& .MuiSelect-select:focus": {
+      backgroundColor: "transparent",
+    },
+    "& .MuiSelect-select.MuiSelect-select": {
+      paddingRight: "0",
+      width: "auto",
+      padding: "0 0 0"
     },
     "& svg": {
       display: "none",
@@ -85,6 +113,23 @@ const useStyles = makeStyles(theme => ({
   },
   item: {
     color: "#193174",
+  },
+  effect: {
+    "&::before": {
+      left: "0",
+      width: "100%",
+      bottom: "-2px",
+      height: "3px",
+      background: "white",
+      color: "white",
+      transform: "scaleX(0)",
+      borderBottom: "none",
+    },
+    "&:hover::before": {
+      color: "white",
+      background: "white",
+      transform: "scaleX(1)",
+    },
   },
 }))
 
@@ -114,7 +159,7 @@ const Language = () => {
           <Select
             value={t("languageModal_select")}
             onChange={handleChange}
-            className={classes.selectEmpty}
+            className={`${classes.selectEmpty} ${classes.effect}`}
             inputProps={{ 'aria-label': 'Without label' }}
           >
             <MenuItem value={t("languageModal_select")} style={{ zIndex: 999, }} className={classes.item}>
